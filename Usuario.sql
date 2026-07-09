@@ -1,5 +1,5 @@
 USE Thinkaroo;
-CREATE TABLE Perfil
+CREATE TABLE Usuario
 (
 id_usuario INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
 correo_electronico VARCHAR(150) NOT NULL,

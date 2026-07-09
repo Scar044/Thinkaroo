@@ -2,7 +2,7 @@ USE Thinkaroo;
 CREATE TABLE Actividades(
 id_actividad INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
 id_tema INT NOT NULL,
-FOREIGN KEY(id_tema) REFERENCES Tema(id_tema),
+FOREIGN KEY(id_tema) REFERENCES Temas(id_tema),
 numero_de_clase INT NOT NULL,
 descripcion TEXT,
 instrucciones TEXT NOT NULL,
