@@ -9,8 +9,8 @@ estado ENUM(
     'sin iniciar',
     'en proceso',
     'completado') NOT NULL,
-FOREIGN KEY(id_tema) REFERENCES Temas(id_tema),
 id_usuario INT NOT NULL,
+FOREIGN KEY(id_tema) REFERENCES Temas(id_tema),
 FOREIGN KEY(id_usuario) REFERENCES Usuario(id_usuario),
 FOREIGN KEY(id_actividad) REFERENCES Actividades(id_actividad)
 );

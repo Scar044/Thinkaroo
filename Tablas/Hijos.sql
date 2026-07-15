@@ -11,5 +11,6 @@ CREATE TABLE Hijos(
         'Kinestesico'
     ) NOT NULL,
     Nivel_actual INT DEFAULT 1,
-    fecha_creacion DATETIME DEFAULT CURRENT TIMESTAMP
+    fecha_creacion DATETIME DEFAULT CURRENT TIMESTAMP,
+    FOREIGN KEY(Id_usuario) REFERENCES(id_usuario)
 );
