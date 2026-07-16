@@ -1,0 +1,37 @@
+.botones{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px; /* Espacio entre botones */
+    margin-top: 350px;
+}
+
+.boton{
+    width: 220px;
+    height: 60px;
+
+    background: orange;
+
+    border-radius: 30px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    color: #000;
+    text-decoration: none;
+    font-size: 24px;
+    font-weight: 500;
+
+    transition: 0.3s ease;
+}
+
+.boton:hover{
+    background: orange;
+    transform: scale(1.05);
+    box-shadow: 0 6px 12px rgba(0,0,0,.2);
+}
+
+.boton:active{
+    transform: scale(.97);
+}
