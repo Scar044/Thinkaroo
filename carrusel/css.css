@@ -4,15 +4,20 @@
     box-sizing:border-box;
 }
 
-body{
-    background:#f5f5f5;
-    display:flex;
-    justify-content:center;
-    align-items:flex-start;
-    padding-top:40px;
-    font-family:Arial, Helvetica, sans-serif;
+html{
+    scroll-behavior:smooth;
 }
 
+body{
+    background:#f5f5f5;
+    font-family:Arial, Helvetica, sans-serif;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    padding-top:40px;
+}
+
+/* Carrusel */
 .carrusel{
     width:65%;
     max-width:900px;
@@ -27,95 +32,89 @@ body{
     position:relative;
 }
 
+/* Ahora .slide es un <a> */
 .slide{
-
     position:absolute;
     width:100%;
     height:100%;
-
-    object-fit:cover;
-
-    border-radius:18px;
-
+    display:block;
     opacity:0;
-
-    transition:
-    opacity .7s,
-    transform .4s;
-
+    transition:opacity .7s, transform .4s;
+    text-decoration:none;
 }
 
+/* Imagen dentro del enlace */
+.slide img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    border-radius:18px;
+}
+
+/* Imagen visible */
 .slide.active{
     opacity:1;
+    z-index:2;
 }
 
+/* Efecto al pasar el mouse */
 .slide:hover{
-
     transform:scale(1.08);
-
-    z-index:5;
-
+    z-index:999;
     box-shadow:0 20px 45px rgba(0,0,0,.35);
-
 }
 
+/* Botones */
 button{
-
     position:absolute;
-
     top:50%;
-
     transform:translateY(-50%);
-
     width:50px;
-
     height:50px;
-
     border:none;
-
     border-radius:50%;
-
     background:rgba(255,255,255,.8);
-
     cursor:pointer;
-
     font-size:26px;
-
     transition:.3s;
-
+    z-index:1000;
 }
 
 button:hover{
-
-    background:#ffffff;
-
+    background:#fff;
 }
 
 .anterior{
-
     left:-70px;
-
 }
 
 .siguiente{
-
     right:-70px;
-
 }
 
-.carrusel{
-    overflow: visible;
+/* Secciones debajo del carrusel */
+#visual,
+#auditivo,
+#kinestesico{
+    width:65%;
+    max-width:900px;
+    margin-top:40px;
+    padding:25px;
+    background:#fff;
+    border-radius:18px;
+    box-shadow:0 5px 15px rgba(0,0,0,.2);
 }
 
-.slide:hover{
-    transform: scale(1.08);
-    z-index: 999;
+#visual h2,
+#auditivo h2,
+#kinestesico h2{
+    margin-bottom:15px;
+    color:#333;
 }
 
-.slide.active{
-    opacity: 1;
-    z-index: 2;
-}
-.slide:hover{
-    z-index: 999;
+#visual p,
+#auditivo p,
+#kinestesico p{
+    line-height:1.6;
+    color:#555;
 }
