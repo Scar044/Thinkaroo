@@ -1,0 +1,265 @@
+*{
+    margin:100;
+    padding:100;
+    box-sizing:border-box;
+}
+
+body{
+
+    background:#f8c587;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    min-height:100vh;
+
+    font-family:Arial, Helvetica, sans-serif;
+
+}
+
+/* ===========================
+        CARRUSEL
+=========================== */
+
+.carrusel{
+
+    width:80%;
+
+    max-width:900px;
+
+    height:650px;
+
+    position:relative;
+
+    overflow:visible;
+
+}
+
+.slides{
+
+    width:100%;
+
+    height:100%;
+
+    position:relative;
+
+}
+
+/* ===========================
+        TARJETAS
+=========================== */
+
+.slide{
+
+    position:absolute;
+
+    top:0;
+    left:0;
+
+    width:100%;
+
+    height:100%;
+
+    background:white;
+
+    border-radius:25px;
+
+    display:flex;
+
+    flex-direction:column;
+
+    justify-content:center;
+
+    align-items:center;
+
+    text-align:center;
+
+    padding:30px;
+
+    opacity:0;
+
+    visibility:hidden;
+
+    transition:opacity .6s ease, transform .4s;
+
+    box-shadow:0 15px 35px rgba(0,0,0,.18);
+
+}
+
+.slide.active{
+
+    opacity:1;
+
+    visibility:visible;
+
+}
+
+/* Efecto cuando aparece */
+
+.slide.active:hover{
+
+    transform:scale(1.03);
+
+}
+
+/* ===========================
+        IMAGEN
+=========================== */
+
+.slide img{
+
+    width:500px;
+
+    height:300px;
+
+    object-fit:cover;
+
+    border-radius:20px;
+
+    margin-bottom:20px;
+
+}
+
+/* ===========================
+        TITULO
+=========================== */
+
+.slide h2{
+
+    font-size:42px;
+
+    margin-bottom:20px;
+
+    color:#222;
+
+}
+
+/* ===========================
+        TEXTO
+=========================== */
+
+.slide p{
+
+    width:80%;
+
+    font-size:22px;
+
+    line-height:1.5;
+
+    margin-bottom:30px;
+
+}
+
+/* ===========================
+        BOTON
+=========================== */
+
+.btn{
+
+    display:inline-block;
+
+    background:#F7941D;
+
+    color:white;
+
+    text-decoration:none;
+
+    padding:15px 45px;
+
+    border-radius:35px;
+
+    font-size:22px;
+
+    font-weight:bold;
+
+    transition:.3s;
+
+    box-shadow:0 5px 12px rgba(0,0,0,.2);
+
+}
+
+.btn:hover{
+
+    background:#E67E00;
+
+    transform:scale(1.08);
+
+    box-shadow:0 8px 18px rgba(0,0,0,.3);
+
+}
+/* ===========================
+        FLECHAS
+=========================== */
+
+button{
+
+    position:absolute;
+
+    top:50%;
+
+    transform:translateY(-50%);
+
+    width:60px;
+
+    height:60px;
+
+    border:none;
+
+    border-radius:50%;
+
+    background:rgba(255,255,255,.9);
+
+    cursor:pointer;
+
+    font-size:32px;
+
+    transition:.3s;
+
+    z-index:100;
+
+    box-shadow:0 6px 20px rgba(0,0,0,.25);
+
+}
+
+button:hover{
+
+    background:white;
+
+    transform:translateY(-50%) scale(1.1);
+
+}
+
+.anterior{
+
+    left:-80px;
+
+}
+
+.siguiente{
+
+    right:-80px;
+
+}
+
+.slide{
+
+    background:white;
+
+    border:5px solid #39B5E8;
+
+    border-radius:35px;
+
+}
+
+.slide.active{
+    opacity:1;
+    visibility:visible;
+    z-index:2;
+}
+
+.slide{
+    z-index:1;
+}
