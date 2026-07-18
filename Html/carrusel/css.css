@@ -8,8 +8,55 @@ html{
     scroll-behavior:smooth;
 }
 
+header{
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    background: #FFD519;
+    box-shadow:0 2px 10px rgba(0,0,0,.2);
+    z-index:1000;
+}
+
+.navbar{
+    width:90%;
+    max-width:1200px;
+    margin:auto;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:15px 0;
+}
+
+.logo{
+    color:white;
+    font-size:28px;
+}
+
+.menu{
+    display:flex;
+    list-style:none;
+    gap:20px;
+}
+
+.menu a{
+    color:white;
+    text-decoration:none;
+    font-size:17px;
+    font-weight:bold;
+    padding:8px 15px;
+    border-radius:8px;
+    transition:.3s;
+}
+
+.menu a:hover{
+    background:white;
+    color:#FFD519;
+}
+
 body{
-    background:#f5f5f5;
+    padding-top:90px;
+     background:#f8c587;
     font-family:Arial, Helvetica, sans-serif;
     display:flex;
     flex-direction:column;
@@ -17,7 +64,7 @@ body{
     padding-top:40px;
 }
 
-/* Carrusel */
+
 .carrusel{
     width:65%;
     max-width:900px;
@@ -32,39 +79,59 @@ body{
     position:relative;
 }
 
-/* Ahora .slide es un <a> */
 .slide{
     position:absolute;
+    top:0;
+    left:0;
     width:100%;
     height:100%;
-    display:block;
     opacity:0;
-    transition:opacity .7s, transform .4s;
-    text-decoration:none;
+    transition:opacity .7s;
+    pointer-events:none;
 }
 
-/* Imagen dentro del enlace */
+.slide.active{
+    opacity:1;
+    z-index:2;
+    pointer-events:auto;
+}
+
+#objetivos li{
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: #555;
+    text-align: justify;
+}
+
 .slide img{
     width:100%;
     height:100%;
     object-fit:cover;
     border-radius:18px;
+    display:block;
 }
 
-/* Imagen visible */
+
 .slide.active{
     opacity:1;
     z-index:2;
 }
 
-/* Efecto al pasar el mouse */
+#objetivos ul{
+    padding-left: 30px;
+}
+
+#objetivos li{
+    margin-bottom: 12px;
+}
+
 .slide:hover{
     transform:scale(1.08);
     z-index:999;
     box-shadow:0 20px 45px rgba(0,0,0,.35);
 }
 
-/* Botones */
+
 button{
     position:absolute;
     top:50%;
@@ -92,7 +159,7 @@ button:hover{
     right:-70px;
 }
 
-/* Secciones debajo del carrusel */
+
 #visual,
 #auditivo,
 #kinestesico{
@@ -117,4 +184,45 @@ button:hover{
 #kinestesico p{
     line-height:1.6;
     color:#555;
+}
+
+
+
+#quienes-somos{
+    width:90%;
+    max-width:1000px;
+    margin:60px auto;
+    padding:50px;
+    background:#ffffff;
+    border-radius:20px;
+    box-shadow:0 8px 25px rgba(0,0,0,.15);
+}
+
+#quienes-somos h2{
+    text-align:center;
+    font-size:2.2rem;
+    color:#2c3e50;
+    margin-bottom:25px;
+}
+
+#quienes-somos p{
+    font-size:1.1rem;
+    line-height:1.8;
+    color:#555;
+    text-align:justify;
+    margin-bottom:18px;
+}
+
+@media (max-width:768px){
+    #quienes-somos{
+        padding:30px 20px;
+    }
+
+    #quienes-somos h2{
+        font-size:1.8rem;
+    }
+
+    #quienes-somos p{
+        font-size:1rem;
+    }
 }

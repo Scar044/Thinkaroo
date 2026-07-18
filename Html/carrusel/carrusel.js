@@ -1,4 +1,4 @@
-const slides = document.querySelectorAll(".slide");
+const slides = document.querySelectorAll(".slides .slide");
 
 const siguiente = document.querySelector(".siguiente");
 
@@ -17,6 +17,7 @@ function mostrarSlide(){
     slides[indice].classList.add("active");
 
 }
+
 
 siguiente.addEventListener("click",()=>{
 
