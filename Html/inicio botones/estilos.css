@@ -35,3 +35,27 @@
 .boton:active{
     transform: scale(.97);
 }
+header{
+    background:white;
+    padding:25px;
+    border-radius:15px;
+    display:flex;
+    align-items:center;
+    gap:25px;
+    margin-bottom:20px;
+    max-height: 100px;
+}
+
+.logo{
+    width:110px;
+}
+
+.header-texto h1{
+    color:#0D47A1;
+    font-size:50px;
+}
+
+.header-texto p{
+    font-size:22px;
+    margin-top:10px;
+}

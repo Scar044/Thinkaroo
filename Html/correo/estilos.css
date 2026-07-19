@@ -1,5 +1,6 @@
 .formulario {
     width: 400px;
+    max-height: 300px;
     position: absolute;
     background-color: #fff;
     border: 5px solid orange;
@@ -11,6 +12,12 @@
     text-align: center;
 }
 
+body{
+    background-color: rgb(255, 255, 255);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 .formulario input,
 .formulario label,
 .formulario button {
