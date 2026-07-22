@@ -7,18 +7,31 @@
 html{
     scroll-behavior:smooth;
 }
-
 header{
+    padding:25px;
+    border-radius:15px;
+    display:flex;
+    align-items:center;
+    gap:25px;
+    margin-bottom:20px;
+    max-height: 100px;
     position:fixed;
     top:0;
     left:0;
     width:100%;
-    background: #FFD519;
+    background: white;
     box-shadow:0 2px 10px rgba(0,0,0,.2);
     z-index:1000;
 }
 
+.logo{
+    width:110px;
+}
+
+
+
 .navbar{
+    background-color: #FFD519;
     width:90%;
     max-width:1200px;
     margin:auto;
@@ -26,6 +39,7 @@ header{
     justify-content:space-between;
     align-items:center;
     padding:15px 0;
+    border-radius: 15px;
 }
 
 .logo{
@@ -101,6 +115,7 @@ body{
     line-height: 1.8;
     color: #555;
     text-align: justify;
+    margin-bottom: 12px;
 }
 
 .slide img{
@@ -119,10 +134,6 @@ body{
 
 #objetivos ul{
     padding-left: 30px;
-}
-
-#objetivos li{
-    margin-bottom: 12px;
 }
 
 .slide:hover{
@@ -187,7 +198,29 @@ button:hover{
 }
 
 
+#objetivos{
+    width:90%;
+    max-width:1000px;
+    margin:60px auto;
+    padding:50px;
+    background:#ffffff;
+    border-radius:20px;
+    box-shadow:0 8px 25px rgba(0,0,0,.15);
+}
+#objetivos h2{
+    text-align:center;
+    font-size:2.2rem;
+    color:#2c3e50;
+    margin-bottom:25px;
+}
 
+#objetivos p{
+    font-size:1.1rem;
+    line-height:1.8;
+    color:#555;
+    text-align:justify;
+    margin-bottom:18px;
+}
 #quienes-somos{
     width:90%;
     max-width:1000px;
@@ -225,4 +258,8 @@ button:hover{
     #quienes-somos p{
         font-size:1rem;
     }
+}
+#inicio, #objetivos, #quienes-somos, #auditivo, #kinestesico{
+    margin-bottom: 25px;
+    
 }
