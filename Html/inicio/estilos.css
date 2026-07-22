@@ -42,18 +42,17 @@ body{
 
 .formulario input {
     height: 40px;
-    border: 2px solid orange; /*cambiar color al de la palet*/
+    border: 2px solid orange; 
     border-radius: 10px;
     padding: 0 8px;
 }
 
-/* Estilos para el botón */
 .formulario button {
     margin-top: 20px;
     cursor: pointer;
     border: none;
     height: 40px;
-    background-color: orange; /* camiar color al de la paleta*/
+    background-color: orange; 
     box-shadow: 1px 1px 2px #000;
     color: #fff;
 }
