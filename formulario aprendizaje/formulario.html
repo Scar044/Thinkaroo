@@ -4,12 +4,94 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="estilos.css">
+
 </head>
 <body>
-    <form action="">
-        <label for="">ojeriher</label>jfjfjr <input type="text">
+    <form class="formulario" action="" method="">
 
+    <h2>Cuestionario de Estilo de Aprendizaje</h2>
 
-    </form>
+    <label for="nombre">Nombre del niño:</label><br>
+    <input type="text" id="nombre" name="nombre" required><br><br>
+
+    <label for="edad">Edad:</label><br>
+    <select id="edad" name="edad" required>
+        <option value="">Seleccione una edad</option>
+        <option value="3">3 años</option>
+        <option value="4">4 años</option>
+        <option value="5">5 años</option>
+        <option value="6">6 años</option>
+        <option value="7">7 años</option>
+    </select>
+
+    <br><br>
+
+    <p><strong>1. ¿Cómo aprende mejor el niño?</strong></p>
+
+    <label><input type="radio" name="p1" value="visual" required> Viendo imágenes.</label><br>
+    <label><input type="radio" name="p1" value="auditivo"> Escuchando explicaciones.</label><br>
+    <label><input type="radio" name="p1" value="kinestesico"> Haciendo actividades.</label>
+
+    <p><strong>2. ¿Qué actividad disfruta más?</strong></p>
+
+    <label><input type="radio" name="p2" value="visual" required> Dibujar o colorear.</label><br>
+    <label><input type="radio" name="p2" value="auditivo"> Escuchar cuentos.</label><br>
+    <label><input type="radio" name="p2" value="kinestesico"> Construir o jugar.</label>
+
+    <p><strong>3. ¿Qué recuerda con mayor facilidad?</strong></p>
+
+    <label><input type="radio" name="p3" value="visual" required> Imágenes.</label><br>
+    <label><input type="radio" name="p3" value="auditivo"> Sonidos o palabras.</label><br>
+    <label><input type="radio" name="p3" value="kinestesico"> Lo que hizo.</label>
+
+    <p><strong>4. ¿Cómo prefiere recibir instrucciones?</strong></p>
+
+    <label><input type="radio" name="p4" value="visual" required> Viendo un ejemplo.</label><br>
+    <label><input type="radio" name="p4" value="auditivo"> Escuchando la explicación.</label><br>
+    <label><input type="radio" name="p4" value="kinestesico"> Intentándolo mientras aprende.</label>
+
+    <p><strong>5. ¿Qué juguete le gusta más?</strong></p>
+
+    <label><input type="radio" name="p5" value="visual" required> Rompecabezas.</label><br>
+    <label><input type="radio" name="p5" value="auditivo"> Instrumentos musicales.</label><br>
+    <label><input type="radio" name="p5" value="kinestesico"> Bloques de construcción.</label>
+
+    <p><strong>6. Cuando tiene un problema, normalmente...</strong></p>
+
+    <label><input type="radio" name="p6" value="visual" required> Observa antes de actuar.</label><br>
+    <label><input type="radio" name="p6" value="auditivo"> Pregunta qué hacer.</label><br>
+    <label><input type="radio" name="p6" value="kinestesico"> Prueba distintas soluciones.</label>
+
+    <p><strong>7. ¿Qué hace en su tiempo libre?</strong></p>
+
+    <label><input type="radio" name="p7" value="visual" required> Mira libros con dibujos.</label><br>
+    <label><input type="radio" name="p7" value="auditivo"> Escucha música.</label><br>
+    <label><input type="radio" name="p7" value="kinestesico"> Juega y se mueve.</label>
+
+    <p><strong>8. Cuando conoce un juguete nuevo...</strong></p>
+
+    <label><input type="radio" name="p8" value="visual" required> Lo observa primero.</label><br>
+    <label><input type="radio" name="p8" value="auditivo"> Escucha cómo funciona.</label><br>
+    <label><input type="radio" name="p8" value="kinestesico"> Lo prueba de inmediato.</label>
+
+    <p><strong>9. ¿Qué material le ayuda más a aprender?</strong></p>
+
+    <label><input type="radio" name="p9" value="visual" required> Dibujos e imágenes.</label><br>
+    <label><input type="radio" name="p9" value="auditivo"> Explicaciones y canciones.</label><br>
+    <label><input type="radio" name="p9" value="kinestesico"> Juegos y actividades prácticas.</label>
+
+    <p><strong>10. En clase presta más atención cuando...</strong></p>
+
+    <label><input type="radio" name="p10" value="visual" required> Ve demostraciones.</label><br>
+    <label><input type="radio" name="p10" value="auditivo"> Escucha al profesor.</label><br>
+    <label><input type="radio" name="p10" value="kinestesico"> Participa activamente.</label>
+
+    <br><br>
+
+    <button type="submit">Enviar cuestionario</button>
+
+</form>
+     
 </body>
 </html>
