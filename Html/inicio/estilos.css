@@ -19,6 +19,9 @@ body{
     position: absolute;
 }
 
+.logo{
+    width:110px;
+}
 .formulario {
     width: 400px;
     position: absolute;

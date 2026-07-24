@@ -27,11 +27,7 @@ header{
 .logo{
     width:110px;
 }
-
-
-
 .navbar{
-    background-color: #FFD519;
     width:90%;
     max-width:1200px;
     margin:auto;
@@ -40,6 +36,38 @@ header{
     align-items:center;
     padding:15px 0;
     border-radius: 15px;
+}
+
+.botones{
+    display: flex;
+    flex-direction: row;
+    align-items: end;
+    gap: 20px; /* Espacio entre botones */
+}
+
+.boton{
+    width: 150px;
+    height: 45px;
+    background: orange;
+    border-radius: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color:white;
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: 500;
+    transition: 0.3s ease;
+}
+
+.boton:hover{
+    background: orange;
+    transform: scale(1.05);
+    box-shadow: 0 6px 12px rgba(0,0,0,.2);
+}
+
+.boton:active{
+    transform: scale(.97);
 }
 
 .logo{
@@ -54,18 +82,13 @@ header{
 }
 
 .menu a{
-    color:white;
+    color:#FFD519;
     text-decoration:none;
     font-size:17px;
     font-weight:bold;
     padding:8px 15px;
     border-radius:8px;
     transition:.3s;
-}
-
-.menu a:hover{
-    background:white;
-    color:#FFD519;
 }
 
 body{
