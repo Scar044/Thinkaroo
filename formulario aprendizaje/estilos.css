@@ -1,3 +1,19 @@
+*{
+    margin: 0;
+    padding:0;
+    box-sizing: border-box;
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif
+
+}
+
+body{
+    height: 100vh;
+    background-color: rgb(245, 211, 117);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 .formulario {
     width: 400px;
     position: absolute;
@@ -5,7 +21,7 @@
     border: 5px solid orange;
     border-radius: 10px;
     padding: 30px 60px;
-    top: 150px;
+    top: 250px;
     left: 50%;
     transform: translate(-50%);
     text-align: center;
@@ -21,7 +37,7 @@
 
 .formulario input {
     height: 40px;
-    border: 2px solid orange;
+    border: 2px solid orange; 
     border-radius: 10px;
     padding: 0 8px;
 }
@@ -36,6 +52,7 @@
     color: #fff;
 }
 
+/* Efecto hover del botón */
 .formulario button:hover {
     background-color: orange;
 }
