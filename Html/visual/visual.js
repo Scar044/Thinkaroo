@@ -1,0 +1,78 @@
+(function() {
+    // Image URLs (pairs)
+    const images = [
+        '../IMG/pinguino_memoria.png',
+        '../IMG/pinguino_memoria.png',
+        '../IMG/pinguino_memoria.png',
+       '../IMG/pinguino_memoria.png',
+       '../IMG/pinguino_memoria.png',
+       '../IMG/pinguino_memoria.png',
+       '../IMG/pinguino_memoria.png'
+
+    ];
+
+    let cards = [...images, ...images]; // Duplicate for pairs
+
+    // Shuffle cards
+    cards.sort(() => Math.random() - 0.5);
+
+    const gameBoard = document.getElementById('gameBoard');
+    let firstCard = null;
+    let secondCard = null;
+    let lockBoard = false;
+    let matchedPairs = 0;
+
+    // Create card elements
+    cards.forEach(imgSrc => {
+        const card = document.createElement('div');
+        card.classList.add('card');
+        card.dataset.image = imgSrc;
+
+        const img = document.createElement('img');
+        img.src = imgSrc;
+        img.alt = "Memory Card";
+
+        card.appendChild(img);
+        card.addEventListener('click', flipCard);
+        gameBoard.appendChild(card);
+    });
+
+    function flipCard() {
+        if (lockBoard || this.classList.contains('flipped') || this.classList.contains('matched')) return;
+
+        this.classList.add('flipped');
+
+        if (!firstCard) {
+            firstCard = this;
+            return;
+        }
+
+        secondCard = this;
+        lockBoard = true;
+
+        checkMatch();
+    }
+
+    function checkMatch() {
+        if (firstCard.dataset.image === secondCard.dataset.image) {
+            firstCard.classList.add('matched');
+            secondCard.classList.add('matched');
+            matchedPairs++;
+            resetTurn();
+            if (matchedPairs === images.length) {
+                setTimeout(() => alert('🎉 You Win!'), 300);
+            }
+        } else {
+            setTimeout(() => {
+                firstCard.classList.remove('flipped');
+                secondCard.classList.remove('flipped');
+                resetTurn();
+            }, 800);
+        }
+    }
+
+    function resetTurn() {
+        [firstCard, secondCard] = [null, null];
+        lockBoard = false;
+    }
+})();
