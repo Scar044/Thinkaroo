@@ -7,9 +7,8 @@
        '../IMG/sapito_memoria.png',
        '../IMG/ballena_memoria.png',
        '../IMG/pollito_memoria.png',
-       '../IMG/zorrito_memoria.png'
-       
-
+       '../IMG/zorrito_memoria.png',
+       '../IMG/osito_memoria.png',
     ];
 
     let cards = [...images, ...images]; // Duplicate for pairs
@@ -61,7 +60,7 @@
             matchedPairs++;
             resetTurn();
             if (matchedPairs === images.length) {
-                setTimeout(() => alert('🎉 You Win!'), 300);
+                setTimeout(() => alert('🎉 ¡Excelente trabajo! Encontraste todas las parejas!'), 300);
             }
         } else {
             setTimeout(() => {
