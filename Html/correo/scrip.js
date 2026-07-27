@@ -32,23 +32,19 @@ function registrarUsuario(evento){
 
     fetch("registro.php",{
         method: "POST",
-
-    headers: {
+        headers: {
         "Content-Type": "application/json"
     },
 
     body: JSON.stringify({
-
         correo: correo,
-
         password: password
-
     })
 
 })
     .then(respuesta => respuesta.text())
     .then(datos => {
-        alert(datos)
+        alert(datos);
     });
 
 }
