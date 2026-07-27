@@ -2,12 +2,13 @@
     // Image URLs (pairs)
     const images = [
         '../IMG/pinguino_memoria.png',
-        '../IMG/pinguino_memoria.png',
-        '../IMG/pinguino_memoria.png',
-       '../IMG/pinguino_memoria.png',
-       '../IMG/pinguino_memoria.png',
-       '../IMG/pinguino_memoria.png',
-       '../IMG/pinguino_memoria.png'
+        '../IMG/conejito_memoria.png',
+        '../IMG/Koala_memoria.png',
+       '../IMG/sapito_memoria.png',
+       '../IMG/ballena_memoria.png',
+       '../IMG/pollito_memoria.png',
+       '../IMG/zorrito_memoria.png'
+       
 
     ];
 
