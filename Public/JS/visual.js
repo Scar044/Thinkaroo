@@ -1,19 +1,19 @@
 (function() {
-    // Image URLs (pairs)
+    
     const images = [
         '../IMG/pinguino_memoria.png',
-        '../IMG/pinguino_memoria.png',
-        '../IMG/pinguino_memoria.png',
-       '../IMG/pinguino_memoria.png',
-       '../IMG/pinguino_memoria.png',
-       '../IMG/pinguino_memoria.png',
-       '../IMG/pinguino_memoria.png'
-
+        '../IMG/conejito_memoria.png',
+        '../IMG/Koala_memoria.png',
+       '../IMG/sapito_memoria.png',
+       '../IMG/ballena_memoria.png',
+       '../IMG/pollito_memoria.png',
+       '../IMG/zorrito_memoria.png',
+       '../IMG/osito_memoria.png',
     ];
 
-    let cards = [...images, ...images]; // Duplicate for pairs
+    let cards = [...images, ...images]; 
 
-    // Shuffle cards
+
     cards.sort(() => Math.random() - 0.5);
 
     const gameBoard = document.getElementById('gameBoard');
@@ -22,7 +22,7 @@
     let lockBoard = false;
     let matchedPairs = 0;
 
-    // Create card elements
+    
     cards.forEach(imgSrc => {
         const card = document.createElement('div');
         card.classList.add('card');
@@ -60,7 +60,7 @@
             matchedPairs++;
             resetTurn();
             if (matchedPairs === images.length) {
-                setTimeout(() => alert('🎉 You Win!'), 300);
+                setTimeout(() => alert('🎉 ¡Excelente trabajo! Encontraste todas las parejas!'), 300);
             }
         } else {
             setTimeout(() => {

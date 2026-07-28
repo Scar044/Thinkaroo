@@ -1,0 +1,138 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+.formulario{
+    width:100%;
+    background:#fff;
+    border:3px solid orange;
+    border-radius:15px;
+    padding:30px;
+}
+
+header{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 60px;
+    background: #FFD11A;
+    display: flex;
+    align-items: center;
+    padding-left: 20px;
+    z-index: 1000;
+}
+
+#Logo{
+    height: 40px;
+    width: auto;
+}
+
+.background{
+    position:relative;
+    width:100%;
+    min-height:100vh;
+    overflow-x:hidden;
+    background:#fff;
+    padding-top: 60px; 
+}
+
+.mancha-azul{
+    position:absolute;
+    top:0;
+    left:0;
+    width:140px;
+}
+
+.mancha-naranja{
+    position:absolute;
+    top:0;
+    right:0;
+    width:140px;
+}
+
+body{
+    margin: 0;
+    background-color: rgb(245, 211, 117);
+}
+.formulario input,
+.formulario label,
+.formulario button {
+    display: block;
+    width: 100%;
+    margin: 5px 0;
+}
+
+.formulario input {
+    height: 40px;
+    border: 2px solid orange; 
+    border-radius: 10px;
+    padding: 0 8px;
+}
+
+.formulario button {
+    margin-top: 20px;
+    cursor: pointer;
+    border: none;
+    height: 40px;
+    background-color: orange;
+    box-shadow: 1px 1px 2px #000;
+    color: #fff;
+}
+
+.formulario button:hover {
+    background-color: orange;
+}
+
+.correos{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#kido{
+    width:220px;
+    max-width:60%;
+    height:auto;
+    margin-bottom:-30px;
+    position:relative;
+    z-index:2;
+}
+
+@media (max-width: 768px){
+    #kido{
+        width:180px;
+    }
+
+    .formulario{
+        width:90%;
+        padding:20px;
+    }
+
+    .mancha-azul,
+    .mancha-naranja{
+        width:90px;
+    }
+}
+@media (max-width:480px){
+
+    #kido{
+        width:150px;
+    }
+
+    .formulario{
+        width:95%;
+        padding:15px;
+    }
+
+    .formulario input{
+        height:35px;
+    }
+
+    .formulario button{
+        height:35px;
+    }
+
+}
