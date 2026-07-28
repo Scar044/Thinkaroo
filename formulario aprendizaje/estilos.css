@@ -15,7 +15,7 @@ body{
 }
 
 .formulario {
-    width: 400px;
+    width: 800px;
     position: absolute;
     background-color: #fff;
     border: 5px solid orange;
@@ -52,7 +52,6 @@ body{
     color: #fff;
 }
 
-/* Efecto hover del botón */
 .formulario button:hover {
     background-color: orange;
 }
