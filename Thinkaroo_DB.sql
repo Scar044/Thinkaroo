@@ -2,7 +2,7 @@ USE Thinkaroo;
 CREATE TABLE Usuario
 (
 id_usuario INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
-correo_electronico VARCHAR(150) NOT NULL,
+correo_electronico VARCHAR(150) NOT NULL UNIQUE,
 contrasena VARCHAR(200) NOT NULL,
 nivel_detectado INT, 
 nombre_niño VARCHAR(50),

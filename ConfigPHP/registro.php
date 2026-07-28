@@ -1,15 +1,18 @@
 <?php
 
 include "conexion.php";
+/*$contenido = file_get_contents("php://input");
+var_dump($contenido);
+exit;*/
 
 $data = json_decode(
     file_get_contents("php://input"),
     true
 );
 
-$correo = $data["../Public/correo"];
+$correo = $data["correo"];
 
-$password = password_hash(
+$clave = password_hash(
     $data["password"],
     PASSWORD_DEFAULT
 );
@@ -17,7 +20,7 @@ $password = password_hash(
 $sql = "
 INSERT INTO usuario
 (
-correo_electronico,s
+correo_electronico,
 contrasena
 )
 VALUES
@@ -29,16 +32,20 @@ VALUES
 
 $stmt = $conn->prepare($sql);
 
+if (!$stmt) {
+    die("Error al preparar la consulta: " . $conn->error);
+}
+
 $stmt->bind_param(
     "ss",
     $correo,
-    $password
+    $clave
 );
 
-if($stmt->execute()){
+if ($stmt->execute()) {
     echo "Usuario registrado correctamente";
-}else{
-    echo "Error al registrar usuario";
+} else {
+    echo "Error: " . $stmt->error;
 }
 
 ?>
