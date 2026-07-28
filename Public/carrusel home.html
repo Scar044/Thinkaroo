@@ -3,28 +3,40 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>carrusel</title>
+    <title>Home page </title>
     <link rel="stylesheet" href="css.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
 
     <div id="inicio"></div>
-
-
-    <header>
-    <nav class="navbar">
-        <h1 class="logo">Thinkaroo</h1>
-
-        <ul class="menu">
-            <li><a href="#inicio">Inicio</a></li>
-            <li><a href="#quienes-somos">¿Quiénes Somos?</a></li>
-            <li><a href="#objetivos">Objetivos</a></li>
-            <li><a href="#visual">Visual</a></li>
-            <li><a href="#auditivo">Auditivo</a></li>
-            <li><a href="#kinestesico">Kinestésico</a></li>
-        </ul>
-    </nav>
-</header>
+    <header class="encabezado">
+        <div class="row align-items-center w-100">
+            <div class="col-3 col-lg-2">
+                <img src="../IMG/logo_thinkaroo-removebg-preview.png" alt="Logo" class="logo">
+            </div>
+            <div class="col-6 col-lg-7">
+                <nav class="navbar">
+                    <ul class="menu">
+                        <li><a href="#inicio">Inicio</a></li>
+                        <li><a href="#objetivos">Objetivos</a></li>
+                        <li><a href="#quienes-somos">¿Quiénes Somos?</a></li>
+                        <li><a href="#visual">Visual</a></li>
+                        <li><a href="#auditivo">Auditivo</a></li>
+                        <li><a href="#kinestesico">Kinestésico</a></li>
+                    </ul>
+                </nav>
+            </div>
+            <div class="col-3 col-lg-3 text-end botones">
+                <a href="../correo/correo.html" class="boton">
+                    Cuenta nueva
+                </a>
+                <a href="../inicio/InicioThinkaro.html" class="boton">
+                    Iniciar sesión
+                </a>
+            </div>
+        </div>    
+    </header>
 
 <div class="carrusel">
   <div class="slides">
@@ -43,54 +55,56 @@
     <button class="anterior">&#10094;</button>
     <button class="siguiente">&#10095;</button>
 </div>
-<section id="quienes-somos">
+
     <div class="contenedor">
         <section id="objetivos">
-    <h2>Objetivos</h2>
+            <h2>Objetivos</h2>
 
-    <h3>Objetivo General</h3>
-    <p>
-        Desarrollar una plataforma web educativa que fortalezca el pensamiento lógico en niños de 3 a 7 años mediante actividades y juegos interactivos adaptados a su estilo de aprendizaje (visual, auditivo o kinestésico), promoviendo un aprendizaje personalizado, dinámico y motivador.
-    </p>
+            <h3>Objetivo General</h3>
+            <p>
+                Desarrollar una plataforma web educativa que fortalezca el pensamiento lógico en niños de 3 a 7 años mediante actividades y juegos interactivos adaptados a su estilo de aprendizaje (visual, auditivo o kinestésico), promoviendo un aprendizaje personalizado, dinámico y motivador.
+            </p>
 
-    <h3>Objetivos Específicos</h3>
-    <ul>
-        <li>Identificar el estilo de aprendizaje de cada niño mediante un cuestionario interactivo.</li>
+            <h3>Objetivos Específicos</h3>
+            <ul>
+                <li>Identificar el estilo de aprendizaje de cada niño mediante un cuestionario interactivo.</li>
 
-        <li>Ofrecer actividades y juegos personalizados de acuerdo con el estilo de aprendizaje detectado.</li>
+                <li>Ofrecer actividades y juegos personalizados de acuerdo con el estilo de aprendizaje detectado.</li>
 
-        <li>Fortalecer habilidades como el razonamiento lógico, la memoria, la concentración y la resolución de problemas.</li>
+                <li>Fortalecer habilidades como el razonamiento lógico, la memoria, la concentración y la resolución de problemas.</li>
 
-        <li>Implementar un sistema de niveles y logros que permita medir el progreso del niño y mantener su motivación.</li>
+                <li>Implementar un sistema de niveles y logros que permita medir el progreso del niño y mantener su motivación.</li>
 
-        <li>Fomentar el aprendizaje mediante dinámicas divertidas e interactivas que despierten la curiosidad y el interés por aprender.</li>
+                <li>Fomentar el aprendizaje mediante dinámicas divertidas e interactivas que despierten la curiosidad y el interés por aprender.</li>
 
-        <li>Involucrar a los padres en el seguimiento del progreso de sus hijos mediante un entorno seguro y fácil de utilizar.</li>
-    </ul>
-</section>
+                <li>Involucrar a los padres en el seguimiento del progreso de sus hijos mediante un entorno seguro y fácil de utilizar.</li>
+            </ul>
+        </section>
+        <section id="quienes-somos">
 
-        <h2>¿Quiénes Somos?</h2>
+            <h2>¿Quiénes Somos?</h2>
 
-        <p>
-            Somos un equipo comprometido con el desarrollo educativo infantil,
-            dedicado a crear una plataforma interactiva que ayude a los niños de
-            3 a 7 años a fortalecer su pensamiento lógico mediante actividades,
-            juegos y retos adaptados a su estilo de aprendizaje.
-        </p>
+            <p>
+                Somos un equipo comprometido con el desarrollo educativo infantil,
+                dedicado a crear una plataforma interactiva que ayude a los niños de
+                3 a 7 años a fortalecer su pensamiento lógico mediante actividades,
+                juegos y retos adaptados a su estilo de aprendizaje.
+            </p>
 
-        <p>
-            Nuestro objetivo es ofrecer una experiencia de aprendizaje divertida,
-            segura y personalizada, permitiendo que cada niño aprenda a su propio
-            ritmo mientras desarrolla habilidades como el razonamiento, la
-            resolución de problemas, la concentración y la creatividad.
-        </p>
+            <p>
+                Nuestro objetivo es ofrecer una experiencia de aprendizaje divertida,
+                segura y personalizada, permitiendo que cada niño aprenda a su propio
+                ritmo mientras desarrolla habilidades como el razonamiento, la
+                resolución de problemas, la concentración y la creatividad.
+            </p>
 
-        <p>
-            Creemos que aprender jugando es una de las mejores formas de potenciar
-            el desarrollo infantil, por eso combinamos tecnología, educación y
-            dinámicas interactivas para acompañar tanto a los niños como a sus
-            padres en este proceso.
-        </p>
+            <p>
+                Creemos que aprender jugando es una de las mejores formas de potenciar
+                el desarrollo infantil, por eso combinamos tecnología, educación y
+                dinámicas interactivas para acompañar tanto a los niños como a sus
+                padres en este proceso.
+            </p>
+            </section>
     </div>
 </section>
 <section id="visual">
@@ -150,6 +164,6 @@
     </p>
 </section>
 <script src="carrusel.js"></script>
-
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

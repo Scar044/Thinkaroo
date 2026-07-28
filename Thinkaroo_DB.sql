@@ -9,7 +9,7 @@ nombre_niño VARCHAR(50),
 nombre_de_responsable VARCHAR(150),
 avatar VARCHAR(255),
 estilo_de_aprendizaje VARCHAR(30),
-edad INT;
+edad INT,
 Estado ENUM(
     'Activo',
     'Suspendido') NOT NULL DEFAULT 'Activo'
@@ -22,20 +22,20 @@ dificultad VARCHAR(50)
 );
 
 CREATE TABLE Logros(
-    Id_logro INT AUTO INCREMENT PRIMARY KEY,
+    Id_logro INT AUTO_INCREMENT PRIMARY KEY,
     nombre VARCHAR(100) NOT NULL,
     descripcion VARCHAR(255),
     imagen_url VARCHAR(255)
 );
 
 CREATE TABLE Avatares (
-    Id_avatar INT AUTO INCREMENT PRIMARY KEY,
+    Id_avatar INT AUTO_INCREMENT PRIMARY KEY,
     Nombre VARCHAR(50) NOT NULL,
     Imagen_url VARCHAR(255) NOT NULL
 );
 
 CREATE TABLE Hijos(
-    Id_hijo INT AUTO INCREMENT PRIMARY KEY,
+    Id_hijo INT AUTO_INCREMENT PRIMARY KEY,
     Id_usuario INT NOT NULL,
     nombre VARCHAR(100) NOT NULL,
     edad INT NOT NULL,
@@ -46,8 +46,8 @@ CREATE TABLE Hijos(
         'Kinestesico'
     ) NOT NULL,
     Nivel_actual INT DEFAULT 1,
-    fecha_creacion DATETIME DEFAULT CURRENT TIMESTAMP,
-    FOREIGN KEY(Id_usuario) REFERENCES(id_usuario)
+    fecha_creacion DATETIME DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY(Id_usuario) REFERENCES Usuario(id_usuario)
 );
 
 CREATE TABLE Actividades(
@@ -63,10 +63,10 @@ FOREIGN KEY(id_tema) REFERENCES Temas(id_tema)
 );
 
 CREATE TABLE Logros_hijos (
-    Id_logro_hijo INT AUTO INCREMENT PRIMARY KEY,
+    Id_logro_hijo INT AUTO_INCREMENT PRIMARY KEY,
     Id_hijo INT NOT NULL,
     Id_logro INT NOT NULL,
-    Fecha_obtenido DATETIME DEFAULT CURRENT TIMESTAMP,
+    Fecha_obtenido DATETIME DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY(Id_logro) REFERENCES Logros(Id_logro),
     FOREIGN KEY(Id_hijo) REFERENCES Hijos(Id_hijo)
 );
@@ -75,7 +75,7 @@ CREATE TABLE progreso(
 id_progreso INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
 id_usuario INT NOT NULL,
 id_actividad INT NOT NULL,
-id_tema INT NOT NULL,
+id_tema INT NOT NULL, /*borrar*/
 progreso INT NOT NULL,
 estado ENUM(
     'sin iniciar',
@@ -86,3 +86,6 @@ FOREIGN KEY(id_tema) REFERENCES Temas(id_tema),
 FOREIGN KEY(id_usuario) REFERENCES Usuario(id_usuario),
 FOREIGN KEY(id_actividad) REFERENCES Actividades(id_actividad)
 );
+
+
+INSERT INTO `usuario` (`id_usuario`, `correo_electronico`, `contrasena`, `nivel_detectado`, `nombre_niño`, `nombre_de_responsable`, `avatar`, `estilo_de_aprendizaje`, `edad`, `Estado`) VALUES (1, 'akdnalkda@gmail.com', '$2y$10$i5HQ21CB7ZEcqYWt5OUPMus.4jeK4.M2AyxtFo8O6uEifR2qW8lRG', NULL, NULL, NULL, NULL, NULL, NULL, 'Activo');

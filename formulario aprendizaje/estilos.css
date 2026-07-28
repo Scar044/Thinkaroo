@@ -8,19 +8,14 @@
 
 body{
     height: 100vh;
-    background-color: rgb(255, 255, 255);
+    background-color: rgb(245, 211, 117);
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-.login{
-    height: 550px;
-    position: absolute;
-}
-
 .formulario {
-    width: 400px;
+    width: 700px;
     position: absolute;
     background-color: #fff;
     border: 5px solid orange;
@@ -42,24 +37,46 @@ body{
 
 .formulario input {
     height: 40px;
-    border: 2px solid orange; /*cambiar color al de la palet*/
+    border: 2px solid orange; 
     border-radius: 10px;
     padding: 0 8px;
 }
 
-/* Estilos para el botón */
 .formulario button {
     margin-top: 20px;
     cursor: pointer;
     border: none;
     height: 40px;
-    background-color: orange; /* camiar color al de la paleta*/
+    background-color: orange; 
     box-shadow: 1px 1px 2px #000;
     color: #fff;
 }
 
-/* Efecto hover del botón */
 .formulario button:hover {
     background-color: orange;
 }
 
+.pregunta{
+    font-size:18px;
+    font-weight:bold;
+    color:#2c3e50;
+    margin:20px 0 10px;
+}
+
+.opciones{
+    display:flex;
+    justify-content:space-between;
+    gap:20px;
+    margin-bottom:20px;
+}
+
+.opciones label{
+    display:flex;
+    align-items:center;
+    gap:8px;
+    flex:1;
+}
+
+input[type="radio"]{
+    transform:scale(1.1);
+}
