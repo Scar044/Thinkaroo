@@ -75,7 +75,7 @@ CREATE TABLE progreso(
 id_progreso INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
 id_usuario INT NOT NULL,
 id_actividad INT NOT NULL,
-id_tema INT NOT NULL,
+id_tema INT NOT NULL, /*borrar*/
 progreso INT NOT NULL,
 estado ENUM(
     'sin iniciar',
@@ -86,3 +86,6 @@ FOREIGN KEY(id_tema) REFERENCES Temas(id_tema),
 FOREIGN KEY(id_usuario) REFERENCES Usuario(id_usuario),
 FOREIGN KEY(id_actividad) REFERENCES Actividades(id_actividad)
 );
+
+
+INSERT INTO `usuario` (`id_usuario`, `correo_electronico`, `contrasena`, `nivel_detectado`, `nombre_niño`, `nombre_de_responsable`, `avatar`, `estilo_de_aprendizaje`, `edad`, `Estado`) VALUES (1, 'akdnalkda@gmail.com', '$2y$10$i5HQ21CB7ZEcqYWt5OUPMus.4jeK4.M2AyxtFo8O6uEifR2qW8lRG', NULL, NULL, NULL, NULL, NULL, NULL, 'Activo');

@@ -3,7 +3,7 @@
 $host = "localhost";
 $usuario = "root";
 $password = "";
-$baseDatos = "Thinkaroo";
+$baseDatos = "thinkaroo";
 
 $conn = new mysqli(
     $host,

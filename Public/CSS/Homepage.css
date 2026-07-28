@@ -109,7 +109,6 @@ header{
 }
 
 
-
 .carrusel{
     width:65%;
     max-width:900px;
@@ -275,6 +274,10 @@ button:hover{
     color:#555;
     text-align:justify;
     margin-bottom:18px;
+}
+
+section{
+    padding-top: 90px;
 }
 
 @media (max-width:768px){
