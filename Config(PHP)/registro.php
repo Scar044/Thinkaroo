@@ -7,7 +7,7 @@ $data = json_decode(
     true
 );
 
-$correo = $data["correo"];
+$correo = $data["../Public/correo"];
 
 $password = password_hash(
     $data["password"],
@@ -17,7 +17,7 @@ $password = password_hash(
 $sql = "
 INSERT INTO usuario
 (
-correo_electronico,
+correo_electronico,s
 contrasena
 )
 VALUES
