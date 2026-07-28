@@ -8,7 +8,7 @@ $data = json_decode(
 $correo = $data["correo"];
 $clave = $data["password"];
 
-include "../correo/conexion.php";
+include "conexion.php";
 
 $sql = "
 SELECT *
