@@ -134,3 +134,36 @@
 .sidebar.cerrado .padres{
     display:none;
 }
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    font-family:Arial, sans-serif;
+}
+
+.contenedor{
+    display:flex;
+    height:100vh;
+}
+
+.container{
+    display:flex;
+    height:100vh;
+}}
+
+.sidebar{
+    width:250px;
+    background:#4285F4;
+    flex-shrink:0;
+}
+
+.contenido{
+    flex:1;
+    padding:30px;
+    overflow-y:auto;
+    background:#fff;
+}
