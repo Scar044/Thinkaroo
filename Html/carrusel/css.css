@@ -5,10 +5,19 @@
 }
 
 html{
+    background-color: #FFA125;
     scroll-behavior:smooth;
 }
+body{
+    background-color: #FFA125;
+    font-family:Arial, Helvetica, sans-serif;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    padding-top:80px;
+}
 header{
-    padding:25px;
+    padding:0px;
     border-radius:15px;
     display:flex;
     align-items:center;
@@ -98,15 +107,7 @@ header{
 .menu a:hover{
     color: #ff8c00;
 }
-body{
-    padding-top:90px;
-     background:#f8c587;
-    font-family:Arial, Helvetica, sans-serif;
-    display:flex;
-    flex-direction:column;
-    align-items:center;
-    padding-top:80px;
-}
+
 
 
 .carrusel{
