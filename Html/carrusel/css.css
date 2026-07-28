@@ -1,0 +1,293 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+header{
+    padding:25px;
+    border-radius:15px;
+    display:flex;
+    align-items:center;
+    gap:25px;
+    margin-bottom:20px;
+    max-height: 90px;
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    background: white;
+    box-shadow:0 2px 10px rgba(0,0,0,.2);
+    z-index:1000;
+}
+
+.encabezado{
+    background:white;
+    padding:10px 20px;
+    position:sticky;
+    top:0;
+    z-index:1000;
+}
+
+.logo{
+    max-width:120px;
+    width:100%;
+    height:auto;
+}
+.navbar{
+    width:90%;
+    max-width:1200px;
+    margin:auto;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:15px 0;
+    border-radius: 15px;
+}
+
+.botones{
+    display:flex;
+    justify-content:flex-end;
+    gap:10px;
+}
+.boton{
+    width: 150px;
+    height: 45px;
+    background: orange;
+    border-radius: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color:white;
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: 500;
+    transition: 0.3s ease;
+}
+
+.boton:hover{
+    background: orange;
+    transform: scale(1.05);
+    box-shadow: 0 6px 12px rgba(0,0,0,.2);
+}
+
+.boton:active{
+    transform: scale(.97);
+}
+
+
+.menu{
+    display:flex;
+    justify-content:center;
+    gap:25px;
+    list-style:none;
+    margin:0;
+    padding:0;
+}
+
+.menu a{
+    text-decoration: none;
+    color: orange;
+    font-weight: 600;
+    transition: color .3s ease;
+}
+
+.menu a:hover{
+    color: #ff8c00;
+}
+body{
+    padding-top:90px;
+     background:#f8c587;
+    font-family:Arial, Helvetica, sans-serif;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    padding-top:80px;
+}
+
+
+.carrusel{
+    width:65%;
+    max-width:900px;
+    height:430px;
+    position:relative;
+    overflow:visible;
+}
+
+.slides{
+    width:100%;
+    height:100%;
+    position:relative;
+}
+
+.slide{
+    position:absolute;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    opacity:0;
+    transition:opacity .7s;
+    pointer-events:none;
+}
+
+.slide.active{
+    opacity:1;
+    z-index:2;
+    pointer-events:auto;
+}
+
+#objetivos li{
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: #555;
+    text-align: justify;
+    margin-bottom: 12px;
+}
+
+.slide img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    border-radius:18px;
+    display:block;
+}
+
+
+.slide.active{
+    opacity:1;
+    z-index:2;
+}
+
+#objetivos ul{
+    padding-left: 30px;
+}
+
+.slide:hover{
+    transform:scale(1.08);
+    z-index:999;
+    box-shadow:0 20px 45px rgba(0,0,0,.35);
+}
+
+
+button{
+    position:absolute;
+    top:50%;
+    transform:translateY(-50%);
+    width:50px;
+    height:50px;
+    border:none;
+    border-radius:50%;
+    background:rgba(255,255,255,.8);
+    cursor:pointer;
+    font-size:26px;
+    transition:.3s;
+    z-index:1000;
+}
+
+button:hover{
+    background:#fff;
+}
+
+.anterior{
+    left:-70px;
+}
+
+.siguiente{
+    right:-70px;
+}
+
+
+#visual,
+#auditivo,
+#kinestesico{
+    width:65%;
+    max-width:900px;
+    margin-top:40px;
+    padding:25px;
+    background:#fff;
+    border-radius:18px;
+    box-shadow:0 5px 15px rgba(0,0,0,.2);
+}
+
+#visual h2,
+#auditivo h2,
+#kinestesico h2{
+    margin-bottom:15px;
+    color:#333;
+}
+
+#visual p,
+#auditivo p,
+#kinestesico p{
+    line-height:1.6;
+    color:#555;
+}
+
+
+#objetivos{
+    width:90%;
+    max-width:1000px;
+    margin:60px auto;
+    padding:50px;
+    background:#ffffff;
+    border-radius:20px;
+    box-shadow:0 8px 25px rgba(0,0,0,.15);
+}
+#objetivos h2{
+    text-align:center;
+    font-size:2.2rem;
+    color:#2c3e50;
+    margin-bottom:25px;
+}
+
+#objetivos p{
+    font-size:1.1rem;
+    line-height:1.8;
+    color:#555;
+    text-align:justify;
+    margin-bottom:18px;
+}
+#quienes-somos{
+    width:90%;
+    max-width:1000px;
+    margin:60px auto;
+    padding:50px;
+    background:#ffffff;
+    border-radius:20px;
+    box-shadow:0 8px 25px rgba(0,0,0,.15);
+}
+
+#quienes-somos h2{
+    text-align:center;
+    font-size:2.2rem;
+    color:#2c3e50;
+    margin-bottom:25px;
+}
+
+#quienes-somos p{
+    font-size:1.1rem;
+    line-height:1.8;
+    color:#555;
+    text-align:justify;
+    margin-bottom:18px;
+}
+
+@media (max-width:768px){
+
+    .menu{
+        flex-direction:column;
+        gap:10px;
+        text-align:center;
+    }
+
+    .botones{
+        justify-content:center;
+        margin-top:15px;
+        flex-wrap:wrap;
+    }
+
+}
