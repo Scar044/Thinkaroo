@@ -52,7 +52,6 @@ body{
     color: #fff;
 }
 
-/* Efecto hover del botón */
 .formulario button:hover {
     background-color: orange;
 }
