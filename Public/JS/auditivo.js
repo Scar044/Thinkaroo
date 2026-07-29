@@ -3,7 +3,7 @@
     const animals = [
         {
             id: "pinguino",
-            image:  '../IMG/pinguino_memoria.png',
+            image:  'file:///C:/Users/kevin/Documents/GitHub/Thinkaroo/Public/IMG/avatar1.png',
             sound: "SONIDOS/pinguino.mp3"
         },
         {
