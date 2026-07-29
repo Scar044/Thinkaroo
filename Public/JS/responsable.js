@@ -68,7 +68,7 @@ function guardarPerfil(evento){
 
             // Cambia esta página por la siguiente
             window.location.href =
-            "avatares.html";
+            "formulario.html";
 
         }else{
 
