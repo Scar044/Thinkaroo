@@ -2,7 +2,7 @@ USE Thinkaroo;
 CREATE TABLE Usuario
 (
 id_usuario INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
-correo_electronico VARCHAR(150) NOT NULL,
+correo_electronico VARCHAR(150) NOT NULL UNIQUE,
 contrasena VARCHAR(200) NOT NULL,
 nivel_detectado INT, 
 nombre_niño VARCHAR(50),
@@ -10,9 +10,11 @@ nombre_de_responsable VARCHAR(150),
 avatar VARCHAR(255),
 estilo_de_aprendizaje VARCHAR(30),
 edad INT,
+Fecha_de_registro DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
 Estado ENUM(
     'Activo',
-    'Suspendido') NOT NULL DEFAULT 'Activo'
+    'Suspendido') NOT NULL DEFAULT 'Activo',
+correo_responsable VARCHAR(150);
 );
 
 CREATE TABLE Temas (
@@ -86,6 +88,3 @@ FOREIGN KEY(id_tema) REFERENCES Temas(id_tema),
 FOREIGN KEY(id_usuario) REFERENCES Usuario(id_usuario),
 FOREIGN KEY(id_actividad) REFERENCES Actividades(id_actividad)
 );
-
-
-INSERT INTO `usuario` (`id_usuario`, `correo_electronico`, `contrasena`, `nivel_detectado`, `nombre_niño`, `nombre_de_responsable`, `avatar`, `estilo_de_aprendizaje`, `edad`, `Estado`) VALUES (1, 'akdnalkda@gmail.com', '$2y$10$i5HQ21CB7ZEcqYWt5OUPMus.4jeK4.M2AyxtFo8O6uEifR2qW8lRG', NULL, NULL, NULL, NULL, NULL, NULL, 'Activo');

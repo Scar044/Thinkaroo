@@ -30,7 +30,7 @@ function registrarUsuario(evento){
         return;
     }
 
-    fetch("registro.php",{
+    fetch("../ConfigPHP/registro.php",{
         method: "POST",
         headers: {
         "Content-Type": "application/json"
@@ -42,9 +42,20 @@ function registrarUsuario(evento){
     })
 
 })
-    .then(respuesta => respuesta.text())
-    .then(datos => {
-        alert(datos);
-    });
+    
+.then(respuesta => respuesta.json())
+.then(datos => {
+
+    if(datos.success){
+
+        window.location.href = "responsables.html";
+
+    }else{
+
+        alert(datos.mensaje);
+
+    }
+
+});
 
 }

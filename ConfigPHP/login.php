@@ -21,6 +21,7 @@ $stmt = $conn->prepare($sql);
 $stmt->bind_param(
     "s",
     $correo
+    
 );
 
 $stmt->execute();
@@ -30,17 +31,28 @@ $resultado = $stmt->get_result();
 $usuario = $resultado->fetch_assoc();
 
 if(!$usuario){
-    echo "Usuario no encontrado";
+    echo json_encode([
+        "success" => false,
+        "mensaje" => "Usuario no encontrado"
+    ]);
     exit;
 }
 
 
-if(password_verify($clave, $usuario["contrasena"])){
+if (password_verify($clave, $usuario["contrasena"])) {
 
-    echo "Inicio de sesión correcto";
+    echo json_encode([
+        "success" => true,
+        "mensaje" => "Inicio de sesión correcto"
+    ]);
 
-}else{
+} else {
 
-    echo "Contraseña incorrecta";
+    echo json_encode([
+        "success" => false,
+        "mensaje" => "Contraseña incorrecta"
+    ]);
 
 }
+
+exit;
