@@ -3,6 +3,11 @@
     padding:0;
     box-sizing:border-box;
 }
+html,
+body {
+    background: #FFA125 !important;
+    min-height: 100vh;
+}
 
 html{
     background-color: #FFA125;
