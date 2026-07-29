@@ -2,7 +2,6 @@
 
 session_start();
 
-
 include "conexion.php";
 
 $data = json_decode(
@@ -10,17 +9,8 @@ $data = json_decode(
     true
 );
 
-$nombreResponsable =
-$data["nombreResponsable"];
-
-$nombreNino =
-$data["nombreNino"];
-
-$correoResponsable =
-$data["correoResponsable"];
-
-$edad =
-$data["edad"];
+$estilo =
+$data["estilo"];
 
 if(
     !isset($_SESSION["correo"])
@@ -40,24 +30,16 @@ $_SESSION["correo"];
 
 $sql = "
 UPDATE usuario
-SET
-    nombre_de_responsable = ?,
-    nombre_niño = ?,
-    correo_responsable = ?,
-    edad = ?
+SET estilo_de_aprendizaje = ?
 WHERE correo_electronico = ?
 ";
 
-$stmt = $conn->prepare(
-    $sql
-);
+$stmt =
+$conn->prepare($sql);
 
 $stmt->bind_param(
-    "sssis",
-    $nombreResponsable,
-    $nombreNino,
-    $correoResponsable,
-    $edad,
+    "ss",
+    $estilo,
     $correoUsuario
 );
 
@@ -76,4 +58,3 @@ if($stmt->execute()){
     ]);
 
 }
-exit;
