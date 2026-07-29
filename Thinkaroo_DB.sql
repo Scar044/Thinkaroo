@@ -14,7 +14,7 @@ Fecha_de_registro DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
 Estado ENUM(
     'Activo',
     'Suspendido') NOT NULL DEFAULT 'Activo',
-correo_responsable VARCHAR(150);
+correo_responsable VARCHAR(150)
 );
 
 CREATE TABLE Temas (
@@ -83,7 +83,6 @@ estado ENUM(
     'sin iniciar',
     'en proceso',
     'completado') NOT NULL,
-id_usuario INT NOT NULL,
 FOREIGN KEY(id_tema) REFERENCES Temas(id_tema),
 FOREIGN KEY(id_usuario) REFERENCES Usuario(id_usuario),
 FOREIGN KEY(id_actividad) REFERENCES Actividades(id_actividad)
