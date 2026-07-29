@@ -10,19 +10,9 @@ function guardarPerfil(evento){
 
     evento.preventDefault();
 
-    let nombreResponsable =
-    document.getElementById(
-        "input-nombre-r"
-    ).value;
-
     let nombreNino =
     document.getElementById(
         "input-nombre-nino"
-    ).value;
-
-    let correoResponsable =
-    document.getElementById(
-        "input-email"
     ).value;
 
     let edad =
@@ -40,14 +30,8 @@ function guardarPerfil(evento){
 
         body: JSON.stringify({
 
-            nombreResponsable:
-            nombreResponsable,
-
             nombreNino:
             nombreNino,
-
-            correoResponsable:
-            correoResponsable,
 
             edad:
             edad

@@ -10,6 +10,9 @@ function registrarUsuario(evento){
 
     evento.preventDefault();
 
+    let nombre =
+    document.getElementById("input-nombre").value;
+
     let correo =
     document.getElementById("input-correo").value;
 
@@ -37,6 +40,7 @@ function registrarUsuario(evento){
     },
 
     body: JSON.stringify({
+        nombre: nombre,
         correo: correo,
         password: password
     })
@@ -48,7 +52,7 @@ function registrarUsuario(evento){
 
     if(datos.success){
 
-        window.location.href = "responsables.html";
+        window.location.href = "datosHijos.html";
 
     }else{
 
