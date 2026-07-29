@@ -30,7 +30,7 @@ function registrarUsuario(evento){
         return;
     }
 
-    fetch("registro.php",{
+    fetch("../ConfigPHP/registro.php",{
         method: "POST",
         headers: {
         "Content-Type": "application/json"
