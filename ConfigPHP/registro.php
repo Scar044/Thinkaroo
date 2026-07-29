@@ -9,6 +9,8 @@ $data = json_decode(
     true
 );
 
+$nombre = $data["nombre"];
+
 $correo = $data["correo"];
 
 $clave = password_hash(
@@ -19,11 +21,13 @@ $clave = password_hash(
 $sql = "
 INSERT INTO usuario
 (
+nombre_de_responsable,
 correo_electronico,
 contrasena
 )
 VALUES
 (
+?,
 ?,
 ?
 )
@@ -36,7 +40,8 @@ if (!$stmt) {
 }
 
 $stmt->bind_param(
-    "ss",
+    "sss",
+    $nombre,
     $correo,
     $clave
 );
