@@ -1,14 +1,14 @@
 (function() {
     
     const images = [
-        'IMG/pinguino_memoria.png',
-        'IMG/conejito_memoria.png',
-        'IMG/Koala_memoria.png',
-       'IMG/sapito_memoria.png',
-       'IMG/ballena_memoria.png',
-       'IMG/pollito_memoria.png',
-       'IMG/zorrito_memoria.png',
-       'IMG/osito_memoria.png',
+        'IMG/avatar1.png',
+        'IMG/avatar2.png',
+        'IMG/avatar3.png',
+       'IMG/avatar4.png',
+       'IMG/avatar5.png',
+       'IMG/avatar6.png',
+       'IMG/avatar7.png',
+       'IMG/avatar8.png',
     ];
 
     let cards = [...images, ...images]; 

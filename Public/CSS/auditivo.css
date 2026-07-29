@@ -1,0 +1,73 @@
+body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    background: #f0f8ff;
+}
+
+
+h1 {
+    color: #333;
+}
+
+
+.game-board {
+        display: grid;
+        grid-template-columns: repeat(4, 100px);
+        grid-gap: 10px;
+        justify-content: center;
+        margin-top: 20px;
+}
+
+.card {
+        width: 100px;
+        height: 100px;
+        background: #3498db;
+        border-radius: 8px;
+        cursor: pointer;
+        position: relative;
+        overflow: hidden;
+        user-select: none;
+    }
+
+
+.card img {
+
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+
+    display: none;
+
+}
+
+
+
+.card.flipped img {
+
+    display: block;
+
+}
+
+
+.card.flipped {
+
+    background: white;
+
+}
+
+
+.audioCard {
+
+    font-size: 60px;
+
+}
+
+
+.card.matched {
+
+    border: 5px solid #2ecc71;
+
+    pointer-events: none;
+
+}
