@@ -42,9 +42,20 @@ function registrarUsuario(evento){
     })
 
 })
-    .then(respuesta => respuesta.text())
-    .then(datos => {
-        alert(datos);
-    });
+    
+.then(respuesta => respuesta.json())
+.then(datos => {
+
+    if(datos.success){
+
+        window.location.href = "responsables.html";
+
+    }else{
+
+        alert(datos.mensaje);
+
+    }
+
+});
 
 }

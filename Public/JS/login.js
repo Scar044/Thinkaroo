@@ -36,11 +36,15 @@ function iniciarSesion(evento){
     
     if(datos.success){
 
-        window.location.href = "responsables.html";
+        window.location.href = "niveles.html";
 
     }else{
 
         alert(datos.mensaje);
+    }
 
-}
+})
+.catch(error => {
+    console.error(error);
 });
+}

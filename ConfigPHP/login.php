@@ -54,3 +54,5 @@ if (password_verify($clave, $usuario["contrasena"])) {
     ]);
 
 }
+
+exit;
