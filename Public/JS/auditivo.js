@@ -1,179 +1,243 @@
-(function () {
+(function() {
 
-    const animals = [
-        {
-            id: "pinguino",
-            image:  '../IMG/pinguino_memoria.png',
-            sound: "SONIDOS/pinguino.mp3"
-        },
-        {
-            id: "conejo",
-            image: "IMG/conejito_memoria.png",
-            sound: "SONIDOS/conejo.mp3"
-        },
-        {
-            id: "koala",
-            image: "IMG/Koala_memoria.png",
-            sound: "SONIDOS/koala.mp3"
-        },
-        {
-            id: "sapo",
-            image: "IMG/sapito_memoria.png",
-            sound: "SONIDOS/sapo.mp3"
-        },
-        {
-            id: "ballena",
-            image: "IMG/ballena_memoria.png",
-            sound: "SONIDOS/ballena.mp3"
-        },
-        {
-            id: "pollito",
-            image: "IMG/pollito_memoria.png",
-            sound: "SONIDOS/pollito.mp3"
-        },
-        {
-            id: "zorro",
-            image: "IMG/zorrito_memoria.png",
-            sound: "SONIDOS/zorro.mp3"
-        },
-        {
-            id: "oso",
-            image: "IMG/osito_memoria.png",
-            sound: "SONIDOS/oso.mp3"
-        }
+    const images = [
+        'IMG/avatar1.png',
+        'IMG/avatar2.png',
+        'IMG/avatar3.png',
+        'IMG/avatar4.png',
+        'IMG/avatar5.png',
+        'IMG/avatar6.png',
+        'IMG/avatar7.png',
+        'IMG/avatar8.png'
     ];
+
+
+    const audio = [
+        'audios/cerdo.mp3', //avatar1.png
+        'audios/vaca.mp3', //avatar8.png
+        'audios/oveja.mp3',  //avatar4.png
+        'audios/gato.mp3', //avatar3.png
+        'audios/rata.mp3',  //avatar6.png
+        'audios/pollito.mp3', //avatar5.png
+        'audios/tigre.mp3',  //avatar7.png
+        'audios/.mp3'
+    ];
+
+
 
     let cards = [];
 
-    animals.forEach(animal => {
+
+    // Crear parejas imagen + audio
+    images.forEach((img, index) => {
 
         cards.push({
+            id: index,
             type: "image",
-            pair: animal.id,
-            image: animal.image
+            src: img
         });
 
+
         cards.push({
-            type: "sound",
-            pair: animal.id,
-            sound: animal.sound
+            id: index,
+            type: "audio",
+            src: audio[index]
         });
 
     });
+
+
 
     cards.sort(() => Math.random() - 0.5);
 
-    const gameBoard = document.getElementById("gameBoard");
+
+
+    const gameBoard = document.getElementById('gameBoard');
 
     let firstCard = null;
     let secondCard = null;
+
     let lockBoard = false;
-    let matched = 0;
 
-    cards.forEach(data => {
+    let matchedPairs = 0;
 
-        const card = document.createElement("div");
-        card.className = "card";
-        card.dataset.pair = data.pair;
-        card.dataset.type = data.type;
 
-        if (data.type === "image") {
 
-            const img = document.createElement("img");
-            img.src = data.image;
+    cards.forEach(item => {
+
+
+        const card = document.createElement('div');
+
+        card.classList.add('card');
+
+
+        card.dataset.id = item.id;
+
+        card.dataset.type = item.type;
+
+
+
+        if(item.type === "image") {
+
+
+            const img = document.createElement('img');
+
+            img.src = item.src;
+
+            img.alt = "Imagen";
+
             card.appendChild(img);
+
 
         } else {
 
-            const icon = document.createElement("div");
-            icon.className = "sound";
-            icon.textContent = "🔊";
-            card.appendChild(icon);
 
-            card.dataset.sound = data.sound;
+            card.innerHTML = "🔊";
+
+
+            card.audio = new Audio(item.src);
+
 
         }
 
-        card.addEventListener("click", flipCard);
+
+
+        card.addEventListener('click', flipCard);
+
 
         gameBoard.appendChild(card);
 
+
     });
+
+
+
+
 
     function flipCard() {
 
-        if (lockBoard) return;
-        if (this.classList.contains("flipped")) return;
-        if (this.classList.contains("matched")) return;
 
-        this.classList.add("flipped");
+        if (
+            lockBoard ||
+            this.classList.contains('flipped') ||
+            this.classList.contains('matched')
+        ) return;
 
-        if (this.dataset.type === "sound") {
 
-            const audio = new Audio(this.dataset.sound);
-            audio.play();
+
+        this.classList.add('flipped');
+
+
+
+        // Reproducir sonido al tocar la carta
+        if(this.dataset.type === "audio") {
+
+            this.audio.currentTime = 0;
+
+            this.audio.play();
 
         }
 
-        if (!firstCard) {
+
+
+
+
+        if(!firstCard) {
 
             firstCard = this;
+
             return;
 
         }
 
+
+
         secondCard = this;
+
         lockBoard = true;
+
 
         checkMatch();
 
     }
 
+
+
+
+
+
     function checkMatch() {
 
-        const samePair = firstCard.dataset.pair === secondCard.dataset.pair;
-        const differentType = firstCard.dataset.type !== secondCard.dataset.type;
 
-        if (samePair && differentType) {
+        if(
+            firstCard.dataset.id === secondCard.dataset.id &&
+            firstCard.dataset.type !== secondCard.dataset.type
+        ) {
 
-            firstCard.classList.add("matched");
-            secondCard.classList.add("matched");
 
-            matched++;
+            firstCard.classList.add('matched');
 
-            reset();
+            secondCard.classList.add('matched');
 
-            if (matched === animals.length) {
+
+            matchedPairs++;
+
+
+            resetTurn();
+
+
+
+            if(matchedPairs === images.length) {
+
 
                 setTimeout(() => {
 
-                    alert("🎉 ¡Ganaste!");
+                    alert("🎉 ¡Encontraste todas las parejas!");
 
-                }, 400);
+                },300);
+
 
             }
 
+
+
         } else {
+
 
             setTimeout(() => {
 
-                firstCard.classList.remove("flipped");
-                secondCard.classList.remove("flipped");
 
-                reset();
+                firstCard.classList.remove('flipped');
 
-            }, 1000);
+                secondCard.classList.remove('flipped');
+
+
+                resetTurn();
+
+
+            },800);
+
 
         }
 
     }
 
-    function reset() {
+
+
+
+    function resetTurn() {
+
 
         firstCard = null;
+
         secondCard = null;
+
         lockBoard = false;
+
 
     }
 
+
 })();
+const prueba = new Audio("audios/cerdo.mp3");
+prueba.play();
