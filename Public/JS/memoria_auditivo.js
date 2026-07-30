@@ -24,12 +24,12 @@ const pairs=[
 
     {
         img:"IMG/avatar5pollo.png",
-        audio:"../audios/pollo.mp3"
+        audio:"../audios/pollito.mp3"
     },
 
     {
         img:"IMG/avatar6ratón.png",
-        audio:"../audios/raton.mp3"
+        audio:"../audios/rata.mp3"
     },
 
     {
@@ -46,7 +46,7 @@ const pairs=[
 
 let cards=[];
 
-// Crear una carta de imagen y otra de audio
+
 pairs.forEach((pair,index)=>{
 
     cards.push({
@@ -69,7 +69,6 @@ pairs.forEach((pair,index)=>{
 
 });
 
-// Mezclar cartas
 cards.sort(()=>Math.random()-0.5);
 
 const gameBoard=document.getElementById("gameBoard");
