@@ -1,243 +1,193 @@
-(function() {
+(function(){
 
-    const images = [
-        'IMG/avatar1.png',
-        'IMG/avatar2.png',
-        'IMG/avatar3.png',
-        'IMG/avatar4.png',
-        'IMG/avatar5.png',
-        'IMG/avatar6.png',
-        'IMG/avatar7.png',
-        'IMG/avatar8.png'
-    ];
+const pairs=[
 
+    {
+        img:"IMG/avatar1cerdo.png",
+        audio:"../audios/cerdo.mp3"
+    },
 
-    const audio = [
-        'audios/cerdo.mp3', //avatar1.png
-        'audios/vaca.mp3', //avatar8.png
-        'audios/oveja.mp3',  //avatar4.png
-        'audios/gato.mp3', //avatar3.png
-        'audios/rata.mp3',  //avatar6.png
-        'audios/pollito.mp3', //avatar5.png
-        'audios/tigre.mp3',  //avatar7.png
-        'audios/.mp3'
-    ];
+    {
+        img:"IMG/avatar2conejo.png",
+        audio:"audios/conejo.mp3"
+    },
 
+    {
+        img:"IMG/avatar3gato.png",
+        audio:"audios/gato.mp3"
+    },
 
+    {
+        img:"IMG/avatar4oveja.png",
+        audio:"audios/oveja.mp3"
+    },
 
-    let cards = [];
+    {
+        img:"IMG/avatar5pollo.png",
+        audio:"audios/pollo.mp3"
+    },
 
+    {
+        img:"IMG/avatar6ratón.png",
+        audio:"audios/raton.mp3"
+    },
 
-    // Crear parejas imagen + audio
-    images.forEach((img, index) => {
+    {
+        img:"IMG/avatar7tigre.png",
+        audio:"audios/tigre.mp3"
+    },
 
-        cards.push({
-            id: index,
-            type: "image",
-            src: img
-        });
+    {
+        img:"IMG/avatar8vaca.png",
+        audio:"audios/vaca.mp3"
+    }
 
+];
 
-        cards.push({
-            id: index,
-            type: "audio",
-            src: audio[index]
-        });
+let cards=[];
 
-    });
+// Crear una carta de imagen y otra de audio
+pairs.forEach((pair,index)=>{
 
+    cards.push({
 
-
-    cards.sort(() => Math.random() - 0.5);
-
-
-
-    const gameBoard = document.getElementById('gameBoard');
-
-    let firstCard = null;
-    let secondCard = null;
-
-    let lockBoard = false;
-
-    let matchedPairs = 0;
-
-
-
-    cards.forEach(item => {
-
-
-        const card = document.createElement('div');
-
-        card.classList.add('card');
-
-
-        card.dataset.id = item.id;
-
-        card.dataset.type = item.type;
-
-
-
-        if(item.type === "image") {
-
-
-            const img = document.createElement('img');
-
-            img.src = item.src;
-
-            img.alt = "Imagen";
-
-            card.appendChild(img);
-
-
-        } else {
-
-
-            card.innerHTML = "🔊";
-
-
-            card.audio = new Audio(item.src);
-
-
-        }
-
-
-
-        card.addEventListener('click', flipCard);
-
-
-        gameBoard.appendChild(card);
-
+        id:index,
+        type:"image",
+        img:pair.img,
+        audio:pair.audio
 
     });
 
+    cards.push({
 
+        id:index,
+        type:"audio",
+        img:pair.img,
+        audio:pair.audio
 
+    });
 
+});
 
-    function flipCard() {
+// Mezclar cartas
+cards.sort(()=>Math.random()-0.5);
 
+const gameBoard=document.getElementById("gameBoard");
 
-        if (
-            lockBoard ||
-            this.classList.contains('flipped') ||
-            this.classList.contains('matched')
-        ) return;
+let firstCard=null;
+let secondCard=null;
+let lockBoard=false;
+let matchedPairs=0;
 
+cards.forEach(cardData=>{
 
+    const card=document.createElement("div");
+    card.classList.add("card");
 
-        this.classList.add('flipped');
+    card.dataset.id=cardData.id;
+    card.dataset.type=cardData.type;
+    card.dataset.audio=cardData.audio;
 
+    if(cardData.type==="image"){
 
+        const img=document.createElement("img");
+        img.src=cardData.img;
+        img.alt="Animal";
+        card.appendChild(img);
 
-        // Reproducir sonido al tocar la carta
-        if(this.dataset.type === "audio") {
+    }else{
 
-            this.audio.currentTime = 0;
-
-            this.audio.play();
-
-        }
-
-
-
-
-
-        if(!firstCard) {
-
-            firstCard = this;
-
-            return;
-
-        }
-
-
-
-        secondCard = this;
-
-        lockBoard = true;
-
-
-        checkMatch();
+        const icon=document.createElement("div");
+        icon.classList.add("audio-icon");
+        icon.innerHTML="🔊";
+        card.appendChild(icon);
 
     }
 
+    card.addEventListener("click",flipCard);
 
+    gameBoard.appendChild(card);
 
+});
 
+function flipCard(){
 
+    if(lockBoard ||
+       this.classList.contains("matched") ||
+       this.classList.contains("flipped"))
+       return;
 
-    function checkMatch() {
+    this.classList.add("flipped");
 
+    if(this.dataset.type==="audio"){
 
-        if(
-            firstCard.dataset.id === secondCard.dataset.id &&
-            firstCard.dataset.type !== secondCard.dataset.type
-        ) {
+        const sonido=new Audio(this.dataset.audio);
+        sonido.play();
 
+    }
 
-            firstCard.classList.add('matched');
+    if(firstCard===null){
 
-            secondCard.classList.add('matched');
+        firstCard=this;
+        return;
 
+    }
 
-            matchedPairs++;
+    secondCard=this;
 
+    lockBoard=true;
+
+    checkMatch();
+
+}
+
+function checkMatch(){
+
+    const match=
+
+    firstCard.dataset.id===secondCard.dataset.id &&
+    firstCard.dataset.type!==secondCard.dataset.type;
+
+    if(match){
+
+        firstCard.classList.add("matched");
+        secondCard.classList.add("matched");
+
+        matchedPairs++;
+
+        resetTurn();
+
+        if(matchedPairs===pairs.length){
+
+            setTimeout(()=>{
+
+                alert("🎉 ¡Felicidades! Has encontrado todas las parejas.");
+
+            },300);
+
+        }
+
+    }else{
+
+        setTimeout(()=>{
+
+            firstCard.classList.remove("flipped");
+            secondCard.classList.remove("flipped");
 
             resetTurn();
 
-
-
-            if(matchedPairs === images.length) {
-
-
-                setTimeout(() => {
-
-                    alert("🎉 ¡Encontraste todas las parejas!");
-
-                },300);
-
-
-            }
-
-
-
-        } else {
-
-
-            setTimeout(() => {
-
-
-                firstCard.classList.remove('flipped');
-
-                secondCard.classList.remove('flipped');
-
-
-                resetTurn();
-
-
-            },800);
-
-
-        }
+        },1000);
 
     }
 
+}
 
+function resetTurn(){
 
+    firstCard=null;
+    secondCard=null;
+    lockBoard=false;
 
-    function resetTurn() {
-
-
-        firstCard = null;
-
-        secondCard = null;
-
-        lockBoard = false;
-
-
-    }
-
+}
 
 })();
-const prueba = new Audio("audios/cerdo.mp3");
-prueba.play();
