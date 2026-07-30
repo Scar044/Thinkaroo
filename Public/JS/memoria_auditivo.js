@@ -24,12 +24,12 @@ const pairs=[
 
     {
         img:"IMG/avatar5pollo.png",
-        audio:"../audios/pollo.mp3"
+        audio:"../audios/pollito.mp3"
     },
 
     {
         img:"IMG/avatar6ratón.png",
-        audio:"../audios/raton.mp3"
+        audio:"../audios/rata.mp3"
     },
 
     {
