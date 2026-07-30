@@ -239,5 +239,4 @@
 
 
 })();
-const prueba = new Audio("audios/cerdo.mp3");
-prueba.play();
+6
