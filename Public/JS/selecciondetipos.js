@@ -8,12 +8,11 @@ console.log("Anterior:", anterior);
 
 console.log("JavaScript funcionando");
 
-
 let indice = 0;
 
 function mostrarSlide(){
 
-    slides.forEach(slide=>{
+    slides.forEach(slide => {
 
         slide.classList.remove("active");
 
@@ -23,13 +22,13 @@ function mostrarSlide(){
 
 }
 
-siguiente.addEventListener("click",()=>{
+siguiente.addEventListener("click", () => {
 
     indice++;
 
-    if(indice>=slides.length){
+    if(indice >= slides.length){
 
-        indice=0;
+        indice = 0;
 
     }
 
@@ -37,13 +36,13 @@ siguiente.addEventListener("click",()=>{
 
 });
 
-anterior.addEventListener("click",()=>{
+anterior.addEventListener("click", () => {
 
     indice--;
 
-    if(indice<0){
+    if(indice < 0){
 
-        indice=slides.length-1;
+        indice = slides.length - 1;
 
     }
 
@@ -51,18 +50,61 @@ anterior.addEventListener("click",()=>{
 
 });
 
-setInterval(()=>{
+setInterval(() => {
 
     indice++;
 
-    if(indice>=slides.length){
+    if(indice >= slides.length){
 
-        indice=0;
+        indice = 0;
 
     }
 
     mostrarSlide();
 
-},15000);
+}, 15000);
 
 mostrarSlide();
+
+/*
+    Obtener estilo desde la base de datos
+*/
+fetch("../ConfigPHP/obtenerEstilo.php")
+
+.then(respuesta => respuesta.json())
+
+.then(datos => {
+
+    if(!datos.success){
+
+        console.log(datos.mensaje);
+        return;
+
+    }
+
+    if(datos.estilo === "Visual"){
+
+        indice = 0;
+
+    }else if(datos.estilo === "Auditivo"){
+
+        indice = 1;
+
+    }else if(datos.estilo === "Kinestesico"){
+
+        indice = 2;
+
+    }
+
+    mostrarSlide();
+
+})
+
+.catch(error => {
+
+    console.error(
+        "Error al obtener estilo:",
+        error
+    );
+
+});
