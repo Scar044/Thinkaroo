@@ -13,13 +13,13 @@
 
 
     const audio = [
-        'audios/cerdo.mp3',
-        'audios/vaca.mp3',
-        'audios/oveja.mp3',
-        'audios/gato.mp3',
-        'audios/rata.mp3',
-        'audios/pollito.mp3',
-        'audios/tigre.mp3',
+        'audios/cerdo.mp3', //avatar1.png
+        'audios/vaca.mp3', //avatar8.png
+        'audios/oveja.mp3',  //avatar4.png
+        'audios/gato.mp3', //avatar3.png
+        'audios/rata.mp3',  //avatar6.png
+        'audios/pollito.mp3', //avatar5.png
+        'audios/tigre.mp3',  //avatar7.png
         'audios/.mp3'
     ];
 
@@ -239,3 +239,5 @@
 
 
 })();
+const prueba = new Audio("audios/cerdo.mp3");
+prueba.play();
