@@ -9,44 +9,44 @@ const pairs=[
 
     {
         img:"IMG/avatar2conejo.png",
-        audio:"audios/conejo.mp3"
+        audio:"../audios/conejo.mp3"
     },
 
     {
         img:"IMG/avatar3gato.png",
-        audio:"audios/gato.mp3"
+        audio:"../audios/gato.mp3"
     },
 
     {
         img:"IMG/avatar4oveja.png",
-        audio:"audios/oveja.mp3"
+        audio:"../audios/oveja.mp3"
     },
 
     {
         img:"IMG/avatar5pollo.png",
-        audio:"audios/pollo.mp3"
+        audio:"../audios/pollito.mp3"
     },
 
     {
         img:"IMG/avatar6ratón.png",
-        audio:"audios/raton.mp3"
+        audio:"../audios/rata.mp3"
     },
 
     {
         img:"IMG/avatar7tigre.png",
-        audio:"audios/tigre.mp3"
+        audio:"../audios/tigre.mp3"
     },
 
     {
         img:"IMG/avatar8vaca.png",
-        audio:"audios/vaca.mp3"
+        audio:"../audios/vaca.mp3"
     }
 
 ];
 
 let cards=[];
 
-// Crear una carta de imagen y otra de audio
+
 pairs.forEach((pair,index)=>{
 
     cards.push({
@@ -69,7 +69,6 @@ pairs.forEach((pair,index)=>{
 
 });
 
-// Mezclar cartas
 cards.sort(()=>Math.random()-0.5);
 
 const gameBoard=document.getElementById("gameBoard");
