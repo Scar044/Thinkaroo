@@ -21,22 +21,43 @@
 
         <div class="col-12 col-sm-10 col-md-8 col-lg-5 text-center">
 
-    <div class="correos">
-    <img src="IMG/k_i_s.Thinkaroo-removebg-preview.png" id="kido" alt="" ><br>
-        <form class="formulario" id="form-registro">
-            <label>Nombre del responsable</label>
-            <input type="text" id="input-nombre" placeholder=""autocomplet="off">
-            <label>Correo</label>
-            <input type="email" id="input-correo" placeholder="" autocomplet="off">
-            <label>Contraseña</label>
-            <input type="password" id="input-clave" placeholder="*********">
-            <label>Confirmar contraseña</label>
-            <input type="password" id="input-confirmar-clave" placeholder="*********">
-            <button id="registrar" type="submit">Registrarse</button>
-        </form>
+    <div class="container min-vh-100 d-flex justify-content-center align-items-center">
+
+    <div class="col-12 col-sm-10 col-md-8 col-lg-12">
+
+        <div class="correos">
+
+            <img src="IMG/k_i_s.Thinkaroo-removebg-preview.png"
+                 id="kido"
+                 alt="Thinkaroo">
+
+            <form class="formulario" id="form-registro">
+
+                <label for="input-nombre">Nombre del responsable</label>
+                <input type="text" id="input-nombre" autocomplete="off">
+
+                <label for="input-correo">Correo</label>
+                <input type="email" id="input-correo" autocomplete="off">
+
+                <label for="input-clave">Contraseña</label>
+                <input type="password" id="input-clave" placeholder="*********">
+
+                <label for="input-confirmar-clave">Confirmar contraseña</label>
+                <input type="password" id="input-confirmar-clave" placeholder="*********">
+
+                <button id="registrar" type="submit">
+                    Registrarse
+                </button>
+
+            </form>
+
+        </div>
+
+    </div>
+
+</div>
     </div>
     </div>
-       </div>
     </div>
     <script src="JS/correo.js"></script>
 </body>
