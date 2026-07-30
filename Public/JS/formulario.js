@@ -86,7 +86,7 @@ function procesarFormulario(evento){
             );
 
             window.location.href =
-            "siguientePagina.html";
+            "selecion_de_tipos.html";
 
         }else{
 

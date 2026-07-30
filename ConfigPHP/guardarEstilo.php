@@ -9,38 +9,32 @@ $data = json_decode(
     true
 );
 
-$estilo =
-$data["estilo"];
+$estilo = $data["estilo"];
 
-if(
-    !isset($_SESSION["correo"])
-){
+if(!isset($_SESSION["id_hijo"])){
 
     echo json_encode([
         "success" => false,
-        "mensaje" =>
-        "Sesión no encontrada"
+        "mensaje" => "Hijo no encontrado"
     ]);
 
     exit;
 }
 
-$correoUsuario =
-$_SESSION["correo"];
+$idHijo = $_SESSION["id_hijo"];
 
 $sql = "
-UPDATE usuario
-SET estilo_de_aprendizaje = ?
-WHERE correo_electronico = ?
+UPDATE hijos
+SET estilo_aprendizaje = ?
+WHERE Id_hijo = ?
 ";
 
-$stmt =
-$conn->prepare($sql);
+$stmt = $conn->prepare($sql);
 
 $stmt->bind_param(
-    "ss",
+    "si",
     $estilo,
-    $correoUsuario
+    $idHijo
 );
 
 if($stmt->execute()){
@@ -53,8 +47,7 @@ if($stmt->execute()){
 
     echo json_encode([
         "success" => false,
-        "mensaje" =>
-        "Error al guardar"
+        "mensaje" => $stmt->error
     ]);
 
 }

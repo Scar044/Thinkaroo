@@ -20,7 +20,7 @@ function guardarPerfil(evento){
         "edad"
     ).value;
 
-    fetch("../ConfigPHP/responsable.php", {
+    fetch("../ConfigPHP/datosHijos.php", {
 
         method: "POST",
 

@@ -32,12 +32,12 @@ CREATE TABLE Hijos(
     Id_usuario INT NOT NULL,
     nombre VARCHAR(100) NOT NULL,
     edad INT NOT NULL,
-    Id_avatar INT NOT NULL,
+    Id_avatar INT NULL,
     estilo_aprendizaje ENUM(
         'Visual',
         'Auditivo',
         'Kinestesico'
-    ) NOT NULL,
+    ) NULL,
     Nivel_actual INT DEFAULT 1,
     fecha_creacion DATETIME DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY(Id_usuario) REFERENCES Usuario(id_usuario)
@@ -79,6 +79,3 @@ FOREIGN KEY(id_usuario) REFERENCES Usuario(id_usuario),
 FOREIGN KEY(id_actividad) REFERENCES Actividades(id_actividad)
 );
 
-INSERT INTO `usuario` (`id_usuario`, `correo_electronico`, `contrasena`, `nivel_detectado`, `nombre_niño`, `nombre_de_responsable`, `avatar`, `estilo_de_aprendizaje`, `edad`, `Fecha_de_registro`, `Estado`, `correo_responsable`) VALUES (1, 'alli@gmail.com', '$2y$10$zzZfaLi4amiSAQ4M4GYgK.uDYi2.1tCteVEVkMegSgP3T00qDW/OK', NULL, NULL, NULL, NULL, NULL, NULL, '2026-07-28 23:51:25', 'Activo', NULL);
-INSERT INTO `usuario` (`id_usuario`, `correo_electronico`, `contrasena`, `nivel_detectado`, `nombre_niño`, `nombre_de_responsable`, `avatar`, `estilo_de_aprendizaje`, `edad`, `Fecha_de_registro`, `Estado`, `correo_responsable`) VALUES (3, 'scar@gmail.com', '$2y$10$VgfV1X.Ml/abB3Li8zT4MuKe34.EfCDziwDhIk2ILQ453Y4Dg3p0e', NULL, 'Xime', 'Scarleth', NULL, NULL, 5, '2026-07-29 14:08:48', 'Activo', 'alvaradoscarlett08@gmail.com');
-INSERT INTO `usuario` (`id_usuario`, `correo_electronico`, `contrasena`, `nivel_detectado`, `nombre_niño`, `nombre_de_responsable`, `avatar`, `estilo_de_aprendizaje`, `edad`, `Fecha_de_registro`, `Estado`, `correo_responsable`) VALUES (2, 'alvaradoscarlett08@gmail.com', '$2y$10$gz0ZI4nX6gU3rn9wxpHwWueWzDPYAci2/89WF5VoXatnQKOk4JhSq', NULL, 'Xime', 'Scarleth', NULL, NULL, 5, '2026-07-29 00:16:01', 'Activo', 'alvaradoscarlett08@gmail.com');

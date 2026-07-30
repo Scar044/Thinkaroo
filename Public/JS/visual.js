@@ -1,14 +1,14 @@
 (function() {
     
     const images = [
-        'IMG/avatar1.png',
-        'IMG/avatar2.png',
-        'IMG/avatar3.png',
-       'IMG/avatar4.png',
-       'IMG/avatar5.png',
-       'IMG/avatar6.png',
-       'IMG/avatar7.png',
-       'IMG/avatar8.png',
+        'IMG/avatar1cerdo.png',
+        'IMG/avatar2conejo.png',
+        'IMG/avatar3gato.png',
+       'IMG/avatar4oveja.png',
+       'IMG/avatar5pollo.png',
+       'IMG/avatar6ratón.png',
+       'IMG/avatar7tigre.png',
+       'IMG/avatar8vaca.png',
     ];
 
     let cards = [...images, ...images]; 
