@@ -1,42 +1,130 @@
-.formulario {
-    width: 400px;
-    position: absolute;
-    background-color: #fff;
-    border: 5px solid orange;
-    border-radius: 10px;
-    padding: 30px 60px;
-    top: 150px;
-    left: 50%;
-    transform: translate(-50%);
-    text-align: center;
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
 }
 
-.formulario input,
-.formulario label,
-.formulario button {
-    display: block;
+body{
+    min-height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    background:#f5f5f5;
+    font-family:Arial, Helvetica, sans-serif;
+    padding:20px;
+}
+
+header{
+    position: fixed;
+    top: 0;
+    left: 0;
     width: 100%;
-    margin: 5px 0;
+    height: 60px;
+    background: #FFD11A;
+    display: flex;
+    align-items: center;
+    padding-left: 20px;
+    z-index: 1000;
 }
 
-.formulario input {
+#Logo{
     height: 40px;
-    border: 2px solid orange;
-    border-radius: 10px;
-    padding: 0 8px;
+    width: auto;
 }
 
-.formulario button {
-    margin-top: 20px;
-    cursor: pointer;
-    border: none;
-    height: 40px;
-    background-color: orange; 
-    box-shadow: 1px 1px 2px #000;
-    color: #fff;
+.nombre{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:40px;
+    flex-wrap:wrap;
 }
 
-.formulario button:hover {
-    background-color: orange;
+/* KIDO */
+
+#kido{
+    width:300px;
+    max-width:100%;
+    height:auto;
 }
 
+/* FORMULARIO */
+
+.formulario{
+    width:400px;
+    max-width:100%;
+    background:#fff;
+    border:5px solid orange;
+    border-radius:10px;
+    padding:30px;
+}
+
+.formulario label,
+.formulario input,
+.formulario button{
+    display:block;
+    width:100%;
+}
+
+.formulario label{
+    margin-bottom:5px;
+    font-weight:600;
+}
+
+.formulario input{
+    height:40px;
+    border:2px solid orange;
+    border-radius:10px;
+    padding:0 10px;
+    margin-bottom:15px;
+}
+
+.formulario button{
+    margin-top:15px;
+    height:40px;
+    border:none;
+    border-radius:10px;
+    background:orange;
+    color:white;
+    cursor:pointer;
+    font-weight:bold;
+}
+
+.formulario button:hover{
+    opacity:.9;
+}
+
+/* TABLET */
+
+@media (max-width:768px){
+
+    #kido{
+        width:220px;
+    }
+
+    .Nombre{
+        gap:25px;
+    }
+
+    .formulario{
+        width:350px;
+    }
+}
+
+/* MOVIL */
+
+@media (max-width:576px){
+
+    .Nombre{
+        flex-direction:column;
+    }
+
+    #kido{
+        width:180px;
+    }
+
+    .formulario{
+        width:100%;
+        padding:20px;
+    }
+}
