@@ -6,7 +6,7 @@
 }
 
 body{
-    background:#000000;
+    background:#fffefe;
     height:100vh;
     display:flex;
     justify-content:center;
@@ -30,11 +30,13 @@ body{
 =========================== */
 .sidebar{
     width:250px;
-    height:100vh;
-    background:#3D8BFF;
+    height:100%;
+    background:#4285F4;
     color:white;
     display:flex;
     flex-direction:column;
+    position:relative;
+    transition:.3s;
 }
 
 .logo{
@@ -113,14 +115,6 @@ body{
 
 .padres strong{
     display:block;
-}
-
-.sidebar{
-    width:250px;
-    height:100vh;
-    background:#4285F4;
-    position:relative;
-    transition:0.3s;
 }
 
 .sidebar.cerrado{
@@ -534,7 +528,5 @@ CONTENIDO CENTRAL
 .progress{
     grid-column:1/4;
 }
-
-
 
 
