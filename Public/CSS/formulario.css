@@ -7,11 +7,9 @@
 }
 
 body{
-    height: 100vh;
+    min-height:100vh;
     background-color: rgb(245, 211, 117);
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    padding:20px 0;
 }
 
 header{
@@ -33,7 +31,8 @@ header{
 }
 
 .formulario {
-    width: 700px;
+    width: 90%;
+    max-width: 700px;
     position: absolute;
     background-color: #fff;
     border: 5px solid orange;
@@ -44,7 +43,6 @@ header{
     transform: translate(-50%);
     text-align: center;
 }
-
 .formulario input,
 .formulario label,
 .formulario button {
@@ -97,4 +95,19 @@ header{
 
 input[type="radio"]{
     transform:scale(1.1);
+}
+
+@media (max-width: 768px) {
+
+    .opciones{
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+    }
+
+    .opciones label{
+        width: 100%;
+        flex: none;
+    }
+
 }
