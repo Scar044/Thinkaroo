@@ -11,11 +11,11 @@ h1 {
 
 
 .game-board {
-        display: grid;
-        grid-template-columns: repeat(4, 100px);
-        grid-gap: 10px;
-        justify-content: center;
-        margin-top: 20px;
+    display: grid;
+    grid-template-columns: repeat(4, 100px);
+    gap: 10px;
+    justify-content: center;
+    margin-top: 20px;
 }
 
 .card {
@@ -69,5 +69,13 @@ h1 {
     border: 5px solid #2ecc71;
 
     pointer-events: none;
+
+}
+
+@media (max-width: 480px) {
+
+    .game-board {
+        grid-template-columns: repeat(2, 100px);
+    }
 
 }
