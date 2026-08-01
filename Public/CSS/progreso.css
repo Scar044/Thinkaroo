@@ -5,19 +5,25 @@
     font-family:'Poppins',sans-serif;
 }
 
+html, body{
+    width:100%;
+    height:100%;
+    margin:0;
+    padding:0;
+}
+
 body{
-    background:#000000;
-    height:100vh;
+    background:#fffefe;
     display:flex;
     justify-content:center;
-    align-items:center;
+    align-items:flex-start; 
 }
 
 
 
 .container{
     width:96%;
-    height:95vh;
+    height:95%;
     background:white;
     border-radius:15px;
     overflow:hidden;
@@ -30,11 +36,13 @@ body{
 =========================== */
 .sidebar{
     width:250px;
-    height:100vh;
-    background:#3D8BFF;
+    height:100%;
+    background:#4285F4;
     color:white;
     display:flex;
     flex-direction:column;
+    position:relative;
+    transition:.3s;
 }
 
 .logo{
@@ -113,14 +121,6 @@ body{
 
 .padres strong{
     display:block;
-}
-
-.sidebar{
-    width:250px;
-    height:100vh;
-    background:#4285F4;
-    position:relative;
-    transition:0.3s;
 }
 
 .sidebar.cerrado{
@@ -536,5 +536,4 @@ CONTENIDO CENTRAL
 }
 
 
-
-
+}
