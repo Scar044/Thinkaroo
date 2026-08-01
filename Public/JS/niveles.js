@@ -45,11 +45,7 @@ niveles.forEach((nivel, index) => {
 });
 
 
-continuar.addEventListener("click", () => {
 
-    alert("¡Comienza tu siguiente lección!");
-
-});
 
 
 cofre.addEventListener("click", () => {
@@ -132,13 +128,15 @@ window.addEventListener("load", () => {
 });
 
 const cohete = document.getElementById("cohete");
-
 function moverCohete(nivel){
 
     const y = nivel.offsetTop;
+    const alturaNivel = nivel.offsetHeight;
+    const alturaCohete = cohete.offsetHeight;
 
     cohete.classList.add("despegando");
 
-    cohete.style.top = (y - 20) + "px";
-
+    // Centrar el canguro con el nivel
+    cohete.style.top =
+        (y + alturaNivel / 2 - alturaCohete / 2) + "px";
 }

@@ -776,24 +776,15 @@ header{
 #cohete{
 
     position:absolute;
-
     left:50%;
-
-    top:40px;
-
+    top:1000px; /* Ajusta este valor */
     transform:translateX(-50%);
-
     width:150px;
-
     display:flex;
-
     justify-content:center;
-
     align-items:center;
-
-    z-index:1000;
-
-    transition:top 1.5s ease;
+    z-index:100;
+    transition:top .8s ease;
 
 }
 
