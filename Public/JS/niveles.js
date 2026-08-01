@@ -18,7 +18,7 @@ progreso.forEach(index => {
 niveles.forEach((nivel, index) => {
 
     nivel.addEventListener("click", () => {
-
+         moverCohete(nivel);
         nivel.animate([
             { transform: "scale(1)" },
             { transform: "scale(1.25)" },
@@ -119,3 +119,26 @@ window.scrollTo({
     behavior: "smooth"
 
 });
+window.addEventListener("load", () => {
+    window.scrollTo({
+        top: document.body.scrollHeight,
+        behavior: "instant" // o quita esta línea
+    });
+});
+window.addEventListener("load", () => {
+    setTimeout(() => {
+        window.scrollTo(0, document.body.scrollHeight);
+    }, 100);
+});
+
+const cohete = document.getElementById("cohete");
+
+function moverCohete(nivel){
+
+    const y = nivel.offsetTop;
+
+    cohete.classList.add("despegando");
+
+    cohete.style.top = (y - 20) + "px";
+
+}

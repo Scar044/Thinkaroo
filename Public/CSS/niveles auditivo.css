@@ -709,7 +709,6 @@ header{
 }
 
 
-/* Árbol */
 
 .arbol{
 
@@ -722,7 +721,7 @@ header{
 
 }
 
-/* Tronco */
+
 
 .tronco{
 
@@ -741,8 +740,6 @@ header{
     border-radius:10px;
 
 }
-
-/* Copa */
 
 .copa{
 
@@ -775,3 +772,135 @@ header{
 .arbol3{left:45%; transform:scale(1.2);}
 .arbol4{left:68%; transform:scale(.9);}
 .arbol5{left:88%; transform:scale(1.1);}
+
+#cohete{
+
+    position:absolute;
+
+    left:50%;
+
+    top:40px;
+
+    transform:translateX(-50%);
+
+    width:150px;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    z-index:1000;
+
+    transition:top 1.5s ease;
+
+}
+
+#cohete img{
+
+    width:130px;
+
+    z-index:2;
+
+}
+
+/* Fuego */
+
+.fuego{
+
+    position:absolute;
+
+    bottom:-18px;
+
+    width:28px;
+
+    height:60px;
+
+    background:linear-gradient(red,orange,yellow);
+
+    border-radius:50%;
+
+    animation:fuego .15s infinite alternate;
+
+}
+
+@keyframes fuego{
+
+    from{
+
+        height:45px;
+
+    }
+
+    to{
+
+        height:65px;
+
+    }
+
+}
+
+/* Humo */
+
+.humo{
+
+    position:absolute;
+
+    bottom:-10px;
+
+    width:18px;
+
+    height:18px;
+
+    border-radius:50%;
+
+    background:rgba(220,220,220,.8);
+
+    opacity:0;
+
+}
+
+.despegando .humo{
+
+    animation:humo 1s infinite;
+
+}
+
+.humo2{
+
+    animation-delay:.3s;
+
+}
+
+.humo3{
+
+    animation-delay:.6s;
+
+}
+
+@keyframes humo{
+
+    0%{
+
+        transform:translateY(0) scale(.5);
+
+        opacity:1;
+
+    }
+
+    100%{
+
+        transform:translateY(70px) scale(2);
+
+        opacity:0;
+
+    }
+
+}
+
+.despegando{
+
+    transition:top 2s ease;
+
+}
