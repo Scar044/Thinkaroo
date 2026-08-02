@@ -43,13 +43,15 @@ body {
 @media (max-width: 480px) {
 
     .game-board {
-        grid-template-columns: repeat(2, 80px);
-        gap: 8px;
+        grid-template-columns: repeat(2, 100px);
+        width: 90%;
+        max-width: 300px;
     }
 
     .card {
-        width: 80px;
-        height: 80px;
+        width: 100%;
+        aspect-ratio: 1 / 1;
+        height: auto;
     }
 
 }
