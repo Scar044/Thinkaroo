@@ -21,23 +21,30 @@ function iniciarSesion(evento){
     ).value;
 
 
-    console.log(password);
-
-
-
-    fetch("login.php", {
+    fetch("../ConfigPHP/login.php", {
     method: "POST",
     headers: {
         "Content-Type": "application/json"
     },
     body: JSON.stringify({
         correo: correo,
-        password: password
+        password: password,
     })
 })
-.then(respuesta => respuesta.text())
+.then(respuesta => respuesta.json())
 .then(datos => {
-    alert(datos);
-});
+    
+    if(datos.success){
 
+        window.location.href = "niveles.html";
+
+    }else{
+
+        alert(datos.mensaje);
+    }
+
+})
+.catch(error => {
+    console.error(error);
+});
 }

@@ -1,0 +1,130 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    min-height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    background:#f5f5f5;
+    font-family:Arial, Helvetica, sans-serif;
+    padding:20px;
+}
+
+header{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 60px;
+    background: #FFD11A;
+    display: flex;
+    align-items: center;
+    padding-left: 20px;
+    z-index: 1000;
+}
+
+#Logo{
+    height: 40px;
+    width: auto;
+}
+
+.nombre{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:40px;
+    flex-wrap:wrap;
+}
+
+/* KIDO */
+
+#kido{
+    width:300px;
+    max-width:100%;
+    height:auto;
+}
+
+/* FORMULARIO */
+
+.formulario{
+    width:400px;
+    max-width:100%;
+    background:#fff;
+    border:5px solid orange;
+    border-radius:10px;
+    padding:30px;
+}
+
+.formulario label,
+.formulario input,
+.formulario button{
+    display:block;
+    width:100%;
+}
+
+.formulario label{
+    margin-bottom:5px;
+    font-weight:600;
+}
+
+.formulario input{
+    height:40px;
+    border:2px solid orange;
+    border-radius:10px;
+    padding:0 10px;
+    margin-bottom:15px;
+}
+
+.formulario button{
+    margin-top:15px;
+    height:40px;
+    border:none;
+    border-radius:10px;
+    background:orange;
+    color:white;
+    cursor:pointer;
+    font-weight:bold;
+}
+
+.formulario button:hover{
+    opacity:.9;
+}
+
+/* TABLET */
+
+@media (max-width:768px){
+
+    #kido{
+        width:220px;
+    }
+
+    .Nombre{
+        gap:25px;
+    }
+
+    .formulario{
+        width:350px;
+    }
+}
+
+/* MOVIL */
+
+@media (max-width:576px){
+
+    .Nombre{
+        flex-direction:column;
+    }
+
+    #kido{
+        width:180px;
+    }
+
+    .formulario{
+        width:100%;
+        padding:20px;
+    }
+}

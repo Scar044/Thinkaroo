@@ -3,16 +3,9 @@ CREATE TABLE Usuario
 (
 id_usuario INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
 correo_electronico VARCHAR(150) NOT NULL,
-contrasena VARCHAR(200) NOT NULL,
-nivel_detectado INT, 
-nombre_niño VARCHAR(50),
+contrasena VARCHAR(200) NOT NULL, 
 nombre_de_responsable VARCHAR(150),
-avatar VARCHAR(255),
-estilo_de_aprendizaje VARCHAR(30),
-edad INT,
-Estado ENUM(
-    'Activo',
-    'Suspendido') NOT NULL DEFAULT 'Activo'
+fecha_creacion DATETIME DEFAULT CURRENT_TIMESTAMP
 );
 
 CREATE TABLE Temas (
@@ -34,17 +27,31 @@ CREATE TABLE Avatares (
     Imagen_url VARCHAR(255) NOT NULL
 );
 
+USE thinkaroo; 
+INSERT INTO avatares
+(Id_avatar, Nombre, Imagen_url)
+VALUES
+(1, "avatar1", "IMG/avatar1cerdo.png"),
+(2, "avatar2", "IMG/avatar2conejo.png"),
+(3, "avatar3", "IMG/avatar3gato.png"),
+(4, "avatar4", "IMG/avatar4oveja.png"),
+(5, "avatar5", "IMG/avatar5pollo.png"),
+(6, "avatar6", "IMG/avatar6ratón.png"),
+(7, "avatar7", "IMG/avatar7tigre.png"),
+(8, "avatar8", "IMG/avatar8vaca.png"),
+(9, "avatar9", "IMG/avatar9erizo.png");
+
 CREATE TABLE Hijos(
     Id_hijo INT AUTO_INCREMENT PRIMARY KEY,
     Id_usuario INT NOT NULL,
     nombre VARCHAR(100) NOT NULL,
     edad INT NOT NULL,
-    Id_avatar INT NOT NULL,
+    Id_avatar INT NULL,
     estilo_aprendizaje ENUM(
         'Visual',
         'Auditivo',
         'Kinestesico'
-    ) NOT NULL,
+    ) NULL,
     Nivel_actual INT DEFAULT 1,
     fecha_creacion DATETIME DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY(Id_usuario) REFERENCES Usuario(id_usuario)
@@ -81,11 +88,8 @@ estado ENUM(
     'sin iniciar',
     'en proceso',
     'completado') NOT NULL,
-id_usuario INT NOT NULL,
 FOREIGN KEY(id_tema) REFERENCES Temas(id_tema),
 FOREIGN KEY(id_usuario) REFERENCES Usuario(id_usuario),
 FOREIGN KEY(id_actividad) REFERENCES Actividades(id_actividad)
 );
 
-
-INSERT INTO `usuario` (`id_usuario`, `correo_electronico`, `contrasena`, `nivel_detectado`, `nombre_niño`, `nombre_de_responsable`, `avatar`, `estilo_de_aprendizaje`, `edad`, `Estado`) VALUES (1, 'akdnalkda@gmail.com', '$2y$10$i5HQ21CB7ZEcqYWt5OUPMus.4jeK4.M2AyxtFo8O6uEifR2qW8lRG', NULL, NULL, NULL, NULL, NULL, NULL, 'Activo');
