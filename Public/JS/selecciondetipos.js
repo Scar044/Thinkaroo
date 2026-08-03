@@ -50,19 +50,6 @@ anterior.addEventListener("click", () => {
 
 });
 
-setInterval(() => {
-
-    indice++;
-
-    if(indice >= slides.length){
-
-        indice = 0;
-
-    }
-
-    mostrarSlide();
-
-}, 15000);
 
 mostrarSlide();
 
