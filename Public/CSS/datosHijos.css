@@ -6,8 +6,8 @@
 
 body {
     min-height: 100vh;
-    background: #FAF7EE; /* Fondo claro/crema */
-    font-family: Arial, Helvetica, sans-serif;
+    background: #fdd791;
+    font-family: 'Fredoka', system-ui, -apple-system, sans-serif;
     padding-top: 70px; /* Margen superior para no solaparse con el header fijo */
 }
 
@@ -41,8 +41,8 @@ header {
 .tarjeta-registro {
     width: 850px;
     max-width: 95%;
-    background: linear-gradient(180deg, #A2DCFF 0%, #FFF2A1 100%);
-    border: 5px solid #E5901A;
+    background: linear-gradient(180deg, #9ae1ff 0%, #E8F7FF 45%, #ffe586 100%);
+    border: 3px solid #E5901A;
     border-radius: 25px;
     padding: 20px 30px; 
     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
@@ -65,52 +65,58 @@ header {
 }
 
 .formulario label {
-    margin-bottom: 4px;
+    display: block;
+    width: 100%;
+    margin: 8px 0 4px 0;
+    color: #004B87;
     font-weight: 600;
-    color: #2D5A88;
-    font-size: 14px;
+    font-size: 0.95rem;
 }
 
 .formulario input {
+    display: block;
+    width: 100%;
     height: 45px;
-    /* Cambia el '2px' por '4px' o '5px' para un borde más grueso */
-    border: 4px solid #FFBD3D; 
+    border: 2px solid #BCE5FF;
     border-radius: 12px;
     padding: 0 15px;
-    margin-bottom: 15px;
-    font-size: 15px;
     outline: none;
+    font-size: 15px;
     background-color: #FFFFFF;
+    transition: border-color 0.2s, box-shadow 0.2s;
 }
 
 .formulario input:focus {
-    border-color: #E5901A; 
+    border-color: #0072CE;
+    box-shadow: 0 0 0 3px rgba(0, 114, 206, 0.2);
 }
 
 /* BOTÓN DE CONTINUAR */
 .formulario button {
-    margin-top: 10px;
-    height: 48px;
-    
-    border: 3px solid #D67A00; 
-    
-    border-radius: 12px;
-    background: #FF941A;
-    color: white;
+    display: block;
+    width: 100%;
+    margin-top: 20px;
     cursor: pointer;
-    font-weight: bold;
-    font-size: 16px;
-    box-shadow: 0 4px 0 #C76B00; 
+    border: none;
+    height: 45px;
+    background: linear-gradient(180deg, #FF9E00 0%, #E67E00 100%);
+    color: #fff;
+    font-weight: 700;
+    font-size: 1.05rem;
+    border-radius: 14px;
+    box-shadow: 0 4px 0 #B36200;
+    transition: transform 0.1s ease, box-shadow 0.1s ease;
 }
 
-
 .formulario button:hover {
-    background: #E5830E;
+    background: linear-gradient(180deg, #FFA81A 0%, #F28500 100%);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 0 #B36200;
 }
 
 .formulario button:active {
     transform: translateY(2px);
-    box-shadow: 0 2px 0 #C76B00;
+    box-shadow: 0 2px 0 #B36200;
 }
 
 /* RESPONSIVE EN MÓVILES */
