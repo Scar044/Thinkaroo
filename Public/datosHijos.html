@@ -5,61 +5,47 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Datos del niño</title>
 
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="CSS/datosHijos.css">
-
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
     <header>
         <img src="IMG/letter_thinkaroo.png" alt="Thinkaroo" id="Logo">
     </header>
 
-    <div class="container-fluid pagina">
+    <main class="container-fluid pagina d-flex justify-content-center align-items-center">
+        <!-- TARJETA CONTENEDORA PRINCIPAL -->
+        <div class="tarjeta-registro">
+            <div class="row align-items-center w-100 g-4">
+                
+                <!-- COLUMNA IZQUIERDA: KIDO -->
+                <div class="col-12 col-md-5 d-flex justify-content-center">
+                    <img src="IMG/kido con mensaje.png" id="kido" alt="Kido con mensaje">
+                </div>
 
-        <div class="row justify-content-center">
-
-            <div class="col-12">
-
-                <div class="nombre">
-
-                    <img src="IMG/kido con mensaje.png"
-                         id="kido"
-                         alt="Kido">
-
+                <!-- COLUMNA DERECHA: FORMULARIO -->
+                <div class="col-12 col-md-7">
                     <form class="formulario" id="form-responsable">
-
                         <label for="input-nombre-nino">
                             Nombre del niño
                         </label>
-
-                        <input
-                            type="text"
-                            id="input-nombre-nino"
-                            autocomplete="off">
+                        <input type="text" id="input-nombre-nino" autocomplete="off" placeholder="👦🏻 Ingresa el nombre">
 
                         <label for="edad">
                             Edad del niño
                         </label>
-
-                        <input
-                            type="number"
-                            id="edad">
+                        <input type="number" id="edad" placeholder="📆">
 
                         <button type="submit">
-                            Continuar
+                            Continuar &rarr;
                         </button>
-
                     </form>
-
                 </div>
 
             </div>
-
         </div>
-
-    </div>
+    </main>
 
     <script src="JS/datosHijos.js"></script>
-
 </body>
 </html>
