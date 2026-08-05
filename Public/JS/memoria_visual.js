@@ -25,7 +25,7 @@
     
     cards.forEach(imgSrc => {
         const card = document.createElement('div');
-        card.classList.add('card');
+        card.classList.add('memory-card');
         card.dataset.image = imgSrc;
 
         const img = document.createElement('img');
