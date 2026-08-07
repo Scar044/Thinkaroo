@@ -895,3 +895,74 @@ header{
     transition:top 2s ease;
 
 }
+@media (max-width:768px){
+
+    header{
+        padding:10px 15px;
+    }
+
+    #Logo{
+        width:150px;
+        height:auto;
+    }
+
+    .titulo p{
+        font-size:14px;
+    }
+
+    .unidad{
+        flex-direction:column;
+        text-align:center;
+        gap:20px;
+        padding:20px;
+    }
+
+    .unidad h1{
+        font-size:30px;
+    }
+
+    .unidad p{
+        font-size:16px;
+    }
+
+    .izquierda,
+    .derecha{
+        margin-left:0;
+        margin-right:0;
+    }
+
+    .nivel{
+        width:90px;
+        height:90px;
+        font-size:40px;
+    }
+
+    #cohete{
+        width:100px;
+    }
+
+    #cohete img{
+        width:90px;
+    }
+
+    .sol{
+        font-size:40px;
+        right:15px;
+    }
+
+    .nube2,
+    .nube3{
+        display:none;
+    }
+
+    .arbol4,
+    .arbol5{
+        display:none;
+    }
+
+    body{
+        padding-top:100px;
+        padding-bottom:80px;
+    }
+
+}
