@@ -55,6 +55,7 @@ CREATE TABLE Hijos(
     Nivel_actual INT DEFAULT 1,
     fecha_creacion DATETIME DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY(Id_usuario) REFERENCES Usuario(id_usuario)
+    FOREIGN KEY(Id_avatar) REFERENCES avatares(Id_avatar)
 );
 
 CREATE TABLE Actividades(

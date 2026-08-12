@@ -966,3 +966,7 @@ header{
     }
 
 }
+.perfil img{
+    max-width: 80px;
+    border-radius: 100%;
+}

@@ -32,7 +32,6 @@ siguiente.addEventListener("click", () => {
 
     }
 
-    .
     mostrarSlide();
 
 });
