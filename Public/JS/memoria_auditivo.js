@@ -8,8 +8,8 @@ const pairs=[
     },
 
     {
-        img:"IMG/avatar2conejo.png",
-        audio:"../audios/conejo.mp3"
+        img:"IMG/Elefante.png",
+        audio:"../audios/elefante.mp3"
     },
 
     {

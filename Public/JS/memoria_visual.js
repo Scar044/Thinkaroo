@@ -2,7 +2,7 @@
     
     const images = [
         'IMG/avatar1cerdo.png',
-        'IMG/avatar2conejo.png',
+        'IMG/Elefante.png',
         'IMG/avatar3gato.png',
        'IMG/avatar4oveja.png',
        'IMG/avatar5pollo.png',
