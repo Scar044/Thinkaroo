@@ -29,7 +29,7 @@ botonSiguiente.addEventListener("click", function() {
         return;
     }
 
-    fetch("../ConfigPHP/guardar_avatar.php", {
+    fetch("../ConfigPHP/guardarAvatar.php", {
         method: "POST",
         headers: {
             "Content-Type": "application/json"
