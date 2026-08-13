@@ -6,7 +6,8 @@ header("Content-Type: application/json");
 
 include "conexion.php";
 
-if (!isset($_SESSION["correo"])) {
+if (!isset($_SESSION["correo"])) //*if (!isset($_SESSION["id_hijo"])) */
+{
     echo json_encode([
         "success" => false,
         "mensaje" => "Sesión no encontrada"
@@ -17,7 +18,7 @@ if (!isset($_SESSION["correo"])) {
 $data = json_decode(file_get_contents("php://input"), true);
 
 $avatar = $data["avatar"] ?? null;
-
+//*$id_hijo = $_SESSION["id_hijo"]; */
 if ($avatar === null) {
     echo json_encode([
         "success" => false,
@@ -26,7 +27,7 @@ if ($avatar === null) {
     exit;
 }
 
-if ($avatar < 1 || $avatar > 9) {
+if (!is_numeric($avatar) || $avatar < 1 || $avatar > 9) {
     echo json_encode([
         "success" => false,
         "mensaje" => "Avatar no válido"
@@ -36,7 +37,8 @@ if ($avatar < 1 || $avatar > 9) {
 
 $correo = $_SESSION["correo"];
 
-$sql = "UPDATE usuario SET avatar = ? WHERE correo_electronico = ?";
+$sql = "UPDATE hijos SET Id_avatar = ? 
+        WHERE Id_hijo = ?";
 
 $stmt = $conn->prepare($sql);
 $stmt->bind_param("is", $avatar, $correo);
