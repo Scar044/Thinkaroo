@@ -59,71 +59,14 @@ p {
     justify-content: center;
     align-items: center;
 
-    cursor: pointer;
+    cursor: grab;
 
     box-shadow: 0 10px 20px rgba(0,0,0,.20);
 
     transition: .3s;
-
+    
     user-select: none;
-}
-
-
-/* Efecto al pasar el mouse */
-.memory-card:hover {
-    transform: scale(1.05);
-}
-
-
-/* Cuando se hace clic */
-.memory-card.flipped {
-    transform: scale(1.05);
-
-    box-shadow: 0 15px 25px rgba(0,0,0,.25);
-}
-
-
-/* Imagen del animal */
-.memory-card img {
-    max-width: 85%;
-    max-height: 85%;
-
-    object-fit: contain;
-
-    pointer-events: none;
-}
-
-
-/* Pareja encontrada */
-.memory-card.matched {
-    background: #35d07f;
-
-    transform: scale(1.05);
-
-    cursor: default;
-}
-
-
-/* Animación cuando encuentra pareja */
-.memory-card.matched img {
-    animation: correcto .5s;
-}
-
-
-@keyframes correcto {
-
-    0% {
-        transform: scale(1);
-    }
-
-    50% {
-        transform: scale(1.15) rotate(3deg);
-    }
-
-    100% {
-        transform: scale(1.05);
-    }
-
+    touch-action: none;
 }
 
 .memory-card:hover {
