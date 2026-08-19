@@ -1,264 +1,273 @@
-*{
-    margin:100;
-    padding:100;
-    box-sizing:border-box;
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
-body{
-
-    background:#F7941D;
-
-    display:flex;
-
-    justify-content:center;
-
-    align-items:center;
-
-    min-height:100vh;
-
-    font-family:Arial, Helvetica, sans-serif;
-
+body {
+    background: #F7941D;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: Arial, Helvetica, sans-serif;
+    padding: 30px 15px;
 }
 
-.carrusel{
+/* ===========================
+        CARRUSEL
+=========================== */
 
-    width:80%;
-
-    max-width:900px;
-
-    height:650px;
-
-    position:relative;
-
-    overflow:visible;
-
+.carrusel {
+    width: 80%;
+    max-width: 900px;
+    position: relative;
 }
 
-.slides{
+/* ===========================
+        SLIDES
+=========================== */
 
-    width:100%;
-
-    height:100%;
-
-    position:relative;
-
+.slides {
+    width: 100%;
+    display: grid;
 }
 
 /* ===========================
         TARJETAS
 =========================== */
 
-.slide{
+.slide {
+    grid-area: 1 / 1;
 
-    position:absolute;
+    width: 100%;
+    min-height: 650px;
 
-    top:0;
-    left:0;
+    background: white;
+    border: 5px solid #39B5E8;
+    border-radius: 35px;
 
-    width:100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 
-    height:100%;
+    text-align: center;
 
-    background:white;
+    padding: 40px 60px;
 
-    border-radius:25px;
+    opacity: 0;
+    visibility: hidden;
+    z-index: 1;
 
-    display:flex;
-
-    flex-direction:column;
-
-    justify-content:center;
-
-    align-items:center;
-
-    text-align:center;
-
-    padding:30px;
-
-    opacity:0;
-
-    visibility:hidden;
-
-    box-shadow:0 15px 35px rgba(0,0,0,.18);
-
+    box-shadow: 0 15px 35px rgba(0,0,0,.18);
 }
 
-.slide.active{
-
-    opacity:1;
-
-    visibility:visible;
-
-}
-
-/* Efecto cuando aparece */
-
-.slide.active:hover{
-
-    transform:scale(1.03);
-
+.slide.active {
+    opacity: 1;
+    visibility: visible;
+    z-index: 2;
 }
 
 /* ===========================
         IMAGEN
 =========================== */
 
-.slide img{
-
-    width:500px;
-
-    height:300px;
-
-    object-fit:cover;
-
-    border-radius:20px;
-
-    margin-bottom:20px;
-
+.slide img {
+    width: 300px;
+    height: 250px;
+    object-fit: cover;
+    border-radius: 20px;
+    margin-bottom: 20px;
+    max-width: 100%;
 }
 
 /* ===========================
         TITULO
 =========================== */
 
-.slide h2{
-
-    font-size:42px;
-
-    margin-bottom:20px;
-
-    color:#222;
-
+.slide h2 {
+    font-size: 42px;
+    margin-bottom: 20px;
+    color: #222;
 }
 
 /* ===========================
         TEXTO
 =========================== */
 
-.slide p{
+.slide p {
+    width: 80%;
+    max-width: 700px;
 
-    width:80%;
+    font-size: 15px;
+    line-height: 1.5;
 
-    font-size:22px;
+    margin-bottom: 30px;
 
-    line-height:1.5;
-
-    margin-bottom:30px;
-
+    /* Permite que las palabras bajen de línea */
+    overflow-wrap: break-word;
+    word-wrap: break-word;
 }
 
 /* ===========================
         BOTON
 =========================== */
 
-.btn{
+.btn {
+    display: inline-block;
+    background: #F7941D;
+    color: white;
+    text-decoration: none;
 
-    display:inline-block;
+    padding: 15px 45px;
+    border-radius: 35px;
 
-    background:#F7941D;
+    font-size: 22px;
+    font-weight: bold;
 
-    color:white;
-
-    text-decoration:none;
-
-    padding:15px 45px;
-
-    border-radius:35px;
-
-    font-size:22px;
-
-    font-weight:bold;
-
-    transition:.3s;
-
-    box-shadow:0 5px 12px rgba(0,0,0,.2);
-
+    transition: .3s;
+    box-shadow: 0 5px 12px rgba(0,0,0,.2);
 }
 
-.btn:hover{
-
-    background:#E67E00;
-
-    transform:scale(1.08);
-
-    box-shadow:0 8px 18px rgba(0,0,0,.3);
-
+.btn:hover {
+    background: #E67E00;
+    transform: scale(1.08);
+    box-shadow: 0 8px 18px rgba(0,0,0,.3);
 }
+
 /* ===========================
         FLECHAS
 =========================== */
 
-button{
+button {
+    position: absolute;
 
-    position:absolute;
+    top: 50%;
+    transform: translateY(-50%);
 
-    top:50%;
+    width: 60px;
+    height: 60px;
 
-    transform:translateY(-50%);
+    border: none;
+    border-radius: 50%;
 
-    width:60px;
+    background: rgba(255,255,255,.9);
 
-    height:60px;
+    cursor: pointer;
+    font-size: 32px;
 
-    border:none;
+    transition: .3s;
+    z-index: 100;
 
-    border-radius:50%;
-
-    background:rgba(255,255,255,.9);
-
-    cursor:pointer;
-
-    font-size:32px;
-
-    transition:.3s;
-
-    z-index:100;
-
-    box-shadow:0 6px 20px rgba(0,0,0,.25);
-
+    box-shadow: 0 6px 20px rgba(0,0,0,.25);
 }
 
-button:hover{
-
-    background:white;
-
-    transform:translateY(-50%) scale(1.1);
-
+button:hover {
+    background: white;
+    transform: translateY(-50%) scale(1.1);
 }
-
-/*.anterior{
-
-    left:-80px;
-
-}
-
-.siguiente{
-
-    right:-80px;
-
-}*/
 
 .anterior,
-.siguiente{
+.siguiente {
     display: none !important;
 }
 
-.slide{
 
-    background:white;
+/* ===========================
+        TABLET
+=========================== */
 
-    border:5px solid #39B5E8;
+@media (max-width: 768px) {
 
-    border-radius:35px;
+    body {
+        padding: 20px 10px;
+    }
 
+    .carrusel {
+        width: 95%;
+    }
+
+    .slide {
+        min-height: 600px;
+        padding: 30px 30px;
+        border-radius: 25px;
+    }
+
+    .slide img {
+        width: 240px;
+        height: 200px;
+    }
+
+    .slide h2 {
+        font-size: 34px;
+    }
+
+    .slide p {
+        width: 90%;
+        font-size: 16px;
+    }
+
+    .btn {
+        font-size: 18px;
+        padding: 12px 35px;
+    }
 }
 
-.slide.active{
-    opacity:1;
-    visibility:visible;
-    z-index:2;
-}
 
-.slide{
-    z-index:1;
+/* ===========================
+        CELULARES
+=========================== */
+
+@media (max-width: 480px) {
+
+    body {
+        padding: 15px 8px;
+        align-items: flex-start;
+    }
+
+    .carrusel {
+        width: 100%;
+        max-width: 100%;
+        margin-top: 20px;
+    }
+
+    .slide {
+        min-height: 0;
+        height: auto;
+
+        padding: 25px 18px;
+
+        border-width: 4px;
+        border-radius: 20px;
+    }
+
+    .slide img {
+        width: 180px;
+        height: 150px;
+        margin-bottom: 15px;
+    }
+
+    .slide h2 {
+        font-size: 28px;
+        margin-bottom: 15px;
+    }
+
+    .slide p {
+        width: 100%;
+        max-width: 100%;
+
+        font-size: 15px;
+        line-height: 1.5;
+
+        margin-bottom: 20px;
+
+        /* El texto nunca sale del cuadro */
+        overflow-wrap: anywhere;
+    }
+
+    .btn {
+        font-size: 17px;
+        padding: 11px 30px;
+    }
 }

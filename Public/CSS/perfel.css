@@ -204,3 +204,53 @@ h3{
     right:-120px;
 
 }
+.selector-hijo {
+    position: relative;
+    width: 250px;
+    margin: 0 auto 20px;
+}
+
+#botonHijo {
+    width: 100%;
+    padding: 12px 18px;
+    border: none;
+    border-radius: 10px;
+    background: white;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.lista-hijos {
+    display: none;
+    position: absolute;
+    width: 100%;
+    background: white;
+    border-radius: 10px;
+    margin-top: 5px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    overflow: hidden;
+    z-index: 10;
+}
+
+.lista-hijos.mostrar {
+    display: block;
+}
+
+.hijo {
+    width: 100%;
+    padding: 12px;
+    border: none;
+    background: white;
+    text-align: left;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.hijo:hover {
+    background: #f0f0f0;
+}
