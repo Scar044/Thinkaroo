@@ -282,6 +282,7 @@ button:hover{
 
 section{
     padding-top: 90px;
+    text-align: center;
 }
 
 @media (max-width:768px){

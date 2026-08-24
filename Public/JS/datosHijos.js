@@ -1,27 +1,16 @@
-const formulario =
-document.getElementById("form-responsable");
+const formulario = document.getElementById("form-responsable");
 
-formulario.addEventListener(
-    "submit",
-    guardarPerfil
-);
+formulario.addEventListener("submit", guardarPerfil);
 
-function guardarPerfil(evento){
+function guardarPerfil(evento) {
 
     evento.preventDefault();
 
-    let nombreNino =
-    document.getElementById(
-        "input-nombre-nino"
-    ).value;
+    let nombreNino = document.getElementById("input-nombre-nino").value;
 
-    let edad =
-    document.getElementById(
-        "edad"
-    ).value;
+    let edad = document.getElementById("edad").value;
 
     fetch("../ConfigPHP/datosHijos.php", {
-
         method: "POST",
 
         headers: {
@@ -29,37 +18,36 @@ function guardarPerfil(evento){
         },
 
         body: JSON.stringify({
-
-            nombreNino:
-            nombreNino,
-
-            edad:
-            edad
-
+            nombreNino: nombreNino,
+            edad: edad
         })
-
     })
 
     .then(respuesta => respuesta.json())
 
     .then(datos => {
 
-        if(datos.success){
+        if (datos.success) {
 
-            alert(
-                "Datos guardados correctamente"
-            );
+            console.log("ID del hijo creado:", datos.id_hijo);
 
-            // Cambia esta página por la siguiente
-            window.location.href =
-            "formulario.html";
+            alert("Datos guardados correctamente");
 
-        }else{
+            window.location.href = "formulario.html";
+
+        } else {
 
             alert(datos.mensaje);
 
         }
 
-    });
+    })
 
+    .catch(error => {
+
+        console.error("Error:", error);
+
+        alert("Ocurrió un error al guardar los datos.");
+
+    });
 }

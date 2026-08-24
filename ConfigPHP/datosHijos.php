@@ -12,7 +12,7 @@ $data = json_decode(
 $nombreNino = $data["nombreNino"];
 $edad = $data["edad"];
 
-if(!isset($_SESSION["correo"])){
+if (!isset($_SESSION["correo"])) {
 
     echo json_encode([
         "success" => false,
@@ -28,9 +28,9 @@ $correoUsuario = $_SESSION["correo"];
     Buscar el id del usuario
 */
 $sql = "
-SELECT id_usuario
-FROM usuario
-WHERE correo_electronico = ?
+    SELECT id_usuario
+    FROM usuario
+    WHERE correo_electronico = ?
 ";
 
 $stmt = $conn->prepare($sql);
@@ -46,7 +46,7 @@ $resultado = $stmt->get_result();
 
 $usuario = $resultado->fetch_assoc();
 
-if(!$usuario){
+if (!$usuario) {
 
     echo json_encode([
         "success" => false,
@@ -62,18 +62,18 @@ $idUsuario = $usuario["id_usuario"];
     Crear el hijo
 */
 $sql = "
-INSERT INTO hijos
-(
-    Id_usuario,
-    nombre,
-    edad
-)
-VALUES
-(
-    ?,
-    ?,
-    ?
-)
+    INSERT INTO hijos
+    (
+        Id_usuario,
+        nombre,
+        edad
+    )
+    VALUES
+    (
+        ?,
+        ?,
+        ?
+    )
 ";
 
 $stmt = $conn->prepare($sql);
@@ -85,16 +85,25 @@ $stmt->bind_param(
     $edad
 );
 
-if($stmt->execute()){
+if ($stmt->execute()) {
 
-    $_SESSION["id_hijo"] =
-    $conn->insert_id;
+    /*
+        Obtener automáticamente el Id_hijo
+        que MySQL acaba de crear
+    */
+    $idHijo = $conn->insert_id;
+
+    /*
+        Guardar el Id_hijo en la sesión
+    */
+    $_SESSION["id_hijo"] = $idHijo;
 
     echo json_encode([
-        "success" => true
+        "success" => true,
+        "id_hijo" => $idHijo
     ]);
 
-}else{
+} else {
 
     echo json_encode([
         "success" => false,
