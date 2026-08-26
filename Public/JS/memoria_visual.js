@@ -61,6 +61,7 @@
             resetTurn();
             if (matchedPairs === images.length) {
                 setTimeout(() => alert('🎉 ¡Excelente trabajo! Encontraste todas las parejas!'), 300);
+                window.location.href = "niveles.html";
             }
         } else {
             setTimeout(() => {
