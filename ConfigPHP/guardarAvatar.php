@@ -7,23 +7,27 @@ header("Content-Type: application/json");
 include "conexion.php";
 
 
-/*
-    Comprobar que existe el usuario
-    y que hay un hijo seleccionado
-*/
-if (
-    !isset($_SESSION["correo"]) ||
-    !isset($_SESSION["id_hijo"])
-) {
+// ==========================================
+// COMPROBAR SESIÓN DEL HIJO
+// ==========================================
+
+if (!isset($_SESSION["id_hijo"])) {
 
     echo json_encode([
         "success" => false,
-        "mensaje" => "Sesión de usuario o hijo no encontrada"
+        "mensaje" => "No hay ningún hijo seleccionado"
     ]);
 
     exit;
 }
 
+
+$idHijo = intval($_SESSION["id_hijo"]);
+
+
+// ==========================================
+// RECIBIR AVATAR
+// ==========================================
 
 $data = json_decode(
     file_get_contents("php://input"),
@@ -32,8 +36,6 @@ $data = json_decode(
 
 
 $avatar = $data["avatar"] ?? null;
-
-$idHijo = $_SESSION["id_hijo"];
 
 
 if ($avatar === null) {
@@ -58,9 +60,13 @@ if (!is_numeric($avatar) || $avatar < 1 || $avatar > 9) {
 }
 
 
-/*
-    Guardar el avatar del hijo seleccionado
-*/
+$avatar = intval($avatar);
+
+
+// ==========================================
+// GUARDAR AVATAR DEL HIJO ACTUAL
+// ==========================================
+
 $sql = "
     UPDATE Hijos
     SET Id_avatar = ?
@@ -69,6 +75,7 @@ $sql = "
 
 
 $stmt = $conn->prepare($sql);
+
 
 $stmt->bind_param(
     "ii",
@@ -88,7 +95,7 @@ if ($stmt->execute()) {
 
     echo json_encode([
         "success" => false,
-        "mensaje" => "Error al guardar el avatar"
+        "mensaje" => "Error al guardar el avatar: " . $stmt->error
     ]);
 
 }

@@ -16,6 +16,15 @@ body{
     background:#f5f5f5;
 }
 
+.add{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    background-color: #F5B300;
+    border: none;
+}
+
 .contenedor{
     width:900px;
     background:white;

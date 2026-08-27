@@ -1,10 +1,15 @@
-const botonHijo = document.getElementById("botonHijo");
-const listaHijos = document.getElementById("listaHijos");
-const hijoActual = document.getElementById("hijoActual");
+const botonHijo =
+    document.getElementById("botonHijo");
+
+const listaHijos =
+    document.getElementById("listaHijos");
+
+const hijoActual =
+    document.getElementById("hijoActual");
 
 
 // ==========================================
-// ABRIR / CERRAR EL DESPLEGABLE
+// ABRIR / CERRAR DESPLEGABLE
 // ==========================================
 
 botonHijo.addEventListener("click", () => {
@@ -15,178 +20,311 @@ botonHijo.addEventListener("click", () => {
 
 
 // ==========================================
-// OBTENER LOS HIJOS DEL USUARIO
+// CARGAR DATOS DEL HIJO ACTUAL
 // ==========================================
 
-fetch("../ConfigPHP/obtener_hijos.php")
+function cargarPerfilHijo() {
 
-    .then(respuesta => respuesta.json())
+    fetch("../ConfigPHP/obtener_perfil_hijo.php")
 
-    .then(datos => {
+        .then(respuesta => respuesta.json())
 
-        if (!datos.success) {
+        .then(datos => {
 
-            console.error(datos.mensaje);
-
-            return;
-        }
-
-
-        // Limpiar la lista por si acaso
-
-        listaHijos.innerHTML = "";
+            console.log(
+                "RESPUESTA DEL PERFIL:",
+                datos
+            );
 
 
-        // Crear un botón por cada hijo
+            if (!datos.success) {
 
-        datos.hijos.forEach(hijo => {
+                console.error(
+                    datos.mensaje
+                );
 
-            const boton = document.createElement("button");
+                return;
+            }
 
-            boton.classList.add("hijo");
 
-            boton.textContent = hijo.nombre;
-
-            boton.dataset.id = hijo.id_hijo;
+            const hijo = datos.hijo;
 
 
             // ==================================
-            // SELECCIONAR HIJO
+            // NOMBRE
             // ==================================
 
-            boton.addEventListener("click", () => {
+            document.getElementById(
+                "nombreHijo"
+            ).textContent = hijo.nombre;
 
-                const idHijo = boton.dataset.id;
 
-                console.log(
-                    "Hijo seleccionado:",
-                    idHijo
+            hijoActual.textContent =
+                hijo.nombre;
+
+
+            // ==================================
+            // EDAD
+            // ==================================
+
+            document.getElementById(
+                "edadHijo"
+            ).textContent =
+                hijo.edad + " años";
+
+
+            // ==================================
+            // ESTILO DE APRENDIZAJE
+            // ==================================
+
+            document.getElementById(
+                "tipoAprendizaje"
+            ).textContent =
+                hijo.estilo_aprendizaje ||
+                "Sin definir";
+
+
+            // ==================================
+            // NIVEL ACTUAL
+            // ==================================
+
+            document.getElementById(
+                "nivel"
+            ).textContent =
+                hijo.nivel_actual;
+
+
+            // ==================================
+            // LOGROS
+            // ==================================
+
+            document.getElementById(
+                "logros"
+            ).textContent =
+                hijo.total_logros;
+
+
+            // ==================================
+            // AVATAR
+            // ==================================
+
+            const avatar =
+                document.getElementById(
+                    "avatarHijo"
                 );
 
 
-                // Cambiar el hijo en la sesión
+            if (hijo.imagen_avatar) {
 
-                fetch("../ConfigPHP/cambiarHijo.php", {
+                avatar.src =
+                    hijo.imagen_avatar;
 
-                    method: "POST",
-
-                    headers: {
-                        "Content-Type": "application/json"
-                    },
-
-                    body: JSON.stringify({
-
-                        id_hijo: idHijo
-
-                    })
-
-                })
-
-                .then(respuesta => respuesta.json())
-
-                .then(datos => {
-
-                    if (datos.success) {
-
-                        // Cambiar nombre mostrado
-
-                        hijoActual.textContent =
-                            datos.nombre;
+            }
 
 
-                        // Cerrar desplegable
+            // ==================================
+            // MOSTRAR INFORMACIÓN EN CONSOLA
+            // ==================================
 
-                        listaHijos.classList.remove(
-                            "mostrar"
-                        );
+            console.log(
+                "ID del hijo:",
+                hijo.id_hijo
+            );
 
+            console.log(
+                "Nombre:",
+                hijo.nombre
+            );
 
-                        console.log(
-                            "Nueva sesión:",
-                            datos.id_hijo
-                        );
+            console.log(
+                "Edad:",
+                hijo.edad
+            );
 
-                    } else {
+            console.log(
+                "Avatar:",
+                hijo.imagen_avatar
+            );
 
-                        alert(datos.mensaje);
+            console.log(
+                "Estilo:",
+                hijo.estilo_aprendizaje
+            );
 
-                    }
+            console.log(
+                "Nivel:",
+                hijo.nivel_actual
+            );
 
-                })
+            console.log(
+                "Logros:",
+                hijo.total_logros
+            );
 
-                .catch(error => {
+        })
 
-                    console.error(
-                        "Error al cambiar de hijo:",
-                        error
-                    );
+        .catch(error => {
 
-                });
-
-            });
-
-
-            // Agregar botón a la lista
-
-            listaHijos.appendChild(boton);
+            console.error(
+                "Error al cargar perfil:",
+                error
+            );
 
         });
 
-    })
-
-    .catch(error => {
-
-        console.error(
-            "Error al obtener los hijos:",
-            error
-        );
-
-    });
+}
 
 
 // ==========================================
-// ESTADÍSTICAS DE PRUEBA
+// OBTENER TODOS LOS HIJOS
 // ==========================================
 
-const usuario = {
+function cargarHijos() {
 
-    tiempoHoy: "1 h 35 min",
+    fetch("../ConfigPHP/obtener_hijos.php")
 
-    tiempoTotal: "12 h 42 min",
+        .then(respuesta =>
+            respuesta.json()
+        )
 
-    nivelesPasados: 8,
+        .then(datos => {
 
-    totalNiveles: 20,
+            if (!datos.success) {
 
-    nivelActual: 9
+                console.error(
+                    datos.mensaje
+                );
 
-};
-
-
-document.getElementById("tiempoHoy").textContent =
-    usuario.tiempoHoy;
-
-document.getElementById("tiempoTotal").textContent =
-    usuario.tiempoTotal;
-
-document.getElementById("niveles").textContent =
-    usuario.nivelesPasados +
-    " / " +
-    usuario.totalNiveles;
-
-document.getElementById("nivel").textContent =
-    usuario.nivelActual;
+                return;
+            }
 
 
-const porcentaje =
-    (usuario.nivelesPasados /
-    usuario.totalNiveles) * 100;
+            listaHijos.innerHTML = "";
 
 
-document.getElementById("progreso").style.width =
-    porcentaje + "%";
+            datos.hijos.forEach(hijo => {
 
-document.getElementById("porcentaje").textContent =
-    "Progreso completado: " +
-    porcentaje.toFixed(0) +
-    "%";
+                const boton =
+                    document.createElement(
+                        "button"
+                    );
+
+
+                boton.classList.add(
+                    "hijo"
+                );
+
+
+                boton.textContent =
+                    hijo.nombre;
+
+
+                boton.dataset.id =
+                    hijo.id_hijo;
+
+
+                boton.addEventListener(
+                    "click",
+                    () => {
+
+                        const idHijo =
+                            boton.dataset.id;
+
+
+                        // ==============================
+                        // CAMBIAR SESIÓN DEL HIJO
+                        // ==============================
+
+                        fetch(
+                            "../ConfigPHP/cambiarHijo.php",
+                            {
+                                method: "POST",
+
+                                headers: {
+                                    "Content-Type":
+                                        "application/json"
+                                },
+
+                                body: JSON.stringify({
+                                    id_hijo:
+                                        idHijo
+                                })
+                            }
+                        )
+
+                        .then(respuesta =>
+                            respuesta.json()
+                        )
+
+                        .then(datos => {
+
+                            if (!datos.success) {
+
+                                alert(
+                                    datos.mensaje
+                                );
+
+                                return;
+                            }
+
+
+                            console.log(
+                                "Nueva sesión:",
+                                datos.id_hijo
+                            );
+
+
+                            // Cerrar menú
+
+                            listaHijos.classList.remove(
+                                "mostrar"
+                            );
+
+
+                            // Cargar los datos
+                            // del nuevo hijo
+
+                            cargarPerfilHijo();
+
+                        })
+
+                        .catch(error => {
+
+                            console.error(
+                                "Error al cambiar hijo:",
+                                error
+                            );
+
+                        });
+
+                    }
+                );
+
+
+                listaHijos.appendChild(
+                    boton
+                );
+
+            });
+
+        })
+
+        .catch(error => {
+
+            console.error(
+                "Error al obtener hijos:",
+                error
+            );
+
+        });
+
+}
+
+
+// ==========================================
+// INICIAR PÁGINA
+// ==========================================
+
+cargarPerfilHijo();
+
+cargarHijos();
