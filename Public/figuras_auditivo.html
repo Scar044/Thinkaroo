@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Clasifica las figuras - Auditivo</title>
+
+    <link rel="stylesheet" href="CSS/Figuras_auditivo.css">
+</head>
+
+<body>
+
+    <main class="juego">
+
+        <header>
+
+            <h1>🔊 ESCUCHA Y CLASIFICA</h1>
+
+            <p>
+                Escucha atentamente y selecciona la figura que escuchaste.
+            </p>
+
+            <div class="puntuacion">
+                ⭐ <span id="puntos">0</span>
+            </div>
+
+        </header>
+
+
+        <!-- BOTÓN PARA ESCUCHAR -->
+
+        <section class="escuchar">
+
+            <button id="botonEscuchar">
+                🔊 ESCUCHAR
+            </button>
+
+            <p id="instruccion">
+                Presiona el botón para escuchar.
+            </p>
+
+        </section>
+
+
+        <!-- FIGURAS -->
+
+        <section class="figuras" id="figuras">
+
+            <button
+                class="figura circulo"
+                data-forma="circulo"
+                aria-label="Círculo">
+            </button>
+
+            <button
+                class="figura cuadrado"
+                data-forma="cuadrado"
+                aria-label="Cuadrado">
+            </button>
+
+            <button
+                class="figura triangulo"
+                data-forma="triangulo"
+                aria-label="Triángulo">
+            </button>
+
+            <button
+                class="figura rectangulo"
+                data-forma="rectangulo"
+                aria-label="Rectángulo">
+            </button>
+
+        </section>
+
+
+        <!-- MENSAJE -->
+
+        <div id="mensaje" class="mensaje"></div>
+
+
+        <!-- PISTA -->
+
+        <div id="pista" class="pista">
+
+            <div id="iconoPista">
+                💡
+            </div>
+
+            <p id="textoPista"></p>
+
+            <button id="cerrarPista">
+                ¡INTÉNTALO DE NUEVO!
+            </button>
+
+        </div>
+
+
+    </main>
+
+
+    <script src="JS/figuras_auditivo.js"></script>
+
+</body>
+
+</html>

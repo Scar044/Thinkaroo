@@ -161,6 +161,7 @@ function checkMatch(){
             setTimeout(()=>{
 
                 alert("🎉 ¡Felicidades! Has encontrado todas las parejas.");
+                window.location.href = "niveles_auditivo.html";
 
             },300);
 

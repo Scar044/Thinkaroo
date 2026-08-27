@@ -140,3 +140,53 @@ function moverCohete(nivel){
     cohete.style.top =
         (y + alturaNivel / 2 - alturaCohete / 2) + "px";
 }
+
+// ==========================================
+// CARGAR AVATAR DEL HIJO ACTUAL
+// ==========================================
+
+function cargarAvatarPerfil() {
+
+    fetch("../ConfigPHP/obtener_perfil_hijo.php")
+
+        .then(respuesta => respuesta.json())
+
+        .then(datos => {
+
+            console.log("Datos del hijo:", datos);
+
+            if (!datos.success) {
+                console.error(datos.mensaje);
+                return;
+            }
+
+            const avatar = document.getElementById("avatarPerfil");
+
+            if (datos.hijo.imagen_avatar) {
+
+                avatar.src = datos.hijo.imagen_avatar;
+
+            } else {
+
+                console.log("El hijo todavía no tiene avatar");
+
+            }
+
+        })
+
+        .catch(error => {
+
+            console.error(
+                "Error al cargar el avatar:",
+                error
+            );
+
+        });
+}
+
+
+// ==========================================
+// INICIAR
+// ==========================================
+
+cargarAvatarPerfil();

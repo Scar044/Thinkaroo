@@ -1,3 +1,7 @@
+/* ==========================================
+   CONFIGURACIÓN GENERAL
+========================================== */
+
 * {
     margin: 0;
     padding: 0;
@@ -5,83 +9,136 @@
     font-family: "Nunito", sans-serif;
 }
 
+
 body {
+    min-height: 100vh;
+
     background: rgb(245, 211, 117);
-    color: white;
+
+    padding: 30px 15px 60px;
+
+    color: #004B87;
+
     overflow-x: hidden;
-    padding-bottom: 50px;
 }
 
+
+/* ==========================================
+   CONTENEDOR
+========================================== */
+
+.container {
+    width: 100%;
+    max-width: 900px;
+
+    margin: auto;
+
+    text-align: center;
+}
+
+
+/* ==========================================
+   TÍTULO
+========================================== */
 
 h1 {
-    margin-top: 30px;
     background: #FFD519;
+
     padding: 20px;
+
     border-radius: 28px;
-    font-size: 30px;
+
+    font-size: 32px;
+
     font-weight: 900;
-    box-shadow: 0 15px 30px rgba(0,0,0,.20);
+
+    color: #004B87;
+
+    box-shadow: 0 10px 25px rgba(0, 0, 0, .20);
+
+    margin-bottom: 15px;
 }
 
-p {
-    font-size: 18px;
+
+.instrucciones {
+    font-size: 20px;
+
     font-weight: bold;
-    margin: 20px;
+
+    margin-bottom: 30px;
+
+    color: #004B87;
 }
 
 
-.game-board {
-    width: 95%;
-    max-width: 850px;
+/* ==========================================
+   ZONAS
+========================================== */
 
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 20px;
+.zona {
+    background: #b5e3ff;
 
-    margin-top: 30px;
     padding: 25px;
 
-    background: #b5e3ff;
     border-radius: 28px;
 
-    box-shadow: 0 15px 30px rgba(0,0,0,.25);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, .20);
+
+    margin-bottom: 25px;
 }
 
 
-.memory-card {
-    height: 150px;
+.zona h2 {
+    margin-bottom: 20px;
 
-    background: #ffffff;
+    font-size: 24px;
+
+    color: #004B87;
+}
+
+
+/* ==========================================
+   ANIMALES
+========================================== */
+
+.contenedor-animales {
+    display: grid;
+
+    grid-template-columns: repeat(4, 1fr);
+
+    gap: 20px;
+}
+
+
+.animal {
+    height: 140px;
+
+    background: white;
 
     border-radius: 20px;
 
     display: flex;
+
     justify-content: center;
+
     align-items: center;
+
+    box-shadow: 0 8px 15px rgba(0, 0, 0, .20);
 
     cursor: grab;
 
-    box-shadow: 0 10px 20px rgba(0,0,0,.20);
-
-    transition: .3s;
-    
-    user-select: none;
     touch-action: none;
-}
 
-.memory-card:hover {
-    transform: scale(1.05);
-}
+    user-select: none;
 
-.memory-card:active {
-    cursor: grabbing;
+    transition: transform .2s, box-shadow .2s;
 }
 
 
+.animal img {
+    width: 85%;
 
-.memory-card img {
-    max-width: 85%;
-    max-height: 85%;
+    height: 85%;
 
     object-fit: contain;
 
@@ -89,102 +146,255 @@ p {
 }
 
 
-.memory-card.dragging {
-    transform: scale(1.1) rotate(4deg);
+.animal:hover {
+    transform: scale(1.05);
+
+    box-shadow: 0 12px 20px rgba(0, 0, 0, .25);
+}
+
+
+.animal:active {
+    cursor: grabbing;
+}
+
+
+/* ==========================================
+   ANIMAL SIENDO ARRASTRADO
+========================================== */
+
+.animal.arrastrando {
+    transform: scale(1.12) rotate(4deg);
 
     opacity: .75;
 
-    box-shadow: 0 20px 35px rgba(0,0,0,.35);
-
     z-index: 100;
+
+    box-shadow: 0 20px 30px rgba(0, 0, 0, .30);
 }
 
 
-.memory-card.over {
-    transform: scale(1.08);
+/* ==========================================
+   DESTINOS
+========================================== */
 
-    border: 5px solid #FFD519;
+.contenedor-destinos {
+    display: grid;
+
+    grid-template-columns: repeat(4, 1fr);
+
+    gap: 20px;
 }
 
-.memory-card.matched {
-    background: #35d07f;
 
+.destino {
+    height: 140px;
+
+    background: rgba(255, 255, 255, .55);
+
+    border: 4px dashed #1EA4F2;
+
+    border-radius: 20px;
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    transition: .2s;
+
+    position: relative;
+}
+
+
+.destino::after {
+    content: "🎯";
+
+    position: absolute;
+
+    font-size: 35px;
+
+    opacity: .35;
+}
+
+
+.destino img {
+    width: 80%;
+
+    height: 80%;
+
+    object-fit: contain;
+
+    pointer-events: none;
+
+    opacity: .15;
+
+    z-index: 2;
+}
+
+
+/* ==========================================
+   DESTINO ACTIVO
+========================================== */
+
+.destino.sobre {
     transform: scale(1.05);
 
-    cursor: default;
+    border-style: solid;
+
+    background: #fff3a6;
 }
 
 
-.memory-card.wrong {
-    animation: incorrecto .4s;
+/* ==========================================
+   DESTINO CORRECTO
+========================================== */
+
+.destino.correcto {
+    background: #35d07f;
+
+    border: 4px solid #20a85d;
+
+    transform: scale(1.05);
 }
 
 
-.memory-card.success {
-    animation: correcto .5s;
-}
-
-@keyframes correcto {
-
-    0% {
-        transform: scale(1);
-    }
-
-    50% {
-        transform: scale(1.15) rotate(3deg);
-    }
-
-    100% {
-        transform: scale(1.05);
-    }
-
+.destino.correcto::after {
+    content: "✨";
 }
 
 
-@keyframes incorrecto {
+/* ==========================================
+   ANIMAL COLOCADO
+========================================== */
 
-    0% {
-        transform: translateX(0);
-    }
+.destino .animal-colocado {
+    width: 100%;
 
-    25% {
-        transform: translateX(-8px);
-    }
+    height: 100%;
 
-    50% {
-        transform: translateX(8px);
-    }
+    display: flex;
 
-    75% {
-        transform: translateX(-8px);
-    }
+    justify-content: center;
 
-    100% {
-        transform: translateX(0);
-    }
-
+    align-items: center;
 }
 
 
-@media(max-width: 600px) {
+.animal-colocado img {
+    width: 85%;
+
+    height: 85%;
+
+    object-fit: contain;
+
+    opacity: 1;
+}
+
+
+/* ==========================================
+   MENSAJE
+========================================== */
+
+.mensaje {
+    min-height: 45px;
+
+    font-size: 25px;
+
+    font-weight: 900;
+
+    margin: 20px 0;
+}
+
+
+/* ==========================================
+   BOTÓN
+========================================== */
+
+.boton-volver {
+    border: none;
+
+    background: #1EA4F2;
+
+    color: white;
+
+    padding: 14px 25px;
+
+    border-radius: 15px;
+
+    font-size: 18px;
+
+    font-weight: bold;
+
+    cursor: pointer;
+
+    box-shadow: 0 5px 0 #0875b5;
+
+    transition: .15s;
+}
+
+
+.boton-volver:hover {
+    transform: translateY(-2px);
+}
+
+
+.boton-volver:active {
+    transform: translateY(3px);
+
+    box-shadow: 0 2px 0 #0875b5;
+}
+
+
+/* ==========================================
+   RESPONSIVE
+========================================== */
+
+@media (max-width: 600px) {
+
+    body {
+        padding: 20px 10px 40px;
+    }
+
 
     h1 {
+        font-size: 23px;
+
+        padding: 15px;
+    }
+
+
+    .instrucciones {
+        font-size: 16px;
+    }
+
+
+    .zona {
+        padding: 15px;
+    }
+
+
+    .zona h2 {
         font-size: 20px;
-        padding: 15px;
     }
 
-    p {
-        font-size: 15px;
-    }
 
-    .game-board {
+    .contenedor-animales,
+    .contenedor-destinos {
         grid-template-columns: repeat(2, 1fr);
-        gap: 15px;
-        padding: 15px;
+
+        gap: 12px;
     }
 
-    .memory-card {
+
+    .animal,
+    .destino {
         height: 120px;
+    }
+
+
+    .destino::after {
+        font-size: 25px;
     }
 
 }

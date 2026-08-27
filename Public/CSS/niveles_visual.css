@@ -68,6 +68,11 @@ body::after{
 
 }
 
+.nivel a {
+    text-decoration: none;
+    color: inherit;
+}
+
 .nube{
 
     position:fixed;

@@ -45,11 +45,62 @@ botonSiguiente.addEventListener("click", function() {
 
         if (datos.success) {
 
-            console.log(datos.mensaje);
+    console.log(datos.mensaje);
 
-            window.location.href = "perfil.html";
+    // Obtener el estilo de aprendizaje del hijo actual
+    fetch("../ConfigPHP/obtener_perfil_hijo.php")
+        .then(respuesta => respuesta.json())
+        .then(perfil => {
 
-        } else {
+            if (!perfil.success) {
+
+                console.error(perfil.mensaje);
+                return;
+
+            }
+
+            const estilo =
+                perfil.hijo.estilo_aprendizaje;
+
+            console.log(
+                "Estilo de aprendizaje:",
+                estilo
+            );
+
+            if (estilo === "Visual") {
+
+                window.location.href = "niveles.html";
+
+            }
+            else if (estilo === "Auditivo") {
+
+                window.location.href = "niveles_auditivo.html";
+
+            }
+            else if (estilo === "Kinestesico") {
+
+                window.location.href = "niveles_kinestesico.html";
+
+            }
+            else {
+
+                alert(
+                    "El estilo de aprendizaje todavía no está definido."
+                );
+
+            }
+
+        })
+        .catch(error => {
+
+            console.error(
+                "Error al obtener el perfil:",
+                error
+            );
+
+        });
+
+} else {
 
             alert(datos.mensaje);
 
