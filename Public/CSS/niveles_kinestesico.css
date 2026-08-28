@@ -16,6 +16,8 @@ body{
     padding-top:130px;
 
     padding-bottom:120px;
+    padding-left: 250px;
+    transition: padding-left 0.3s ease;
 
 }
 

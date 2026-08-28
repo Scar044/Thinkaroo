@@ -1,0 +1,177 @@
+/* =====================================
+   BARRA LATERAL
+===================================== */
+
+.sidebar {
+    width: 250px;
+    height: 100vh;
+
+    background: #4285F4;
+    color: white;
+
+    position: fixed;
+    top: 85px;
+    left: 0;
+
+    display: flex;
+    flex-direction: column;
+
+    z-index: 1000;
+
+    transition: width 0.3s ease;
+}
+
+
+/* =====================================
+   LOGO
+===================================== */
+
+.logo-sidebar {
+    background: #FFD230;
+    padding: 20px;
+
+    text-align: center;
+}
+
+.logo-sidebar img {
+    width: 150px;
+    height: auto;
+}
+
+
+/* =====================================
+   MENÚ
+===================================== */
+
+.menu-sidebar {
+    display: flex;
+    flex-direction: column;
+    margin-top: 20px;
+}
+
+.menu-sidebar a {
+    color: white;
+    text-decoration: none;
+
+    padding: 16px 25px;
+
+    display: flex;
+    align-items: center;
+
+    gap: 15px;
+
+    transition: 0.3s;
+}
+
+.menu-sidebar a:hover,
+.menu-sidebar a.activo {
+    background: rgba(255,255,255,.15);
+}
+
+.menu-sidebar span:first-child {
+    font-size: 24px;
+}
+
+.texto-sidebar {
+    font-size: 16px;
+}
+
+
+/* =====================================
+   PARA PADRES
+===================================== */
+
+.padres-sidebar {
+    margin-top: auto;
+    padding: 20px;
+}
+
+.padres-sidebar hr {
+    border: none;
+    border-top: 2px solid rgba(255,255,255,.4);
+
+    margin-bottom: 20px;
+}
+
+.padres-sidebar a {
+    color: white;
+    text-decoration: none;
+
+    display: flex;
+    align-items: center;
+
+    gap: 12px;
+}
+
+.padres-sidebar small {
+    display: block;
+    font-size: 11px;
+    margin-top: 3px;
+}
+
+
+/* =====================================
+   BOTÓN PARA OCULTAR
+===================================== */
+
+.toggle-btn {
+    position: absolute;
+
+    top: 50%;
+    right: -18px;
+
+    transform: translateY(-50%);
+
+    width: 36px;
+    height: 36px;
+
+    border: none;
+    border-radius: 50%;
+
+    background: white;
+    color: #4285F4;
+
+    font-size: 20px;
+    font-weight: bold;
+
+    cursor: pointer;
+
+    box-shadow: 0 2px 8px rgba(0,0,0,.3);
+
+    z-index: 2000;
+}
+
+
+/* =====================================
+   BARRA OCULTA
+===================================== */
+
+.sidebar.cerrado {
+    width: 70px;
+}
+
+.sidebar.cerrado .texto-sidebar,
+.sidebar.cerrado .padres-sidebar hr,
+.sidebar.cerrado .logo-sidebar {
+    display: none;
+}
+
+
+/* Centrar los iconos */
+
+.sidebar.cerrado .menu-sidebar a {
+    justify-content: center;
+    padding: 16px 0;
+}
+
+.sidebar.cerrado .padres-sidebar {
+    padding: 20px 0;
+}
+
+.sidebar.cerrado .padres-sidebar a {
+    justify-content: center;
+}
+
+.sidebar.cerrado .padres-sidebar small {
+    display: none;
+}

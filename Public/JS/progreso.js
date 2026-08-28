@@ -147,3 +147,24 @@ niveles.forEach(nivel=>{
     });
 
 });
+
+// =====================================
+// OBTENER PROGRESO DEL HIJO
+// =====================================
+
+fetch("../ConfigPHP/obtener_progreso.php")
+    .then(respuesta => respuesta.json())
+    .then(datos => {
+
+        if (!datos.success) {
+            console.error(datos.mensaje);
+            return;
+        }
+
+        console.log("ID del hijo:", datos.id_hijo);
+        console.log("Progreso:", datos.progreso);
+
+    })
+    .catch(error => {
+        console.error("Error al obtener el progreso:", error);
+    });

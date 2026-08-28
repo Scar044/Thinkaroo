@@ -5,9 +5,69 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="CSS/niveles_visual.css">
+    <link rel="stylesheet" href="CSS/sidebar.css">
 
 </head>
 <body>
+    <aside class="sidebar" id="sidebar">
+
+    <button id="toggleBtn" class="toggle-btn">
+        ❮
+    </button>
+
+    <!-- MENÚ -->
+
+    <nav class="menu-sidebar">
+
+
+        <a href="niveles.html" class="activo">
+            <span>🎮</span>
+            <span class="texto-sidebar">Niveles</span>
+        </a>
+
+
+        <a href="progreso.html">
+            <span>📊</span>
+            <span class="texto-sidebar">Progreso</span>
+        </a>
+
+
+        <a href="#">
+            <span>🏆</span>
+            <span class="texto-sidebar">Logros</span>
+        </a>
+
+
+        <a href="#">
+            <span>⚙️</span>
+            <span class="texto-sidebar">Ajustes</span>
+        </a>
+
+    </nav>
+
+
+    <!-- PARA PADRES -->
+
+    <div class="padres-sidebar">
+
+        <hr>
+
+        <a href="#">
+
+            <span>👨‍👩‍👧</span>
+
+            <span class="texto-sidebar">
+                Para padres
+                <small>Ver progreso detallado</small>
+            </span>
+
+            <span class="texto-sidebar">➜</span>
+
+        </a>
+
+    </div>
+
+</aside>
     <div class="nube nube1"></div>
     <div class="nube nube2"></div>
     <div class="nube nube3"></div>
@@ -97,6 +157,7 @@
 
 
     <script src="js/niveles.js"></script>
+    <script src="JS/sidebar.js"></script>
 
 </body>
 </html>

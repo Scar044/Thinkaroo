@@ -1,32 +1,49 @@
+// ==========================================
+// NIVELES
+// ==========================================
+
 const niveles = document.querySelectorAll(".nivel");
 const continuar = document.querySelector(".continuar");
 const cofre = document.querySelector(".cofre");
 
 
+// ==========================================
+// PROGRESO DE LOS NIVELES
+// ==========================================
 
 let progreso = JSON.parse(localStorage.getItem("progreso")) || [];
 
-// Pintar niveles completados
 progreso.forEach(index => {
+
     if (niveles[index]) {
         niveles[index].classList.add("completado");
     }
-});
 
+});
 
 
 niveles.forEach((nivel, index) => {
 
-    nivel.addEventListener("click", () => {
-         moverCohete(nivel);
-        nivel.animate([
-            { transform: "scale(1)" },
-            { transform: "scale(1.25)" },
-            { transform: "scale(1)" }
-        ], {
-            duration: 300
-        });
+    nnivel.addEventListener("click", () => {
 
+        moverCohete(nivel);
+
+        // Animación del nivel
+
+        // Animación del nivel
+        nivel.animate(
+            [
+                { transform: "scale(1)" },
+                { transform: "scale(1.25)" },
+                { transform: "scale(1)" }
+            ],
+            {
+                duration: 300
+            }
+        );
+
+
+        // Marcar como completado
         if (!nivel.classList.contains("completado")) {
 
             nivel.classList.add("completado");
@@ -45,24 +62,36 @@ niveles.forEach((nivel, index) => {
 });
 
 
+// ==========================================
+// COFRE
+// ==========================================
 
+if (cofre) {
 
+    cofre.addEventListener("click", () => {
 
-cofre.addEventListener("click", () => {
+        cofre.animate(
+            [
+                { transform: "rotate(0deg)" },
+                { transform: "rotate(-15deg)" },
+                { transform: "rotate(15deg)" },
+                { transform: "rotate(0deg)" }
+            ],
+            {
+                duration: 500
+            }
+        );
 
-    cofre.animate([
-        { transform: "rotate(0deg)" },
-        { transform: "rotate(-15deg)" },
-        { transform: "rotate(15deg)" },
-        { transform: "rotate(0deg)" }
-    ], {
-        duration: 500
+        alert("🎁 ¡Has abierto un cofre!");
+
     });
 
-    alert("🎁 ¡Has abierto un cofre!");
+}
 
-});
 
+// ==========================================
+// EFECTO AL PASAR EL RATÓN
+// ==========================================
 
 niveles.forEach(nivel => {
 
@@ -72,6 +101,7 @@ niveles.forEach(nivel => {
             "0 0 25px rgba(255,255,255,.8)";
 
     });
+
 
     nivel.addEventListener("mouseleave", () => {
 
@@ -83,9 +113,14 @@ niveles.forEach(nivel => {
 });
 
 
+// ==========================================
+// CONTADOR DE NIVELES COMPLETADOS
+// ==========================================
+
 function actualizarContador() {
 
-    let total = document.querySelectorAll(".completado").length;
+    const total =
+        document.querySelectorAll(".completado").length;
 
     console.log("Niveles completados:", total);
 
@@ -94,41 +129,39 @@ function actualizarContador() {
 setInterval(actualizarContador, 1000);
 
 
+// ==========================================
+// ANIMACIÓN DEL BOTÓN CONTINUAR
+// ==========================================
 
-setInterval(() => {
+if (continuar) {
 
-    continuar.animate([
-        { transform: "scale(1)" },
-        { transform: "scale(1.08)" },
-        { transform: "scale(1)" }
-    ], {
-        duration: 1200
-    });
+    setInterval(() => {
 
-}, 2500);
+        continuar.animate(
+            [
+                { transform: "scale(1)" },
+                { transform: "scale(1.08)" },
+                { transform: "scale(1)" }
+            ],
+            {
+                duration: 1200
+            }
+        );
+
+    }, 2500);
+
+}
 
 
-
-window.scrollTo({
-
-    top: 0,
-    behavior: "smooth"
-
-});
-window.addEventListener("load", () => {
-    window.scrollTo({
-        top: document.body.scrollHeight,
-        behavior: "instant" // o quita esta línea
-    });
-});
-window.addEventListener("load", () => {
-    setTimeout(() => {
-        window.scrollTo(0, document.body.scrollHeight);
-    }, 100);
-});
+// ==========================================
+// COHETE
+// ==========================================
 
 const cohete = document.getElementById("cohete");
-function moverCohete(nivel){
+
+function moverCohete(nivel) {
+
+    if (!cohete) return;
 
     const y = nivel.offsetTop;
     const alturaNivel = nivel.offsetHeight;
@@ -136,10 +169,32 @@ function moverCohete(nivel){
 
     cohete.classList.add("despegando");
 
-    // Centrar el canguro con el nivel
+    cohete.style.top =
+        (y + alturaNivel / 2 - alturaCohete / 2) + "px";
+
+}
+
+
+// ==========================================
+// COHETE
+// ==========================================
+
+const cohete = document.getElementById("cohete");
+
+function moverCohete(nivel) {
+
+    if (!cohete) return;
+
+    const y = nivel.offsetTop;
+    const alturaNivel = nivel.offsetHeight;
+    const alturaCohete = cohete.offsetHeight;
+
+    cohete.classList.add("despegando");
+
     cohete.style.top =
         (y + alturaNivel / 2 - alturaCohete / 2) + "px";
 }
+
 
 // ==========================================
 // CARGAR AVATAR DEL HIJO ACTUAL
@@ -156,19 +211,19 @@ function cargarAvatarPerfil() {
             console.log("Datos del hijo:", datos);
 
             if (!datos.success) {
+
                 console.error(datos.mensaje);
                 return;
+
             }
 
-            const avatar = document.getElementById("avatarPerfil");
+            const avatar =
+                document.getElementById("avatarPerfil");
 
-            if (datos.hijo.imagen_avatar) {
+            if (avatar && datos.hijo.imagen_avatar) {
 
-                avatar.src = datos.hijo.imagen_avatar;
-
-            } else {
-
-                console.log("El hijo todavía no tiene avatar");
+                avatar.src =
+                    datos.hijo.imagen_avatar;
 
             }
 
@@ -182,7 +237,26 @@ function cargarAvatarPerfil() {
             );
 
         });
+
 }
+
+
+// ==========================================
+// IR AL FINAL DE LA PÁGINA
+// ==========================================
+
+window.addEventListener("load", () => {
+
+    setTimeout(() => {
+
+        window.scrollTo({
+            top: document.documentElement.scrollHeight,
+            behavior: "instant"
+        });
+
+    }, 300);
+
+});
 
 
 // ==========================================
