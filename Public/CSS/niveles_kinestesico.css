@@ -781,17 +781,39 @@ header{
 .arbol5{left:88%; transform:scale(1.1);}
 
 #cohete{
-
     position:absolute;
     left:50%;
     top:1000px; /* Ajusta este valor */
     transform:translateX(-50%);
-    width:150px;
+    width: 80px;
     display:flex;
     justify-content:center;
     align-items:center;
-    z-index:100;
-    transition:top .8s ease;
+    z-index:50;
+    transition:top .8s ease, left 0.8 ease;
+}
+
+#cohete.saltando {
+    animation: saltoCanguro 0.8s ease;
+}
+
+@keyframes saltoCanguro {
+
+    0% {
+        transform: translateY(0) scale(1);
+    }
+
+    30% {
+        transform: translateY(-80px) scale(1.1);
+    }
+
+    60% {
+        transform: translateY(-30px) scale(1.05);
+    }
+
+    100% {
+        transform: translateY(0) scale(1);
+    }
 
 }
 

@@ -8,10 +8,15 @@ const cofre = document.querySelector(".cofre");
 
 
 // ==========================================
-// PROGRESO DE LOS NIVELES
+// PROGRESO
 // ==========================================
 
-let progreso = JSON.parse(localStorage.getItem("progreso")) || [];
+let progreso = JSON.parse(
+    localStorage.getItem("progreso")
+) || [];
+
+
+// Marcar niveles completados
 
 progreso.forEach(index => {
 
@@ -22,15 +27,157 @@ progreso.forEach(index => {
 });
 
 
+// ==========================================
+// CANGURO
+// ==========================================
+
+const cohete = document.getElementById("cohete");
+
+
+function moverCohete(nivel) {
+
+    if (!cohete || !nivel) return;
+
+    const camino = document.querySelector(".camino");
+
+    if (!camino) return;
+
+    // ==========================================
+    // POSICIÓN DEL NIVEL
+    // ==========================================
+
+    const nivelRect =
+        nivel.getBoundingClientRect();
+
+    // ==========================================
+    // POSICIÓN DEL CAMINO
+    // ==========================================
+
+    const caminoRect =
+        camino.getBoundingClientRect();
+
+    // ==========================================
+    // TAMAÑO DEL CANGURO
+    // ==========================================
+
+    const anchoCohete =
+        cohete.offsetWidth;
+
+    const alturaCohete =
+        cohete.offsetHeight;
+
+    // ==========================================
+    // CENTRO HORIZONTAL DEL CAMINO
+    // ==========================================
+
+    const centroX =
+        caminoRect.left +
+        (caminoRect.width / 2);
+
+    // ==========================================
+    // CENTRO VERTICAL DEL NIVEL
+    // ==========================================
+
+    const centroY =
+        nivelRect.top +
+        (nivelRect.height / 2);
+
+    // ==========================================
+    // POSICIÓN FINAL
+    // ==========================================
+
+    const nuevaX =
+        centroX -
+        (anchoCohete / 2) +
+        window.scrollX;
+
+    const nuevaY =
+        centroY -
+        (alturaCohete / 2) +
+        window.scrollY;
+
+    // ==========================================
+    // REINICIAR ANIMACIÓN
+    // ==========================================
+
+    cohete.classList.remove("saltando");
+
+    void cohete.offsetWidth;
+
+    // ==========================================
+    // MOVER CANGURO
+    // ==========================================
+
+    cohete.style.left =
+        nuevaX + "px";
+
+    cohete.style.top =
+        nuevaY + "px";
+}
+
+
+// ==========================================
+// COLOCAR CANGURO AL INICIAR
+// ==========================================
+
+function colocarCanguroInicial() {
+
+    if (!cohete || niveles.length === 0) {
+        return;
+    }
+
+
+    let nivelInicial;
+
+
+    // ==========================================
+    // SI YA EXISTE PROGRESO
+    // ==========================================
+
+    if (progreso.length > 0) {
+
+        const ultimoIndice =
+            progreso[progreso.length - 1];
+
+        nivelInicial =
+            niveles[ultimoIndice];
+
+    }
+
+
+    // ==========================================
+    // SI NO EXISTE PROGRESO
+    // EMPEZAR DESDE ABAJO
+    // ==========================================
+
+    if (!nivelInicial) {
+
+        nivelInicial =
+            niveles[niveles.length - 1];
+
+    }
+
+
+    // Colocar sin animación
+
+    moverCohete(nivelInicial, false);
+
+}
+
+
+// ==========================================
+// CLIC EN LOS NIVELES
+// ==========================================
+
 niveles.forEach((nivel, index) => {
 
-    nnivel.addEventListener("click", () => {
+    nivel.addEventListener("click", () => {
 
-        moverCohete(nivel);
 
-        // Animación del nivel
+        // ======================================
+        // ANIMACIÓN DEL NIVEL
+        // ======================================
 
-        // Animación del nivel
         nivel.animate(
             [
                 { transform: "scale(1)" },
@@ -43,19 +190,38 @@ niveles.forEach((nivel, index) => {
         );
 
 
-        // Marcar como completado
+        // ======================================
+        // COMPLETAR NIVEL
+        // ======================================
+
         if (!nivel.classList.contains("completado")) {
 
-            nivel.classList.add("completado");
+    nivel.classList.add("completado");
 
-            progreso.push(index);
+    progreso.push(index);
 
-            localStorage.setItem(
-                "progreso",
-                JSON.stringify(progreso)
-            );
+    localStorage.setItem(
+        "progreso",
+        JSON.stringify(progreso)
+    );
 
-        }
+    // Mover el canguro
+    moverCohete(nivel);
+
+    // Hacerlo saltar
+    cohete.classList.remove("saltando");
+
+    void cohete.offsetWidth;
+
+    cohete.classList.add("saltando");
+}
+
+
+        // ======================================
+        // MOVER CANGURO
+        // ======================================
+
+        moverCohete(nivel);
 
     });
 
@@ -114,7 +280,7 @@ niveles.forEach(nivel => {
 
 
 // ==========================================
-// CONTADOR DE NIVELES COMPLETADOS
+// CONTADOR
 // ==========================================
 
 function actualizarContador() {
@@ -122,7 +288,10 @@ function actualizarContador() {
     const total =
         document.querySelectorAll(".completado").length;
 
-    console.log("Niveles completados:", total);
+    console.log(
+        "Niveles completados:",
+        total
+    );
 
 }
 
@@ -130,7 +299,7 @@ setInterval(actualizarContador, 1000);
 
 
 // ==========================================
-// ANIMACIÓN DEL BOTÓN CONTINUAR
+// ANIMACIÓN CONTINUAR
 // ==========================================
 
 if (continuar) {
@@ -154,50 +323,7 @@ if (continuar) {
 
 
 // ==========================================
-// COHETE
-// ==========================================
-
-const cohete = document.getElementById("cohete");
-
-function moverCohete(nivel) {
-
-    if (!cohete) return;
-
-    const y = nivel.offsetTop;
-    const alturaNivel = nivel.offsetHeight;
-    const alturaCohete = cohete.offsetHeight;
-
-    cohete.classList.add("despegando");
-
-    cohete.style.top =
-        (y + alturaNivel / 2 - alturaCohete / 2) + "px";
-
-}
-
-
-// ==========================================
-// COHETE
-// ==========================================
-
-const cohete = document.getElementById("cohete");
-
-function moverCohete(nivel) {
-
-    if (!cohete) return;
-
-    const y = nivel.offsetTop;
-    const alturaNivel = nivel.offsetHeight;
-    const alturaCohete = cohete.offsetHeight;
-
-    cohete.classList.add("despegando");
-
-    cohete.style.top =
-        (y + alturaNivel / 2 - alturaCohete / 2) + "px";
-}
-
-
-// ==========================================
-// CARGAR AVATAR DEL HIJO ACTUAL
+// CARGAR AVATAR
 // ==========================================
 
 function cargarAvatarPerfil() {
@@ -208,19 +334,34 @@ function cargarAvatarPerfil() {
 
         .then(datos => {
 
-            console.log("Datos del hijo:", datos);
+            console.log(
+                "Datos del hijo:",
+                datos
+            );
+
 
             if (!datos.success) {
 
-                console.error(datos.mensaje);
+                console.error(
+                    datos.mensaje
+                );
+
                 return;
 
             }
 
-            const avatar =
-                document.getElementById("avatarPerfil");
 
-            if (avatar && datos.hijo.imagen_avatar) {
+            const avatar =
+                document.getElementById(
+                    "avatarPerfil"
+                );
+
+
+            if (
+                avatar &&
+                datos.hijo &&
+                datos.hijo.imagen_avatar
+            ) {
 
                 avatar.src =
                     datos.hijo.imagen_avatar;
@@ -242,25 +383,71 @@ function cargarAvatarPerfil() {
 
 
 // ==========================================
-// IR AL FINAL DE LA PÁGINA
+// POSICIÓN INICIAL DEL CANGURO
 // ==========================================
+function colocarCanguroInicial() {
+    if (!cohete || niveles.length === 0) return;
+    /*
+     * El primer lugar donde debe aparecer
+     * el canguro es el último nivel,
+     * porque la página comienza visualmente
+     * desde la parte inferior.
+     */
+    let nivelInicial;
+    if (progreso.length > 0) {
+        /*
+         * Si ya existe progreso,
+         * buscamos el último nivel completado.
+         */
+        const ultimoIndice =
+            progreso[progreso.length - 1];
+        nivelInicial = niveles[ultimoIndice];
+    } else {
+        /*
+         * Si no hay progreso,
+         * comienza en el nivel inferior.
+         */
+        nivelInicial =
+            niveles[niveles.length - 1];
+    }
+    if (!nivelInicial) return;
+    /*
+     * Calculamos la posición después
+     * de que la página ya esté abajo.
+     */
+    moverCohete(nivelInicial);
+}
 
+
+// ==========================================
+// INICIAR PÁGINA
+// ==========================================
 window.addEventListener("load", () => {
-
+    /*
+     * Primero bajamos al final de la página.
+     */
+    window.scrollTo({
+        top: document.documentElement.scrollHeight,
+        behavior: "instant"
+    });
+    /*
+     * Esperamos un poco para que el navegador
+     * termine de colocar todos los elementos.
+     */
     setTimeout(() => {
-
-        window.scrollTo({
-            top: document.documentElement.scrollHeight,
-            behavior: "instant"
-        });
-
-    }, 300);
-
+        colocarCanguroInicial();
+    }, 500);
 });
 
 
 // ==========================================
-// INICIAR
+// INICIAR AVATAR
+// ==========================================
+
+cargarAvatarPerfil();
+
+// ==========================================
+// INICIAR AVATAR
 // ==========================================
 
 cargarAvatarPerfil();

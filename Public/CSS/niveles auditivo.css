@@ -6,15 +6,20 @@
 }
 
 body{
-    background:linear-gradient(180deg,#7fd8ff,#dff9ff);
-    overflow-x:hidden;
-    color:#333;
-    padding-top:130px;
-    padding-bottom:120px;
-    padding-left: 250px;
-    transition: padding-left 0.3s ease;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Nunito", sans-serif;
+    background: linear-gradient(180deg,#7fd8ff,#dff9ff);
+    overflow-x: hidden;
+    color: #333;
+    padding-top: 102px;
+    padding-bottom: 120px;
 }
 
+body:has(.sidebar:not(.cerrado)){
+    padding-left:250px;
+}
 
 body::before{
     content:"";
@@ -383,11 +388,9 @@ header{
     cursor:pointer;
     transition:.3s;
 }
-
 .footer button:hover{
     transform:translateY(-8px) scale(1.15);
 }
-
 @keyframes flotar{
 
     0%{
@@ -420,10 +423,7 @@ header{
     overflow:hidden;
     z-index:-1;
 }
-
-
 /* Césped */
-
 .paisaje::before{
     content:"";
     position:absolute;
@@ -433,10 +433,7 @@ header{
     height:120px;
     background:linear-gradient(#59c64b,#2e8b3d);
 }
-
-
 /* Colina */
-
 .paisaje::after{
     content:"";
     position:absolute;
@@ -447,10 +444,7 @@ header{
     background:#4caf50;
     border-radius:50%;
 }
-
-
 /* Arbustos */
-
 .arbustos{
     position:absolute;
     bottom:90px;
@@ -494,27 +488,54 @@ header{
      25px 20px #39b54a,
       0 35px #4ac65b;
 }
-
-
 /* Posiciones */
-
 .arbol1{left:3%; transform:scale(.8);}
 .arbol2{left:22%; transform:scale(1);}
 .arbol3{left:45%; transform:scale(1.2);}
 .arbol4{left:68%; transform:scale(.9);}
 .arbol5{left:88%; transform:scale(1.1);}
 
-#cohete{
-    position:absolute;
-    left:50%;
-    top:1000px; /* Ajusta este valor */
-    transform:translateX(-50%);
-    width:150px;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    z-index:100;
-    transition:top .8s ease;
+#cohete {
+    position: absolute;
+    width: 130px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 50;
+    left: 0;
+    top: 0;
+    transition:
+        left .8s ease,
+        top .8s ease;
+}
+
+#cohete img {
+    width: 130px;
+    z-index: 2;
+}
+
+#cohete.saltando {
+    animation: saltoCanguro 0.8s ease;
+}
+
+@keyframes saltoCanguro {
+
+    0% {
+        transform: translateY(0) scale(1);
+    }
+
+    30% {
+        transform: translateY(-80px) scale(1.1);
+    }
+
+    60% {
+        transform: translateY(-30px) scale(1.05);
+    }
+
+    100% {
+        transform: translateY(0) scale(1);
+    }
+
 }
 
 #cohete img{
@@ -639,13 +660,13 @@ header{
         font-size:40px;
     }
 
-    #cohete{
-        width:100px;
-    }
+    #cohete {
+    width: 90px;
+}
 
-    #cohete img{
-        width:90px;
-    }
+#cohete img {
+    width: 90px;
+}
 
     .sol{
         font-size:40px;
