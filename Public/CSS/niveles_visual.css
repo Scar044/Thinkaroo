@@ -6,19 +6,13 @@
 }
 
 body{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: "Nunito", sans-serif;
-    background: linear-gradient(180deg,#7fd8ff,#dff9ff);
-    overflow-x: hidden;
-    color: #333;
-    padding-top: 102px;
-    padding-bottom: 120px;
-}
-
-body:has(.sidebar:not(.cerrado)){
-    padding-left:250px;
+    background:linear-gradient(180deg,#7fd8ff,#dff9ff);
+    overflow-x:hidden;
+    color:#333;
+    padding-top:130px;
+    padding-bottom:120px;
+    padding-left: 250px;
+    transition: padding-left 0.3s ease;
 }
 
 body::before{
@@ -107,27 +101,21 @@ body::after{
 }
 
 @keyframes nube1{
-
     0%{transform:translateX(0);}
     50%{transform:translateX(70px);}
     100%{transform:translateX(0);}
-
 }
 
 @keyframes nube2{
-
     0%{transform:translateX(0);}
     50%{transform:translateX(-90px);}
     100%{transform:translateX(0);}
-
 }
 
 @keyframes nube3{
-
     0%{transform:translateX(0);}
     50%{transform:translateX(60px);}
     100%{transform:translateX(0);}
-
 }
 
 .sol{
@@ -139,19 +127,13 @@ body::after{
 }
 
 @keyframes girar{
-
     from{
-
         transform:rotate(0deg);
-
     }
 
     to{
-
         transform:rotate(360deg);
-
     }
-
 }
 
 
@@ -171,7 +153,6 @@ header{
 }
 
 .logo-contenedor{
-
     display:flex;
     align-items:center;
     gap:15px;
@@ -214,7 +195,6 @@ header{
 .item:hover{
     transform:translateY(-5px);
 }
-
 
 .unidad{
     width:92%;
@@ -267,6 +247,7 @@ header{
     align-items:center;
     position:relative;
 }
+
 .camino::before{
     content:"";
     position:absolute;
@@ -279,6 +260,7 @@ header{
     border-radius:30px;
     opacity:.5;
 }
+
 .cofre{
     width:130px;
     height:130px;
@@ -300,6 +282,7 @@ header{
 .cofre:hover{
     transform:scale(1.1);
 }
+
 .nivel{
     width:120px;
     height:120px;
@@ -317,6 +300,7 @@ header{
     box-shadow:0 10px 20px rgba(0,0,0,.25);
     animation:flotar 3s infinite ease-in-out;
 }
+
 .nivel:hover{
     transform:scale(1.12);
 }
@@ -328,6 +312,7 @@ header{
 .derecha{
     margin-left:260px;
 }
+
 .nivel:nth-child(2){background:#ff6b6b;}
 .nivel:nth-child(3){background:#4dabf7;}
 .nivel:nth-child(4){background:#51cf66;}
@@ -343,9 +328,7 @@ header{
 .nivel:nth-child(14){background:#22b8cf;}
 .nivel:nth-child(15){background:#fab005;}
 .continuar{
-
     background:white !important;
-
     color:#ff4081;
 }
 .continuar-btn{
@@ -360,7 +343,6 @@ header{
     animation:pulse 2s infinite;
 }
 @keyframes pulse{
-
     0%{transform:scale(1);}
     50%{transform:scale(1.08);}
     100%{transform:scale(1);}
@@ -388,32 +370,24 @@ header{
     cursor:pointer;
     transition:.3s;
 }
+
 .footer button:hover{
     transform:translateY(-8px) scale(1.15);
 }
+
 @keyframes flotar{
-
     0%{
-
         transform:translateY(0);
-
     }
-
     50%{
-
         transform:translateY(-8px);
-
     }
-
     100%{
-
         transform:translateY(0);
-
     }
-
 }
 .paisaje{
-  position:absolute;
+    position:absolute;
     left:0;
     top:0;
     width:100%;
@@ -423,7 +397,9 @@ header{
     overflow:hidden;
     z-index:-1;
 }
+
 /* Césped */
+
 .paisaje::before{
     content:"";
     position:absolute;
@@ -433,7 +409,9 @@ header{
     height:120px;
     background:linear-gradient(#59c64b,#2e8b3d);
 }
+
 /* Colina */
+
 .paisaje::after{
     content:"";
     position:absolute;
@@ -444,7 +422,9 @@ header{
     background:#4caf50;
     border-radius:50%;
 }
+
 /* Arbustos */
+
 .arbustos{
     position:absolute;
     bottom:90px;
@@ -460,7 +440,6 @@ header{
     bottom:105px;
     width:90px;
     height:170px;
-
 }
 
 .tronco{
@@ -488,30 +467,26 @@ header{
      25px 20px #39b54a,
       0 35px #4ac65b;
 }
+
 /* Posiciones */
+
 .arbol1{left:3%; transform:scale(.8);}
 .arbol2{left:22%; transform:scale(1);}
 .arbol3{left:45%; transform:scale(1.2);}
 .arbol4{left:68%; transform:scale(.9);}
 .arbol5{left:88%; transform:scale(1.1);}
 
-#cohete {
-    position: absolute;
-    width: 130px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 50;
-    left: 0;
-    top: 0;
-    transition:
-        left .8s ease,
-        top .8s ease;
-}
-
-#cohete img {
-    width: 130px;
-    z-index: 2;
+#cohete{
+    position:absolute;
+    left:50%;
+    top:1000px; /* Ajusta este valor */
+    transform:translateX(-50%);
+    width: 80px;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    z-index:50;
+    transition:top .8s ease, left 0.8 ease;
 }
 
 #cohete.saltando {
@@ -556,19 +531,12 @@ header{
 }
 
 @keyframes fuego{
-
     from{
-
         height:45px;
-
     }
-
     to{
-
         height:65px;
-
     }
-
 }
 
 /* Humo */
@@ -596,30 +564,20 @@ header{
 }
 
 @keyframes humo{
-
     0%{
-
         transform:translateY(0) scale(.5);
-
         opacity:1;
-
     }
-
     100%{
-
         transform:translateY(70px) scale(2);
-
         opacity:0;
-
     }
-
 }
 
 .despegando{
     transition:top 2s ease;
 }
 @media (max-width:768px){
-
     header{
         padding:10px 15px;
     }
@@ -660,13 +618,13 @@ header{
         font-size:40px;
     }
 
-    #cohete {
-    width: 90px;
-}
+    #cohete{
+        width:100px;
+    }
 
-#cohete img {
-    width: 90px;
-}
+    #cohete img{
+        width:90px;
+    }
 
     .sol{
         font-size:40px;
