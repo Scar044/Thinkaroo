@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="CSS/perfel.css">
+</head>
+<body>
+    <body>
+
+  <div class="contenedor">
+
+        <header>
+           <a href="#" class="flecha" id="volverNiveles">
+                🡠
+           </a>
+
+            <h1>ThinkaRoo</h1>
+        </header>
+
+
+        <h2>Perfil de usuario</h2>
+
+        <div class="tarjeta">
+
+            <div class="selector-hijo">
+            <button id="botonHijo">
+                <span id="hijoActual">Cargando...</span>
+                <span>▼</span>
+            </button>
+
+            <div id="listaHijos" class="lista-hijos"></div>
+            <div class="add"><a href="datosHijos.html"><button class="add">+</button></a></div>
+            </div>
+
+
+
+
+            <a href="avatares.html" class="foto">
+                <img 
+                    id="avatarHijo"
+                    src=""
+                    alt="Avatar del niño"
+                >
+
+                <div class="editar-avatar">
+                    <span>✎</span>
+                </div>
+            </a>
+
+            <i class="fa-solid fa-star estrella estrella1"></i>
+            <i class="fa-solid fa-star estrella estrella2"></i>
+
+            <h3 id="nombreHijo">
+                Cargando...
+            </h3>
+
+            <p class="tipo" id="tipoAprendizaje">
+                Cargando...
+            </p>
+
+            <p class="edad" id="edadHijo">
+                Cargando...
+            </p>
+
+            <div class="estadisticas">
+
+                <h4>📊 Estadísticas</h4>
+
+                <div class="info">
+                    <span>🏆 Logros obtenidos</span>
+                    <span id="logros"></span>
+                </div>
+
+                <div class="info">
+                    <span>⭐ Nivel actual</span>
+                    <span id="nivel"></span>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <script src="JS/perfil_padre.js"></script>
+
+
+</body>
+</html>
