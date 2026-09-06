@@ -2,8 +2,19 @@ body {
     font-family: Arial, sans-serif;
     text-align: center;
     background: #f0f8ff;
+    
 }
+body {
+    background-image: url("https://i.pinimg.com/1200x/fb/b7/d2/fbb7d2cc064f1755a86b1a2a109a4480.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
 
+    color: white;
+    overflow-x: hidden;
+    padding-bottom: 50px;
+}
 
 h1 {
     color: #333;
@@ -19,16 +30,19 @@ h1 {
 }
 
 .card {
-        width: 100px;
-        height: 100px;
-        background: #3498db;
-        border-radius: 8px;
-        cursor: pointer;
-        position: relative;
-        overflow: hidden;
-        user-select: none;
-    }
-
+    width: 100px;
+    height: 100px;
+    background-color: #3498db;
+    background-image: url("IMG/canguro.png");
+    background-size: 70%;
+    background-position: center;
+    background-repeat: no-repeat;
+    border-radius: 8px;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    user-select: none;
+}
 
 .card img {
 

@@ -11,17 +11,16 @@
 
 
 body {
-    min-height: 100vh;
+    background-image: url("https://i.pinimg.com/1200x/fb/b7/d2/fbb7d2cc064f1755a86b1a2a109a4480.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
 
-    background: rgb(245, 211, 117);
-
-    padding: 30px 15px 60px;
-
-    color: #004B87;
-
+    color: white;
     overflow-x: hidden;
+    padding-bottom: 50px;
 }
-
 
 /* ==========================================
    CONTENEDOR
@@ -76,7 +75,8 @@ h1 {
 ========================================== */
 
 .zona {
-    background: #b5e3ff;
+   background: transparent;
+    box-shadow: none;
 
     padding: 25px;
 
