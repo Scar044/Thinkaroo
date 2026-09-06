@@ -23,18 +23,18 @@ h1 {
 
 .game-board {
     display: grid;
-    grid-template-columns: repeat(4, 100px);
-    gap: 10px;
+    grid-template-columns: repeat(4, 150px);
+    gap: 15px;
     justify-content: center;
     margin-top: 20px;
 }
 
 .card {
-    width: 100px;
-    height: 100px;
-    background-color: #3498db;
-    background-image: url("IMG/canguro.png");
-    background-size: 70%;
+    width: 150px;
+    height: 150px;
+    background-color: #FFD519;
+    background-image: url("../IMG/canguro.png");
+    background-size: 100%;
     background-position: center;
     background-repeat: no-repeat;
     border-radius: 8px;
@@ -55,7 +55,15 @@ h1 {
 
 }
 
-
+.card[data-type="audio"]::after {
+    content: "🔊";
+    position: absolute;
+    top: 5px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 25px;
+    z-index: 5;
+}
 
 .card.flipped img {
 

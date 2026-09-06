@@ -94,14 +94,16 @@ cards.forEach(cardData=>{
         img.alt="Animal";
         card.appendChild(img);
 
-    }else{
+   }else{
 
-        const icon=document.createElement("div");
-        icon.classList.add("audio-icon");
-        icon.innerHTML="🔊";
-        card.appendChild(icon);
+    const img=document.createElement("img");
 
-    }
+    img.src="IMG/canguro2.png";
+    img.alt="Escuchar animal";
+
+    card.appendChild(img);
+
+}
 
     card.addEventListener("click",flipCard);
 
