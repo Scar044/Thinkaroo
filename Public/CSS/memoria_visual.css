@@ -367,3 +367,150 @@ p {
         font-size: 40px;
     }
 }
+
+.paisaje-granja {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    overflow: hidden;
+    pointer-events: none;
+}
+
+/* COLINAS */
+
+.colina {
+    position: absolute;
+    border-radius: 50%;
+}
+
+.colina1 {
+    width: 1200px;
+    height: 400px;
+    background: #b8e84a;
+    bottom: 100px;
+    left: -250px;
+}
+
+.colina2 {
+    width: 1000px;
+    height: 350px;
+    background: #9fd640;
+    bottom: 50px;
+    right: -150px;
+}
+
+/* MOLINO */
+
+.molino {
+    position: absolute;
+    left: 180px;
+    top: 130px;
+    width: 120px;
+    height: 220px;
+}
+
+.torre {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 12px;
+    height: 140px;
+    background: #8b5a2b;
+}
+
+.aspas {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    width: 90px;
+    height: 90px;
+    margin-left: -45px;
+    animation: girarMolino 8s linear infinite;
+}
+
+.aspas span {
+    position: absolute;
+    left: 41px;
+    top: 0;
+    width: 8px;
+    height: 45px;
+    background: #c77d00;
+    transform-origin: center 45px;
+}
+
+.aspas span:nth-child(1) {
+    transform: rotate(0deg);
+}
+
+.aspas span:nth-child(2) {
+    transform: rotate(90deg);
+}
+
+.aspas span:nth-child(3) {
+    transform: rotate(180deg);
+}
+
+.aspas span:nth-child(4) {
+    transform: rotate(270deg);
+}
+
+@keyframes girarMolino {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* GRANERO */
+
+.granero {
+    position: absolute;
+    top: 150px;
+    right: 100px;
+    width: 220px;
+    height: 170px;
+    background: #d94a38;
+}
+
+.techo {
+    position: absolute;
+    top: -70px;
+    left: -10px;
+    width: 240px;
+    height: 80px;
+    background: #eeeeee;
+    clip-path: polygon(50% 0%, 100% 100%, 0% 100%);
+}
+
+.ventana {
+    position: absolute;
+    top: 20px;
+    left: 85px;
+    width: 50px;
+    height: 55px;
+    background: white;
+    border-radius: 25px 25px 5px 5px;
+}
+
+.puertas {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+.puerta {
+    width: 55px;
+    height: 85px;
+    background: white;
+    border: 3px solid #d0d0d0;
+}
