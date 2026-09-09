@@ -86,10 +86,11 @@ function moverCohete(nivel) {
     // POSICIÓN FINAL
     // ==========================================
 
-    const nuevaX =
-        centroX -
-        (anchoCohete / 2) +
-        window.scrollX;
+const nuevaX =
+    centroX -
+    (anchoCohete / 2) +
+    window.scrollX +
+    30;
 
     const nuevaY =
         centroY -

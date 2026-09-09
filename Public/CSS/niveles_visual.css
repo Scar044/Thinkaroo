@@ -169,9 +169,14 @@ header{
 }
 
 .titulo p{
+
+
     color:#555;
+
     font-size:16px;
+
     font-weight:700;
+
 }
 
 .estadisticas{
@@ -478,15 +483,14 @@ header{
 
 #cohete{
     position:absolute;
-    left:50%;
-    top:1000px; /* Ajusta este valor */
+    left:calc(60% + 100px);
+    top:1000px;
     transform:translateX(-50%);
-    width: 80px;
+    width:80px;
     display:flex;
     justify-content:center;
     align-items:center;
     z-index:50;
-    transition:top .8s ease, left 0.8 ease;
 }
 
 #cohete.saltando {

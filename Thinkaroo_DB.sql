@@ -46,7 +46,7 @@ CREATE TABLE Hijos(
     Id_usuario INT NOT NULL,
     nombre VARCHAR(100) NOT NULL,
     edad INT NOT NULL,
-    Id_avatar INT NULL,
+    Id_avatar INT NULL DEFAULT 1,
     estilo_aprendizaje ENUM(
         'Visual',
         'Auditivo',

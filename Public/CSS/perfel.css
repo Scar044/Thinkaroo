@@ -13,6 +13,7 @@ html, body{
 }
 
 body{
+    
     background:#f5f5f5;
 }
 
@@ -27,11 +28,14 @@ body{
 }
 
 .contenedor{
-    width:900px;
-    background:white;
+    width:100%;
+    min-height:100vh;
     position:relative;
+    background-image:url("../IMG/fondo.jpg");
+    background-size:cover;
+    background-position:center;
+    background-repeat:no-repeat;
     overflow:hidden;
-    padding-bottom:40px;
 }
 
 header{

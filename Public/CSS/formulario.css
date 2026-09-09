@@ -8,7 +8,11 @@
 
 body{
     min-height:100vh;
-    background-color: rgb(245, 211, 117);
+   background-image: url("../IMG/Desert.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
     padding:20px 0;
 }
 
@@ -34,7 +38,7 @@ header{
     width: 90%;
     max-width: 700px;
     position: absolute;
-    background-color: #fff;
+    background-color: transparent;
     border: 5px solid orange;
     border-radius: 10px;
     padding: 30px 60px;

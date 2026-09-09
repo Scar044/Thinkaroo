@@ -2,8 +2,19 @@ body {
     font-family: Arial, sans-serif;
     text-align: center;
     background: #f0f8ff;
+    
 }
+body {
+    background-image: url("../IMG/Campo.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
 
+    color: white;
+    overflow-x: hidden;
+    padding-bottom: 50px;
+}
 
 h1 {
     color: #333;
@@ -12,23 +23,26 @@ h1 {
 
 .game-board {
     display: grid;
-    grid-template-columns: repeat(4, 100px);
-    gap: 10px;
+    grid-template-columns: repeat(4, 150px);
+    gap: 15px;
     justify-content: center;
     margin-top: 20px;
 }
 
 .card {
-        width: 100px;
-        height: 100px;
-        background: #3498db;
-        border-radius: 8px;
-        cursor: pointer;
-        position: relative;
-        overflow: hidden;
-        user-select: none;
-    }
-
+    width: 150px;
+    height: 150px;
+    background-color: #FFD519;
+    background-image: url("../IMG/canguro.png");
+    background-size: 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    border-radius: 8px;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    user-select: none;
+}
 
 .card img {
 
@@ -41,7 +55,15 @@ h1 {
 
 }
 
-
+.card[data-type="audio"]::after {
+    content: "🔊";
+    position: absolute;
+    top: 5px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 25px;
+    z-index: 5;
+}
 
 .card.flipped img {
 

@@ -11,7 +11,12 @@
    ========================================== */
 
 body {
-    background: rgb(245, 211, 117);
+    background-image: url("../IMG/Campo.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+
     color: white;
     overflow-x: hidden;
     padding-bottom: 50px;
@@ -60,10 +65,11 @@ p {
     margin-top: 30px;
     padding: 25px;
 
-    background: #b5e3ff;
+    background: transparent;
+
     border-radius: 28px;
 
-    box-shadow: 0 15px 30px rgba(0, 0, 0, .25);
+    box-shadow: none;
 }
 
 
@@ -145,7 +151,7 @@ p {
    ========================================== */
 
 .card-back {
-    background: #1EA4F2;
+    background: #FFD519;
 
     transform: rotateY(0deg);
 
@@ -158,12 +164,14 @@ p {
    ========================================== */
 
 .card-back::after {
-    content: "?";
-
-    font-size: 55px;
-    font-weight: bold;
-
-    color: white;
+    content: "";
+    display: block;
+    width: 80%;
+    height: 80%;
+   background-image: url("../IMG/canguro.png");
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
 }
 
 
@@ -367,6 +375,7 @@ p {
         font-size: 40px;
     }
 }
+<<<<<<< HEAD
 
 .paisaje-granja {
     position: fixed;
@@ -514,3 +523,5 @@ p {
     background: white;
     border: 3px solid #d0d0d0;
 }
+=======
+>>>>>>> 2f2f050c3b5d0d8e2218d3f14b92027e604ee9d4
