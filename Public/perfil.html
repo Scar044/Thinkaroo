@@ -1,40 +1,43 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Perfil</title>
+
     <link rel="stylesheet" href="CSS/perfel.css">
 </head>
-<body>
-    <body>
 
-  <div class="contenedor">
+<body>
+
+    <div class="contenedor">
 
         <header>
-           <a href="#" class="flecha" id="volverNiveles">
-                🡠
-           </a>
-
+            <a href="#" class="flecha" id="volverNiveles">🡠</a>
             <h1>ThinkaRoo</h1>
         </header>
-
 
         <h2>Perfil de usuario</h2>
 
         <div class="selector-hijo">
+
             <button id="botonHijo">
                 <span id="hijoActual">Cargando...</span>
                 <span>▼</span>
             </button>
 
             <div id="listaHijos" class="lista-hijos"></div>
-            <div class="add"><a href="datosHijos.html"><button class="add">+</button></a></div>
+
+            <a href="datosHijos.html" class="boton-agregar">
+                +
+            </a>
+
         </div>
 
         <div class="tarjeta">
 
             <a href="avatares.html" class="foto">
+
                 <img 
                     id="avatarHijo"
                     src=""
@@ -44,14 +47,13 @@
                 <div class="editar-avatar">
                     <span>✎</span>
                 </div>
+
             </a>
 
             <i class="fa-solid fa-star estrella estrella1"></i>
             <i class="fa-solid fa-star estrella estrella2"></i>
 
-            <h3 id="nombreHijo">
-                Cargando...
-            </h3>
+            <h3 id="nombreHijo">Cargando...</h3>
 
             <p class="tipo" id="tipoAprendizaje">
                 Cargando...
@@ -82,7 +84,6 @@
     </div>
 
     <script src="JS/perfel.js"></script>
-
 
 </body>
 </html>
