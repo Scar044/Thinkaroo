@@ -151,7 +151,7 @@ p {
    ========================================== */
 
 .card-back {
-    background: #FFD519;
+    background: transparent;
 
     transform: rotateY(0deg);
 
@@ -168,7 +168,7 @@ p {
     display: block;
     width: 80%;
     height: 80%;
-   background-image: url("../IMG/canguro.png");
+   background-image: url("../IMG/canguro4.png");
     background-size: contain;
     background-position: center;
     background-repeat: no-repeat;

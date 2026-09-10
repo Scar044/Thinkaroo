@@ -76,7 +76,8 @@ CREATE TABLE Logros_hijos (
     Id_logro INT NOT NULL,
     Fecha_obtenido DATETIME DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY(Id_logro) REFERENCES Logros(Id_logro),
-    FOREIGN KEY(Id_hijo) REFERENCES Hijos(Id_hijo)
+    FOREIGN KEY(Id_hijo) REFERENCES Hijos(Id_hijo),
+    UNIQUE (Id_hijo, Id_logro)
 );
 
 CREATE TABLE progreso(
