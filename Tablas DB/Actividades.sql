@@ -1,4 +1,3 @@
-USE Thinkaroo;
 CREATE TABLE Actividades(
 id_actividad INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
 id_tema INT NOT NULL,

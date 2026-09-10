@@ -11,8 +11,16 @@ fecha_creacion DATETIME DEFAULT CURRENT_TIMESTAMP
 CREATE TABLE Temas (
 id_tema INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
 numero_de_nivel INT UNIQUE,
-dificultad VARCHAR(50)
+dificultad VARCHAR(50),
+nombre_de_tema VARCHAR(100) UNIQUE
 );
+
+USE thinkaroo;
+INSERT INTO temas
+(id_tema, numero_de_nivel, dificultad)
+VALUES
+(1, 1, "BAJA"),
+(2, 2, "MEDIA");
 
 CREATE TABLE Logros(
     Id_logro INT AUTO_INCREMENT PRIMARY KEY,
