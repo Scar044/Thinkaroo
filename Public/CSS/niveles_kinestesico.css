@@ -226,32 +226,27 @@ body::after{
 }
 
 
-header{
+header {
+    position: fixed;
+    top: 10px;
+    left: 10px;
+    right: 10px;
+    width: auto;
 
-    position:fixed;
+    background: #FFD93D;
 
-    top:0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 
-    left:0;
+    padding: 8px 30px 3px 20px;
 
-    width:100%;
+    box-shadow: 0 5px 20px rgba(0,0,0,.15);
 
-    background:#FFD93D;
+    border-bottom: 5px solid #ffb300;
+    border-radius: 15px;
 
-    display:flex;
-
-    justify-content:space-between;
-
-    align-items:center;
-
-    padding:15px 30px, 5px 30px;   //*esto mueve la foto*//
-
-    box-shadow:0 5px 20px rgba(0,0,0,.15);
-
-    border-bottom:8px solid #ffb300;
-
-    z-index:999;
-
+    z-index: 999;
 }
 
 .logo-contenedor{
