@@ -17,10 +17,10 @@ nombre_de_tema VARCHAR(100) UNIQUE
 
 USE thinkaroo;
 INSERT INTO temas
-(id_tema, numero_de_nivel, dificultad)
+(id_tema, numero_de_nivel, dificultad, nombre_de_tema)
 VALUES
-(1, 1, "BAJA"),
-(2, 2, "MEDIA");
+(1, 1, "BAJA", "Animales"),
+(2, 2, "MEDIA", "Figuras");
 
 CREATE TABLE Logros(
     Id_logro INT AUTO_INCREMENT PRIMARY KEY,
@@ -73,10 +73,15 @@ numero_de_clase INT NOT NULL,
 descripcion TEXT,
 instrucciones TEXT NOT NULL,
 titulo VARCHAR(200),
-estado ENUM('sin iniciar','en proceso','completado') NOT NULL,
 audio_instrucciones_url VARCHAR(255) NOT NULL,
 FOREIGN KEY(id_tema) REFERENCES Temas(id_tema)
 );
+
+USE thinkaroo;
+INSERT INTO actividades
+(id_actividad, id_tema, numero_de_clase, descripcion, instrucciones, titulo, audio_instrucciones_url)
+VALUES
+(1, 1, 1, "Juego de memoria con imagenes de animales", "Encuentra las parejas de animales", "memoria", "-" )
 
 CREATE TABLE Logros_hijos (
     Id_logro_hijo INT AUTO_INCREMENT PRIMARY KEY,
