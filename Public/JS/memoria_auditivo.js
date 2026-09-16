@@ -98,7 +98,7 @@ cards.forEach(cardData=>{
 
     const img=document.createElement("img");
 
-    img.src="IMG/canguro2.png";
+    img.src="IMG/bocina.png";
     img.alt="Escuchar animal";
 
     card.appendChild(img);
