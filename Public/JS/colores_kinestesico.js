@@ -1,4 +1,3 @@
-```javascript
 // ==========================================
 // VARIABLES DEL JUEGO
 // ==========================================
@@ -25,20 +24,20 @@ const objetos = [
     },
 
     {
-        nombre: "baya",
-        emoji: "🫐",
+        nombre: "ballena",
+        emoji: "🐳",
         color: "azul"
     },
 
     {
-        nombre: "limón",
-        emoji: "🍋",
+        nombre: "queso",
+        emoji: "🧀",
         color: "amarillo"
     },
 
     {
-        nombre: "manzana verde",
-        emoji: "🍏",
+        nombre: "brocoli",
+        emoji: "🥦",
         color: "verde"
     }
 
@@ -421,4 +420,3 @@ function reiniciarJuego() {
 // ==========================================
 
 crearRonda();
-```
