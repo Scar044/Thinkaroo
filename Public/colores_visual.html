@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Juego de Colores</title>
+
+    <link rel="stylesheet" href="CSS/colores_visual.css">
+</head>
+
+<body>
+
+    <div class="juego">
+
+        <h1>🌈 Encuentra el Color</h1>
+
+        <p>
+            Observa el nombre y selecciona el color correcto.
+        </p>
+
+        <div class="datos">
+            <span>⭐ Puntos: <b id="puntos">0</b></span>
+            <span>🎯 Ronda: <b id="ronda">1</b> / 5</span>
+        </div>
+
+        <h2 id="pregunta">
+            ¿Dónde está el ROJO?
+        </h2>
+
+        <div id="opciones" class="opciones">
+
+        </div>
+
+        <div id="mensaje"></div>
+
+        <button id="siguiente" onclick="siguienteRonda()">
+            Siguiente ➜
+        </button>
+
+    </div>
+
+    <script src="JS/colores_visual.js"></script>
+
+</body>
+
+</html>
