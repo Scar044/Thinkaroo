@@ -4,31 +4,29 @@
 
 
 body {
-
     margin: 0;
-    padding: 20px;
+    padding: 0;
 
-    min-height: 100vh;
+    background-image: url("../IMG/fondo-colores.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
 
     font-family: Arial, sans-serif;
 
-    background: #e9f8e6;
+    min-height: 100vh;
 
     display: flex;
-
     justify-content: center;
-
     align-items: center;
 }
 
-
 .juego {
+    width: 90%;
+    max-width: 700px;
 
-    width: 100%;
-
-    max-width: 750px;
-
-    background: white;
+    background-color: rgba(255, 255, 255, 0.75);
 
     padding: 30px;
 
@@ -36,7 +34,7 @@ body {
 
     text-align: center;
 
-    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.15);
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
 }
 
 
