@@ -17,7 +17,7 @@ const colores = [
 function crearRonda() {
 
     colorCorrecto =
-        colores[Math.floor(Math.random() * colores.length)];
+        colores[Math.floor(Math.random() * colores.length)];z
 
 
     // Mostrar pregunta

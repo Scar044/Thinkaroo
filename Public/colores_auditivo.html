@@ -1,0 +1,45 @@
+<!DOCTYPE html> <html lang="es"> <head> <meta charset="UTF-8"> <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Juego de Colores Auditivo</title>
+
+<link rel="stylesheet" href="CSS/colores_auditivo.css">
+
+</head> <body>
+<div class="juego">
+
+    <h1>🔊 Encuentra el Color</h1>
+
+    <p>
+        Escucha el color y haz clic en el círculo correcto.
+    </p>
+
+    <div class="datos">
+        <span>⭐ Puntos: <b id="puntos">0</b></span>
+        <span>🎯 Ronda: <b id="ronda">1</b> / 5</span>
+    </div>
+
+    <div class="instruccion">
+
+        <div class="icono-sonido">🔊</div>
+
+        <h2>Escucha con atención</h2>
+
+        <button id="escuchar" type="button">
+            🔊 Escuchar color
+        </button>
+
+    </div>
+
+    <div id="opciones" class="opciones">
+    </div>
+
+    <div id="mensaje"></div>
+
+    <button id="siguiente" type="button">
+        Siguiente ➜
+    </button>
+
+</div>
+
+<script src="JS/colores_auditivo.js"></script>
+
+</body> </html>
