@@ -1,0 +1,259 @@
+
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4fbff;
+    color: #333;
+}
+
+
+.logros-container {
+    width: 90%;
+    max-width: 1100px;
+    margin: 50px auto;
+    text-align: center;
+}
+
+
+h1 {
+    color: #3db5e6;
+    font-size: 42px;
+    margin-bottom: 10px;
+}
+
+.subtitulo {
+    font-size: 18px;
+    color: #666;
+    margin-bottom: 30px;
+}
+
+.progreso-general {
+    background: white;
+    border: 3px solid #3db5e6;
+    border-radius: 25px;
+
+    padding: 20px;
+    margin: 0 auto 45px;
+
+    max-width: 600px;
+}
+
+.progreso-general span {
+    font-size: 18px;
+}
+
+.barra {
+    width: 100%;
+    height: 15px;
+
+    background-color: #e5e5e5;
+
+    border-radius: 20px;
+
+    margin-top: 12px;
+
+    overflow: hidden;
+}
+
+.barra-progreso {
+    width: 0%;
+    height: 100%;
+
+    background-color: #ffd126;
+
+    border-radius: 20px;
+
+    transition: width 0.7s ease;
+}
+
+
+.logros-grid {
+    display: grid;
+
+    grid-template-columns: repeat(4, 1fr);
+
+    gap: 45px;
+
+    justify-items: center;
+}
+
+
+/* 
+INSIGNIAS circulitos
+*/
+
+.logro {
+    position: relative;
+
+    width: 150px;
+    height: 150px;
+
+    cursor: pointer;
+
+    transition: transform 0.25s ease;
+}
+
+.logro img {
+    width: 100%;
+    height: 100%;
+
+    object-fit: contain;
+
+    transition:
+        transform 0.25s ease,
+        filter 0.25s ease;
+}
+
+
+/* 
+LOGRO BLOQUEADO
+*/
+
+.logro.bloqueado img {
+    filter: grayscale(100%);
+    opacity: 0.45;
+}
+
+
+/* 
+HOVER
+*/
+
+.logro:hover {
+    transform: scale(1.08);
+}
+
+.logro:hover img {
+    transform: scale(1.08);
+}
+
+
+/* 
+INFORMACIÓN
+*/
+
+.info-logro {
+    position: absolute;
+
+    width: 230px;
+
+    left: 50%;
+    bottom: 170px;
+
+    transform: translateX(-50%) scale(0.9);
+
+    background-color: white;
+
+    border: 3px solid #3db5e6;
+
+    border-radius: 25px;
+
+    padding: 18px;
+
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+
+    opacity: 0;
+    visibility: hidden;
+
+    transition:
+        opacity 0.2s ease,
+        transform 0.2s ease;
+
+    z-index: 10;
+}
+
+
+/* 
+INFORMACIÓN desplegada
+*/
+
+.logro:hover .info-logro {
+    opacity: 1;
+    visibility: visible;
+
+    transform: translateX(-50%) scale(1);
+}
+
+
+.info-logro h2 {
+    color: #3db5e6;
+
+    font-size: 20px;
+
+    margin-bottom: 8px;
+}
+
+.info-logro p {
+    font-size: 14px;
+
+    line-height: 1.4;
+
+    margin-bottom: 8px;
+}
+
+.estado {
+    font-weight: bold;
+}
+
+.completado .estado {
+    color: #32bf81;
+}
+
+.bloqueado .estado {
+    color: #f7941d;
+}
+
+.contador {
+    display: inline-block;
+
+    background-color: #ffd126;
+
+    padding: 6px 12px;
+
+    border-radius: 15px;
+
+    font-weight: bold;
+}
+
+
+/* 
+RESPONSIVE
+*/
+
+@media (max-width: 900px) {
+
+    .logros-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+}
+
+@media (max-width: 650px) {
+
+    .logros-grid {
+        grid-template-columns: repeat(2, 1fr);
+
+        gap: 35px;
+    }
+
+    .logro {
+        width: 125px;
+        height: 125px;
+    }
+
+}
+
+@media (max-width: 400px) {
+
+    .logros-grid {
+        grid-template-columns: 1fr;
+    }
+
+}
+
