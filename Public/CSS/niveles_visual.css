@@ -651,17 +651,16 @@ header{
     max-width: 80px;
     border-radius: 100%;
 }
-.canguro-aprendizaje {
-    position: fixed;
-    left: 250px;
-    bottom: 70px;
+#canguroFijo {
+    position: absolute;
+    left: 600px;
+    top: 1000px;
     width: 300px;
-    z-index: 1000;
-    pointer-events: none;
+    z-index: 20;
 }
 
-.canguro-aprendizaje img {
-    width: 100%;
+#canguroFijo img {
+    width: 300px;
     height: auto;
     display: block;
 }
