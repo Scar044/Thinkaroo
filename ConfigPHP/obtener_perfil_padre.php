@@ -41,26 +41,16 @@ $idHijo = intval($_SESSION["id_hijo"]);
 
 
 // ==========================================
-// OBTENER DATOS DEL HIJO
+// OBTENER DATOS DEL USUARIO
 // ==========================================
 
 $sql = "
     SELECT
-        h.Id_hijo,
-        h.nombre,
-        h.edad,
-        h.Id_avatar,
-        h.estilo_aprendizaje,
-        h.Nivel_actual,
+        h.Id_usuario,
+        h.nombre_de_responsable,
         h.fecha_creacion,
 
-        a.Nombre AS nombre_avatar,
-        a.Imagen_url AS imagen_avatar
-
-    FROM Hijos h
-
-    LEFT JOIN Avatares a
-        ON h.Id_avatar = a.Id_avatar
+    FROM Usuario h
 
     WHERE h.Id_hijo = ?
 ";
@@ -82,7 +72,7 @@ if (!$stmt) {
 
 $stmt->bind_param(
     "i",
-    $idHijo
+    $idUsuario
 );
 
 
@@ -92,14 +82,14 @@ $stmt->execute();
 $resultado = $stmt->get_result();
 
 
-$hijo = $resultado->fetch_assoc();
+$usuario = $resultado->fetch_assoc();
 
 
-if (!$hijo) {
+if (!$usuario) {
 
     echo json_encode([
         "success" => false,
-        "mensaje" => "No se encontró el hijo con ID: " . $idHijo
+        "mensaje" => "No se encontró el usuario con ID: " . $idUsuario
     ]);
 
     exit;
@@ -107,28 +97,28 @@ if (!$hijo) {
 
 
 // ==========================================
-// OBTENER CANTIDAD DE LOGROS
+// OBTENER CANTIDAD DE HIJOS
 // ==========================================
 
 $sqlLogros = "
-    SELECT COUNT(*) AS total_logros
-    FROM Logros_hijos
-    WHERE Id_hijo = ?
+    SELECT COUNT(*) AS Id_usuario
+    FROM hijos
+    WHERE Id_usuario = ?
 ";
 
 
-$stmtLogros = $conn->prepare($sqlLogros);
+$stmtHijos = $conn->prepare($sqlLogros);
 
-$stmtLogros->bind_param(
+$stmtHijos->bind_param(
     "i",
-    $idHijo
+    $idUsuario
 );
 
-$stmtLogros->execute();
+$stmtHijos->execute();
 
-$resultadoLogros = $stmtLogros->get_result();
+$resultadoHijos = $stmtHijos->get_result();
 
-$logros = $resultadoLogros->fetch_assoc();
+$hijos = $resultadoHijos->fetch_assoc();
 
 
 // ==========================================
@@ -139,37 +129,19 @@ echo json_encode([
 
     "success" => true,
 
-    "hijo" => [
+    "Usuario" => [
 
-        "id_hijo" =>
-            $hijo["Id_hijo"],
+        "id_usuario" =>
+            $usuario["Id_usuario"],
 
         "nombre" =>
-            $hijo["nombre"],
-
-        "edad" =>
-            $hijo["edad"],
-
-        "id_avatar" =>
-            $hijo["Id_avatar"],
-
-        "nombre_avatar" =>
-            $hijo["nombre_avatar"],
-
-        "imagen_avatar" =>
-            $hijo["imagen_avatar"],
-
-        "estilo_aprendizaje" =>
-            $hijo["estilo_aprendizaje"],
-
-        "nivel_actual" =>
-            $hijo["Nivel_actual"],
+            $usuario["nombre_responsable"],        
 
         "fecha_creacion" =>
-            $hijo["fecha_creacion"],
+            $usuario["fecha_creacion"],
 
-        "total_logros" =>
-            $logros["total_logros"]
+        "total_hijos" =>
+            $usuario["total_hijos"]
 
     ]
 
@@ -177,7 +149,7 @@ echo json_encode([
 
 
 $stmt->close();
-$stmtLogros->close();
+$stmtHijos->close();
 $conn->close();
 
 ?>
