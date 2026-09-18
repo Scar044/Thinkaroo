@@ -651,3 +651,16 @@ header{
     max-width: 80px;
     border-radius: 100%;
 }
+#canguroFijo {
+    position: absolute;
+    left: 600px;
+    top: 1000px;
+    width: 300px;
+    z-index: 20;
+}
+
+#canguroFijo img {
+    width: 300px;
+    height: auto;
+    display: block;
+}

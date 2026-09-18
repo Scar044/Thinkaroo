@@ -1,31 +1,14 @@
-const botonHijo =
-    document.getElementById("botonHijo");
-
-const listaHijos =
-    document.getElementById("listaHijos");
-
-const hijoActual =
-    document.getElementById("hijoActual");
+const usuario = 
+document.getElementById("nombreUsuario");  
 
 
 // ==========================================
-// ABRIR / CERRAR DESPLEGABLE
+// CARGAR DATOS DEL USUARIO
 // ==========================================
 
-botonHijo.addEventListener("click", () => {
+function cargarPerfilPadre() {
 
-    listaHijos.classList.toggle("mostrar");
-
-});
-
-
-// ==========================================
-// CARGAR DATOS DEL HIJO ACTUAL
-// ==========================================
-
-function cargarPerfilHijo() {
-
-    fetch("../ConfigPHP/obtener_perfil_hijo.php")
+    fetch("../ConfigPHP/obtener_perfil_padre.php")
 
         .then(respuesta => respuesta.json())
 
@@ -47,79 +30,29 @@ function cargarPerfilHijo() {
             }
 
 
-            const hijo = datos.hijo;
+            const usuario = datos.usuario;
 
 
             // ==================================
             // NOMBRE
             // ==================================
 
-            document.getElementById(
-                "nombreHijo"
-            ).textContent = hijo.nombre;
+            document.getElementById("nombreUsuario"
+            ).textContent = usuario.nombre;
 
 
-            hijoActual.textContent =
-                hijo.nombre;
+            usuario.textContent =
+                usuario.nombre;
 
 
             // ==================================
-            // EDAD
+            // Hijos
             // ==================================
 
             document.getElementById(
-                "edadHijo"
+                "hijos"
             ).textContent =
-                hijo.edad + " años";
-
-
-            // ==================================
-            // ESTILO DE APRENDIZAJE
-            // ==================================
-
-            document.getElementById(
-                "tipoAprendizaje"
-            ).textContent =
-                hijo.estilo_aprendizaje ||
-                "Sin definir";
-
-
-            // ==================================
-            // NIVEL ACTUAL
-            // ==================================
-
-            document.getElementById(
-                "nivel"
-            ).textContent =
-                hijo.nivel_actual;
-
-
-            // ==================================
-            // LOGROS
-            // ==================================
-
-            document.getElementById(
-                "logros"
-            ).textContent =
-                hijo.total_logros;
-
-
-            // ==================================
-            // AVATAR
-            // ==================================
-
-            const avatar =
-                document.getElementById(
-                    "avatarHijo"
-                );
-
-
-            if (hijo.imagen_avatar) {
-
-                avatar.src =
-                    hijo.imagen_avatar;
-
-            }
+                usuario.total_hijos;
 
 
             // ==================================
@@ -127,38 +60,18 @@ function cargarPerfilHijo() {
             // ==================================
 
             console.log(
-                "ID del hijo:",
-                hijo.id_hijo
+                "ID del usuario:",
+                usuario.id_usuario
             );
 
             console.log(
                 "Nombre:",
-                hijo.nombre
+                usuario.nombre
             );
 
             console.log(
-                "Edad:",
-                hijo.edad
-            );
-
-            console.log(
-                "Avatar:",
-                hijo.imagen_avatar
-            );
-
-            console.log(
-                "Estilo:",
-                hijo.estilo_aprendizaje
-            );
-
-            console.log(
-                "Nivel:",
-                hijo.nivel_actual
-            );
-
-            console.log(
-                "Logros:",
-                hijo.total_logros
+                "Hijos:",
+                usuario.total_logros
             );
 
         })
@@ -173,11 +86,6 @@ function cargarPerfilHijo() {
         });
 
 }
-
-
-// ==========================================
-// OBTENER TODOS LOS HIJOS
-// ==========================================
 
 function cargarHijos() {
 
@@ -229,75 +137,7 @@ function cargarHijos() {
 
                         const idHijo =
                             boton.dataset.id;
-
-
-                        // ==============================
-                        // CAMBIAR SESIÓN DEL HIJO
-                        // ==============================
-
-                        fetch(
-                            "../ConfigPHP/cambiarHijo.php",
-                            {
-                                method: "POST",
-
-                                headers: {
-                                    "Content-Type":
-                                        "application/json"
-                                },
-
-                                body: JSON.stringify({
-                                    id_hijo:
-                                        idHijo
-                                })
-                            }
-                        )
-
-                        .then(respuesta =>
-                            respuesta.json()
-                        )
-
-                        .then(datos => {
-
-                            if (!datos.success) {
-
-                                alert(
-                                    datos.mensaje
-                                );
-
-                                return;
-                            }
-
-
-                            console.log(
-                                "Nueva sesión:",
-                                datos.id_hijo
-                            );
-
-
-                            // Cerrar menú
-
-                            listaHijos.classList.remove(
-                                "mostrar"
-                            );
-
-
-                            // Cargar los datos
-                            // del nuevo hijo
-
-                            cargarPerfilHijo();
-
-                        })
-
-                        .catch(error => {
-
-                            console.error(
-                                "Error al cambiar hijo:",
-                                error
-                            );
-
-                        });
-
-                    }
+                                                }
                 );
 
 
@@ -325,7 +165,7 @@ function cargarHijos() {
 // INICIAR PÁGINA
 // ==========================================
 
-cargarPerfilHijo();
+cargarPerfilPadre();
 
 cargarHijos();
 
@@ -335,7 +175,7 @@ cargarHijos();
 
 function irANiveles() {
 
-    fetch("../ConfigPHP/obtener_perfil_padre.php")
+    fetch("../ConfigPHP/obtener_perfil_hijo.php")
         .then(respuesta => respuesta.json())
         .then(datos => {
 

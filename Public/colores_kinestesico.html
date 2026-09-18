@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>¡Aprendamos los Colores!</title>
+    <link rel="stylesheet" href="CSS/colores_kinestesico.css">
+</head>
+
+<body>
+
+    <header>
+        <h1>🌈 ¡Aprendamos los Colores! 🌈</h1>
+        <p>Arrastra cada objeto a la caja de su mismo color</p>
+    </header>
+
+    <div class="info">
+        <div class="score">
+            ⭐ Aciertos: <span id="score">0</span> / 20
+        </div>
+
+        <div class="progress-container">
+            <div class="progress" id="progress"></div>
+        </div>
+    </div>
+
+    <main>
+
+        <h2 class="instruction">
+            🖐️ ¡Toca y arrastra los objetos!
+        </h2>
+
+        <section class="objects-area" id="objectsArea">
+            <!-- Los objetos aparecerán aquí mediante JavaScript -->
+        </section>
+
+        <section class="colors-area">
+
+            <div class="color-box red" data-color="rojo">
+                <h2>ROJO</h2>
+                <div class="basket">🧺</div>
+            </div>
+
+            <div class="color-box blue" data-color="azul">
+                <h2>AZUL</h2>
+                <div class="basket">🧺</div>
+            </div>
+
+            <div class="color-box yellow" data-color="amarillo">
+                <h2>AMARILLO</h2>
+                <div class="basket">🧺</div>
+            </div>
+
+            <div class="color-box green" data-color="verde">
+                <h2>VERDE</h2>
+                <div class="basket">🧺</div>
+            </div>
+
+        </section>
+
+    </main>
+
+    <div class="message" id="message"></div>
+
+    <div class="finish" id="finish">
+
+        <div class="finish-card">
+
+            <div class="trophy">🏆</div>
+
+            <h2>¡Excelente!</h2>
+
+            <p>
+                🎉 ¡Clasificaste todos los objetos! 🎉
+                <br>
+                ¡Aprendiste los colores!
+            </p>
+
+            <button id="restart">
+                🔄 Jugar de nuevo
+            </button>
+
+        </div>
+
+    </div>
+
+    <script src="JS/colores_kinestesicol.js"></script>
+
+</body>
+</html>
