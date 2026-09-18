@@ -1,5 +1,5 @@
 // ==========================================
-// VARIABLES
+// VARIABLES DEL JUEGO
 // ==========================================
 
 let puntos = 0;
@@ -12,12 +12,10 @@ let objetosCorrectos = 0;
 
 
 // ==========================================
-// OBJETOS DISPONIBLES
+// OBJETOS
 // ==========================================
 
 const objetos = [
-
-    // ROJOS
 
     {
         nombre: "manzana",
@@ -26,125 +24,20 @@ const objetos = [
     },
 
     {
-        nombre: "fresa",
-        emoji: "🍓",
-        color: "rojo"
-    },
-
-    {
-        nombre: "cereza",
-        emoji: "🍒",
-        color: "rojo"
-    },
-
-    {
-        nombre: "corazón",
-        emoji: "❤️",
-        color: "rojo"
-    },
-
-    {
-        nombre: "tomate",
-        emoji: "🍅",
-        color: "rojo"
-    },
-
-
-    // AZULES
-
-    {
-        nombre: "ballena",
-        emoji: "🐳",
+        nombre: "baya",
+        emoji: "🫐",
         color: "azul"
     },
 
     {
-        nombre: "pez",
-        emoji: "🐟",
-        color: "azul"
-    },
-
-    {
-        nombre: "gota de agua",
-        emoji: "💧",
-        color: "azul"
-    },
-
-    {
-        nombre: "globo azul",
-        emoji: "🎈",
-        color: "azul"
-    },
-
-    {
-        nombre: "carro azul",
-        emoji: "🚙",
-        color: "azul"
-    },
-
-
-    // AMARILLOS
-
-    {
-        nombre: "queso",
-        emoji: "🧀",
+        nombre: "limón",
+        emoji: "🍋",
         color: "amarillo"
-    },
-
-    {
-        nombre: "plátano",
-        emoji: "🍌",
-        color: "amarillo"
-    },
-
-    {
-        nombre: "sol",
-        emoji: "☀️",
-        color: "amarillo"
-    },
-
-    {
-        nombre: "estrella",
-        emoji: "⭐",
-        color: "amarillo"
-    },
-
-    {
-        nombre: "pollito",
-        emoji: "🐥",
-        color: "amarillo"
-    },
-
-
-    // VERDES
-
-    {
-        nombre: "brócoli",
-        emoji: "🥦",
-        color: "verde"
     },
 
     {
         nombre: "manzana verde",
         emoji: "🍏",
-        color: "verde"
-    },
-
-    {
-        nombre: "rana",
-        emoji: "🐸",
-        color: "verde"
-    },
-
-    {
-        nombre: "árbol",
-        emoji: "🌳",
-        color: "verde"
-    },
-
-    {
-        nombre: "trébol",
-        emoji: "🍀",
         color: "verde"
     }
 
@@ -152,66 +45,7 @@ const objetos = [
 
 
 // ==========================================
-// ELEMENTOS HTML
-// ==========================================
-
-const contenedorObjetos =
-    document.getElementById("objetos");
-
-const puntosHTML =
-    document.getElementById("puntos");
-
-const rondaHTML =
-    document.getElementById("ronda");
-
-const preguntaHTML =
-    document.getElementById("pregunta");
-
-const mensajeHTML =
-    document.getElementById("mensaje");
-
-const siguienteHTML =
-    document.getElementById("siguiente");
-
-const reiniciarHTML =
-    document.getElementById("reiniciar");
-
-
-// ==========================================
-// MEZCLAR ARRAY
-// ==========================================
-
-function mezclar(array) {
-
-    const copia = [...array];
-
-    for (
-        let i = copia.length - 1;
-        i > 0;
-        i--
-    ) {
-
-        const j =
-            Math.floor(
-                Math.random() * (i + 1)
-            );
-
-        [
-            copia[i],
-            copia[j]
-        ] =
-        [
-            copia[j],
-            copia[i]
-        ];
-    }
-
-    return copia;
-}
-
-
-// ==========================================
-// CREAR RONDA
+// CREAR UNA RONDA
 // ==========================================
 
 function crearRonda() {
@@ -220,118 +54,76 @@ function crearRonda() {
 
     objetosCorrectos = 0;
 
-    contenedorObjetos.innerHTML = "";
 
-    mensajeHTML.textContent = "";
+    document.getElementById("mensaje").textContent = "";
 
-    siguienteHTML.style.display = "none";
-
-    reiniciarHTML.style.display = "none";
+    document.getElementById("siguiente").style.display = "none";
 
 
-    preguntaHTML.textContent =
-        "¡Selecciona un objeto! 👆";
+    const contenedor =
+        document.getElementById("objetos");
 
 
-    /*
-    Seleccionamos un objeto
-    de cada color.
-    */
-
-    const colores = [
-        "rojo",
-        "azul",
-        "amarillo",
-        "verde"
-    ];
+    contenedor.innerHTML = "";
 
 
-    const objetosRonda = [];
+    // Mezclar objetos
+
+    let objetosMezclados = [...objetos];
+
+    objetosMezclados.sort(
+        () => Math.random() - 0.5
+    );
 
 
-    colores.forEach(color => {
+    // Crear cada objeto
 
-        const disponibles =
-            objetos.filter(
-                objeto =>
-                    objeto.color === color
-            );
+    objetosMezclados.forEach(function(item, indice) {
 
-
-        const mezclados =
-            mezclar(disponibles);
+        const boton =
+            document.createElement("button");
 
 
-        objetosRonda.push(
-            mezclados[0]
+        boton.classList.add("objeto");
+
+        boton.classList.add(item.color);
+
+
+        boton.textContent = item.emoji;
+
+
+        boton.dataset.color = item.color;
+
+
+        boton.dataset.id = indice;
+
+
+        boton.setAttribute(
+            "aria-label",
+            item.nombre
         );
+
+
+        // Seleccionar objeto
+
+        boton.addEventListener(
+            "click",
+            function() {
+
+                seleccionarObjeto(boton);
+
+            }
+        );
+
+
+        contenedor.appendChild(boton);
 
     });
 
 
-    /*
-    Mezclamos los cuatro objetos
-    para que aparezcan en
-    posiciones diferentes.
-    */
+    // Activar cajas
 
-    const objetosFinales =
-        mezclar(objetosRonda);
-
-
-    objetosFinales.forEach(
-        (item, indice) => {
-
-            const boton =
-                document.createElement("button");
-
-
-            boton.classList.add(
-                "objeto"
-            );
-
-
-            boton.classList.add(
-                item.color
-            );
-
-
-            boton.textContent =
-                item.emoji;
-
-
-            boton.dataset.color =
-                item.color;
-
-
-            boton.dataset.id =
-                indice;
-
-
-            boton.setAttribute(
-                "aria-label",
-                item.nombre
-            );
-
-
-            boton.addEventListener(
-                "click",
-                () => {
-
-                    seleccionarObjeto(
-                        boton
-                    );
-
-                }
-            );
-
-
-            contenedorObjetos.appendChild(
-                boton
-            );
-
-        }
-    );
+    activarCajas();
 }
 
 
@@ -341,28 +133,11 @@ function crearRonda() {
 
 function seleccionarObjeto(boton) {
 
-    /*
-    Si el objeto ya fue acertado,
-    no hacemos nada.
-    */
-
-    if (
-        boton.dataset.completado ===
-        "true"
-    ) {
-
-        return;
-    }
-
-
-    /*
-    Quitamos la selección
-    de los demás objetos.
-    */
+    // Quitar selección anterior
 
     document
         .querySelectorAll(".objeto")
-        .forEach(objeto => {
+        .forEach(function(objeto) {
 
             objeto.classList.remove(
                 "seleccionado"
@@ -371,13 +146,9 @@ function seleccionarObjeto(boton) {
         });
 
 
-    /*
-    Seleccionamos el objeto.
-    */
+    // Seleccionar nuevo objeto
 
-    boton.classList.add(
-        "seleccionado"
-    );
+    boton.classList.add("seleccionado");
 
 
     objetoSeleccionado = boton;
@@ -387,13 +158,15 @@ function seleccionarObjeto(boton) {
         boton.dataset.color;
 
 
-    preguntaHTML.textContent =
-        "Ahora busca el color " +
+    document.getElementById("pregunta").textContent =
+        "Ahora toca la caja " +
         color.toUpperCase() +
         " 👆";
 
 
-    mensajeHTML.textContent = "";
+    document.getElementById("mensaje").textContent =
+        "";
+
 }
 
 
@@ -401,40 +174,38 @@ function seleccionarObjeto(boton) {
 // ACTIVAR CAJAS
 // ==========================================
 
-document
-    .querySelectorAll(".caja")
-    .forEach(caja => {
+function activarCajas() {
 
-        caja.addEventListener(
-            "click",
-            () => {
+    const cajas =
+        document.querySelectorAll(".caja");
 
-                comprobarCaja(caja);
 
-            }
-        );
+    cajas.forEach(function(caja) {
+
+        caja.onclick = function() {
+
+            comprobarCaja(caja);
+
+        };
 
     });
 
+}
+
 
 // ==========================================
-// COMPROBAR RESPUESTA
+// COMPROBAR CAJA
 // ==========================================
 
 function comprobarCaja(caja) {
 
-    /*
-    Primero comprobamos
-    si hay un objeto seleccionado.
-    */
+    // Si no hay objeto seleccionado
 
-    if (
-        objetoSeleccionado === null
-    ) {
+    if (objetoSeleccionado === null) {
 
         mostrarMensaje(
             "👆 Primero selecciona un objeto.",
-            "#ff8f00"
+            "orange"
         );
 
         return;
@@ -449,50 +220,29 @@ function comprobarCaja(caja) {
         caja.dataset.color;
 
 
-    /*
-    RESPUESTA CORRECTA
-    */
+    // RESPUESTA CORRECTA
 
-    if (
-        colorObjeto === colorCaja
-    ) {
+    if (colorObjeto === colorCaja) {
 
         puntos += 10;
 
         objetosCorrectos++;
 
 
-        puntosHTML.textContent =
+        document.getElementById("puntos").textContent =
             puntos;
 
 
         mostrarMensaje(
             "🎉 ¡Muy bien!",
-            "#20a653"
+            "green"
         );
 
 
-        caja.classList.add(
-            "correcta"
-        );
+        // Ocultar objeto
 
-
-        setTimeout(() => {
-
-            caja.classList.remove(
-                "correcta"
-            );
-
-        }, 500);
-
-
-        /*
-        Marcamos el objeto
-        como completado.
-        */
-
-        objetoSeleccionado.dataset.completado =
-            "true";
+        objetoSeleccionado.style.visibility =
+            "hidden";
 
 
         objetoSeleccionado.classList.remove(
@@ -500,25 +250,16 @@ function comprobarCaja(caja) {
         );
 
 
-        objetoSeleccionado.style.visibility =
-            "hidden";
+        objetoSeleccionado = null;
 
 
-        objetoSeleccionado =
-            null;
-
-
-        preguntaHTML.textContent =
+        document.getElementById("pregunta").textContent =
             "¡Busca otro objeto! 😊";
 
 
-        /*
-        ¿Terminó la ronda?
-        */
+        // Comprobar si terminó la ronda
 
-        if (
-            objetosCorrectos === 4
-        ) {
+        if (objetosCorrectos === objetos.length) {
 
             terminarRonda();
 
@@ -527,18 +268,17 @@ function comprobarCaja(caja) {
     }
 
 
-    /*
-    RESPUESTA INCORRECTA
-    */
+    // RESPUESTA INCORRECTA
 
     else {
 
         mostrarMensaje(
             "😊 Ese no es su color. ¡Inténtalo otra vez!",
-            "#ff8f00"
+            "orange"
         );
 
     }
+
 }
 
 
@@ -546,16 +286,16 @@ function comprobarCaja(caja) {
 // MOSTRAR MENSAJE
 // ==========================================
 
-function mostrarMensaje(
-    texto,
-    color
-) {
+function mostrarMensaje(texto, color) {
 
-    mensajeHTML.textContent =
-        texto;
+    const mensaje =
+        document.getElementById("mensaje");
 
-    mensajeHTML.style.color =
-        color;
+
+    mensaje.textContent = texto;
+
+    mensaje.style.color = color;
+
 }
 
 
@@ -565,19 +305,19 @@ function mostrarMensaje(
 
 function terminarRonda() {
 
-    preguntaHTML.textContent =
+    document.getElementById("pregunta").textContent =
         "🎉 ¡Completaste la ronda!";
 
 
     mostrarMensaje(
         "¡Excelente trabajo! ⭐",
-        "#20a653"
+        "green"
     );
 
 
     if (ronda < 5) {
 
-        siguienteHTML.style.display =
+        document.getElementById("siguiente").style.display =
             "block";
 
     } else {
@@ -585,6 +325,7 @@ function terminarRonda() {
         terminarJuego();
 
     }
+
 }
 
 
@@ -592,28 +333,21 @@ function terminarRonda() {
 // SIGUIENTE RONDA
 // ==========================================
 
-siguienteHTML.addEventListener(
-    "click",
-    siguienteRonda
-);
-
-
 function siguienteRonda() {
 
-    if (ronda >= 5) {
+    if (ronda < 5) {
 
-        return;
+        ronda++;
+
+
+        document.getElementById("ronda").textContent =
+            ronda;
+
+
+        crearRonda();
+
     }
 
-
-    ronda++;
-
-
-    rondaHTML.textContent =
-        ronda;
-
-
-    crearRonda();
 }
 
 
@@ -623,40 +357,35 @@ function siguienteRonda() {
 
 function terminarJuego() {
 
-    preguntaHTML.textContent =
+    document.getElementById("pregunta").textContent =
         "🏆 ¡Juego terminado!";
 
 
     mostrarMensaje(
-        "¡Conseguiste " +
-        puntos +
-        " puntos! ⭐",
-        "#20a653"
+        "Conseguiste " + puntos + " puntos ⭐",
+        "green"
     );
 
 
-    siguienteHTML.style.display =
+    document.getElementById("siguiente").style.display =
         "none";
 
 
-    reiniciarHTML.style.display =
+    document.getElementById("reiniciar").style.display =
         "block";
 
 
-    contenedorObjetos.innerHTML =
-        "🎉 🏆 🎉";
+    // Ocultar objetos
+
+    document.getElementById("objetos").innerHTML =
+        "";
+
 }
 
 
 // ==========================================
-// REINICIAR
+// REINICIAR JUEGO
 // ==========================================
-
-reiniciarHTML.addEventListener(
-    "click",
-    reiniciarJuego
-);
-
 
 function reiniciarJuego() {
 
@@ -669,24 +398,25 @@ function reiniciarJuego() {
     objetosCorrectos = 0;
 
 
-    puntosHTML.textContent =
-        "0";
+    document.getElementById("puntos").textContent =
+        puntos;
 
 
-    rondaHTML.textContent =
-        "1";
+    document.getElementById("ronda").textContent =
+        ronda;
 
 
-    mensajeHTML.textContent =
-        "";
+    document.getElementById("reiniciar").style.display =
+        "none";
 
 
     crearRonda();
+
 }
 
 
 // ==========================================
-// INICIAR
+// INICIAR JUEGO
 // ==========================================
 
 crearRonda();
