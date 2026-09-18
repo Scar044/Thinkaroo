@@ -2,44 +2,165 @@
 <html lang="es">
 
 <head>
+
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Juego de Colores</title>
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
 
-    <link rel="stylesheet" href="CSS/colores_visual.css">
+    <title>Colores - Juego Visual</title>
+
+    <link
+        rel="stylesheet"
+        href="CSS/colores_visual.css"
+    >
+
 </head>
+
 
 <body>
 
     <div class="juego">
 
-        <h1>🌈 Encuentra el Color</h1>
+        <h1>
+            🌈 ¡Une el Color!
+        </h1>
 
-        <p>
-            Observa el nombre y selecciona el color correcto.
+
+        <p class="instruccion">
+            👀 Mira el objeto, selecciónalo y después
+            toca su color.
         </p>
 
+
+        <!-- PUNTOS Y RONDA -->
+
         <div class="datos">
-            <span>⭐ Puntos: <b id="puntos">0</b></span>
-            <span>🎯 Ronda: <b id="ronda">1</b> / 5</span>
+
+            <span>
+                ⭐ Puntos:
+                <b id="puntos">0</b>
+            </span>
+
+
+            <span>
+                🎯 Ronda:
+                <b id="ronda">1</b> / 5
+            </span>
+
         </div>
+
+
+        <!-- PREGUNTA -->
 
         <h2 id="pregunta">
-            ¿Dónde está el ROJO?
+            ¡Selecciona un objeto! 👆
         </h2>
 
-        <div id="opciones" class="opciones">
+
+        <!-- OBJETOS -->
+
+        <div
+            id="objetos"
+            class="objetos"
+        ></div>
+
+
+        <!-- COLORES -->
+
+        <div class="cajas">
+
+            <button
+                class="caja caja-roja"
+                data-color="rojo"
+                aria-label="Color rojo"
+            >
+
+                🔴
+
+                <span>
+                    Rojo
+                </span>
+
+            </button>
+
+
+            <button
+                class="caja caja-azul"
+                data-color="azul"
+                aria-label="Color azul"
+            >
+
+                🔵
+
+                <span>
+                    Azul
+                </span>
+
+            </button>
+
+
+            <button
+                class="caja caja-amarilla"
+                data-color="amarillo"
+                aria-label="Color amarillo"
+            >
+
+                🟡
+
+                <span>
+                    Amarillo
+                </span>
+
+            </button>
+
+
+            <button
+                class="caja caja-verde"
+                data-color="verde"
+                aria-label="Color verde"
+            >
+
+                🟢
+
+                <span>
+                    Verde
+                </span>
+
+            </button>
 
         </div>
 
-        <div id="mensaje"></div>
 
-        <button id="siguiente" onclick="siguienteRonda()">
+        <!-- MENSAJE -->
+
+        <div
+            id="mensaje"
+            aria-live="polite"
+        ></div>
+
+
+        <!-- SIGUIENTE RONDA -->
+
+        <button
+            id="siguiente"
+        >
             Siguiente ➜
         </button>
 
+
+        <!-- REINICIAR -->
+
+        <button
+            id="reiniciar"
+        >
+            🔄 Jugar de nuevo
+        </button>
+
     </div>
+
 
     <script src="JS/colores_visual.js"></script>
 

@@ -1,112 +1,90 @@
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>Colores - Juego Kinestésico</title>
-
+    <title>¡Aprendamos los Colores!</title>
     <link rel="stylesheet" href="CSS/colores_kinestesico.css">
 </head>
 
 <body>
 
-    <div class="juego">
+    <header>
+        <h1>🌈 ¡Aprendamos los Colores! 🌈</h1>
+        <p>Arrastra cada objeto a la caja de su mismo color</p>
+    </header>
 
-        <h1>🌈 ¡Ordena los Colores!</h1>
-
-        <p class="instruccion">
-            Toca un objeto y después toca la caja de su mismo color.
-        </p>
-
-
-        <!-- PUNTOS Y RONDA -->
-
-        <div class="datos">
-
-            <span>
-                ⭐ Puntos:
-                <b id="puntos">0</b>
-            </span>
-
-            <span>
-                🎯 Ronda:
-                <b id="ronda">1</b> / 5
-            </span>
-
+    <div class="info">
+        <div class="score">
+            ⭐ Aciertos: <span id="score">0</span> / 20
         </div>
 
+        <div class="progress-container">
+            <div class="progress" id="progress"></div>
+        </div>
+    </div>
 
-        <h2 id="pregunta">
-            ¡Selecciona un objeto!
+    <main>
+
+        <h2 class="instruction">
+            🖐️ ¡Toca y arrastra los objetos!
         </h2>
 
+        <section class="objects-area" id="objectsArea">
+            <!-- Los objetos aparecerán aquí mediante JavaScript -->
+        </section>
 
-        <!-- OBJETOS -->
+        <section class="colors-area">
 
-        <div id="objetos" class="objetos">
+            <div class="color-box red" data-color="rojo">
+                <h2>ROJO</h2>
+                <div class="basket">🧺</div>
+            </div>
+
+            <div class="color-box blue" data-color="azul">
+                <h2>AZUL</h2>
+                <div class="basket">🧺</div>
+            </div>
+
+            <div class="color-box yellow" data-color="amarillo">
+                <h2>AMARILLO</h2>
+                <div class="basket">🧺</div>
+            </div>
+
+            <div class="color-box green" data-color="verde">
+                <h2>VERDE</h2>
+                <div class="basket">🧺</div>
+            </div>
+
+        </section>
+
+    </main>
+
+    <div class="message" id="message"></div>
+
+    <div class="finish" id="finish">
+
+        <div class="finish-card">
+
+            <div class="trophy">🏆</div>
+
+            <h2>¡Excelente!</h2>
+
+            <p>
+                🎉 ¡Clasificaste todos los objetos! 🎉
+                <br>
+                ¡Aprendiste los colores!
+            </p>
+
+            <button id="restart">
+                🔄 Jugar de nuevo
+            </button>
+
         </div>
-
-
-        <!-- CAJAS DE COLORES -->
-
-        <div class="cajas">
-
-            <button class="caja caja-roja" data-color="rojo">
-                🔴
-                <span>Rojo</span>
-            </button>
-
-            <button class="caja caja-azul" data-color="azul">
-                🔵
-                <span>Azul</span>
-            </button>
-
-            <button class="caja caja-amarilla" data-color="amarillo">
-                🟡
-                <span>Amarillo</span>
-            </button>
-
-            <button class="caja caja-verde" data-color="verde">
-                🟢
-                <span>Verde</span>
-            </button>
-
-        </div>
-
-
-        <!-- MENSAJE -->
-
-        <div id="mensaje"></div>
-
-
-        <!-- SIGUIENTE -->
-
-        <button
-            id="siguiente"
-            onclick="siguienteRonda()">
-
-            Siguiente ➜
-
-        </button>
-
-
-        <!-- REINICIAR -->
-
-        <button
-            id="reiniciar"
-            onclick="reiniciarJuego()">
-
-            🔄 Jugar de nuevo
-
-        </button>
 
     </div>
 
-
-    <script src="JS/colores_kinestesico.js"></script>
+    <script src="JS/colores_kinestesicol.js"></script>
 
 </body>
-
 </html>
