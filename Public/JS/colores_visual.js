@@ -1,169 +1,422 @@
+// ==========================================
+// VARIABLES DEL JUEGO
+// ==========================================
+
 let puntos = 0;
+
 let ronda = 1;
 
-let colorCorrecto = "";
+let objetoSeleccionado = null;
 
-const colores = [
-    "rojo",
-    "azul",
-    "amarillo",
-    "verde",
-    "morado"
+let objetosCorrectos = 0;
+
+
+// ==========================================
+// OBJETOS
+// ==========================================
+
+const objetos = [
+
+    {
+        nombre: "manzana",
+        emoji: "🍎",
+        color: "rojo"
+    },
+
+    {
+        nombre: "baya",
+        emoji: "🫐",
+        color: "azul"
+    },
+
+    {
+        nombre: "limón",
+        emoji: "🍋",
+        color: "amarillo"
+    },
+
+    {
+        nombre: "manzana verde",
+        emoji: "🍏",
+        color: "verde"
+    }
+
 ];
 
 
+// ==========================================
 // CREAR UNA RONDA
+// ==========================================
 
 function crearRonda() {
 
-    colorCorrecto =
-        colores[Math.floor(Math.random() * colores.length)];z
+    objetoSeleccionado = null;
 
+    objetosCorrectos = 0;
 
-    // Mostrar pregunta
-
-    document.getElementById("pregunta").textContent =
-        "¿Dónde está el " + colorCorrecto.toUpperCase() + "?";
-
-
-    // Obtener contenedor
-
-    let opciones =
-        document.getElementById("opciones");
-
-
-    // Limpiar opciones anteriores
-
-    opciones.innerHTML = "";
-
-
-    // Mezclar colores
-
-    let coloresMezclados = [...colores];
-
-    coloresMezclados.sort(() => Math.random() - 0.5);
-
-
-    // Crear botones
-
-    coloresMezclados.forEach(function(color) {
-
-        let boton = document.createElement("button");
-
-        boton.classList.add("color");
-        boton.classList.add(color);
-
-        boton.onclick = function() {
-
-            comprobar(color);
-
-        };
-
-        opciones.appendChild(boton);
-
-    });
-
-
-    // Limpiar mensaje
 
     document.getElementById("mensaje").textContent = "";
 
     document.getElementById("siguiente").style.display = "none";
+
+
+    const contenedor =
+        document.getElementById("objetos");
+
+
+    contenedor.innerHTML = "";
+
+
+    // Mezclar objetos
+
+    let objetosMezclados = [...objetos];
+
+    objetosMezclados.sort(
+        () => Math.random() - 0.5
+    );
+
+
+    // Crear cada objeto
+
+    objetosMezclados.forEach(function(item, indice) {
+
+        const boton =
+            document.createElement("button");
+
+
+        boton.classList.add("objeto");
+
+        boton.classList.add(item.color);
+
+
+        boton.textContent = item.emoji;
+
+
+        boton.dataset.color = item.color;
+
+
+        boton.dataset.id = indice;
+
+
+        boton.setAttribute(
+            "aria-label",
+            item.nombre
+        );
+
+
+        // Seleccionar objeto
+
+        boton.addEventListener(
+            "click",
+            function() {
+
+                seleccionarObjeto(boton);
+
+            }
+        );
+
+
+        contenedor.appendChild(boton);
+
+    });
+
+
+    // Activar cajas
+
+    activarCajas();
 }
 
 
-// COMPROBAR RESPUESTA
+// ==========================================
+// SELECCIONAR OBJETO
+// ==========================================
 
-function comprobar(colorElegido) {
+function seleccionarObjeto(boton) {
 
-    let mensaje =
-        document.getElementById("mensaje");
+    // Quitar selección anterior
+
+    document
+        .querySelectorAll(".objeto")
+        .forEach(function(objeto) {
+
+            objeto.classList.remove(
+                "seleccionado"
+            );
+
+        });
 
 
-    if (colorElegido === colorCorrecto) {
+    // Seleccionar nuevo objeto
 
-        puntos = puntos + 10;
+    boton.classList.add("seleccionado");
+
+
+    objetoSeleccionado = boton;
+
+
+    const color =
+        boton.dataset.color;
+
+
+    document.getElementById("pregunta").textContent =
+        "Ahora toca la caja " +
+        color.toUpperCase() +
+        " 👆";
+
+
+    document.getElementById("mensaje").textContent =
+        "";
+
+}
+
+
+// ==========================================
+// ACTIVAR CAJAS
+// ==========================================
+
+function activarCajas() {
+
+    const cajas =
+        document.querySelectorAll(".caja");
+
+
+    cajas.forEach(function(caja) {
+
+        caja.onclick = function() {
+
+            comprobarCaja(caja);
+
+        };
+
+    });
+
+}
+
+
+// ==========================================
+// COMPROBAR CAJA
+// ==========================================
+
+function comprobarCaja(caja) {
+
+    // Si no hay objeto seleccionado
+
+    if (objetoSeleccionado === null) {
+
+        mostrarMensaje(
+            "👆 Primero selecciona un objeto.",
+            "orange"
+        );
+
+        return;
+    }
+
+
+    const colorObjeto =
+        objetoSeleccionado.dataset.color;
+
+
+    const colorCaja =
+        caja.dataset.color;
+
+
+    // RESPUESTA CORRECTA
+
+    if (colorObjeto === colorCaja) {
+
+        puntos += 10;
+
+        objetosCorrectos++;
+
 
         document.getElementById("puntos").textContent =
             puntos;
 
 
-        mensaje.textContent =
-            "🎉 ¡Muy bien!";
+        mostrarMensaje(
+            "🎉 ¡Muy bien!",
+            "green"
+        );
 
 
-        mensaje.style.color = "green";
+        // Ocultar objeto
+
+        objetoSeleccionado.style.visibility =
+            "hidden";
 
 
-        document.getElementById("siguiente").style.display =
-            "block";
+        objetoSeleccionado.classList.remove(
+            "seleccionado"
+        );
 
 
-        // Desactivar botones
-
-        let botones =
-            document.querySelectorAll(".color");
+        objetoSeleccionado = null;
 
 
-        botones.forEach(function(boton) {
-
-            boton.disabled = true;
-
-        });
+        document.getElementById("pregunta").textContent =
+            "¡Busca otro objeto! 😊";
 
 
-    } else {
+        // Comprobar si terminó la ronda
 
-        mensaje.textContent =
-            "😊 Inténtalo otra vez";
+        if (objetosCorrectos === objetos.length) {
 
-        mensaje.style.color = "orange";
+            terminarRonda();
+
+        }
 
     }
+
+
+    // RESPUESTA INCORRECTA
+
+    else {
+
+        mostrarMensaje(
+            "😊 Ese no es su color. ¡Inténtalo otra vez!",
+            "orange"
+        );
+
+    }
+
 }
 
 
-// SIGUIENTE RONDA
+// ==========================================
+// MOSTRAR MENSAJE
+// ==========================================
 
-function siguienteRonda() {
+function mostrarMensaje(texto, color) {
+
+    const mensaje =
+        document.getElementById("mensaje");
+
+
+    mensaje.textContent = texto;
+
+    mensaje.style.color = color;
+
+}
+
+
+// ==========================================
+// TERMINAR RONDA
+// ==========================================
+
+function terminarRonda() {
+
+    document.getElementById("pregunta").textContent =
+        "🎉 ¡Completaste la ronda!";
+
+
+    mostrarMensaje(
+        "¡Excelente trabajo! ⭐",
+        "green"
+    );
+
 
     if (ronda < 5) {
 
-        ronda = ronda + 1;
-
-        document.getElementById("ronda").textContent =
-            ronda;
-
-        crearRonda();
+        document.getElementById("siguiente").style.display =
+            "block";
 
     } else {
 
         terminarJuego();
 
     }
+
 }
 
 
-// TERMINAR
+// ==========================================
+// SIGUIENTE RONDA
+// ==========================================
+
+function siguienteRonda() {
+
+    if (ronda < 5) {
+
+        ronda++;
+
+
+        document.getElementById("ronda").textContent =
+            ronda;
+
+
+        crearRonda();
+
+    }
+
+}
+
+
+// ==========================================
+// TERMINAR JUEGO
+// ==========================================
 
 function terminarJuego() {
 
-    document.getElementById("opciones").innerHTML = "";
-
     document.getElementById("pregunta").textContent =
-        "🎉 ¡Juego terminado!";
+        "🏆 ¡Juego terminado!";
 
-    document.getElementById("mensaje").textContent =
-        "Conseguiste " + puntos + " puntos ⭐";
 
-    document.getElementById("mensaje").style.color =
-        "green";
+    mostrarMensaje(
+        "Conseguiste " + puntos + " puntos ⭐",
+        "green"
+    );
+
 
     document.getElementById("siguiente").style.display =
         "none";
+
+
+    document.getElementById("reiniciar").style.display =
+        "block";
+
+
+    // Ocultar objetos
+
+    document.getElementById("objetos").innerHTML =
+        "";
+
 }
 
 
+// ==========================================
+// REINICIAR JUEGO
+// ==========================================
+
+function reiniciarJuego() {
+
+    puntos = 0;
+
+    ronda = 1;
+
+    objetoSeleccionado = null;
+
+    objetosCorrectos = 0;
+
+
+    document.getElementById("puntos").textContent =
+        puntos;
+
+
+    document.getElementById("ronda").textContent =
+        ronda;
+
+
+    document.getElementById("reiniciar").style.display =
+        "none";
+
+
+    crearRonda();
+
+}
+
+
+// ==========================================
 // INICIAR JUEGO
+// ==========================================
 
 crearRonda();

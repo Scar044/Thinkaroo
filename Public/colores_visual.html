@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Juego de Colores</title>
+    <title>Colores - Juego Kinestésico</title>
 
     <link rel="stylesheet" href="CSS/colores_visual.css">
 </head>
@@ -14,32 +14,96 @@
 
     <div class="juego">
 
-        <h1>🌈 Encuentra el Color</h1>
+        <h1>🌈 ¡Ordena los Colores!</h1>
 
-        <p>
-            Observa el nombre y selecciona el color correcto.
+        <p class="instruccion">
+            Toca un objeto y después toca la caja de su mismo color.
         </p>
 
+
+        <!-- PUNTOS Y RONDA -->
+
         <div class="datos">
-            <span>⭐ Puntos: <b id="puntos">0</b></span>
-            <span>🎯 Ronda: <b id="ronda">1</b> / 5</span>
+
+            <span>
+                ⭐ Puntos:
+                <b id="puntos">0</b>
+            </span>
+
+            <span>
+                🎯 Ronda:
+                <b id="ronda">1</b> / 5
+            </span>
+
         </div>
+
 
         <h2 id="pregunta">
-            ¿Dónde está el ROJO?
+            ¡Selecciona un objeto!
         </h2>
 
-        <div id="opciones" class="opciones">
+
+        <!-- OBJETOS -->
+
+        <div id="objetos" class="objetos">
+        </div>
+
+
+        <!-- CAJAS DE COLORES -->
+
+        <div class="cajas">
+
+            <button class="caja caja-roja" data-color="rojo">
+                🔴
+                <span>Rojo</span>
+            </button>
+
+            <button class="caja caja-azul" data-color="azul">
+                🔵
+                <span>Azul</span>
+            </button>
+
+            <button class="caja caja-amarilla" data-color="amarillo">
+                🟡
+                <span>Amarillo</span>
+            </button>
+
+            <button class="caja caja-verde" data-color="verde">
+                🟢
+                <span>Verde</span>
+            </button>
 
         </div>
+
+
+        <!-- MENSAJE -->
 
         <div id="mensaje"></div>
 
-        <button id="siguiente" onclick="siguienteRonda()">
+
+        <!-- SIGUIENTE -->
+
+        <button
+            id="siguiente"
+            onclick="siguienteRonda()">
+
             Siguiente ➜
+
+        </button>
+
+
+        <!-- REINICIAR -->
+
+        <button
+            id="reiniciar"
+            onclick="reiniciarJuego()">
+
+            🔄 Jugar de nuevo
+
         </button>
 
     </div>
+
 
     <script src="JS/colores_visual.js"></script>
 
