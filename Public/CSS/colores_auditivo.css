@@ -1,479 +1,530 @@
-{
-margin: 0;
-padding: 0;
-box-sizing: border-box;
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 
-font-family: "Nunito", Arial, sans-serif;
+    font-family: "Nunito", Arial, sans-serif;
 }
+
 
 body {
 
-min-height: 100vh;
+    min-height: 100vh;
 
-background-image: url("../IMG/fondo-colores.png");
+    background-image: url("../IMG/salon.png");
 
-background-size: cover;
+    background-size: cover;
 
-background-position: center;
+    background-position: center;
 
-background-repeat: no-repeat;
+    background-repeat: no-repeat;
 
-background-attachment: fixed;
+    background-attachment: fixed;
 
-padding: 20px 0;
-
+    padding: 20px 0;
 
 }
 
-/* ==========================================
-CAJA DEL JUEGO
-========================================== */
 
 .juego {
 
-width: 95%;
+    width: 100%;
 
-max-width: 900px;
+    max-width: 900px;
 
-margin: auto;
+    margin: auto;
 
-padding: 25px;
-
-text-align: center;
-
-background: white;
-
-border-radius: 30px;
-
-box-shadow:
-    0 15px 35px rgba(0, 0, 0, .20);
-
+    text-align: center;
 
 }
 
+
 /* ==========================================
-TÍTULO
+   TÍTULO
 ========================================== */
 
-header h1 {
+.juego h1 {
 
-background: #FFD519;
+    background: #FFD519;
 
-color: white;
+    color: white;
 
-padding: 20px;
+    padding: 20px;
 
-border-radius: 28px;
+    border-radius: 28px;
 
-font-size: 30px;
+    font-size: 30px;
 
-font-weight: 900;
+    font-weight: 900;
 
-box-shadow:
-    0 15px 30px rgba(0, 0, 0, .20);
+    box-shadow:
+        0 15px 30px rgba(0, 0, 0, .20);
 
+}
+
+
+.juego > p {
+
+    font-size: 18px;
+
+    font-weight: bold;
+
+    margin: 20px;
 
 }
 
-header p {
-
-font-size: 18px;
-
-font-weight: bold;
-
-margin: 20px;
-
-color: #555;
-
-
-}
 
 /* ==========================================
-PUNTUACIÓN
+   DATOS
 ========================================== */
 
-.puntuacion {
+.datos {
 
-display: inline-block;
+    display: flex;
 
-background: white;
+    justify-content: center;
 
-color: #1596e6;
+    gap: 30px;
 
-padding: 10px 25px;
-
-border-radius: 20px;
-
-font-size: 25px;
-
-font-weight: bold;
-
-box-shadow:
-    0 8px 15px rgba(0,0,0,.15);
-
+    flex-wrap: wrap;
 
 }
 
+
+.datos span {
+
+    display: inline-block;
+
+    background: white;
+
+    color: #1596e6;
+
+    padding: 10px 25px;
+
+    border-radius: 20px;
+
+    font-size: 22px;
+
+    font-weight: bold;
+
+    box-shadow:
+        0 8px 15px rgba(0,0,0,.15);
+
+}
+
+
 /* ==========================================
-ESCUCHAR
+   ESCUCHAR
 ========================================== */
 
 .escuchar {
 
-margin-top: 30px;
-
-
-}
-
-#botonEscuchar {
-
-border: none;
-
-background: #1596e6;
-
-color: white;
-
-padding: 18px 40px;
-
-border-radius: 30px;
-
-font-size: 22px;
-
-font-weight: bold;
-
-cursor: pointer;
-
-box-shadow:
-    0 8px 15px rgba(0,0,0,.20);
-
-transition: .2s;
-
+    margin-top: 30px;
 
 }
 
-#botonEscuchar:hover {
 
-transform: scale(1.05);
+#iconoSonido {
 
+    font-size: 55px;
 
-}
-
-#botonEscuchar:active {
-
-transform: scale(.95);
-
+    margin-bottom: 10px;
 
 }
+
 
 #instruccion {
 
-margin-top: 15px;
+    font-size: 20px;
 
-font-size: 18px;
+    font-weight: bold;
 
-font-weight: bold;
-
-color: #555;
-
+    margin-bottom: 20px;
 
 }
 
+
+#botonEscuchar {
+
+    border: none;
+
+    background: #1596e6;
+
+    color: white;
+
+    padding: 18px 40px;
+
+    border-radius: 30px;
+
+    font-size: 22px;
+
+    font-weight: bold;
+
+    cursor: pointer;
+
+    box-shadow:
+        0 8px 15px rgba(0,0,0,.20);
+
+    transition: .2s;
+
+}
+
+
+#botonEscuchar:hover {
+
+    transform: scale(1.05);
+
+}
+
+
+#botonEscuchar:active {
+
+    transform: scale(.95);
+
+}
+
+
 /* ==========================================
-COLORES
+   OPCIONES
 ========================================== */
 
-.colores {
+.opciones {
 
-background: white;
+    background-color: white;
 
-padding: 35px;
+    padding: 35px;
 
-border-radius: 25px;
+    border-radius: 20px;
 
-margin: 40px auto;
+    margin: 40px auto;
 
-width: 95%;
+    width: 95%;
 
-max-width: 700px;
+    max-width: 700px;
 
-display: flex;
+    display: grid;
 
-justify-content: center;
+    grid-template-columns:
+        repeat(3, 1fr);
 
-align-items: center;
+    justify-items: center;
 
-gap: 25px;
+    align-items: center;
 
-flex-wrap: wrap;
-
+    gap: 30px;
 
 }
 
+
 /* ==========================================
-BOTONES DE COLOR
+   BOTONES DE COLOR
 ========================================== */
 
 .color {
 
-width: 120px;
+    width: 150px;
 
-height: 120px;
+    height: 150px;
 
-border: none;
+    border: none;
 
-border-radius: 50%;
+    border-radius: 50%;
 
-cursor: pointer;
+    cursor: pointer;
 
-transition:
-    transform .2s,
-    box-shadow .2s;
+    transition:
+        transform .2s,
+        box-shadow .2s;
 
-box-shadow:
-    0 10px 20px rgba(0,0,0,.20);
-
+    box-shadow:
+        0 10px 20px rgba(0,0,0,.20);
 
 }
 
+
 /* ==========================================
-HOVER
+   HOVER
 ========================================== */
 
 .color:hover {
 
-transform: scale(1.08);
-
+    transform: scale(1.08);
 
 }
 
+
+.color:active {
+
+    transform: scale(.95);
+
+}
+
+
 /* ==========================================
-COLORES
+   COLORES
 ========================================== */
 
 .rojo {
 
-background: #ef5350;
-
+    background: #ef5350;
 
 }
+
 
 .azul {
 
-background: #42a5f5;
-
+    background: #42a5f5;
 
 }
+
 
 .amarillo {
 
-background: #FFD519;
-
+    background: #FFD519;
 
 }
+
 
 .verde {
 
-background: #66bb6a;
-
+    background: #66bb6a;
 
 }
+
 
 .morado {
 
-background: #ab47bc;
-
+    background: #ab47bc;
 
 }
 
+
 /* ==========================================
-CORRECTO
+   CORRECTO
 ========================================== */
 
 .color.correcta {
 
-animation: correcto .6s;
+    animation:
+        correcto .6s;
 
-box-shadow:
-    0 0 0 8px #35d07f,
-    0 15px 30px rgba(0,0,0,.25);
-
+    box-shadow:
+        0 0 0 8px #35d07f,
+        0 15px 30px rgba(0,0,0,.25);
 
 }
+
 
 @keyframes correcto {
 
-0% {
-    transform: scale(1);
+    0% {
+
+        transform: scale(1);
+
+    }
+
+    50% {
+
+        transform:
+            scale(1.15);
+
+    }
+
+    100% {
+
+        transform: scale(1);
+
+    }
+
 }
 
-50% {
-    transform: scale(1.18);
-}
-
-100% {
-    transform: scale(1);
-}
-
-
-}
 
 /* ==========================================
-INCORRECTO
+   INCORRECTO
 ========================================== */
 
 .color.incorrecta {
 
-animation: incorrecto .4s;
-
+    animation:
+        incorrecto .4s;
 
 }
+
 
 @keyframes incorrecto {
 
-0% {
-    transform: translateX(0);
+    0% {
+
+        transform: translateX(0);
+
+    }
+
+    25% {
+
+        transform: translateX(-10px);
+
+    }
+
+    50% {
+
+        transform: translateX(10px);
+
+    }
+
+    75% {
+
+        transform: translateX(-10px);
+
+    }
+
+    100% {
+
+        transform: translateX(0);
+
+    }
+
 }
 
-25% {
-    transform: translateX(-10px);
-}
-
-50% {
-    transform: translateX(10px);
-}
-
-75% {
-    transform: translateX(-10px);
-}
-
-100% {
-    transform: translateX(0);
-}
-
-
-}
 
 /* ==========================================
-MENSAJE
+   MENSAJE
 ========================================== */
 
 .mensaje {
 
-min-height: 40px;
+    min-height: 40px;
 
-font-size: 25px;
+    font-size: 25px;
 
-font-weight: bold;
+    font-weight: bold;
 
-margin: 20px;
-
+    margin: 20px;
 
 }
+
 
 .mensaje.correcto {
 
-color: #35a853;
-
+    color: #35a853;
 
 }
+
 
 .mensaje.error {
 
-color: #f39c12;
-
+    color: #f39c12;
 
 }
 
+
 /* ==========================================
-SIGUIENTE
+   SIGUIENTE
 ========================================== */
 
 #siguiente {
 
-display: none;
+    display: none;
 
-border: none;
+    border: none;
 
-background: #1596e6;
+    background: #1596e6;
 
-color: white;
+    color: white;
 
-padding: 15px 30px;
+    padding: 15px 30px;
 
-border-radius: 25px;
+    border-radius: 25px;
 
-font-size: 20px;
+    font-size: 20px;
 
-font-weight: bold;
+    font-weight: bold;
 
-cursor: pointer;
+    cursor: pointer;
 
-margin: 10px auto;
-
+    margin: 10px auto;
 
 }
+
 
 #siguiente:hover {
 
-transform: scale(1.05);
-
+    transform: scale(1.05);
 
 }
 
+
 /* ==========================================
-CELULAR
+   CELULAR
 ========================================== */
 
 @media (max-width: 600px) {
 
-.juego {
+    .juego {
 
-    padding: 15px;
+        padding: 10px;
 
-}
-
-
-header h1 {
-
-    font-size: 22px;
-
-    padding: 15px;
-
-}
+    }
 
 
-header p {
+    .juego h1 {
 
-    font-size: 16px;
+        font-size: 22px;
 
-}
+        padding: 15px;
 
-
-.colores {
-
-    gap: 20px;
-
-    padding: 25px;
-
-}
+    }
 
 
-.color {
+    .juego > p {
 
-    width: 100px;
+        font-size: 16px;
 
-    height: 100px;
-
-}
+    }
 
 
-#botonEscuchar {
+    .datos {
 
-    font-size: 18px;
+        gap: 15px;
 
-    padding: 15px 30px;
+    }
 
-}
 
+    .datos span {
+
+        font-size: 17px;
+
+        padding: 9px 15px;
+
+    }
+
+
+    #botonEscuchar {
+
+        font-size: 18px;
+
+        padding: 15px 30px;
+
+    }
+
+
+    .opciones {
+
+        grid-template-columns:
+            repeat(2, 1fr);
+
+        gap: 20px;
+
+        padding: 25px;
+
+    }
+
+
+    .color {
+
+        width: 110px;
+
+        height: 110px;
+
+    }
 
 }

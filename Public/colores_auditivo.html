@@ -1,45 +1,76 @@
-<!DOCTYPE html> <html lang="es"> <head> <meta charset="UTF-8"> <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Juego de Colores Auditivo</title>
+<!DOCTYPE html>
+<html lang="es">
 
-<link rel="stylesheet" href="CSS/colores_auditivo.css">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-</head> <body>
-<div class="juego">
+    <title>Juego de Colores Auditivo</title>
 
-    <h1>🔊 Encuentra el Color</h1>
+    <link rel="stylesheet" href="CSS/colores_auditivo.css">
+</head>
 
-    <p>
-        Escucha el color y haz clic en el círculo correcto.
-    </p>
+<body>
 
-    <div class="datos">
-        <span>⭐ Puntos: <b id="puntos">0</b></span>
-        <span>🎯 Ronda: <b id="ronda">1</b> / 5</span>
-    </div>
+    <div class="juego">
 
-    <div class="instruccion">
+        <h1>🔊 Encuentra el Color</h1>
 
-        <div class="icono-sonido">🔊</div>
+        <p>
+            Escucha el nombre del color y selecciona el color correcto.
+        </p>
 
-        <h2>Escucha con atención</h2>
+        <div class="datos">
 
-        <button id="escuchar" type="button">
-            🔊 Escuchar color
+            <span>
+                ⭐ Puntos:
+                <b id="puntos">0</b>
+            </span>
+
+            <span>
+                🎯 Ronda:
+                <b id="ronda">1</b> / 5
+            </span>
+
+        </div>
+
+
+        <div class="escuchar">
+
+            <div id="iconoSonido">
+                🔊
+            </div>
+
+            <h2 id="instruccion">
+                Escucha con atención
+            </h2>
+
+            <button id="botonEscuchar" type="button">
+                🔊 Escuchar color
+            </button>
+
+        </div>
+
+
+        <div id="opciones" class="opciones">
+
+        </div>
+
+
+        <div id="mensaje" class="mensaje">
+
+        </div>
+
+
+        <button id="siguiente" type="button">
+            Siguiente ➜
         </button>
 
     </div>
 
-    <div id="opciones" class="opciones">
-    </div>
 
-    <div id="mensaje"></div>
+    <script src="JS/colores_auditivo.js"></script>
 
-    <button id="siguiente" type="button">
-        Siguiente ➜
-    </button>
+</body>
 
-</div>
-
-<script src="JS/colores_auditivo.js"></script>
-
-</body> </html>
+</html>

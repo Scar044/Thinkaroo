@@ -1,379 +1,437 @@
 document.addEventListener("DOMContentLoaded", function () {
 
-// ==========================================
-// ELEMENTOS
-// ==========================================
 
-const colores =
-    document.querySelectorAll(".color");
+    // ==========================================
+    // ELEMENTOS
+    // ==========================================
 
+    const opciones =
+        document.getElementById("opciones");
 
-const botonEscuchar =
-    document.getElementById("botonEscuchar");
+    const botonEscuchar =
+        document.getElementById("botonEscuchar");
 
+    const puntosTexto =
+        document.getElementById("puntos");
 
-const puntosTexto =
-    document.getElementById("puntos");
+    const rondaTexto =
+        document.getElementById("ronda");
 
+    const mensaje =
+        document.getElementById("mensaje");
 
-const mensaje =
-    document.getElementById("mensaje");
+    const siguiente =
+        document.getElementById("siguiente");
 
+    const instruccion =
+        document.getElementById("instruccion");
 
-const siguiente =
-    document.getElementById("siguiente");
 
+    // ==========================================
+    // VARIABLES
+    // ==========================================
 
-const instruccion =
-    document.getElementById("instruccion");
+    let puntos = 0;
 
+    let ronda = 1;
 
-// ==========================================
-// VARIABLES
-// ==========================================
+    let colorCorrecto = "";
 
-let puntos = 0;
+    let juegoActivo = false;
 
-let colorCorrecto = null;
+    const totalRondas = 5;
 
-let juegoActivo = false;
 
-let ronda = 0;
+    // ==========================================
+    // COLORES
+    // ==========================================
 
-const totalRondas = 5;
+    const colores = [
 
+        "rojo",
+        "azul",
+        "amarillo",
+        "verde",
+        "morado"
 
-// ==========================================
-// NOMBRES DE LOS COLORES
-// ==========================================
+    ];
 
-const nombres = {
 
-    rojo: "rojo",
+    // ==========================================
+    // NOMBRES
+    // ==========================================
 
-    azul: "azul",
+    const nombres = {
 
-    amarillo: "amarillo",
+        rojo: "rojo",
 
-    verde: "verde",
+        azul: "azul",
 
-    morado: "morado"
+        amarillo: "amarillo",
 
-};
+        verde: "verde",
 
+        morado: "morado"
 
-// ==========================================
-// HABLAR
-// ==========================================
+    };
 
-function hablar(texto) {
 
-    // Cancelar voz anterior
+    // ==========================================
+    // HABLAR
+    // ==========================================
 
-    window.speechSynthesis.cancel();
+    function hablar(texto) {
 
 
-    const voz =
-        new SpeechSynthesisUtterance(texto);
+        if (!("speechSynthesis" in window)) {
 
-
-    voz.lang = "es-ES";
-
-
-    voz.rate = 0.8;
-
-
-    voz.pitch = 1.1;
-
-
-    voz.volume = 1;
-
-
-    window.speechSynthesis.speak(voz);
-
-}
-
-
-// ==========================================
-// NUEVA RONDA
-// ==========================================
-
-function nuevaRonda() {
-
-    ronda++;
-
-
-    // Elegir color al azar
-
-    const numero =
-        Math.floor(
-            Math.random() *
-            Object.keys(nombres).length
-        );
-
-
-    colorCorrecto =
-        Object.keys(nombres)[numero];
-
-
-    juegoActivo = true;
-
-
-    // Limpiar botones
-
-    colores.forEach(function (color) {
-
-        color.classList.remove("correcta");
-
-        color.classList.remove("incorrecta");
-
-        color.disabled = false;
-
-    });
-
-
-    // Limpiar mensaje
-
-    mensaje.textContent = "";
-
-    mensaje.className = "mensaje";
-
-
-    instruccion.textContent =
-        "Escucha el color y selecciónalo.";
-
-
-    // Actualizar botón
-
-    siguiente.style.display = "none";
-
-
-    // Decir el color
-
-    hablar(
-        nombres[colorCorrecto]
-    );
-
-}
-
-
-// ==========================================
-// BOTÓN ESCUCHAR
-// ==========================================
-
-botonEscuchar.addEventListener(
-    "click",
-    function () {
-
-        if (!colorCorrecto) {
-
-            nuevaRonda();
+            alert(
+                "Tu navegador no permite utilizar voz."
+            );
 
             return;
 
         }
 
 
-        hablar(
-            nombres[colorCorrecto]
-        );
+        window.speechSynthesis.cancel();
+
+
+        const voz =
+            new SpeechSynthesisUtterance(texto);
+
+
+        voz.lang = "es-ES";
+
+        voz.rate = 0.8;
+
+        voz.pitch = 1.1;
+
+        voz.volume = 1;
+
+
+        window.speechSynthesis.speak(voz);
 
     }
-);
 
 
-// ==========================================
-// SELECCIONAR COLOR
-// ==========================================
+    // ==========================================
+    // CREAR LOS COLORES
+    // ==========================================
 
-colores.forEach(function (color) {
+    function crearColores() {
 
-    color.addEventListener(
+
+        opciones.innerHTML = "";
+
+
+        colores.forEach(function (color) {
+
+
+            const boton =
+                document.createElement("button");
+
+
+            boton.type = "button";
+
+
+            boton.className =
+                "color " + color;
+
+
+            boton.dataset.color =
+                color;
+
+
+            opciones.appendChild(boton);
+
+
+            // Evento del botón
+
+            boton.addEventListener(
+                "click",
+                seleccionarColor
+            );
+
+        });
+
+    }
+
+
+    // ==========================================
+    // NUEVA RONDA
+    // ==========================================
+
+    function nuevaRonda() {
+
+
+        juegoActivo = true;
+
+
+        // Elegir color al azar
+
+        const numero =
+            Math.floor(
+                Math.random() *
+                colores.length
+            );
+
+
+        colorCorrecto =
+            colores[numero];
+
+
+        // Actualizar ronda
+
+        rondaTexto.textContent =
+            ronda;
+
+
+        // Limpiar mensaje
+
+        mensaje.textContent = "";
+
+        mensaje.className =
+            "mensaje";
+
+
+        // Crear botones
+
+        crearColores();
+
+
+        // Ocultar siguiente
+
+        siguiente.style.display =
+            "none";
+
+
+        // Texto
+
+        instruccion.textContent =
+            "Escucha con atención";
+
+
+        // Hablar
+
+        setTimeout(function () {
+
+            hablar(
+                nombres[colorCorrecto]
+            );
+
+        }, 300);
+
+    }
+
+
+    // ==========================================
+    // ESCUCHAR COLOR
+    // ==========================================
+
+    botonEscuchar.addEventListener(
         "click",
         function () {
 
 
-            if (!juegoActivo) {
-
-                return;
-
-            }
-
-
-            const colorSeleccionado =
-                this.dataset.color;
-
-
-            // ==================================
-            // CORRECTO
-            // ==================================
-
-            if (
-                colorSeleccionado ===
-                colorCorrecto
-            ) {
-
-
-                this.classList.add(
-                    "correcta"
-                );
-
-
-                puntos += 10;
-
-
-                puntosTexto.textContent =
-                    puntos;
-
-
-                mensaje.textContent =
-                    "🎉 ¡Muy bien!";
-
-
-                mensaje.className =
-                    "mensaje correcto";
-
-
-                // Voz
-
-                hablar(
-                    "¡Muy bien!"
-                );
-
-
-                juegoActivo = false;
-
-
-                // Desactivar colores
-
-                colores.forEach(
-                    function (boton) {
-
-                        boton.disabled = true;
-
-                    }
-                );
-
-
-                // Mostrar siguiente
-
-                if (ronda < totalRondas) {
-
-                    siguiente.style.display =
-                        "block";
-
-                }
-
-                else {
-
-                    terminarJuego();
-
-                }
-
-
-            }
-
-
-            // ==================================
-            // INCORRECTO
-            // ==================================
-
-            else {
-
-
-                this.classList.add(
-                    "incorrecta"
-                );
-
-
-                mensaje.textContent =
-                    "😊 Inténtalo otra vez";
-
-
-                mensaje.className =
-                    "mensaje error";
-
-
-                hablar(
-                    "Inténtalo otra vez"
-                );
-
-
-                setTimeout(
-                    function () {
-
-                        color.classList.remove(
-                            "incorrecta"
-                        );
-
-                    },
-                    600
-                );
-
-            }
+            hablar(
+                nombres[colorCorrecto]
+            );
 
         }
     );
 
-});
+
+    // ==========================================
+    // SELECCIONAR COLOR
+    // ==========================================
+
+    function seleccionarColor(event) {
 
 
-// ==========================================
-// SIGUIENTE
-// ==========================================
+        if (!juegoActivo) {
 
-siguiente.addEventListener(
-    "click",
-    function () {
+            return;
 
-        nuevaRonda();
+        }
+
+
+        const boton =
+            event.currentTarget;
+
+
+        const seleccionado =
+            boton.dataset.color;
+
+
+        // ======================================
+        // CORRECTO
+        // ======================================
+
+        if (
+            seleccionado ===
+            colorCorrecto
+        ) {
+
+
+            puntos += 10;
+
+
+            puntosTexto.textContent =
+                puntos;
+
+
+            boton.classList.add(
+                "correcta"
+            );
+
+
+            mensaje.textContent =
+                "🎉 ¡Muy bien!";
+
+
+            mensaje.className =
+                "mensaje correcto";
+
+
+            hablar(
+                "¡Muy bien!"
+            );
+
+
+            juegoActivo = false;
+
+
+            // Desactivar botones
+
+            const botones =
+                document.querySelectorAll(".color");
+
+
+            botones.forEach(function (b) {
+
+                b.disabled = true;
+
+            });
+
+
+            // ¿Quedan rondas?
+
+            if (ronda < totalRondas) {
+
+
+                siguiente.style.display =
+                    "block";
+
+
+            } else {
+
+
+                terminarJuego();
+
+            }
+
+
+        }
+
+
+        // ======================================
+        // INCORRECTO
+        // ======================================
+
+        else {
+
+
+            boton.classList.add(
+                "incorrecta"
+            );
+
+
+            mensaje.textContent =
+                "😊 Inténtalo otra vez";
+
+
+            mensaje.className =
+                "mensaje error";
+
+
+            hablar(
+                "Inténtalo otra vez"
+            );
+
+
+            setTimeout(function () {
+
+                boton.classList.remove(
+                    "incorrecta"
+                );
+
+            }, 500);
+
+        }
 
     }
-);
 
 
-// ==========================================
-// TERMINAR JUEGO
-// ==========================================
+    // ==========================================
+    // SIGUIENTE
+    // ==========================================
 
-function terminarJuego() {
-
-
-    juegoActivo = false;
-
-
-    siguiente.style.display =
-        "none";
+    siguiente.addEventListener(
+        "click",
+        function () {
 
 
-    instruccion.textContent =
-        "¡Has completado todas las rondas!";
+            ronda++;
 
 
-    mensaje.textContent =
-        "🎉 Conseguíste " +
-        puntos +
-        " puntos";
+            nuevaRonda();
 
-
-    mensaje.className =
-        "mensaje correcto";
-
-
-    hablar(
-        "¡Juego terminado! Conseguíste " +
-        puntos +
-        " puntos"
+        }
     );
 
-}
+
+    // ==========================================
+    // TERMINAR JUEGO
+    // ==========================================
+
+    function terminarJuego() {
 
 
-// ==========================================
-// INICIAR
-// ==========================================
+        juegoActivo = false;
 
-nuevaRonda();
 
+        siguiente.style.display =
+            "none";
+
+
+        instruccion.textContent =
+            "🎉 ¡Completaste todas las rondas!";
+
+
+        mensaje.textContent =
+            "🎉 Conseguiste " +
+            puntos +
+            " puntos";
+
+
+        mensaje.className =
+            "mensaje correcto";
+
+
+        hablar(
+            "Juego terminado. Conseguiste " +
+            puntos +
+            " puntos"
+        );
+
+    }
+
+
+    // ==========================================
+    // INICIAR
+    // ==========================================
+
+    nuevaRonda();
 
 });
