@@ -2,12 +2,15 @@
 <html lang="es">
 
 <head>
+
     <meta charset="UTF-8">
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>Juego de Colores Auditivo</title>
 
     <link rel="stylesheet" href="CSS/colores_auditivo.css">
+
 </head>
 
 <body>
@@ -16,9 +19,10 @@
 
         <h1>🔊 Encuentra el Color</h1>
 
-        <p>
-            Escucha el nombre del color y selecciona el color correcto.
+        <p class="descripcion">
+            Escucha el nombre del color y selecciona el círculo correcto.
         </p>
+
 
         <div class="datos">
 
@@ -35,35 +39,104 @@
         </div>
 
 
-        <div class="escuchar">
+        <!-- AUDIO -->
 
-            <div id="iconoSonido">
+        <div class="instruccion">
+
+            <div class="icono-sonido">
                 🔊
             </div>
 
             <h2 id="instruccion">
-                Escucha con atención
+                Escucha el color
             </h2>
 
-            <button id="botonEscuchar" type="button">
+            <button
+                id="botonEscuchar"
+                type="button">
+
                 🔊 Escuchar color
+
             </button>
 
         </div>
 
 
-        <div id="opciones" class="opciones">
+        <!-- COLORES -->
+
+        <div
+            id="opciones"
+            class="opciones">
+
+            <button
+                class="color rojo"
+                data-color="rojo"
+                type="button"
+                aria-label="Rojo">
+            </button>
+
+
+            <button
+                class="color azul"
+                data-color="azul"
+                type="button"
+                aria-label="Azul">
+            </button>
+
+
+            <button
+                class="color amarillo"
+                data-color="amarillo"
+                type="button"
+                aria-label="Amarillo">
+            </button>
+
+
+            <button
+                class="color verde"
+                data-color="verde"
+                type="button"
+                aria-label="Verde">
+            </button>
+
+
+            <button
+                class="color morado"
+                data-color="morado"
+                type="button"
+                aria-label="Morado">
+            </button>
 
         </div>
 
 
-        <div id="mensaje" class="mensaje">
+        <!-- MENSAJE -->
 
+        <div
+            id="mensaje"
+            class="mensaje">
         </div>
 
 
-        <button id="siguiente" type="button">
+        <!-- SIGUIENTE -->
+
+        <button
+            id="siguiente"
+            type="button">
+
             Siguiente ➜
+
+        </button>
+
+
+        <!-- REINICIAR -->
+
+        <button
+            id="reiniciar"
+            type="button">
+
+            🔄 Jugar nuevamente
+
         </button>
 
     </div>
