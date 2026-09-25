@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Escucha y cuenta</title>
+
+    <link rel="stylesheet" href="CSS/sumarobjetos_auditivo.css">
+</head>
+
+<body>
+
+    <header class="encabezado">
+
+        <div class="titulo">
+            🎧 ¡ESCUCHA Y CUENTA!
+        </div>
+
+        <p class="subtitulo">
+            Escucha los sonidos y selecciona cuántos escuchaste
+        </p>
+
+        <div class="marcador">
+            <span id="score-text">0</span>
+        </div>
+
+    </header>
+
+
+    <main class="juego">
+
+        <section class="tarjeta">
+
+            <div class="instruccion">
+                <div class="oreja">👂</div>
+
+                <h2>
+                    ¿Cuántos sonidos escuchaste?
+                </h2>
+
+                <button id="play-button" onclick="reproducirSonidos()">
+                    🔊 ESCUCHAR
+                </button>
+
+                <div id="ondas" class="ondas oculto">
+                 🔊 👂 🔊
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <div class="zona-mensaje">
+
+            <div id="feedback-badge" class="mensaje oculto">
+            </div>
+
+        </div>
+
+
+        <section class="panel">
+
+            <div id="options-container" class="opciones">
+            </div>
+
+        </section>
+
+
+        <div class="reinicio">
+
+            <button onclick="resetGame()">
+                ↻ Intentar de nuevo
+            </button>
+
+        </div>
+
+    </main>
+
+
+    <div id="victory-modal" class="modal oculto">
+
+        <div class="final">
+
+            <div class="emojis">
+                🎉 👏 🎧
+            </div>
+
+            <h3>
+                ¡LO LOGRASTE!
+            </h3>
+
+            <p>
+                Escuchaste y contaste todos los sonidos.
+            </p>
+
+            <button onclick="resetGame()">
+                ¡INTENTAR DE NUEVO!
+            </button>
+
+        </div>
+
+    </div>
+
+
+    <script src="JS/sumarobjetos_auditivo.js"></script>
+
+</body>
+
+</html>
