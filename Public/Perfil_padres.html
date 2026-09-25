@@ -1,54 +1,79 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="CSS/perfel.css">
-</head>
-<body>
-    <body>
 
-  <div class="contenedor">
+    <title>Perfil de usuario - ThinkaRoo</title>
+
+    <link rel="stylesheet" href="CSS/perfill_padres.css">
+</head>
+
+<body>
+
+    <div class="contenedor">
 
         <header>
-           <a href="#" class="flecha" id="volverNiveles">
+
+            <a href="#" class="flecha" id="volverNiveles">
                 🡠
-           </a>
+            </a>
 
             <h1>ThinkaRoo</h1>
+
         </header>
 
 
         <h2>Perfil de usuario</h2>
 
+
         <div class="tarjeta">
 
+            <i class="estrella estrella1">★</i>
+            <i class="estrella estrella2">★</i>
 
-            <i class="fa-solid fa-star estrella estrella1"></i>
-            <i class="fa-solid fa-star estrella estrella2"></i>
 
+            <!-- NOMBRE DEL PADRE -->
             <h3 id="nombreUsuario">
                 Cargando...
             </h3>
+
+            <p class="correo-usuario" id="correoUsuario">
+                Cargando...
+            </p>
 
             <div class="estadisticas">
 
                 <h4>📊 Estadísticas</h4>
 
                 <div class="info">
-                    <span>👶 Hijos Registrados</span>
-                    <span id="hijos"></span>
+
+                    <span>👶 Hijos registrados</span>
+
+                    <span id="hijos">
+                        0
+                    </span>
+
                 </div>
 
             </div>
+
+            <button
+                type="button"
+                class="boton-cerrar"
+                id="botonCerrar">
+
+                Cerrar sesión
+
+            </button>
+
 
         </div>
 
     </div>
 
-    <script src="JS/perfil_padre.js"></script>
 
+    <script src="JS/perfil_padre.js"></script>
 
 </body>
 </html>

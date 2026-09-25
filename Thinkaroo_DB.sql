@@ -72,16 +72,22 @@ id_tema INT NOT NULL,
 numero_de_clase INT NOT NULL,
 descripcion TEXT,
 instrucciones TEXT NOT NULL,
-titulo VARCHAR(200),
-audio_instrucciones_url VARCHAR(255) NOT NULL,
+titulo VARCHAR(200) NOT NULL,
+audio_instrucciones_url VARCHAR(255) NULL,
+estilo_aprendizaje ENUM(
+    "Visual",
+    "Auditivo", 
+    "Kinestesico") NOT NULL,
 FOREIGN KEY(id_tema) REFERENCES Temas(id_tema)
 );
 
 USE thinkaroo;
 INSERT INTO actividades
-(id_actividad, id_tema, numero_de_clase, descripcion, instrucciones, titulo, audio_instrucciones_url)
+(id_tema, numero_de_clase, descripcion, instrucciones, titulo, audio_instrucciones_url, estilo_aprendizaje)
 VALUES
-(1, 1, 1, "Juego de memoria con imagenes de animales", "Encuentra las parejas de animales", "memoria", "-" )
+(1, 1, "Juego de memoria con imagenes de animales", "Encuentra las parejas de animales", "Memoria visual", "-", "Visual" ),
+(1, 1, "Juego de memoria con imagenes de animales y sus sonidos", "Encuentra las parejas de animales con su sonido", "Memoria auditiva", "-", "Auditivo" ),
+(1, 1, "Juego de conectar animales con su sombra", "Arrastra las figuras de animales a donde se encuentra su silueta", "memoria_kinestesica", "-", "Kinestesico" );
 
 CREATE TABLE Logros_hijos (
     Id_logro_hijo INT AUTO_INCREMENT PRIMARY KEY,

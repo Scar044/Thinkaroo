@@ -1,9 +1,22 @@
-const usuario = 
-document.getElementById("nombreUsuario");  
+const nombreUsuario = document.getElementById("nombreUsuario");
+const correoUsuario = document.getElementById("correoUsuario");
+const cantidadHijos = document.getElementById("hijos");
+
+const botonCerrar = document.getElementById("botonCerrar");
+
+// ==========================================
+// BOTÓN CERRAR SESIÓN
+// ==========================================
+
+botonCerrar.addEventListener("click", function () {
+
+    window.location.href = "../ConfigPHP/cerrar_sesion.php";
+
+});
 
 
 // ==========================================
-// CARGAR DATOS DEL USUARIO
+// CARGAR DATOS DEL PADRE
 // ==========================================
 
 function cargarPerfilPadre() {
@@ -14,65 +27,26 @@ function cargarPerfilPadre() {
 
         .then(datos => {
 
-            console.log(
-                "RESPUESTA DEL PERFIL:",
-                datos
-            );
-
+            console.log("RESPUESTA DEL PERFIL:", datos);
 
             if (!datos.success) {
 
-                console.error(
-                    datos.mensaje
-                );
+                console.error(datos.mensaje);
+
+                nombreUsuario.textContent = "No disponible";
+                correoUsuario.textContent = "No disponible";
+                cantidadHijos.textContent = "0";
 
                 return;
             }
 
-
             const usuario = datos.usuario;
 
+            nombreUsuario.textContent = usuario.nombre;
 
-            // ==================================
-            // NOMBRE
-            // ==================================
+            correoUsuario.textContent = usuario.correo;
 
-            document.getElementById("nombreUsuario"
-            ).textContent = usuario.nombre;
-
-
-            usuario.textContent =
-                usuario.nombre;
-
-
-            // ==================================
-            // Hijos
-            // ==================================
-
-            document.getElementById(
-                "hijos"
-            ).textContent =
-                usuario.total_hijos;
-
-
-            // ==================================
-            // MOSTRAR INFORMACIÓN EN CONSOLA
-            // ==================================
-
-            console.log(
-                "ID del usuario:",
-                usuario.id_usuario
-            );
-
-            console.log(
-                "Nombre:",
-                usuario.nombre
-            );
-
-            console.log(
-                "Hijos:",
-                usuario.total_logros
-            );
+            cantidadHijos.textContent = usuario.total_hijos;
 
         })
 
@@ -84,80 +58,6 @@ function cargarPerfilPadre() {
             );
 
         });
-
-}
-
-function cargarHijos() {
-
-    fetch("../ConfigPHP/obtener_hijos.php")
-
-        .then(respuesta =>
-            respuesta.json()
-        )
-
-        .then(datos => {
-
-            if (!datos.success) {
-
-                console.error(
-                    datos.mensaje
-                );
-
-                return;
-            }
-
-
-            listaHijos.innerHTML = "";
-
-
-            datos.hijos.forEach(hijo => {
-
-                const boton =
-                    document.createElement(
-                        "button"
-                    );
-
-
-                boton.classList.add(
-                    "hijo"
-                );
-
-
-                boton.textContent =
-                    hijo.nombre;
-
-
-                boton.dataset.id =
-                    hijo.id_hijo;
-
-
-                boton.addEventListener(
-                    "click",
-                    () => {
-
-                        const idHijo =
-                            boton.dataset.id;
-                                                }
-                );
-
-
-                listaHijos.appendChild(
-                    boton
-                );
-
-            });
-
-        })
-
-        .catch(error => {
-
-            console.error(
-                "Error al obtener hijos:",
-                error
-            );
-
-        });
-
 }
 
 
@@ -167,65 +67,100 @@ function cargarHijos() {
 
 cargarPerfilPadre();
 
-cargarHijos();
-
 // ==========================================
-// IR A LA PÁGINA DE NIVELES SEGÚN EL ESTILO
+// CARGAR DATOS DEL PADRE
 // ==========================================
 
-function irANiveles() {
+function cargarPerfilPadre() {
 
-    fetch("../ConfigPHP/obtener_perfil_hijo.php")
-        .then(respuesta => respuesta.json())
-        .then(datos => {
+    fetch("../ConfigPHP/obtener_perfil_padre.php")
 
-            if (!datos.success) {
-                console.error(datos.mensaje);
-                return;
+        .then(respuesta => {
+            console.log("Estado HTTP:", respuesta.status);
+
+            return respuesta.text();
+        })
+
+        .then(texto => {
+
+            console.log("RESPUESTA PHP:", texto);
+
+            try {
+
+                const datos = JSON.parse(texto);
+
+                console.log("JSON:", datos);
+
+                if (!datos.success) {
+
+                    console.error("PHP respondió con error:", datos.mensaje);
+
+                    nombreUsuario.textContent = "Error";
+
+                    cantidadHijos.textContent = "0";
+
+                    return;
+                }
+
+                const usuario = datos.usuario;
+
+                nombreUsuario.textContent = usuario.nombre;
+
+                correoUsuario.textContent = usuario.correo;
+
+                cantidadHijos.textContent = usuario.total_hijos;
+
             }
 
-            const estilo = datos.hijo.estilo_aprendizaje;
+            catch (error) {
 
-            console.log("Estilo de aprendizaje:", estilo);
-
-            if (estilo === "Visual") {
-
-                window.location.href = "niveles.html";
-
-            } 
-            else if (estilo === "Auditivo") {
-
-                window.location.href = "niveles_auditivo.html";
-
-            } 
-            else if (estilo === "Kinestesico") {
-
-                window.location.href = "niveles_kinestesico.html";
-
-            } 
-            else {
-
-                alert("El estilo de aprendizaje todavía no está definido.");
+                console.error("El PHP NO devolvió JSON válido.");
+                console.error(error);
 
             }
 
         })
+
         .catch(error => {
 
-            console.error(
-                "Error al obtener el estilo de aprendizaje:",
-                error
-            );
+            console.error("Error en fetch:", error);
 
         });
 }
 
-const volverNiveles = document.getElementById("volverNiveles");
+
+botonCerrar.addEventListener("click", function () {
+
+    window.location.href =
+        "../ConfigPHP/cerrar_sesion.php";
+
+});
+
+
+cargarPerfilPadre();
+
+
+// ==========================================
+// BOTÓN VOLVER
+// ==========================================
+
+// Si quieres que la flecha vuelva a niveles,
+// dejamos esta función.
+
+// Si después quieres que vuelva a otra página,
+// solamente cambiamos la dirección.
 
 volverNiveles.addEventListener("click", function(evento) {
 
     evento.preventDefault();
 
-    irANiveles();
+    window.location.href = "niveles.html";
 
 });
+
+
+// ==========================================
+// INICIAR PÁGINA
+// ==========================================
+
+cargarPerfilPadre();
