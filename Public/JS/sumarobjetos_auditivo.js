@@ -1,8 +1,35 @@
+
+// ========================================
+// VARIABLES DEL JUEGO
+// ========================================
+
 let ronda = 1;
 let cantidad = 0;
 let puntos = 0;
+
 let respondido = false;
 let reproduciendo = false;
+
+// Un solo contexto de audio para todo el juego
+let contextoAudio = null;
+
+
+// ========================================
+// INICIAR / OBTENER AUDIO
+// ========================================
+
+function obtenerAudioContext() {
+
+    const AudioContext =
+        window.AudioContext ||
+        window.webkitAudioContext;
+
+    if (!contextoAudio) {
+        contextoAudio = new AudioContext();
+    }
+
+    return contextoAudio;
+}
 
 
 // ========================================
@@ -14,34 +41,48 @@ function generarPregunta() {
     respondido = false;
     reproduciendo = false;
 
-    document.getElementById("feedback-badge").className =
-        "mensaje oculto";
+    const mensaje =
+        document.getElementById("feedback-badge");
 
-    document.getElementById("feedback-badge").innerText = "";
+    const ondas =
+        document.getElementById("ondas");
 
-    document.getElementById("ondas").classList.add("oculto");
+    const boton =
+        document.getElementById("play-button");
 
-    document.getElementById("play-button").disabled = false;
+
+    mensaje.className = "mensaje oculto";
+    mensaje.innerText = "";
+
+    ondas.classList.add("oculto");
+
+    boton.disabled = false;
 
 
-    // Rondas 1 a 3: 2 a 4 sonidos
+    // ====================================
+    // CANTIDAD DE SONIDOS POR RONDA
+    // ====================================
+
     if (ronda <= 3) {
+
+        // Rondas 1, 2 y 3
+        // Entre 2 y 4 sonidos
 
         cantidad =
             Math.floor(Math.random() * 3) + 2;
 
-    }
+    } else if (ronda <= 6) {
 
-    // Rondas 4 a 6: 4 a 6 sonidos
-    else if (ronda <= 6) {
+        // Rondas 4, 5 y 6
+        // Entre 4 y 6 sonidos
 
         cantidad =
             Math.floor(Math.random() * 3) + 4;
 
-    }
+    } else {
 
-    // Rondas 7 a 9: 6 a 8 sonidos
-    else {
+        // Rondas 7, 8 y 9
+        // Entre 6 y 8 sonidos
 
         cantidad =
             Math.floor(Math.random() * 3) + 6;
@@ -53,17 +94,19 @@ function generarPregunta() {
 
 
 // ========================================
-// REPRODUCE LOS SONIDOS
+// REPRODUCIR TODOS LOS SONIDOS
 // ========================================
 
-function reproducirSonidos() {
+async function reproducirSonidos() {
 
-    // Evita reproducir dos veces al mismo tiempo
+    // No permitir iniciar otra reproducción
     if (reproduciendo) {
         return;
     }
 
     reproduciendo = true;
+    respondido = false;
+
 
     const boton =
         document.getElementById("play-button");
@@ -77,132 +120,159 @@ function reproducirSonidos() {
     ondas.classList.remove("oculto");
 
 
-    let contador = 0;
+    try {
+
+        const contexto =
+            obtenerAudioContext();
 
 
-    // Función interna que reproduce cada sonido
-    function reproducirSiguiente() {
-
-        // Terminamos cuando llegamos a la cantidad
-        if (contador >= cantidad) {
-
-            reproduciendo = false;
-
-            ondas.classList.add("oculto");
-
-            return;
+        // Algunos navegadores suspenden el audio
+        if (contexto.state === "suspended") {
+            await contexto.resume();
         }
 
 
-        // Reproduce un sonido
-        reproducirTono();
+        // ====================================
+        // REPRODUCIR EXACTAMENTE "cantidad"
+        // ====================================
 
-        contador++;
+        for (let i = 0; i < cantidad; i++) {
+
+            // Reproducir un solo pitido
+            await reproducirTono();
 
 
-        // Espera 1.2 segundos antes del siguiente
-        setTimeout(reproducirSiguiente, 1200);
+            // Esperar antes del siguiente pitido
+            // excepto después del último
+            if (i < cantidad - 1) {
+
+                await esperar(700);
+            }
+        }
+
+    } finally {
+
+        // La reproducción terminó
+        reproduciendo = false;
+
+        ondas.classList.add("oculto");
     }
-
-
-    // Comenzar
-    reproducirSiguiente();
 }
 
 
 // ========================================
-// GENERA EL TONO
+// ESPERA
+// ========================================
+
+function esperar(milisegundos) {
+
+    return new Promise(resolve => {
+
+        setTimeout(resolve, milisegundos);
+
+    });
+}
+
+
+// ========================================
+// REPRODUCIR UN SOLO PITIDO
 // ========================================
 
 function reproducirTono() {
 
-    const AudioContext =
-        window.AudioContext ||
-        window.webkitAudioContext;
+    return new Promise(resolve => {
+
+        const contexto =
+            obtenerAudioContext();
 
 
-    const contexto =
-        new AudioContext();
+        const oscilador =
+            contexto.createOscillator();
+
+        const ganancia =
+            contexto.createGain();
 
 
-    // Algunos navegadores suspenden el audio
-    if (contexto.state === "suspended") {
-
-        contexto.resume();
-    }
+        // Tipo de sonido
+        oscilador.type = "sine";
 
 
-    const oscilador =
-        contexto.createOscillator();
-
-    const ganancia =
-        contexto.createGain();
-
-
-    // Sonido suave y claro
-    oscilador.type = "sine";
-
-    // 523 Hz = nota Do
-    oscilador.frequency.value = 523;
+        // Frecuencia del pitido
+        // 523 Hz = Do
+        oscilador.frequency.setValueAtTime(
+            523,
+            contexto.currentTime
+        );
 
 
-    const ahora =
-        contexto.currentTime;
+        const ahora =
+            contexto.currentTime;
 
 
-    // Comienza muy suave
-    ganancia.gain.setValueAtTime(
-        0.0001,
-        ahora
-    );
+        // ====================================
+        // VOLUMEN
+        // ====================================
+
+        ganancia.gain.setValueAtTime(
+            0.0001,
+            ahora
+        );
 
 
-    // Aumenta suavemente el volumen
-    ganancia.gain.exponentialRampToValueAtTime(
-        0.35,
-        ahora + 0.05
-    );
+        // Subida rápida
+        ganancia.gain.exponentialRampToValueAtTime(
+            0.35,
+            ahora + 0.05
+        );
 
 
-    // Mantiene el sonido
-    ganancia.gain.setValueAtTime(
-        0.35,
-        ahora + 0.35
-    );
+        // Mantener
+        ganancia.gain.setValueAtTime(
+            0.35,
+            ahora + 0.30
+        );
 
 
-    // Disminuye suavemente
-    ganancia.gain.exponentialRampToValueAtTime(
-        0.0001,
-        ahora + 0.55
-    );
+        // Bajar
+        ganancia.gain.exponentialRampToValueAtTime(
+            0.0001,
+            ahora + 0.50
+        );
 
 
-    // Conectar
-    oscilador.connect(ganancia);
+        // ====================================
+        // CONECTAR AUDIO
+        // ====================================
 
-    ganancia.connect(contexto.destination);
+        oscilador.connect(ganancia);
 
-
-    // Iniciar
-    oscilador.start(ahora);
-
-
-    // Duración total del sonido
-    oscilador.stop(ahora + 0.6);
+        ganancia.connect(contexto.destination);
 
 
-    // Cerrar el contexto después
-    setTimeout(() => {
+        // ====================================
+        // INICIAR SONIDO
+        // ====================================
 
-        contexto.close();
+        oscilador.start(ahora);
 
-    }, 700);
+        oscilador.stop(ahora + 0.55);
+
+
+        // Cuando termina el sonido
+        oscilador.onended = () => {
+
+            oscilador.disconnect();
+            ganancia.disconnect();
+
+            resolve();
+        };
+
+    });
 }
 
 
 // ========================================
-// GENERA LAS OPCIONES
+// GENERAR OPCIONES
 // ========================================
 
 function generarOpciones(respuesta) {
@@ -218,11 +288,17 @@ function generarOpciones(respuesta) {
         new Set();
 
 
-    // La respuesta correcta
+    // ====================================
+    // RESPUESTA CORRECTA
+    // ====================================
+
     opciones.add(respuesta);
 
 
-    // Crear 3 opciones incorrectas
+    // ====================================
+    // CREAR 3 RESPUESTAS INCORRECTAS
+    // ====================================
+
     while (opciones.size < 4) {
 
         const cambio =
@@ -244,13 +320,23 @@ function generarOpciones(respuesta) {
     }
 
 
-    // Mezclar opciones
+    // ====================================
+    // MEZCLAR OPCIONES
+    // ====================================
+
     const mezcladas =
-        Array.from(opciones)
-            .sort(() => Math.random() - 0.5);
+        Array.from(opciones);
 
 
-    // Crear botones
+    mezcladas.sort(
+        () => Math.random() - 0.5
+    );
+
+
+    // ====================================
+    // CREAR BOTONES
+    // ====================================
+
     mezcladas.forEach(numero => {
 
         const boton =
@@ -274,13 +360,22 @@ function generarOpciones(respuesta) {
 
 
 // ========================================
-// COMPRUEBA LA RESPUESTA
+// COMPROBAR RESPUESTA
 // ========================================
 
 function comprobar(numero, boton) {
 
-    // No permitir responder mientras suenan los sonidos
-    if (respondido || reproduciendo) {
+    // No permitir responder mientras
+    // están sonando los pitidos
+    if (reproduciendo) {
+
+        return;
+    }
+
+
+    // No permitir responder dos veces
+    if (respondido) {
+
         return;
     }
 
@@ -289,10 +384,14 @@ function comprobar(numero, boton) {
         document.getElementById("feedback-badge");
 
 
+    // ====================================
     // RESPUESTA CORRECTA
+    // ====================================
+
     if (numero === cantidad) {
 
         respondido = true;
+
 
         boton.classList.add("bien");
 
@@ -316,7 +415,9 @@ function comprobar(numero, boton) {
         ronda++;
 
 
-        // Esperar antes de pasar a la siguiente ronda
+        // Esperar antes de pasar
+        // a la siguiente ronda
+
         setTimeout(() => {
 
             if (ronda > 9) {
@@ -334,7 +435,10 @@ function comprobar(numero, boton) {
     }
 
 
+    // ====================================
     // RESPUESTA INCORRECTA
+    // ====================================
+
     else {
 
         mensaje.innerText =
@@ -346,6 +450,7 @@ function comprobar(numero, boton) {
 
 
         // Permitir volver a escuchar
+
         document.getElementById(
             "play-button"
         ).disabled = false;
@@ -354,7 +459,7 @@ function comprobar(numero, boton) {
 
 
 // ========================================
-// MOSTRAR FINAL
+// MOSTRAR PANTALLA FINAL
 // ========================================
 
 function mostrarFinal() {
@@ -372,8 +477,10 @@ function mostrarFinal() {
 function resetGame() {
 
     ronda = 1;
-
     puntos = 0;
+
+    respondido = false;
+    reproduciendo = false;
 
 
     document.getElementById(
@@ -394,4 +501,7 @@ function resetGame() {
 // INICIAR JUEGO
 // ========================================
 
-window.onload = generarPregunta;
+window.addEventListener(
+    "load",
+    generarPregunta
+);

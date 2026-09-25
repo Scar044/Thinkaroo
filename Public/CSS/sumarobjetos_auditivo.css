@@ -8,8 +8,11 @@ body {
     min-height: 100vh;
     padding: 25px;
 
-    background: #fff7ed;
-    color: #333;
+    background-image: url("../IMG/fondo-sumas.png"); 
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
 
     font-family:
         "Arial Rounded MT Bold",

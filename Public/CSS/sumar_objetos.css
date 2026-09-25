@@ -5,10 +5,14 @@
 }
 
 body {
+     background-image: url("../IMG/fondo-sumas.png"); 
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
     min-height: 100vh;
     padding: 25px;
-    background: #effff4;
-    color: #333;
+   
     font-family: "Arial Rounded MT Bold",
         "Trebuchet MS", Arial, sans-serif;
     user-select: none;
