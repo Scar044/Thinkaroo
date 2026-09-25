@@ -8,7 +8,7 @@ include "conexion.php";
 
 
 // ==========================================
-// COMPROBAR SESIÓN DEL USUARIO
+// COMPROBAR SESIÓN
 // ==========================================
 
 if (!isset($_SESSION["correo"])) {
@@ -22,37 +22,21 @@ if (!isset($_SESSION["correo"])) {
 }
 
 
-// ==========================================
-// COMPROBAR SESIÓN DEL HIJO
-// ==========================================
-
-if (!isset($_SESSION["id_hijo"])) {
-
-    echo json_encode([
-        "success" => false,
-        "mensaje" => "No hay ningún hijo seleccionado"
-    ]);
-
-    exit;
-}
-
-
-$idHijo = intval($_SESSION["id_hijo"]);
+$correo = $_SESSION["correo"];
 
 
 // ==========================================
-// OBTENER DATOS DEL USUARIO
+// BUSCAR USUARIO POR CORREO
 // ==========================================
 
 $sql = "
     SELECT
-        h.Id_usuario,
-        h.nombre_de_responsable,
-        h.fecha_creacion,
-
-    FROM Usuario h
-
-    WHERE h.Id_hijo = ?
+        id_usuario,
+        correo_electronico,
+        nombre_de_responsable,
+        fecha_creacion
+    FROM Usuario
+    WHERE correo_electronico = ?
 ";
 
 
@@ -70,17 +54,11 @@ if (!$stmt) {
 }
 
 
-$stmt->bind_param(
-    "i",
-    $idUsuario
-);
-
+$stmt->bind_param("s", $correo);
 
 $stmt->execute();
 
-
 $resultado = $stmt->get_result();
-
 
 $usuario = $resultado->fetch_assoc();
 
@@ -89,7 +67,7 @@ if (!$usuario) {
 
     echo json_encode([
         "success" => false,
-        "mensaje" => "No se encontró el usuario con ID: " . $idUsuario
+        "mensaje" => "No se encontró el usuario"
     ]);
 
     exit;
@@ -97,28 +75,44 @@ if (!$usuario) {
 
 
 // ==========================================
-// OBTENER CANTIDAD DE HIJOS
+// OBTENER ID DEL USUARIO
 // ==========================================
 
-$sqlLogros = "
-    SELECT COUNT(*) AS Id_usuario
-    FROM hijos
+$idUsuario = $usuario["id_usuario"];
+
+
+// ==========================================
+// CONTAR HIJOS DEL USUARIO
+// ==========================================
+
+$sqlHijos = "
+    SELECT COUNT(*) AS total_hijos
+    FROM Hijos
     WHERE Id_usuario = ?
 ";
 
 
-$stmtHijos = $conn->prepare($sqlLogros);
+$stmtHijos = $conn->prepare($sqlHijos);
 
-$stmtHijos->bind_param(
-    "i",
-    $idUsuario
-);
+
+if (!$stmtHijos) {
+
+    echo json_encode([
+        "success" => false,
+        "mensaje" => "Error al contar los hijos: " . $conn->error
+    ]);
+
+    exit;
+}
+
+
+$stmtHijos->bind_param("i", $idUsuario);
 
 $stmtHijos->execute();
 
 $resultadoHijos = $stmtHijos->get_result();
 
-$hijos = $resultadoHijos->fetch_assoc();
+$datosHijos = $resultadoHijos->fetch_assoc();
 
 
 // ==========================================
@@ -129,19 +123,22 @@ echo json_encode([
 
     "success" => true,
 
-    "Usuario" => [
+    "usuario" => [
 
         "id_usuario" =>
-            $usuario["Id_usuario"],
+            $usuario["id_usuario"],
 
         "nombre" =>
-            $usuario["nombre_responsable"],        
+            $usuario["nombre_de_responsable"],
+
+        "correo" =>
+            $usuario["correo_electronico"],
 
         "fecha_creacion" =>
             $usuario["fecha_creacion"],
 
         "total_hijos" =>
-            $usuario["total_hijos"]
+            $datosHijos["total_hijos"]
 
     ]
 
@@ -149,7 +146,9 @@ echo json_encode([
 
 
 $stmt->close();
+
 $stmtHijos->close();
+
 $conn->close();
 
 ?>

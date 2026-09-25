@@ -206,17 +206,27 @@ document.addEventListener("DOMContentLoaded", function () {
 
             if (matchedPairs === images.length) {
 
-                setTimeout(function () {
+        setTimeout(async function () {
 
-                    alert(
-                        "🎉 ¡Excelente trabajo! Encontraste todas las parejas!"
+                alert(
+                    "🎉 ¡Excelente trabajo! Encontraste todas las parejas!"
+                );
+
+                const resultado = await guardarProgreso();
+
+                if (resultado.success) {
+
+                    console.log(
+                        "Progreso guardado correctamente."
                     );
 
-                    window.location.href = "niveles.html";
+                }
 
-                }, 500);
+                window.location.href = "niveles.html";
 
-            }
+            }, 500);
+
+        }
 
 
         } else {
@@ -256,3 +266,45 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
 });
+async function guardarProgreso() {
+
+    try {
+
+        const respuesta = await fetch(
+            "../ConfigPHP/guardar_progreso.php",
+            {
+                method: "POST",
+
+                headers: {
+                    "Content-Type": "application/json"
+                },
+
+                body: JSON.stringify({
+                    id_actividad: 1,
+                    progreso: 100,
+                    estado: "completado"
+                })
+            }
+        );
+
+        const datos = await respuesta.json();
+
+        console.log(
+            "RESPUESTA DEL PROGRESO:",
+            datos
+        );
+
+        return datos;
+
+    } catch (error) {
+
+        console.error(
+            "Error al guardar progreso:",
+            error
+        );
+
+        return {
+            success: false
+        };
+    }
+}
