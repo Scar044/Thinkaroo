@@ -168,3 +168,14 @@ fetch("../ConfigPHP/obtener_progreso.php")
     .catch(error => {
         console.error("Error al obtener el progreso:", error);
     });
+
+
+const volverNiveles = document.getElementById("volverNiveles");
+
+volverNiveles.addEventListener("click", function(evento) {
+
+    evento.preventDefault();
+
+    irANiveles();
+
+});
