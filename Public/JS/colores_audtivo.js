@@ -19,6 +19,13 @@ const totalRondas = 5;
 // ===============================
 // ELEMENTOS HTML
 // ===============================
+const finishElement =
+    document.getElementById("finish");
+    const levelComplete =
+    document.getElementById("levelComplete");
+
+const nextLevel =
+    document.getElementById("nextLevel");
 
 const botonEscuchar = document.getElementById("botonEscuchar");
 const opciones = document.querySelectorAll(".color");
@@ -195,3 +202,28 @@ reiniciar.addEventListener("click", reiniciarJuego);
 // ===============================
 
 elegirColor();
+
+
+/* ========================================
+   FINALIZAR NIVEL
+======================================== */
+
+function showLevelComplete() {
+
+    levelComplete.classList.add("show");
+
+    createConfetti();
+
+}
+
+
+/* ========================================
+   SIGUIENTE NIVEL
+======================================== */
+
+nextLevel.addEventListener("click", () => {
+
+    window.location.href = "nivel2.html";
+
+});
+
