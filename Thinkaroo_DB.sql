@@ -1,3 +1,5 @@
+CREATE DATABASE Thinkaroo;
+
 USE Thinkaroo;
 CREATE TABLE Usuario
 (
