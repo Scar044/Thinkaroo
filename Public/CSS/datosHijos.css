@@ -7,7 +7,7 @@
 body {
     min-height: 100vh;
     background: #fdd791;
-    font-family: 'Fredoka', system-ui, -apple-system, sans-serif;
+    font-family: 'Poppins', sans-serif;
     padding-top: 70px; /* Margen superior para no solaparse con el header fijo */
 }
 

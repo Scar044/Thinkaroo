@@ -11,7 +11,7 @@ body {
     justify-content: center;
     align-items: center;
 
-    font-family: Arial, sans-serif;
+    font-family: 'Poppins', sans-serif;
 
     background: url("../IMG/fondo-colores.png");
     background-size: cover;
