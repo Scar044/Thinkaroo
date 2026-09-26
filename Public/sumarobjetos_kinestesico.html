@@ -1,0 +1,184 @@
+
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>¡Mete los objetos!</title>
+
+    <link
+        rel="stylesheet"
+        href="CSS/sumarobjetos_kinestesico.css"
+    >
+
+</head>
+
+
+<body>
+
+
+
+    <header class="encabezado">
+
+        <div class="titulo">
+            ¡METE LOS OBJETOS!
+        </div>
+
+        <p class="subtitulo">
+            Arrastra los objetos hacia la caja
+        </p>
+
+        <div class="marcador">
+
+            <span id="score-text">
+                0
+            </span>
+
+        </div>
+
+    </header>
+
+
+    <main class="juego">
+
+
+        <!-- ZONA DE OBJETOS -->
+
+        <section class="zona-juego">
+
+            <div class="instruccion">
+
+                ✋ Arrastra cada objeto
+                <br>
+                📦 ¡Mételo dentro de la caja!
+
+            </div>
+
+
+            <div
+                id="objetos-container"
+                class="objetos"
+            >
+            </div>
+
+
+            <!-- CAJA -->
+
+            <div
+                id="caja"
+                class="caja"
+            >
+
+                <div class="caja-tapa">
+                    📦
+                </div>
+
+                <div class="caja-contenido">
+
+                    <span id="contador-caja">
+                        0
+                    </span>
+
+                    <span class="texto-caja">
+                        objetos
+                    </span>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <div class="zona-mensaje">
+
+            <div
+                id="feedback-badge"
+                class="mensaje oculto"
+            >
+            </div>
+
+        </div>
+
+
+        <section
+            id="panel-opciones"
+            class="panel oculto"
+        >
+
+            <div class="pregunta">
+
+                ¿CUÁNTOS OBJETOS METISTE?
+
+            </div>
+
+
+            <div
+                id="options-container"
+                class="opciones"
+            >
+            </div>
+
+        </section>
+
+
+
+        <div class="reinicio">
+
+            <button
+                type="button"
+                onclick="resetGame()"
+            >
+                ↻ Intentar de nuevo
+            </button>
+
+        </div>
+
+
+    </main>
+
+    <div
+        class="finish"
+        id="finish"
+    >
+
+        <div class="finish-card">
+
+            <div class="trophy">
+                🏆
+            </div>
+
+<h2>¡Excelente ahora tu misión!</h2>
+          <p>
+            Encuentra 2 objetos de cada forma que aprendistes hoy
+            <br>
+            ¡Aprendiste las formas!
+        </p>
+
+            <button
+                type="button"
+                id="botonFinal"
+            >
+                Continuar
+            </button>
+
+        </div>
+
+    </div>
+
+    <script
+        src="JS/sumarobjetos_kinestesico.js"
+    ></script>
+
+
+</body>
+
+</html>
+
