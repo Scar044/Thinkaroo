@@ -323,3 +323,81 @@ body {
     }
 
 }
+
+.finish {
+    position: fixed;
+    inset: 0;
+    background: rgba(255, 255, 255, 0.96);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 20000;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.4s ease;
+}
+
+.finish.show {
+    opacity: 1;
+    visibility: visible;
+}
+
+.finish-card {
+    text-align: center;
+    padding: 35px;
+    width: min(600px, 90%);
+    background: linear-gradient(135deg, #fff9c4, #ffffff);
+    border-radius: 40px;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+    border: 6px solid #ffd740;
+}
+
+.trophy {
+    font-size: 90px;
+    animation: reboteTrophy 1s infinite;
+}
+
+.finish-card h2 {
+    font-size: clamp(35px, 7vw, 60px);
+    color: #ff8f00;
+    margin: 10px 0;
+}
+
+.finish-card p {
+    font-size: 24px;
+    color: #555;
+    margin-bottom: 25px;
+}
+
+#botonFinal {
+    border: none;
+    background: linear-gradient(135deg, #ff7043, #ff4081);
+    color: white;
+    padding: 16px 35px;
+    border-radius: 30px;
+    font-size: 23px;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+    transition: transform 0.2s ease;
+}
+
+#botonFinal:hover {
+    transform: scale(1.08);
+}
+
+@keyframes reboteTrophy {
+
+    0% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-12px);
+    }
+
+    100% {
+        transform: translateY(0);
+    }
+
+}
