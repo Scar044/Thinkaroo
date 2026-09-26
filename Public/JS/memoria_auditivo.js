@@ -158,16 +158,28 @@ function checkMatch(){
 
         resetTurn();
 
-        if(matchedPairs===pairs.length){
+        if(matchedPairs === pairs.length){
 
-            setTimeout(()=>{
+    setTimeout(async () => {
 
-                alert("🎉 ¡Felicidades! Has encontrado todas las parejas.");
-                window.location.href = "niveles_auditivo.html";
+        alert(
+            "🎉 ¡Felicidades! Has encontrado todas las parejas."
+        );
 
-            },300);
+        const resultado = await guardarProgreso();
+
+        if (resultado.success) {
+
+            console.log(
+                "Progreso guardado correctamente."
+            );
 
         }
+
+        window.location.href = "niveles_auditivo.html";
+
+    }, 300);
+}
 
     }else{
 
@@ -193,3 +205,46 @@ function resetTurn(){
 }
 
 })();
+
+async function guardarProgreso() {
+
+    try {
+
+        const respuesta = await fetch(
+            "../ConfigPHP/guardar_progreso.php",
+            {
+                method: "POST",
+
+                headers: {
+                    "Content-Type": "application/json"
+                },
+
+                body: JSON.stringify({
+                    id_actividad: 2,
+                    progreso: 100,
+                    estado: "completado"
+                })
+            }
+        );
+
+        const datos = await respuesta.json();
+
+        console.log(
+            "RESPUESTA DEL PROGRESO:",
+            datos
+        );
+
+        return datos;
+
+    } catch (error) {
+
+        console.error(
+            "Error al guardar progreso:",
+            error
+        );
+
+        return {
+            success: false
+        };
+    }
+}

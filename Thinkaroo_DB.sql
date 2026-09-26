@@ -22,7 +22,9 @@ INSERT INTO temas
 (id_tema, numero_de_nivel, dificultad, nombre_de_tema)
 VALUES
 (1, 1, "BAJA", "Animales"),
-(2, 2, "MEDIA", "Figuras");
+(2, 2, "MEDIA", "Figuras"),
+(3, 3, "BAJA", "Colores"),
+(4, 4, "ALTA", "Sumas");
 
 CREATE TABLE Logros(
     Id_logro INT AUTO_INCREMENT PRIMARY KEY,
@@ -30,6 +32,24 @@ CREATE TABLE Logros(
     descripcion VARCHAR(255),
     imagen_url VARCHAR(255)
 );
+
+USE Thinkaroo;
+    INSERT INTO Logros
+    (nombre, descripcion, imagen_url)
+    VALUES
+    ("Primer paso", "Complestate tu primera leccion", "primer-paso.png"),
+    ("Mente curiosa", "Complestate tu primera leccion", "primer-paso.png"),
+    ("Gran explorador", "Complestate tu primera leccion", "primer-paso.png"),
+    ("Rayo veloz", "Complestate tu primera leccion", "primer-paso.png"),
+    ("Primer paso", "Complestate tu primera leccion", "primer-paso.png"),
+    ("Primer paso", "Complestate tu primera leccion", "primer-paso.png"),
+    ("Primer paso", "Complestate tu primera leccion", "primer-paso.png"),
+    ("Primer paso", "Complestate tu primera leccion", "primer-paso.png"),
+    ("Primer paso", "Complestate tu primera leccion", "primer-paso.png"),
+    ("Primer paso", "Complestate tu primera leccion", "primer-paso.png"),
+    ("Primer paso", "Complestate tu primera leccion", "primer-paso.png"),
+    ("Primer paso", "Complestate tu primera leccion", "primer-paso.png");
+
 
 CREATE TABLE Avatares (
     Id_avatar INT AUTO_INCREMENT PRIMARY KEY,
@@ -89,7 +109,16 @@ INSERT INTO actividades
 VALUES
 (1, 1, "Juego de memoria con imagenes de animales", "Encuentra las parejas de animales", "Memoria visual", "-", "Visual" ),
 (1, 1, "Juego de memoria con imagenes de animales y sus sonidos", "Encuentra las parejas de animales con su sonido", "Memoria auditiva", "-", "Auditivo" ),
-(1, 1, "Juego de conectar animales con su sombra", "Arrastra las figuras de animales a donde se encuentra su silueta", "memoria_kinestesica", "-", "Kinestesico" );
+(1, 1, "Juego de conectar animales con su sombra", "Arrastra las figuras de animales a donde se encuentra su silueta", "Memoria kinestesica", "-", "Kinestesico" ),
+(2, 2, "Juego de arrastrar las figuras a su sector correspondiente", "Arrastra las figuras a su cajita correspondiente", "Figuras visual", "-", "Visual" ),
+(2, 2, "Juego de seleccionar la figura que se te indique", "Selecciona el dibujo de la figura cuyo nombre corresponda al que escuchas", "Figuras auditiva", "-", "Auditivo" ),
+(2, 2, "Juego de trazar figuras", "Sigue con tu dedo la linea punteada para completar la forma de la figura correspondiente", "Figuras kinestesica", "-", "Kinestesico" ),
+(3, 3, "Juego de identificar el color de casda dibujo", "Selecciona un dibujo, luego identifica su color y seleccionalo entre las opciones", "Colores visual", "-", "Visual" ),
+(3, 3, "Juego de reconocer el color por su nombre", "Escucha atentamente los colores que te diga el juego, luego seleccionalo entre las opciones", "Colores auditivo", "-", "Auditivo" ),
+(3, 3, "Juego de identificar los colores de los dibujos", "Arrastra cada dibujo hacia su el color que le corresponde", "Colores kinestesico", "-", "Kinestesico" ),
+(4, 4, "Juego de contar los objetos y seleccionar el total", "Cuenta cada uno de los objetos y luego busca entre las opciones el numero de tu resultado", "Sumas visual", "-", "Visual" ),
+(4, 4, "Juego de contar los sonidos", "Escucha atentamente y cuenta cada vez que un sonido se repita, cuando se detenga selecciona la opcion que tenga el numero de tu resultado", "Sumas auditivo", "-", "Auditivo" ),
+(4, 4, "Juego de ?", "-", "Sumas kinestesico", "-", "Kinestesico" );
 
 CREATE TABLE Logros_hijos (
     Id_logro_hijo INT AUTO_INCREMENT PRIMARY KEY,
