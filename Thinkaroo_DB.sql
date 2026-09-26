@@ -37,18 +37,18 @@ USE Thinkaroo;
     INSERT INTO Logros
     (nombre, descripcion, imagen_url)
     VALUES
-    ("Primer paso", "Complestate tu primera leccion", "primer-paso.png"),
-    ("Mente curiosa", "Complestate tu primera leccion", "primer-paso.png"),
-    ("Gran explorador", "Complestate tu primera leccion", "primer-paso.png"),
-    ("Rayo veloz", "Complestate tu primera leccion", "primer-paso.png"),
-    ("Primer paso", "Complestate tu primera leccion", "primer-paso.png"),
-    ("Primer paso", "Complestate tu primera leccion", "primer-paso.png"),
-    ("Primer paso", "Complestate tu primera leccion", "primer-paso.png"),
-    ("Primer paso", "Complestate tu primera leccion", "primer-paso.png"),
-    ("Primer paso", "Complestate tu primera leccion", "primer-paso.png"),
-    ("Primer paso", "Complestate tu primera leccion", "primer-paso.png"),
-    ("Primer paso", "Complestate tu primera leccion", "primer-paso.png"),
-    ("Primer paso", "Complestate tu primera leccion", "primer-paso.png");
+    ("Primer paso", "Complestate tu primera leccion", "IMG/logros/primer-paso.png"),
+    ("Mente curiosa", "Complestate 10 lecciones", "IMG/logros/mente-curiosa.png"),
+    ("Gran explorador", "Complestate 15 lecciones", "IMG/logros/gran-explorador.png"),
+    ("-", "Completaste -", "IMG/logros/rayo-veloz.png"),
+    ("Perfecto", "Completa una actividad sin errores", "IMG/logros/perfecto.png"),
+    ("-", "Completa 20 lecciones", "IMG/logros/en-racha.png"),
+    ("Aventurero", "Completa 20 lecciones", "IMG/logros/aventurero.png"),
+    ("Pequeño genio", "Consigue 5 actividades perfectas", "IMG/logros/genio.png"),
+    ("Coleccionista", "Consigue 10 insignias", "IMG/logros/coleccionista.png"),
+    ("-", "Com", "IMG/logros/primer-reto.png"),
+    ("Super aprendiz", "Completa 30 lecciones", "IMG/logros/super-aprendiz.png"),
+    ("Maestro Thinkaroo", "Desbloque todos los logros", "IMG/logros/maestro.png");
 
 
 CREATE TABLE Avatares (
