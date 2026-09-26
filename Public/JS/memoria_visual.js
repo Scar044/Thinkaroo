@@ -307,7 +307,7 @@ function resetTurn() {
 
 
 
-async function guardarProgreso() {
+    async function guardarProgreso() {
 
     try {
 
@@ -357,3 +357,5 @@ async function guardarProgreso() {
     }
 
 }
+
+
