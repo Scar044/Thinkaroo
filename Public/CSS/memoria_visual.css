@@ -535,3 +535,301 @@ p {
     height: auto;
     display: block;
 }
+/* ========================================
+   ALERTA FINAL
+======================================== */
+
+.alerta-final {
+
+    position: fixed;
+
+    top: 0;
+    left: 0;
+
+    width: 100%;
+    height: 100%;
+
+    background: rgba(255, 255, 255, 0.94);
+
+    display: flex;
+
+    justify-content: center;
+    align-items: center;
+
+    z-index: 99999;
+
+    opacity: 0;
+    visibility: hidden;
+
+    transition:
+        opacity 0.4s ease,
+        visibility 0.4s ease;
+}
+
+
+/* ========================================
+   MOSTRAR ALERTA
+======================================== */
+
+.alerta-final.mostrar {
+
+    opacity: 1;
+
+    visibility: visible;
+}
+
+
+/* ========================================
+   TARJETA
+======================================== */
+
+.alerta-card {
+
+    width: 90%;
+
+    max-width: 500px;
+
+    padding: 40px 30px;
+
+    background: white;
+
+    border-radius: 30px;
+
+    text-align: center;
+
+    box-shadow:
+        0 15px 40px rgba(0, 0, 0, 0.20);
+
+    transform: scale(0.7);
+
+    opacity: 0;
+
+    transition:
+        transform 0.5s ease,
+        opacity 0.5s ease;
+}
+
+
+/* ========================================
+   ANIMACIÓN DE LA TARJETA
+======================================== */
+
+.alerta-final.mostrar .alerta-card {
+
+    transform: scale(1);
+
+    opacity: 1;
+}
+
+
+/* ========================================
+   TROFEO
+======================================== */
+
+.trofeo {
+
+    font-size: 80px;
+
+    margin-bottom: 15px;
+
+    animation: saltarTrofeo 1s infinite;
+}
+
+
+/* ========================================
+   TÍTULO
+======================================== */
+
+.alerta-card h2 {
+
+    margin: 0 0 20px;
+
+    font-size: 40px;
+
+    color: #ff9800;
+}
+
+
+/* ========================================
+   TEXTO
+======================================== */
+
+.alerta-card p {
+
+    margin-bottom: 30px;
+
+    font-size: 20px;
+
+    line-height: 1.6;
+
+    color: #444;
+}
+
+
+/* ========================================
+   BOTÓN
+======================================== */
+
+#botonFinal {
+
+    border: none;
+
+    padding: 15px 30px;
+
+    border-radius: 15px;
+
+    background: #4caf50;
+
+    color: white;
+
+    font-size: 18px;
+
+    font-weight: bold;
+
+    cursor: pointer;
+
+    transition:
+        transform 0.2s ease,
+        background 0.2s ease;
+}
+
+
+#botonFinal:hover {
+
+    transform: scale(1.05);
+
+    background: #388e3c;
+}
+
+
+/* ========================================
+   ANIMACIÓN TROFEO
+======================================== */
+
+@keyframes saltarTrofeo {
+
+    0%,
+    100% {
+
+        transform: translateY(0);
+
+    }
+
+    50% {
+
+        transform: translateY(-15px);
+
+    }
+
+}
+
+
+/* ========================================
+   CELULARES
+======================================== */
+
+@media (max-width: 600px) {
+
+    .alerta-card {
+
+        padding: 30px 20px;
+
+    }
+
+    .trofeo {
+
+        font-size: 65px;
+
+    }
+
+    .alerta-card h2 {
+
+        font-size: 32px;
+
+    }
+
+    .alerta-card p {
+
+        font-size: 18px;
+
+    }
+
+}
+
+.finish {
+    position: fixed;
+    inset: 0;
+    background: rgba(255, 255, 255, 0.96);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 20000;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.4s ease;
+}
+
+.finish.show {
+    opacity: 1;
+    visibility: visible;
+}
+
+.finish-card {
+    text-align: center;
+    padding: 35px;
+    width: min(600px, 90%);
+    background: linear-gradient(135deg, #fff9c4, #ffffff);
+    border-radius: 40px;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+    border: 6px solid #ffd740;
+}
+
+.trophy {
+    font-size: 90px;
+    animation: reboteTrophy 1s infinite;
+}
+
+.finish-card h2 {
+    font-size: clamp(35px, 7vw, 60px);
+    color: #ff8f00;
+    margin: 10px 0;
+}
+
+.finish-card p {
+    font-size: 24px;
+    color: #555;
+    margin-bottom: 25px;
+}
+
+#botonFinal {
+    border: none;
+    background: linear-gradient(135deg, #ff7043, #ff4081);
+    color: white;
+    padding: 16px 35px;
+    border-radius: 30px;
+    font-size: 23px;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+    transition: transform 0.2s ease;
+}
+
+#botonFinal:hover {
+    transform: scale(1.08);
+}
+
+@keyframes reboteTrophy {
+
+    0% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-12px);
+    }
+
+    100% {
+        transform: translateY(0);
+    }
+
+}

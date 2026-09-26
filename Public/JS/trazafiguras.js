@@ -5,6 +5,44 @@ const mensaje = document.getElementById("mensaje");
 const puntosTexto = document.getElementById("puntos");
 const reiniciar = document.getElementById("reiniciar");
 
+
+// ==========================================
+// ALERTA FINAL
+// ==========================================
+
+const alertaFinal =
+    document.getElementById("finish");
+
+const botonFinal =
+    document.getElementById("botonFinal");
+
+
+function mostrarAlertaFinal() {
+
+    if (alertaFinal) {
+
+        alertaFinal.classList.add("show");
+
+    }
+
+}
+
+
+if (botonFinal) {
+
+    botonFinal.addEventListener(
+        "click",
+        function () {
+
+            window.location.href =
+                "niveles.html";
+
+        }
+    );
+
+}
+
+
 canvas.width = 700;
 canvas.height = 450;
 
@@ -181,7 +219,7 @@ function dibujarTriangulo() {
 
     ctx.setLineDash([]);
 
-  
+
     dibujarPunto(
         triangulo[0].x,
         triangulo[0].y,
@@ -194,7 +232,7 @@ function dibujarTriangulo() {
         "#8BCF32"
     );
 
-    
+
     dibujarPunto(
         triangulo[2].x,
         triangulo[2].y,
@@ -358,14 +396,14 @@ function dibujarCirculo() {
 
     ctx.setLineDash([]);
 
-    
+
     dibujarPunto(
         circulo.x,
         circulo.y - circulo.radio,
         "#8BCF32"
     );
 
-   
+
     dibujarPunto(
         circulo.x,
         circulo.y + circulo.radio,
@@ -439,7 +477,7 @@ function obtenerVertices() {
 
 function encontrarPuntoVerde(x, y) {
 
-   
+
     if (figuraActual === 1) {
 
         const arriba =
@@ -470,19 +508,18 @@ function encontrarPuntoVerde(x, y) {
     }
 
 
-  
+
     const vertices = obtenerVertices();
 
     let puntosVerdes;
 
-   
+
     if (figuraActual === 0) {
 
         puntosVerdes = [0, 1];
 
     } else {
 
-       
         puntosVerdes = [0, 3];
     }
 
@@ -542,7 +579,7 @@ function comenzar(evento) {
     ladosCompletados = 0;
 
 
-    
+
     if (figuraActual === 1) {
 
         const dx =
@@ -617,7 +654,6 @@ function dibujarPoligono(evento) {
         );
 
 
-   
     if (distancia > 45) {
 
         dibujando = false;
@@ -658,7 +694,7 @@ function dibujarPoligono(evento) {
         ladosCompletados++;
 
 
-    
+
         if (
             ladosCompletados >= cantidad
         ) {
@@ -735,7 +771,6 @@ function dibujarCirculoTrazo(evento) {
         anguloAnterior;
 
 
-    
     while (diferencia > Math.PI) {
         diferencia -= Math.PI * 2;
     }
@@ -745,7 +780,7 @@ function dibujarCirculoTrazo(evento) {
     }
 
 
-    
+
     if (
         direccionCirculo === 0 &&
         Math.abs(diferencia) > 0.02
@@ -756,7 +791,7 @@ function dibujarCirculoTrazo(evento) {
     }
 
 
-    
+
     const avance =
         diferencia * direccionCirculo;
 
@@ -771,7 +806,7 @@ function dibujarCirculoTrazo(evento) {
         anguloActual;
 
 
-    
+
     ctx.lineTo(
         posicion.x,
         posicion.y
@@ -780,7 +815,7 @@ function dibujarCirculoTrazo(evento) {
     ctx.stroke();
 
 
-    
+
     let puntoFinal;
 
     if (puntoInicio === 0) {
@@ -808,7 +843,7 @@ function dibujarCirculoTrazo(evento) {
         );
 
 
-   
+
     if (
         anguloRecorrido >=
         Math.PI * 2 * 0.90 &&
@@ -841,12 +876,12 @@ function dibujar(evento) {
 
     if (figuraActual === 1) {
 
-       
+
         dibujarCirculoTrazo(evento);
 
     } else {
 
-        
+
         dibujarPoligono(evento);
     }
 }
@@ -966,11 +1001,23 @@ function terminar() {
             mensaje.style.color =
                 "#35A853";
 
+
+            // ==========================================
+            // MOSTRAR ALERTA FINAL
+            // ==========================================
+
+            setTimeout(() => {
+
+                mostrarAlertaFinal();
+
+            }, 700);
+
+
             return;
         }
 
 
-    
+
         ladoActual = 0;
 
         puntoInicio = null;
@@ -1053,7 +1100,7 @@ reiniciar.addEventListener(
     "click",
     () => {
 
-       
+
 
         dibujando = false;
 
