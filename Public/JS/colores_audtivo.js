@@ -119,13 +119,19 @@ function comprobarColor(event) {
 
             siguiente.style.display = "inline-block";
 
-        } else {
+   
+} else {
 
-            mensaje.textContent =
-                `🏆 ¡Juego terminado! Obtuviste ${puntos} puntos.`;
+    mensaje.textContent =
+        `🏆 ¡Juego terminado! Obtuviste ${puntos} puntos.`;
 
-            reiniciar.style.display = "inline-block";
-        }
+    // Mostrar pantalla final
+    setTimeout(() => {
+        showLevelComplete();
+    }, 700);
+}
+
+
 
     }
 
@@ -212,8 +218,6 @@ function showLevelComplete() {
 
     levelComplete.classList.add("show");
 
-    createConfetti();
-
 }
 
 
@@ -222,8 +226,6 @@ function showLevelComplete() {
 ======================================== */
 
 nextLevel.addEventListener("click", () => {
-
-    window.location.href = "nivel2.html";
-
+    window.location.href = "niveles_auditivo.html";
 });
 
