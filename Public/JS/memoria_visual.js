@@ -1,39 +1,3 @@
-// ==========================================
-// ALERTA FINAL
-// ==========================================
-
-const alertaFinal =
-    document.getElementById("finish");
-
-const botonFinal =
-    document.getElementById("botonFinal");
-
-
-function mostrarAlertaFinal() {
-
-    if (alertaFinal) {
-
-        alertaFinal.classList.add("show");
-
-    }
-
-}
-
-
-if (botonFinal) {
-
-    botonFinal.addEventListener(
-        "click",
-        function () {
-
-            window.location.href =
-                "niveles.html";
-
-        }
-    );
-
-}
-
 
 // ==========================================
 // IMÁGENES
@@ -304,9 +268,6 @@ function resetTurn() {
 }
 
 
-
-
-
     async function guardarProgreso() {
 
     try {
@@ -359,3 +320,38 @@ function resetTurn() {
 }
 
 
+// ==========================================
+// ALERTA FINAL
+// ==========================================
+
+const alertaFinal =
+    document.getElementById("finish");
+
+const botonFinal =
+    document.getElementById("botonFinal");
+
+
+function mostrarAlertaFinal() {
+
+    if (alertaFinal) {
+
+        alertaFinal.classList.add("show");
+
+    }
+
+}
+
+
+if (botonFinal) {
+
+    botonFinal.addEventListener(
+        "click",
+        function () {
+
+            window.location.href =
+                "niveles.html";
+
+        }
+    );
+
+}
