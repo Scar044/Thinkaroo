@@ -48,8 +48,6 @@ categorias.forEach(categoria => {
     const zona = categoria.querySelector(".zona");
 
 
-   
-
     zona.addEventListener("dragover", function (evento) {
 
         evento.preventDefault();
@@ -59,7 +57,6 @@ categorias.forEach(categoria => {
     });
 
 
-    
     zona.addEventListener("dragleave", function () {
 
         this.classList.remove("activa");
@@ -67,7 +64,6 @@ categorias.forEach(categoria => {
     });
 
 
-    
     zona.addEventListener("drop", function (evento) {
 
         evento.preventDefault();
@@ -75,18 +71,17 @@ categorias.forEach(categoria => {
         this.classList.remove("activa");
 
 
-        
         if (!figuraActual) {
             return;
         }
 
 
-        const formaFigura = figuraActual.dataset.forma;
+        const formaFigura =
+            figuraActual.dataset.forma;
 
-        const formaCategoria = categoria.dataset.forma;
+        const formaCategoria =
+            categoria.dataset.forma;
 
-
-        
 
         if (formaFigura === formaCategoria) {
 
@@ -111,7 +106,6 @@ categorias.forEach(categoria => {
             mensaje.style.color = "#35a853";
 
 
-            
             this.classList.add("correcto");
 
             setTimeout(() => {
@@ -121,24 +115,24 @@ categorias.forEach(categoria => {
             }, 600);
 
 
-            
+         if (figurasCorrectas === figuras.length) {
 
-            if (figurasCorrectas === figuras.length) {
+    mensaje.textContent = " ¡Excelente! Completaste el juego 🎉";
 
-                mensaje.textContent = " ¡Excelente! Completaste el juego 🎉";
+    setTimeout(function () {
+        mostrarAlertaFinal();
+    }, 700);
 
-            }
+}
 
         }
 
 
-        
         else {
 
-            const forma = figuraActual.dataset.forma;
+            const forma =
+                figuraActual.dataset.forma;
 
-
-           
 
             if (!intentos[forma]) {
                 intentos[forma] = 0;
@@ -147,48 +141,73 @@ categorias.forEach(categoria => {
             intentos[forma]++;
 
 
-const pistas = {
+            const pistas = {
 
-    circulo: [
-        " Mira con atención. El círculo no tiene esquinas.",
-        " Observa su borde. Es completamente redondo.",
-        " Busca la figura que parece una pelota."
-    ],
+                circulo: [
 
-    cuadrado: [
-        " Mira sus lados. Tiene 4 lados.",
-        " Sus 4 lados tienen el mismo tamaño.",
-        " Busca la figura que tiene 4 lados iguales."
-    ],
+                    " Mira con atención. El círculo no tiene esquinas.",
 
-    triangulo: [
-        " Mira sus esquinas. Tiene 3.",
-        " Cuenta sus lados. Tiene 3.",
-        " Busca la figura que tiene forma de montaña."
-    ],
+                    " Observa su borde. Es completamente redondo.",
 
-    rectangulo: [
-        " Mira sus lados. Tiene 4.",
-        "Tiene 2 lados largos y 2 lados cortos.",
-        " Busca la figura que parece una puerta."
-    ]
+                    " Busca la figura que parece una pelota."
 
-};
-
-            let numeroPista = intentos[forma] - 1;
+                ],
 
 
-            if (numeroPista >= pistas[forma].length) {
+                cuadrado: [
 
-                numeroPista = pistas[forma].length - 1;
+                    " Mira sus lados. Tiene 4 lados.",
+
+                    " Sus 4 lados tienen el mismo tamaño.",
+
+                    " Busca la figura que tiene 4 lados iguales."
+
+                ],
+
+
+                triangulo: [
+
+                    " Mira sus esquinas. Tiene 3.",
+
+                    " Cuenta sus lados. Tiene 3.",
+
+                    " Busca la figura que tiene forma de montaña."
+
+                ],
+
+
+                rectangulo: [
+
+                    " Mira sus lados. Tiene 4.",
+
+                    "Tiene 2 lados largos y 2 lados cortos.",
+
+                    " Busca la figura que parece una puerta."
+
+                ]
+
+            };
+
+
+            let numeroPista =
+                intentos[forma] - 1;
+
+
+            if (
+                numeroPista >=
+                pistas[forma].length
+            ) {
+
+                numeroPista =
+                    pistas[forma].length - 1;
 
             }
 
 
-            
             if (textoPista) {
 
-                textoPista.textContent = pistas[forma][numeroPista];
+                textoPista.textContent =
+                    pistas[forma][numeroPista];
 
             }
 
@@ -200,28 +219,28 @@ const pistas = {
             }
 
 
-            
+            mensaje.textContent =
+                "😊 ¡Casi!";
 
-            mensaje.textContent = "😊 ¡Casi!";
+            mensaje.style.color =
+                "#f39c12";
 
-            mensaje.style.color = "#f39c12";
+
+            zona.classList.remove("error");
+
+            void zona.offsetWidth;
+
+            zona.classList.add("error");
 
 
-            
-          zona.classList.remove("error");
+            setTimeout(() => {
 
-           void zona.offsetWidth;
+                zona.classList.remove("error");
 
-          zona.classList.add("error");
-
-setTimeout(() => {
-    zona.classList.remove("error");
-}, 2000); 
+            }, 2000);
 
         }
 
-
-        
 
         figuraActual = null;
 
@@ -237,10 +256,69 @@ if (cerrarPista) {
 
         pista.classList.remove("visible");
 
-        mensaje.textContent = " ¡Inténtalo de nuevo!";
+        mensaje.textContent =
+            " ¡Inténtalo de nuevo!";
 
-        mensaje.style.color = "#1596e6";
+        mensaje.style.color =
+            "#1596e6";
 
     });
+
+}
+// ============================================
+// ALERTA FINAL
+// ============================================
+
+const alertaFinal = document.getElementById("finish");
+
+const botonFinal = document.getElementById("botonFinal");
+
+function mostrarAlertaFinal() {
+
+    if (alertaFinal) {
+        alertaFinal.classList.add("show");
+    }
+
+}
+
+if (botonFinal) {
+
+    botonFinal.addEventListener("click", function () {
+
+        window.location.href = "niveles.html";
+
+    });
+
+}
+
+
+
+
+// Ocultar alerta
+
+function ocultarAlertaFinal() {
+
+    if (alertaFinal) {
+
+        alertaFinal.classList.remove("show");
+
+    }
+
+}
+
+
+// Botón continuar
+
+if (botonFinal) {
+
+    botonFinal.addEventListener(
+        "click",
+        function () {
+
+            window.location.href =
+                "niveles.html";
+
+        }
+    );
 
 }

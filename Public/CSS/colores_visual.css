@@ -1,10 +1,9 @@
-*{
+* {
     box-sizing: border-box;
 }
 
 
 body {
-
     margin: 0;
     padding: 20px;
 
@@ -12,7 +11,7 @@ body {
 
     font-family: Arial, sans-serif;
 
-   background-image: url("../IMG/fondo-colores.png");
+    background-image: url("../IMG/fondo-colores.png");
 
     display: flex;
 
@@ -23,7 +22,6 @@ body {
 
 
 .juego {
-
     width: 100%;
 
     max-width: 750px;
@@ -45,7 +43,6 @@ body {
 ========================= */
 
 h1 {
-
     margin-top: 0;
 
     color: #333;
@@ -55,7 +52,6 @@ h1 {
 
 
 .instruccion {
-
     color: #666;
 
     font-size: 18px;
@@ -69,7 +65,6 @@ h1 {
 ========================= */
 
 .datos {
-
     display: flex;
 
     justify-content: space-between;
@@ -87,7 +82,6 @@ h1 {
 
 
 h2 {
-
     color: #444;
 
     min-height: 32px;
@@ -101,7 +95,6 @@ h2 {
 ========================= */
 
 .objetos {
-
     min-height: 130px;
 
     display: flex;
@@ -119,7 +112,6 @@ h2 {
 
 
 .objeto {
-
     width: 90px;
 
     height: 90px;
@@ -145,13 +137,11 @@ h2 {
 
 
 .objeto:hover {
-
     transform: scale(1.08);
 }
 
 
 .objeto.seleccionado {
-
     transform: scale(1.12);
 
     border: 6px solid #6c63ff;
@@ -186,7 +176,6 @@ h2 {
 ========================= */
 
 .cajas {
-
     display: flex;
 
     justify-content: center;
@@ -200,7 +189,6 @@ h2 {
 
 
 .caja {
-
     width: 135px;
 
     height: 110px;
@@ -226,19 +214,16 @@ h2 {
 
 
 .caja:hover {
-
     transform: scale(1.05);
 }
 
 
 .caja:active {
-
     transform: scale(0.95);
 }
 
 
 .caja span {
-
     font-size: 17px;
 
     font-weight: bold;
@@ -252,25 +237,21 @@ h2 {
 ========================= */
 
 .caja-roja {
-
     background: #ffd7d7;
 }
 
 
 .caja-azul {
-
     background: #dcecff;
 }
 
 
 .caja-amarilla {
-
     background: #fff3b5;
 }
 
 
 .caja-verde {
-
     background: #daf5da;
 }
 
@@ -280,7 +261,6 @@ h2 {
 ========================= */
 
 #mensaje {
-
     min-height: 40px;
 
     margin-top: 20px;
@@ -296,7 +276,6 @@ h2 {
 ========================= */
 
 #siguiente {
-
     display: none;
 
     margin: 10px auto;
@@ -318,13 +297,11 @@ h2 {
 
 
 #siguiente:hover {
-
     transform: scale(1.05);
 }
 
 
 #reiniciar {
-
     display: none;
 
     margin: 10px auto;
@@ -346,7 +323,6 @@ h2 {
 
 
 #reiniciar:hover {
-
     background: #dddddd;
 }
 
@@ -358,37 +334,31 @@ h2 {
 @media (max-width: 600px) {
 
     body {
-
         padding: 10px;
     }
 
 
     .juego {
-
         padding: 20px 15px;
     }
 
 
     h1 {
-
         font-size: 28px;
     }
 
 
     .instruccion {
-
         font-size: 16px;
     }
 
 
     .datos {
-
         font-size: 14px;
     }
 
 
     .objeto {
-
         width: 75px;
 
         height: 75px;
@@ -398,7 +368,6 @@ h2 {
 
 
     .caja {
-
         width: 105px;
 
         height: 90px;
@@ -408,11 +377,12 @@ h2 {
 
 
     .caja span {
-
         font-size: 14px;
     }
 
 }
+
+
 .message {
     position: fixed;
 
@@ -442,6 +412,7 @@ h2 {
     transition: all 0.25s ease;
 }
 
+
 .message.show {
     opacity: 1;
 
@@ -450,15 +421,18 @@ h2 {
         scale(1);
 }
 
+
 .message.success {
     color: #20a653;
     border: 5px solid #54e346;
 }
 
+
 .message.error {
     color: #e53935;
     border: 5px solid #ff8a80;
 }
+
 
 /* PANTALLA FINAL */
 
@@ -480,10 +454,12 @@ h2 {
     transition: opacity 0.4s ease;
 }
 
+
 .finish.show {
     opacity: 1;
     visibility: visible;
 }
+
 
 .finish-card {
     text-align: center;
@@ -507,12 +483,14 @@ h2 {
     border: 6px solid #ffd740;
 }
 
+
 .trophy {
     font-size: 90px;
 
     animation:
         bounce 1s infinite;
 }
+
 
 .finish-card h2 {
     font-size: clamp(35px, 7vw, 60px);
@@ -522,6 +500,7 @@ h2 {
     margin: 10px 0;
 }
 
+
 .finish-card p {
     font-size: 24px;
 
@@ -529,6 +508,7 @@ h2 {
 
     margin-bottom: 25px;
 }
+
 
 #restart {
     border: none;
@@ -559,9 +539,11 @@ h2 {
         transform 0.2s ease;
 }
 
+
 #restart:hover {
     transform: scale(1.08);
 }
+
 
 /* CONFETI */
 

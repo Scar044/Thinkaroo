@@ -371,14 +371,32 @@ function terminarJuego() {
         "none";
 
 
-    document.getElementById("reiniciar").style.display =
-        "block";
+    // CAMBIO SOLO PARA LA ALERTA FINAL:
+    // evita que el juego se detenga si no existe
+    // un elemento con id="reiniciar".
 
+    const reiniciar =
+        document.getElementById("reiniciar");
 
-    // Ocultar objetos
+    if (reiniciar) {
+
+        reiniciar.style.display =
+            "none";
+
+    }
+
 
     document.getElementById("objetos").innerHTML =
         "";
+
+
+    // Mostrar alerta final
+
+    setTimeout(function() {
+
+        mostrarAlertaFinal();
+
+    }, 700);
 
 }
 
@@ -420,3 +438,47 @@ function reiniciarJuego() {
 // ==========================================
 
 crearRonda();
+
+
+// ========================================
+// PANTALLA FINAL
+// ========================================
+
+const alertaFinal =
+    document.getElementById("finish");
+
+const botonFinal =
+    document.getElementById("botonFinal");
+
+
+// ========================================
+// MOSTRAR ALERTA
+// ========================================
+
+function mostrarAlertaFinal() {
+
+    alertaFinal.classList.add("show");
+
+}
+
+
+// ========================================
+// OCULTAR ALERTA
+// ========================================
+
+function ocultarAlertaFinal() {
+
+    alertaFinal.classList.remove("show");
+
+}
+
+
+// ========================================
+// BOTÓN FINAL
+// ========================================
+
+botonFinal.addEventListener("click", function() {
+
+    window.location.href = "niveles.html";
+
+});
