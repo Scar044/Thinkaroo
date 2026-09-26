@@ -1,210 +1,280 @@
 (function(){
 
-const pairs=[
+    // ==========================================
+    // ALERTA FINAL
+    // ==========================================
 
-    {
-        img:"IMG/avatar1cerdo.png",
-        audio:"../audios/cerdo.mp3"
-    },
+    const alertaFinal =
+        document.getElementById("finish");
 
-    {
-        img:"IMG/Elefante.png",
-        audio:"../audios/elefante.mp3"
-    },
-
-    {
-        img:"IMG/avatar3gato.png",
-        audio:"../audios/gato.mp3"
-    },
-
-    {
-        img:"IMG/avatar4oveja.png",
-        audio:"../audios/oveja.mp3"
-    },
-
-    {
-        img:"IMG/avatar5pollo.png",
-        audio:"../audios/pollito.mp3"
-    },
-
-    {
-        img:"IMG/avatar6ratón.png",
-        audio:"../audios/rata.mp3"
-    },
-
-    {
-        img:"IMG/avatar7tigre.png",
-        audio:"../audios/tigre.mp3"
-    },
-
-    {
-        img:"IMG/avatar8vaca.png",
-        audio:"../audios/vaca.mp3"
-    }
-
-];
-
-let cards=[];
+    const botonFinal =
+        document.getElementById("botonFinal");
 
 
-pairs.forEach((pair,index)=>{
+    function mostrarAlertaFinal() {
 
-    cards.push({
+        if (alertaFinal) {
 
-        id:index,
-        type:"image",
-        img:pair.img,
-        audio:pair.audio
-
-    });
-
-    cards.push({
-
-        id:index,
-        type:"audio",
-        img:pair.img,
-        audio:pair.audio
-
-    });
-
-});
-
-cards.sort(()=>Math.random()-0.5);
-
-const gameBoard=document.getElementById("gameBoard");
-
-let firstCard=null;
-let secondCard=null;
-let lockBoard=false;
-let matchedPairs=0;
-
-cards.forEach(cardData=>{
-
-    const card=document.createElement("div");
-    card.classList.add("card");
-
-    card.dataset.id=cardData.id;
-    card.dataset.type=cardData.type;
-    card.dataset.audio=cardData.audio;
-
-    if(cardData.type==="image"){
-
-        const img=document.createElement("img");
-        img.src=cardData.img;
-        img.alt="Animal";
-        card.appendChild(img);
-
-   }else{
-
-    const img=document.createElement("img");
-
-    img.src="IMG/bocina.png";
-    img.alt="Escuchar animal";
-
-    card.appendChild(img);
-
-}
-
-    card.addEventListener("click",flipCard);
-
-    gameBoard.appendChild(card);
-
-});
-
-function flipCard(){
-
-    if(lockBoard ||
-       this.classList.contains("matched") ||
-       this.classList.contains("flipped"))
-       return;
-
-    this.classList.add("flipped");
-
-    if(this.dataset.type==="audio"){
-
-        const sonido=new Audio(this.dataset.audio);
-        sonido.play();
-
-    }
-
-    if(firstCard===null){
-
-        firstCard=this;
-        return;
-
-    }
-
-    secondCard=this;
-
-    lockBoard=true;
-
-    checkMatch();
-
-}
-
-function checkMatch(){
-
-    const match=
-
-    firstCard.dataset.id===secondCard.dataset.id &&
-    firstCard.dataset.type!==secondCard.dataset.type;
-
-    if(match){
-
-        firstCard.classList.add("matched");
-        secondCard.classList.add("matched");
-
-        matchedPairs++;
-
-        resetTurn();
-
-        if(matchedPairs === pairs.length){
-
-    setTimeout(async () => {
-
-        alert(
-            "🎉 ¡Felicidades! Has encontrado todas las parejas."
-        );
-
-        const resultado = await guardarProgreso();
-
-        if (resultado.success) {
-
-            console.log(
-                "Progreso guardado correctamente."
-            );
+            alertaFinal.classList.add("show");
 
         }
 
-        window.location.href = "niveles_auditivo.html";
+    }
 
-    }, 300);
-}
 
-    }else{
+    if (botonFinal) {
 
-        setTimeout(()=>{
+        botonFinal.addEventListener(
+            "click",
+            function () {
 
-            firstCard.classList.remove("flipped");
-            secondCard.classList.remove("flipped");
+                window.location.href =
+                    "niveles_auditivo.html";
 
-            resetTurn();
-
-        },1000);
+            }
+        );
 
     }
 
-}
 
-function resetTurn(){
+    const pairs=[
 
-    firstCard=null;
-    secondCard=null;
-    lockBoard=false;
+        {
+            img:"IMG/avatar1cerdo.png",
+            audio:"../audios/cerdo.mp3"
+        },
 
-}
+        {
+            img:"IMG/Elefante.png",
+            audio:"../audios/elefante.mp3"
+        },
+
+        {
+            img:"IMG/avatar3gato.png",
+            audio:"../audios/gato.mp3"
+        },
+
+        {
+            img:"IMG/avatar4oveja.png",
+            audio:"../audios/oveja.mp3"
+        },
+
+        {
+            img:"IMG/avatar5pollo.png",
+            audio:"../audios/pollito.mp3"
+        },
+
+        {
+            img:"IMG/avatar6ratón.png",
+            audio:"../audios/rata.mp3"
+        },
+
+        {
+            img:"IMG/avatar7tigre.png",
+            audio:"../audios/tigre.mp3"
+        },
+
+        {
+            img:"IMG/avatar8vaca.png",
+            audio:"../audios/vaca.mp3"
+        }
+
+    ];
+
+
+    let cards=[];
+
+
+    pairs.forEach((pair,index)=>{
+
+        cards.push({
+
+            id:index,
+            type:"image",
+            img:pair.img,
+            audio:pair.audio
+
+        });
+
+        cards.push({
+
+            id:index,
+            type:"audio",
+            img:pair.img,
+            audio:pair.audio
+
+        });
+
+    });
+
+
+    cards.sort(()=>Math.random()-0.5);
+
+
+    const gameBoard=document.getElementById("gameBoard");
+
+
+    let firstCard=null;
+    let secondCard=null;
+    let lockBoard=false;
+    let matchedPairs=0;
+
+
+    cards.forEach(cardData=>{
+
+        const card=document.createElement("div");
+
+        card.classList.add("card");
+
+        card.dataset.id=cardData.id;
+        card.dataset.type=cardData.type;
+        card.dataset.audio=cardData.audio;
+
+
+        if(cardData.type==="image"){
+
+            const img=document.createElement("img");
+
+            img.src=cardData.img;
+
+            img.alt="Animal";
+
+            card.appendChild(img);
+
+        }else{
+
+            const img=document.createElement("img");
+
+            img.src="IMG/bocina.png";
+
+            img.alt="Escuchar animal";
+
+            card.appendChild(img);
+
+        }
+
+
+        card.addEventListener("click",flipCard);
+
+        gameBoard.appendChild(card);
+
+    });
+
+
+    function flipCard(){
+
+        if(lockBoard ||
+           this.classList.contains("matched") ||
+           this.classList.contains("flipped"))
+           return;
+
+
+        this.classList.add("flipped");
+
+
+        if(this.dataset.type==="audio"){
+
+            const sonido=new Audio(this.dataset.audio);
+
+            sonido.play();
+
+        }
+
+
+        if(firstCard===null){
+
+            firstCard=this;
+
+            return;
+
+        }
+
+
+        secondCard=this;
+
+        lockBoard=true;
+
+        checkMatch();
+
+    }
+
+
+    function checkMatch(){
+
+        const match=
+
+        firstCard.dataset.id===secondCard.dataset.id &&
+        firstCard.dataset.type!==secondCard.dataset.type;
+
+
+        if(match){
+
+            firstCard.classList.add("matched");
+
+            secondCard.classList.add("matched");
+
+            matchedPairs++;
+
+            resetTurn();
+
+
+            if(matchedPairs === pairs.length){
+
+                setTimeout(async () => {
+
+                    // ==================================
+                    // MOSTRAR ALERTA FINAL
+                    // ==================================
+
+                    mostrarAlertaFinal();
+
+
+                    const resultado =
+                        await guardarProgreso();
+
+
+                    if (resultado.success) {
+
+                        console.log(
+                            "Progreso guardado correctamente."
+                        );
+
+                    }
+
+                }, 300);
+
+            }
+
+
+        }else{
+
+            setTimeout(()=>{
+
+                firstCard.classList.remove("flipped");
+
+                secondCard.classList.remove("flipped");
+
+                resetTurn();
+
+            },1000);
+
+        }
+
+    }
+
+
+    function resetTurn(){
+
+        firstCard=null;
+
+        secondCard=null;
+
+        lockBoard=false;
+
+    }
 
 })();
+
 
 async function guardarProgreso() {
 
@@ -227,14 +297,18 @@ async function guardarProgreso() {
             }
         );
 
+
         const datos = await respuesta.json();
+
 
         console.log(
             "RESPUESTA DEL PROGRESO:",
             datos
         );
 
+
         return datos;
+
 
     } catch (error) {
 
@@ -243,8 +317,11 @@ async function guardarProgreso() {
             error
         );
 
+
         return {
             success: false
         };
+
     }
+
 }

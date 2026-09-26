@@ -1,6 +1,43 @@
 document.addEventListener("DOMContentLoaded", function () {
 
     // ==========================================
+    // ALERTA FINAL
+    // ==========================================
+
+    const alertaFinal =
+        document.getElementById("finish");
+
+    const botonFinal =
+        document.getElementById("botonFinal");
+
+
+    function mostrarAlertaFinal() {
+
+        if (alertaFinal) {
+
+            alertaFinal.classList.add("show");
+
+        }
+
+    }
+
+
+    if (botonFinal) {
+
+        botonFinal.addEventListener(
+            "click",
+            function () {
+
+                window.location.href =
+                    "niveles_kinestesico.html";
+
+            }
+        );
+
+    }
+
+
+    // ==========================================
     // ANIMALES
     // ==========================================
 
@@ -386,12 +423,15 @@ document.addEventListener("DOMContentLoaded", function () {
                 }, 500);
 
 
+                // ==================================
+                // MOSTRAR ALERTA FINAL
+                // ==================================
+
                 setTimeout(function () {
 
-                    window.location.href =
-                        "niveles_kinestesico.html";
+                    mostrarAlertaFinal();
 
-                }, 2500);
+                }, 700);
 
             }
 

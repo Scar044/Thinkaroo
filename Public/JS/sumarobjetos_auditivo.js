@@ -1,3 +1,39 @@
+// ========================================
+// ALERTA FINAL
+// ========================================
+
+const alertaFinal =
+    document.getElementById("finish");
+
+const botonFinal =
+    document.getElementById("botonFinal");
+
+
+function mostrarAlertaFinal() {
+
+    if (alertaFinal) {
+
+        alertaFinal.classList.add("show");
+
+    }
+
+}
+
+
+if (botonFinal) {
+
+    botonFinal.addEventListener(
+        "click",
+        function () {
+
+            window.location.href =
+                "niveles_auditivo.html";
+
+        }
+    );
+
+}
+
 
 // ========================================
 // VARIABLES DEL JUEGO
@@ -147,6 +183,7 @@ async function reproducirSonidos() {
             if (i < cantidad - 1) {
 
                 await esperar(700);
+
             }
         }
 
@@ -467,6 +504,16 @@ function mostrarFinal() {
     document
         .getElementById("victory-modal")
         .classList.remove("oculto");
+
+
+    // Mostrar la alerta final después
+    // de la pantalla de victoria
+
+    setTimeout(() => {
+
+        mostrarAlertaFinal();
+
+    }, 700);
 }
 
 
