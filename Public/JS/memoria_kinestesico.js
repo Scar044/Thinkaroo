@@ -14,9 +14,7 @@ document.addEventListener("DOMContentLoaded", function () {
     function mostrarAlertaFinal() {
 
         if (alertaFinal) {
-
             alertaFinal.classList.add("show");
-
         }
 
     }
@@ -38,10 +36,83 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
     // ==========================================
+    // GUARDAR PROGRESO
+    // ==========================================
+
+    async function guardarProgreso(progreso, estado) {
+
+        try {
+
+            const respuesta = await fetch(
+                "../ConfigPHP/guardar_progreso.php",
+                {
+                    method: "POST",
+
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+
+                    body: JSON.stringify({
+
+                        // Actividad 3 =
+                        // Memoria kinestésica de animales
+                        id_actividad: 3,
+
+                        progreso: progreso,
+
+                        estado: estado
+
+                    })
+                }
+            );
+
+
+            const datos =
+                await respuesta.json();
+
+
+            console.log(
+                "PROGRESO KINESTÉSICO:",
+                datos
+            );
+
+
+            return datos;
+
+
+        } catch (error) {
+
+            console.error(
+                "Error al guardar progreso:",
+                error
+            );
+
+
+            return {
+                success: false
+            };
+
+        }
+
+    }
+
+
+    // ==========================================
+    // PROGRESO INICIAL
+    // ==========================================
+
+    guardarProgreso(
+        0,
+        "sin iniciar"
+    );
+
+
+    // ==========================================
     // ANIMALES
     // ==========================================
 
     const animales = [
+
         {
             id: "cerdo",
             imagen: "IMG/avatar1cerdo.png"
@@ -81,6 +152,7 @@ document.addEventListener("DOMContentLoaded", function () {
             id: "vaca",
             imagen: "IMG/avatar8vaca.png"
         }
+
     ];
 
 
@@ -94,11 +166,15 @@ document.addEventListener("DOMContentLoaded", function () {
         document.getElementById("mensaje");
 
 
+    // ==========================================
+    // CONTADOR
+    // ==========================================
+
     let animalesCompletados = 0;
 
 
     // ==========================================
-    // MEZCLAR
+    // MEZCLAR ANIMALES
     // ==========================================
 
     let animalesMezclados = [...animales];
@@ -117,22 +193,32 @@ document.addEventListener("DOMContentLoaded", function () {
         const elemento =
             document.createElement("div");
 
+
         elemento.classList.add("animal");
 
-        elemento.dataset.id = animal.id;
+
+        elemento.dataset.id =
+            animal.id;
 
 
         const imagen =
             document.createElement("img");
 
-        imagen.src = animal.imagen;
 
-        imagen.alt = animal.id;
+        imagen.src =
+            animal.imagen;
+
+
+        imagen.alt =
+            animal.id;
 
 
         elemento.appendChild(imagen);
 
-        contenedorAnimales.appendChild(elemento);
+
+        contenedorAnimales.appendChild(
+            elemento
+        );
 
 
         // ======================================
@@ -156,52 +242,70 @@ document.addEventListener("DOMContentLoaded", function () {
         const destino =
             document.createElement("div");
 
+
         destino.classList.add("destino");
 
-        destino.dataset.id = animal.id;
+
+        destino.dataset.id =
+            animal.id;
 
 
         const imagen =
             document.createElement("img");
 
-        imagen.src = animal.imagen;
 
-        imagen.alt = animal.id;
+        imagen.src =
+            animal.imagen;
+
+
+        imagen.alt =
+            animal.id;
 
 
         destino.appendChild(imagen);
 
-        contenedorDestinos.appendChild(destino);
+
+        contenedorDestinos.appendChild(
+            destino
+        );
 
     });
+
+
+    // ==========================================
+    // ANIMAL ARRASTRADO
+    // ==========================================
+
+    let animalArrastrado = null;
 
 
     // ==========================================
     // COMENZAR ARRASTRE
     // ==========================================
 
-    let animalArrastrado = null;
-
-
     function comenzarArrastre(evento) {
 
         if (
             this.classList.contains("colocado")
         ) {
+
             return;
+
         }
 
 
         animalArrastrado = this;
 
 
-        this.classList.add("arrastrando");
+        this.classList.add(
+            "arrastrando"
+        );
 
 
-        this.setPointerCapture(evento.pointerId);
+        this.setPointerCapture(
+            evento.pointerId
+        );
 
-
-        // Escuchamos el movimiento
 
         this.addEventListener(
             "pointermove",
@@ -231,7 +335,9 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
         const destino =
-            elementoDebajo?.closest(".destino");
+            elementoDebajo?.closest(
+                ".destino"
+            );
 
 
         // Quitar resaltado
@@ -240,7 +346,9 @@ document.addEventListener("DOMContentLoaded", function () {
             .querySelectorAll(".destino")
             .forEach(function (elemento) {
 
-                elemento.classList.remove("sobre");
+                elemento.classList.remove(
+                    "sobre"
+                );
 
             });
 
@@ -249,7 +357,9 @@ document.addEventListener("DOMContentLoaded", function () {
 
         if (destino) {
 
-            destino.classList.add("sobre");
+            destino.classList.add(
+                "sobre"
+            );
 
         }
 
@@ -292,7 +402,9 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
         const destino =
-            elementoDebajo?.closest(".destino");
+            elementoDebajo?.closest(
+                ".destino"
+            );
 
 
         // Quitar resaltados
@@ -342,6 +454,7 @@ document.addEventListener("DOMContentLoaded", function () {
         const idAnimal =
             animal.dataset.id;
 
+
         const idDestino =
             destino.dataset.id;
 
@@ -362,6 +475,7 @@ document.addEventListener("DOMContentLoaded", function () {
             const contenedor =
                 document.createElement("div");
 
+
             contenedor.classList.add(
                 "animal-colocado"
             );
@@ -370,10 +484,13 @@ document.addEventListener("DOMContentLoaded", function () {
             const imagen =
                 document.createElement("img");
 
+
             imagen.src =
                 animal.querySelector("img").src;
 
-            imagen.alt = idAnimal;
+
+            imagen.alt =
+                idAnimal;
 
 
             contenedor.appendChild(
@@ -382,6 +499,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
             destino.innerHTML = "";
+
 
             destino.appendChild(
                 contenedor
@@ -399,11 +517,41 @@ document.addEventListener("DOMContentLoaded", function () {
                 "hidden";
 
 
+            // Aumentar contador
+
             animalesCompletados++;
 
 
             mensaje.textContent =
                 "🎉 ¡Muy bien!";
+
+
+            // ==================================
+            // CALCULAR PROGRESO
+            // ==================================
+
+            const progreso =
+                Math.round(
+                    (animalesCompletados /
+                        animales.length) * 100
+                );
+
+
+            // ==================================
+            // GUARDAR EN PROCESO
+            // ==================================
+
+            if (
+                animalesCompletados <
+                animales.length
+            ) {
+
+                guardarProgreso(
+                    progreso,
+                    "en proceso"
+                );
+
+            }
 
 
             // ==================================
@@ -415,6 +563,26 @@ document.addEventListener("DOMContentLoaded", function () {
                 animales.length
             ) {
 
+                // Guardar 100% completado
+
+                guardarProgreso(
+                    100,
+                    "completado"
+                ).then(function (resultado) {
+
+                    if (resultado.success) {
+
+                        console.log(
+                            "Memoria kinestésica completada."
+                        );
+
+                    }
+
+                });
+
+
+                // Mensaje final
+
                 setTimeout(function () {
 
                     mensaje.textContent =
@@ -423,9 +591,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 }, 500);
 
 
-                // ==================================
-                // MOSTRAR ALERTA FINAL
-                // ==================================
+                // Mostrar alerta
 
                 setTimeout(function () {
 
@@ -451,7 +617,8 @@ document.addEventListener("DOMContentLoaded", function () {
             destino.animate(
                 [
                     {
-                        transform: "translateX(0)"
+                        transform:
+                            "translateX(0)"
                     },
 
                     {

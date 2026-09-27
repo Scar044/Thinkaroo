@@ -39,9 +39,7 @@ const botonFinal =
 function mostrarAlertaFinal() {
 
     if (alertaFinal) {
-
         alertaFinal.classList.add("show");
-
     }
 
 }
@@ -53,12 +51,71 @@ if (botonFinal) {
         function () {
 
             window.location.href =
-                "niveles.html";
+                "niveles_auditivo.html";
 
         }
     );
 
 }
+
+
+// ==========================================
+// GUARDAR PROGRESO
+// ==========================================
+
+async function guardarProgreso(progreso, estado) {
+
+    try {
+
+        const respuesta = await fetch(
+            "../ConfigPHP/guardar_progreso.php",
+            {
+                method: "POST",
+
+                headers: {
+                    "Content-Type": "application/json"
+                },
+
+                body: JSON.stringify({
+
+                    id_actividad: 5,
+                    progreso: progreso,
+                    estado: estado
+
+                })
+            }
+        );
+
+        const datos = await respuesta.json();
+
+        console.log(
+            "PROGRESO FIGURAS AUDITIVO:",
+            datos
+        );
+
+        return datos;
+
+    } catch (error) {
+
+        console.error(
+            "Error al guardar progreso:",
+            error
+        );
+
+        return {
+            success: false
+        };
+
+    }
+
+}
+
+
+// ==========================================
+// INICIAR PROGRESO
+// ==========================================
+
+guardarProgreso(0, "sin iniciar");
 
 
 // ==========================================
@@ -88,10 +145,12 @@ const metaFiguras = 8;
 // ==========================================
 
 const formas = [
+
     "circulo",
     "cuadrado",
     "triangulo",
     "rectangulo"
+
 ];
 
 
@@ -119,27 +178,35 @@ const nombres = {
 const pistas = {
 
     circulo: [
+
         "No tiene esquinas.",
         "Es completamente redondo.",
         "Piensa en una pelota."
+
     ],
 
     cuadrado: [
+
         "Tiene cuatro lados.",
         "Sus cuatro lados son iguales.",
         "Piensa en una ventana."
+
     ],
 
     triangulo: [
+
         "Tiene tres lados.",
         "Tiene tres esquinas.",
         "Piensa en una montaña."
+
     ],
 
     rectangulo: [
+
         "Tiene cuatro lados.",
         "Tiene dos lados largos y dos cortos.",
         "Piensa en una puerta."
+
     ]
 
 };
@@ -151,21 +218,16 @@ const pistas = {
 
 function hablar(texto) {
 
-    // Cancelar cualquier voz anterior
-
     window.speechSynthesis.cancel();
-
 
     const voz =
         new SpeechSynthesisUtterance(texto);
-
 
     voz.lang = "es-ES";
 
     voz.rate = 0.8;
 
     voz.pitch = 1.1;
-
 
     window.speechSynthesis.speak(voz);
 
@@ -178,17 +240,13 @@ function hablar(texto) {
 
 function nuevaRonda() {
 
-    // Elegir una figura al azar
-
     const numero =
         Math.floor(
             Math.random() * formas.length
         );
 
-
     figuraCorrecta =
         formas[numero];
-
 
     juegoActivo = true;
 
@@ -248,7 +306,6 @@ botonEscuchar.addEventListener(
 
         }
 
-
         hablar(
             "Busca el " +
             nombres[figuraCorrecta]
@@ -302,6 +359,29 @@ figuras.forEach(function (figura) {
                 figurasCorrectas++;
 
 
+                // ==================================
+                // CALCULAR Y GUARDAR PROGRESO
+                // ==================================
+
+                const progreso =
+                    Math.round(
+                        (figurasCorrectas / metaFiguras) * 100
+                    );
+
+
+                if (
+                    figurasCorrectas <
+                    metaFiguras
+                ) {
+
+                    guardarProgreso(
+                        progreso,
+                        "en proceso"
+                    );
+
+                }
+
+
                 mensaje.textContent =
                     "🎉 ¡Muy bien!";
 
@@ -336,7 +416,25 @@ figuras.forEach(function (figura) {
                     );
 
 
-                    setTimeout(function () {
+                    // Guardar 100% completado
+
+                    setTimeout(async function () {
+
+                        const resultado =
+                            await guardarProgreso(
+                                100,
+                                "completado"
+                            );
+
+
+                        if (resultado.success) {
+
+                            console.log(
+                                "Figuras Auditivo completado."
+                            );
+
+                        }
+
 
                         mostrarAlertaFinal();
 
@@ -348,6 +446,10 @@ figuras.forEach(function (figura) {
                 }
 
 
+                // ==================================
+                // SIGUIENTE RONDA
+                // ==================================
+
                 setTimeout(function () {
 
                     nuevaRonda();
@@ -356,6 +458,7 @@ figuras.forEach(function (figura) {
 
 
             }
+
 
             // ==================================
             // RESPUESTA INCORRECTA
@@ -411,7 +514,6 @@ function mostrarPista() {
 
     const numero =
         intentos[figuraCorrecta] - 1;
-
 
     let indice = numero;
 

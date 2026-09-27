@@ -1,282 +1,166 @@
-(function(){
+// ==========================================
+// PAREJAS
+// ==========================================
 
-    // ==========================================
-    // ALERTA FINAL
-    // ==========================================
+const pairs = [
 
-    const alertaFinal =
-        document.getElementById("finish");
+    {
+        img: "IMG/avatar1cerdo.png",
+        audio: "../audios/cerdo.mp3"
+    },
 
-    const botonFinal =
-        document.getElementById("botonFinal");
+    {
+        img: "IMG/Elefante.png",
+        audio: "../audios/elefante.mp3"
+    },
 
+    {
+        img: "IMG/avatar3gato.png",
+        audio: "../audios/gato.mp3"
+    },
 
-    function mostrarAlertaFinal() {
+    {
+        img: "IMG/avatar4oveja.png",
+        audio: "../audios/oveja.mp3"
+    },
 
-        if (alertaFinal) {
+    {
+        img: "IMG/avatar5pollo.png",
+        audio: "../audios/pollito.mp3"
+    },
 
-            alertaFinal.classList.add("show");
+    {
+        img: "IMG/avatar6ratón.png",
+        audio: "../audios/rata.mp3"
+    },
 
-        }
+    {
+        img: "IMG/avatar7tigre.png",
+        audio: "../audios/tigre.mp3"
+    },
 
+    {
+        img: "IMG/avatar8vaca.png",
+        audio: "../audios/vaca.mp3"
     }
 
-
-    if (botonFinal) {
-
-        botonFinal.addEventListener(
-            "click",
-            function () {
-
-                window.location.href =
-                    "niveles_auditivo.html";
-
-            }
-        );
-
-    }
+];
 
 
-    const pairs=[
+// ==========================================
+// CREAR CARTAS
+// ==========================================
 
-        {
-            img:"IMG/avatar1cerdo.png",
-            audio:"../audios/cerdo.mp3"
-        },
-
-        {
-            img:"IMG/Elefante.png",
-            audio:"../audios/elefante.mp3"
-        },
-
-        {
-            img:"IMG/avatar3gato.png",
-            audio:"../audios/gato.mp3"
-        },
-
-        {
-            img:"IMG/avatar4oveja.png",
-            audio:"../audios/oveja.mp3"
-        },
-
-        {
-            img:"IMG/avatar5pollo.png",
-            audio:"../audios/pollito.mp3"
-        },
-
-        {
-            img:"IMG/avatar6ratón.png",
-            audio:"../audios/rata.mp3"
-        },
-
-        {
-            img:"IMG/avatar7tigre.png",
-            audio:"../audios/tigre.mp3"
-        },
-
-        {
-            img:"IMG/avatar8vaca.png",
-            audio:"../audios/vaca.mp3"
-        }
-
-    ];
+let cards = [];
 
 
-    let cards=[];
+pairs.forEach((pair, index) => {
 
+    // Carta con imagen
 
-    pairs.forEach((pair,index)=>{
+    cards.push({
 
-        cards.push({
+        id: index,
 
-            id:index,
-            type:"image",
-            img:pair.img,
-            audio:pair.audio
+        type: "image",
 
-        });
+        img: pair.img,
 
-        cards.push({
-
-            id:index,
-            type:"audio",
-            img:pair.img,
-            audio:pair.audio
-
-        });
+        audio: pair.audio
 
     });
 
 
-    cards.sort(()=>Math.random()-0.5);
+    // Carta con sonido
 
+    cards.push({
 
-    const gameBoard=document.getElementById("gameBoard");
+        id: index,
 
+        type: "audio",
 
-    let firstCard=null;
-    let secondCard=null;
-    let lockBoard=false;
-    let matchedPairs=0;
+        img: pair.img,
 
-
-    cards.forEach(cardData=>{
-
-        const card=document.createElement("div");
-
-        card.classList.add("card");
-
-        card.dataset.id=cardData.id;
-        card.dataset.type=cardData.type;
-        card.dataset.audio=cardData.audio;
-
-
-        if(cardData.type==="image"){
-
-            const img=document.createElement("img");
-
-            img.src=cardData.img;
-
-            img.alt="Animal";
-
-            card.appendChild(img);
-
-        }else{
-
-            const img=document.createElement("img");
-
-            img.src="IMG/bocina.png";
-
-            img.alt="Escuchar animal";
-
-            card.appendChild(img);
-
-        }
-
-
-        card.addEventListener("click",flipCard);
-
-        gameBoard.appendChild(card);
+        audio: pair.audio
 
     });
 
-
-    function flipCard(){
-
-        if(lockBoard ||
-           this.classList.contains("matched") ||
-           this.classList.contains("flipped"))
-           return;
+});
 
 
-        this.classList.add("flipped");
+// Mezclar
+
+cards.sort(
+    () => Math.random() - 0.5
+);
 
 
-        if(this.dataset.type==="audio"){
+// ==========================================
+// TABLERO
+// ==========================================
 
-            const sonido=new Audio(this.dataset.audio);
-
-            sonido.play();
-
-        }
-
-
-        if(firstCard===null){
-
-            firstCard=this;
-
-            return;
-
-        }
+const gameBoard =
+    document.getElementById("gameBoard");
 
 
-        secondCard=this;
+// ==========================================
+// VARIABLES
+// ==========================================
 
-        lockBoard=true;
+let firstCard = null;
 
-        checkMatch();
+let secondCard = null;
 
-    }
+let lockBoard = false;
 
-
-    function checkMatch(){
-
-        const match=
-
-        firstCard.dataset.id===secondCard.dataset.id &&
-        firstCard.dataset.type!==secondCard.dataset.type;
+let matchedPairs = 0;
 
 
-        if(match){
+// ==========================================
+// ALERTA FINAL
+// ==========================================
 
-            firstCard.classList.add("matched");
+const alertaFinal =
+    document.getElementById("finish");
 
-            secondCard.classList.add("matched");
-
-            matchedPairs++;
-
-            resetTurn();
-
-
-            if(matchedPairs === pairs.length){
-
-                setTimeout(async () => {
-
-                    // ==================================
-                    // MOSTRAR ALERTA FINAL
-                    // ==================================
-
-                    mostrarAlertaFinal();
+const botonFinal =
+    document.getElementById("botonFinal");
 
 
-                    const resultado =
-                        await guardarProgreso();
+function mostrarAlertaFinal() {
 
+    if (alertaFinal) {
 
-                    if (resultado.success) {
-
-                        console.log(
-                            "Progreso guardado correctamente."
-                        );
-
-                    }
-
-                }, 300);
-
-            }
-
-
-        }else{
-
-            setTimeout(()=>{
-
-                firstCard.classList.remove("flipped");
-
-                secondCard.classList.remove("flipped");
-
-                resetTurn();
-
-            },1000);
-
-        }
+        alertaFinal.classList.add("show");
 
     }
 
-
-    function resetTurn(){
-
-        firstCard=null;
-
-        secondCard=null;
-
-        lockBoard=false;
-
-    }
-
-})();
+}
 
 
-async function guardarProgreso() {
+if (botonFinal) {
+
+    botonFinal.addEventListener(
+        "click",
+        function () {
+
+            window.location.href =
+                "niveles_auditivo.html";
+
+        }
+    );
+
+}
+
+
+// ==========================================
+// GUARDAR PROGRESO
+// ==========================================
+
+async function guardarProgreso(
+    progreso,
+    estado
+) {
 
     try {
 
@@ -290,19 +174,28 @@ async function guardarProgreso() {
                 },
 
                 body: JSON.stringify({
+
+                    // Actividad 2 =
+                    // Memoria Auditiva
+
                     id_actividad: 2,
-                    progreso: 100,
-                    estado: "completado"
+
+                    progreso: progreso,
+
+                    estado: estado
+
                 })
+
             }
         );
 
 
-        const datos = await respuesta.json();
+        const datos =
+            await respuesta.json();
 
 
         console.log(
-            "RESPUESTA DEL PROGRESO:",
+            "PROGRESO AUDITIVO:",
             datos
         );
 
@@ -323,5 +216,329 @@ async function guardarProgreso() {
         };
 
     }
+
+}
+
+
+// ==========================================
+// REGISTRAR COMO SIN INICIAR
+// ==========================================
+
+guardarProgreso(
+    0,
+    "sin iniciar"
+);
+
+
+// ==========================================
+// CREAR LAS CARTAS
+// ==========================================
+
+cards.forEach(cardData => {
+
+    const card =
+        document.createElement("div");
+
+
+    card.classList.add("card");
+
+
+    card.dataset.id =
+        cardData.id;
+
+
+    card.dataset.type =
+        cardData.type;
+
+
+    card.dataset.audio =
+        cardData.audio;
+
+
+    // ======================================
+    // CARTA DE IMAGEN
+    // ======================================
+
+    if (cardData.type === "image") {
+
+        const img =
+            document.createElement("img");
+
+
+        img.src =
+            cardData.img;
+
+
+        img.alt =
+            "Animal";
+
+
+        card.appendChild(img);
+
+    }
+
+
+    // ======================================
+    // CARTA DE SONIDO
+    // ======================================
+
+    else {
+
+        const img =
+            document.createElement("img");
+
+
+        img.src =
+            "IMG/bocina.png";
+
+
+        img.alt =
+            "Escuchar animal";
+
+
+        card.appendChild(img);
+
+    }
+
+
+    // ======================================
+    // CLICK
+    // ======================================
+
+    card.addEventListener(
+        "click",
+        flipCard
+    );
+
+
+    gameBoard.appendChild(card);
+
+});
+
+
+// ==========================================
+// VOLTEAR CARTA
+// ==========================================
+
+function flipCard() {
+
+    if (
+        lockBoard ||
+        this.classList.contains("matched") ||
+        this.classList.contains("flipped")
+    ) {
+
+        return;
+
+    }
+
+
+    this.classList.add(
+        "flipped"
+    );
+
+
+    // ======================================
+    // REPRODUCIR SONIDO
+    // ======================================
+
+    if (
+        this.dataset.type === "audio"
+    ) {
+
+        const sonido =
+            new Audio(
+                this.dataset.audio
+            );
+
+
+        sonido.play();
+
+    }
+
+
+    // ======================================
+    // PRIMERA CARTA
+    // ======================================
+
+    if (firstCard === null) {
+
+        firstCard = this;
+
+        return;
+
+    }
+
+
+    // ======================================
+    // SEGUNDA CARTA
+    // ======================================
+
+    secondCard = this;
+
+
+    lockBoard = true;
+
+
+    checkMatch();
+
+}
+
+
+// ==========================================
+// COMPROBAR PAREJA
+// ==========================================
+
+function checkMatch() {
+
+    const match =
+
+        firstCard.dataset.id ===
+        secondCard.dataset.id &&
+
+        firstCard.dataset.type !==
+        secondCard.dataset.type;
+
+
+    // ======================================
+    // PAREJA CORRECTA
+    // ======================================
+
+    if (match) {
+
+        firstCard.classList.add(
+            "matched"
+        );
+
+
+        secondCard.classList.add(
+            "matched"
+        );
+
+
+        matchedPairs++;
+
+
+        // ==================================
+        // CALCULAR PROGRESO
+        // ==================================
+
+        const progreso =
+            Math.round(
+                (
+                    matchedPairs /
+                    pairs.length
+                ) * 100
+            );
+
+
+        // ==================================
+        // EN PROCESO
+        // ==================================
+
+        if (
+            matchedPairs <
+            pairs.length
+        ) {
+
+            guardarProgreso(
+                progreso,
+                "en proceso"
+            );
+
+        }
+
+
+        resetTurn();
+
+
+        // ==================================
+        // JUEGO COMPLETADO
+        // ==================================
+
+        if (
+            matchedPairs ===
+            pairs.length
+        ) {
+
+            setTimeout(
+                async function () {
+
+                    // Guardar como completado
+
+                    const resultado =
+                        await guardarProgreso(
+                            100,
+                            "completado"
+                        );
+
+
+                    if (
+                        resultado.success
+                    ) {
+
+                        console.log(
+                            "Memoria Auditiva completada."
+                        );
+
+                    }
+
+
+                    // ==================================
+                    // MOSTRAR MISIÓN FINAL
+                    // ==================================
+
+                    mostrarAlertaFinal();
+
+                },
+                500
+            );
+
+        }
+
+    }
+
+
+    // ======================================
+    // PAREJA INCORRECTA
+    // ======================================
+
+    else {
+
+        setTimeout(
+            function () {
+
+                firstCard.classList.remove(
+                    "flipped"
+                );
+
+
+                secondCard.classList.remove(
+                    "flipped"
+                );
+
+
+                resetTurn();
+
+            },
+            1000
+        );
+
+    }
+
+}
+
+
+// ==========================================
+// REINICIAR TURNO
+// ==========================================
+
+function resetTurn() {
+
+    firstCard = null;
+
+    secondCard = null;
+
+    lockBoard = false;
 
 }

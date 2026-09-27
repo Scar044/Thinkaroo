@@ -1,3 +1,39 @@
+// ==========================================
+// PROGRESO DEL JUEGO
+// ACTIVIDAD 12 - SUMAS KINESTÉSICO
+// ==========================================
+
+function guardarProgreso(progreso, estado) {
+
+    fetch("../ConfigPHP/guardar_progreso.php", {
+        method: "POST",
+
+        headers: {
+            "Content-Type": "application/json"
+        },
+
+        body: JSON.stringify({
+            id_actividad: 12,
+            progreso: progreso,
+            estado: estado
+        })
+    })
+
+    .then(response => response.json())
+
+    .then(data => {
+        console.log("Progreso guardado:", data);
+    })
+
+    .catch(error => {
+        console.error("Error al guardar progreso:", error);
+    });
+}
+
+
+// ==========================================
+// ALERTA FINAL
+// ==========================================
 
 const alertaFinal =
     document.getElementById("finish");
@@ -6,6 +42,9 @@ const botonFinal =
     document.getElementById("botonFinal");
 
 
+// ==========================================
+// BOTÓN CONTINUAR
+// ==========================================
 
 if (botonFinal) {
 
@@ -14,7 +53,7 @@ if (botonFinal) {
         function () {
 
             window.location.href =
-                "niveles.html";
+                "niveles_kinestesico.html";
 
         }
     );
@@ -79,6 +118,16 @@ let moviendo = false;
 
 
 // ==========================================
+// INICIAR PROGRESO
+// ==========================================
+
+guardarProgreso(
+    0,
+    "sin iniciar"
+);
+
+
+// ==========================================
 // GENERAR PREGUNTA
 // ==========================================
 
@@ -113,11 +162,10 @@ function generarPregunta() {
         );
 
 
-    // Limpiar
-
     contenedor.innerHTML = "";
 
     panel.classList.add("oculto");
+
 
     mensaje.className =
         "mensaje oculto";
@@ -303,15 +351,11 @@ function mostrarObjetos(elementos) {
                 `${indice * 0.08}s`;
 
 
-            // Eventos de mouse
-
             objeto.addEventListener(
                 "mousedown",
                 iniciarArrastre
             );
 
-
-            // Eventos táctiles
 
             objeto.addEventListener(
                 "touchstart",
@@ -337,8 +381,6 @@ function mostrarObjetos(elementos) {
 // ==========================================
 
 function iniciarArrastre(evento) {
-
-    // Evitar comportamientos del navegador
 
     evento.preventDefault();
 
@@ -366,12 +408,11 @@ function iniciarArrastre(evento) {
         posicion.x -
         this.getBoundingClientRect().left;
 
+
     inicioY =
         posicion.y -
         this.getBoundingClientRect().top;
 
-
-    // Convertir a posición fija
 
     const rect =
         this.getBoundingClientRect();
@@ -388,6 +429,7 @@ function iniciarArrastre(evento) {
 
     this.style.top =
         `${rect.top}px`;
+
 
     this.classList.add(
         "arrastrando"
@@ -463,7 +505,7 @@ function moverObjeto(evento) {
 
 
 // ==========================================
-// COMPROBAR SI ESTÁ SOBRE LA CAJA
+// COMPROBAR CAJA
 // ==========================================
 
 function comprobarCaja(x, y) {
@@ -490,7 +532,9 @@ function comprobarCaja(x, y) {
             "recibiendo"
         );
 
-    } else {
+    }
+
+    else {
 
         caja.classList.remove(
             "recibiendo"
@@ -534,20 +578,11 @@ function terminarArrastre(evento) {
         posicion.y <= rect.bottom;
 
 
-    // ======================================
-    // OBJETO ENTRÓ EN LA CAJA
-    // ======================================
-
     if (dentro) {
 
         meterObjeto();
 
     }
-
-
-    // ======================================
-    // OBJETO NO ENTRÓ
-    // ======================================
 
     else {
 
@@ -555,8 +590,6 @@ function terminarArrastre(evento) {
 
     }
 
-
-    // Limpiar eventos
 
     document.removeEventListener(
         "mousemove",
@@ -585,7 +618,7 @@ function terminarArrastre(evento) {
 
 
 // ==========================================
-// METER OBJETO EN LA CAJA
+// METER OBJETO
 // ==========================================
 
 function meterObjeto() {
@@ -639,8 +672,6 @@ function meterObjeto() {
     actualizarContador();
 
 
-    // Eliminar después de la animación
-
     setTimeout(() => {
 
         if (objeto.parentElement) {
@@ -690,20 +721,15 @@ function devolverObjeto() {
     );
 
 
-    objeto.style.position =
-        "";
+    objeto.style.position = "";
 
-    objeto.style.left =
-        "";
+    objeto.style.left = "";
 
-    objeto.style.top =
-        "";
+    objeto.style.top = "";
 
-    objeto.style.width =
-        "";
+    objeto.style.width = "";
 
-    objeto.style.height =
-        "";
+    objeto.style.height = "";
 
 
     objetoArrastrado = null;
@@ -815,13 +841,9 @@ function generarOpciones(respuesta) {
 
 
         if (
-
             numero >= 1 &&
-
             numero <= 10 &&
-
             numero !== respuesta
-
         ) {
 
             opciones.add(numero);
@@ -884,8 +906,6 @@ function comprobar(
     boton
 ) {
 
-    // Evitar doble respuesta
-
     if (boton.disabled) {
 
         return;
@@ -900,7 +920,7 @@ function comprobar(
 
 
     // ======================================
-    // CORRECTO
+    // RESPUESTA CORRECTA
     // ======================================
 
     if (
@@ -933,20 +953,50 @@ function comprobar(
             "mensaje correcto";
 
 
+        // ==================================
+        // GUARDAR PROGRESO
+        // ==================================
+
+        const progreso =
+            Math.round(
+                (ronda / 9) * 100
+            );
+
+
+        if (ronda < 9) {
+
+            guardarProgreso(
+                progreso,
+                "en proceso"
+            );
+
+        }
+
+
+        // Avanzar de ronda
+
         ronda++;
 
 
-        // Esperar antes de siguiente ronda
+        // ==================================
+        // SIGUIENTE RONDA / FINAL
+        // ==================================
 
         setTimeout(() => {
 
-            if (
-                ronda > 9
-            ) {
+            if (ronda > 9) {
+
+                guardarProgreso(
+                    100,
+                    "completado"
+                );
+
 
                 mostrarFinal();
 
-            } else {
+            }
+
+            else {
 
                 generarPregunta();
 
@@ -958,7 +1008,7 @@ function comprobar(
 
 
     // ======================================
-    // INCORRECTO
+    // RESPUESTA INCORRECTA
     // ======================================
 
     else {
@@ -975,8 +1025,6 @@ function comprobar(
         mensaje.className =
             "mensaje pista";
 
-
-        // Animación
 
         setTimeout(() => {
 
@@ -1040,8 +1088,6 @@ function mostrarMensaje(
 
 function obtenerPosicion(evento) {
 
-    // Mouse
-
     if (
         evento.clientX !== undefined
     ) {
@@ -1056,8 +1102,6 @@ function obtenerPosicion(evento) {
 
     }
 
-
-    // Touch
 
     if (
         evento.touches &&
@@ -1107,7 +1151,7 @@ function obtenerPosicion(evento) {
 
 
 // ==========================================
-// ALERTA FINAL
+// MOSTRAR FINAL
 // ==========================================
 
 function mostrarFinal() {
@@ -1118,6 +1162,8 @@ function mostrarFinal() {
 
     }
 
+
+    // Mostrar tarjeta de felicitación
 
     alertaFinal.classList.add(
         "show"
@@ -1150,8 +1196,6 @@ function resetGame() {
     ).innerText = "0";
 
 
-    // Ocultar alerta
-
     if (alertaFinal) {
 
         alertaFinal.classList.remove(
@@ -1174,4 +1218,3 @@ window.addEventListener(
     "load",
     generarPregunta
 );
-

@@ -1,39 +1,59 @@
 // ==========================================
+// PROGRESO DEL JUEGO
+// ACTIVIDAD 10 - SUMAS VISUAL
+// ==========================================
+
+function guardarProgreso(progreso, estado) {
+
+    fetch("../ConfigPHP/guardar_progreso.php", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+            id_actividad: 10,
+            progreso: progreso,
+            estado: estado
+        })
+    })
+    .then(response => response.json())
+    .then(data => {
+        console.log("Progreso guardado:", data);
+    })
+    .catch(error => {
+        console.error("Error al guardar progreso:", error);
+    });
+}
+
+
+// ==========================================
 // ALERTA FINAL
 // ==========================================
 
-const alertaFinal =
-    document.getElementById("finish");
-
-const botonFinal =
-    document.getElementById("botonFinal");
-
+const alertaFinal = document.getElementById("finish");
+const botonFinal = document.getElementById("botonFinal");
 
 function mostrarAlertaFinal() {
 
     if (alertaFinal) {
-
         alertaFinal.classList.add("show");
-
     }
-
 }
-
 
 if (botonFinal) {
 
-    botonFinal.addEventListener(
-        "click",
-        function () {
+    botonFinal.addEventListener("click", function () {
 
-            window.location.href =
-                "niveles.html";
+        window.location.href = "niveles.html";
 
-        }
-    );
+    });
 
 }
 
+
+// ==========================================
+// DATOS DEL JUEGO
+// ==========================================
 
 const objetos = [
     "🚗",
@@ -54,12 +74,27 @@ const grupos = [
 ];
 
 
+// ==========================================
+// VARIABLES
+// ==========================================
+
 let ronda = 1;
 let cantidad = 0;
 let puntos = 0;
 let respondido = false;
 let pistaMostrada = false;
 
+
+// ==========================================
+// INICIAR PROGRESO
+// ==========================================
+
+guardarProgreso(0, "sin iniciar");
+
+
+// ==========================================
+// GENERAR PREGUNTA
+// ==========================================
 
 function generarPregunta() {
 
@@ -74,6 +109,10 @@ function generarPregunta() {
     let elementos = [];
 
 
+    // ------------------------------------------
+    // RONDAS 1 - 3
+    // ------------------------------------------
+
     if (ronda <= 3) {
 
         cantidad = Math.floor(Math.random() * 3) + 2;
@@ -82,10 +121,19 @@ function generarPregunta() {
             objetos[Math.floor(Math.random() * objetos.length)];
 
         for (let i = 0; i < cantidad; i++) {
+
             elementos.push(objeto);
+
         }
 
-    } else if (ronda <= 6) {
+    }
+
+
+    // ------------------------------------------
+    // RONDAS 4 - 6
+    // ------------------------------------------
+
+    else if (ronda <= 6) {
 
         cantidad = Math.floor(Math.random() * 4) + 4;
 
@@ -100,7 +148,14 @@ function generarPregunta() {
 
         }
 
-    } else {
+    }
+
+
+    // ------------------------------------------
+    // RONDAS 7 - 9
+    // ------------------------------------------
+
+    else {
 
         cantidad = Math.floor(Math.random() * 4) + 6;
 
@@ -120,9 +175,12 @@ function generarPregunta() {
 
     mostrarObjetos(elementos);
     generarOpciones(cantidad);
-
 }
 
+
+// ==========================================
+// MOSTRAR OBJETOS
+// ==========================================
 
 function mostrarObjetos(elementos) {
 
@@ -131,31 +189,42 @@ function mostrarObjetos(elementos) {
 
     contenedor.innerHTML = "";
 
-
     elementos.forEach((elemento, indice) => {
 
         const caja = document.createElement("div");
+
         caja.className = "item";
 
+
         const objeto = document.createElement("div");
+
         objeto.className = "objeto animar";
+
         objeto.innerText = elemento;
 
         objeto.style.animationDelay =
             `${indice * 0.05}s`;
 
+
         objeto.onclick = () => {
+
             marcarObjeto(caja, indice + 1);
+
         };
 
 
         caja.appendChild(objeto);
+
         contenedor.appendChild(caja);
 
     });
 
 }
 
+
+// ==========================================
+// GENERAR OPCIONES
+// ==========================================
 
 function generarOpciones(respuesta) {
 
@@ -176,6 +245,7 @@ function generarOpciones(respuesta) {
 
         const numero = respuesta + cambio;
 
+
         if (
             numero >= 1 &&
             numero <= 10 &&
@@ -190,18 +260,23 @@ function generarOpciones(respuesta) {
 
 
     const mezcladas =
-        Array.from(opciones).sort(() => Math.random() - .5);
+        Array.from(opciones).sort(() => Math.random() - 0.5);
 
 
     mezcladas.forEach(numero => {
 
-        const boton = document.createElement("button");
+        const boton =
+            document.createElement("button");
 
         boton.innerText = numero;
 
+
         boton.onclick = () => {
+
             comprobar(numero, boton);
+
         };
+
 
         contenedor.appendChild(boton);
 
@@ -209,6 +284,10 @@ function generarOpciones(respuesta) {
 
 }
 
+
+// ==========================================
+// MARCAR OBJETO
+// ==========================================
 
 function marcarObjeto(caja, numero) {
 
@@ -218,20 +297,26 @@ function marcarObjeto(caja, numero) {
 
     if (!etiqueta) {
 
-        etiqueta = document.createElement("span");
+        etiqueta =
+            document.createElement("span");
 
         etiqueta.className = "numero";
+
         etiqueta.innerText = numero;
 
         caja.appendChild(etiqueta);
+
 
         const objeto =
             caja.querySelector(".objeto");
 
         objeto.style.transform = "scale(1.2)";
 
+
         setTimeout(() => {
+
             objeto.style.transform = "scale(1)";
+
         }, 200);
 
     }
@@ -239,16 +324,26 @@ function marcarObjeto(caja, numero) {
 }
 
 
+// ==========================================
+// COMPROBAR RESPUESTA
+// ==========================================
+
 function comprobar(numero, boton) {
 
     if (respondido) {
+
         return;
+
     }
 
 
     const mensaje =
         document.getElementById("feedback-badge");
 
+
+    // ------------------------------------------
+    // RESPUESTA CORRECTA
+    // ------------------------------------------
 
     if (numero === cantidad) {
 
@@ -257,6 +352,7 @@ function comprobar(numero, boton) {
         boton.classList.add("bien");
 
         puntos++;
+
 
         document.getElementById("score-text").innerText =
             puntos;
@@ -273,24 +369,66 @@ function comprobar(numero, boton) {
         });
 
 
-        mensaje.innerText = "¡MUY BIEN! ";
-        mensaje.className = "mensaje correcto";
+        mensaje.innerText =
+            "¡MUY BIEN!";
 
+        mensaje.className =
+            "mensaje correcto";
+
+
+        // Pasamos a la siguiente ronda
         ronda++;
 
+
+        // ==========================================
+        // GUARDAR PROGRESO
+        // ==========================================
+
+        const progreso =
+            Math.round(((ronda - 1) / 9) * 100);
+
+
+        if (ronda <= 9) {
+
+            guardarProgreso(
+                progreso,
+                "en proceso"
+            );
+
+        }
+
+
+        // ==========================================
+        // FINAL DEL JUEGO
+        // ==========================================
 
         setTimeout(() => {
 
             if (ronda > 9) {
+
+                guardarProgreso(
+                    100,
+                    "completado"
+                );
+
                 mostrarFinal();
+
             } else {
+
                 generarPregunta();
+
             }
 
         }, 1300);
 
 
-    } else {
+    }
+
+    // ------------------------------------------
+    // RESPUESTA INCORRECTA
+    // ------------------------------------------
+
+    else {
 
         mostrarPista();
 
@@ -299,10 +437,16 @@ function comprobar(numero, boton) {
 }
 
 
+// ==========================================
+// MOSTRAR PISTA
+// ==========================================
+
 function mostrarPista() {
 
     if (pistaMostrada) {
+
         return;
+
     }
 
     pistaMostrada = true;
@@ -311,8 +455,12 @@ function mostrarPista() {
     const mensaje =
         document.getElementById("feedback-badge");
 
-    mensaje.innerText = "¡Contemos juntos! 🔍";
-    mensaje.className = "mensaje";
+
+    mensaje.innerText =
+        "¡Contemos juntos! 🔍";
+
+    mensaje.className =
+        "mensaje";
 
 
     const elementos =
@@ -323,10 +471,15 @@ function mostrarPista() {
 
         setTimeout(() => {
 
-            marcarObjeto(elemento, indice + 1);
+            marcarObjeto(
+                elemento,
+                indice + 1
+            );
+
 
             const objeto =
                 elemento.querySelector(".objeto");
+
 
             objeto.classList.add("brillo");
 
@@ -337,16 +490,11 @@ function mostrarPista() {
 }
 
 
+// ==========================================
+// MOSTRAR FINAL
+// ==========================================
+
 function mostrarFinal() {
-
-    document
-        .getElementById("victory-modal")
-        .classList.remove("oculto");
-
-
-    // ==========================================
-    // MOSTRAR ALERTA FINAL
-    // ==========================================
 
     setTimeout(() => {
 
@@ -357,20 +505,39 @@ function mostrarFinal() {
 }
 
 
+// ==========================================
+// REINICIAR JUEGO
+// ==========================================
+
 function resetGame() {
 
     ronda = 1;
+
     puntos = 0;
 
-    document.getElementById("score-text").innerText = "0";
+    respondido = false;
 
-    document
-        .getElementById("victory-modal")
-        .classList.add("oculto");
+    pistaMostrada = false;
+
+
+    document.getElementById("score-text").innerText =
+        "0";
+
+
+    if (alertaFinal) {
+
+        alertaFinal.classList.remove("show");
+
+    }
+
 
     generarPregunta();
 
 }
 
+
+// ==========================================
+// INICIAR JUEGO
+// ==========================================
 
 window.onload = generarPregunta;

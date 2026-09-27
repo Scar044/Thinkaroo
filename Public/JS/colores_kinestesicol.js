@@ -1,13 +1,38 @@
-/*
-========================================
-DATOS DEL JUEGO
-========================================
-*/
+// ========================================
+// PROGRESO EN LA BASE DE DATOS
+// ========================================
+
+function guardarProgreso(progreso, estado) {
+
+    fetch("../ConfigPHP/guardar_progreso.php", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+            id_actividad: 9,
+            progreso: progreso,
+            estado: estado
+        })
+    })
+    .then(response => response.json())
+    .then(data => {
+        console.log("Progreso guardado:", data);
+    })
+    .catch(error => {
+        console.error("Error al guardar progreso:", error);
+    });
+
+}
+
+
+// ========================================
+// DATOS DEL JUEGO
+// ========================================
 
 const objects = [
 
     // 🔴 ROJO
-
     {
         emoji: "🍎",
         name: "Manzana",
@@ -40,7 +65,6 @@ const objects = [
 
 
     // 🔵 AZUL
-
     {
         emoji: "🐟",
         name: "Pez azul",
@@ -73,7 +97,6 @@ const objects = [
 
 
     // 🟡 AMARILLO
-
     {
         emoji: "🍌",
         name: "Plátano",
@@ -106,7 +129,6 @@ const objects = [
 
 
     // 🟢 VERDE
-
     {
         emoji: "🍏",
         name: "Manzana verde",
@@ -140,11 +162,9 @@ const objects = [
 ];
 
 
-/*
-========================================
-VARIABLES
-========================================
-*/
+// ========================================
+// VARIABLES
+// ========================================
 
 let score = 0;
 
@@ -153,16 +173,15 @@ let draggedObject = null;
 let originalParent = null;
 
 let offsetX = 0;
+
 let offsetY = 0;
 
 let messageTimeout;
 
 
-/*
-========================================
-ELEMENTOS HTML
-========================================
-*/
+// ========================================
+// ELEMENTOS HTML
+// ========================================
 
 const objectsArea =
     document.getElementById("objectsArea");
@@ -183,11 +202,9 @@ const restartButton =
     document.getElementById("restart");
 
 
-/*
-========================================
-MEZCLAR OBJETOS
-========================================
-*/
+// ========================================
+// MEZCLAR OBJETOS
+// ========================================
 
 function shuffle(array) {
 
@@ -212,17 +229,17 @@ function shuffle(array) {
             newArray[j],
             newArray[i]
         ];
+
     }
 
     return newArray;
+
 }
 
 
-/*
-========================================
-CREAR OBJETOS
-========================================
-*/
+// ========================================
+// CREAR OBJETOS
+// ========================================
 
 function createObjects() {
 
@@ -231,19 +248,25 @@ function createObjects() {
     const shuffledObjects =
         shuffle(objects);
 
+
     shuffledObjects.forEach(
         (item, index) => {
 
             const object =
                 document.createElement("div");
 
-            object.className = "object";
+
+            object.className =
+                "object";
+
 
             object.dataset.color =
                 item.color;
 
+
             object.dataset.index =
                 index;
+
 
             object.innerHTML = `
                 <div class="object-emoji">
@@ -255,22 +278,26 @@ function createObjects() {
                 </div>
             `;
 
+
             object.addEventListener(
                 "pointerdown",
                 startDrag
             );
 
-            objectsArea.appendChild(object);
+
+            objectsArea.appendChild(
+                object
+            );
+
         }
     );
+
 }
 
 
-/*
-========================================
-INICIAR ARRASTRE
-========================================
-*/
+// ========================================
+// INICIAR ARRASTRE
+// ========================================
 
 function startDrag(event) {
 
@@ -278,59 +305,71 @@ function startDrag(event) {
         return;
     }
 
+
     draggedObject =
         event.currentTarget;
+
 
     originalParent =
         draggedObject.parentElement;
 
+
     const rect =
         draggedObject.getBoundingClientRect();
+
 
     offsetX =
         event.clientX - rect.left;
 
+
     offsetY =
         event.clientY - rect.top;
+
 
     draggedObject.classList.add(
         "dragging"
     );
 
+
     draggedObject.style.width =
         rect.width + "px";
+
 
     draggedObject.style.height =
         rect.height + "px";
 
+
     draggedObject.style.left =
         (event.clientX - offsetX) + "px";
+
 
     draggedObject.style.top =
         (event.clientY - offsetY) + "px";
 
+
     document.body.appendChild(
         draggedObject
     );
+
 
     document.addEventListener(
         "pointermove",
         dragMove
     );
 
+
     document.addEventListener(
         "pointerup",
         endDrag,
         { once: true }
     );
+
 }
 
 
-/*
-========================================
-MOVER OBJETO
-========================================
-*/
+// ========================================
+// MOVER OBJETO
+// ========================================
 
 function dragMove(event) {
 
@@ -338,24 +377,26 @@ function dragMove(event) {
         return;
     }
 
+
     draggedObject.style.left =
         (event.clientX - offsetX) + "px";
 
+
     draggedObject.style.top =
         (event.clientY - offsetY) + "px";
+
 
     highlightColorBox(
         event.clientX,
         event.clientY
     );
+
 }
 
 
-/*
-========================================
-RESALTAR COLOR
-========================================
-*/
+// ========================================
+// RESALTAR COLOR
+// ========================================
 
 function highlightColorBox(x, y) {
 
@@ -364,10 +405,12 @@ function highlightColorBox(x, y) {
             ".color-box"
         );
 
+
     boxes.forEach(box => {
 
         const rect =
             box.getBoundingClientRect();
+
 
         const inside =
             x >= rect.left &&
@@ -375,19 +418,20 @@ function highlightColorBox(x, y) {
             y >= rect.top &&
             y <= rect.bottom;
 
+
         box.classList.toggle(
             "hovered",
             inside
         );
+
     });
+
 }
 
 
-/*
-========================================
-TERMINAR ARRASTRE
-========================================
-*/
+// ========================================
+// TERMINAR ARRASTRE
+// ========================================
 
 function endDrag(event) {
 
@@ -395,22 +439,27 @@ function endDrag(event) {
         return;
     }
 
+
     document.removeEventListener(
         "pointermove",
         dragMove
     );
+
 
     const boxes =
         document.querySelectorAll(
             ".color-box"
         );
 
+
     let targetBox = null;
+
 
     boxes.forEach(box => {
 
         const rect =
             box.getBoundingClientRect();
+
 
         const inside =
             event.clientX >= rect.left &&
@@ -418,13 +467,16 @@ function endDrag(event) {
             event.clientY >= rect.top &&
             event.clientY <= rect.bottom;
 
+
         if (inside) {
             targetBox = box;
         }
 
+
         box.classList.remove(
             "hovered"
         );
+
     });
 
 
@@ -433,11 +485,13 @@ function endDrag(event) {
         returnObject();
 
         return;
+
     }
 
 
     const targetColor =
         targetBox.dataset.color;
+
 
     const objectColor =
         draggedObject.dataset.color;
@@ -447,31 +501,50 @@ function endDrag(event) {
 
         correctAnswer(targetBox);
 
-    } else {
+    }
+
+    else {
 
         wrongAnswer();
+
     }
+
 }
 
 
-/*
-========================================
-RESPUESTA CORRECTA
-========================================
-*/
+// ========================================
+// RESPUESTA CORRECTA
+// ========================================
 
 function correctAnswer(targetBox) {
 
     score++;
 
+
     scoreElement.textContent =
         score;
+
 
     const percentage =
         (score / objects.length) * 100;
 
+
     progressElement.style.width =
         percentage + "%";
+
+
+    // ====================================
+    // GUARDAR PROGRESO
+    // ====================================
+
+    if (score < objects.length) {
+
+        guardarProgreso(
+            Math.round(percentage),
+            "en proceso"
+        );
+
+    }
 
 
     targetBox.classList.add(
@@ -492,7 +565,10 @@ function correctAnswer(targetBox) {
         "dragging"
     );
 
-    draggedObject.style.opacity = "0";
+
+    draggedObject.style.opacity =
+        "0";
+
 
     draggedObject.style.transform =
         "scale(0)";
@@ -501,7 +577,9 @@ function correctAnswer(targetBox) {
     setTimeout(() => {
 
         if (draggedObject) {
+
             draggedObject.remove();
+
         }
 
         draggedObject = null;
@@ -515,22 +593,32 @@ function correctAnswer(targetBox) {
     );
 
 
+    // ====================================
+    // JUEGO COMPLETADO
+    // ====================================
+
     if (score === objects.length) {
+
+        guardarProgreso(
+            100,
+            "completado"
+        );
+
 
         setTimeout(() => {
 
             showFinish();
 
         }, 700);
+
     }
+
 }
 
 
-/*
-========================================
-MENSAJES CORRECTOS
-========================================
-*/
+// ========================================
+// MENSAJES CORRECTOS
+// ========================================
 
 function getSuccessMessage() {
 
@@ -548,20 +636,20 @@ function getSuccessMessage() {
 
     ];
 
+
     return messages[
         Math.floor(
             Math.random() *
             messages.length
         )
     ];
+
 }
 
 
-/*
-========================================
-RESPUESTA INCORRECTA
-========================================
-*/
+// ========================================
+// RESPUESTA INCORRECTA
+// ========================================
 
 function wrongAnswer() {
 
@@ -570,15 +658,15 @@ function wrongAnswer() {
         "error"
     );
 
+
     returnObject();
+
 }
 
 
-/*
-========================================
-DEVOLVER OBJETO
-========================================
-*/
+// ========================================
+// DEVOLVER OBJETO
+// ========================================
 
 function returnObject() {
 
@@ -586,31 +674,40 @@ function returnObject() {
         return;
     }
 
+
     draggedObject.classList.remove(
         "dragging"
     );
 
+
     draggedObject.style.position = "";
+
     draggedObject.style.left = "";
+
     draggedObject.style.top = "";
+
     draggedObject.style.width = "";
+
     draggedObject.style.height = "";
+
     draggedObject.style.opacity = "";
+
     draggedObject.style.transform = "";
+
 
     originalParent.appendChild(
         draggedObject
     );
 
+
     draggedObject = null;
+
 }
 
 
-/*
-========================================
-MOSTRAR MENSAJE
-========================================
-*/
+// ========================================
+// MOSTRAR MENSAJE
+// ========================================
 
 function showMessage(text, type) {
 
@@ -618,8 +715,10 @@ function showMessage(text, type) {
         messageTimeout
     );
 
+
     messageElement.textContent =
         text;
+
 
     messageElement.className =
         "message " +
@@ -635,40 +734,44 @@ function showMessage(text, type) {
             );
 
         }, 900);
+
 }
 
 
-/*
-========================================
-FINAL DEL JUEGO
-========================================
-*/
+// ========================================
+// FINAL DEL JUEGO
+// ========================================
 
 function showFinish() {
 
     createConfetti();
 
+
     finishElement.classList.add(
         "show"
     );
+
 }
 
 
-/*
-========================================
-CONFETI
-========================================
-*/
+// ========================================
+// CONFETI
+// ========================================
 
 function createConfetti() {
 
     const colors = [
 
         "#ff5252",
+
         "#42a5f5",
+
         "#ffd740",
+
         "#66bb6a",
+
         "#ff4081",
+
         "#7c4dff"
 
     ];
@@ -685,11 +788,14 @@ function createConfetti() {
                 "div"
             );
 
+
         confetti.className =
             "confetti";
 
+
         confetti.style.left =
             Math.random() * 100 + "vw";
+
 
         confetti.style.backgroundColor =
             colors[
@@ -699,13 +805,16 @@ function createConfetti() {
                 )
             ];
 
+
         confetti.style.animationDuration =
             (2 + Math.random() * 3) +
             "s";
 
+
         confetti.style.animationDelay =
             Math.random() * 1.5 +
             "s";
+
 
         document.body.appendChild(
             confetti
@@ -717,43 +826,34 @@ function createConfetti() {
             confetti.remove();
 
         }, 5500);
+
     }
+
 }
 
 
-/*
-========================================
-REINICIAR
-========================================
-*/
+// ========================================
+// SIGUIENTE NIVEL
+// ========================================
 
 restartButton.addEventListener(
     "click",
     () => {
 
-        score = 0;
+        window.location.href = "niveles.html";
 
-        scoreElement.textContent =
-            "0";
-
-        progressElement.style.width =
-            "0%";
-
-        finishElement.classList.remove(
-            "show"
-        );
-
-        draggedObject = null;
-
-        createObjects();
     }
 );
 
 
-/*
-========================================
-INICIAR JUEGO
-========================================
-*/
+// ========================================
+// INICIAR JUEGO
+// ========================================
+
+guardarProgreso(
+    0,
+    "sin iniciar"
+);
+
 
 createObjects();

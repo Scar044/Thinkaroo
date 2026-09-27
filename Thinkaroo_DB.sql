@@ -40,13 +40,13 @@ USE Thinkaroo;
     ("Primer paso", "Complestate tu primera leccion", "IMG/logros/primer-paso.png"),
     ("Mente curiosa", "Complestate 10 lecciones", "IMG/logros/mente-curiosa.png"),
     ("Gran explorador", "Complestate 15 lecciones", "IMG/logros/gran-explorador.png"),
-    ("-", "Completaste -", "IMG/logros/rayo-veloz.png"),
+    ("Visual", "Completa una leccion del aprendizaje visual", "IMG/logros/rayo-veloz.png"),
     ("Perfecto", "Completa una actividad sin errores", "IMG/logros/perfecto.png"),
-    ("-", "Completa 20 lecciones", "IMG/logros/en-racha.png"),
+    ("Auditivo", "Completa una leccion del aprendizaje auditivo", "IMG/logros/en-racha.png"),
     ("Aventurero", "Completa 20 lecciones", "IMG/logros/aventurero.png"),
     ("Pequeño genio", "Consigue 5 actividades perfectas", "IMG/logros/genio.png"),
     ("Coleccionista", "Consigue 10 insignias", "IMG/logros/coleccionista.png"),
-    ("-", "Com", "IMG/logros/primer-reto.png"),
+    ("Kinestesico", "Completa una leccion de aprendizaje kinestesico", "IMG/logros/primer-reto.png"),
     ("Super aprendiz", "Completa 30 lecciones", "IMG/logros/super-aprendiz.png"),
     ("Maestro Thinkaroo", "Desbloque todos los logros", "IMG/logros/maestro.png");
 
@@ -118,7 +118,7 @@ VALUES
 (3, 3, "Juego de identificar los colores de los dibujos", "Arrastra cada dibujo hacia su el color que le corresponde", "Colores kinestesico", "-", "Kinestesico" ),
 (4, 4, "Juego de contar los objetos y seleccionar el total", "Cuenta cada uno de los objetos y luego busca entre las opciones el numero de tu resultado", "Sumas visual", "-", "Visual" ),
 (4, 4, "Juego de contar los sonidos", "Escucha atentamente y cuenta cada vez que un sonido se repita, cuando se detenga selecciona la opcion que tenga el numero de tu resultado", "Sumas auditivo", "-", "Auditivo" ),
-(4, 4, "Juego de ?", "-", "Sumas kinestesico", "-", "Kinestesico" );
+(4, 4, "Juego de contar objetos?", "Arrastra los objetos a la caja mientra los cuentas, luego selecciona la opcion que tiene el numero correcto", "Sumas kinestesico", "-", "Kinestesico" );
 
 CREATE TABLE Logros_hijos (
     Id_logro_hijo INT AUTO_INCREMENT PRIMARY KEY,

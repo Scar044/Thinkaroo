@@ -1,9 +1,5 @@
-
-// ==========================================
-// IMÁGENES
-// ==========================================
-
 const images = [
+
     "IMG/avatar1cerdo.png",
     "IMG/Elefante.png",
     "IMG/avatar3gato.png",
@@ -12,6 +8,7 @@ const images = [
     "IMG/avatar6ratón.png",
     "IMG/avatar7tigre.png",
     "IMG/avatar8vaca.png"
+
 ];
 
 
@@ -21,10 +18,8 @@ const images = [
 
 let cards = [...images, ...images];
 
-
 // Mezclar cartas
 cards.sort(() => Math.random() - 0.5);
-
 
 const gameBoard = document.getElementById("gameBoard");
 
@@ -35,10 +30,68 @@ const gameBoard = document.getElementById("gameBoard");
 
 let firstCard = null;
 let secondCard = null;
-
 let lockBoard = false;
-
 let matchedPairs = 0;
+
+
+// ==========================================
+// GUARDAR PROGRESO
+// ==========================================
+
+async function guardarProgreso(progreso, estado) {
+
+    try {
+
+        const respuesta = await fetch(
+            "../ConfigPHP/guardar_progreso.php",
+            {
+                method: "POST",
+
+                headers: {
+                    "Content-Type": "application/json"
+                },
+
+                body: JSON.stringify({
+
+                    id_actividad: 1,
+
+                    progreso: progreso,
+
+                    estado: estado
+
+                })
+            }
+        );
+
+        const datos = await respuesta.json();
+
+        console.log(
+            "PROGRESO VISUAL:",
+            datos
+        );
+
+        return datos;
+
+    } catch (error) {
+
+        console.error(
+            "Error al guardar progreso:",
+            error
+        );
+
+        return {
+            success: false
+        };
+
+    }
+}
+
+
+// ==========================================
+// REGISTRAR ACTIVIDAD COMO SIN INICIAR
+// ==========================================
+
+guardarProgreso(0, "sin iniciar");
 
 
 // ==========================================
@@ -87,7 +140,6 @@ cards.forEach(function (imgSrc) {
     const img = document.createElement("img");
 
     img.src = imgSrc;
-
     img.alt = "Animal";
 
 
@@ -98,7 +150,6 @@ cards.forEach(function (imgSrc) {
     cardFront.appendChild(img);
 
     cardInner.appendChild(cardBack);
-
     cardInner.appendChild(cardFront);
 
     card.appendChild(cardInner);
@@ -192,8 +243,30 @@ function checkMatch() {
 
         secondCard.classList.add("matched");
 
-
         matchedPairs++;
+
+
+        // ==================================
+        // CALCULAR PROGRESO
+        // ==================================
+
+        const progreso = Math.round(
+            (matchedPairs / images.length) * 100
+        );
+
+
+        // ==================================
+        // SI TODAVÍA NO TERMINÓ
+        // ==================================
+
+        if (matchedPairs < images.length) {
+
+            guardarProgreso(
+                progreso,
+                "en proceso"
+            );
+
+        }
 
 
         resetTurn();
@@ -208,23 +281,30 @@ function checkMatch() {
             setTimeout(async function () {
 
                 // ==================================
-                // MOSTRAR ALERTA FINAL
+                // GUARDAR COMO COMPLETADO
                 // ==================================
 
-                mostrarAlertaFinal();
-
-
                 const resultado =
-                    await guardarProgreso();
+                    await guardarProgreso(
+                        100,
+                        "completado"
+                    );
 
 
                 if (resultado.success) {
 
                     console.log(
-                        "Progreso guardado correctamente."
+                        "Memoria Visual completada."
                     );
 
                 }
+
+
+                // ==================================
+                // MOSTRAR ALERTA FINAL
+                // ==================================
+
+                mostrarAlertaFinal();
 
             }, 500);
 
@@ -242,7 +322,6 @@ function checkMatch() {
             firstCard.classList.remove("flipped");
 
             secondCard.classList.remove("flipped");
-
 
             resetTurn();
 
@@ -264,58 +343,6 @@ function resetTurn() {
     secondCard = null;
 
     lockBoard = false;
-
-}
-
-
-    async function guardarProgreso() {
-
-    try {
-
-        const respuesta = await fetch(
-            "../ConfigPHP/guardar_progreso.php",
-            {
-                method: "POST",
-
-                headers: {
-                    "Content-Type": "application/json"
-                },
-
-                body: JSON.stringify({
-                    id_actividad: 1,
-                    progreso: 100,
-                    estado: "completado"
-                })
-            }
-        );
-
-
-        const datos =
-            await respuesta.json();
-
-
-        console.log(
-            "RESPUESTA DEL PROGRESO:",
-            datos
-        );
-
-
-        return datos;
-
-
-    } catch (error) {
-
-        console.error(
-            "Error al guardar progreso:",
-            error
-        );
-
-
-        return {
-            success: false
-        };
-
-    }
 
 }
 
