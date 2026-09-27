@@ -317,70 +317,50 @@ function reproducirTono() {
 // ========================================
 
 function generarOpciones(respuesta) {
+    const contenedor = document.getElementById("options-container");
 
-    const contenedor =
-        document.getElementById(
-            "options-container"
-        );
+    if (!contenedor) {
+        console.error("No se encontró #options-container");
+        return;
+    }
 
     contenedor.innerHTML = "";
 
+    // Crear opciones posibles del 1 al 8
+    const numeros = [];
 
-    const opciones = new Set();
-
-    opciones.add(respuesta);
-
-
-    while (opciones.size < 4) {
-
-        const cambio =
-            Math.floor(Math.random() * 5) - 2;
-
-        const numero =
-            respuesta + cambio;
-
-
-        if (
-            numero >= 1 &&
-            numero <= 8 &&
-            numero !== respuesta
-        ) {
-
-            opciones.add(numero);
-
+    for (let i = 1; i <= 8; i++) {
+        if (i !== respuesta) {
+            numeros.push(i);
         }
-
     }
 
+    // Mezclar las opciones
+    numeros.sort(() => Math.random() - 0.5);
 
-    const mezcladas =
-        Array.from(opciones);
+    // Tomar 3 opciones incorrectas + la correcta
+    const opciones = [
+        respuesta,
+        numeros[0],
+        numeros[1],
+        numeros[2]
+    ];
 
+    // Mezclar nuevamente
+    opciones.sort(() => Math.random() - 0.5);
 
-    mezcladas.sort(
-        () => Math.random() - 0.5
-    );
+    opciones.forEach(numero => {
+        const boton = document.createElement("button");
 
-
-    mezcladas.forEach(numero => {
-
-        const boton =
-            document.createElement("button");
-
+        boton.type = "button";
         boton.innerText = numero;
 
-
-        boton.onclick = () => {
-
+        boton.onclick = function () {
             comprobar(numero, boton);
-
         };
 
-
         contenedor.appendChild(boton);
-
     });
-
 }
 
 
@@ -507,42 +487,95 @@ function comprobar(numero, boton) {
 }
 
 
+
 // ========================================
-// MOSTRAR FINAL
+// MOSTRAR PANTALLA FINAL
 // ========================================
 
 function mostrarFinal() {
 
-    // ------------------------------------
-    // PRIMERO: MENSAJE DE FELICITACIÓN
-    // ------------------------------------
+    const finish =
+        document.getElementById("finish");
 
-    const victoria =
+    if (!finish) {
+        console.error(
+            "ERROR: No se encontró #finish"
+        );
+        return;
+    }
+
+    // Ocultar mensajes del juego
+    const mensaje =
         document.getElementById(
-            "victory-modal"
+            "feedback-badge"
         );
 
+    if (mensaje) {
+        mensaje.className =
+            "mensaje oculto";
 
-    if (victoria) {
+        mensaje.innerHTML = "";
+    }
 
-        victoria.classList.remove(
-            "oculto"
+    // Ocultar opciones
+    const opciones =
+        document.getElementById(
+            "options-container"
         );
+
+    if (opciones) {
+        opciones.innerHTML = "";
+    }
+
+    // FORZAR EL TEXTO CORRECTO
+    const titulo =
+        document.getElementById(
+            "mensaje-final-titulo"
+        );
+
+    const texto =
+        document.getElementById(
+            "mensaje-final-texto"
+        );
+
+    if (titulo) {
+        titulo.textContent =
+            "¡Excelente ahora tu misión!";
+    }
+
+    if (texto) {
+        texto.innerHTML =
+            "Cuenta cuantos juguetes tienes" +
+            "<br>" +
+            "¡Aprendiste a contar!";
+    }
+
+    // Mostrar pantalla final
+    finish.classList.add("show");
+
+    // Botón CONTINUAR
+    const boton =
+        document.getElementById(
+            "botonFinal"
+        );
+
+    if (boton) {
+
+        boton.onclick = function () {
+
+            window.location.href =
+                "niveles_auditivo.html";
+
+        };
 
     }
 
-
-    // ------------------------------------
-    // DESPUÉS: TARJETA DE THINKAROO
-    // ------------------------------------
-
-    setTimeout(() => {
-
-        mostrarAlertaFinal();
-
-    }, 2500);
-
+    console.log(
+        "PANTALLA FINAL CORRECTA"
+    );
 }
+
+
 
 
 // ========================================

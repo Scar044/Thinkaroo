@@ -35,21 +35,15 @@ const botonFinal = document.getElementById("botonFinal");
 
 function mostrarAlertaFinal() {
 
-    if (alertaFinal) {
-        alertaFinal.classList.add("show");
-    }
-}
-
-if (botonFinal) {
-
-    botonFinal.addEventListener("click", function () {
-
-        window.location.href = "niveles.html";
-
-    });
+    alertaFinal.classList.add("show");
 
 }
 
+botonFinal.addEventListener("click", function () {
+
+    window.location.href = "niveles.html";
+
+});
 
 // ==========================================
 // DATOS DEL JUEGO
@@ -495,13 +489,11 @@ function mostrarPista() {
 // ==========================================
 
 function mostrarFinal() {
+    const alertaFinal = document.getElementById("finish");
 
-    setTimeout(() => {
-
-        mostrarAlertaFinal();
-
-    }, 700);
-
+    if (alertaFinal) {
+        alertaFinal.classList.add("show");
+    }
 }
 
 

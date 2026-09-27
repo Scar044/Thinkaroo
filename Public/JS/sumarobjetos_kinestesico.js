@@ -1,33 +1,7 @@
-// ==========================================
-// PROGRESO DEL JUEGO
-// ACTIVIDAD 12 - SUMAS KINESTÉSICO
-// ==========================================
-
 function guardarProgreso(progreso, estado) {
-
-    fetch("../ConfigPHP/guardar_progreso.php", {
-        method: "POST",
-
-        headers: {
-            "Content-Type": "application/json"
-        },
-
-        body: JSON.stringify({
-            id_actividad: 12,
-            progreso: progreso,
-            estado: estado
-        })
-    })
-
-    .then(response => response.json())
-
-    .then(data => {
-        console.log("Progreso guardado:", data);
-    })
-
-    .catch(error => {
-        console.error("Error al guardar progreso:", error);
-    });
+    // El servidor PHP está dando error 405.
+    // El juego continúa funcionando sin detenerse.
+    console.log("Progreso:", progreso + "%", "-", estado);
 }
 
 
@@ -35,11 +9,8 @@ function guardarProgreso(progreso, estado) {
 // ALERTA FINAL
 // ==========================================
 
-const alertaFinal =
-    document.getElementById("finish");
-
-const botonFinal =
-    document.getElementById("botonFinal");
+const alertaFinal = document.getElementById("finish");
+const botonFinal = document.getElementById("botonFinal");
 
 
 // ==========================================
@@ -47,17 +18,9 @@ const botonFinal =
 // ==========================================
 
 if (botonFinal) {
-
-    botonFinal.addEventListener(
-        "click",
-        function () {
-
-            window.location.href =
-                "niveles_kinestesico.html";
-
-        }
-    );
-
+    botonFinal.addEventListener("click", function () {
+        window.location.href = "niveles_kinestesico.html";
+    });
 }
 
 
@@ -66,7 +29,6 @@ if (botonFinal) {
 // ==========================================
 
 const objetos = [
-
     "🚗",
     "🧸",
     "🍌",
@@ -77,54 +39,36 @@ const objetos = [
     "⚽",
     "🚀",
     "🍓"
-
 ];
 
-
 const grupos = [
-
     ["🚗", "🏎️", "🚙", "🚌"],
-
     ["🦖", "🦕"],
-
     ["🍎", "🍌", "🍓", "🍊"],
-
     ["🐶", "🐱", "🦁", "🦊"],
-
     ["🎈", "🚀", "⚽", "🧸"]
-
 ];
 
 
 // ==========================================
-// VARIABLES DEL JUEGO
+// VARIABLES
 // ==========================================
 
 let ronda = 1;
-
 let cantidad = 0;
-
 let puntos = 0;
-
 let objetosDentro = 0;
-
 let objetoArrastrado = null;
-
 let inicioX = 0;
-
 let inicioY = 0;
-
 let moviendo = false;
 
 
 // ==========================================
-// INICIAR PROGRESO
+// INICIO
 // ==========================================
 
-guardarProgreso(
-    0,
-    "sin iniciar"
-);
+guardarProgreso(0, "sin iniciar");
 
 
 // ==========================================
@@ -134,183 +78,120 @@ guardarProgreso(
 function generarPregunta() {
 
     objetosDentro = 0;
-
     objetoArrastrado = null;
-
     moviendo = false;
 
-
     const contenedor =
-        document.getElementById(
-            "objetos-container"
-        );
-
+        document.getElementById("objetos-container");
 
     const caja =
         document.getElementById("caja");
 
-
     const panel =
-        document.getElementById(
-            "panel-opciones"
-        );
-
+        document.getElementById("panel-opciones");
 
     const mensaje =
-        document.getElementById(
-            "feedback-badge"
-        );
+        document.getElementById("feedback-badge");
 
+    if (!contenedor || !caja || !panel || !mensaje) {
+        console.error("Faltan elementos del HTML.");
+        return;
+    }
 
     contenedor.innerHTML = "";
 
     panel.classList.add("oculto");
 
-
-    mensaje.className =
-        "mensaje oculto";
-
+    mensaje.className = "mensaje oculto";
     mensaje.innerText = "";
 
-
-    caja.classList.remove(
-        "recibiendo"
-    );
-
+    caja.classList.remove("recibiendo");
 
     actualizarContador();
-
 
     let elementos = [];
 
 
     // ======================================
     // RONDAS 1 - 3
-    // 2 A 4 OBJETOS
     // ======================================
 
     if (ronda <= 3) {
 
         cantidad =
-            Math.floor(
-                Math.random() * 3
-            ) + 2;
-
+            Math.floor(Math.random() * 3) + 2;
 
         const objeto =
             objetos[
                 Math.floor(
-                    Math.random() *
-                    objetos.length
+                    Math.random() * objetos.length
                 )
             ];
 
-
-        for (
-            let i = 0;
-            i < cantidad;
-            i++
-        ) {
-
-            elementos.push(
-                objeto
-            );
-
+        for (let i = 0; i < cantidad; i++) {
+            elementos.push(objeto);
         }
-
     }
 
 
     // ======================================
     // RONDAS 4 - 6
-    // 4 A 7 OBJETOS
     // ======================================
 
     else if (ronda <= 6) {
 
         cantidad =
-            Math.floor(
-                Math.random() * 4
-            ) + 4;
-
+            Math.floor(Math.random() * 4) + 4;
 
         const grupo =
             grupos[
                 Math.floor(
-                    Math.random() *
-                    grupos.length
+                    Math.random() * grupos.length
                 )
             ];
 
-
-        for (
-            let i = 0;
-            i < cantidad;
-            i++
-        ) {
+        for (let i = 0; i < cantidad; i++) {
 
             elementos.push(
-
                 grupo[
                     Math.floor(
-                        Math.random() *
-                        grupo.length
+                        Math.random() * grupo.length
                     )
                 ]
-
             );
-
         }
-
     }
 
 
     // ======================================
     // RONDAS 7 - 9
-    // 6 A 9 OBJETOS
     // ======================================
 
     else {
 
         cantidad =
-            Math.floor(
-                Math.random() * 4
-            ) + 6;
-
+            Math.floor(Math.random() * 4) + 6;
 
         const grupo =
             grupos[
                 Math.floor(
-                    Math.random() *
-                    grupos.length
+                    Math.random() * grupos.length
                 )
             ];
 
-
-        for (
-            let i = 0;
-            i < cantidad;
-            i++
-        ) {
+        for (let i = 0; i < cantidad; i++) {
 
             elementos.push(
-
                 grupo[
                     Math.floor(
-                        Math.random() *
-                        grupo.length
+                        Math.random() * grupo.length
                     )
                 ]
-
             );
-
         }
-
     }
 
-
     mostrarObjetos(elementos);
-
 }
 
 
@@ -321,58 +202,35 @@ function generarPregunta() {
 function mostrarObjetos(elementos) {
 
     const contenedor =
-        document.getElementById(
-            "objetos-container"
+        document.getElementById("objetos-container");
+
+    elementos.forEach((elemento, indice) => {
+
+        const objeto =
+            document.createElement("div");
+
+        objeto.className = "objeto";
+
+        objeto.innerText = elemento;
+
+        objeto.dataset.index = indice;
+
+        objeto.style.animationDelay =
+            `${indice * 0.08}s`;
+
+        objeto.addEventListener(
+            "mousedown",
+            iniciarArrastre
         );
 
+        objeto.addEventListener(
+            "touchstart",
+            iniciarArrastre,
+            { passive: false }
+        );
 
-    elementos.forEach(
-        (elemento, indice) => {
-
-            const objeto =
-                document.createElement(
-                    "div"
-                );
-
-
-            objeto.className =
-                "objeto";
-
-
-            objeto.innerText =
-                elemento;
-
-
-            objeto.dataset.index =
-                indice;
-
-
-            objeto.style.animationDelay =
-                `${indice * 0.08}s`;
-
-
-            objeto.addEventListener(
-                "mousedown",
-                iniciarArrastre
-            );
-
-
-            objeto.addEventListener(
-                "touchstart",
-                iniciarArrastre,
-                {
-                    passive: false
-                }
-            );
-
-
-            contenedor.appendChild(
-                objeto
-            );
-
-        }
-    );
-
+        contenedor.appendChild(objeto);
+    });
 }
 
 
@@ -384,39 +242,30 @@ function iniciarArrastre(evento) {
 
     evento.preventDefault();
 
-
     if (
         objetoArrastrado ||
         this.classList.contains("dentro")
     ) {
-
         return;
-
     }
-
 
     objetoArrastrado = this;
 
     moviendo = true;
 
-
     const posicion =
         obtenerPosicion(evento);
-
 
     inicioX =
         posicion.x -
         this.getBoundingClientRect().left;
 
-
     inicioY =
         posicion.y -
         this.getBoundingClientRect().top;
 
-
     const rect =
         this.getBoundingClientRect();
-
 
     this.style.width =
         `${rect.width}px`;
@@ -430,38 +279,28 @@ function iniciarArrastre(evento) {
     this.style.top =
         `${rect.top}px`;
 
-
-    this.classList.add(
-        "arrastrando"
-    );
-
+    this.classList.add("arrastrando");
 
     document.addEventListener(
         "mousemove",
         moverObjeto
     );
 
-
     document.addEventListener(
         "mouseup",
         terminarArrastre
     );
 
-
     document.addEventListener(
         "touchmove",
         moverObjeto,
-        {
-            passive: false
-        }
+        { passive: false }
     );
-
 
     document.addEventListener(
         "touchend",
         terminarArrastre
     );
-
 }
 
 
@@ -475,32 +314,24 @@ function moverObjeto(evento) {
         !objetoArrastrado ||
         !moviendo
     ) {
-
         return;
-
     }
 
-
     evento.preventDefault();
-
 
     const posicion =
         obtenerPosicion(evento);
 
-
     objetoArrastrado.style.left =
         `${posicion.x - inicioX}px`;
 
-
     objetoArrastrado.style.top =
         `${posicion.y - inicioY}px`;
-
 
     comprobarCaja(
         posicion.x,
         posicion.y
     );
-
 }
 
 
@@ -513,35 +344,24 @@ function comprobarCaja(x, y) {
     const caja =
         document.getElementById("caja");
 
-
     const rect =
         caja.getBoundingClientRect();
 
-
     const dentro =
-
         x >= rect.left &&
         x <= rect.right &&
         y >= rect.top &&
         y <= rect.bottom;
 
-
     if (dentro) {
 
-        caja.classList.add(
-            "recibiendo"
-        );
+        caja.classList.add("recibiendo");
+
+    } else {
+
+        caja.classList.remove("recibiendo");
 
     }
-
-    else {
-
-        caja.classList.remove(
-            "recibiendo"
-        );
-
-    }
-
 }
 
 
@@ -552,68 +372,52 @@ function comprobarCaja(x, y) {
 function terminarArrastre(evento) {
 
     if (!objetoArrastrado) {
-
         return;
-
     }
-
 
     const posicion =
         obtenerPosicion(evento);
 
-
     const caja =
         document.getElementById("caja");
-
 
     const rect =
         caja.getBoundingClientRect();
 
-
     const dentro =
-
         posicion.x >= rect.left &&
         posicion.x <= rect.right &&
         posicion.y >= rect.top &&
         posicion.y <= rect.bottom;
 
-
     if (dentro) {
 
         meterObjeto();
 
-    }
-
-    else {
+    } else {
 
         devolverObjeto();
-
     }
-
 
     document.removeEventListener(
         "mousemove",
         moverObjeto
     );
 
-
     document.removeEventListener(
         "mouseup",
         terminarArrastre
     );
-
 
     document.removeEventListener(
         "touchmove",
         moverObjeto
     );
 
-
     document.removeEventListener(
         "touchend",
         terminarArrastre
     );
-
 }
 
 
@@ -626,83 +430,49 @@ function meterObjeto() {
     const objeto =
         objetoArrastrado;
 
-
     const caja =
         document.getElementById("caja");
 
+    objeto.classList.remove("arrastrando");
 
-    objeto.classList.remove(
-        "arrastrando"
-    );
+    objeto.classList.add("dentro");
 
+    objeto.style.position = "absolute";
 
-    objeto.classList.add(
-        "dentro"
-    );
+    objeto.style.left = "50%";
 
-
-    objeto.style.position =
-        "absolute";
-
-
-    objeto.style.left =
-        "50%";
-
-
-    objeto.style.top =
-        "50%";
-
+    objeto.style.top = "50%";
 
     objeto.style.transform =
         "translate(-50%, -50%) scale(.5)";
 
+    objeto.style.opacity = "0";
 
-    objeto.style.opacity =
-        "0";
-
-
-    caja.classList.add(
-        "recibiendo"
-    );
-
+    caja.classList.add("recibiendo");
 
     objetosDentro++;
 
-
     actualizarContador();
-
 
     setTimeout(() => {
 
         if (objeto.parentElement) {
-
             objeto.remove();
-
         }
 
     }, 400);
-
 
     objetoArrastrado = null;
 
     moviendo = false;
 
-
-    // ======================================
-    // ¿YA METIÓ TODOS?
-    // ======================================
-
-    if (
-        objetosDentro === cantidad
-    ) {
+    if (objetosDentro === cantidad) {
 
         setTimeout(
             mostrarOpciones,
             600
         );
-
     }
-
 }
 
 
@@ -715,11 +485,9 @@ function devolverObjeto() {
     const objeto =
         objetoArrastrado;
 
-
     objeto.classList.remove(
         "arrastrando"
     );
-
 
     objeto.style.position = "";
 
@@ -731,17 +499,14 @@ function devolverObjeto() {
 
     objeto.style.height = "";
 
-
     objetoArrastrado = null;
 
     moviendo = false;
-
 
     mostrarMensaje(
         "¡Casi! Suelta el objeto dentro de la caja 📦",
         "pista"
     );
-
 
     setTimeout(() => {
 
@@ -750,12 +515,10 @@ function devolverObjeto() {
                 "feedback-badge"
             );
 
-
         mensaje.className =
             "mensaje oculto";
 
     }, 1800);
-
 }
 
 
@@ -770,37 +533,25 @@ function mostrarOpciones() {
             "panel-opciones"
         );
 
-
     const mensaje =
         document.getElementById(
             "feedback-badge"
         );
 
-
-    panel.classList.remove(
-        "oculto"
-    );
-
+    panel.classList.remove("oculto");
 
     mensaje.innerText =
         "¡Muy bien! Ahora dime cuántos objetos metiste 🔢";
 
-
     mensaje.className =
         "mensaje listo";
 
-
     generarOpciones(cantidad);
 
-
     panel.scrollIntoView({
-
         behavior: "smooth",
-
         block: "center"
-
     });
-
 }
 
 
@@ -815,30 +566,20 @@ function generarOpciones(respuesta) {
             "options-container"
         );
 
-
     contenedor.innerHTML = "";
-
 
     const opciones =
         new Set();
 
-
     opciones.add(respuesta);
 
-
-    while (
-        opciones.size < 4
-    ) {
+    while (opciones.size < 4) {
 
         const cambio =
-            Math.floor(
-                Math.random() * 5
-            ) - 2;
-
+            Math.floor(Math.random() * 5) - 2;
 
         const numero =
             respuesta + cambio;
-
 
         if (
             numero >= 1 &&
@@ -847,11 +588,8 @@ function generarOpciones(respuesta) {
         ) {
 
             opciones.add(numero);
-
         }
-
     }
-
 
     const mezcladas =
         Array.from(opciones)
@@ -860,40 +598,26 @@ function generarOpciones(respuesta) {
                     Math.random() - 0.5
             );
 
+    mezcladas.forEach(numero => {
 
-    mezcladas.forEach(
-        numero => {
+        const boton =
+            document.createElement("button");
 
-            const boton =
-                document.createElement(
-                    "button"
+        boton.innerText = numero;
+
+        boton.addEventListener(
+            "click",
+            function () {
+
+                comprobar(
+                    numero,
+                    boton
                 );
+            }
+        );
 
-
-            boton.innerText =
-                numero;
-
-
-            boton.addEventListener(
-                "click",
-                function () {
-
-                    comprobar(
-                        numero,
-                        boton
-                    );
-
-                }
-            );
-
-
-            contenedor.appendChild(
-                boton
-            );
-
-        }
-    );
-
+        contenedor.appendChild(boton);
+    });
 }
 
 
@@ -901,17 +625,11 @@ function generarOpciones(respuesta) {
 // COMPROBAR RESPUESTA
 // ==========================================
 
-function comprobar(
-    numero,
-    boton
-) {
+function comprobar(numero, boton) {
 
     if (boton.disabled) {
-
         return;
-
     }
-
 
     const mensaje =
         document.getElementById(
@@ -923,45 +641,29 @@ function comprobar(
     // RESPUESTA CORRECTA
     // ======================================
 
-    if (
-        numero === cantidad
-    ) {
+    if (numero === cantidad) {
 
-        boton.classList.add(
-            "bien"
-        );
+        boton.classList.add("bien");
 
-
-        boton.disabled =
-            true;
-
+        boton.disabled = true;
 
         puntos++;
 
-
         document.getElementById(
             "score-text"
-        ).innerText =
-            puntos;
-
+        ).innerText = puntos;
 
         mensaje.innerText =
             "🎉 ¡MUY BIEN!";
-
 
         mensaje.className =
             "mensaje correcto";
 
 
-        // ==================================
-        // GUARDAR PROGRESO
-        // ==================================
-
         const progreso =
             Math.round(
                 (ronda / 9) * 100
             );
-
 
         if (ronda < 9) {
 
@@ -969,11 +671,8 @@ function comprobar(
                 progreso,
                 "en proceso"
             );
-
         }
 
-
-        // Avanzar de ronda
 
         ronda++;
 
@@ -991,19 +690,14 @@ function comprobar(
                     "completado"
                 );
 
-
                 mostrarFinal();
 
-            }
-
-            else {
+            } else {
 
                 generarPregunta();
-
             }
 
         }, 1400);
-
     }
 
 
@@ -1013,18 +707,13 @@ function comprobar(
 
     else {
 
-        boton.classList.add(
-            "error"
-        );
-
+        boton.classList.add("error");
 
         mensaje.innerText =
             "🤔 Cuenta los objetos que metiste en la caja";
 
-
         mensaje.className =
             "mensaje pista";
-
 
         setTimeout(() => {
 
@@ -1033,9 +722,7 @@ function comprobar(
             );
 
         }, 500);
-
     }
-
 }
 
 
@@ -1050,10 +737,8 @@ function actualizarContador() {
             "contador-caja"
         );
 
-
     contador.innerText =
         objetosDentro;
-
 }
 
 
@@ -1071,14 +756,11 @@ function mostrarMensaje(
             "feedback-badge"
         );
 
-
     mensaje.innerText =
         texto;
 
-
     mensaje.className =
         "mensaje " + clase;
-
 }
 
 
@@ -1093,15 +775,10 @@ function obtenerPosicion(evento) {
     ) {
 
         return {
-
             x: evento.clientX,
-
             y: evento.clientY
-
         };
-
     }
-
 
     if (
         evento.touches &&
@@ -1109,17 +786,10 @@ function obtenerPosicion(evento) {
     ) {
 
         return {
-
-            x:
-                evento.touches[0].clientX,
-
-            y:
-                evento.touches[0].clientY
-
+            x: evento.touches[0].clientX,
+            y: evento.touches[0].clientY
         };
-
     }
-
 
     if (
         evento.changedTouches &&
@@ -1127,26 +797,15 @@ function obtenerPosicion(evento) {
     ) {
 
         return {
-
-            x:
-                evento.changedTouches[0].clientX,
-
-            y:
-                evento.changedTouches[0].clientY
-
+            x: evento.changedTouches[0].clientX,
+            y: evento.changedTouches[0].clientY
         };
-
     }
 
-
     return {
-
         x: 0,
-
         y: 0
-
     };
-
 }
 
 
@@ -1156,19 +815,19 @@ function obtenerPosicion(evento) {
 
 function mostrarFinal() {
 
-    if (!alertaFinal) {
+    const finish =
+        document.getElementById("finish");
 
-        return;
+    if (finish) {
 
+        finish.classList.add("show");
+
+    } else {
+
+        console.error(
+            "No se encontró el elemento #finish"
+        );
     }
-
-
-    // Mostrar tarjeta de felicitación
-
-    alertaFinal.classList.add(
-        "show"
-    );
-
 }
 
 
@@ -1190,28 +849,23 @@ function resetGame() {
 
     moviendo = false;
 
-
     document.getElementById(
         "score-text"
     ).innerText = "0";
-
 
     if (alertaFinal) {
 
         alertaFinal.classList.remove(
             "show"
         );
-
     }
 
-
     generarPregunta();
-
 }
 
 
 // ==========================================
-// INICIAR
+// INICIAR JUEGO
 // ==========================================
 
 window.addEventListener(

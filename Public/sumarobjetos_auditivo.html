@@ -85,50 +85,38 @@
     </main>
 
 
-    <div id="victory-modal" class="modal oculto">
+    
 
-        <div class="final">
-
-            <div class="emojis">
-                🎉 👏 🎧
-            </div>
-
-            <h3>
-                ¡LO LOGRASTE!
-            </h3>
-
-            <p>
-                Escuchaste y contaste todos los sonidos.
-            </p>
-
-            <button onclick="resetGame()">
-                ¡INTENTAR DE NUEVO!
-            </button>
-
-        </div>
-
-    </div>
 <div class="finish" id="finish">
 
     <div class="finish-card">
 
-        <div class="trophy">🏆</div>
+        <div class="trophy">
+            🏆
+        </div>
 
-        <h2>¡Excelente ahora tu misión!</h2>
+        <h2 id="mensaje-final-titulo">
+            ¡Excelente ahora tu misión!
+        </h2>
 
-        <p>
-            Encuentra 2 objetos de cada forma que aprendistes hoy
+        <p id="mensaje-final-texto">
+            Cuenta cuantos juguetes tienes
             <br>
-            ¡Aprendiste las formas!
+            ¡Aprendiste a contar!
         </p>
 
-        <button id="botonFinal">
+        <button
+            type="button"
+            id="botonFinal"
+        >
             Continuar
         </button>
 
     </div>
 
 </div>
+
+
 
     <script src="JS/sumarobjetos_auditivo.js"></script>
 
