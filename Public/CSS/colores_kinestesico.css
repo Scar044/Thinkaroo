@@ -20,6 +20,7 @@ header {
 }
 
 h1 {
+   
     background: #FFD519;
 
     padding: 20px;
@@ -35,7 +36,9 @@ h1 {
     box-shadow: 0 10px 25px rgba(0, 0, 0, .20);
 
     margin-bottom: 15px;
+
 }
+
 
 header p {
     font-size: clamp(16px, 3vw, 22px);
