@@ -254,7 +254,25 @@ h3 {
 
     transform: scale(1.03);
 }
+#botonCerrar{
+    display: flex;
+    align-items: center;
+    justify-content: center;
 
+    width: 100px;
+    height: 45px;
+
+    margin: 15px auto;
+
+    background: #F5B300;
+    color: white;
+
+    border-radius: 35px;
+    text-decoration: none;
+
+    font-size: 10px;
+    font-weight: bold;
+}
 
 /* RESPONSIVE */
 

@@ -77,6 +77,33 @@ body {
     border-radius: 0;
 }
 
+.menu-sidebar {
+    display: flex;
+    flex-direction: column;
+    margin-top: 20px;
+}
+
+.menu-sidebar a {
+    color: white;
+    text-decoration: none;
+
+    padding: 16px 25px;
+
+    display: flex;
+    align-items: center;
+    gap: 15px;
+
+    transition: 0.3s;
+}
+
+.menu-sidebar a:hover,
+.menu-sidebar a.activo {
+    background: rgba(255,255,255,.15);
+}
+
+.menu-sidebar span:first-child {
+    font-size: 24px;
+}
 
 /* ===========================
    LOGO
