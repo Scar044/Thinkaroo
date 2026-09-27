@@ -224,20 +224,23 @@ h1 {
 #siguiente {
     display: none;
 
+    margin: 10px auto;
+
+    padding: 13px 28px;
+
     border: none;
 
-    background: #ff9800;
+    border-radius: 12px;
+
+    background: #6c63ff;
 
     color: white;
-
-    padding: 14px 30px;
-
-    border-radius: 15px;
 
     font-size: 18px;
 
     cursor: pointer;
 }
+
 
 #siguiente:hover {
     transform: scale(1.05);

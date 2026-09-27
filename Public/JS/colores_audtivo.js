@@ -297,7 +297,7 @@ function siguienteRonda() {
 
         ronda++;
 
-        rondaTexto.textContent =
+        document.getElementById("ronda").textContent =
             ronda;
 
         elegirColor();
@@ -305,6 +305,7 @@ function siguienteRonda() {
     }
 
 }
+
 
 
 // ==========================================

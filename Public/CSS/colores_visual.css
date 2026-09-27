@@ -560,3 +560,33 @@ h2 {
     animation:
         fall linear forwards;
 }
+#botonFinal {
+
+    border: none;
+
+    padding: 15px 30px;
+
+    border-radius: 15px;
+
+    background: #4caf50;
+
+    color: white;
+
+    font-size: 18px;
+
+    font-weight: bold;
+
+    cursor: pointer;
+
+    transition:
+        transform 0.2s ease,
+        background 0.2s ease;
+}
+
+
+#botonFinal:hover {
+
+    transform: scale(1.05);
+
+    background: #388e3c;
+}
