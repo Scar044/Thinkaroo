@@ -43,22 +43,13 @@ body {
 ========================= */
 
 h1 {
-    background: #FFD519;
+    margin-top: 0;
 
-    padding: 20px;
+    color: #333;
 
-    border-radius: 28px;
-
-    font-size: 32px;
-
-    font-weight: 900;
-
-    color: #ffffff;
-
-    box-shadow: 0 10px 25px rgba(0, 0, 0, .20);
-
-    margin-bottom: 15px;
+    font-size: 36px;
 }
+
 
 .instruccion {
     color: #666;
