@@ -11,11 +11,13 @@ body {
         Arial,
         sans-serif;
 
-    background: white;
-
-    color: #333;
-
-    min-height: 100vh;
+   min-height:100vh;
+   background-image: url("../IMG/salon.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    padding:20px 0;
 }
 
 
