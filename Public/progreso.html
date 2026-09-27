@@ -97,7 +97,7 @@
 
                     <!-- NIVEL 1 -->
 
-                    <div class="level green">
+                    <div class="level green" data-nivel="1">
 
                         <div class="number">1</div>
 
@@ -115,16 +115,16 @@
 
                         <div class="status">
 
-                            <span>Completado</span>
+                            <span class="estado">Sin iniciar</span>
 
-                            <small>100% acertado</small>
+                            <small class="porcentaje">0%</small>
 
                         </div>
 
                         <div class="progress">
 
                             <div class="bar">
-                                <div class="fill fill100"></div>
+                                <div class="fill"></div>
                             </div>
 
                         </div>
@@ -134,7 +134,7 @@
 
                     <!-- NIVEL 2 -->
 
-                    <div class="level blue">
+                    <div class="level blue" data-nivel="2">
 
                         <div class="number">2</div>
 
@@ -152,16 +152,16 @@
 
                         <div class="status">
 
-                            <span>En progreso</span>
+                            <span class="estado">Sin iniciar</span>
 
-                            <small>85%</small>
+                            <small class="porcentaje">0%</small>
 
                         </div>
 
                         <div class="progress">
 
                             <div class="bar">
-                                <div class="fill fill85"></div>
+                                <div class="fill"></div>
                             </div>
 
                         </div>
@@ -171,7 +171,7 @@
 
                     <!-- NIVEL 3 -->
 
-                    <div class="level red">
+                    <div class="level red" data-nivel="3">
 
                         <div class="number">3</div>
 
@@ -189,16 +189,16 @@
 
                         <div class="status">
 
-                            <span>Fallaste</span>
+                            <span class="estado">Sin iniciar</span>
 
-                            <small>40%</small>
+                            <small class="porcentaje">0%</small>
 
                         </div>
 
                         <div class="progress">
 
                             <div class="bar">
-                                <div class="fill fill40"></div>
+                                <div class="fill"></div>
                             </div>
 
                         </div>
@@ -208,7 +208,7 @@
 
                     <!-- NIVEL 4 -->
 
-                    <div class="level gray">
+                    <div class="level gray" data-nivel="4">
 
                         <div class="number">4</div>
 
@@ -226,14 +226,16 @@
 
                         <div class="status">
 
-                            <span>Bloqueado</span>
+                            <span class="estado">Sin iniciar</span>
+
+                            <small class="porcentaje">0%</small>
 
                         </div>
 
                         <div class="progress">
 
                             <div class="bar">
-                                <div class="fill fill0"></div>
+                                <div class="fill"></div>
                             </div>
 
                         </div>
@@ -248,6 +250,7 @@
 
     </div>
 <script src="JS/sidebar.js"></script>
+<script src="JS/progreso.js"></script>
 </body>
 
 </html>
