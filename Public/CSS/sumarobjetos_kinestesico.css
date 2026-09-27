@@ -32,11 +32,7 @@ body {
 
     padding: 25px;
 
-    font-family:
-        "Arial Rounded MT Bold",
-        "Trebuchet MS",
-        Arial,
-        sans-serif;
+    font-family: poppins, sans-serif;
 
     user-select: none;
 
@@ -64,40 +60,22 @@ body {
 
 .titulo {
 
-    display: inline-block;
+    background: #FFD519;
 
-    padding: 18px 40px;
+    padding: 20px;
 
-    border: 4px solid #168ee5;
+    border-radius: 28px;
 
-    border-radius: 25px;
+    font-size: 32px;
 
-    background: #ffcf1b;
+    font-weight: 900;
 
-    color: white;
+    color: #ffffff;
 
-    font-size: 40px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, .20);
 
-    font-weight: bold;
+    margin-bottom: 15px;
 
-    text-shadow:
-        2px 2px #d99b00;
-
-    box-shadow:
-        6px 6px #ed2864;
-
-}
-
-
-.subtitulo {
-
-    margin: 22px 0 15px;
-
-    color: #1478bd;
-
-    font-size: 20px;
-
-    font-weight: bold;
 
 }
 
