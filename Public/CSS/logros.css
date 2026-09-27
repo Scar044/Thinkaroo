@@ -8,8 +8,13 @@
 
 body {
     font-family: 'Poppins', sans-serif;
-    background-color: #f4fbff;
-    color: #333;
+      min-height:100vh;
+   background-image: url("../IMG/fondo-logros.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    padding:20px 0;
 }
 
 
