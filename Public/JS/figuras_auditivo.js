@@ -36,6 +36,7 @@ const alertaFinal =
 const botonFinal =
     document.getElementById("botonFinal");
 
+
 function mostrarAlertaFinal() {
 
     if (alertaFinal) {
@@ -43,6 +44,7 @@ function mostrarAlertaFinal() {
     }
 
 }
+
 
 if (botonFinal) {
 
@@ -218,6 +220,7 @@ const pistas = {
 
 function hablar(texto) {
 
+    // Detener cualquier audio anterior
     window.speechSynthesis.cancel();
 
     const voz =
@@ -237,6 +240,10 @@ function hablar(texto) {
 // ==========================================
 // ELEGIR FIGURA
 // ==========================================
+// IMPORTANTE:
+// Esta función NO reproduce audio.
+// Solo prepara la siguiente ronda.
+// ==========================================
 
 function nuevaRonda() {
 
@@ -250,24 +257,16 @@ function nuevaRonda() {
 
     juegoActivo = true;
 
-
-    // Limpiar selección anterior
-
     figuras.forEach(function (figura) {
 
         figura.classList.remove("seleccionada");
-
         figura.classList.remove("correcta");
-
         figura.classList.remove("incorrecta");
 
     });
 
-
     mensaje.textContent = "";
-
-
-    // Reiniciar intento de esta figura
+    mensaje.className = "mensaje";
 
     if (!intentos[figuraCorrecta]) {
 
@@ -275,18 +274,8 @@ function nuevaRonda() {
 
     }
 
-
     instruccion.textContent =
-        "Escucha y busca la figura correcta.";
-
-
-    // Decir la figura
-
-    hablar(
-        "Busca el " +
-        nombres[figuraCorrecta]
-    );
-
+        "Presiona ESCUCHAR para oír la figura.";
 }
 
 
@@ -298,18 +287,28 @@ botonEscuchar.addEventListener(
     "click",
     function () {
 
+        // Si todavía no existe una figura,
+        // preparar una sin reproducir automáticamente.
+
         if (!figuraCorrecta) {
 
             nuevaRonda();
 
-            return;
-
         }
+
+
+        // AQUÍ es donde se reproduce el audio.
+        // Como está dentro del click, el navegador
+        // permite correctamente la reproducción.
 
         hablar(
             "Busca el " +
             nombres[figuraCorrecta]
         );
+
+
+        instruccion.textContent =
+            "Escucha y busca la figura correcta.";
 
     }
 );
@@ -449,6 +448,9 @@ figuras.forEach(function (figura) {
                 // ==================================
                 // SIGUIENTE RONDA
                 // ==================================
+                // Se prepara la figura nueva,
+                // pero NO se reproduce su audio.
+                // ==================================
 
                 setTimeout(function () {
 
@@ -559,8 +561,6 @@ cerrarPista.addEventListener(
 );
 
 
-// ==========================================
-// COMENZAR JUEGO
-// ==========================================
+
 
 nuevaRonda();
