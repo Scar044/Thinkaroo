@@ -17,8 +17,23 @@ body {
 }
 
 h1 {
-    color: #333;
+    background: #FFD519;
+
+    padding: 20px;
+
+    border-radius: 28px;
+
+    font-size: 32px;
+
+    font-weight: 900;
+
+    color: #ffffff;
+
+    box-shadow: 0 10px 25px rgba(0, 0, 0, .20);
+
+    margin-bottom: 15px;
 }
+
 
 
 .game-board {

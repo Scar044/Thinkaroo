@@ -19,11 +19,22 @@ header {
     padding: 20px 15px 10px;
 }
 
-header h1 {
-    font-size: clamp(28px, 5vw, 48px);
-    color: #ff7b00;
-    text-shadow: 3px 3px 0 #ffd166;
-    margin-bottom: 8px;
+h1 {
+    background: #FFD519;
+
+    padding: 20px;
+
+    border-radius: 28px;
+
+    font-size: 32px;
+
+    font-weight: 900;
+
+    color: #ffffff;
+
+    box-shadow: 0 10px 25px rgba(0, 0, 0, .20);
+
+    margin-bottom: 15px;
 }
 
 header p {

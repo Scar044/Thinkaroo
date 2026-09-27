@@ -13,9 +13,7 @@ body {
     min-height: 100vh;
     padding: 25px;
    
-    font-family: "Arial Rounded MT Bold",
-        "Trebuchet MS", Arial, sans-serif;
-    user-select: none;
+    font-family: poppins, sans-serif;
 }
 
 .encabezado {
@@ -26,16 +24,22 @@ body {
 }
 
 .titulo {
-    display: inline-block;
-    padding: 18px 40px;
-    border: 4px solid #168ee5;
-    border-radius: 25px;
-    background: #ffcf1b;
-    color: white;
-    font-size: 40px;
-    font-weight: bold;
-    text-shadow: 2px 2px #d99b00;
-    box-shadow: 6px 6px #ed2864;
+    background: #FFD519;
+
+    padding: 20px;
+
+    border-radius: 28px;
+
+    font-size: 32px;
+
+    font-weight: 900;
+
+    color: #ffffff;
+
+    box-shadow: 0 10px 25px rgba(0, 0, 0, .20);
+
+    margin-bottom: 15px;
+
 }
 
 .subtitulo {
