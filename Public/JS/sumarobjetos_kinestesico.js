@@ -1,32 +1,17 @@
 function guardarProgreso(progreso, estado) {
-    // El servidor PHP está dando error 405.
-    // El juego continúa funcionando sin detenerse.
+
     console.log("Progreso:", progreso + "%", "-", estado);
 }
-
-
-// ==========================================
-// ALERTA FINAL
-// ==========================================
 
 const alertaFinal = document.getElementById("finish");
 const botonFinal = document.getElementById("botonFinal");
 
-
-// ==========================================
-// BOTÓN CONTINUAR
-// ==========================================
 
 if (botonFinal) {
     botonFinal.addEventListener("click", function () {
         window.location.href = "niveles_kinestesico.html";
     });
 }
-
-
-// ==========================================
-// OBJETOS
-// ==========================================
 
 const objetos = [
     "🚗",
@@ -50,9 +35,7 @@ const grupos = [
 ];
 
 
-// ==========================================
-// VARIABLES
-// ==========================================
+
 
 let ronda = 1;
 let cantidad = 0;
@@ -64,16 +47,8 @@ let inicioY = 0;
 let moviendo = false;
 
 
-// ==========================================
-// INICIO
-// ==========================================
 
 guardarProgreso(0, "sin iniciar");
-
-
-// ==========================================
-// GENERAR PREGUNTA
-// ==========================================
 
 function generarPregunta() {
 
@@ -112,10 +87,6 @@ function generarPregunta() {
     let elementos = [];
 
 
-    // ======================================
-    // RONDAS 1 - 3
-    // ======================================
-
     if (ronda <= 3) {
 
         cantidad =
@@ -133,10 +104,6 @@ function generarPregunta() {
         }
     }
 
-
-    // ======================================
-    // RONDAS 4 - 6
-    // ======================================
 
     else if (ronda <= 6) {
 
@@ -161,11 +128,6 @@ function generarPregunta() {
             );
         }
     }
-
-
-    // ======================================
-    // RONDAS 7 - 9
-    // ======================================
 
     else {
 
@@ -194,10 +156,6 @@ function generarPregunta() {
     mostrarObjetos(elementos);
 }
 
-
-// ==========================================
-// MOSTRAR OBJETOS
-// ==========================================
 
 function mostrarObjetos(elementos) {
 
@@ -233,10 +191,6 @@ function mostrarObjetos(elementos) {
     });
 }
 
-
-// ==========================================
-// INICIAR ARRASTRE
-// ==========================================
 
 function iniciarArrastre(evento) {
 
@@ -304,10 +258,6 @@ function iniciarArrastre(evento) {
 }
 
 
-// ==========================================
-// MOVER OBJETO
-// ==========================================
-
 function moverObjeto(evento) {
 
     if (
@@ -335,10 +285,6 @@ function moverObjeto(evento) {
 }
 
 
-// ==========================================
-// COMPROBAR CAJA
-// ==========================================
-
 function comprobarCaja(x, y) {
 
     const caja =
@@ -364,10 +310,6 @@ function comprobarCaja(x, y) {
     }
 }
 
-
-// ==========================================
-// TERMINAR ARRASTRE
-// ==========================================
 
 function terminarArrastre(evento) {
 
@@ -421,10 +363,6 @@ function terminarArrastre(evento) {
 }
 
 
-// ==========================================
-// METER OBJETO
-// ==========================================
-
 function meterObjeto() {
 
     const objeto =
@@ -476,10 +414,6 @@ function meterObjeto() {
 }
 
 
-// ==========================================
-// DEVOLVER OBJETO
-// ==========================================
-
 function devolverObjeto() {
 
     const objeto =
@@ -522,10 +456,6 @@ function devolverObjeto() {
 }
 
 
-// ==========================================
-// MOSTRAR OPCIONES
-// ==========================================
-
 function mostrarOpciones() {
 
     const panel =
@@ -541,7 +471,7 @@ function mostrarOpciones() {
     panel.classList.remove("oculto");
 
     mensaje.innerText =
-        "¡Muy bien! Ahora dime cuántos objetos metiste 🔢";
+        "¡Muy bien! Ahora dime cuántos objetos metiste ";
 
     mensaje.className =
         "mensaje listo";
@@ -554,10 +484,6 @@ function mostrarOpciones() {
     });
 }
 
-
-// ==========================================
-// GENERAR OPCIONES
-// ==========================================
 
 function generarOpciones(respuesta) {
 
@@ -620,11 +546,6 @@ function generarOpciones(respuesta) {
     });
 }
 
-
-// ==========================================
-// COMPROBAR RESPUESTA
-// ==========================================
-
 function comprobar(numero, boton) {
 
     if (boton.disabled) {
@@ -635,11 +556,6 @@ function comprobar(numero, boton) {
         document.getElementById(
             "feedback-badge"
         );
-
-
-    // ======================================
-    // RESPUESTA CORRECTA
-    // ======================================
 
     if (numero === cantidad) {
 
@@ -654,7 +570,7 @@ function comprobar(numero, boton) {
         ).innerText = puntos;
 
         mensaje.innerText =
-            "🎉 ¡MUY BIEN!";
+            " ¡MUY BIEN!";
 
         mensaje.className =
             "mensaje correcto";
@@ -675,12 +591,6 @@ function comprobar(numero, boton) {
 
 
         ronda++;
-
-
-        // ==================================
-        // SIGUIENTE RONDA / FINAL
-        // ==================================
-
         setTimeout(() => {
 
             if (ronda > 9) {
@@ -701,16 +611,12 @@ function comprobar(numero, boton) {
     }
 
 
-    // ======================================
-    // RESPUESTA INCORRECTA
-    // ======================================
-
     else {
 
         boton.classList.add("error");
 
         mensaje.innerText =
-            "🤔 Cuenta los objetos que metiste en la caja";
+            " Cuenta los objetos que metiste en la caja";
 
         mensaje.className =
             "mensaje pista";
@@ -725,11 +631,6 @@ function comprobar(numero, boton) {
     }
 }
 
-
-// ==========================================
-// ACTUALIZAR CONTADOR
-// ==========================================
-
 function actualizarContador() {
 
     const contador =
@@ -740,11 +641,6 @@ function actualizarContador() {
     contador.innerText =
         objetosDentro;
 }
-
-
-// ==========================================
-// MOSTRAR MENSAJE
-// ==========================================
 
 function mostrarMensaje(
     texto,
@@ -763,10 +659,6 @@ function mostrarMensaje(
         "mensaje " + clase;
 }
 
-
-// ==========================================
-// OBTENER POSICIÓN
-// ==========================================
 
 function obtenerPosicion(evento) {
 
@@ -809,10 +701,6 @@ function obtenerPosicion(evento) {
 }
 
 
-// ==========================================
-// MOSTRAR FINAL
-// ==========================================
-
 function mostrarFinal() {
 
     const finish =
@@ -830,10 +718,6 @@ function mostrarFinal() {
     }
 }
 
-
-// ==========================================
-// REINICIAR JUEGO
-// ==========================================
 
 function resetGame() {
 
@@ -863,10 +747,6 @@ function resetGame() {
     generarPregunta();
 }
 
-
-// ==========================================
-// INICIAR JUEGO
-// ==========================================
 
 window.addEventListener(
     "load",
