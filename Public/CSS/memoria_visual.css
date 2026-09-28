@@ -6,10 +6,6 @@
 }
 
 
-/* ==========================================
-   CUERPO
-   ========================================== */
-
 body {
     background-image: url("../IMG/Campo.png");
     background-size: cover;
@@ -22,9 +18,7 @@ body {
 }
 
 
-/* ==========================================
-   TÍTULO
-   ========================================== */
+
 
 h1 {
     background: #FFD519;
@@ -45,9 +39,7 @@ h1 {
 }
 
 
-/* ==========================================
-   INSTRUCCIONES
-   ========================================== */
+
 
 p {
     font-size: 18px;
@@ -56,9 +48,6 @@ p {
 }
 
 
-/* ==========================================
-   TABLERO
-   ========================================== */
 
 .game-board {
     width: 95%;
@@ -79,10 +68,6 @@ p {
     box-shadow: none;
 }
 
-
-/* ==========================================
-   CARTA PRINCIPAL
-   ========================================== */
 
 .memory-card {
     height: 150px;
@@ -531,16 +516,18 @@ p {
 }
 #canguroFijo {
     position: absolute;
-    left: 250px;
-    top: 450px;
+    left: 5px;
+  top: 300px;
     width: 300px;
-    z-index: 20;
+    pointer-events: none;
 }
+
 
 #canguroFijo img {
     width: 300px;
     height: auto;
     display: block;
+    pointer-events: none;
 }
 /* ========================================
    ALERTA FINAL
