@@ -8,7 +8,7 @@
     color: white;
     position: fixed;
     /* Altura del header */
-    top: 80px;
+    top: 130px;
     height: calc(100vh - 80px);
     left: 0;
     display: flex;

@@ -1,181 +1,407 @@
-const sidebar = document.getElementById("sidebar");
-const boton = document.getElementById("toggleBtn");
+// =====================================
+// PROGRESO DE THINKAROO
+// =====================================
 
-boton.addEventListener("click", () => {
 
-    sidebar.classList.toggle("cerrado");
+// =====================================
+// ACTIVIDADES SEGÚN ESTILO
+// =====================================
 
-    if(sidebar.classList.contains("cerrado")){
-        boton.innerHTML = "❯";
-    }else{
-        boton.innerHTML = "❮";
+const actividadesPorEstilo = {
+
+    Visual: {
+        1: 1,
+        2: 4,
+        3: 7,
+        4: 10
+    },
+
+    Auditivo: {
+        1: 2,
+        2: 5,
+        3: 8,
+        4: 11
+    },
+
+    Kinestesico: {
+        1: 3,
+        2: 6,
+        3: 9,
+        4: 12
     }
 
-})
+};
 
-window.addEventListener("load", () => {
 
-    const barras = document.querySelectorAll(".fill");
-
-    barras.forEach(barra => {
-
-        const ancho = barra.style.width;
-
-        barra.style.width = "0";
-
-        setTimeout(() => {
-
-            barra.style.width = ancho;
-
-        },300);
-
-    });
-
-});
-
+// =====================================
+// OBTENER ELEMENTOS DE LOS NIVELES
+// =====================================
 
 const niveles = document.querySelectorAll(".level");
 
-niveles.forEach(nivel=>{
 
-    nivel.addEventListener("click",()=>{
+// =====================================
+// CARGAR PROGRESO
+// =====================================
 
-        niveles.forEach(n=>n.classList.remove("selected"));
+function cargarProgreso() {
 
-        nivel.classList.add("selected");
+    fetch("../ConfigPHP/obtener_progreso.php")
 
-    });
+        .then(respuesta => {
 
-});
+            if (!respuesta.ok) {
+                throw new Error("Error en la respuesta del servidor.");
+            }
 
-const menu = document.querySelectorAll("nav a");
+            return respuesta.json();
 
-menu.forEach(item=>{
+        })
 
-    item.addEventListener("mouseenter",()=>{
+        .then(datos => {
 
-        item.style.transform="translateX(8px)";
+            // ---------------------------------
+            // COMPROBAR RESPUESTA
+            // ---------------------------------
 
-    });
+            if (!datos.success) {
 
-    item.addEventListener("mouseleave",()=>{
+                console.error(datos.mensaje);
 
-        item.style.transform="translateX(0px)";
-
-    });
-
-});
+                return;
+            }
 
 
-let segundos = 30 * 60;
+            console.log("Hijo:", datos.nombre_hijo);
 
-const tiempo = document.querySelector(".stat h3");
+            console.log(
+                "Estilo:",
+                datos.estilo_aprendizaje
+            );
 
-function actualizarTiempo(){
+            console.log(
+                "Progreso:",
+                datos.progreso
+            );
 
-    if(!tiempo) return;
 
-    let min = Math.floor(segundos / 60);
-    let seg = segundos % 60;
+            // ---------------------------------
+            // OBTENER ESTILO
+            // ---------------------------------
 
-    min = String(min).padStart(2,"0");
-    seg = String(seg).padStart(2,"0");
+            const estilo = datos.estilo_aprendizaje;
 
-    tiempo.textContent = `${min}:${seg}`;
 
-    if(segundos > 0){
+            if (!actividadesPorEstilo[estilo]) {
 
-        segundos--;
+                console.error(
+                    "No existe configuración para el estilo:",
+                    estilo
+                );
 
+                return;
+            }
+
+
+            // ---------------------------------
+            // ACTIVIDADES QUE LE CORRESPONDEN
+            // ---------------------------------
+
+            const actividades = actividadesPorEstilo[estilo];
+
+            // =====================================
+            // ACTUALIZAR PROGRESO GENERAL
+            // =====================================
+
+            function actualizarProgresoGeneral(
+                progreso,
+                estilo
+            ) {
+
+                // Actividades que corresponden al estilo
+                const actividades = actividadesPorEstilo[estilo];
+
+                if (!actividades) {
+                    console.error(
+                        "No existe configuración para el estilo:",
+                        estilo
+                    );
+                    return;
+                }
+
+
+                // ---------------------------------
+                // CONTAR JUEGOS COMPLETADOS
+                // ---------------------------------
+
+                let juegosCompletados = 0;
+
+                for (let nivel = 1; nivel <= 4; nivel++) {
+
+                    const idActividad = actividades[nivel];
+
+                    const registro = progreso.find(
+                        actividad =>
+                            Number(actividad.id_actividad) === idActividad
+                    );
+
+
+                    if (
+                        registro &&
+                        registro.estado === "completado"
+                    ) {
+                        juegosCompletados++;
+                    }
+                }
+
+
+                // ---------------------------------
+                // CALCULAR PORCENTAJE
+                // ---------------------------------
+
+                const totalJuegos = 4;
+
+                const porcentaje =
+                    Math.round(
+                        (juegosCompletados / totalJuegos) * 100
+                    );
+
+
+                // ---------------------------------
+                // OBTENER ELEMENTOS
+                // ---------------------------------
+
+                const texto =
+                    document.getElementById("juegosCompletados");
+
+                const barra =
+                    document.getElementById("barraProgresoGeneral");
+
+                const porcentajeTexto =
+                    document.getElementById("porcentajeGeneral");
+
+
+                if (!texto || !barra || !porcentajeTexto) {
+                    return;
+                }
+
+
+                // ---------------------------------
+                // ACTUALIZAR TEXTO
+                // ---------------------------------
+
+                texto.textContent =
+                    juegosCompletados +
+                    " de " +
+                    totalJuegos +
+                    " juegos completados";
+
+
+                // ---------------------------------
+                // ACTUALIZAR BARRA
+                // ---------------------------------
+
+                barra.style.width =
+                    porcentaje + "%";
+
+
+                // ---------------------------------
+                // MOSTRAR PORCENTAJE
+                // ---------------------------------
+
+                porcentajeTexto.textContent =
+                    porcentaje + "%";
+            }
+
+            actualizarProgresoGeneral(datos.progreso, estilo);
+
+            // ---------------------------------
+            // ACTUALIZAR CADA NIVEL
+            // ---------------------------------
+
+            for (let nivel = 1; nivel <= 4; nivel++) {
+
+                const idActividad = actividades[nivel];
+
+
+                // Buscar la actividad correspondiente
+                const registro = datos.progreso.find(
+                    actividad =>
+                        Number(actividad.id_actividad) === idActividad
+                );
+
+
+                // Buscar tarjeta del nivel
+                const tarjeta = document.querySelector(
+                    `.level[data-nivel="${nivel}"]`
+                );
+
+
+                if (!tarjeta) {
+                    continue;
+                }
+
+
+                // ---------------------------------
+                // ELEMENTOS DE LA TARJETA
+                // ---------------------------------
+
+                const estado = tarjeta.querySelector(".estado");
+
+                const porcentaje =
+                    tarjeta.querySelector(".porcentaje");
+
+                const barra =
+                    tarjeta.querySelector(".fill");
+
+
+                // ---------------------------------
+                // SI TODAVÍA NO EXISTE REGISTRO
+                // ---------------------------------
+
+                if (!registro) {
+
+                    actualizarNivel(
+                        estado,
+                        porcentaje,
+                        barra,
+                        0,
+                        "Sin iniciar"
+                    );
+
+                    continue;
+                }
+
+
+                // ---------------------------------
+                // OBTENER PORCENTAJE
+                // ---------------------------------
+
+                const progreso =
+                    Number(registro.progreso) || 0;
+
+
+                // ---------------------------------
+                // OBTENER ESTADO
+                // ---------------------------------
+
+                let textoEstado = "Sin iniciar";
+
+
+                if (registro.estado === "completado") {
+
+                    textoEstado = "Completado";
+
+                }
+
+                else if (registro.estado === "en proceso") {
+
+                    textoEstado = "En progreso";
+
+                }
+
+
+                // ---------------------------------
+                // ACTUALIZAR TARJETA
+                // ---------------------------------
+
+                actualizarNivel(
+                    estado,
+                    porcentaje,
+                    barra,
+                    progreso,
+                    textoEstado
+                );
+
+            }
+
+        })
+
+        .catch(error => {
+
+            console.error(
+                "Error al obtener el progreso:",
+                error
+            );
+
+        });
+
+}
+
+
+// =====================================
+// ACTUALIZAR UN NIVEL
+// =====================================
+
+function actualizarNivel(
+    elementoEstado,
+    elementoPorcentaje,
+    barra,
+    progreso,
+    textoEstado
+) {
+
+    if (!elementoEstado ||
+        !elementoPorcentaje ||
+        !barra) {
+        return;
     }
 
+    // ---------------------------------
+    // TEXTO DEL ESTADO
+    // ---------------------------------
+
+    elementoEstado.textContent = textoEstado;
+
+    elementoPorcentaje.textContent =
+        progreso + "%";
+
+
+    // ---------------------------------
+    // BARRA DE PROGRESO
+    // ---------------------------------
+
+    barra.style.width =
+        progreso + "%";
+
+    barra.style.transition =
+        "width 0.8s ease";
+
+
+    // ---------------------------------
+    // PORCENTAJE DENTRO DE LA BARRA
+    // ---------------------------------
+
+    barra.textContent =
+        progreso + "%";
+
+    barra.style.display =
+        "flex";
+
+    barra.style.alignItems =
+        "center";
+
+    barra.style.justifyContent =
+        "center";
+
+    barra.style.fontWeight =
+        "bold";
+
+
+    // ---------------------------------
+    // COLOR DE LA TARJETA
+    // ---------------------------------
+
+    if (textoEstado === "Completado") {
+        elementoEstado.classList.add("completado");
+    }
 }
-
-setInterval(actualizarTiempo,1000);
-
-actualizarTiempo();
-
-
-
-const padres = document.querySelector(".parents");
-
-if(padres){
-
-    padres.addEventListener("click",()=>{
-
-        alert("Aquí se mostrará el progreso detallado para los padres.");
-
-    });
-
-}
-
-// ===============================
-// ANIMACIÓN DEL RESUMEN
-// ===============================
-
-const resumen = document.querySelector(".summary");
-
-if(resumen){
-
-    resumen.addEventListener("mouseenter",()=>{
-
-        resumen.style.transform="scale(1.02)";
-        resumen.style.transition=".3s";
-
-    });
-
-    resumen.addEventListener("mouseleave",()=>{
-
-        resumen.style.transform="scale(1)";
-
-    });
-
-}
-
-// ===============================
-// MENSAJE SEGÚN EL NIVEL
-// ===============================
-
-niveles.forEach(nivel=>{
-
-    nivel.addEventListener("dblclick",()=>{
-
-        const titulo = nivel.querySelector("h3").textContent;
-
-        alert("Has seleccionado: " + titulo);
-
-    });
-
-});
 
 // =====================================
-// OBTENER PROGRESO DEL HIJO
+// INICIAR
 // =====================================
 
-fetch("../ConfigPHP/obtener_progreso.php")
-    .then(respuesta => respuesta.json())
-    .then(datos => {
-
-        if (!datos.success) {
-            console.error(datos.mensaje);
-            return;
-        }
-
-        console.log("ID del hijo:", datos.id_hijo);
-        console.log("Progreso:", datos.progreso);
-
-    })
-    .catch(error => {
-        console.error("Error al obtener el progreso:", error);
-    });
-
-
-const volverNiveles = document.getElementById("volverNiveles");
-
-volverNiveles.addEventListener("click", function(evento) {
-
-    evento.preventDefault();
-
-    irANiveles();
-
-});
+document.addEventListener(
+    "DOMContentLoaded",
+    cargarProgreso
+);
