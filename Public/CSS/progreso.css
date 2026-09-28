@@ -80,7 +80,7 @@ body {
 .menu-sidebar {
     display: flex;
     flex-direction: column;
-    margin-top: 20px;
+    margin-top: 10px;
 }
 
 .menu-sidebar a {
@@ -189,21 +189,19 @@ body {
 =========================== */
 
 .padres {
-    margin-top: auto;
-    padding: 20px;
+    margin-top: 20px;
+    padding: 15px 20px;
 }
 
 .padres hr {
     border: none;
     border-top: 2px solid rgba(255, 255, 255, .4);
-
-    margin-bottom: 20px;
+    margin: 0 0 10px 0;
 }
 
 .padres a {
     color: white;
     text-decoration: none;
-
     display: flex;
     align-items: center;
     gap: 12px;
@@ -231,7 +229,6 @@ body {
     margin-left: auto;
     font-size: 20px;
 }
-
 
 /* ===========================
    ÁREA PRINCIPAL
