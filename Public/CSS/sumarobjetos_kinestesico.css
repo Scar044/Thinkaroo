@@ -632,41 +632,43 @@ body {
    REINICIO
 ========================================== */
 
-.reinicio {
 
-    margin-top: 20px;
-
-    text-align: center;
-
+.contenedor-reinicio {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    margin-top: 20px; 
 }
 
 
-.reinicio button {
-
-    padding: 11px 20px;
-
-    border: none;
-
-    border-radius: 16px;
-
-    background: #e7edf2;
-
-    color: #475569;
-
-    font-size: 16px;
-
-    font-weight: bold;
-
-    cursor: pointer;
-
+.contenedor-reinicio {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 25px;
 }
 
-
-.reinicio button:hover {
-
-    background: #dce5eb;
-
+button.reinicio {
+    background-color: #1596e6 !important;
+    color: white !important;
+    border: none !important;
+    padding: 12px 24px !important;
+    border-radius: 25px !important;
+    font-size: 18px !important;
+    font-weight: bold !important;
+    cursor: pointer !important;
+    box-shadow: 0 4px 0 #0876b9 !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    gap: 8px !important;
 }
+
+button.reinicio:hover {
+    transform: scale(1.05);
+}
+
 
 
 /* ==========================================
