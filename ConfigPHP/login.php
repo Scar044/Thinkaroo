@@ -44,7 +44,6 @@ if (!$usuario) {
 
 if (password_verify($clave, $usuario["contrasena"])) {
 
-    // Guardamos el correo del usuario en la sesión
     $_SESSION["correo"] = $usuario["correo_electronico"];
 
     echo json_encode([

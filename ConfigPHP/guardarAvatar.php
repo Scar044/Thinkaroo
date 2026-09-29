@@ -7,9 +7,6 @@ header("Content-Type: application/json");
 include "conexion.php";
 
 
-// ==========================================
-// COMPROBAR SESIÓN DEL HIJO
-// ==========================================
 
 if (!isset($_SESSION["id_hijo"])) {
 
@@ -25,9 +22,6 @@ if (!isset($_SESSION["id_hijo"])) {
 $idHijo = intval($_SESSION["id_hijo"]);
 
 
-// ==========================================
-// RECIBIR AVATAR
-// ==========================================
 
 $data = json_decode(
     file_get_contents("php://input"),
@@ -63,9 +57,6 @@ if (!is_numeric($avatar) || $avatar < 1 || $avatar > 9) {
 $avatar = intval($avatar);
 
 
-// ==========================================
-// GUARDAR AVATAR DEL HIJO ACTUAL
-// ==========================================
 
 $sql = "
     UPDATE Hijos

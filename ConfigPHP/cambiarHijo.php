@@ -7,9 +7,6 @@ header("Content-Type: application/json");
 include "conexion.php";
 
 
-/*
-    Comprobar que existe la sesión del usuario
-*/
 if (!isset($_SESSION["correo"])) {
 
     echo json_encode([
@@ -46,9 +43,6 @@ $idHijo = intval($idHijo);
 $correo = $_SESSION["correo"];
 
 
-/*
-    Buscar el usuario
-*/
 $sql = "
     SELECT id_usuario
     FROM Usuario
@@ -84,10 +78,6 @@ if (!$usuario) {
 $idUsuario = $usuario["id_usuario"];
 
 
-/*
-    Comprobar que el hijo pertenece
-    al usuario
-*/
 $sql = "
     SELECT Id_hijo, nombre
     FROM Hijos
@@ -122,9 +112,6 @@ if (!$hijo) {
 }
 
 
-/*
-    Guardar el nuevo hijo en la sesión
-*/
 $_SESSION["id_hijo"] = $hijo["Id_hijo"];
 
 

@@ -7,9 +7,6 @@ header("Content-Type: application/json");
 include "conexion.php";
 
 
-// ==========================================
-// COMPROBAR SESIÓN DEL USUARIO
-// ==========================================
 
 if (!isset($_SESSION["correo"])) {
 
@@ -21,10 +18,6 @@ if (!isset($_SESSION["correo"])) {
     exit;
 }
 
-
-// ==========================================
-// COMPROBAR SESIÓN DEL HIJO
-// ==========================================
 
 if (!isset($_SESSION["id_hijo"])) {
 
@@ -39,10 +32,6 @@ if (!isset($_SESSION["id_hijo"])) {
 
 $idHijo = intval($_SESSION["id_hijo"]);
 
-
-// ==========================================
-// OBTENER DATOS DEL HIJO
-// ==========================================
 
 $sql = "
     SELECT
@@ -106,10 +95,6 @@ if (!$hijo) {
 }
 
 
-// ==========================================
-// OBTENER CANTIDAD DE LOGROS
-// ==========================================
-
 $sqlLogros = "
     SELECT COUNT(*) AS total_logros
     FROM Logros_hijos
@@ -130,10 +115,6 @@ $resultadoLogros = $stmtLogros->get_result();
 
 $logros = $resultadoLogros->fetch_assoc();
 
-
-// ==========================================
-// RESPUESTA
-// ==========================================
 
 echo json_encode([
 

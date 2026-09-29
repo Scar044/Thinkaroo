@@ -7,9 +7,6 @@ include "conexion.php";
 header("Content-Type: application/json");
 
 
-/*
-    Comprobar sesión
-*/
 if (!isset($_SESSION["correo"])) {
 
     echo json_encode([
@@ -24,9 +21,6 @@ if (!isset($_SESSION["correo"])) {
 $correo = $_SESSION["correo"];
 
 
-/*
-    Obtener ID del usuario
-*/
 $sqlUsuario = "
     SELECT id_usuario
     FROM Usuario
@@ -61,9 +55,6 @@ $usuario = $resultadoUsuario->fetch_assoc();
 $id_usuario = $usuario["id_usuario"];
 
 
-/*
-    Obtener hijos del usuario
-*/
 $sqlHijos = "
     SELECT Id_hijo, nombre
     FROM Hijos

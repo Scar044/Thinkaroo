@@ -7,10 +7,6 @@ header("Content-Type: application/json");
 include "conexion.php";
 
 
-// ==========================================
-// COMPROBAR QUE HAYA UN HIJO SELECCIONADO
-// ==========================================
-
 if (!isset($_SESSION["id_hijo"])) {
 
     echo json_encode([
@@ -25,10 +21,6 @@ if (!isset($_SESSION["id_hijo"])) {
 $id_hijo = intval($_SESSION["id_hijo"]);
 
 
-// ==========================================
-// RECIBIR DATOS
-// ==========================================
-
 $data = json_decode(
     file_get_contents("php://input"),
     true
@@ -39,10 +31,6 @@ $id_actividad = intval($data["id_actividad"]);
 $progreso = intval($data["progreso"]);
 $estado = $data["estado"];
 
-
-// ==========================================
-// OBTENER EL TEMA DE LA ACTIVIDAD
-// ==========================================
 
 $sqlTema = "
     SELECT id_tema
@@ -78,9 +66,6 @@ if (!$actividad) {
 $id_tema = $actividad["id_tema"];
 
 
-// ==========================================
-// COMPROBAR SI YA EXISTE EL PROGRESO
-// ==========================================
 
 $sqlExiste = "
     SELECT id_progreso
@@ -102,9 +87,6 @@ $stmtExiste->execute();
 $resultadoExiste = $stmtExiste->get_result();
 
 
-// ==========================================
-// SI YA EXISTE → ACTUALIZAR
-// ==========================================
 
 if ($resultadoExiste->num_rows > 0) {
 
@@ -137,10 +119,6 @@ if ($resultadoExiste->num_rows > 0) {
         "mensaje" => "Progreso actualizado."
     ]);
 
-
-// ==========================================
-// SI NO EXISTE → CREAR
-// ==========================================
 
 } else {
 

@@ -5,8 +5,6 @@ body{
     padding-top:120px;
 }
 
-/* ================= HEADER ================= */
-
 header{
     padding:10px 20px;
     display:flex;
@@ -33,8 +31,6 @@ header .row{
 .guardar{
     border-radius: 25px;
 }
-
-/* ================= CONTENIDO ================= */
 
 .contenedor{
     width:100%;
@@ -95,8 +91,6 @@ button:hover{
     opacity:.9;
 }
 
-/* ================= TABLETS ================= */
-
 @media (max-width: 992px){
 
     body{
@@ -145,7 +139,6 @@ button:hover{
     }
 }
 
-/* ================= MÓVILES ================= */
 
 @media (max-width: 576px){
 
@@ -176,8 +169,6 @@ button:hover{
         font-size:16px;
     }
 }
-
-/* ================= MÓVILES PEQUEÑOS ================= */
 
 @media (max-width: 360px){
 

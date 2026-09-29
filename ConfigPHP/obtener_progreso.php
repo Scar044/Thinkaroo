@@ -7,10 +7,6 @@ header("Content-Type: application/json");
 include "conexion.php";
 
 
-// =====================================
-// COMPROBAR HIJO SELECCIONADO
-// =====================================
-
 if (!isset($_SESSION["id_hijo"])) {
 
     echo json_encode([
@@ -24,10 +20,6 @@ if (!isset($_SESSION["id_hijo"])) {
 
 $id_hijo = $_SESSION["id_hijo"];
 
-
-// =====================================
-// OBTENER ESTILO DEL HIJO
-// =====================================
 
 $sqlHijo = "
     SELECT
@@ -62,10 +54,6 @@ $estilo_aprendizaje = $hijo["estilo_aprendizaje"];
 
 $stmtHijo->close();
 
-
-// =====================================
-// OBTENER PROGRESO
-// =====================================
 
 $sql = "
     SELECT
@@ -117,10 +105,6 @@ while ($fila = $resultado->fetch_assoc()) {
 
 }
 
-
-// =====================================
-// RESPUESTA
-// =====================================
 
 echo json_encode([
     "success" => true,

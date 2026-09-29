@@ -7,9 +7,6 @@ header("Content-Type: application/json");
 include "conexion.php";
 
 
-// ==========================================
-// COMPROBAR SESIÓN
-// ==========================================
 
 if (!isset($_SESSION["correo"])) {
 
@@ -24,10 +21,6 @@ if (!isset($_SESSION["correo"])) {
 
 $correo = $_SESSION["correo"];
 
-
-// ==========================================
-// BUSCAR USUARIO POR CORREO
-// ==========================================
 
 $sql = "
     SELECT
@@ -74,16 +67,9 @@ if (!$usuario) {
 }
 
 
-// ==========================================
-// OBTENER ID DEL USUARIO
-// ==========================================
 
 $idUsuario = $usuario["id_usuario"];
 
-
-// ==========================================
-// CONTAR HIJOS DEL USUARIO
-// ==========================================
 
 $sqlHijos = "
     SELECT COUNT(*) AS total_hijos
@@ -115,9 +101,6 @@ $resultadoHijos = $stmtHijos->get_result();
 $datosHijos = $resultadoHijos->fetch_assoc();
 
 
-// ==========================================
-// RESPUESTA
-// ==========================================
 
 echo json_encode([
 

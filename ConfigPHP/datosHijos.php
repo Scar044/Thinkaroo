@@ -24,9 +24,6 @@ if (!isset($_SESSION["correo"])) {
 
 $correoUsuario = $_SESSION["correo"];
 
-/*
-    Buscar el id del usuario
-*/
 $sql = "
     SELECT id_usuario
     FROM usuario
@@ -58,9 +55,7 @@ if (!$usuario) {
 
 $idUsuario = $usuario["id_usuario"];
 
-/*
-    Crear el hijo
-*/
+
 $sql = "
     INSERT INTO hijos
     (
@@ -87,15 +82,8 @@ $stmt->bind_param(
 
 if ($stmt->execute()) {
 
-    /*
-        Obtener automáticamente el Id_hijo
-        que MySQL acaba de crear
-    */
     $idHijo = $conn->insert_id;
 
-    /*
-        Guardar el Id_hijo en la sesión
-    */
     $_SESSION["id_hijo"] = $idHijo;
 
     echo json_encode([
