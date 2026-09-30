@@ -26,10 +26,6 @@ function guardarProgreso(progreso, estado) {
 }
 
 
-// ==========================================
-// VARIABLES
-// ==========================================
-
 const colores = [
     "rojo",
     "azul",
@@ -90,7 +86,7 @@ function elegirColor() {
         colores[indice];
 
     instruccion.textContent =
-        "Escucha el color";
+        translate("colorsGame.listenInstruction");
 
     mensaje.textContent = "";
 
@@ -184,7 +180,7 @@ function comprobarColor(event) {
 
 
         mensaje.textContent =
-            "🎉 ¡Correcto!";
+            translate("colorsGame.correct");
 
         mensaje.className =
             "mensaje-correcto";
@@ -256,10 +252,6 @@ function comprobarColor(event) {
     }
 
 
-    // ======================================
-    // RESPUESTA INCORRECTA
-    // ======================================
-
     else {
 
         boton.classList.add(
@@ -268,7 +260,7 @@ function comprobarColor(event) {
 
 
         mensaje.textContent =
-            "❌ Incorrecto. ¡Inténtalo de nuevo!";
+            translate("colorsGame.incorrect");
 
         mensaje.className =
             "mensaje-error";

@@ -3,118 +3,228 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home page </title>
+
+    <title data-i18n="page.title">Página de inicio</title>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
-    
+
     <link rel="stylesheet" href="css.css">
     <link rel="stylesheet" href="CSS/Homepage.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
+
 <body>
 
     <div id="inicio"></div>
+
     <header class="encabezado">
         <div class="row align-items-center w-100">
+
             <div class="col-3 col-lg-2">
-                <img src="IMG/logo_thinkaroo-removebg-preview.png" alt="Logo" class="logo">
+                <img
+                    src="IMG/logo_thinkaroo-removebg-preview.png"
+                    alt="Logo"
+                    class="logo"
+                    data-i18n-alt="common.logo"
+                >
             </div>
+
             <div class="col-6 col-lg-7">
                 <nav class="navbar">
                     <ul class="menu">
-                        <li><a href="#inicio">Inicio</a></li>
-                        <li><a href="#quienes-somos">¿Quiénes Somos?</a></li>
-                        <li><a href="#visual">Visual</a></li>
-                        <li><a href="#auditivo">Auditivo</a></li>
-                        <li><a href="#kinestesico">Kinestésico</a></li>
+
+                        <li>
+                            <a href="#inicio" data-i18n="nav.home">
+                                Inicio
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="#quienes-somos" data-i18n="nav.about">
+                                ¿Quiénes Somos?
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="#visual" data-i18n="nav.visual">
+                                Visual
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="#auditivo" data-i18n="nav.auditory">
+                                Auditivo
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="#kinestesico" data-i18n="nav.kinesthetic">
+                                Kinestésico
+                            </a>
+                        </li>
+
                     </ul>
                 </nav>
             </div>
+
             <div class="col-3 col-lg-3 text-end botones">
-                <a href="correo.html" class="boton">
+
+                <!-- Language selector -->
+                <select id="idioma" class="selector-idioma">
+                    <option value="en">English</option>
+                    <option value="es">Español</option>
+                </select>
+
+                <a href="correo.html" class="boton" data-i18n="auth.createAccount">
                     Cuenta nueva
                 </a>
-                <a href="InicioThinkaro.html" class="boton">
+
+                <a href="InicioThinkaro.html" class="boton" data-i18n="auth.login">
                     Iniciar sesión
                 </a>
+
             </div>
-        </div>    
+
+        </div>
     </header>
 
-<div class="carrusel">
-  <div class="slides">
-    <a href="#auditivo" class="slide active">
-        <img src="https://www.evirtualplus.com/wp-content/uploads/2019/10/estilo-de-aprendizaje-vak-desarrollo-sensorial.jpg.webp" alt="Visual">
-    </a>
 
-    <a href="#visual" class="slide">
-        <img src="https://storage.googleapis.com/luca-web-media/blog/69fbadeee5cb9c22e3e59c7a_Banner-AprendizajeReflexivo.webp" alt="Auditivo">
-    </a>
+    <!-- CARRUSEL -->
 
-    <a href="#kinestesico" class="slide">
-        <img src="https://ecuador.unir.net/wp-content/uploads/sites/8/2025/09/Aprendizaje-kinestesico-que-es-y-como-aplicarlo-en-clase1.webp" alt="Kinestésico">
-    </a>
-</div>
-    <button class="anterior">&#10094;</button>
-    <button class="siguiente">&#10095;</button>
-</div>
+    <div class="carrusel">
+
+        <div class="slides">
+
+            <a href="#auditivo" class="slide active">
+                <img
+                    src="https://www.evirtualplus.com/wp-content/uploads/2019/10/estilo-de-aprendizaje-vak-desarrollo-sensorial.jpg.webp"
+                    alt="Visual"
+                    data-i18n-alt="carousel.visual"
+                >
+            </a>
+
+            <a href="#visual" class="slide">
+                <img
+                    src="https://storage.googleapis.com/luca-web-media/blog/69fbadeee5cb9c22e3e59c7a_Banner-AprendizajeReflexivo.webp"
+                    alt="Auditivo"
+                    data-i18n-alt="carousel.auditory"
+                >
+            </a>
+
+            <a href="#kinestesico" class="slide">
+                <img
+                    src="https://ecuador.unir.net/wp-content/uploads/sites/8/2025/09/Aprendizaje-kinestesico-que-es-y-como-aplicarlo-en-clase1.webp"
+                    alt="Kinestésico"
+                    data-i18n-alt="carousel.kinesthetic"
+                >
+            </a>
+
+        </div>
+
+        <button class="anterior" data-i18n-aria-label="carousel.previous">
+            &#10094;
+        </button>
+
+        <button class="siguiente" data-i18n-aria-label="carousel.next">
+            &#10095;
+        </button>
+
+    </div>
+
+
+    <!-- QUIÉNES SOMOS -->
 
     <div class="contenedor">
+
         <section id="quienes-somos">
 
-            <h2>¿Quiénes Somos?</h2>
+            <h2 data-i18n="about.title">
+                ¿Quiénes Somos?
+            </h2>
 
-            <p>
+            <p data-i18n="about.paragraph1">
                 Somos un equipo comprometido con el desarrollo educativo infantil,
                 dedicado a crear una plataforma interactiva que ayude a los niños de
                 3 a 7 años a fortalecer su pensamiento lógico mediante actividades,
                 juegos y retos adaptados a su estilo de aprendizaje.
             </p>
 
-            <p>
+            <p data-i18n="about.paragraph2">
                 Nuestro objetivo es ofrecer una experiencia de aprendizaje divertida,
                 segura y personalizada, permitiendo que cada niño aprenda a su propio
                 ritmo mientras desarrolla habilidades como el razonamiento, la
                 resolución de problemas, la concentración y la creatividad.
             </p>
 
-            <p>
+            <p data-i18n="about.paragraph3">
                 Creemos que aprender jugando es una de las mejores formas de potenciar
                 el desarrollo infantil, por eso combinamos tecnología, educación y
                 dinámicas interactivas para acompañar tanto a los niños como a sus
                 padres en este proceso.
             </p>
-            </section>
+
+        </section>
+
     </div>
+
+
+    <!-- VISUAL -->
+
     <section id="visual">
-        <h2>Visual</h2>
-        <p>
-                        Aprende mediante imágenes, colores,
-                        videos y rompecabezas.
-                    </p>
+
+        <h2 data-i18n="learning.visual.title">
+            Visual
+        </h2>
+
+        <p data-i18n="learning.visual.description">
+            Aprende mediante imágenes, colores,
+            videos y rompecabezas.
+        </p>
 
     </section>
+
+
+    <!-- AUDITIVO -->
 
     <section id="auditivo">
-        <h2>Auditivo</h2>
-        <p>
-                        Aprende mediante podcasts,
-                        música, audiolibros y sonidos.
-                    </p>
+
+        <h2 data-i18n="learning.auditory.title">
+            Auditivo
+        </h2>
+
+        <p data-i18n="learning.auditory.description">
+            Aprende mediante podcasts,
+            música, audiolibros y sonidos.
+        </p>
+
     </section>
 
+
+    <!-- KINESTÉSICO -->
+
     <section id="kinestesico">
-        <h2>Kinestésico</h2>
-        <p>
-                        Aprende jugando, moviéndote y
-                        realizando actividades prácticas.
-                    </p>
-</section>
-<script src="JS/carrusel.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"></script>
-<script src="JS/idioma-global.js"></script>
+
+        <h2 data-i18n="learning.kinesthetic.title">
+            Kinestésico
+        </h2>
+
+        <p data-i18n="learning.kinesthetic.description">
+            Aprende jugando, moviéndote y
+            realizando actividades prácticas.
+        </p>
+
+    </section>
+
+
+    <script src="JS/carrusel.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Translation system -->
+    <script src="JS/idioma-global.js"></script>
+
 </body>
 </html>

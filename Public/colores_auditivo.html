@@ -2,49 +2,35 @@
 <html lang="es">
 
 <head>
-
     <meta charset="UTF-8">
-
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>Juego de Colores Auditivo</title>
-
+    <title data-i18n="colorsGame.title">Juego de Colores Auditivo</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
-
     <link rel="stylesheet" href="CSS/colores_auditivo.css">
-
 </head>
 
 <body>
-
     <div class="juego">
-
-        <h1>🔊 Encuentra el Color</h1>
-
-        <p class="descripcion">
+        <h1 data-i18n="colorsGame.title">
+            🔊 Encuentra el Color
+        </h1>
+        <p class="descripcion" data-i18n="colorsGame.description">
             Escucha el nombre del color y selecciona el círculo correcto.
         </p>
+        <div class="datos">
+            <span>
+                <span data-i18n="colorsGame.points">⭐ Puntos:</span>
+                <b id="puntos">0</b>
+            </span>
 
+            <span>
+                <span data-i18n="colorsGame.round">🎯 Ronda:</span>
+                <b id="ronda">1</b> / 5
+            </span>
+        </div>
 
-       <div class="datos">
-
-    <span>
-        ⭐ Puntos:
-        <b id="puntos">0</b>
-    </span>
-
-    <span>
-        🎯 Ronda:
-        <b id="ronda">1</b> / 5
-    </span>
-    
-</div>
-
-
-        <!-- AUDIO -->
 
         <div class="instruccion">
 
@@ -52,22 +38,17 @@
                 🔊
             </div>
 
-            <h2 id="instruccion">
+            <h2 id="instruccion" data-i18n="colorsGame.listenInstruction">
                 Escucha el color
             </h2>
 
             <button
                 id="botonEscuchar"
-                type="button">
-
+                type="button"
+                data-i18n="colorsGame.listen">
                 🔊 Escuchar color
-
             </button>
-
         </div>
-
-
-        <!-- COLORES -->
 
         <div
             id="opciones"
@@ -77,15 +58,16 @@
                 class="color rojo"
                 data-color="rojo"
                 type="button"
-                aria-label="Rojo">
+                aria-label="Rojo"
+                data-i18n-aria-label="colorsGame.red">
             </button>
-
 
             <button
                 class="color azul"
                 data-color="azul"
                 type="button"
-                aria-label="Azul">
+                aria-label="Azul"
+                data-i18n-aria-label="colorsGame.blue">
             </button>
 
 
@@ -93,7 +75,8 @@
                 class="color amarillo"
                 data-color="amarillo"
                 type="button"
-                aria-label="Amarillo">
+                aria-label="Amarillo"
+                data-i18n-aria-label="colorsGame.yellow">
             </button>
 
 
@@ -101,7 +84,8 @@
                 class="color verde"
                 data-color="verde"
                 type="button"
-                aria-label="Verde">
+                aria-label="Verde"
+                data-i18n-aria-label="colorsGame.green">
             </button>
 
 
@@ -109,7 +93,8 @@
                 class="color morado"
                 data-color="morado"
                 type="button"
-                aria-label="Morado">
+                aria-label="Morado"
+                data-i18n-aria-label="colorsGame.purple">
             </button>
 
         </div>
@@ -127,41 +112,49 @@
 
         <button
             id="siguiente"
-            type="button">
+            type="button"
+            data-i18n="colorsGame.next">
 
             Siguiente ➜
 
         </button>
 
-
-      
-    </div>
-  
-<div class="level-complete" id="levelComplete">
-
-    <div class="level-complete-card">
-
-        <div class="level-icon">🏆</div>
-
-        <h2>¡Excelente ahora tu misión!</h2>
-
-        <p>
-            Encuentra 2 objetos de cada color que aprendistes hoy
-            <br>
-            ¡Aprendiste los colores!
-        </p>
-
-        <button id="nextLevel" type="button">
-             Siguiente nivel
-        </button>
-
     </div>
 
-</div>
 
+    <!-- LEVEL COMPLETE -->
 
+    <div class="level-complete" id="levelComplete">
 
+        <div class="level-complete-card">
 
+            <div class="level-icon">🏆</div>
+
+            <h2 data-i18n="colorsGame.levelCompleteTitle">
+                ¡Excelente ahora tu misión!
+            </h2>
+
+            <p>
+                <span data-i18n="colorsGame.levelCompleteDescription">
+                    Encuentra 2 objetos de cada color que aprendistes hoy
+                </span>
+
+                <br>
+
+                <span data-i18n="colorsGame.levelCompleteLearned">
+                    ¡Aprendiste los colores!
+                </span>
+            </p>
+
+            <button id="nextLevel" type="button" data-i18n="colorsGame.nextLevel">
+                Siguiente nivel
+            </button>
+
+        </div>
+
+    </div>
+
+    <script src="JS/idioma-global.js"></script>
     <script src="JS/colores_audtivo.js"></script>
 
 </body>
