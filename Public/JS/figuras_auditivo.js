@@ -1,7 +1,3 @@
-// ==========================================
-// ELEMENTOS
-// ==========================================
-
 const figuras = document.querySelectorAll(".figura");
 
 const botonEscuchar =
@@ -24,11 +20,6 @@ const cerrarPista =
 
 const instruccion =
     document.getElementById("instruccion");
-
-
-// ==========================================
-// ALERTA FINAL
-// ==========================================
 
 const alertaFinal =
     document.getElementById("finish");
@@ -59,11 +50,6 @@ if (botonFinal) {
     );
 
 }
-
-
-// ==========================================
-// GUARDAR PROGRESO
-// ==========================================
 
 async function guardarProgreso(progreso, estado) {
 
@@ -112,17 +98,7 @@ async function guardarProgreso(progreso, estado) {
 
 }
 
-
-// ==========================================
-// INICIAR PROGRESO
-// ==========================================
-
 guardarProgreso(0, "sin iniciar");
-
-
-// ==========================================
-// VARIABLES
-// ==========================================
 
 let puntos = 0;
 
@@ -132,19 +108,9 @@ let juegoActivo = false;
 
 let intentos = {};
 
-
-// ==========================================
-// CONTADOR PARA TERMINAR EL JUEGO
-// ==========================================
-
 let figurasCorrectas = 0;
 
 const metaFiguras = 8;
-
-
-// ==========================================
-// FIGURAS DISPONIBLES
-// ==========================================
 
 const formas = [
 
@@ -154,11 +120,6 @@ const formas = [
     "rectangulo"
 
 ];
-
-
-// ==========================================
-// NOMBRES
-// ==========================================
 
 const nombres = {
 
@@ -171,11 +132,6 @@ const nombres = {
     rectangulo: "rectángulo"
 
 };
-
-
-// ==========================================
-// PISTAS
-// ==========================================
 
 const pistas = {
 
@@ -213,14 +169,8 @@ const pistas = {
 
 };
 
-
-// ==========================================
-// HABLAR
-// ==========================================
-
 function hablar(texto) {
 
-    // Detener cualquier audio anterior
     window.speechSynthesis.cancel();
 
     const voz =
@@ -235,15 +185,6 @@ function hablar(texto) {
     window.speechSynthesis.speak(voz);
 
 }
-
-
-// ==========================================
-// ELEGIR FIGURA
-// ==========================================
-// IMPORTANTE:
-// Esta función NO reproduce audio.
-// Solo prepara la siguiente ronda.
-// ==========================================
 
 function nuevaRonda() {
 
@@ -278,28 +219,15 @@ function nuevaRonda() {
         "Presiona ESCUCHAR para oír la figura.";
 }
 
-
-// ==========================================
-// BOTÓN ESCUCHAR
-// ==========================================
-
 botonEscuchar.addEventListener(
     "click",
     function () {
-
-        // Si todavía no existe una figura,
-        // preparar una sin reproducir automáticamente.
 
         if (!figuraCorrecta) {
 
             nuevaRonda();
 
         }
-
-
-        // AQUÍ es donde se reproduce el audio.
-        // Como está dentro del click, el navegador
-        // permite correctamente la reproducción.
 
         hablar(
             "Busca el " +
@@ -312,11 +240,6 @@ botonEscuchar.addEventListener(
 
     }
 );
-
-
-// ==========================================
-// SELECCIONAR FIGURA
-// ==========================================
 
 figuras.forEach(function (figura) {
 
@@ -333,11 +256,6 @@ figuras.forEach(function (figura) {
 
             const formaSeleccionada =
                 this.dataset.forma;
-
-
-            // ==================================
-            // RESPUESTA CORRECTA
-            // ==================================
 
             if (
                 formaSeleccionada ===
@@ -356,11 +274,6 @@ figuras.forEach(function (figura) {
 
 
                 figurasCorrectas++;
-
-
-                // ==================================
-                // CALCULAR Y GUARDAR PROGRESO
-                // ==================================
 
                 const progreso =
                     Math.round(
@@ -396,11 +309,6 @@ figuras.forEach(function (figura) {
 
                 juegoActivo = false;
 
-
-                // ==================================
-                // JUEGO TERMINADO
-                // ==================================
-
                 if (
                     figurasCorrectas >=
                     metaFiguras
@@ -413,9 +321,6 @@ figuras.forEach(function (figura) {
                     hablar(
                         "¡Excelente! Completaste el juego"
                     );
-
-
-                    // Guardar 100% completado
 
                     setTimeout(async function () {
 
@@ -444,14 +349,6 @@ figuras.forEach(function (figura) {
 
                 }
 
-
-                // ==================================
-                // SIGUIENTE RONDA
-                // ==================================
-                // Se prepara la figura nueva,
-                // pero NO se reproduce su audio.
-                // ==================================
-
                 setTimeout(function () {
 
                     nuevaRonda();
@@ -460,11 +357,6 @@ figuras.forEach(function (figura) {
 
 
             }
-
-
-            // ==================================
-            // RESPUESTA INCORRECTA
-            // ==================================
 
             else {
 
@@ -507,11 +399,6 @@ figuras.forEach(function (figura) {
 
 });
 
-
-// ==========================================
-// MOSTRAR PISTA
-// ==========================================
-
 function mostrarPista() {
 
     const numero =
@@ -538,11 +425,6 @@ function mostrarPista() {
     pista.classList.add("visible");
 
 }
-
-
-// ==========================================
-// CERRAR PISTA
-// ==========================================
 
 cerrarPista.addEventListener(
     "click",

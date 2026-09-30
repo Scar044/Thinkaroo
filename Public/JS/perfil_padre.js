@@ -4,20 +4,11 @@ const cantidadHijos = document.getElementById("hijos");
 
 const botonCerrar = document.getElementById("botonCerrar");
 
-// ==========================================
-// BOTÓN CERRAR SESIÓN
-// ==========================================
-
 botonCerrar.addEventListener("click", function () {
 
     window.location.href = "../ConfigPHP/cerrar_sesion.php";
 
 });
-
-
-// ==========================================
-// CARGAR DATOS DEL PADRE
-// ==========================================
 
 function cargarPerfilPadre() {
 
@@ -60,16 +51,7 @@ function cargarPerfilPadre() {
         });
 }
 
-
-// ==========================================
-// INICIAR PÁGINA
-// ==========================================
-
 cargarPerfilPadre();
-
-// ==========================================
-// CARGAR DATOS DEL PADRE
-// ==========================================
 
 function cargarPerfilPadre() {
 
@@ -139,17 +121,6 @@ botonCerrar.addEventListener("click", function () {
 
 cargarPerfilPadre();
 
-
-// ==========================================
-// BOTÓN VOLVER
-// ==========================================
-
-// Si quieres que la flecha vuelva a niveles,
-// dejamos esta función.
-
-// Si después quieres que vuelva a otra página,
-// solamente cambiamos la dirección.
-
 volverNiveles.addEventListener("click", function(evento) {
 
     evento.preventDefault();
@@ -157,10 +128,5 @@ volverNiveles.addEventListener("click", function(evento) {
     window.location.href = "niveles.html";
 
 });
-
-
-// ==========================================
-// INICIAR PÁGINA
-// ==========================================
 
 cargarPerfilPadre();
