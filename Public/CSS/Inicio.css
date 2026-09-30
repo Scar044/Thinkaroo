@@ -7,7 +7,6 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600;700&display=swap');
 
-
 body{
     min-height: 100vh;
     background-color: rgb(245, 211, 117);
@@ -42,7 +41,6 @@ header{
     flex-direction: column;
     align-items: center;
     gap: 20px;
-
 }
 
 .logo{
@@ -51,15 +49,11 @@ header{
 .formulario {
     width: 90%;
     max-width: 350px;
-    /*position: absolute;*/
     background-color: #fff;
     background: linear-gradient(180deg, #9ae1ff 0%, #E8F7FF 45%, #ffe586 100%);
     border: 5px solid orange;
     border-radius: 10px;
     padding: 30px 60px;
-    /*top: 250px;
-    left: 50%;
-    transform: translate(-50%);*/
     text-align: center;
 }
 
@@ -127,7 +121,6 @@ header{
     margin-bottom: -25px;
 }
 
-/* Efecto hover del botón */
 .formulario button:hover {
     background-color: orange;
 }
