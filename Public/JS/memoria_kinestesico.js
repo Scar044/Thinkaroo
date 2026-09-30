@@ -1,9 +1,5 @@
 document.addEventListener("DOMContentLoaded", function () {
 
-    // ==========================================
-    // ALERTA FINAL
-    // ==========================================
-
     const alertaFinal =
         document.getElementById("finish");
 
@@ -34,11 +30,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
     }
 
-
-    // ==========================================
-    // GUARDAR PROGRESO
-    // ==========================================
-
     async function guardarProgreso(progreso, estado) {
 
         try {
@@ -54,8 +45,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
                     body: JSON.stringify({
 
-                        // Actividad 3 =
-                        // Memoria kinestésica de animales
                         id_actividad: 3,
 
                         progreso: progreso,
@@ -96,20 +85,10 @@ document.addEventListener("DOMContentLoaded", function () {
 
     }
 
-
-    // ==========================================
-    // PROGRESO INICIAL
-    // ==========================================
-
     guardarProgreso(
         0,
         "sin iniciar"
     );
-
-
-    // ==========================================
-    // ANIMALES
-    // ==========================================
 
     const animales = [
 
@@ -165,28 +144,13 @@ document.addEventListener("DOMContentLoaded", function () {
     const mensaje =
         document.getElementById("mensaje");
 
-
-    // ==========================================
-    // CONTADOR
-    // ==========================================
-
     let animalesCompletados = 0;
-
-
-    // ==========================================
-    // MEZCLAR ANIMALES
-    // ==========================================
 
     let animalesMezclados = [...animales];
 
     animalesMezclados.sort(
         () => Math.random() - 0.5
     );
-
-
-    // ==========================================
-    // CREAR ANIMALES
-    // ==========================================
 
     animalesMezclados.forEach(function (animal) {
 
@@ -220,22 +184,12 @@ document.addEventListener("DOMContentLoaded", function () {
             elemento
         );
 
-
-        // ======================================
-        // ARRASTRAR
-        // ======================================
-
         elemento.addEventListener(
             "pointerdown",
             comenzarArrastre
         );
 
     });
-
-
-    // ==========================================
-    // CREAR DESTINOS
-    // ==========================================
 
     animales.forEach(function (animal) {
 
@@ -271,17 +225,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     });
 
-
-    // ==========================================
-    // ANIMAL ARRASTRADO
-    // ==========================================
-
     let animalArrastrado = null;
-
-
-    // ==========================================
-    // COMENZAR ARRASTRE
-    // ==========================================
 
     function comenzarArrastre(evento) {
 
@@ -320,11 +264,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
     }
 
-
-    // ==========================================
-    // MOVER ANIMAL
-    // ==========================================
-
     function moverAnimal(evento) {
 
         const elementoDebajo =
@@ -340,8 +279,6 @@ document.addEventListener("DOMContentLoaded", function () {
             );
 
 
-        // Quitar resaltado
-
         document
             .querySelectorAll(".destino")
             .forEach(function (elemento) {
@@ -352,9 +289,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
             });
 
-
-        // Resaltar destino
-
         if (destino) {
 
             destino.classList.add(
@@ -364,11 +298,6 @@ document.addEventListener("DOMContentLoaded", function () {
         }
 
     }
-
-
-    // ==========================================
-    // TERMINAR ARRASTRE
-    // ==========================================
 
     function terminarArrastre(evento) {
 
@@ -406,9 +335,6 @@ document.addEventListener("DOMContentLoaded", function () {
                 ".destino"
             );
 
-
-        // Quitar resaltados
-
         document
             .querySelectorAll(".destino")
             .forEach(function (elemento) {
@@ -418,9 +344,6 @@ document.addEventListener("DOMContentLoaded", function () {
                 );
 
             });
-
-
-        // Si no soltó sobre un destino
 
         if (!destino) {
 
@@ -441,11 +364,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
     }
 
-
-    // ==========================================
-    // COMPROBAR PAREJA
-    // ==========================================
-
     function comprobarPareja(
         animal,
         destino
@@ -458,19 +376,11 @@ document.addEventListener("DOMContentLoaded", function () {
         const idDestino =
             destino.dataset.id;
 
-
-        // ======================================
-        // RESPUESTA CORRECTA
-        // ======================================
-
         if (idAnimal === idDestino) {
 
             destino.classList.add(
                 "correcto"
             );
-
-
-            // Crear copia visual
 
             const contenedor =
                 document.createElement("div");
@@ -505,9 +415,6 @@ document.addEventListener("DOMContentLoaded", function () {
                 contenedor
             );
 
-
-            // Desactivar animal
-
             animal.classList.add(
                 "colocado"
             );
@@ -516,30 +423,17 @@ document.addEventListener("DOMContentLoaded", function () {
             animal.style.visibility =
                 "hidden";
 
-
-            // Aumentar contador
-
             animalesCompletados++;
 
 
             mensaje.textContent =
                 "🎉 ¡Muy bien!";
 
-
-            // ==================================
-            // CALCULAR PROGRESO
-            // ==================================
-
             const progreso =
                 Math.round(
                     (animalesCompletados /
                         animales.length) * 100
                 );
-
-
-            // ==================================
-            // GUARDAR EN PROCESO
-            // ==================================
 
             if (
                 animalesCompletados <
@@ -553,17 +447,10 @@ document.addEventListener("DOMContentLoaded", function () {
 
             }
 
-
-            // ==================================
-            // TERMINÓ EL JUEGO
-            // ==================================
-
             if (
                 animalesCompletados ===
                 animales.length
             ) {
-
-                // Guardar 100% completado
 
                 guardarProgreso(
                     100,
@@ -580,18 +467,12 @@ document.addEventListener("DOMContentLoaded", function () {
 
                 });
 
-
-                // Mensaje final
-
                 setTimeout(function () {
 
                     mensaje.textContent =
                         "🏆 ¡Excelente! ¡Encontraste todas las parejas!";
 
                 }, 500);
-
-
-                // Mostrar alerta
 
                 setTimeout(function () {
 
@@ -603,10 +484,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
         }
 
-
-        // ======================================
-        // RESPUESTA INCORRECTA
-        // ======================================
 
         else {
 
@@ -644,11 +521,6 @@ document.addEventListener("DOMContentLoaded", function () {
         }
 
     }
-
-
-    // ==========================================
-    // BOTÓN VOLVER
-    // ==========================================
 
     document
         .getElementById("volver")

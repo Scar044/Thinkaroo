@@ -1,18 +1,9 @@
-// ==========================================
-// ELEMENTOS
-// ==========================================
-
 const canvas = document.getElementById("canvas");
 const ctx = canvas.getContext("2d");
 
 const mensaje = document.getElementById("mensaje");
 const puntosTexto = document.getElementById("puntos");
 const reiniciar = document.getElementById("reiniciar");
-
-
-// ==========================================
-// ALERTA FINAL
-// ==========================================
 
 const alertaFinal =
     document.getElementById("finish");
@@ -43,11 +34,6 @@ if (botonFinal) {
     );
 
 }
-
-
-// ==========================================
-// GUARDAR PROGRESO
-// ==========================================
 
 async function guardarProgreso(progreso, estado) {
 
@@ -96,25 +82,10 @@ async function guardarProgreso(progreso, estado) {
 
 }
 
-
-// ==========================================
-// INICIAR PROGRESO
-// ==========================================
-
 guardarProgreso(0, "sin iniciar");
-
-
-// ==========================================
-// CONFIGURACIÓN DEL CANVAS
-// ==========================================
 
 canvas.width = 700;
 canvas.height = 450;
-
-
-// ==========================================
-// VARIABLES
-// ==========================================
 
 let dibujando = false;
 
@@ -133,11 +104,6 @@ let anguloAnterior = null;
 let anguloRecorrido = 0;
 
 let direccionCirculo = 0;
-
-
-// ==========================================
-// FIGURAS
-// ==========================================
 
 const nombresFiguras = [
 
@@ -186,11 +152,6 @@ const circulo = {
 
 };
 
-
-// ==========================================
-// OBTENER POSICIÓN
-// ==========================================
-
 function obtenerPosicion(evento) {
 
     const rect =
@@ -238,11 +199,6 @@ function obtenerPosicion(evento) {
 
 }
 
-
-// ==========================================
-// DISTANCIA ENTRE PUNTOS
-// ==========================================
-
 function distanciaEntrePuntos(
     x1,
     y1,
@@ -258,11 +214,6 @@ function distanciaEntrePuntos(
     );
 
 }
-
-
-// ==========================================
-// DIBUJAR PUNTO
-// ==========================================
 
 function dibujarPunto(
     x,
@@ -287,11 +238,6 @@ function dibujarPunto(
 
 }
 
-
-// ==========================================
-// DIBUJAR TEXTO
-// ==========================================
-
 function dibujarTexto(texto) {
 
     ctx.font = "bold 20px Arial";
@@ -307,11 +253,6 @@ function dibujarTexto(texto) {
     );
 
 }
-
-
-// ==========================================
-// DIBUJAR TRIÁNGULO
-// ==========================================
 
 function dibujarTriangulo() {
 
@@ -372,11 +313,6 @@ function dibujarTriangulo() {
     );
 
 }
-
-
-// ==========================================
-// DIBUJAR CUADRADO
-// ==========================================
 
 function dibujarCuadrado() {
 
@@ -443,11 +379,6 @@ function dibujarCuadrado() {
 
 }
 
-
-// ==========================================
-// DIBUJAR RECTÁNGULO
-// ==========================================
-
 function dibujarRectangulo() {
 
     ctx.beginPath();
@@ -513,11 +444,6 @@ function dibujarRectangulo() {
 
 }
 
-
-// ==========================================
-// DIBUJAR CÍRCULO
-// ==========================================
-
 function dibujarCirculo() {
 
     ctx.beginPath();
@@ -566,11 +492,6 @@ function dibujarCirculo() {
 
 }
 
-
-// ==========================================
-// DIBUJAR FIGURA ACTUAL
-// ==========================================
-
 function dibujarFigura() {
 
     ctx.clearRect(
@@ -601,11 +522,6 @@ function dibujarFigura() {
 
 }
 
-
-// ==========================================
-// OBTENER VÉRTICES
-// ==========================================
-
 function obtenerVertices() {
 
     if (figuraActual === 0) {
@@ -623,11 +539,6 @@ function obtenerVertices() {
     return null;
 
 }
-
-
-// ==========================================
-// ENCONTRAR PUNTO VERDE
-// ==========================================
 
 function encontrarPuntoVerde(x, y) {
 
@@ -703,11 +614,6 @@ function encontrarPuntoVerde(x, y) {
     return null;
 
 }
-
-
-// ==========================================
-// COMENZAR TRAZO
-// ==========================================
 
 function comenzar(evento) {
 
@@ -789,11 +695,6 @@ function comenzar(evento) {
         "#1596E6";
 
 }
-
-
-// ==========================================
-// DIBUJAR POLÍGONO
-// ==========================================
 
 function dibujarPoligono(evento) {
 
@@ -888,11 +789,6 @@ function dibujarPoligono(evento) {
         "#1596E6";
 
 }
-
-
-// ==========================================
-// DIBUJAR CÍRCULO
-// ==========================================
 
 function dibujarCirculoTrazo(evento) {
 
@@ -1032,7 +928,6 @@ function dibujarCirculoTrazo(evento) {
 
     }
 
-
     const distanciaFinal =
         distanciaEntrePuntos(
             posicion.x,
@@ -1054,7 +949,6 @@ function dibujarCirculoTrazo(evento) {
 
     }
 
-
     mensaje.textContent =
         "¡Sigue alrededor del círculo!";
 
@@ -1063,11 +957,6 @@ function dibujarCirculoTrazo(evento) {
 
 }
 
-
-// ==========================================
-// DIBUJAR
-// ==========================================
-
 function dibujar(evento) {
 
     if (!dibujando) {
@@ -1075,7 +964,6 @@ function dibujar(evento) {
         return;
 
     }
-
 
     evento.preventDefault();
 
@@ -1091,11 +979,6 @@ function dibujar(evento) {
     }
 
 }
-
-
-// ==========================================
-// DISTANCIA PUNTO-LÍNEA
-// ==========================================
 
 function distanciaPuntoLinea(
     px,
@@ -1135,10 +1018,8 @@ function distanciaPuntoLinea(
 
     }
 
-
     let xx;
     let yy;
-
 
     if (param < 0) {
 
@@ -1160,7 +1041,6 @@ function distanciaPuntoLinea(
 
     }
 
-
     const dx =
         px - xx;
 
@@ -1175,11 +1055,6 @@ function distanciaPuntoLinea(
 
 }
 
-
-// ==========================================
-// TERMINAR FIGURA
-// ==========================================
-
 function terminar() {
 
     dibujando = false;
@@ -1189,19 +1064,11 @@ function terminar() {
     puntosTexto.textContent =
         puntos;
 
-
-    // Cada figura completada = 25%
-
     const progreso =
         Math.round(
             ((figuraActual + 1) /
             nombresFiguras.length) * 100
         );
-
-
-    // ==========================================
-    // GUARDAR PROGRESO
-    // ==========================================
 
     if (
         figuraActual + 1 <
@@ -1214,7 +1081,6 @@ function terminar() {
         );
 
     }
-
 
     mensaje.textContent =
         "¡MUY BIEN! ¡Completaste el " +
@@ -1235,11 +1101,6 @@ function terminar() {
 
         figuraActual++;
 
-
-        // ==========================================
-        // JUEGO TERMINADO
-        // ==========================================
-
         if (
             figuraActual >=
             nombresFiguras.length
@@ -1251,9 +1112,6 @@ function terminar() {
 
             mensaje.style.color =
                 "#35A853";
-
-
-            // Guardar 100% completado
 
             setTimeout(async function () {
 
@@ -1282,11 +1140,6 @@ function terminar() {
 
         }
 
-
-        // ==========================================
-        // PREPARAR SIGUIENTE FIGURA
-        // ==========================================
-
         ladoActual = 0;
 
         puntoInicio = null;
@@ -1314,11 +1167,6 @@ function terminar() {
     }, 1200);
 
 }
-
-
-// ==========================================
-// EVENTOS DEL MOUSE
-// ==========================================
 
 canvas.addEventListener(
     "mousedown",
@@ -1351,24 +1199,17 @@ canvas.addEventListener(
     }
 );
 
-
-// ==========================================
-// EVENTOS TÁCTILES
-// ==========================================
-
 canvas.addEventListener(
     "touchstart",
     comenzar,
     { passive: false }
 );
 
-
 canvas.addEventListener(
     "touchmove",
     dibujar,
     { passive: false }
 );
-
 
 canvas.addEventListener(
     "touchend",
@@ -1378,11 +1219,6 @@ canvas.addEventListener(
 
     }
 );
-
-
-// ==========================================
-// BOTÓN REINICIAR
-// ==========================================
 
 reiniciar.addEventListener(
     "click",
@@ -1408,10 +1244,5 @@ reiniciar.addEventListener(
 
     }
 );
-
-
-// ==========================================
-// INICIAR JUEGO
-// ==========================================
 
 dibujarFigura();

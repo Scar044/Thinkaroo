@@ -1,7 +1,3 @@
-// ==========================================
-// PROGRESO EN LA BASE DE DATOS
-// ==========================================
-
 function guardarProgreso(progreso, estado) {
 
     fetch("../ConfigPHP/guardar_progreso.php", {
@@ -25,11 +21,6 @@ function guardarProgreso(progreso, estado) {
 
 }
 
-
-// ==========================================
-// VARIABLES
-// ==========================================
-
 const colores = [
     "rojo",
     "azul",
@@ -43,11 +34,6 @@ let puntos = 0;
 let ronda = 1;
 
 const totalRondas = 5;
-
-
-// ==========================================
-// ELEMENTOS HTML
-// ==========================================
 
 const levelComplete =
     document.getElementById("levelComplete");
@@ -75,11 +61,6 @@ const rondaTexto =
 
 const instruccion =
     document.getElementById("instruccion");
-
-
-// ==========================================
-// ELEGIR COLOR ALEATORIO
-// ==========================================
 
 function elegirColor() {
 
@@ -112,10 +93,6 @@ function elegirColor() {
 }
 
 
-// ==========================================
-// DECIR EL COLOR
-// ==========================================
-
 function hablarColor() {
 
     if (!colorCorrecto) {
@@ -143,11 +120,6 @@ function hablarColor() {
 
 }
 
-
-// ==========================================
-// COMPROBAR RESPUESTA
-// ==========================================
-
 function comprobarColor(event) {
 
     const boton =
@@ -156,19 +128,11 @@ function comprobarColor(event) {
     const colorSeleccionado =
         boton.dataset.color;
 
-
-    // Evitar responder otra vez
-
     if (boton.disabled) {
 
         return;
 
     }
-
-
-    // ======================================
-    // RESPUESTA CORRECTA
-    // ======================================
 
     if (colorSeleccionado === colorCorrecto) {
 
@@ -198,20 +162,10 @@ function comprobarColor(event) {
 
         });
 
-
-        // ==================================
-        // CALCULAR PROGRESO
-        // ==================================
-
         const progreso =
             Math.round(
                 (ronda / totalRondas) * 100
             );
-
-
-        // ==================================
-        // RONDAS 1 - 4
-        // ==================================
 
         if (ronda < totalRondas) {
 
@@ -226,11 +180,6 @@ function comprobarColor(event) {
 
         }
 
-
-        // ==================================
-        // RONDA 5 - COMPLETADO
-        // ==================================
-
         else {
 
             guardarProgreso(
@@ -242,9 +191,6 @@ function comprobarColor(event) {
             mensaje.textContent =
                 `🏆 ¡Juego terminado! Obtuviste ${puntos} puntos.`;
 
-
-            // Mostrar pantalla final
-
             setTimeout(() => {
 
                 showLevelComplete();
@@ -254,11 +200,6 @@ function comprobarColor(event) {
         }
 
     }
-
-
-    // ======================================
-    // RESPUESTA INCORRECTA
-    // ======================================
 
     else {
 
@@ -273,9 +214,6 @@ function comprobarColor(event) {
         mensaje.className =
             "mensaje-error";
 
-
-        // Volver a activar los botones
-
         opciones.forEach(opcion => {
 
             opcion.disabled = false;
@@ -285,11 +223,6 @@ function comprobarColor(event) {
     }
 
 }
-
-
-// ==========================================
-// SIGUIENTE RONDA
-// ==========================================
 
 function siguienteRonda() {
 
@@ -306,24 +239,12 @@ function siguienteRonda() {
 
 }
 
-
-
-// ==========================================
-// INICIAR JUEGO
-// ==========================================
-
 guardarProgreso(
     0,
     "sin iniciar"
 );
 
-
 elegirColor();
-
-
-// ==========================================
-// EVENTOS
-// ==========================================
 
 botonEscuchar.addEventListener(
     "click",
@@ -346,11 +267,6 @@ siguiente.addEventListener(
     siguienteRonda
 );
 
-
-// ==========================================
-// FINALIZAR NIVEL
-// ==========================================
-
 function showLevelComplete() {
 
     levelComplete.classList.add(
@@ -358,11 +274,6 @@ function showLevelComplete() {
     );
 
 }
-
-
-// ==========================================
-// SIGUIENTE NIVEL
-// ==========================================
 
 nextLevel.addEventListener(
     "click",

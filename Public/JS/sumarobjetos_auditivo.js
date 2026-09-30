@@ -1,8 +1,3 @@
-// ========================================
-// PROGRESO DEL JUEGO
-// ACTIVIDAD 11 - SUMAS AUDITIVO
-// ========================================
-
 function guardarProgreso(progreso, estado) {
 
     fetch("../ConfigPHP/guardar_progreso.php", {
@@ -25,11 +20,6 @@ function guardarProgreso(progreso, estado) {
     });
 }
 
-
-// ========================================
-// ALERTA / MENSAJE FINAL
-// ========================================
-
 const alertaFinal = document.getElementById("finish");
 const botonFinal = document.getElementById("botonFinal");
 
@@ -41,11 +31,6 @@ function mostrarAlertaFinal() {
 
 }
 
-
-// ========================================
-// BOTÓN CONTINUAR
-// ========================================
-
 if (botonFinal) {
 
     botonFinal.addEventListener("click", function () {
@@ -56,11 +41,6 @@ if (botonFinal) {
 
 }
 
-
-// ========================================
-// VARIABLES DEL JUEGO
-// ========================================
-
 let ronda = 1;
 let cantidad = 0;
 let puntos = 0;
@@ -69,17 +49,7 @@ let reproduciendo = false;
 
 let contextoAudio = null;
 
-
-// ========================================
-// INICIAR PROGRESO
-// ========================================
-
 guardarProgreso(0, "sin iniciar");
-
-
-// ========================================
-// OBTENER AUDIO
-// ========================================
 
 function obtenerAudioContext() {
 
@@ -96,11 +66,6 @@ function obtenerAudioContext() {
     return contextoAudio;
 
 }
-
-
-// ========================================
-// GENERAR PREGUNTA
-// ========================================
 
 function generarPregunta() {
 
@@ -123,8 +88,6 @@ function generarPregunta() {
 
     boton.disabled = false;
 
-
-    // RONDAS 1 - 3
     if (ronda <= 3) {
 
         cantidad =
@@ -132,7 +95,6 @@ function generarPregunta() {
 
     }
 
-    // RONDAS 4 - 6
     else if (ronda <= 6) {
 
         cantidad =
@@ -140,7 +102,6 @@ function generarPregunta() {
 
     }
 
-    // RONDAS 7 - 9
     else {
 
         cantidad =
@@ -152,11 +113,6 @@ function generarPregunta() {
     generarOpciones(cantidad);
 
 }
-
-
-// ========================================
-// REPRODUCIR SONIDOS
-// ========================================
 
 async function reproducirSonidos() {
 
@@ -212,11 +168,6 @@ async function reproducirSonidos() {
 
 }
 
-
-// ========================================
-// ESPERA
-// ========================================
-
 function esperar(milisegundos) {
 
     return new Promise(resolve => {
@@ -226,11 +177,6 @@ function esperar(milisegundos) {
     });
 
 }
-
-
-// ========================================
-// REPRODUCIR UN PITIDO
-// ========================================
 
 function reproducirTono() {
 
@@ -311,11 +257,6 @@ function reproducirTono() {
 
 }
 
-
-// ========================================
-// GENERAR OPCIONES
-// ========================================
-
 function generarOpciones(respuesta) {
     const contenedor = document.getElementById("options-container");
 
@@ -326,7 +267,6 @@ function generarOpciones(respuesta) {
 
     contenedor.innerHTML = "";
 
-    // Crear opciones posibles del 1 al 8
     const numeros = [];
 
     for (let i = 1; i <= 8; i++) {
@@ -335,10 +275,8 @@ function generarOpciones(respuesta) {
         }
     }
 
-    // Mezclar las opciones
     numeros.sort(() => Math.random() - 0.5);
 
-    // Tomar 3 opciones incorrectas + la correcta
     const opciones = [
         respuesta,
         numeros[0],
@@ -346,7 +284,6 @@ function generarOpciones(respuesta) {
         numeros[2]
     ];
 
-    // Mezclar nuevamente
     opciones.sort(() => Math.random() - 0.5);
 
     opciones.forEach(numero => {
@@ -363,11 +300,6 @@ function generarOpciones(respuesta) {
     });
 }
 
-
-// ========================================
-// COMPROBAR RESPUESTA
-// ========================================
-
 function comprobar(numero, boton) {
 
     if (reproduciendo) {
@@ -383,11 +315,6 @@ function comprobar(numero, boton) {
         document.getElementById(
             "feedback-badge"
         );
-
-
-    // ====================================
-    // CORRECTO
-    // ====================================
 
     if (numero === cantidad) {
 
@@ -409,14 +336,7 @@ function comprobar(numero, boton) {
         mensaje.className =
             "mensaje correcto";
 
-
-        // Pasar a la siguiente ronda
         ronda++;
-
-
-        // ====================================
-        // GUARDAR PROGRESO
-        // ====================================
 
         const progreso =
             Math.round(
@@ -432,11 +352,6 @@ function comprobar(numero, boton) {
             );
 
         }
-
-
-        // ====================================
-        // SIGUIENTE RONDA O FINAL
-        // ====================================
 
         setTimeout(() => {
 
@@ -464,11 +379,6 @@ function comprobar(numero, boton) {
 
     }
 
-
-    // ====================================
-    // INCORRECTO
-    // ====================================
-
     else {
 
         mensaje.innerText =
@@ -486,12 +396,6 @@ function comprobar(numero, boton) {
 
 }
 
-
-
-// ========================================
-// MOSTRAR PANTALLA FINAL
-// ========================================
-
 function mostrarFinal() {
 
     const finish =
@@ -504,7 +408,6 @@ function mostrarFinal() {
         return;
     }
 
-    // Ocultar mensajes del juego
     const mensaje =
         document.getElementById(
             "feedback-badge"
@@ -517,7 +420,6 @@ function mostrarFinal() {
         mensaje.innerHTML = "";
     }
 
-    // Ocultar opciones
     const opciones =
         document.getElementById(
             "options-container"
@@ -527,7 +429,6 @@ function mostrarFinal() {
         opciones.innerHTML = "";
     }
 
-    // FORZAR EL TEXTO CORRECTO
     const titulo =
         document.getElementById(
             "mensaje-final-titulo"
@@ -550,10 +451,8 @@ function mostrarFinal() {
             "¡Aprendiste a contar!";
     }
 
-    // Mostrar pantalla final
     finish.classList.add("show");
 
-    // Botón CONTINUAR
     const boton =
         document.getElementById(
             "botonFinal"
@@ -574,13 +473,6 @@ function mostrarFinal() {
         "PANTALLA FINAL CORRECTA"
     );
 }
-
-
-
-
-// ========================================
-// REINICIAR JUEGO
-// ========================================
 
 function resetGame() {
 
@@ -627,11 +519,6 @@ function resetGame() {
     generarPregunta();
 
 }
-
-
-// ========================================
-// INICIAR JUEGO
-// ========================================
 
 window.addEventListener(
     "load",

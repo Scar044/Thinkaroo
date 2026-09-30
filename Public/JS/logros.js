@@ -7,11 +7,6 @@ const logrosDesbloqueados =
 const barraProgreso =
     document.getElementById("barra-progreso");
 
-
-/*
-Cuenta los logros
-*/
-
 function actualizarProgreso() {
 
     const totalLogros = logros.length;
@@ -19,29 +14,17 @@ function actualizarProgreso() {
     const completados =
         document.querySelectorAll(".logro.completado").length;
 
-
-    /* Mostrar cantidad */
-
     logrosDesbloqueados.textContent = completados;
 
 
-    /* Calcular porcentaje */
-
     const porcentaje =
         (completados / totalLogros) * 100;
-
-
-    /* Actualizar barra */
 
     barraProgreso.style.width =
         porcentaje + "%";
 }
 
 actualizarProgreso();
-
-// =====================================
-// CARGAR AVATAR DEL HIJO ACTUAL
-// =====================================
 
 function cargarAvatarPerfil() {
 
@@ -62,7 +45,6 @@ function cargarAvatarPerfil() {
                 return;
             }
 
-            // Obtener el elemento de la foto
             const avatarPerfil =
                 document.getElementById("avatarPerfil");
 
@@ -70,7 +52,6 @@ function cargarAvatarPerfil() {
                 return;
             }
 
-            // Obtener la imagen del hijo
             const imagenAvatar =
                 datos.hijo.imagen_avatar;
 
@@ -79,7 +60,6 @@ function cargarAvatarPerfil() {
                 return;
             }
 
-            // Mostrar avatar
             avatarPerfil.src = imagenAvatar;
 
         })
@@ -93,10 +73,5 @@ function cargarAvatarPerfil() {
 
         });
 }
-
-
-// =====================================
-// INICIAR
-// =====================================
 
 cargarAvatarPerfil();

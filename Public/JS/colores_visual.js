@@ -1,7 +1,3 @@
-// ==========================================
-// PROGRESO EN LA BASE DE DATOS
-// ==========================================
-
 function guardarProgreso(progreso, estado) {
 
     fetch("../ConfigPHP/guardar_progreso.php", {
@@ -24,22 +20,12 @@ function guardarProgreso(progreso, estado) {
     });
 }
 
-
-// ==========================================
-// VARIABLES DEL JUEGO
-// ==========================================
-
 let puntos = 0;
 let ronda = 1;
 let objetoSeleccionado = null;
 let objetosCorrectos = 0;
 
 const TOTAL_RONDAS = 5;
-
-
-// ==========================================
-// OBJETOS
-// ==========================================
 
 const objetos = [
 
@@ -69,11 +55,6 @@ const objetos = [
 
 ];
 
-
-// ==========================================
-// CREAR UNA RONDA
-// ==========================================
-
 function crearRonda() {
 
     objetoSeleccionado = null;
@@ -88,17 +69,11 @@ function crearRonda() {
 
     contenedor.innerHTML = "";
 
-
-    // Mezclar objetos
-
     let objetosMezclados = [...objetos];
 
     objetosMezclados.sort(
         () => Math.random() - 0.5
     );
-
-
-    // Crear cada objeto
 
     objetosMezclados.forEach(function(item, indice) {
 
@@ -120,9 +95,6 @@ function crearRonda() {
             item.nombre
         );
 
-
-        // Seleccionar objeto
-
         boton.addEventListener(
             "click",
             function() {
@@ -137,21 +109,11 @@ function crearRonda() {
 
     });
 
-
-    // Activar cajas
-
     activarCajas();
 
 }
 
-
-// ==========================================
-// SELECCIONAR OBJETO
-// ==========================================
-
 function seleccionarObjeto(boton) {
-
-    // Quitar selección anterior
 
     document
         .querySelectorAll(".objeto")
@@ -162,9 +124,6 @@ function seleccionarObjeto(boton) {
             );
 
         });
-
-
-    // Seleccionar nuevo objeto
 
     boton.classList.add("seleccionado");
 
@@ -185,11 +144,6 @@ function seleccionarObjeto(boton) {
 
 }
 
-
-// ==========================================
-// ACTIVAR CAJAS
-// ==========================================
-
 function activarCajas() {
 
     const cajas =
@@ -208,14 +162,7 @@ function activarCajas() {
 
 }
 
-
-// ==========================================
-// COMPROBAR CAJA
-// ==========================================
-
 function comprobarCaja(caja) {
-
-    // Si no hay objeto seleccionado
 
     if (objetoSeleccionado === null) {
 
@@ -235,11 +182,6 @@ function comprobarCaja(caja) {
     const colorCaja =
         caja.dataset.color;
 
-
-    // ======================================
-    // RESPUESTA CORRECTA
-    // ======================================
-
     if (colorObjeto === colorCaja) {
 
         puntos += 10;
@@ -256,9 +198,6 @@ function comprobarCaja(caja) {
             "green"
         );
 
-
-        // Ocultar objeto
-
         objetoSeleccionado.style.visibility =
             "hidden";
 
@@ -274,9 +213,6 @@ function comprobarCaja(caja) {
         document.getElementById("pregunta").textContent =
             "¡Busca otro objeto! 😊";
 
-
-        // Comprobar si terminó la ronda
-
         if (objetosCorrectos === objetos.length) {
 
             terminarRonda();
@@ -284,11 +220,6 @@ function comprobarCaja(caja) {
         }
 
     }
-
-
-    // ======================================
-    // RESPUESTA INCORRECTA
-    // ======================================
 
     else {
 
@@ -300,11 +231,6 @@ function comprobarCaja(caja) {
     }
 
 }
-
-
-// ==========================================
-// MOSTRAR MENSAJE
-// ==========================================
 
 function mostrarMensaje(texto, color) {
 
@@ -318,11 +244,6 @@ function mostrarMensaje(texto, color) {
 
 }
 
-
-// ==========================================
-// TERMINAR RONDA
-// ==========================================
-
 function terminarRonda() {
 
     document.getElementById("pregunta").textContent =
@@ -334,18 +255,9 @@ function terminarRonda() {
         "green"
     );
 
-
-    // ======================================
-    // CALCULAR PROGRESO
-    // ======================================
-
     const progreso =
         Math.round((ronda / TOTAL_RONDAS) * 100);
 
-
-    // ======================================
-    // RONDAS 1 - 4
-    // ======================================
 
     if (ronda < TOTAL_RONDAS) {
 
@@ -360,11 +272,6 @@ function terminarRonda() {
 
     }
 
-
-    // ======================================
-    // RONDA 5 - JUEGO COMPLETADO
-    // ======================================
-
     else {
 
         terminarJuego();
@@ -372,11 +279,6 @@ function terminarRonda() {
     }
 
 }
-
-
-// ==========================================
-// SIGUIENTE RONDA
-// ==========================================
 
 function siguienteRonda() {
 
@@ -394,11 +296,6 @@ function siguienteRonda() {
     }
 
 }
-
-
-// ==========================================
-// TERMINAR JUEGO
-// ==========================================
 
 function terminarJuego() {
 
@@ -433,18 +330,10 @@ function terminarJuego() {
     document.getElementById("objetos").innerHTML =
         "";
 
-
-    // ======================================
-    // GUARDAR 100% COMPLETADO
-    // ======================================
-
     guardarProgreso(
         100,
         "completado"
     );
-
-
-    // Mostrar alerta final
 
     setTimeout(function() {
 
@@ -453,11 +342,6 @@ function terminarJuego() {
     }, 700);
 
 }
-
-
-// ==========================================
-// REINICIAR JUEGO
-// ==========================================
 
 function reiniciarJuego() {
 
@@ -494,11 +378,6 @@ function reiniciarJuego() {
 
 }
 
-
-// ==========================================
-// INICIAR JUEGO
-// ==========================================
-
 guardarProgreso(
     0,
     "sin iniciar"
@@ -507,11 +386,6 @@ guardarProgreso(
 
 crearRonda();
 
-
-// ========================================
-// PANTALLA FINAL
-// ========================================
-
 const alertaFinal =
     document.getElementById("finish");
 
@@ -519,32 +393,17 @@ const alertaFinal =
 const botonFinal =
     document.getElementById("botonFinal");
 
-
-// ========================================
-// MOSTRAR ALERTA
-// ========================================
-
 function mostrarAlertaFinal() {
 
     alertaFinal.classList.add("show");
 
 }
 
-
-// ========================================
-// OCULTAR ALERTA
-// ========================================
-
 function ocultarAlertaFinal() {
 
     alertaFinal.classList.remove("show");
 
 }
-
-
-// ========================================
-// BOTÓN FINAL
-// ========================================
 
 botonFinal.addEventListener(
     "click",

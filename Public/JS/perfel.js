@@ -7,21 +7,11 @@ const listaHijos =
 const hijoActual =
     document.getElementById("hijoActual");
 
-
-// ==========================================
-// ABRIR / CERRAR DESPLEGABLE
-// ==========================================
-
 botonHijo.addEventListener("click", () => {
 
     listaHijos.classList.toggle("mostrar");
 
 });
-
-
-// ==========================================
-// CARGAR DATOS DEL HIJO ACTUAL
-// ==========================================
 
 function cargarPerfilHijo() {
 
@@ -49,11 +39,6 @@ function cargarPerfilHijo() {
 
             const hijo = datos.hijo;
 
-
-            // ==================================
-            // NOMBRE
-            // ==================================
-
             document.getElementById(
                 "nombreHijo"
             ).textContent = hijo.nombre;
@@ -62,20 +47,10 @@ function cargarPerfilHijo() {
             hijoActual.textContent =
                 hijo.nombre;
 
-
-            // ==================================
-            // EDAD
-            // ==================================
-
             document.getElementById(
                 "edadHijo"
             ).textContent =
                 hijo.edad + " años";
-
-
-            // ==================================
-            // ESTILO DE APRENDIZAJE
-            // ==================================
 
             document.getElementById(
                 "tipoAprendizaje"
@@ -83,30 +58,15 @@ function cargarPerfilHijo() {
                 hijo.estilo_aprendizaje ||
                 "Sin definir";
 
-
-            // ==================================
-            // NIVEL ACTUAL
-            // ==================================
-
             document.getElementById(
                 "nivel"
             ).textContent =
                 hijo.nivel_actual;
 
-
-            // ==================================
-            // LOGROS
-            // ==================================
-
             document.getElementById(
                 "logros"
             ).textContent =
                 hijo.total_logros;
-
-
-            // ==================================
-            // AVATAR
-            // ==================================
 
             const avatar =
                 document.getElementById(
@@ -120,11 +80,6 @@ function cargarPerfilHijo() {
                     hijo.imagen_avatar;
 
             }
-
-
-            // ==================================
-            // MOSTRAR INFORMACIÓN EN CONSOLA
-            // ==================================
 
             console.log(
                 "ID del hijo:",
@@ -173,11 +128,6 @@ function cargarPerfilHijo() {
         });
 
 }
-
-
-// ==========================================
-// OBTENER TODOS LOS HIJOS
-// ==========================================
 
 function cargarHijos() {
 
@@ -230,11 +180,6 @@ function cargarHijos() {
                         const idHijo =
                             boton.dataset.id;
 
-
-                        // ==============================
-                        // CAMBIAR SESIÓN DEL HIJO
-                        // ==============================
-
                         fetch(
                             "../ConfigPHP/cambiarHijo.php",
                             {
@@ -273,16 +218,9 @@ function cargarHijos() {
                                 datos.id_hijo
                             );
 
-
-                            // Cerrar menú
-
                             listaHijos.classList.remove(
                                 "mostrar"
                             );
-
-
-                            // Cargar los datos
-                            // del nuevo hijo
 
                             cargarPerfilHijo();
 
@@ -320,18 +258,9 @@ function cargarHijos() {
 
 }
 
-
-// ==========================================
-// INICIAR PÁGINA
-// ==========================================
-
 cargarPerfilHijo();
 
 cargarHijos();
-
-// ==========================================
-// IR A LA PÁGINA DE NIVELES SEGÚN EL ESTILO
-// ==========================================
 
 function irANiveles() {
 

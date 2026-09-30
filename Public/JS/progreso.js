@@ -1,12 +1,3 @@
-// =====================================
-// PROGRESO DE THINKAROO
-// =====================================
-
-
-// =====================================
-// ACTIVIDADES SEGÚN ESTILO
-// =====================================
-
 const actividadesPorEstilo = {
 
     Visual: {
@@ -32,17 +23,7 @@ const actividadesPorEstilo = {
 
 };
 
-
-// =====================================
-// OBTENER ELEMENTOS DE LOS NIVELES
-// =====================================
-
 const niveles = document.querySelectorAll(".level");
-
-
-// =====================================
-// CARGAR PROGRESO
-// =====================================
 
 function cargarProgreso() {
 
@@ -59,10 +40,6 @@ function cargarProgreso() {
         })
 
         .then(datos => {
-
-            // ---------------------------------
-            // COMPROBAR RESPUESTA
-            // ---------------------------------
 
             if (!datos.success) {
 
@@ -84,11 +61,6 @@ function cargarProgreso() {
                 datos.progreso
             );
 
-
-            // ---------------------------------
-            // OBTENER ESTILO
-            // ---------------------------------
-
             const estilo = datos.estilo_aprendizaje;
 
 
@@ -102,23 +74,13 @@ function cargarProgreso() {
                 return;
             }
 
-
-            // ---------------------------------
-            // ACTIVIDADES QUE LE CORRESPONDEN
-            // ---------------------------------
-
             const actividades = actividadesPorEstilo[estilo];
-
-            // =====================================
-            // ACTUALIZAR PROGRESO GENERAL
-            // =====================================
 
             function actualizarProgresoGeneral(
                 progreso,
                 estilo
             ) {
 
-                // Actividades que corresponden al estilo
                 const actividades = actividadesPorEstilo[estilo];
 
                 if (!actividades) {
@@ -128,11 +90,6 @@ function cargarProgreso() {
                     );
                     return;
                 }
-
-
-                // ---------------------------------
-                // CONTAR JUEGOS COMPLETADOS
-                // ---------------------------------
 
                 let juegosCompletados = 0;
 
@@ -155,21 +112,12 @@ function cargarProgreso() {
                 }
 
 
-                // ---------------------------------
-                // CALCULAR PORCENTAJE
-                // ---------------------------------
-
                 const totalJuegos = 4;
 
                 const porcentaje =
                     Math.round(
                         (juegosCompletados / totalJuegos) * 100
                     );
-
-
-                // ---------------------------------
-                // OBTENER ELEMENTOS
-                // ---------------------------------
 
                 const texto =
                     document.getElementById("juegosCompletados");
@@ -185,29 +133,14 @@ function cargarProgreso() {
                     return;
                 }
 
-
-                // ---------------------------------
-                // ACTUALIZAR TEXTO
-                // ---------------------------------
-
                 texto.textContent =
                     juegosCompletados +
                     " de " +
                     totalJuegos +
                     " juegos completados";
 
-
-                // ---------------------------------
-                // ACTUALIZAR BARRA
-                // ---------------------------------
-
                 barra.style.width =
                     porcentaje + "%";
-
-
-                // ---------------------------------
-                // MOSTRAR PORCENTAJE
-                // ---------------------------------
 
                 porcentajeTexto.textContent =
                     porcentaje + "%";
@@ -215,23 +148,15 @@ function cargarProgreso() {
 
             actualizarProgresoGeneral(datos.progreso, estilo);
 
-            // ---------------------------------
-            // ACTUALIZAR CADA NIVEL
-            // ---------------------------------
-
             for (let nivel = 1; nivel <= 4; nivel++) {
 
                 const idActividad = actividades[nivel];
 
-
-                // Buscar la actividad correspondiente
                 const registro = datos.progreso.find(
                     actividad =>
                         Number(actividad.id_actividad) === idActividad
                 );
 
-
-                // Buscar tarjeta del nivel
                 const tarjeta = document.querySelector(
                     `.level[data-nivel="${nivel}"]`
                 );
@@ -241,11 +166,6 @@ function cargarProgreso() {
                     continue;
                 }
 
-
-                // ---------------------------------
-                // ELEMENTOS DE LA TARJETA
-                // ---------------------------------
-
                 const estado = tarjeta.querySelector(".estado");
 
                 const porcentaje =
@@ -254,10 +174,6 @@ function cargarProgreso() {
                 const barra =
                     tarjeta.querySelector(".fill");
 
-
-                // ---------------------------------
-                // SI TODAVÍA NO EXISTE REGISTRO
-                // ---------------------------------
 
                 if (!registro) {
 
@@ -272,18 +188,8 @@ function cargarProgreso() {
                     continue;
                 }
 
-
-                // ---------------------------------
-                // OBTENER PORCENTAJE
-                // ---------------------------------
-
                 const progreso =
                     Number(registro.progreso) || 0;
-
-
-                // ---------------------------------
-                // OBTENER ESTADO
-                // ---------------------------------
 
                 let textoEstado = "Sin iniciar";
 
@@ -299,11 +205,6 @@ function cargarProgreso() {
                     textoEstado = "En progreso";
 
                 }
-
-
-                // ---------------------------------
-                // ACTUALIZAR TARJETA
-                // ---------------------------------
 
                 actualizarNivel(
                     estado,
@@ -328,11 +229,6 @@ function cargarProgreso() {
 
 }
 
-
-// =====================================
-// ACTUALIZAR UN NIVEL
-// =====================================
-
 function actualizarNivel(
     elementoEstado,
     elementoPorcentaje,
@@ -347,19 +243,10 @@ function actualizarNivel(
         return;
     }
 
-    // ---------------------------------
-    // TEXTO DEL ESTADO
-    // ---------------------------------
-
     elementoEstado.textContent = textoEstado;
 
     elementoPorcentaje.textContent =
         progreso + "%";
-
-
-    // ---------------------------------
-    // BARRA DE PROGRESO
-    // ---------------------------------
 
     barra.style.width =
         progreso + "%";
@@ -367,10 +254,6 @@ function actualizarNivel(
     barra.style.transition =
         "width 0.8s ease";
 
-
-    // ---------------------------------
-    // PORCENTAJE DENTRO DE LA BARRA
-    // ---------------------------------
 
     barra.textContent =
         progreso + "%";
@@ -387,19 +270,10 @@ function actualizarNivel(
     barra.style.fontWeight =
         "bold";
 
-
-    // ---------------------------------
-    // COLOR DE LA TARJETA
-    // ---------------------------------
-
     if (textoEstado === "Completado") {
         elementoEstado.classList.add("completado");
     }
 }
-
-// =====================================
-// INICIAR
-// =====================================
 
 document.addEventListener(
     "DOMContentLoaded",

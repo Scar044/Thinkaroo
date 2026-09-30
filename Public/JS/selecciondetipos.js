@@ -53,9 +53,6 @@ anterior.addEventListener("click", () => {
 
 mostrarSlide();
 
-/*
-    Obtener estilo desde la base de datos
-*/
 fetch("../ConfigPHP/obtenerEstilo.php")
 
 .then(respuesta => respuesta.json())

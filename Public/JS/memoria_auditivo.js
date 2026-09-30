@@ -1,7 +1,3 @@
-// ==========================================
-// PAREJAS
-// ==========================================
-
 const pairs = [
 
     {
@@ -46,17 +42,10 @@ const pairs = [
 
 ];
 
-
-// ==========================================
-// CREAR CARTAS
-// ==========================================
-
 let cards = [];
 
 
 pairs.forEach((pair, index) => {
-
-    // Carta con imagen
 
     cards.push({
 
@@ -69,9 +58,6 @@ pairs.forEach((pair, index) => {
         audio: pair.audio
 
     });
-
-
-    // Carta con sonido
 
     cards.push({
 
@@ -87,25 +73,12 @@ pairs.forEach((pair, index) => {
 
 });
 
-
-// Mezclar
-
 cards.sort(
     () => Math.random() - 0.5
 );
 
-
-// ==========================================
-// TABLERO
-// ==========================================
-
 const gameBoard =
     document.getElementById("gameBoard");
-
-
-// ==========================================
-// VARIABLES
-// ==========================================
 
 let firstCard = null;
 
@@ -114,11 +87,6 @@ let secondCard = null;
 let lockBoard = false;
 
 let matchedPairs = 0;
-
-
-// ==========================================
-// ALERTA FINAL
-// ==========================================
 
 const alertaFinal =
     document.getElementById("finish");
@@ -151,11 +119,6 @@ if (botonFinal) {
     );
 
 }
-
-
-// ==========================================
-// GUARDAR PROGRESO
-// ==========================================
 
 async function guardarProgreso(
     progreso,
@@ -219,20 +182,10 @@ async function guardarProgreso(
 
 }
 
-
-// ==========================================
-// REGISTRAR COMO SIN INICIAR
-// ==========================================
-
 guardarProgreso(
     0,
     "sin iniciar"
 );
-
-
-// ==========================================
-// CREAR LAS CARTAS
-// ==========================================
 
 cards.forEach(cardData => {
 
@@ -255,10 +208,6 @@ cards.forEach(cardData => {
         cardData.audio;
 
 
-    // ======================================
-    // CARTA DE IMAGEN
-    // ======================================
-
     if (cardData.type === "image") {
 
         const img =
@@ -276,11 +225,6 @@ cards.forEach(cardData => {
         card.appendChild(img);
 
     }
-
-
-    // ======================================
-    // CARTA DE SONIDO
-    // ======================================
 
     else {
 
@@ -300,11 +244,6 @@ cards.forEach(cardData => {
 
     }
 
-
-    // ======================================
-    // CLICK
-    // ======================================
-
     card.addEventListener(
         "click",
         flipCard
@@ -314,11 +253,6 @@ cards.forEach(cardData => {
     gameBoard.appendChild(card);
 
 });
-
-
-// ==========================================
-// VOLTEAR CARTA
-// ==========================================
 
 function flipCard() {
 
@@ -337,11 +271,6 @@ function flipCard() {
         "flipped"
     );
 
-
-    // ======================================
-    // REPRODUCIR SONIDO
-    // ======================================
-
     if (
         this.dataset.type === "audio"
     ) {
@@ -356,11 +285,6 @@ function flipCard() {
 
     }
 
-
-    // ======================================
-    // PRIMERA CARTA
-    // ======================================
-
     if (firstCard === null) {
 
         firstCard = this;
@@ -368,11 +292,6 @@ function flipCard() {
         return;
 
     }
-
-
-    // ======================================
-    // SEGUNDA CARTA
-    // ======================================
 
     secondCard = this;
 
@@ -384,11 +303,6 @@ function flipCard() {
 
 }
 
-
-// ==========================================
-// COMPROBAR PAREJA
-// ==========================================
-
 function checkMatch() {
 
     const match =
@@ -398,11 +312,6 @@ function checkMatch() {
 
         firstCard.dataset.type !==
         secondCard.dataset.type;
-
-
-    // ======================================
-    // PAREJA CORRECTA
-    // ======================================
 
     if (match) {
 
@@ -418,11 +327,6 @@ function checkMatch() {
 
         matchedPairs++;
 
-
-        // ==================================
-        // CALCULAR PROGRESO
-        // ==================================
-
         const progreso =
             Math.round(
                 (
@@ -430,11 +334,6 @@ function checkMatch() {
                     pairs.length
                 ) * 100
             );
-
-
-        // ==================================
-        // EN PROCESO
-        // ==================================
 
         if (
             matchedPairs <
@@ -451,11 +350,6 @@ function checkMatch() {
 
         resetTurn();
 
-
-        // ==================================
-        // JUEGO COMPLETADO
-        // ==================================
-
         if (
             matchedPairs ===
             pairs.length
@@ -463,8 +357,6 @@ function checkMatch() {
 
             setTimeout(
                 async function () {
-
-                    // Guardar como completado
 
                     const resultado =
                         await guardarProgreso(
@@ -483,11 +375,6 @@ function checkMatch() {
 
                     }
 
-
-                    // ==================================
-                    // MOSTRAR MISIÓN FINAL
-                    // ==================================
-
                     mostrarAlertaFinal();
 
                 },
@@ -497,11 +384,6 @@ function checkMatch() {
         }
 
     }
-
-
-    // ======================================
-    // PAREJA INCORRECTA
-    // ======================================
 
     else {
 
@@ -527,12 +409,6 @@ function checkMatch() {
     }
 
 }
-
-
-// ==========================================
-// REINICIAR TURNO
-// ==========================================
-
 function resetTurn() {
 
     firstCard = null;
