@@ -3,8 +3,6 @@
     padding: 0;
     box-sizing: border-box;
 }
-
-
 @import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600;700&display=swap');
 
 body {
@@ -22,13 +20,9 @@ header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-
     padding: 8px 20px;
-
     box-shadow: 0 4px 12px rgba(0, 0, 0, .10);
-
     border-bottom: 4px solid #ffb300;
-
     z-index: 999;
 }
 
@@ -66,7 +60,6 @@ header {
     margin-bottom: -5px; 
 }
 
-/* --- TARJETA DE REGISTRO CON DEGRADADO --- */
 .formulario {
     width: 100%;
     max-width: 650px; 
@@ -105,7 +98,6 @@ header {
     box-shadow: 0 0 0 3px rgba(0, 114, 206, 0.2);
 }
 
-/* --- BOTÓN MEJORADO CON EFECTO 3D --- */
 .formulario button {
     display: block;
     width: 100%;
