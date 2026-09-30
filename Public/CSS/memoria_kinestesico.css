@@ -1,7 +1,3 @@
-/* ==========================================
-   CONFIGURACIÓN GENERAL
-========================================== */
-
 * {
     margin: 0;
     padding: 0;
@@ -9,394 +5,229 @@
     font-family: "Poppins", sans-serif;
 }
 
-
 body {
     background-image: url("../IMG/Campo.png");
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
     background-attachment: fixed;
-
     color: white;
     overflow-x: hidden;
     padding-bottom: 50px;
 }
 
-/* ==========================================
-   CONTENEDOR
-========================================== */
-
 .container {
     width: 100%;
     max-width: 900px;
-
     margin: auto;
-
     text-align: center;
 }
 
-
-/* ==========================================
-   TÍTULO
-========================================== */
-
 h1 {
     background: #FFD519;
-
     padding: 20px;
-
     border-radius: 28px;
-
     font-size: 32px;
-
     font-weight: 900;
-
     color: #ffffff;
-
     box-shadow: 0 10px 25px rgba(0, 0, 0, .20);
-
     margin-bottom: 15px;
 }
 
-
 .instrucciones {
     font-size: 20px;
-
     font-weight: bold;
-
     margin-bottom: 30px;
-
     color: #004B87;
 }
 
-
-/* ==========================================
-   ZONAS
-========================================== */
-
 .zona {
-   background: transparent;
+    background: transparent;
     box-shadow: none;
-
     padding: 25px;
-
     border-radius: 28px;
-
     box-shadow: 0 10px 25px rgba(0, 0, 0, .20);
-
     margin-bottom: 25px;
 }
 
-
 .zona h2 {
     margin-bottom: 20px;
-
     font-size: 24px;
-
     color: #004B87;
 }
 
-
-/* ==========================================
-   ANIMALES
-========================================== */
-
 .contenedor-animales {
     display: grid;
-
     grid-template-columns: repeat(4, 1fr);
-
     gap: 20px;
 }
 
-
 .animal {
     height: 140px;
-
     background: white;
-
     border-radius: 20px;
-
     display: flex;
-
     justify-content: center;
-
     align-items: center;
-
     box-shadow: 0 8px 15px rgba(0, 0, 0, .20);
-
     cursor: grab;
-
     touch-action: none;
-
     user-select: none;
-
     transition: transform .2s, box-shadow .2s;
 }
 
-
 .animal img {
     width: 85%;
-
     height: 85%;
-
     object-fit: contain;
-
     pointer-events: none;
 }
 
-
 .animal:hover {
     transform: scale(1.05);
-
     box-shadow: 0 12px 20px rgba(0, 0, 0, .25);
 }
-
 
 .animal:active {
     cursor: grabbing;
 }
 
-
-/* ==========================================
-   ANIMAL SIENDO ARRASTRADO
-========================================== */
-
 .animal.arrastrando {
     transform: scale(1.12) rotate(4deg);
-
     opacity: .75;
-
     z-index: 100;
-
     box-shadow: 0 20px 30px rgba(0, 0, 0, .30);
 }
 
-
-/* ==========================================
-   DESTINOS
-========================================== */
-
 .contenedor-destinos {
     display: grid;
-
     grid-template-columns: repeat(4, 1fr);
-
     gap: 20px;
 }
 
-
 .destino {
     height: 140px;
-
     background: rgba(255, 255, 255, .55);
-
     border: 4px dashed #1EA4F2;
-
     border-radius: 20px;
-
     display: flex;
-
     justify-content: center;
-
     align-items: center;
-
     transition: .2s;
-
     position: relative;
 }
 
-
 .destino::after {
     content: "🎯";
-
     position: absolute;
-
     font-size: 35px;
-
     opacity: .35;
 }
 
-
 .destino img {
     width: 80%;
-
     height: 80%;
-
     object-fit: contain;
-
     pointer-events: none;
-
     opacity: .15;
-
     z-index: 2;
 }
 
-
-/* ==========================================
-   DESTINO ACTIVO
-========================================== */
-
 .destino.sobre {
     transform: scale(1.05);
-
     border-style: solid;
-
     background: #fff3a6;
 }
 
-
-/* ==========================================
-   DESTINO CORRECTO
-========================================== */
-
 .destino.correcto {
     background: #35d07f;
-
     border: 4px solid #20a85d;
-
     transform: scale(1.05);
 }
-
-
 .destino.correcto::after {
     content: "✨";
 }
 
-
-/* ==========================================
-   ANIMAL COLOCADO
-========================================== */
-
 .destino .animal-colocado {
     width: 100%;
-
     height: 100%;
-
     display: flex;
-
     justify-content: center;
-
     align-items: center;
 }
 
-
 .animal-colocado img {
     width: 85%;
-
     height: 85%;
-
     object-fit: contain;
-
     opacity: 1;
 }
 
-
-/* ==========================================
-   MENSAJE
-========================================== */
-
 .mensaje {
     min-height: 45px;
-
     font-size: 25px;
-
     font-weight: 900;
-
     margin: 20px 0;
 }
 
-
-/* ==========================================
-   BOTÓN
-========================================== */
-
 .boton-volver {
     border: none;
-
     background: #1EA4F2;
-
     color: white;
-
     padding: 14px 25px;
-
     border-radius: 15px;
-
     font-size: 18px;
-
     font-weight: bold;
-
     cursor: pointer;
-
     box-shadow: 0 5px 0 #0875b5;
-
     transition: .15s;
 }
-
 
 .boton-volver:hover {
     transform: translateY(-2px);
 }
 
-
 .boton-volver:active {
     transform: translateY(3px);
-
     box-shadow: 0 2px 0 #0875b5;
 }
 
-
-/* ==========================================
-   RESPONSIVE
-========================================== */
-
 @media (max-width: 600px) {
-
     body {
         padding: 20px 10px 40px;
     }
 
-
     h1 {
         font-size: 23px;
-
         padding: 15px;
     }
-
 
     .instrucciones {
         font-size: 16px;
     }
 
-
     .zona {
         padding: 15px;
     }
-
 
     .zona h2 {
         font-size: 20px;
     }
 
-
     .contenedor-animales,
     .contenedor-destinos {
         grid-template-columns: repeat(2, 1fr);
-
         gap: 12px;
     }
-
 
     .animal,
     .destino {
         height: 120px;
     }
 
-
     .destino::after {
         font-size: 25px;
     }
-
 }
 #canguroFijo {
     position: absolute;
@@ -475,7 +306,6 @@ h1 {
 }
 
 @keyframes reboteTrophy {
-
     0% {
         transform: translateY(0);
     }
@@ -487,5 +317,4 @@ h1 {
     100% {
         transform: translateY(0);
     }
-
 }

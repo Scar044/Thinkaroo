@@ -1,7 +1,3 @@
-// ========================================
-// PROGRESO EN LA BASE DE DATOS
-// ========================================
-
 function guardarProgreso(progreso, estado) {
 
     fetch("../ConfigPHP/guardar_progreso.php", {
@@ -25,14 +21,7 @@ function guardarProgreso(progreso, estado) {
 
 }
 
-
-// ========================================
-// DATOS DEL JUEGO
-// ========================================
-
 const objects = [
-
-    // 🔴 ROJO
     {
         emoji: "🍎",
         name: "Manzana",
@@ -63,8 +52,6 @@ const objects = [
         color: "rojo"
     },
 
-
-    // 🔵 AZUL
     {
         emoji: "🐟",
         name: "Pez azul",
@@ -95,8 +82,6 @@ const objects = [
         color: "azul"
     },
 
-
-    // 🟡 AMARILLO
     {
         emoji: "🍌",
         name: "Plátano",
@@ -127,8 +112,6 @@ const objects = [
         color: "amarillo"
     },
 
-
-    // 🟢 VERDE
     {
         emoji: "🍏",
         name: "Manzana verde",
@@ -160,11 +143,6 @@ const objects = [
     }
 
 ];
-
-
-// ========================================
-// VARIABLES
-// ========================================
 
 let score = 0;
 

@@ -10,7 +10,6 @@ body {
     background-position: center;
     background-repeat: no-repeat;
     background-attachment: fixed;
-
     color: white;
     overflow-x: hidden;
     padding-bottom: 50px;
@@ -18,23 +17,14 @@ body {
 
 h1 {
     background: #FFD519;
-
     padding: 20px;
-
     border-radius: 28px;
-
     font-size: 32px;
-
     font-weight: 900;
-
     color: #ffffff;
-
     box-shadow: 0 10px 25px rgba(0, 0, 0, .20);
-
     margin-bottom: 15px;
 }
-
-
 
 .game-board {
     display: grid;
@@ -60,14 +50,10 @@ h1 {
 }
 
 .card img {
-
     width: 100%;
     height: 100%;
-
     object-fit: cover;
-
     display: none;
-
 }
 
 .card[data-type="audio"]::after {
@@ -81,40 +67,26 @@ h1 {
 }
 
 .card.flipped img {
-
     display: block;
-
 }
-
 
 .card.flipped {
-
     background: white;
-
 }
-
 
 .audioCard {
-
     font-size: 60px;
-
 }
 
-
 .card.matched {
-
     border: 5px solid #2ecc71;
-
     pointer-events: none;
-
 }
 
 @media (max-width: 480px) {
-
     .game-board {
         grid-template-columns: repeat(2, 100px);
     }
-
 }
 #canguroFijo {
     position: absolute;
@@ -193,7 +165,6 @@ h1 {
 }
 
 @keyframes reboteTrophy {
-
     0% {
         transform: translateY(0);
     }
@@ -205,5 +176,4 @@ h1 {
     100% {
         transform: translateY(0);
     }
-
 }

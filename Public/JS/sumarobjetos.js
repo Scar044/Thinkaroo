@@ -1,8 +1,3 @@
-// ==========================================
-// PROGRESO DEL JUEGO
-// ACTIVIDAD 10 - SUMAS VISUAL
-// ==========================================
-
 function guardarProgreso(progreso, estado) {
 
     fetch("../ConfigPHP/guardar_progreso.php", {
@@ -25,11 +20,6 @@ function guardarProgreso(progreso, estado) {
     });
 }
 
-
-// ==========================================
-// ALERTA FINAL
-// ==========================================
-
 const alertaFinal = document.getElementById("finish");
 const botonFinal = document.getElementById("botonFinal");
 
@@ -44,10 +34,6 @@ botonFinal.addEventListener("click", function () {
     window.location.href = "niveles.html";
 
 });
-
-// ==========================================
-// DATOS DEL JUEGO
-// ==========================================
 
 const objetos = [
     "🚗",
@@ -67,28 +53,13 @@ const grupos = [
     ["🎈", "🚀", "⚽", "🧸"]
 ];
 
-
-// ==========================================
-// VARIABLES
-// ==========================================
-
 let ronda = 1;
 let cantidad = 0;
 let puntos = 0;
 let respondido = false;
 let pistaMostrada = false;
 
-
-// ==========================================
-// INICIAR PROGRESO
-// ==========================================
-
 guardarProgreso(0, "sin iniciar");
-
-
-// ==========================================
-// GENERAR PREGUNTA
-// ==========================================
 
 function generarPregunta() {
 
@@ -101,11 +72,6 @@ function generarPregunta() {
     mensaje.innerText = "";
 
     let elementos = [];
-
-
-    // ------------------------------------------
-    // RONDAS 1 - 3
-    // ------------------------------------------
 
     if (ronda <= 3) {
 
@@ -121,11 +87,6 @@ function generarPregunta() {
         }
 
     }
-
-
-    // ------------------------------------------
-    // RONDAS 4 - 6
-    // ------------------------------------------
 
     else if (ronda <= 6) {
 
@@ -143,11 +104,6 @@ function generarPregunta() {
         }
 
     }
-
-
-    // ------------------------------------------
-    // RONDAS 7 - 9
-    // ------------------------------------------
 
     else {
 
@@ -170,11 +126,6 @@ function generarPregunta() {
     mostrarObjetos(elementos);
     generarOpciones(cantidad);
 }
-
-
-// ==========================================
-// MOSTRAR OBJETOS
-// ==========================================
 
 function mostrarObjetos(elementos) {
 
@@ -214,11 +165,6 @@ function mostrarObjetos(elementos) {
     });
 
 }
-
-
-// ==========================================
-// GENERAR OPCIONES
-// ==========================================
 
 function generarOpciones(respuesta) {
 
@@ -278,11 +224,6 @@ function generarOpciones(respuesta) {
 
 }
 
-
-// ==========================================
-// MARCAR OBJETO
-// ==========================================
-
 function marcarObjeto(caja, numero) {
 
     let etiqueta =
@@ -317,11 +258,6 @@ function marcarObjeto(caja, numero) {
 
 }
 
-
-// ==========================================
-// COMPROBAR RESPUESTA
-// ==========================================
-
 function comprobar(numero, boton) {
 
     if (respondido) {
@@ -333,11 +269,6 @@ function comprobar(numero, boton) {
 
     const mensaje =
         document.getElementById("feedback-badge");
-
-
-    // ------------------------------------------
-    // RESPUESTA CORRECTA
-    // ------------------------------------------
 
     if (numero === cantidad) {
 
@@ -369,14 +300,7 @@ function comprobar(numero, boton) {
         mensaje.className =
             "mensaje correcto";
 
-
-        // Pasamos a la siguiente ronda
         ronda++;
-
-
-        // ==========================================
-        // GUARDAR PROGRESO
-        // ==========================================
 
         const progreso =
             Math.round(((ronda - 1) / 9) * 100);
@@ -390,11 +314,6 @@ function comprobar(numero, boton) {
             );
 
         }
-
-
-        // ==========================================
-        // FINAL DEL JUEGO
-        // ==========================================
 
         setTimeout(() => {
 
@@ -418,10 +337,6 @@ function comprobar(numero, boton) {
 
     }
 
-    // ------------------------------------------
-    // RESPUESTA INCORRECTA
-    // ------------------------------------------
-
     else {
 
         mostrarPista();
@@ -429,11 +344,6 @@ function comprobar(numero, boton) {
     }
 
 }
-
-
-// ==========================================
-// MOSTRAR PISTA
-// ==========================================
 
 function mostrarPista() {
 
@@ -483,11 +393,6 @@ function mostrarPista() {
 
 }
 
-
-// ==========================================
-// MOSTRAR FINAL
-// ==========================================
-
 function mostrarFinal() {
     const alertaFinal = document.getElementById("finish");
 
@@ -495,11 +400,6 @@ function mostrarFinal() {
         alertaFinal.classList.add("show");
     }
 }
-
-
-// ==========================================
-// REINICIAR JUEGO
-// ==========================================
 
 function resetGame() {
 
@@ -526,10 +426,5 @@ function resetGame() {
     generarPregunta();
 
 }
-
-
-// ==========================================
-// INICIAR JUEGO
-// ==========================================
 
 window.onload = generarPregunta;

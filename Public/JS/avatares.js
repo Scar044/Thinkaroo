@@ -47,7 +47,6 @@ botonSiguiente.addEventListener("click", function() {
 
     console.log(datos.mensaje);
 
-    // Obtener el estilo de aprendizaje del hijo actual
     fetch("../ConfigPHP/obtener_perfil_hijo.php")
         .then(respuesta => respuesta.json())
         .then(perfil => {

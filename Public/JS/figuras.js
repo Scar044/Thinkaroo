@@ -1,7 +1,3 @@
-// ============================================
-// ELEMENTOS DEL JUEGO
-// ============================================
-
 const figuras = document.querySelectorAll(".figura");
 const categorias = document.querySelectorAll(".categoria");
 const puntosTexto = document.getElementById("puntos");
@@ -11,20 +7,10 @@ const pista = document.getElementById("pista");
 const textoPista = document.getElementById("textoPista");
 const cerrarPista = document.getElementById("cerrarPista");
 
-
-// ============================================
-// VARIABLES
-// ============================================
-
 let puntos = 0;
 let figurasCorrectas = 0;
 let figuraActual = null;
 let intentos = {};
-
-
-// ============================================
-// ALERTA FINAL
-// ============================================
 
 const alertaFinal =
     document.getElementById("finish");
@@ -55,11 +41,6 @@ if (botonFinal) {
     );
 
 }
-
-
-// ============================================
-// GUARDAR PROGRESO
-// ============================================
 
 async function guardarProgreso(progreso, estado) {
 
@@ -118,20 +99,10 @@ async function guardarProgreso(progreso, estado) {
 
 }
 
-
-// ============================================
-// PROGRESO INICIAL
-// ============================================
-
 guardarProgreso(
     0,
     "sin iniciar"
 );
-
-
-// ============================================
-// ARRASTRAR FIGURAS
-// ============================================
 
 figuras.forEach(function (figura) {
 
@@ -174,21 +145,11 @@ figuras.forEach(function (figura) {
 
 });
 
-
-// ============================================
-// CATEGORÍAS
-// ============================================
-
 categorias.forEach(function (categoria) {
 
 
     const zona =
         categoria.querySelector(".zona");
-
-
-    // ========================================
-    // DRAGOVER
-    // ========================================
 
     zona.addEventListener(
         "dragover",
@@ -203,11 +164,6 @@ categorias.forEach(function (categoria) {
         }
     );
 
-
-    // ========================================
-    // DRAGLEAVE
-    // ========================================
-
     zona.addEventListener(
         "dragleave",
         function () {
@@ -218,11 +174,6 @@ categorias.forEach(function (categoria) {
 
         }
     );
-
-
-    // ========================================
-    // DROP
-    // ========================================
 
     zona.addEventListener(
         "drop",
@@ -247,18 +198,10 @@ categorias.forEach(function (categoria) {
             const formaCategoria =
                 categoria.dataset.forma;
 
-
-            // ====================================
-            // RESPUESTA CORRECTA
-            // ====================================
-
             if (
                 formaFigura ===
                 formaCategoria
             ) {
-
-
-                // Colocar figura
 
                 this.appendChild(
                     figuraActual
@@ -277,11 +220,6 @@ categorias.forEach(function (categoria) {
                     "arrastrando"
                 );
 
-
-                // ==================================
-                // PUNTOS
-                // ==================================
-
                 puntos += 10;
 
                 figurasCorrectas++;
@@ -290,21 +228,11 @@ categorias.forEach(function (categoria) {
                 puntosTexto.textContent =
                     puntos;
 
-
-                // ==================================
-                // MENSAJE
-                // ==================================
-
                 mensaje.textContent =
                     "🎉 ¡Muy bien!";
 
                 mensaje.style.color =
                     "#35a853";
-
-
-                // ==================================
-                // ANIMACIÓN CORRECTA
-                // ==================================
 
                 this.classList.add(
                     "correcto"
@@ -321,11 +249,6 @@ categorias.forEach(function (categoria) {
 
                 }, 600);
 
-
-                // ==================================
-                // CALCULAR PROGRESO
-                // ==================================
-
                 const progreso =
                     Math.round(
                         (
@@ -333,11 +256,6 @@ categorias.forEach(function (categoria) {
                             figuras.length
                         ) * 100
                     );
-
-
-                // ==================================
-                // GUARDAR EN PROCESO
-                // ==================================
 
                 if (
                     figurasCorrectas <
@@ -351,11 +269,6 @@ categorias.forEach(function (categoria) {
 
                 }
 
-
-                // ==================================
-                // TERMINÓ EL JUEGO
-                // ==================================
-
                 if (
                     figurasCorrectas ===
                     figuras.length
@@ -364,9 +277,6 @@ categorias.forEach(function (categoria) {
 
                     mensaje.textContent =
                         "🎉 ¡Excelente! Completaste el juego";
-
-
-                    // Guardar 100% completado
 
                     guardarProgreso(
                         100,
@@ -383,9 +293,6 @@ categorias.forEach(function (categoria) {
 
                     });
 
-
-                    // Mostrar alerta final
-
                     setTimeout(function () {
 
                         mostrarAlertaFinal();
@@ -395,11 +302,6 @@ categorias.forEach(function (categoria) {
                 }
 
             }
-
-
-            // ====================================
-            // RESPUESTA INCORRECTA
-            // ====================================
 
             else {
 
@@ -416,11 +318,6 @@ categorias.forEach(function (categoria) {
 
 
                 intentos[forma]++;
-
-
-                // ==================================
-                // PISTAS
-                // ==================================
 
                 const pistas = {
 
@@ -501,22 +398,12 @@ categorias.forEach(function (categoria) {
 
                 }
 
-
-                // ==================================
-                // MENSAJE
-                // ==================================
-
                 mensaje.textContent =
                     "😊 ¡Casi!";
 
 
                 mensaje.style.color =
                     "#f39c12";
-
-
-                // ==================================
-                // ANIMACIÓN DE ERROR
-                // ==================================
 
                 zona.classList.remove(
                     "error"
@@ -548,11 +435,6 @@ categorias.forEach(function (categoria) {
     );
 
 });
-
-
-// ============================================
-// CERRAR PISTA
-// ============================================
 
 if (cerrarPista) {
 

@@ -91,7 +91,6 @@ header{
     transform: scale(.97);
 }
 
-
 .menu{
     display:flex;
     justify-content:center;
@@ -111,7 +110,6 @@ header{
 .menu a:hover{
     color: #ff8c00;
 }
-
 
 .carrusel{
     width:65%;
@@ -160,7 +158,6 @@ header{
     display:block;
 }
 
-
 .slide.active{
     opacity:1;
     z-index:2;
@@ -175,7 +172,6 @@ header{
     z-index:999;
     box-shadow:0 20px 45px rgba(0,0,0,.35);
 }
-
 
 button{
     position:absolute;
@@ -203,7 +199,6 @@ button:hover{
 .siguiente{
     right:-70px;
 }
-
 
 #visual,
 #auditivo,

@@ -1,11 +1,6 @@
 const sidebar = document.getElementById("sidebar");
 const boton = document.getElementById("toggleBtn");
 
-
-// ==========================================
-// ABRIR / CERRAR SIDEBAR
-// ==========================================
-
 if (sidebar && boton) {
 
     boton.addEventListener("click", () => {
@@ -21,11 +16,6 @@ if (sidebar && boton) {
     });
 
 }
-
-
-// ==========================================
-// IR A NIVELES SEGÚN EL HIJO
-// ==========================================
 
 const btnNiveles = document.getElementById("btnNiveles");
 
