@@ -8,10 +8,9 @@ body {
     min-height: 100vh;
     background: #fdd791;
     font-family: 'Poppins', sans-serif;
-    padding-top: 70px; /* Margen superior para no solaparse con el header fijo */
+    padding-top: 70px; 
 }
 
-/* HEADER */
 header {
     position: fixed;
     top: 0;
@@ -21,7 +20,7 @@ header {
     background: #FFD11A;
     display: flex;
     align-items: center;
-    justify-content: center; /* Centra el logo en la barra */
+    justify-content: center;
     padding: 0 20px;
     z-index: 1000;
 }
@@ -31,13 +30,12 @@ header {
     width: auto;
 }
 
-/* CONTENEDOR DE PÁGINA */
+
 .pagina {
     min-height: calc(100vh - 70px);
     padding: 20px;
 }
 
-/* TARJETA QUE ENCIERRA A KIDO + FORMULARIO */
 .tarjeta-registro {
     width: 850px;
     max-width: 95%;
@@ -47,7 +45,7 @@ header {
     padding: 20px 30px; 
     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
 }
-/* KIDO */
+
 #kido {
     width: 140px !important; 
     height: auto;
@@ -56,7 +54,7 @@ header {
     transform: scale(1.8); 
     transform-origin: center center;
 }
-/* FORMULARIO */
+
 .formulario label,
 .formulario input,
 .formulario button {
@@ -91,7 +89,7 @@ header {
     box-shadow: 0 0 0 3px rgba(0, 114, 206, 0.2);
 }
 
-/* BOTÓN DE CONTINUAR */
+
 .formulario button {
     display: block;
     width: 100%;
@@ -119,7 +117,6 @@ header {
     box-shadow: 0 2px 0 #B36200;
 }
 
-/* RESPONSIVE EN MÓVILES */
 @media (max-width: 767px) {
     .tarjeta-registro {
         padding: 25px 15px;
