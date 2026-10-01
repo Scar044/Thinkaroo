@@ -12,7 +12,6 @@
     transition: width 0.3s ease;
 }
 
-
 .menu-sidebar {
     display: flex;
     flex-direction: column;
@@ -22,13 +21,10 @@
 .menu-sidebar a {
     color: white;
     text-decoration: none;
-
     padding: 16px 25px;
-
     display: flex;
     align-items: center;
     gap: 15px;
-
     transition: 0.3s;
 }
 
@@ -45,11 +41,6 @@
     font-size: 16px;
 }
 
-
-/* =====================================
-   PARA PADRES
-===================================== */
-
 .padres-sidebar {
     margin-top: auto;
     padding: 20px;
@@ -64,7 +55,6 @@
 .padres-sidebar a {
     color: white;
     text-decoration: none;
-
     display: flex;
     align-items: center;
     gap: 12px;
@@ -76,42 +66,23 @@
     margin-top: 3px;
 }
 
-
-/* =====================================
-   BOTÓN PARA OCULTAR
-===================================== */
-
 .toggle-btn {
     position: absolute;
-
     top: 50%;
     right: -18px;
-
     transform: translateY(-50%);
-
     width: 36px;
     height: 36px;
-
     border: none;
     border-radius: 50%;
-
     background: white;
     color: #4285F4;
-
     font-size: 20px;
     font-weight: bold;
-
     cursor: pointer;
-
     box-shadow: 0 2px 8px rgba(0,0,0,.3);
-
     z-index: 2000;
 }
-
-
-/* =====================================
-   SIDEBAR RETRAÍDA
-===================================== */
 
 .sidebar.cerrado {
     width: 70px;
@@ -121,9 +92,6 @@
 .sidebar.cerrado .padres-sidebar hr {
     display: none;
 }
-
-
-/* Centrar iconos */
 
 .sidebar.cerrado .menu-sidebar a {
     justify-content: center;

@@ -19,17 +19,13 @@ body {
     width: 100%;
     min-height: 100vh;
     position: relative;
-
     background-image: url("../IMG/fondoperfel.png");
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
     background-attachment: fixed;
-
     overflow: hidden;
 }
-
-/* DECORACIÓN */
 
 .contenedor::before {
     content: "";
@@ -53,8 +49,6 @@ body {
     right: -120px;
 }
 
-/* HEADER */
-
 header {
     background: #FFD12D;
     height: 70px;
@@ -75,15 +69,11 @@ header h1 {
     font-size: 42px;
 }
 
-/* TITULO */
-
 h2 {
     text-align: center;
     margin: 25px;
     font-size: 40px;
 }
-
-/* SELECTOR DE HIJOS */
 
 .selector-hijo {
     position: relative;
@@ -100,7 +90,6 @@ h2 {
     font-size: 18px;
     font-weight: bold;
     cursor: pointer;
-
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -136,29 +125,20 @@ h2 {
     background: #f0f0f0;
 }
 
-/* BOTÓN AGREGAR */
-
 .boton-agregar {
     display: flex;
     align-items: center;
     justify-content: center;
-
     width: 45px;
     height: 45px;
-
     margin: 10px auto;
-
     background: #F5B300;
     color: white;
-
     border-radius: 50%;
     text-decoration: none;
-
     font-size: 30px;
     font-weight: bold;
 }
-
-/* TARJETA */
 
 .tarjeta {
     width: 420px;
@@ -169,8 +149,6 @@ h2 {
     position: relative;
     text-align: center;
 }
-
-/* FOTO */
 
 .foto {
     width: 150px;
@@ -192,23 +170,17 @@ h2 {
     display: block;
 }
 
-/* EDITAR AVATAR */
-
 .editar-avatar {
     position: absolute;
     top: 0;
     left: 0;
-
     width: 100%;
     height: 100%;
-
     background: rgba(0, 0, 0, 0.45);
     border-radius: 50%;
-
     display: flex;
     justify-content: center;
     align-items: center;
-
     opacity: 0;
     transition: opacity 0.2s ease;
 }
@@ -222,8 +194,6 @@ h2 {
 .foto:hover .editar-avatar {
     opacity: 1;
 }
-
-/* INFORMACIÓN */
 
 h3 {
     margin-top: 15px;
@@ -241,8 +211,6 @@ h3 {
     margin-bottom: 20px;
 }
 
-/* ESTRELLAS */
-
 .estrella {
     position: absolute;
     color: #F5B300;
@@ -258,8 +226,6 @@ h3 {
     right: 20px;
     top: 180px;
 }
-
-/* ESTADÍSTICAS */
 
 .estadisticas {
     margin-top: 20px;

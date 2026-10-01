@@ -398,8 +398,6 @@ header{
     z-index:-1;
 }
 
-/* Césped */
-
 .paisaje::before{
     content:"";
     position:absolute;
@@ -409,8 +407,6 @@ header{
     height:120px;
     background:linear-gradient(#59c64b,#2e8b3d);
 }
-
-/* Colina */
 
 .paisaje::after{
     content:"";
@@ -422,8 +418,6 @@ header{
     background:#4caf50;
     border-radius:50%;
 }
-
-/* Arbustos */
 
 .arbustos{
     position:absolute;
@@ -464,11 +458,9 @@ header{
     border-radius:50%;
     box-shadow:
     -25px 20px #39b54a,
-     25px 20px #39b54a,
-      0 35px #4ac65b;
+    25px 20px #39b54a,
+    0 35px #4ac65b;
 }
-
-/* Posiciones */
 
 .arbol1{left:3%; transform:scale(.8);}
 .arbol2{left:22%; transform:scale(1);}
@@ -479,7 +471,7 @@ header{
 #cohete{
     position:absolute;
     left:50%;
-    top:1000px; /* Ajusta este valor */
+    top:1000px; 
     transform:translateX(-50%);
     width: 80px;
     display:flex;
@@ -494,7 +486,6 @@ header{
 }
 
 @keyframes saltoCanguro {
-
     0% {
         transform: translateY(0) scale(1);
     }
@@ -510,15 +501,12 @@ header{
     100% {
         transform: translateY(0) scale(1);
     }
-
 }
 
 #cohete img{
     width:130px;
     z-index:2;
 }
-
-/* Fuego */
 
 .fuego{
     position:absolute;
@@ -538,8 +526,6 @@ header{
         height:65px;
     }
 }
-
-/* Humo */
 
 .humo{
     position:absolute;

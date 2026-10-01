@@ -14,52 +14,33 @@ body {
     padding: 30px 15px;
 }
 
-/* ===========================
-        CARRUSEL
-=========================== */
-
 .carrusel {
     width: 80%;
     max-width: 900px;
     position: relative;
 }
 
-/* ===========================
-        SLIDES
-=========================== */
-
 .slides {
     width: 100%;
     display: grid;
 }
 
-/* ===========================
-        TARJETAS
-=========================== */
-
 .slide {
     grid-area: 1 / 1;
-
     width: 100%;
     min-height: 650px;
-
     background: white;
     border: 5px solid #39B5E8;
     border-radius: 35px;
-
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-
     text-align: center;
-
     padding: 40px 60px;
-
     opacity: 0;
     visibility: hidden;
     z-index: 1;
-
     box-shadow: 0 15px 35px rgba(0,0,0,.18);
 }
 
@@ -68,10 +49,6 @@ body {
     visibility: visible;
     z-index: 2;
 }
-
-/* ===========================
-        IMAGEN
-=========================== */
 
 .slide img {
     width: 300px;
@@ -82,50 +59,31 @@ body {
     max-width: 100%;
 }
 
-/* ===========================
-        TITULO
-=========================== */
-
 .slide h2 {
     font-size: 42px;
     margin-bottom: 20px;
     color: #222;
 }
 
-/* ===========================
-        TEXTO
-=========================== */
-
 .slide p {
     width: 80%;
     max-width: 700px;
-
     font-size: 15px;
     line-height: 1.5;
-
     margin-bottom: 30px;
-
-    /* Permite que las palabras bajen de línea */
     overflow-wrap: break-word;
     word-wrap: break-word;
 }
-
-/* ===========================
-        BOTON
-=========================== */
 
 .btn {
     display: inline-block;
     background: #F7941D;
     color: white;
     text-decoration: none;
-
     padding: 15px 45px;
     border-radius: 35px;
-
     font-size: 22px;
     font-weight: bold;
-
     transition: .3s;
     box-shadow: 0 5px 12px rgba(0,0,0,.2);
 }
@@ -136,30 +94,19 @@ body {
     box-shadow: 0 8px 18px rgba(0,0,0,.3);
 }
 
-/* ===========================
-        FLECHAS
-=========================== */
-
 button {
     position: absolute;
-
     top: 50%;
     transform: translateY(-50%);
-
     width: 60px;
     height: 60px;
-
     border: none;
     border-radius: 50%;
-
     background: rgba(255,255,255,.9);
-
     cursor: pointer;
     font-size: 32px;
-
     transition: .3s;
     z-index: 100;
-
     box-shadow: 0 6px 20px rgba(0,0,0,.25);
 }
 
@@ -173,13 +120,7 @@ button:hover {
     display: none !important;
 }
 
-
-/* ===========================
-        TABLET
-=========================== */
-
 @media (max-width: 768px) {
-
     body {
         padding: 20px 10px;
     }
@@ -214,13 +155,7 @@ button:hover {
     }
 }
 
-
-/* ===========================
-        CELULARES
-=========================== */
-
 @media (max-width: 480px) {
-
     body {
         padding: 15px 8px;
         align-items: flex-start;
@@ -235,9 +170,7 @@ button:hover {
     .slide {
         min-height: 0;
         height: auto;
-
         padding: 25px 18px;
-
         border-width: 4px;
         border-radius: 20px;
     }
@@ -256,13 +189,9 @@ button:hover {
     .slide p {
         width: 100%;
         max-width: 100%;
-
         font-size: 15px;
         line-height: 1.5;
-
         margin-bottom: 20px;
-
-        /* El texto nunca sale del cuadro */
         overflow-wrap: anywhere;
     }
 
