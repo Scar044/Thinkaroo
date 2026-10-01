@@ -1,147 +1,148 @@
 function guardarProgreso(progreso, estado) {
 
-    fetch("../ConfigPHP/guardar_progreso.php", {
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json"
-        },
-        body: JSON.stringify({
-            id_actividad: 9,
-            progreso: progreso,
-            estado: estado
-        })
+fetch("../ConfigPHP/guardar_progreso.php", {
+    method: "POST",
+    headers: {
+        "Content-Type": "application/json"
+    },
+    body: JSON.stringify({
+        id_actividad: 9,
+        progreso: progreso,
+        estado: estado
     })
-    .then(response => response.json())
-    .then(data => {
-        console.log("Progreso guardado:", data);
-    })
-    .catch(error => {
-        console.error("Error al guardar progreso:", error);
-    });
+})
+.then(response => response.json())
+.then(data => {
+    console.log("Progreso guardado:", data);
+})
+.catch(error => {
+    console.error("Error al guardar progreso:", error);
+});
+
 
 }
 
 const objects = [
-    {
-        emoji: "🍎",
-        name: "Manzana",
-        color: "rojo"
-    },
 
-    {
-        emoji: "🍓",
-        name: "Fresa",
-        color: "rojo"
-    },
+{
+    emoji: "🍎",
+    nameKey: "colorsSort.apple",
+    color: "rojo"
+},
 
-    {
-        emoji: "🍒",
-        name: "Cerezas",
-        color: "rojo"
-    },
+{
+    emoji: "🍓",
+    nameKey: "colorsSort.strawberry",
+    color: "rojo"
+},
 
-    {
-        emoji: "❤️",
-        name: "Corazón",
-        color: "rojo"
-    },
+{
+    emoji: "🍒",
+    nameKey: "colorsSort.cherries",
+    color: "rojo"
+},
 
-    {
-        emoji: "🎈",
-        name: "Globo",
-        color: "rojo"
-    },
+{
+    emoji: "❤️",
+    nameKey: "colorsSort.heart",
+    color: "rojo"
+},
 
-    {
-        emoji: "🐟",
-        name: "Pez azul",
-        color: "azul"
-    },
+{
+    emoji: "🎈",
+    nameKey: "colorsSort.balloon",
+    color: "rojo"
+},
 
-    {
-        emoji: "⚽",
-        name: "Pelota azul",
-        color: "azul"
-    },
+{
+    emoji: "🐟",
+    nameKey: "colorsSort.blueFish",
+    color: "azul"
+},
 
-    {
-        emoji: "🚙",
-        name: "Carro azul",
-        color: "azul"
-    },
+{
+    emoji: "⚽",
+    nameKey: "colorsSort.blueBall",
+    color: "azul"
+},
 
-    {
-        emoji: "🪣",
-        name: "Cubeta azul",
-        color: "azul"
-    },
+{
+    emoji: "🚙",
+    nameKey: "colorsSort.blueCar",
+    color: "azul"
+},
 
-    {
-        emoji: "🧢",
-        name: "Gorra azul",
-        color: "azul"
-    },
+{
+    emoji: "🪣",
+    nameKey: "colorsSort.blueBucket",
+    color: "azul"
+},
 
-    {
-        emoji: "🍌",
-        name: "Plátano",
-        color: "amarillo"
-    },
+{
+    emoji: "🧢",
+    nameKey: "colorsSort.blueCap",
+    color: "azul"
+},
 
-    {
-        emoji: "🌽",
-        name: "Maíz",
-        color: "amarillo"
-    },
+{
+    emoji: "🍌",
+    nameKey: "colorsSort.banana",
+    color: "amarillo"
+},
 
-    {
-        emoji: "⭐",
-        name: "Estrella",
-        color: "amarillo"
-    },
+{
+    emoji: "🌽",
+    nameKey: "colorsSort.corn",
+    color: "amarillo"
+},
 
-    {
-        emoji: "🐥",
-        name: "Pollito",
-        color: "amarillo"
-    },
+{
+    emoji: "⭐",
+    nameKey: "colorsSort.star",
+    color: "amarillo"
+},
 
-    {
-        emoji: "☀️",
-        name: "Sol",
-        color: "amarillo"
-    },
+{
+    emoji: "🐥",
+    nameKey: "colorsSort.chick",
+    color: "amarillo"
+},
 
-    {
-        emoji: "🍏",
-        name: "Manzana verde",
-        color: "verde"
-    },
+{
+    emoji: "☀️",
+    nameKey: "colorsSort.sun",
+    color: "amarillo"
+},
 
-    {
-        emoji: "🥝",
-        name: "Kiwi",
-        color: "verde"
-    },
+{
+    emoji: "🍏",
+    nameKey: "colorsSort.greenApple",
+    color: "verde"
+},
 
-    {
-        emoji: "🐸",
-        name: "Rana",
-        color: "verde"
-    },
+{
+    emoji: "🥝",
+    nameKey: "colorsSort.kiwi",
+    color: "verde"
+},
 
-    {
-        emoji: "🌳",
-        name: "Árbol",
-        color: "verde"
-    },
+{
+    emoji: "🐸",
+    nameKey: "colorsSort.frog",
+    color: "verde"
+},
 
-    {
-        emoji: "🍀",
-        name: "Trébol",
-        color: "verde"
-    }
+{
+    emoji: "🌳",
+    nameKey: "colorsSort.tree",
+    color: "verde"
+},
 
+{
+    emoji: "🍀",
+    nameKey: "colorsSort.clover",
+    color: "verde"
+}
 ];
 
 let score = 0;
@@ -156,491 +157,439 @@ let offsetY = 0;
 
 let messageTimeout;
 
-
-// ========================================
-// ELEMENTOS HTML
-// ========================================
-
 const objectsArea =
-    document.getElementById("objectsArea");
+document.getElementById("objectsArea");
 
 const scoreElement =
-    document.getElementById("score");
+document.getElementById("score");
 
 const progressElement =
-    document.getElementById("progress");
+document.getElementById("progress");
 
 const messageElement =
-    document.getElementById("message");
+document.getElementById("message");
 
 const finishElement =
-    document.getElementById("finish");
+document.getElementById("finish");
 
 const restartButton =
-    document.getElementById("restart");
-
-
-// ========================================
-// MEZCLAR OBJETOS
-// ========================================
+document.getElementById("restart");
 
 function shuffle(array) {
 
-    const newArray = [...array];
+const newArray = [...array];
 
-    for (
-        let i = newArray.length - 1;
-        i > 0;
-        i--
-    ) {
+for (
+    let i = newArray.length - 1;
+    i > 0;
+    i--
+) {
 
-        const j =
-            Math.floor(
-                Math.random() * (i + 1)
-            );
+    const j =
+        Math.floor(
+            Math.random() * (i + 1)
+        );
 
-        [
-            newArray[i],
-            newArray[j]
-        ] =
-        [
-            newArray[j],
-            newArray[i]
-        ];
-
-    }
-
-    return newArray;
+    [
+        newArray[i],
+        newArray[j]
+    ] =
+    [
+        newArray[j],
+        newArray[i]
+    ];
 
 }
 
+return newArray;
 
-// ========================================
-// CREAR OBJETOS
-// ========================================
+}
 
 function createObjects() {
 
-    objectsArea.innerHTML = "";
+objectsArea.innerHTML = "";
 
-    const shuffledObjects =
-        shuffle(objects);
-
-
-    shuffledObjects.forEach(
-        (item, index) => {
-
-            const object =
-                document.createElement("div");
+const shuffledObjects =
+    shuffle(objects);
 
 
-            object.className =
-                "object";
+shuffledObjects.forEach(
+    (item, index) => {
+
+        const object =
+            document.createElement("div");
 
 
-            object.dataset.color =
-                item.color;
+        object.className =
+            "object";
 
 
-            object.dataset.index =
-                index;
+        object.dataset.color =
+            item.color;
 
 
-            object.innerHTML = `
-                <div class="object-emoji">
-                    ${item.emoji}
-                </div>
-
-                <div class="object-name">
-                    ${item.name}
-                </div>
-            `;
+        object.dataset.index =
+            index;
 
 
-            object.addEventListener(
-                "pointerdown",
-                startDrag
-            );
+        object.innerHTML = `
+            <div class="object-emoji">
+                ${item.emoji}
+            </div>
+
+            <div class="object-name">
+                ${window.translate(item.nameKey)}
+            </div>
+        `;
 
 
-            objectsArea.appendChild(
-                object
-            );
+        object.addEventListener(
+            "pointerdown",
+            startDrag
+        );
 
-        }
-    );
+
+        objectsArea.appendChild(
+            object
+        );
+
+    }
+);
 
 }
-
-
-// ========================================
-// INICIAR ARRASTRE
-// ========================================
 
 function startDrag(event) {
 
-    if (draggedObject) {
-        return;
-    }
-
-
-    draggedObject =
-        event.currentTarget;
-
-
-    originalParent =
-        draggedObject.parentElement;
-
-
-    const rect =
-        draggedObject.getBoundingClientRect();
-
-
-    offsetX =
-        event.clientX - rect.left;
-
-
-    offsetY =
-        event.clientY - rect.top;
-
-
-    draggedObject.classList.add(
-        "dragging"
-    );
-
-
-    draggedObject.style.width =
-        rect.width + "px";
-
-
-    draggedObject.style.height =
-        rect.height + "px";
-
-
-    draggedObject.style.left =
-        (event.clientX - offsetX) + "px";
-
-
-    draggedObject.style.top =
-        (event.clientY - offsetY) + "px";
-
-
-    document.body.appendChild(
-        draggedObject
-    );
-
-
-    document.addEventListener(
-        "pointermove",
-        dragMove
-    );
-
-
-    document.addEventListener(
-        "pointerup",
-        endDrag,
-        { once: true }
-    );
-
+if (draggedObject) {
+    return;
 }
 
 
-// ========================================
-// MOVER OBJETO
-// ========================================
+draggedObject =
+    event.currentTarget;
+
+
+originalParent =
+    draggedObject.parentElement;
+
+
+const rect =
+    draggedObject.getBoundingClientRect();
+
+
+offsetX =
+    event.clientX - rect.left;
+
+
+offsetY =
+    event.clientY - rect.top;
+
+
+draggedObject.classList.add(
+    "dragging"
+);
+
+
+draggedObject.style.width =
+    rect.width + "px";
+
+
+draggedObject.style.height =
+    rect.height + "px";
+
+
+draggedObject.style.left =
+    (event.clientX - offsetX) + "px";
+
+
+draggedObject.style.top =
+    (event.clientY - offsetY) + "px";
+
+
+document.body.appendChild(
+    draggedObject
+);
+
+
+document.addEventListener(
+    "pointermove",
+    dragMove
+);
+
+
+document.addEventListener(
+    "pointerup",
+    endDrag,
+    { once: true }
+);
+
+}
 
 function dragMove(event) {
 
-    if (!draggedObject) {
-        return;
-    }
-
-
-    draggedObject.style.left =
-        (event.clientX - offsetX) + "px";
-
-
-    draggedObject.style.top =
-        (event.clientY - offsetY) + "px";
-
-
-    highlightColorBox(
-        event.clientX,
-        event.clientY
-    );
-
+if (!draggedObject) {
+    return;
 }
 
+draggedObject.style.left =
+    (event.clientX - offsetX) + "px";
+draggedObject.style.top =
+    (event.clientY - offsetY) + "px";
 
-// ========================================
-// RESALTAR COLOR
-// ========================================
+highlightColorBox(
+    event.clientX,
+    event.clientY
+);
+}
 
 function highlightColorBox(x, y) {
 
-    const boxes =
-        document.querySelectorAll(
-            ".color-box"
-        );
+const boxes =
+    document.querySelectorAll(
+        ".color-box"
+    );
 
 
-    boxes.forEach(box => {
+boxes.forEach(box => {
 
-        const rect =
-            box.getBoundingClientRect();
-
-
-        const inside =
-            x >= rect.left &&
-            x <= rect.right &&
-            y >= rect.top &&
-            y <= rect.bottom;
+    const rect =
+        box.getBoundingClientRect();
 
 
-        box.classList.toggle(
-            "hovered",
-            inside
-        );
+    const inside =
+        x >= rect.left &&
+        x <= rect.right &&
+        y >= rect.top &&
+        y <= rect.bottom;
 
-    });
+
+    box.classList.toggle(
+        "hovered",
+        inside
+    );
+
+});
 
 }
-
-
-// ========================================
-// TERMINAR ARRASTRE
-// ========================================
 
 function endDrag(event) {
 
-    if (!draggedObject) {
-        return;
-    }
 
-
-    document.removeEventListener(
-        "pointermove",
-        dragMove
-    );
-
-
-    const boxes =
-        document.querySelectorAll(
-            ".color-box"
-        );
-
-
-    let targetBox = null;
-
-
-    boxes.forEach(box => {
-
-        const rect =
-            box.getBoundingClientRect();
-
-
-        const inside =
-            event.clientX >= rect.left &&
-            event.clientX <= rect.right &&
-            event.clientY >= rect.top &&
-            event.clientY <= rect.bottom;
-
-
-        if (inside) {
-            targetBox = box;
-        }
-
-
-        box.classList.remove(
-            "hovered"
-        );
-
-    });
-
-
-    if (!targetBox) {
-
-        returnObject();
-
-        return;
-
-    }
-
-
-    const targetColor =
-        targetBox.dataset.color;
-
-
-    const objectColor =
-        draggedObject.dataset.color;
-
-
-    if (targetColor === objectColor) {
-
-        correctAnswer(targetBox);
-
-    }
-
-    else {
-
-        wrongAnswer();
-
-    }
-
+if (!draggedObject) {
+    return;
 }
 
 
-// ========================================
-// RESPUESTA CORRECTA
-// ========================================
-
-function correctAnswer(targetBox) {
-
-    score++;
+document.removeEventListener(
+    "pointermove",
+    dragMove
+);
 
 
-    scoreElement.textContent =
-        score;
+const boxes =
+    document.querySelectorAll(
+        ".color-box"
+    );
 
 
-    const percentage =
-        (score / objects.length) * 100;
+let targetBox = null;
 
 
-    progressElement.style.width =
-        percentage + "%";
+boxes.forEach(box => {
+
+    const rect =
+        box.getBoundingClientRect();
 
 
-    // ====================================
-    // GUARDAR PROGRESO
-    // ====================================
+    const inside =
+        event.clientX >= rect.left &&
+        event.clientX <= rect.right &&
+        event.clientY >= rect.top &&
+        event.clientY <= rect.bottom;
 
-    if (score < objects.length) {
 
-        guardarProgreso(
-            Math.round(percentage),
-            "en proceso"
-        );
-
+    if (inside) {
+        targetBox = box;
     }
 
 
-    targetBox.classList.add(
-        "correct"
+    box.classList.remove(
+        "hovered"
     );
 
-
-    setTimeout(() => {
-
-        targetBox.classList.remove(
-            "correct"
-        );
-
-    }, 500);
+});
 
 
-    draggedObject.classList.remove(
-        "dragging"
-    );
-
-
-    draggedObject.style.opacity =
-        "0";
-
-
-    draggedObject.style.transform =
-        "scale(0)";
-
-
-    setTimeout(() => {
-
-        if (draggedObject) {
-
-            draggedObject.remove();
-
-        }
-
-        draggedObject = null;
-
-    }, 250);
-
-
-    showMessage(
-        getSuccessMessage(),
-        "success"
-    );
-
-
-    // ====================================
-    // JUEGO COMPLETADO
-    // ====================================
-
-    if (score === objects.length) {
-
-        guardarProgreso(
-            100,
-            "completado"
-        );
-
-
-        setTimeout(() => {
-
-            showFinish();
-
-        }, 700);
-
-    }
-
-}
-
-
-// ========================================
-// MENSAJES CORRECTOS
-// ========================================
-
-function getSuccessMessage() {
-
-    const messages = [
-
-        "🌟 ¡Muy bien!",
-
-        "👏 ¡Excelente!",
-
-        "🎉 ¡Correcto!",
-
-        "⭐ ¡Genial!",
-
-        "😊 ¡Lo hiciste muy bien!"
-
-    ];
-
-
-    return messages[
-        Math.floor(
-            Math.random() *
-            messages.length
-        )
-    ];
-
-}
-
-
-// ========================================
-// RESPUESTA INCORRECTA
-// ========================================
-
-function wrongAnswer() {
-
-    showMessage(
-        "😊 ¡Inténtalo otra vez!",
-        "error"
-    );
-
+if (!targetBox) {
 
     returnObject();
 
+    return;
+
 }
 
+
+const targetColor =
+    targetBox.dataset.color;
+
+
+const objectColor =
+    draggedObject.dataset.color;
+
+
+if (targetColor === objectColor) {
+
+    correctAnswer(targetBox);
+
+}
+
+else {
+
+    wrongAnswer();
+
+}
+
+}
+
+function correctAnswer(targetBox) {
+
+score++;
+
+
+scoreElement.textContent =
+    score;
+
+
+const percentage =
+    (score / objects.length) * 100;
+
+
+progressElement.style.width =
+    percentage + "%";
+
+if (score < objects.length) {
+
+    guardarProgreso(
+        Math.round(percentage),
+        "en proceso"
+    );
+
+}
+
+
+targetBox.classList.add(
+    "correct"
+);
+
+
+setTimeout(() => {
+
+    targetBox.classList.remove(
+        "correct"
+    );
+
+}, 500);
+
+
+draggedObject.classList.remove(
+    "dragging"
+);
+
+
+draggedObject.style.opacity =
+    "0";
+
+
+draggedObject.style.transform =
+    "scale(0)";
+
+
+setTimeout(() => {
+
+    if (draggedObject) {
+
+        draggedObject.remove();
+
+    }
+
+    draggedObject = null;
+
+}, 250);
+
+
+showMessage(
+    getSuccessMessage(),
+    "success"
+);
+
+
+
+if (score === objects.length) {
+
+    guardarProgreso(
+        100,
+        "completado"
+    );
+
+
+    setTimeout(() => {
+
+        showFinish();
+
+    }, 700);
+
+}
+}
+
+function getSuccessMessage() {
+
+const messages = [
+
+    window.translate(
+        "colorsSort.correct1"
+    ),
+
+    window.translate(
+        "colorsSort.correct2"
+    ),
+
+    window.translate(
+        "colorsSort.correct3"
+    ),
+
+    window.translate(
+        "colorsSort.correct4"
+    ),
+
+    window.translate(
+        "colorsSort.correct5"
+    )
+
+];
+
+
+return messages[
+    Math.floor(
+        Math.random() *
+        messages.length
+    )
+];
+
+}
+
+function wrongAnswer() {
+
+showMessage(
+    window.translate(
+        "colorsSort.tryAgain"
+    ),
+    "error"
+);
+
+
+returnObject();
+
+}
 
 // ========================================
 // DEVOLVER OBJETO
@@ -648,40 +597,39 @@ function wrongAnswer() {
 
 function returnObject() {
 
-    if (!draggedObject) {
-        return;
-    }
-
-
-    draggedObject.classList.remove(
-        "dragging"
-    );
-
-
-    draggedObject.style.position = "";
-
-    draggedObject.style.left = "";
-
-    draggedObject.style.top = "";
-
-    draggedObject.style.width = "";
-
-    draggedObject.style.height = "";
-
-    draggedObject.style.opacity = "";
-
-    draggedObject.style.transform = "";
-
-
-    originalParent.appendChild(
-        draggedObject
-    );
-
-
-    draggedObject = null;
-
+if (!draggedObject) {
+    return;
 }
 
+
+draggedObject.classList.remove(
+    "dragging"
+);
+
+
+draggedObject.style.position = "";
+
+draggedObject.style.left = "";
+
+draggedObject.style.top = "";
+
+draggedObject.style.width = "";
+
+draggedObject.style.height = "";
+
+draggedObject.style.opacity = "";
+
+draggedObject.style.transform = "";
+
+
+originalParent.appendChild(
+    draggedObject
+);
+
+
+draggedObject = null;
+
+}
 
 // ========================================
 // MOSTRAR MENSAJE
@@ -689,149 +637,142 @@ function returnObject() {
 
 function showMessage(text, type) {
 
-    clearTimeout(
-        messageTimeout
-    );
+clearTimeout(
+    messageTimeout
+);
 
 
-    messageElement.textContent =
-        text;
+messageElement.textContent =
+    text;
 
 
-    messageElement.className =
-        "message " +
-        type +
-        " show";
+messageElement.className =
+    "message " +
+    type +
+    " show";
 
 
-    messageTimeout =
-        setTimeout(() => {
+messageTimeout =
+    setTimeout(() => {
 
-            messageElement.classList.remove(
-                "show"
-            );
+        messageElement.classList.remove(
+            "show"
+        );
 
-        }, 900);
-
+    }, 900);
 }
 
-
-// ========================================
-// FINAL DEL JUEGO
-// ========================================
 
 function showFinish() {
 
-    createConfetti();
+createConfetti();
 
 
-    finishElement.classList.add(
-        "show"
-    );
+finishElement.classList.add(
+    "show"
+);
 
 }
-
-
-// ========================================
-// CONFETI
-// ========================================
 
 function createConfetti() {
 
-    const colors = [
+const colors = [
 
-        "#ff5252",
+    "#ff5252",
 
-        "#42a5f5",
+    "#42a5f5",
 
-        "#ffd740",
+    "#ffd740",
 
-        "#66bb6a",
+    "#66bb6a",
 
-        "#ff4081",
+    "#ff4081",
 
-        "#7c4dff"
+    "#7c4dff"
 
-    ];
-
-
-    for (
-        let i = 0;
-        i < 100;
-        i++
-    ) {
-
-        const confetti =
-            document.createElement(
-                "div"
-            );
+];
 
 
-        confetti.className =
-            "confetti";
+for (
+    let i = 0;
+    i < 100;
+    i++
+) {
 
-
-        confetti.style.left =
-            Math.random() * 100 + "vw";
-
-
-        confetti.style.backgroundColor =
-            colors[
-                Math.floor(
-                    Math.random() *
-                    colors.length
-                )
-            ];
-
-
-        confetti.style.animationDuration =
-            (2 + Math.random() * 3) +
-            "s";
-
-
-        confetti.style.animationDelay =
-            Math.random() * 1.5 +
-            "s";
-
-
-        document.body.appendChild(
-            confetti
+    const confetti =
+        document.createElement(
+            "div"
         );
 
 
-        setTimeout(() => {
+    confetti.className =
+        "confetti";
 
-            confetti.remove();
 
-        }, 5500);
+    confetti.style.left =
+        Math.random() * 100 + "vw";
 
-    }
+
+    confetti.style.backgroundColor =
+        colors[
+            Math.floor(
+                Math.random() *
+                colors.length
+            )
+        ];
+
+
+    confetti.style.animationDuration =
+        (2 + Math.random() * 3) +
+        "s";
+
+
+    confetti.style.animationDelay =
+        Math.random() * 1.5 +
+        "s";
+
+
+    document.body.appendChild(
+        confetti
+    );
+
+
+    setTimeout(() => {
+
+        confetti.remove();
+
+    }, 5500);
+
+}
 
 }
 
 
-// ========================================
-// SIGUIENTE NIVEL
-// ========================================
-
 restartButton.addEventListener(
-    "click",
-    () => {
+"click",
+() => {
 
-        window.location.href = "niveles.html";
+    window.location.href =
+        "niveles.html";
 
-    }
+}
+
 );
 
+window.addEventListener(
+"thinkarooLanguageChanged",
+() => {
 
-// ========================================
-// INICIAR JUEGO
-// ========================================
+    createObjects();
+
+}
+
+);
+
 
 guardarProgreso(
-    0,
-    "sin iniciar"
+0,
+"sin iniciar"
 );
-
 
 createObjects();

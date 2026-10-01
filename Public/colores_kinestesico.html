@@ -1,93 +1,193 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>¡Aprendamos los Colores!</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
-    
-    <link rel="stylesheet" href="CSS/colores_kinestesico.css">
+<meta charset="UTF-8">
+
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0">
+
+<title data-i18n="colorsSort.pageTitle">
+    ¡Aprendamos los Colores!
+</title>
+
+<link rel="preconnect"
+      href="https://fonts.googleapis.com">
+
+<link rel="preconnect"
+      href="https://fonts.gstatic.com"
+      crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&display=swap"
+      rel="stylesheet">
+
+<link rel="stylesheet"
+      href="CSS/colores_kinestesico.css">
+
 </head>
-
 <body>
-
     <header>
-        <h1>🌈 ¡Aprendamos los Colores! 🌈</h1>
-        <p>Arrastra cada objeto a la caja de su mismo color</p>
+        <h1 data-i18n="colorsSort.title">
+            🌈 ¡Aprendamos los Colores! 🌈
+        </h1>
+        <p data-i18n="colorsSort.description">
+            Arrastra cada objeto a la caja de su mismo color
+        </p>
     </header>
-
     <div class="info">
+
         <div class="score">
-            ⭐ Aciertos: <span id="score">0</span> / 20
+
+            <span data-i18n="colorsSort.points">
+                ⭐ Aciertos:
+            </span>
+
+            <span id="score">0</span> / 20
+
         </div>
+
 
         <div class="progress-container">
-            <div class="progress" id="progress"></div>
+
+            <div class="progress"
+                id="progress">
+            </div>
+
         </div>
+
     </div>
+
 
     <main>
 
-        <h2 class="instruction">
+
+        <h2 class="instruction"
+            data-i18n="colorsSort.instruction">
+
             🖐️ ¡Toca y arrastra los objetos!
+
         </h2>
 
-        <section class="objects-area" id="objectsArea">
-            <!-- Los objetos aparecerán aquí mediante JavaScript -->
+
+
+        <section class="objects-area"
+                id="objectsArea">
         </section>
 
         <section class="colors-area">
+            <div class="color-box red"
+                data-color="rojo">
 
-            <div class="color-box red" data-color="rojo">
-                <h2>ROJO</h2>
-                <div class="basket">🧺</div>
+                <h2 data-i18n="colorsSort.red">
+                    ROJO
+                </h2>
+
+                <div class="basket">
+                    🧺
+                </div>
+
             </div>
 
-            <div class="color-box blue" data-color="azul">
-                <h2>AZUL</h2>
-                <div class="basket">🧺</div>
+
+            <div class="color-box blue"
+                data-color="azul">
+
+                <h2 data-i18n="colorsSort.blue">
+                    AZUL
+                </h2>
+
+                <div class="basket">
+                    🧺
+                </div>
+
             </div>
 
-            <div class="color-box yellow" data-color="amarillo">
-                <h2>AMARILLO</h2>
-                <div class="basket">🧺</div>
+
+            <div class="color-box yellow"
+                data-color="amarillo">
+
+                <h2 data-i18n="colorsSort.yellow">
+                    AMARILLO
+                </h2>
+
+                <div class="basket">
+                    🧺
+                </div>
+
             </div>
 
-            <div class="color-box green" data-color="verde">
-                <h2>VERDE</h2>
-                <div class="basket">🧺</div>
+            <div class="color-box green"
+                data-color="verde">
+
+                <h2 data-i18n="colorsSort.green">
+                    VERDE
+                </h2>
+
+                <div class="basket">
+                    🧺
+                </div>
+
             </div>
+
 
         </section>
 
     </main>
 
-    <div class="message" id="message"></div>
+    <div class="message"
+        id="message">
+    </div>
 
-    <div class="finish" id="finish">
+
+
+
+    <div class="finish"
+        id="finish">
+
 
         <div class="finish-card">
 
-            <div class="trophy">🏆</div>
 
-          <h2>¡Excelente ahora tu misión!</h2>
+            <div class="trophy">
+                🏆
+            </div>
 
-        <p>
-            Encuentra 2 objetos de cada color que aprendistes hoy
-            <br>
-            ¡Aprendiste los colores!
-        </p>
 
-        <button id="restart" type="button">
-            ➡️ Siguiente nivel
-        </button>
+            <h2 data-i18n="colorsSort.levelCompleteTitle">
+                ¡Excelente! ¡Ahora tu misión!
+            </h2>
 
+
+            <p>
+
+                <span data-i18n="colorsSort.levelCompleteDescription">
+                    Encuentra 2 objetos de cada color que aprendiste hoy.
+                </span>
+
+                <br>
+
+                <span data-i18n="colorsSort.levelCompleteLearned">
+                    ¡Aprendiste los colores!
+                </span>
+
+            </p>
+
+
+            <button id="restart"
+                    type="button"
+                    data-i18n="colorsSort.nextLevel">
+
+                ➡️ Siguiente nivel
+
+            </button>
+
+
+        </div>
 
     </div>
 
-    <script src="JS/colores_kinestesicol.js"></script>
+    <script src="JS/idioma-global.js"></script>
 
+    <script src="JS/colores_kinestesicol.js"></script>
 </body>
+
 </html>

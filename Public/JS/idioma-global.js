@@ -85,10 +85,98 @@
 
         "colorsGame.levelCompleteTitle": "¡Excelente ahora tu misión!",
         "colorsGame.levelCompleteDescription":
-            "Encuentra 2 objetos de cada color que aprendistes hoy",
+            "Encuentra 2 objetos de cada color que aprendiste hoy",
         "colorsGame.levelCompleteLearned":
             "¡Aprendiste los colores!",
-        "colorsGame.nextLevel": "Siguiente nivel"
+        "colorsGame.nextLevel": "Siguiente nivel",
+
+        // Colors sorting game
+        "colorsSort.title": "Clasifica los Colores",
+        "colorsSort.description":
+            "Arrastra cada objeto al color correcto.",
+        "colorsSort.points": "⭐ Puntos:",
+        "colorsSort.progress": "🎯 Progreso:",
+        "colorsSort.instruction": "🖐️ ¡Toca y arrastra los objetos!",
+
+        "colorsSort.red": "Rojo",
+        "colorsSort.blue": "Azul",
+        "colorsSort.yellow": "Amarillo",
+        "colorsSort.green": "Verde",
+
+        "colorsSort.apple": "Manzana",
+        "colorsSort.strawberry": "Fresa",
+        "colorsSort.cherries": "Cerezas",
+        "colorsSort.heart": "Corazón",
+        "colorsSort.balloon": "Globo",
+
+        "colorsSort.blueFish": "Pez azul",
+        "colorsSort.blueBall": "Pelota azul",
+        "colorsSort.blueCar": "Carro azul",
+        "colorsSort.blueBucket": "Cubeta azul",
+        "colorsSort.blueCap": "Gorra azul",
+
+        "colorsSort.banana": "Plátano",
+        "colorsSort.corn": "Maíz",
+        "colorsSort.star": "Estrella",
+        "colorsSort.chick": "Pollito",
+        "colorsSort.sun": "Sol",
+
+        "colorsSort.greenApple": "Manzana verde",
+        "colorsSort.kiwi": "Kiwi",
+        "colorsSort.frog": "Rana",
+        "colorsSort.tree": "Árbol",
+        "colorsSort.clover": "Trébol",
+
+        "colorsSort.correct1": "🌟 ¡Muy bien!",
+        "colorsSort.correct2": "👏 ¡Excelente!",
+        "colorsSort.correct3": "🎉 ¡Correcto!",
+        "colorsSort.correct4": "⭐ ¡Genial!",
+        "colorsSort.correct5": "😊 ¡Lo hiciste muy bien!",
+
+        "colorsSort.tryAgain": "😊 ¡Inténtalo otra vez!",
+        "colorsSort.finishTitle": "🎉 ¡Juego terminado!",
+        "colorsSort.finishDescription":
+            "¡Excelente trabajo! Clasificaste todos los objetos.",
+        "colorsSort.restart": "Siguiente nivel",
+        "colorsSort.apple": "Manzana",
+        "colorsSort.strawberry": "Fresa",
+        "colorsSort.cherries": "Cerezas",
+        "colorsSort.heart": "Corazón",
+        "colorsSort.balloon": "Globo",
+
+        "colorsSort.blueFish": "Pez azul",
+        "colorsSort.blueBall": "Pelota azul",
+        "colorsSort.blueCar": "Carro azul",
+        "colorsSort.blueBucket": "Cubeta azul",
+        "colorsSort.blueCap": "Gorra azul",
+
+        "colorsSort.banana": "Plátano",
+        "colorsSort.corn": "Maíz",
+        "colorsSort.star": "Estrella",
+        "colorsSort.chick": "Pollito",
+        "colorsSort.sun": "Sol",
+
+        "colorsSort.greenApple": "Manzana verde",
+        "colorsSort.kiwi": "Kiwi",
+        "colorsSort.frog": "Rana",
+        "colorsSort.tree": "Árbol",
+        "colorsSort.clover": "Trébol",
+
+        "colorsSort.correct1": "🌟 ¡Muy bien!",
+        "colorsSort.correct2": "👏 ¡Excelente!",
+        "colorsSort.correct3": "🎉 ¡Correcto!",
+        "colorsSort.correct4": "⭐ ¡Genial!",
+        "colorsSort.correct5": "😊 ¡Lo hiciste muy bien!",
+
+        "colorsSort.tryAgain": "😊 ¡Inténtalo otra vez!",
+        "colorsSort.levelCompleteTitle":
+            "¡Excelente! ¡Ahora tu misión!",
+        "colorsSort.levelCompleteDescription":
+            "Encuentra 2 objetos de cada color que aprendiste hoy.",
+        "colorsSort.levelCompleteLearned":
+            "¡Aprendiste los colores!",
+        "colorsSort.nextLevel":
+            "➡️ Siguiente nivel",
 
 
     };
@@ -177,14 +265,101 @@
 
         "colorsGame.next": "Next ➜",
 
-        "colorsGame.levelCompleteTitle": "¡Excellent! Now your mission!",
+        "colorsGame.levelCompleteTitle": "Excellent! Now your mission!",
         "colorsGame.levelCompleteDescription":
             "Find 2 objects of each color you learned today",
         "colorsGame.levelCompleteLearned":
-            "¡You learned the colors!",
-        "colorsGame.nextLevel": "Next level"
+            "You learned the colors!",
+        "colorsGame.nextLevel": "Next level",
 
+        // Colors sorting game
+        "colorsSort.title": "Sort the Colors",
+        "colorsSort.description":
+            "Drag each object to the correct color.",
 
+        "colorsSort.points": "⭐ Points:",
+        "colorsSort.progress": "🎯 Progress:",
+        "colorsSort.instruction": "🖐️ Touch and drag the objects!",
+
+        "colorsSort.red": "Red",
+        "colorsSort.blue": "Blue",
+        "colorsSort.yellow": "Yellow",
+        "colorsSort.green": "Green",
+
+        "colorsSort.apple": "Apple",
+        "colorsSort.strawberry": "Strawberry",
+        "colorsSort.cherries": "Cherries",
+        "colorsSort.heart": "Heart",
+        "colorsSort.balloon": "Balloon",
+
+        "colorsSort.blueFish": "Blue fish",
+        "colorsSort.blueBall": "Blue ball",
+        "colorsSort.blueCar": "Blue car",
+        "colorsSort.blueBucket": "Blue bucket",
+        "colorsSort.blueCap": "Blue cap",
+
+        "colorsSort.banana": "Banana",
+        "colorsSort.corn": "Corn",
+        "colorsSort.star": "Star",
+        "colorsSort.chick": "Chick",
+        "colorsSort.sun": "Sun",
+
+        "colorsSort.greenApple": "Green apple",
+        "colorsSort.kiwi": "Kiwi",
+        "colorsSort.frog": "Frog",
+        "colorsSort.tree": "Tree",
+        "colorsSort.clover": "Clover",
+
+        "colorsSort.correct1": "🌟 Great job!",
+        "colorsSort.correct2": "👏 Excellent!",
+        "colorsSort.correct3": "🎉 Correct!",
+        "colorsSort.correct4": "⭐ Awesome!",
+        "colorsSort.correct5": "😊 You did a great job!",
+
+        "colorsSort.tryAgain": "😊 Try again!",
+        "colorsSort.finishTitle": "🎉 Game finished!",
+        "colorsSort.finishDescription":
+            "Excellent work! You sorted all the objects.",
+        "colorsSort.restart": "Next level",
+        "colorsSort.apple": "Apple",
+        "colorsSort.strawberry": "Strawberry",
+        "colorsSort.cherries": "Cherries",
+        "colorsSort.heart": "Heart",
+        "colorsSort.balloon": "Balloon",
+
+        "colorsSort.blueFish": "Blue fish",
+        "colorsSort.blueBall": "Blue ball",
+        "colorsSort.blueCar": "Blue car",
+        "colorsSort.blueBucket": "Blue bucket",
+        "colorsSort.blueCap": "Blue cap",
+
+        "colorsSort.banana": "Banana",
+        "colorsSort.corn": "Corn",
+        "colorsSort.star": "Star",
+        "colorsSort.chick": "Chick",
+        "colorsSort.sun": "Sun",
+
+        "colorsSort.greenApple": "Green apple",
+        "colorsSort.kiwi": "Kiwi",
+        "colorsSort.frog": "Frog",
+        "colorsSort.tree": "Tree",
+        "colorsSort.clover": "Clover",
+
+        "colorsSort.correct1": "🌟 Great job!",
+        "colorsSort.correct2": "👏 Excellent!",
+        "colorsSort.correct3": "🎉 Correct!",
+        "colorsSort.correct4": "⭐ Awesome!",
+        "colorsSort.correct5": "😊 You did a great job!",
+
+        "colorsSort.tryAgain": "😊 Try again!",
+        "colorsSort.levelCompleteTitle":
+            "Excellent! Now your mission!",
+        "colorsSort.levelCompleteDescription":
+            "Find 2 objects of each color you learned today.",
+        "colorsSort.levelCompleteLearned":
+            "You learned the colors!",
+        "colorsSort.nextLevel":
+            "➡️ Next level",
     };
 
 
