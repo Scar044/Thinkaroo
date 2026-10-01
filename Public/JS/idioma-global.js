@@ -178,6 +178,97 @@
         "colorsSort.nextLevel":
             "➡️ Siguiente nivel",
 
+            /* =====================================================
+            COLORES - JUEGO VISUAL
+            ===================================================== */
+
+            "colorsVisual.pageTitle":
+                "Colores - Juego Visual",
+
+            "colorsVisual.title":
+                "🌈 ¡Ordena los Colores!",
+
+            "colorsVisual.description":
+                "Toca un objeto y después toca la caja de su mismo color.",
+
+            "colorsVisual.points":
+                "⭐ Puntos:",
+
+            "colorsVisual.round":
+                "🎯 Ronda:",
+
+            "colorsVisual.of":
+                "/ 5",
+
+            "colorsVisual.selectObject":
+                "¡Selecciona un objeto!",
+
+            "colorsVisual.chooseBox":
+                "Ahora toca la caja",
+
+            "colorsVisual.red":
+                "Rojo",
+
+            "colorsVisual.blue":
+                "Azul",
+
+            "colorsVisual.yellow":
+                "Amarillo",
+
+            "colorsVisual.green":
+                "Verde",
+
+            "colorsVisual.apple":
+                "Manzana",
+
+            "colorsVisual.blueBerry":
+                "Baya azul",
+
+            "colorsVisual.lemon":
+                "Limón",
+
+            "colorsVisual.greenApple":
+                "Manzana verde",
+
+            "colorsVisual.selectFirst":
+                "👆 Primero selecciona un objeto.",
+
+            "colorsVisual.correct":
+                "🎉 ¡Muy bien!",
+
+            "colorsVisual.wrong":
+                "😊 Ese no es su color. ¡Inténtalo otra vez!",
+
+            "colorsVisual.findAnother":
+                "¡Busca otro objeto! 😊",
+
+            "colorsVisual.roundComplete":
+                "🎉 ¡Completaste la ronda!",
+
+            "colorsVisual.excellent":
+                "¡Excelente trabajo! ⭐",
+
+            "colorsVisual.next":
+                "Siguiente ➜",
+
+            "colorsVisual.gameComplete":
+                "🏆 ¡Juego terminado!",
+
+            "colorsVisual.finalScore":
+                "Conseguiste {points} puntos ⭐",
+
+            "colorsVisual.levelCompleteTitle":
+                "¡Excelente! ¡Ahora tu misión!",
+
+            "colorsVisual.levelCompleteDescription":
+                "Encuentra 2 objetos de cada color que aprendiste hoy.",
+
+            "colorsVisual.levelCompleteLearned":
+                "¡Aprendiste los colores!",
+
+            "colorsVisual.nextLevel":
+                "➡️ Siguiente nivel"
+
 
     };
 
@@ -360,6 +451,97 @@
             "You learned the colors!",
         "colorsSort.nextLevel":
             "➡️ Next level",
+
+            /* =====================================================
+            COLORS - VISUAL GAME
+            ===================================================== */
+
+            "colorsVisual.pageTitle":
+                "Colors - Visual Game",
+
+            "colorsVisual.title":
+                "🌈 Sort the Colors!",
+
+            "colorsVisual.description":
+                "Touch an object and then touch the box with the same color.",
+
+            "colorsVisual.points":
+                "⭐ Points:",
+
+            "colorsVisual.round":
+                "🎯 Round:",
+
+            "colorsVisual.of":
+                "/ 5",
+
+            "colorsVisual.selectObject":
+                "Select an object!",
+
+            "colorsVisual.chooseBox":
+                "Now touch the",
+
+            "colorsVisual.red":
+                "Red",
+
+            "colorsVisual.blue":
+                "Blue",
+
+            "colorsVisual.yellow":
+                "Yellow",
+
+            "colorsVisual.green":
+                "Green",
+
+            "colorsVisual.apple":
+                "Apple",
+
+            "colorsVisual.blueBerry":
+                "Blueberry",
+
+            "colorsVisual.lemon":
+                "Lemon",
+
+            "colorsVisual.greenApple":
+                "Green apple",
+
+            "colorsVisual.selectFirst":
+                "👆 First select an object.",
+
+            "colorsVisual.correct":
+                "🎉 Great job!",
+
+            "colorsVisual.wrong":
+                "😊 That's not its color. Try again!",
+
+            "colorsVisual.findAnother":
+                "Find another object! 😊",
+
+            "colorsVisual.roundComplete":
+                "🎉 You completed the round!",
+
+            "colorsVisual.excellent":
+                "Excellent work! ⭐",
+
+            "colorsVisual.next":
+                "Next ➜",
+
+            "colorsVisual.gameComplete":
+                "🏆 Game complete!",
+
+            "colorsVisual.finalScore":
+                "You scored {points} points ⭐",
+
+            "colorsVisual.levelCompleteTitle":
+                "Excellent! Now your mission!",
+
+            "colorsVisual.levelCompleteDescription":
+                "Find 2 objects of each color you learned today.",
+
+            "colorsVisual.levelCompleteLearned":
+                "You learned the colors!",
+
+            "colorsVisual.nextLevel":
+                "➡️ Next level"
     };
 
 

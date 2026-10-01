@@ -3,115 +3,159 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+    <title data-i18n="colorsVisual.pageTitle">
+        Colores - Juego Visual
+    </title>
+    <link rel="preconnect"
+          href="https://fonts.googleapis.com">
+    <link rel="preconnect"
+          href="https://fonts.gstatic.com"
+          crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&display=swap"
+          rel="stylesheet">
 
-    <title>Colores - Juego Kinestésico</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
-
-    <link rel="stylesheet" href="CSS/colores_visual.css">
+    <link rel="stylesheet"
+          href="CSS/colores_visual.css">
 </head>
 
 <body>
 
     <div class="juego">
 
-        <h1>🌈 ¡Ordena los Colores!</h1>
+        <h1 data-i18n="colorsVisual.title">
+            🌈 ¡Ordena los Colores!
+        </h1>
 
-        <p class="instruccion">
+        <p class="instruccion"
+           data-i18n="colorsVisual.description">
             Toca un objeto y después toca la caja de su mismo color.
         </p>
-
-
-        <!-- PUNTOS Y RONDA -->
-
         <div class="datos">
-
             <span>
-                ⭐ Puntos:
+                <span data-i18n="colorsVisual.points">
+                    ⭐ Puntos:
+                </span>
                 <b id="puntos">0</b>
             </span>
-
             <span>
-                🎯 Ronda:
-                <b id="ronda">1</b> / 5
+                <span data-i18n="colorsVisual.round">
+                    🎯 Ronda:
+                </span>
+                <b id="ronda">1</b>
+                <span data-i18n="colorsVisual.of">
+                    / 5
+                </span>
             </span>
-
         </div>
 
+        <h2 id="pregunta"
+            data-i18n="colorsVisual.selectObject">
 
-        <h2 id="pregunta">
             ¡Selecciona un objeto!
+
         </h2>
 
-        <div id="objetos" class="objetos">
+        <div id="objetos"
+             class="objetos">
         </div>
 
         <div class="cajas">
-
-            <button class="caja caja-roja" data-color="rojo">
+            <button class="caja caja-roja"
+                    data-color="rojo"
+                    type="button">
                 🔴
-                <span>Rojo</span>
+                <span data-i18n="colorsVisual.red">
+                    Rojo
+                </span>
             </button>
 
-            <button class="caja caja-azul" data-color="azul">
+            <button class="caja caja-azul"
+                    data-color="azul"
+                    type="button">
                 🔵
-                <span>Azul</span>
+                <span data-i18n="colorsVisual.blue">
+                    Azul
+                </span>
             </button>
 
-            <button class="caja caja-amarilla" data-color="amarillo">
+            <button class="caja caja-amarilla"
+                    data-color="amarillo"
+                    type="button">
                 🟡
-                <span>Amarillo</span>
+                <span data-i18n="colorsVisual.yellow">
+                    Amarillo
+                </span>
             </button>
 
-            <button class="caja caja-verde" data-color="verde">
+            <button class="caja caja-verde"
+                    data-color="verde"
+                    type="button">
                 🟢
-                <span>Verde</span>
+                <span data-i18n="colorsVisual.green">
+                    Verde
+                </span>
             </button>
-
         </div>
 
         <div id="mensaje"></div>
 
-        <button
-            id="siguiente"
-            onclick="siguienteRonda()">
+        <button id="siguiente"
+                type="button"
+                style="display: none;">
 
-            Siguiente ➜
+            <span data-i18n="colorsVisual.next">
+                Siguiente ➜
+            </span>
 
         </button>
 
-        <div class="message" id="message"></div>
 
-        <div class="finish" id="finish">
+
+        <div class="message"
+             id="message">
+        </div>
+
+
+        <div class="finish"
+             id="finish">
 
             <div class="finish-card">
 
-                <div class="trophy">🏆</div>
+                <div class="trophy">
+                    🏆
+                </div>
 
-                <h2>¡Excelente ahora tu misión!</h2>
+
+                <h2 data-i18n="colorsVisual.levelCompleteTitle">
+                    ¡Excelente! ¡Ahora tu misión!
+                </h2>
+
 
                 <p>
-                    Encuentra 2 objetos de cada color que aprendistes hoy
+
+                    <span data-i18n="colorsVisual.levelCompleteDescription">
+                        Encuentra 2 objetos de cada color que aprendiste hoy.
+                    </span>
+
                     <br>
-                    ¡Aprendiste los colores!
+
+                    <span data-i18n="colorsVisual.levelCompleteLearned">
+                        ¡Aprendiste los colores!
+                    </span>
+
                 </p>
-
-                <button id="botonFinal">
-                    Continuar
+                <button id="botonFinal"
+                        type="button"
+                        data-i18n="colorsVisual.nextLevel">
+                    ➡️ Siguiente nivel
                 </button>
-
             </div>
-
         </div>
-
     </div>
 
-
+    <script src="JS/idioma-global.js"></script>
     <script src="JS/colores_visual.js"></script>
-
 </body>
-
 </html>
