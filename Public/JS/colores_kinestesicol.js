@@ -156,11 +156,6 @@ let offsetY = 0;
 
 let messageTimeout;
 
-
-// ========================================
-// ELEMENTOS HTML
-// ========================================
-
 const objectsArea =
     document.getElementById("objectsArea");
 
@@ -178,11 +173,6 @@ const finishElement =
 
 const restartButton =
     document.getElementById("restart");
-
-
-// ========================================
-// MEZCLAR OBJETOS
-// ========================================
 
 function shuffle(array) {
 
@@ -213,11 +203,6 @@ function shuffle(array) {
     return newArray;
 
 }
-
-
-// ========================================
-// CREAR OBJETOS
-// ========================================
 
 function createObjects() {
 
@@ -271,11 +256,6 @@ function createObjects() {
     );
 
 }
-
-
-// ========================================
-// INICIAR ARRASTRE
-// ========================================
 
 function startDrag(event) {
 
@@ -344,11 +324,6 @@ function startDrag(event) {
 
 }
 
-
-// ========================================
-// MOVER OBJETO
-// ========================================
-
 function dragMove(event) {
 
     if (!draggedObject) {
@@ -370,11 +345,6 @@ function dragMove(event) {
     );
 
 }
-
-
-// ========================================
-// RESALTAR COLOR
-// ========================================
 
 function highlightColorBox(x, y) {
 
@@ -405,11 +375,6 @@ function highlightColorBox(x, y) {
     });
 
 }
-
-
-// ========================================
-// TERMINAR ARRASTRE
-// ========================================
 
 function endDrag(event) {
 
@@ -489,11 +454,6 @@ function endDrag(event) {
 
 }
 
-
-// ========================================
-// RESPUESTA CORRECTA
-// ========================================
-
 function correctAnswer(targetBox) {
 
     score++;
@@ -509,11 +469,6 @@ function correctAnswer(targetBox) {
 
     progressElement.style.width =
         percentage + "%";
-
-
-    // ====================================
-    // GUARDAR PROGRESO
-    // ====================================
 
     if (score < objects.length) {
 
@@ -570,11 +525,6 @@ function correctAnswer(targetBox) {
         "success"
     );
 
-
-    // ====================================
-    // JUEGO COMPLETADO
-    // ====================================
-
     if (score === objects.length) {
 
         guardarProgreso(
@@ -592,11 +542,6 @@ function correctAnswer(targetBox) {
     }
 
 }
-
-
-// ========================================
-// MENSAJES CORRECTOS
-// ========================================
 
 function getSuccessMessage() {
 
@@ -624,11 +569,6 @@ function getSuccessMessage() {
 
 }
 
-
-// ========================================
-// RESPUESTA INCORRECTA
-// ========================================
-
 function wrongAnswer() {
 
     showMessage(
@@ -640,11 +580,6 @@ function wrongAnswer() {
     returnObject();
 
 }
-
-
-// ========================================
-// DEVOLVER OBJETO
-// ========================================
 
 function returnObject() {
 
@@ -682,11 +617,6 @@ function returnObject() {
 
 }
 
-
-// ========================================
-// MOSTRAR MENSAJE
-// ========================================
-
 function showMessage(text, type) {
 
     clearTimeout(
@@ -715,11 +645,6 @@ function showMessage(text, type) {
 
 }
 
-
-// ========================================
-// FINAL DEL JUEGO
-// ========================================
-
 function showFinish() {
 
     createConfetti();
@@ -730,11 +655,6 @@ function showFinish() {
     );
 
 }
-
-
-// ========================================
-// CONFETI
-// ========================================
 
 function createConfetti() {
 
@@ -809,11 +729,6 @@ function createConfetti() {
 
 }
 
-
-// ========================================
-// SIGUIENTE NIVEL
-// ========================================
-
 restartButton.addEventListener(
     "click",
     () => {
@@ -822,11 +737,6 @@ restartButton.addEventListener(
 
     }
 );
-
-
-// ========================================
-// INICIAR JUEGO
-// ========================================
 
 guardarProgreso(
     0,

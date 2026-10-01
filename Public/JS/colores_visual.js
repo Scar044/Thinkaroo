@@ -312,9 +312,6 @@ function terminarJuego() {
     document.getElementById("siguiente").style.display =
         "none";
 
-
-    // Ocultar reiniciar si existe
-
     const reiniciar =
         document.getElementById("reiniciar");
 
