@@ -637,16 +637,4 @@ header{
     max-width: 80px;
     border-radius: 100%;
 }
-#canguroFijo {
-    position: absolute;
-    left: 600px;
-    top: 1000px;
-    width: 300px;
-    z-index: 20;
-}
-
-#canguroFijo img {
-    width: 300px;
-    height: auto;
-    display: block;
-}
+#canguroFijo { position: absolute; bottom: 0; left: 0; width: 150px; z-index: 1000; } #canguroFijo img { display: block; width: 100%; height: auto; }
