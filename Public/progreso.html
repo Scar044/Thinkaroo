@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="es">
 
@@ -6,17 +5,22 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>ThinkaRoo - Progreso</title>
+    <title data-i18n="progress.pageTitle">ThinkaRoo - Progreso</title>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&display=swap"
+        rel="stylesheet"
+    >
 
     <link rel="stylesheet" href="CSS/progreso.css">
 
-    <link rel="stylesheet"
-        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    >
 </head>
 
 <body>
@@ -31,79 +35,84 @@
 
             <nav class="menu-sidebar">
 
-        <a href="#" id="btnNiveles" class="activo">
-            <span>🎮</span>
-            <span class="texto-sidebar">Niveles</span>
-        </a>
+                <a href="#" id="btnNiveles" class="activo">
+                    <span>🎮</span>
+                    <span class="texto-sidebar" data-i18n="progress.sidebar.levels">Niveles</span>
+                </a>
 
+                <a href="progreso.html">
+                    <span>📊</span>
+                    <span class="texto-sidebar" data-i18n="progress.sidebar.progress">Progreso</span>
+                </a>
 
-        <a href="progreso.html">
-            <span>📊</span>
-            <span class="texto-sidebar">Progreso</span>
-        </a>
+                <a href="logros.html">
+                    <span>🏆</span>
+                    <span class="texto-sidebar" data-i18n="progress.sidebar.achievements">Logros</span>
+                </a>
 
-
-        <a href="logros.html">
-            <span>🏆</span>
-            <span class="texto-sidebar">Logros</span>
-        </a>
-
-    </nav>
+            </nav>
 
             <div class="padres">
 
-        <hr>
+                <hr>
 
-        <a href="Perfil_padres.html">
+                <a href="Perfil_padres.html">
+                    <span>👨‍👩‍👧</span>
 
-            <span>👨‍👩‍👧</span>
+                    <span class="texto-sidebar" data-i18n="progress.sidebar.parents">
+                        Padres
+                    </span>
 
-            <span class="texto-sidebar">
-                Padres
-            </span>
+                    <span class="texto-sidebar">➜</span>
+                </a>
 
-            <span class="texto-sidebar">➜</span>
-
-        </a>
-
-    </div>
+            </div>
 
         </aside>
+
 
         <div class="main-area">
 
             <header>
-
-                <h1>Niveles de juego</h1>
-
+                <h1 data-i18n="progress.title">Niveles de juego</h1>
             </header>
+
 
             <main class="content">
 
                 <section class="levels">
 
-                    <h2>Nivel</h2>
+                    <h2 data-i18n="progress.level">Nivel</h2>
+
 
                     <div class="progreso-general">
 
                         <div class="progreso-general-header">
-                            <h2>Progreso general</h2>
+
+                            <h2 data-i18n="progress.general">
+                                Progreso general
+                            </h2>
 
                             <span id="juegosCompletados">
                                 0 de 4 juegos completados
                             </span>
+
                         </div>
 
+
                         <div class="barra-general">
+
                             <div
                                 id="barraProgresoGeneral"
                                 class="relleno-general"
                             >
                                 <span id="porcentajeGeneral">0%</span>
                             </div>
+
                         </div>
 
                     </div>
+
 
                     <div class="level green" data-nivel="1">
 
@@ -114,30 +123,28 @@
                         </div>
 
                         <div class="info">
+                            <h3 data-i18n="progress.level1.title">
+                                Animales escurridizos
+                            </h3>
 
-                            <h3>Animales escurridizos</h3>
-
-                            <p>Encuentra las parejas de animales</p>
-
+                            <p data-i18n="progress.level1.description">
+                                Encuentra las parejas de animales
+                            </p>
                         </div>
 
                         <div class="status">
-
-                            <span class="estado">Sin iniciar</span>
-
+                            <span class="estado" data-i18n="progress.status.notStarted">Sin iniciar</span>
                             <small class="porcentaje">0%</small>
-
                         </div>
 
                         <div class="progress">
-
                             <div class="bar">
                                 <div class="fill"></div>
                             </div>
-
                         </div>
 
                     </div>
+
 
                     <div class="level blue" data-nivel="2">
 
@@ -148,30 +155,28 @@
                         </div>
 
                         <div class="info">
+                            <h3 data-i18n="progress.level2.title">
+                                Las figuras geométricas
+                            </h3>
 
-                            <h3>Las figuras geométricas</h3>
-
-                            <p>Reconoce las figuras</p>
-
+                            <p data-i18n="progress.level2.description">
+                                Reconoce las figuras
+                            </p>
                         </div>
 
                         <div class="status">
-
-                            <span class="estado">Sin iniciar</span>
-
+                            <span class="estado" data-i18n="progress.status.notStarted">Sin iniciar</span>
                             <small class="porcentaje">0%</small>
-
                         </div>
 
                         <div class="progress">
-
                             <div class="bar">
                                 <div class="fill"></div>
                             </div>
-
                         </div>
 
                     </div>
+
 
                     <div class="level red" data-nivel="3">
 
@@ -182,30 +187,28 @@
                         </div>
 
                         <div class="info">
+                            <h3 data-i18n="progress.level3.title">
+                                Aprende los colores
+                            </h3>
 
-                            <h3>Aprende los colores</h3>
-
-                            <p>Reconoce los colores</p>
-
+                            <p data-i18n="progress.level3.description">
+                                Reconoce los colores
+                            </p>
                         </div>
 
                         <div class="status">
-
-                            <span class="estado">Sin iniciar</span>
-
+                            <span class="estado" data-i18n="progress.status.notStarted">Sin iniciar</span>
                             <small class="porcentaje">0%</small>
-
                         </div>
 
                         <div class="progress">
-
                             <div class="bar">
                                 <div class="fill"></div>
                             </div>
-
                         </div>
 
                     </div>
+
 
                     <div class="level gray" data-nivel="4">
 
@@ -216,27 +219,24 @@
                         </div>
 
                         <div class="info">
+                            <h3 data-i18n="progress.level4.title">
+                                El baile de los números
+                            </h3>
 
-                            <h3>El baile de los n&uacute;meros</h3>
-
-                            <p>Sigue a los animales</p>
-
+                            <p data-i18n="progress.level4.description">
+                                Sigue a los animales
+                            </p>
                         </div>
 
                         <div class="status">
-
-                            <span class="estado">Sin iniciar</span>
-
+                            <span class="estado" data-i18n="progress.status.notStarted">Sin iniciar</span>
                             <small class="porcentaje">0%</small>
-
                         </div>
 
                         <div class="progress">
-
                             <div class="bar">
                                 <div class="fill"></div>
                             </div>
-
                         </div>
 
                     </div>
@@ -248,8 +248,10 @@
         </div>
 
     </div>
-<script src="JS/sidebar.js"></script>
-<script src="JS/progreso.js"></script>
-</body>
 
+    <script src="JS/idioma-global.js"></script>
+    <script src="JS/sidebar.js"></script>
+    <script src="JS/progreso.js"></script>
+
+</body>
 </html>

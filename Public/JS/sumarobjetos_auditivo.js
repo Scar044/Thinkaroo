@@ -109,7 +109,6 @@ function generarPregunta() {
 
     }
 
-
     generarOpciones(cantidad);
 
 }
@@ -132,17 +131,14 @@ async function reproducirSonidos() {
     boton.disabled = true;
     ondas.classList.remove("oculto");
 
-
     try {
 
         const contexto =
             obtenerAudioContext();
 
-
         if (contexto.state === "suspended") {
             await contexto.resume();
         }
-
 
         for (let i = 0; i < cantidad; i++) {
 
@@ -191,43 +187,35 @@ function reproducirTono() {
         const ganancia =
             contexto.createGain();
 
-
         oscilador.type = "sine";
-
 
         oscilador.frequency.setValueAtTime(
             523,
             contexto.currentTime
         );
 
-
         const ahora =
             contexto.currentTime;
-
 
         ganancia.gain.setValueAtTime(
             0.0001,
             ahora
         );
 
-
         ganancia.gain.exponentialRampToValueAtTime(
             0.35,
             ahora + 0.05
         );
-
 
         ganancia.gain.setValueAtTime(
             0.35,
             ahora + 0.30
         );
 
-
         ganancia.gain.exponentialRampToValueAtTime(
             0.0001,
             ahora + 0.50
         );
-
 
         oscilador.connect(ganancia);
 
@@ -235,13 +223,11 @@ function reproducirTono() {
             contexto.destination
         );
 
-
         oscilador.start(ahora);
 
         oscilador.stop(
             ahora + 0.55
         );
-
 
         oscilador.onended = () => {
 
@@ -258,10 +244,16 @@ function reproducirTono() {
 }
 
 function generarOpciones(respuesta) {
-    const contenedor = document.getElementById("options-container");
+
+    const contenedor =
+        document.getElementById("options-container");
 
     if (!contenedor) {
-        console.error("No se encontró #options-container");
+
+        console.error(
+            "No se encontró #options-container"
+        );
+
         return;
     }
 
@@ -270,9 +262,13 @@ function generarOpciones(respuesta) {
     const numeros = [];
 
     for (let i = 1; i <= 8; i++) {
+
         if (i !== respuesta) {
+
             numeros.push(i);
+
         }
+
     }
 
     numeros.sort(() => Math.random() - 0.5);
@@ -287,17 +283,24 @@ function generarOpciones(respuesta) {
     opciones.sort(() => Math.random() - 0.5);
 
     opciones.forEach(numero => {
-        const boton = document.createElement("button");
+
+        const boton =
+            document.createElement("button");
 
         boton.type = "button";
+
         boton.innerText = numero;
 
         boton.onclick = function () {
+
             comprobar(numero, boton);
+
         };
 
         contenedor.appendChild(boton);
+
     });
+
 }
 
 function comprobar(numero, boton) {
@@ -309,7 +312,6 @@ function comprobar(numero, boton) {
     if (respondido) {
         return;
     }
-
 
     const mensaje =
         document.getElementById(
@@ -324,14 +326,12 @@ function comprobar(numero, boton) {
 
         puntos++;
 
-
         document.getElementById(
             "score-text"
         ).innerText = puntos;
 
-
         mensaje.innerText =
-            "🎉 ¡MUY BIEN!";
+            translate("countAuditory.feedback.correct");
 
         mensaje.className =
             "mensaje correcto";
@@ -342,7 +342,6 @@ function comprobar(numero, boton) {
             Math.round(
                 ((ronda - 1) / 9) * 100
             );
-
 
         if (ronda <= 9) {
 
@@ -363,7 +362,6 @@ function comprobar(numero, boton) {
                     "completado"
                 );
 
-
                 // MOSTRAR PANTALLA FINAL
                 mostrarFinal();
 
@@ -382,11 +380,10 @@ function comprobar(numero, boton) {
     else {
 
         mensaje.innerText =
-            "👂 Escuchemos otra vez";
+            translate("countAuditory.feedback.tryAgain");
 
         mensaje.className =
             "mensaje";
-
 
         document.getElementById(
             "play-button"
@@ -402,9 +399,11 @@ function mostrarFinal() {
         document.getElementById("finish");
 
     if (!finish) {
+
         console.error(
             "ERROR: No se encontró #finish"
         );
+
         return;
     }
 
@@ -414,10 +413,12 @@ function mostrarFinal() {
         );
 
     if (mensaje) {
+
         mensaje.className =
             "mensaje oculto";
 
         mensaje.innerHTML = "";
+
     }
 
     const opciones =
@@ -426,7 +427,9 @@ function mostrarFinal() {
         );
 
     if (opciones) {
+
         opciones.innerHTML = "";
+
     }
 
     const titulo =
@@ -440,15 +443,17 @@ function mostrarFinal() {
         );
 
     if (titulo) {
+
         titulo.textContent =
-            "¡Excelente ahora tu misión!";
+            translate("countAuditory.finishTitle");
+
     }
 
     if (texto) {
+
         texto.innerHTML =
-            "Cuenta cuantos juguetes tienes" +
-            "<br>" +
-            "¡Aprendiste a contar!";
+            translate("countAuditory.finishDescription");
+
     }
 
     finish.classList.add("show");
@@ -472,6 +477,7 @@ function mostrarFinal() {
     console.log(
         "PANTALLA FINAL CORRECTA"
     );
+
 }
 
 function resetGame() {
@@ -486,17 +492,14 @@ function resetGame() {
 
     reproduciendo = false;
 
-
     document.getElementById(
         "score-text"
     ).innerText = "0";
-
 
     const victoria =
         document.getElementById(
             "victory-modal"
         );
-
 
     if (victoria) {
 
@@ -506,7 +509,6 @@ function resetGame() {
 
     }
 
-
     if (alertaFinal) {
 
         alertaFinal.classList.remove(
@@ -514,7 +516,6 @@ function resetGame() {
         );
 
     }
-
 
     generarPregunta();
 

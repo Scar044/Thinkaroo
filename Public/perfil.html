@@ -1,93 +1,190 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
+
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Perfil</title>
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
 
-    <link rel="stylesheet" href="CSS/perfel.css">
+    <title data-i18n="profile.pageTitle">
+        Perfil
+    </title>
+
+
+    <link
+        rel="preconnect"
+        href="https://fonts.googleapis.com"
+    >
+
+    <link
+        rel="preconnect"
+        href="https://fonts.gstatic.com"
+        crossorigin
+    >
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&display=swap"
+        rel="stylesheet"
+    >
+
+    <link
+        rel="stylesheet"
+        href="CSS/perfel.css"
+    >
+
 </head>
+
 
 <body>
 
     <div class="contenedor">
 
         <header>
-            <a href="#" class="flecha" id="volverNiveles">🡠</a>
+
+            <a
+                href="#"
+                class="flecha"
+                id="volverNiveles"
+            >
+                🡠
+            </a>
+
             <h1>ThinkaRoo</h1>
+
         </header>
 
-        <h2>Perfil</h2>
+
+        <h2 data-i18n="profile.title">
+            Perfil
+        </h2>
+
 
         <div class="selector-hijo">
 
             <button id="botonHijo">
-                <span id="hijoActual">Cargando...</span>
+
+                <span id="hijoActual">
+                    Cargando...
+                </span>
+
                 <span>▼</span>
+
             </button>
 
-            <div id="listaHijos" class="lista-hijos"></div>
 
-            <a href="datosHijos.html" class="boton-agregar">
+            <div
+                id="listaHijos"
+                class="lista-hijos"
+            ></div>
+
+
+            <a
+                href="datosHijos.html"
+                class="boton-agregar"
+                aria-label="Agregar hijo"
+            >
                 +
             </a>
 
         </div>
 
+
         <div class="tarjeta">
 
-            <a href="avatares.html" class="foto">
 
-                <img 
+            <a
+                href="avatares.html"
+                class="foto"
+            >
+
+                <img
                     id="avatarHijo"
                     src=""
                     alt="Avatar del niño"
+                    data-i18n-alt="profile.avatarAlt"
                 >
 
+
                 <div class="editar-avatar">
+
                     <span>✎</span>
+
                 </div>
 
             </a>
 
+
             <i class="fa-solid fa-star estrella estrella1"></i>
+
             <i class="fa-solid fa-star estrella estrella2"></i>
 
-            <h3 id="nombreHijo">Cargando...</h3>
 
-            <p class="tipo" id="tipoAprendizaje">
+            <h3 id="nombreHijo">
+                Cargando...
+            </h3>
+
+
+            <p
+                class="tipo"
+                id="tipoAprendizaje"
+            >
                 Cargando...
             </p>
 
-            <p class="edad" id="edadHijo">
+
+            <p
+                class="edad"
+                id="edadHijo"
+            >
                 Cargando...
             </p>
+
 
             <div class="estadisticas">
 
-                <h4>📊 Estadísticas</h4>
+
+                <h4 data-i18n="profile.statistics">
+                    📊 Estadísticas
+                </h4>
+
 
                 <div class="info">
-                    <span>🏆 Logros obtenidos</span>
+
+                    <span data-i18n="profile.achievements">
+                        🏆 Logros obtenidos
+                    </span>
+
                     <span id="logros"></span>
+
                 </div>
 
+
                 <div class="info">
-                    <span>⭐ Nivel actual</span>
+
+                    <span data-i18n="profile.currentLevel">
+                        ⭐ Nivel actual
+                    </span>
+
                     <span id="nivel"></span>
+
                 </div>
+
 
             </div>
+
 
         </div>
 
     </div>
 
+
+    <script src="JS/idioma-global.js"></script>
     <script src="JS/perfel.js"></script>
 
 </body>
+
 </html>

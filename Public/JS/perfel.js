@@ -1,17 +1,35 @@
-const botonHijo =
-    document.getElementById("botonHijo");
-
-const listaHijos =
-    document.getElementById("listaHijos");
-
-const hijoActual =
-    document.getElementById("hijoActual");
+const botonHijo = document.getElementById("botonHijo");
+const listaHijos = document.getElementById("listaHijos");
+const hijoActual = document.getElementById("hijoActual");
 
 botonHijo.addEventListener("click", () => {
-
     listaHijos.classList.toggle("mostrar");
-
 });
+
+
+function traducirEstilo(estilo) {
+
+    if (estilo === "Visual") {
+        return getCurrentLanguage() === "en"
+            ? "Visual"
+            : "Visual";
+    }
+
+    if (estilo === "Auditivo") {
+        return getCurrentLanguage() === "en"
+            ? "Auditory"
+            : "Auditivo";
+    }
+
+    if (estilo === "Kinestesico") {
+        return getCurrentLanguage() === "en"
+            ? "Kinesthetic"
+            : "Kinestésico";
+    }
+
+    return translate("profile.undefinedStyle");
+}
+
 
 function cargarPerfilHijo() {
 
@@ -26,7 +44,6 @@ function cargarPerfilHijo() {
                 datos
             );
 
-
             if (!datos.success) {
 
                 console.error(
@@ -35,7 +52,6 @@ function cargarPerfilHijo() {
 
                 return;
             }
-
 
             const hijo = datos.hijo;
 
@@ -47,26 +63,32 @@ function cargarPerfilHijo() {
             hijoActual.textContent =
                 hijo.nombre;
 
+
             document.getElementById(
                 "edadHijo"
             ).textContent =
-                hijo.edad + " años";
+                hijo.edad + translate("profile.years");
+
 
             document.getElementById(
                 "tipoAprendizaje"
             ).textContent =
-                hijo.estilo_aprendizaje ||
-                "Sin definir";
+                traducirEstilo(
+                    hijo.estilo_aprendizaje
+                );
+
 
             document.getElementById(
                 "nivel"
             ).textContent =
                 hijo.nivel_actual;
 
+
             document.getElementById(
                 "logros"
             ).textContent =
                 hijo.total_logros;
+
 
             const avatar =
                 document.getElementById(
@@ -80,6 +102,7 @@ function cargarPerfilHijo() {
                     hijo.imagen_avatar;
 
             }
+
 
             console.log(
                 "ID del hijo:",
@@ -128,6 +151,7 @@ function cargarPerfilHijo() {
         });
 
 }
+
 
 function cargarHijos() {
 
@@ -180,6 +204,7 @@ function cargarHijos() {
                         const idHijo =
                             boton.dataset.id;
 
+
                         fetch(
                             "../ConfigPHP/cambiarHijo.php",
                             {
@@ -206,7 +231,9 @@ function cargarHijos() {
                             if (!datos.success) {
 
                                 alert(
-                                    datos.mensaje
+                                    translate(
+                                        "profile.changeChildError"
+                                    )
                                 );
 
                                 return;
@@ -218,9 +245,11 @@ function cargarHijos() {
                                 datos.id_hijo
                             );
 
+
                             listaHijos.classList.remove(
                                 "mostrar"
                             );
+
 
                             cargarPerfilHijo();
 
@@ -258,47 +287,74 @@ function cargarHijos() {
 
 }
 
-cargarPerfilHijo();
 
+cargarPerfilHijo();
 cargarHijos();
+
 
 function irANiveles() {
 
     fetch("../ConfigPHP/obtener_perfil_hijo.php")
-        .then(respuesta => respuesta.json())
+
+        .then(respuesta =>
+            respuesta.json()
+        )
+
         .then(datos => {
 
             if (!datos.success) {
-                console.error(datos.mensaje);
+
+                console.error(
+                    datos.mensaje
+                );
+
                 return;
             }
 
-            const estilo = datos.hijo.estilo_aprendizaje;
 
-            console.log("Estilo de aprendizaje:", estilo);
+            const estilo =
+                datos.hijo.estilo_aprendizaje;
+
+
+            console.log(
+                "Estilo de aprendizaje:",
+                estilo
+            );
+
 
             if (estilo === "Visual") {
 
-                window.location.href = "niveles.html";
+                window.location.href =
+                    "niveles.html";
 
-            } 
+            }
+
             else if (estilo === "Auditivo") {
 
-                window.location.href = "niveles_auditivo.html";
+                window.location.href =
+                    "niveles_auditivo.html";
 
-            } 
+            }
+
             else if (estilo === "Kinestesico") {
 
-                window.location.href = "niveles_kinestesico.html";
+                window.location.href =
+                    "niveles_kinestesico.html";
 
-            } 
+            }
+
             else {
 
-                alert("El estilo de aprendizaje todavía no está definido.");
+                alert(
+                    translate(
+                        "profile.undefinedLearningStyle"
+                    )
+                );
 
             }
 
         })
+
         .catch(error => {
 
             console.error(
@@ -307,14 +363,23 @@ function irANiveles() {
             );
 
         });
+
 }
 
-const volverNiveles = document.getElementById("volverNiveles");
 
-volverNiveles.addEventListener("click", function(evento) {
+const volverNiveles =
+    document.getElementById(
+        "volverNiveles"
+    );
 
-    evento.preventDefault();
 
-    irANiveles();
+volverNiveles.addEventListener(
+    "click",
+    function(evento) {
 
-});
+        evento.preventDefault();
+
+        irANiveles();
+
+    }
+);

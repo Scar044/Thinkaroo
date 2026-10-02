@@ -3,29 +3,41 @@ const correoUsuario = document.getElementById("correoUsuario");
 const cantidadHijos = document.getElementById("hijos");
 
 const botonCerrar = document.getElementById("botonCerrar");
-
-botonCerrar.addEventListener("click", function () {
-
-    window.location.href = "../ConfigPHP/cerrar_sesion.php";
-
-});
+const volverNiveles = document.getElementById("volverNiveles");
 
 function cargarPerfilPadre() {
 
     fetch("../ConfigPHP/obtener_perfil_padre.php")
 
-        .then(respuesta => respuesta.json())
+        .then(respuesta => {
+            console.log("Estado HTTP:", respuesta.status);
+            return respuesta.text();
+        })
 
-        .then(datos => {
+        .then(texto => {
 
-            console.log("RESPUESTA DEL PERFIL:", datos);
+            console.log("RESPUESTA PHP:", texto);
+
+            let datos;
+
+            try {
+                datos = JSON.parse(texto);
+            } catch (error) {
+                console.error("El PHP no devolvió JSON válido.", error);
+                nombreUsuario.textContent = translate("profileParent.error");
+                correoUsuario.textContent = translate("profileParent.error");
+                cantidadHijos.textContent = "0";
+                return;
+            }
+
+            console.log("JSON:", datos);
 
             if (!datos.success) {
 
-                console.error(datos.mensaje);
+                console.error("PHP respondió con error:", datos.mensaje);
 
-                nombreUsuario.textContent = "No disponible";
-                correoUsuario.textContent = "No disponible";
+                nombreUsuario.textContent = translate("profileParent.unavailable");
+                correoUsuario.textContent = translate("profileParent.unavailable");
                 cantidadHijos.textContent = "0";
 
                 return;
@@ -34,70 +46,68 @@ function cargarPerfilPadre() {
             const usuario = datos.usuario;
 
             nombreUsuario.textContent = usuario.nombre;
-
             correoUsuario.textContent = usuario.correo;
-
             cantidadHijos.textContent = usuario.total_hijos;
 
         })
 
         .catch(error => {
 
-            console.error(
-                "Error al cargar perfil:",
-                error
-            );
+            console.error("Error al cargar perfil:", error);
+
+            nombreUsuario.textContent = translate("profileParent.unavailable");
+            correoUsuario.textContent = translate("profileParent.unavailable");
+            cantidadHijos.textContent = "0";
 
         });
 }
 
-cargarPerfilPadre();
 
-function cargarPerfilPadre() {
+// Cerrar sesión
+botonCerrar.addEventListener("click", function () {
 
-    fetch("../ConfigPHP/obtener_perfil_padre.php")
+    window.location.href = "../ConfigPHP/cerrar_sesion.php";
 
-        .then(respuesta => {
-            console.log("Estado HTTP:", respuesta.status);
+});
 
-            return respuesta.text();
-        })
 
-        .then(texto => {
+volverNiveles.addEventListener("click", function (evento) {
 
-            console.log("RESPUESTA PHP:", texto);
+    evento.preventDefault();
 
-            try {
+    fetch("../ConfigPHP/obtener_perfil_hijo.php")
 
-                const datos = JSON.parse(texto);
+        .then(respuesta => respuesta.json())
 
-                console.log("JSON:", datos);
+        .then(datos => {
 
-                if (!datos.success) {
-
-                    console.error("PHP respondió con error:", datos.mensaje);
-
-                    nombreUsuario.textContent = "Error";
-
-                    cantidadHijos.textContent = "0";
-
-                    return;
-                }
-
-                const usuario = datos.usuario;
-
-                nombreUsuario.textContent = usuario.nombre;
-
-                correoUsuario.textContent = usuario.correo;
-
-                cantidadHijos.textContent = usuario.total_hijos;
-
+            if (!datos.success || !datos.hijo) {
+                console.error(
+                    "No se pudo obtener el perfil del niño:",
+                    datos.mensaje
+                );
+                return;
             }
 
-            catch (error) {
+            const estilo = datos.hijo.estilo_aprendizaje;
 
-                console.error("El PHP NO devolvió JSON válido.");
-                console.error(error);
+            if (estilo === "Visual") {
+
+                window.location.href = "niveles.html";
+
+            } else if (estilo === "Auditivo") {
+
+                window.location.href = "niveles_auditivo.html";
+
+            } else if (estilo === "Kinestesico") {
+
+                window.location.href = "niveles_kinestesico.html";
+
+            } else {
+
+                alert(
+                    translate("profile.undefinedLearningStyle")
+                );
 
             }
 
@@ -105,28 +115,15 @@ function cargarPerfilPadre() {
 
         .catch(error => {
 
-            console.error("Error en fetch:", error);
+            console.error(
+                "Error al obtener el estilo de aprendizaje:",
+                error
+            );
 
         });
-}
-
-
-botonCerrar.addEventListener("click", function () {
-
-    window.location.href =
-        "../ConfigPHP/cerrar_sesion.php";
 
 });
 
 
-cargarPerfilPadre();
-
-volverNiveles.addEventListener("click", function(evento) {
-
-    evento.preventDefault();
-
-    window.location.href = "niveles.html";
-
-});
-
+// Cargar el perfil una sola vez
 cargarPerfilPadre();

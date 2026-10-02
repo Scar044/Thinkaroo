@@ -1,16 +1,40 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
+
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Perfil de usuario - ThinkaRoo</title>
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <title data-i18n="profileParent.pageTitle">
+        Perfil de usuario - ThinkaRoo
+    </title>
 
-    <link rel="stylesheet" href="CSS/perfill_padres.css">
+    <link
+        rel="preconnect"
+        href="https://fonts.googleapis.com"
+    >
+
+    <link
+        rel="preconnect"
+        href="https://fonts.gstatic.com"
+        crossorigin
+    >
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&display=swap"
+        rel="stylesheet"
+    >
+
+    <link
+        rel="stylesheet"
+        href="CSS/perfill_padres.css"
+    >
+
 </head>
 
 <body>
@@ -19,7 +43,12 @@
 
         <header>
 
-            <a href="#" class="flecha" id="volverNiveles">
+            <a
+                href="#"
+                class="flecha"
+                id="volverNiveles"
+                aria-label="Volver a los niveles"
+            >
                 🡠
             </a>
 
@@ -28,7 +57,9 @@
         </header>
 
 
-        <h2>Perfil de usuario</h2>
+        <h2 data-i18n="profileParent.title">
+            Perfil de usuario
+        </h2>
 
 
         <div class="tarjeta">
@@ -36,46 +67,57 @@
             <i class="estrella estrella1">★</i>
             <i class="estrella estrella2">★</i>
 
+
             <h3 id="nombreUsuario">
                 Cargando...
             </h3>
 
-            <p class="correo-usuario" id="correoUsuario">
+
+            <p
+                class="correo-usuario"
+                id="correoUsuario"
+            >
                 Cargando...
             </p>
 
+
             <div class="estadisticas">
 
-                <h4>📊 Estadísticas</h4>
+                <h4 data-i18n="profileParent.statistics">
+                    📊 Estadísticas
+                </h4>
+
 
                 <div class="info">
 
-                    <span>👶 Hijos registrados</span>
-
-                    <span id="hijos">
-                        0
+                    <span data-i18n="profileParent.children">
+                        👶 Hijos registrados
                     </span>
+
+                    <span id="hijos">0</span>
 
                 </div>
 
             </div>
 
+
             <button
                 type="button"
                 class="boton-cerrar"
-                id="botonCerrar">
-
+                id="botonCerrar"
+                data-i18n="profileParent.logout"
+            >
                 Cerrar sesión
-
             </button>
-
 
         </div>
 
     </div>
 
 
+    <script src="JS/idioma-global.js"></script>
     <script src="JS/perfil_padre.js"></script>
 
 </body>
+
 </html>

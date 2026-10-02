@@ -1,5 +1,4 @@
 const actividadesPorEstilo = {
-
     Visual: {
         1: 1,
         2: 4,
@@ -20,10 +19,10 @@ const actividadesPorEstilo = {
         3: 9,
         4: 12
     }
-
 };
 
 const niveles = document.querySelectorAll(".level");
+
 
 function cargarProgreso() {
 
@@ -32,7 +31,9 @@ function cargarProgreso() {
         .then(respuesta => {
 
             if (!respuesta.ok) {
-                throw new Error("Error en la respuesta del servidor.");
+                throw new Error(
+                    translate("progress.error.server")
+                );
             }
 
             return respuesta.json();
@@ -42,27 +43,18 @@ function cargarProgreso() {
         .then(datos => {
 
             if (!datos.success) {
-
                 console.error(datos.mensaje);
-
                 return;
             }
 
-
             console.log("Hijo:", datos.nombre_hijo);
-
             console.log(
                 "Estilo:",
                 datos.estilo_aprendizaje
             );
-
-            console.log(
-                "Progreso:",
-                datos.progreso
-            );
+            console.log("Progreso:", datos.progreso);
 
             const estilo = datos.estilo_aprendizaje;
-
 
             if (!actividadesPorEstilo[estilo]) {
 
@@ -76,77 +68,10 @@ function cargarProgreso() {
 
             const actividades = actividadesPorEstilo[estilo];
 
-            function actualizarProgresoGeneral(
-                progreso,
+            actualizarProgresoGeneral(
+                datos.progreso,
                 estilo
-            ) {
-
-                const actividades = actividadesPorEstilo[estilo];
-
-                if (!actividades) {
-                    console.error(
-                        "No existe configuración para el estilo:",
-                        estilo
-                    );
-                    return;
-                }
-
-                let juegosCompletados = 0;
-
-                for (let nivel = 1; nivel <= 4; nivel++) {
-
-                    const idActividad = actividades[nivel];
-
-                    const registro = progreso.find(
-                        actividad =>
-                            Number(actividad.id_actividad) === idActividad
-                    );
-
-
-                    if (
-                        registro &&
-                        registro.estado === "completado"
-                    ) {
-                        juegosCompletados++;
-                    }
-                }
-
-
-                const totalJuegos = 4;
-
-                const porcentaje =
-                    Math.round(
-                        (juegosCompletados / totalJuegos) * 100
-                    );
-
-                const texto =
-                    document.getElementById("juegosCompletados");
-
-                const barra =
-                    document.getElementById("barraProgresoGeneral");
-
-                const porcentajeTexto =
-                    document.getElementById("porcentajeGeneral");
-
-
-                if (!texto || !barra || !porcentajeTexto) {
-                    return;
-                }
-
-                texto.textContent =
-                    juegosCompletados +
-                    " de " +
-                    totalJuegos +
-                    " juegos completados";
-
-                barra.style.width =
-                    porcentaje + "%";
-
-                porcentajeTexto.textContent =
-                    porcentaje + "%";
-            }
-
-            actualizarProgresoGeneral(datos.progreso, estilo);
+            );
 
             for (let nivel = 1; nivel <= 4; nivel++) {
 
@@ -161,19 +86,13 @@ function cargarProgreso() {
                     `.level[data-nivel="${nivel}"]`
                 );
 
-
                 if (!tarjeta) {
                     continue;
                 }
 
                 const estado = tarjeta.querySelector(".estado");
-
-                const porcentaje =
-                    tarjeta.querySelector(".porcentaje");
-
-                const barra =
-                    tarjeta.querySelector(".fill");
-
+                const porcentaje = tarjeta.querySelector(".porcentaje");
+                const barra = tarjeta.querySelector(".fill");
 
                 if (!registro) {
 
@@ -182,7 +101,7 @@ function cargarProgreso() {
                         porcentaje,
                         barra,
                         0,
-                        "Sin iniciar"
+                        "notStarted"
                     );
 
                     continue;
@@ -191,19 +110,12 @@ function cargarProgreso() {
                 const progreso =
                     Number(registro.progreso) || 0;
 
-                let textoEstado = "Sin iniciar";
-
+                let textoEstado = "notStarted";
 
                 if (registro.estado === "completado") {
-
-                    textoEstado = "Completado";
-
-                }
-
-                else if (registro.estado === "en proceso") {
-
-                    textoEstado = "En progreso";
-
+                    textoEstado = "completed";
+                } else if (registro.estado === "en proceso") {
+                    textoEstado = "inProgress";
                 }
 
                 actualizarNivel(
@@ -213,7 +125,6 @@ function cargarProgreso() {
                     progreso,
                     textoEstado
                 );
-
             }
 
         })
@@ -226,54 +137,107 @@ function cargarProgreso() {
             );
 
         });
-
 }
+
+
+function actualizarProgresoGeneral(progreso, estilo) {
+
+    const actividades = actividadesPorEstilo[estilo];
+
+    if (!actividades) {
+        console.error(
+            "No existe configuración para el estilo:",
+            estilo
+        );
+        return;
+    }
+
+    let juegosCompletados = 0;
+
+    for (let nivel = 1; nivel <= 4; nivel++) {
+
+        const idActividad = actividades[nivel];
+
+        const registro = progreso.find(
+            actividad =>
+                Number(actividad.id_actividad) === idActividad
+        );
+
+        if (
+            registro &&
+            registro.estado === "completado"
+        ) {
+            juegosCompletados++;
+        }
+    }
+
+    const totalJuegos = 4;
+
+    const porcentaje = Math.round(
+        (juegosCompletados / totalJuegos) * 100
+    );
+
+    const texto = document.getElementById("juegosCompletados");
+    const barra = document.getElementById("barraProgresoGeneral");
+    const porcentajeTexto = document.getElementById("porcentajeGeneral");
+
+    if (!texto || !barra || !porcentajeTexto) {
+        return;
+    }
+
+    texto.textContent =
+        `${juegosCompletados} ${translate("progress.gamesCompleted")} ` +
+        `(${juegosCompletados} ${translate("progress.gamesCompleted")})`;
+
+    // Mantiene el formato visual del contador en ambos idiomas.
+    texto.textContent =
+        `${juegosCompletados} ${translate("progress.gamesCompleted")} ` +
+        `(${totalJuegos} ${translate("progress.gamesCompleted")})`;
+
+    barra.style.width = porcentaje + "%";
+    porcentajeTexto.textContent = porcentaje + "%";
+}
+
 
 function actualizarNivel(
     elementoEstado,
     elementoPorcentaje,
     barra,
     progreso,
-    textoEstado
+    claveEstado
 ) {
 
-    if (!elementoEstado ||
-        !elementoPorcentaje ||
-        !barra) {
+    if (!elementoEstado || !elementoPorcentaje || !barra) {
         return;
     }
 
-    elementoEstado.textContent = textoEstado;
+    const traduccionesEstado = {
+        notStarted: "progress.status.notStarted",
+        inProgress: "progress.status.inProgress",
+        completed: "progress.status.completed"
+    };
 
-    elementoPorcentaje.textContent =
-        progreso + "%";
+    elementoEstado.textContent = translate(
+        traduccionesEstado[claveEstado]
+    );
 
-    barra.style.width =
-        progreso + "%";
+    elementoPorcentaje.textContent = progreso + "%";
 
-    barra.style.transition =
-        "width 0.8s ease";
+    barra.style.width = progreso + "%";
+    barra.style.transition = "width 0.8s ease";
+    barra.textContent = progreso + "%";
 
+    barra.style.display = "flex";
+    barra.style.alignItems = "center";
+    barra.style.justifyContent = "center";
+    barra.style.fontWeight = "bold";
 
-    barra.textContent =
-        progreso + "%";
-
-    barra.style.display =
-        "flex";
-
-    barra.style.alignItems =
-        "center";
-
-    barra.style.justifyContent =
-        "center";
-
-    barra.style.fontWeight =
-        "bold";
-
-    if (textoEstado === "Completado") {
-        elementoEstado.classList.add("completado");
-    }
+    elementoEstado.classList.toggle(
+        "completado",
+        claveEstado === "completed"
+    );
 }
+
 
 document.addEventListener(
     "DOMContentLoaded",
