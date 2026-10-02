@@ -872,6 +872,31 @@
             "countVisual.finishLine2": "You learned how to count!",
             "countVisual.continue": "Continue",
 
+
+            "traceShapes.pageTitle": "Traza las figuras",
+            "traceShapes.title": "TRAZA LAS FIGURAS",
+            "traceShapes.subtitle": "Sigue el trazo y descubre la figura",
+            "traceShapes.instruction": "Mantén presionado y sigue la línea",
+            "traceShapes.tryAgain": "Intentar de nuevo",
+            "traceShapes.startGreen": "¡Empieza en uno de los puntos verdes!",
+            "traceShapes.keepGoing": "¡Muy bien! Sigue toda la figura",
+            "traceShapes.almost": "¡Casi! Sigue la línea punteada",
+            "traceShapes.keepShape": "¡Sigue toda la figura!",
+            "traceShapes.keepCircle": "¡Sigue alrededor del círculo!",
+            "traceShapes.correct": "¡MUY BIEN!",
+            "traceShapes.completedShape": "¡MUY BIEN! ¡Completaste el {shape}!",
+            "traceShapes.allCompleted": "¡EXCELENTE! ¡Completaste todas las figuras!",
+            "traceShapes.nextShape": "Ahora sigue el {shape}",
+            "traceShapes.triangle": "Triángulo",
+            "traceShapes.circle": "Círculo",
+            "traceShapes.square": "Cuadrado",
+            "traceShapes.rectangle": "Rectángulo",
+            "traceShapes.startGreenInstruction": "{shape} - empieza en un punto verde",
+            "traceShapes.finishTitle": "¡Excelente ahora tu misión!",
+            "traceShapes.finishLine1": "Encuentra 2 objetos de cada forma que aprendistes hoy",
+            "traceShapes.finishLine2": "¡Aprendiste las formas!",
+            "traceShapes.continue": "Continuar",
+
     };
 
 
@@ -1749,6 +1774,30 @@
             "countVisual.finishLine1": "Count how many toys you have",
             "countVisual.finishLine2": "You learned how to count!",
             "countVisual.continue": "Continue",
+
+            "traceShapes.pageTitle": "Trace the Shapes",
+            "traceShapes.title": "TRACE THE SHAPES",
+            "traceShapes.subtitle": "Follow the path and discover the shape",
+            "traceShapes.instruction": "Press and hold while following the line",
+            "traceShapes.tryAgain": "Try Again",
+            "traceShapes.startGreen": "Start at one of the green dots!",
+            "traceShapes.keepGoing": "Very good! Keep following the shape",
+            "traceShapes.almost": "Almost! Follow the dotted line",
+            "traceShapes.keepShape": "Keep following the shape!",
+            "traceShapes.keepCircle": "Keep going around the circle!",
+            "traceShapes.correct": "VERY GOOD!",
+            "traceShapes.completedShape": "VERY GOOD! You completed the {shape}!",
+            "traceShapes.allCompleted": "EXCELLENT! You completed all the shapes!",
+            "traceShapes.nextShape": "Now follow the {shape}",
+            "traceShapes.triangle": "Triangle",
+            "traceShapes.circle": "Circle",
+            "traceShapes.square": "Square",
+            "traceShapes.rectangle": "Rectangle",
+            "traceShapes.startGreenInstruction": "{shape} - start at a green dot",
+            "traceShapes.finishTitle": "Excellent! Now your mission!",
+            "traceShapes.finishLine1": "Find 2 objects of each shape you learned today",
+            "traceShapes.finishLine2": "You learned the shapes!",
+            "traceShapes.continue": "Continue",
     };
 
 

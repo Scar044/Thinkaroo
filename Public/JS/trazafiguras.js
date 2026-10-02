@@ -16,6 +16,8 @@ function mostrarAlertaFinal() {
 
     if (alertaFinal) {
         alertaFinal.classList.add("show");
+
+        applyTranslations(alertaFinal);
     }
 
 }
@@ -34,6 +36,7 @@ if (botonFinal) {
     );
 
 }
+
 
 async function guardarProgreso(progreso, estado) {
 
@@ -82,36 +85,30 @@ async function guardarProgreso(progreso, estado) {
 
 }
 
+
 guardarProgreso(0, "sin iniciar");
+
 
 canvas.width = 700;
 canvas.height = 450;
 
+
 let dibujando = false;
-
 let puntos = 0;
-
 let figuraActual = 0;
-
 let ladoActual = 0;
-
 let puntoInicio = null;
-
 let ladosCompletados = 0;
-
 let anguloAnterior = null;
-
 let anguloRecorrido = 0;
-
 let direccionCirculo = 0;
 
+
 const nombresFiguras = [
-
-    "triángulo",
-    "círculo",
-    "cuadrado",
-    "rectángulo"
-
+    "triangle",
+    "circle",
+    "square",
+    "rectangle"
 ];
 
 
@@ -151,6 +148,16 @@ const circulo = {
     radio: 145
 
 };
+
+
+function obtenerNombreFigura(indice) {
+
+    return translate(
+        `traceShapes.${nombresFiguras[indice]}`
+    );
+
+}
+
 
 function obtenerPosicion(evento) {
 
@@ -199,6 +206,7 @@ function obtenerPosicion(evento) {
 
 }
 
+
 function distanciaEntrePuntos(
     x1,
     y1,
@@ -214,6 +222,7 @@ function distanciaEntrePuntos(
     );
 
 }
+
 
 function dibujarPunto(
     x,
@@ -238,6 +247,7 @@ function dibujarPunto(
 
 }
 
+
 function dibujarTexto(texto) {
 
     ctx.font = "bold 20px Arial";
@@ -253,6 +263,7 @@ function dibujarTexto(texto) {
     );
 
 }
+
 
 function dibujarTriangulo() {
 
@@ -309,10 +320,15 @@ function dibujarTriangulo() {
 
 
     dibujarTexto(
-        "Triángulo - empieza en un punto verde"
+        translate("traceShapes.startGreenInstruction")
+            .replace(
+                "{shape}",
+                obtenerNombreFigura(0)
+            )
     );
 
 }
+
 
 function dibujarCuadrado() {
 
@@ -374,10 +390,15 @@ function dibujarCuadrado() {
 
 
     dibujarTexto(
-        "Cuadrado - empieza en un punto verde"
+        translate("traceShapes.startGreenInstruction")
+            .replace(
+                "{shape}",
+                obtenerNombreFigura(2)
+            )
     );
 
 }
+
 
 function dibujarRectangulo() {
 
@@ -439,10 +460,15 @@ function dibujarRectangulo() {
 
 
     dibujarTexto(
-        "Rectángulo - empieza en un punto verde"
+        translate("traceShapes.startGreenInstruction")
+            .replace(
+                "{shape}",
+                obtenerNombreFigura(3)
+            )
     );
 
 }
+
 
 function dibujarCirculo() {
 
@@ -487,10 +513,15 @@ function dibujarCirculo() {
 
 
     dibujarTexto(
-        "Círculo - empieza en un punto verde"
+        translate("traceShapes.startGreenInstruction")
+            .replace(
+                "{shape}",
+                obtenerNombreFigura(1)
+            )
     );
 
 }
+
 
 function dibujarFigura() {
 
@@ -522,6 +553,7 @@ function dibujarFigura() {
 
 }
 
+
 function obtenerVertices() {
 
     if (figuraActual === 0) {
@@ -539,6 +571,7 @@ function obtenerVertices() {
     return null;
 
 }
+
 
 function encontrarPuntoVerde(x, y) {
 
@@ -615,6 +648,7 @@ function encontrarPuntoVerde(x, y) {
 
 }
 
+
 function comenzar(evento) {
 
     evento.preventDefault();
@@ -634,7 +668,7 @@ function comenzar(evento) {
     if (inicio === null) {
 
         mensaje.textContent =
-            "¡Empieza en uno de los puntos verdes!";
+            translate("traceShapes.startGreen");
 
         mensaje.style.color =
             "#F39C12";
@@ -689,12 +723,13 @@ function comenzar(evento) {
 
 
     mensaje.textContent =
-        "¡Muy bien! Sigue toda la figura";
+        translate("traceShapes.keepGoing");
 
     mensaje.style.color =
         "#1596E6";
 
 }
+
 
 function dibujarPoligono(evento) {
 
@@ -733,7 +768,7 @@ function dibujarPoligono(evento) {
         dibujando = false;
 
         mensaje.textContent =
-            "¡Casi! Sigue la línea punteada";
+            translate("traceShapes.almost");
 
         mensaje.style.color =
             "#F39C12";
@@ -783,12 +818,13 @@ function dibujarPoligono(evento) {
 
 
     mensaje.textContent =
-        "¡Sigue toda la figura!";
+        translate("traceShapes.keepShape");
 
     mensaje.style.color =
         "#1596E6";
 
 }
+
 
 function dibujarCirculoTrazo(evento) {
 
@@ -820,7 +856,7 @@ function dibujarCirculoTrazo(evento) {
         dibujando = false;
 
         mensaje.textContent =
-            "¡Casi! Sigue la línea del círculo";
+            translate("traceShapes.almost");
 
         mensaje.style.color =
             "#F39C12";
@@ -928,6 +964,7 @@ function dibujarCirculoTrazo(evento) {
 
     }
 
+
     const distanciaFinal =
         distanciaEntrePuntos(
             posicion.x,
@@ -949,13 +986,15 @@ function dibujarCirculoTrazo(evento) {
 
     }
 
+
     mensaje.textContent =
-        "¡Sigue alrededor del círculo!";
+        translate("traceShapes.keepCircle");
 
     mensaje.style.color =
         "#1596E6";
 
 }
+
 
 function dibujar(evento) {
 
@@ -980,6 +1019,7 @@ function dibujar(evento) {
 
 }
 
+
 function distanciaPuntoLinea(
     px,
     py,
@@ -990,11 +1030,8 @@ function distanciaPuntoLinea(
 ) {
 
     const A = px - x1;
-
     const B = py - y1;
-
     const C = x2 - x1;
-
     const D = y2 - y1;
 
 
@@ -1018,8 +1055,10 @@ function distanciaPuntoLinea(
 
     }
 
+
     let xx;
     let yy;
+
 
     if (param < 0) {
 
@@ -1041,6 +1080,7 @@ function distanciaPuntoLinea(
 
     }
 
+
     const dx =
         px - xx;
 
@@ -1055,6 +1095,7 @@ function distanciaPuntoLinea(
 
 }
 
+
 function terminar() {
 
     dibujando = false;
@@ -1064,11 +1105,13 @@ function terminar() {
     puntosTexto.textContent =
         puntos;
 
+
     const progreso =
         Math.round(
             ((figuraActual + 1) /
             nombresFiguras.length) * 100
         );
+
 
     if (
         figuraActual + 1 <
@@ -1082,10 +1125,13 @@ function terminar() {
 
     }
 
+
     mensaje.textContent =
-        "¡MUY BIEN! ¡Completaste el " +
-        nombresFiguras[figuraActual] +
-        "!";
+        translate("traceShapes.completedShape")
+            .replace(
+                "{shape}",
+                obtenerNombreFigura(figuraActual)
+            );
 
 
     mensaje.style.color =
@@ -1101,17 +1147,19 @@ function terminar() {
 
         figuraActual++;
 
+
         if (
             figuraActual >=
             nombresFiguras.length
         ) {
 
             mensaje.textContent =
-                "¡EXCELENTE! ¡Completaste todas las figuras!";
+                translate("traceShapes.allCompleted");
 
 
             mensaje.style.color =
                 "#35A853";
+
 
             setTimeout(async function () {
 
@@ -1140,16 +1188,12 @@ function terminar() {
 
         }
 
+
         ladoActual = 0;
-
         puntoInicio = null;
-
         ladosCompletados = 0;
-
         anguloAnterior = null;
-
         anguloRecorrido = 0;
-
         direccionCirculo = 0;
 
 
@@ -1157,8 +1201,11 @@ function terminar() {
 
 
         mensaje.textContent =
-            "Ahora sigue el " +
-            nombresFiguras[figuraActual];
+            translate("traceShapes.nextShape")
+                .replace(
+                    "{shape}",
+                    obtenerNombreFigura(figuraActual)
+                );
 
         mensaje.style.color =
             "#1596E6";
@@ -1167,6 +1214,7 @@ function terminar() {
     }, 1200);
 
 }
+
 
 canvas.addEventListener(
     "mousedown",
@@ -1199,17 +1247,20 @@ canvas.addEventListener(
     }
 );
 
+
 canvas.addEventListener(
     "touchstart",
     comenzar,
     { passive: false }
 );
 
+
 canvas.addEventListener(
     "touchmove",
     dibujar,
     { passive: false }
 );
+
 
 canvas.addEventListener(
     "touchend",
@@ -1219,6 +1270,7 @@ canvas.addEventListener(
 
     }
 );
+
 
 reiniciar.addEventListener(
     "click",
@@ -1244,5 +1296,6 @@ reiniciar.addEventListener(
 
     }
 );
+
 
 dibujarFigura();
