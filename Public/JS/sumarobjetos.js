@@ -20,8 +20,10 @@ function guardarProgreso(progreso, estado) {
     });
 }
 
+
 const alertaFinal = document.getElementById("finish");
 const botonFinal = document.getElementById("botonFinal");
+
 
 function mostrarAlertaFinal() {
 
@@ -29,11 +31,13 @@ function mostrarAlertaFinal() {
 
 }
 
+
 botonFinal.addEventListener("click", function () {
 
     window.location.href = "niveles.html";
 
 });
+
 
 const objetos = [
     "🚗",
@@ -45,6 +49,7 @@ const objetos = [
     "🎈"
 ];
 
+
 const grupos = [
     ["🚗", "🏎️", "🚙", "🚌"],
     ["🦖", "🦕"],
@@ -53,13 +58,16 @@ const grupos = [
     ["🎈", "🚀", "⚽", "🧸"]
 ];
 
+
 let ronda = 1;
 let cantidad = 0;
 let puntos = 0;
 let respondido = false;
 let pistaMostrada = false;
 
+
 guardarProgreso(0, "sin iniciar");
+
 
 function generarPregunta() {
 
@@ -72,6 +80,7 @@ function generarPregunta() {
     mensaje.innerText = "";
 
     let elementos = [];
+
 
     if (ronda <= 3) {
 
@@ -127,6 +136,7 @@ function generarPregunta() {
     generarOpciones(cantidad);
 }
 
+
 function mostrarObjetos(elementos) {
 
     const contenedor =
@@ -165,6 +175,7 @@ function mostrarObjetos(elementos) {
     });
 
 }
+
 
 function generarOpciones(respuesta) {
 
@@ -224,6 +235,7 @@ function generarOpciones(respuesta) {
 
 }
 
+
 function marcarObjeto(caja, numero) {
 
     let etiqueta =
@@ -258,6 +270,7 @@ function marcarObjeto(caja, numero) {
 
 }
 
+
 function comprobar(numero, boton) {
 
     if (respondido) {
@@ -269,6 +282,7 @@ function comprobar(numero, boton) {
 
     const mensaje =
         document.getElementById("feedback-badge");
+
 
     if (numero === cantidad) {
 
@@ -295,12 +309,13 @@ function comprobar(numero, boton) {
 
 
         mensaje.innerText =
-            "¡MUY BIEN!";
+            translate("countVisual.feedback.correct");
 
         mensaje.className =
             "mensaje correcto";
 
         ronda++;
+
 
         const progreso =
             Math.round(((ronda - 1) / 9) * 100);
@@ -314,6 +329,7 @@ function comprobar(numero, boton) {
             );
 
         }
+
 
         setTimeout(() => {
 
@@ -345,6 +361,7 @@ function comprobar(numero, boton) {
 
 }
 
+
 function mostrarPista() {
 
     if (pistaMostrada) {
@@ -361,7 +378,7 @@ function mostrarPista() {
 
 
     mensaje.innerText =
-        "¡Contemos juntos! 🔍";
+        translate("countVisual.feedback.hint");
 
     mensaje.className =
         "mensaje";
@@ -393,13 +410,23 @@ function mostrarPista() {
 
 }
 
+
 function mostrarFinal() {
-    const alertaFinal = document.getElementById("finish");
+
+    const alertaFinal =
+        document.getElementById("finish");
 
     if (alertaFinal) {
+
         alertaFinal.classList.add("show");
+
+        // Aplicar las traducciones al mensaje final
+        applyTranslations(alertaFinal);
+
     }
+
 }
+
 
 function resetGame() {
 
@@ -426,5 +453,6 @@ function resetGame() {
     generarPregunta();
 
 }
+
 
 window.onload = generarPregunta;

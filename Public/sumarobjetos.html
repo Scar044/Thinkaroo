@@ -2,95 +2,164 @@
 <html lang="es">
 
 <head>
+
     <meta charset="UTF-8">
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>¿Cuántos hay?</title>
+    <title data-i18n="countVisual.pageTitle">
+        ¿Cuántos hay?
+    </title>
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="preconnect"
+          href="https://fonts.gstatic.com"
+          crossorigin>
 
-    <link rel="stylesheet" href="CSS/sumar_objetos.css">
->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&display=swap"
+          rel="stylesheet">
+
+    <link rel="stylesheet"
+          href="CSS/sumar_objetos.css">
+
 </head>
+
 
 <body>
 
+
     <header class="encabezado">
 
-        <div class="titulo">
+        <div
+            class="titulo"
+            data-i18n="countVisual.title"
+        >
             ¿CUÁNTOS HAY?
         </div>
 
-        <p class="subtitulo">
+
+        <p
+            class="subtitulo"
+            data-i18n="countVisual.subtitle"
+        >
             Cuenta los elementos y selecciona el número correcto
         </p>
 
+
         <div class="marcador">
+
             <span id="score-text">0</span>
+
         </div>
 
     </header>
 
 
+
     <main class="juego">
+
 
         <section class="tarjeta">
 
-            <div id="items-container" class="objetos">
+            <div
+                id="items-container"
+                class="objetos"
+            >
             </div>
 
         </section>
 
 
+
         <div class="zona-mensaje">
 
-            <div id="feedback-badge" class="mensaje oculto">
+            <div
+                id="feedback-badge"
+                class="mensaje oculto"
+            >
             </div>
 
         </div>
 
 
+
         <section class="panel">
 
-            <div id="options-container" class="opciones">
+            <div
+                id="options-container"
+                class="opciones"
+            >
             </div>
 
         </section>
 
-<div class="contenedor-reinicio">
-    <button type="button" class="reinicio" onclick="resetGame()">
-    🔄 Intentar de nuevo
-    </button>
-</div>
+
+
+        <div class="contenedor-reinicio">
+
+            <button
+                type="button"
+                class="reinicio"
+                onclick="resetGame()"
+                data-i18n="countVisual.tryAgain"
+            >
+                🔄 Intentar de nuevo
+            </button>
+
+        </div>
+
 
     </main>
 
 
- <div class="finish" id="finish">
 
-    <div class="finish-card">
+    <div class="finish" id="finish">
 
-        <div class="trophy">🏆</div>
+        <div class="finish-card">
 
-        <h2>¡Excelente ahora tu misión!</h2>
+            <div class="trophy">
+                🏆
+            </div>
 
-        <p>
-            Cuenta cuantos juguetes tienes
-            <br>
-            ¡Aprendiste a contar!
-        </p>
 
-        <button id="botonFinal">
-            Continuar
-        </button>
+            <h2
+                data-i18n="countVisual.finishTitle"
+            >
+                ¡Excelente ahora tu misión!
+            </h2>
+
+
+            <p id="mensaje-final-texto">
+
+                <span data-i18n="countVisual.finishLine1">
+                    Cuenta cuantos juguetes tienes
+                </span>
+
+                <br>
+
+                <span data-i18n="countVisual.finishLine2">
+                    ¡Aprendiste a contar!
+                </span>
+
+            </p>
+
+
+            <button
+                id="botonFinal"
+                data-i18n="countVisual.continue"
+            >
+                Continuar
+            </button>
+
+        </div>
 
     </div>
 
-</div>
+
+    <script src="JS/idioma-global.js"></script>
     <script src="JS/sumarobjetos.js"></script>
-    
+
 
 </body>
 

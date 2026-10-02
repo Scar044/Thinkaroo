@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="es">
 
@@ -11,11 +10,25 @@
         content="width=device-width, initial-scale=1.0"
     >
 
-    <title>¡Mete los objetos!</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <title data-i18n="putObjects.pageTitle">
+        ¡Mete los objetos!
+    </title>
 
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link
+        rel="preconnect"
+        href="https://fonts.googleapis.com"
+    >
+
+    <link
+        rel="preconnect"
+        href="https://fonts.gstatic.com"
+        crossorigin
+    >
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&display=swap"
+        rel="stylesheet"
+    >
 
     <link
         rel="stylesheet"
@@ -28,10 +41,12 @@
 <body>
 
 
-
     <header class="encabezado">
 
-        <div class="titulo">
+        <div
+            class="titulo"
+            data-i18n="putObjects.title"
+        >
             ¡METE LOS OBJETOS!
         </div>
 
@@ -49,15 +64,15 @@
     <main class="juego">
 
 
-        
         <section class="zona-juego">
 
-            <div class="instruccion">
-
+            <div
+                class="instruccion"
+                data-i18n="putObjects.instruction"
+            >
                 ✋ Arrastra cada objeto
                 <br>
                 📦 ¡Mételo dentro de la caja!
-
             </div>
 
 
@@ -67,8 +82,6 @@
             >
             </div>
 
-
-            
 
             <div
                 id="caja"
@@ -85,7 +98,10 @@
                         0
                     </span>
 
-                    <span class="texto-caja">
+                    <span
+                        class="texto-caja"
+                        data-i18n="putObjects.objects"
+                    >
                         objetos
                     </span>
 
@@ -112,10 +128,11 @@
             class="panel oculto"
         >
 
-            <div class="pregunta">
-
+            <div
+                class="pregunta"
+                data-i18n="putObjects.question"
+            >
                 ¿CUÁNTOS OBJETOS METISTE?
-
             </div>
 
 
@@ -127,53 +144,68 @@
 
         </section>
 
-<div class="contenedor-reinicio">
-    <button type="button" class="reinicio" onclick="resetGame()">
-    🔄 Intentar de nuevo
-    </button>
-</div>
 
+        <div class="contenedor-reinicio">
+
+            <button
+                type="button"
+                class="reinicio"
+                onclick="resetGame()"
+                data-i18n="putObjects.tryAgain"
+            >
+                🔄 Intentar de nuevo
+            </button>
+
+        </div>
 
 
     </main>
 
 
+    <div
+        id="finish"
+        class="finish"
+    >
 
-<div id="finish" class="finish">
+        <div class="finish-card">
 
-    <div class="finish-card">
+            <div class="trophy">
+                🏆
+            </div>
 
-        <div class="trophy">
-            🏆
+            <h2
+                id="mensaje-final-titulo"
+                data-i18n="putObjects.finishTitle"
+            >
+                ¡Excelente ahora tu misión!
+            </h2>
+
+            <p id="mensaje-final-texto">
+                <span data-i18n="putObjects.finishLine1">
+                    Cuenta cuantos juguetes tienes
+                </span>
+                <br>
+                <span data-i18n="putObjects.finishLine2">
+                    ¡Aprendiste a contar!
+                </span>
+            </p>
+
+            <button
+                type="button"
+                id="botonFinal"
+                data-i18n="putObjects.continue"
+            >
+                Continuar
+            </button>
+
         </div>
-
-        <h2 id="mensaje-final-titulo">
-            ¡Excelente ahora tu misión!
-        </h2>
-
-        <p id="mensaje-final-texto">
-            Cuenta cuantos juguetes tienes
-            <br>
-            ¡Aprendiste a contar!
-        </p>
-
-        <button
-            type="button"
-            id="botonFinal"
-        >
-            Continuar
-        </button>
 
     </div>
 
-</div>
-
-    <script
-        src="JS/sumarobjetos_kinestesico.js"
-    ></script>
+    <script src="JS/idioma-global.js"></script>
+    <script src="JS/sumarobjetos_kinestesico.js"></script>
 
 
 </body>
 
 </html>
-

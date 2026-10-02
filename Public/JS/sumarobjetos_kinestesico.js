@@ -1,17 +1,27 @@
 function guardarProgreso(progreso, estado) {
 
     console.log("Progreso:", progreso + "%", "-", estado);
+
 }
 
-const alertaFinal = document.getElementById("finish");
-const botonFinal = document.getElementById("botonFinal");
+const alertaFinal =
+    document.getElementById("finish");
+
+const botonFinal =
+    document.getElementById("botonFinal");
 
 
 if (botonFinal) {
+
     botonFinal.addEventListener("click", function () {
-        window.location.href = "niveles_kinestesico.html";
+
+        window.location.href =
+            "niveles_kinestesico.html";
+
     });
+
 }
+
 
 const objetos = [
     "🚗",
@@ -26,6 +36,7 @@ const objetos = [
     "🍓"
 ];
 
+
 const grupos = [
     ["🚗", "🏎️", "🚙", "🚌"],
     ["🦖", "🦕"],
@@ -33,8 +44,6 @@ const grupos = [
     ["🐶", "🐱", "🦁", "🦊"],
     ["🎈", "🚀", "⚽", "🧸"]
 ];
-
-
 
 
 let ronda = 1;
@@ -47,8 +56,8 @@ let inicioY = 0;
 let moviendo = false;
 
 
-
 guardarProgreso(0, "sin iniciar");
+
 
 function generarPregunta() {
 
@@ -69,15 +78,22 @@ function generarPregunta() {
         document.getElementById("feedback-badge");
 
     if (!contenedor || !caja || !panel || !mensaje) {
-        console.error("Faltan elementos del HTML.");
+
+        console.error(
+            "Faltan elementos del HTML."
+        );
+
         return;
+
     }
 
     contenedor.innerHTML = "";
 
     panel.classList.add("oculto");
 
-    mensaje.className = "mensaje oculto";
+    mensaje.className =
+        "mensaje oculto";
+
     mensaje.innerText = "";
 
     caja.classList.remove("recibiendo");
@@ -100,8 +116,11 @@ function generarPregunta() {
             ];
 
         for (let i = 0; i < cantidad; i++) {
+
             elementos.push(objeto);
+
         }
+
     }
 
 
@@ -126,8 +145,11 @@ function generarPregunta() {
                     )
                 ]
             );
+
         }
+
     }
+
 
     else {
 
@@ -150,17 +172,22 @@ function generarPregunta() {
                     )
                 ]
             );
+
         }
+
     }
 
     mostrarObjetos(elementos);
+
 }
 
 
 function mostrarObjetos(elementos) {
 
     const contenedor =
-        document.getElementById("objetos-container");
+        document.getElementById(
+            "objetos-container"
+        );
 
     elementos.forEach((elemento, indice) => {
 
@@ -188,7 +215,9 @@ function mostrarObjetos(elementos) {
         );
 
         contenedor.appendChild(objeto);
+
     });
+
 }
 
 
@@ -200,7 +229,9 @@ function iniciarArrastre(evento) {
         objetoArrastrado ||
         this.classList.contains("dentro")
     ) {
+
         return;
+
     }
 
     objetoArrastrado = this;
@@ -255,6 +286,7 @@ function iniciarArrastre(evento) {
         "touchend",
         terminarArrastre
     );
+
 }
 
 
@@ -264,7 +296,9 @@ function moverObjeto(evento) {
         !objetoArrastrado ||
         !moviendo
     ) {
+
         return;
+
     }
 
     evento.preventDefault();
@@ -282,6 +316,7 @@ function moverObjeto(evento) {
         posicion.x,
         posicion.y
     );
+
 }
 
 
@@ -308,13 +343,16 @@ function comprobarCaja(x, y) {
         caja.classList.remove("recibiendo");
 
     }
+
 }
 
 
 function terminarArrastre(evento) {
 
     if (!objetoArrastrado) {
+
         return;
+
     }
 
     const posicion =
@@ -339,6 +377,7 @@ function terminarArrastre(evento) {
     } else {
 
         devolverObjeto();
+
     }
 
     document.removeEventListener(
@@ -360,6 +399,7 @@ function terminarArrastre(evento) {
         "touchend",
         terminarArrastre
     );
+
 }
 
 
@@ -371,22 +411,30 @@ function meterObjeto() {
     const caja =
         document.getElementById("caja");
 
-    objeto.classList.remove("arrastrando");
+    objeto.classList.remove(
+        "arrastrando"
+    );
 
     objeto.classList.add("dentro");
 
-    objeto.style.position = "absolute";
+    objeto.style.position =
+        "absolute";
 
-    objeto.style.left = "50%";
+    objeto.style.left =
+        "50%";
 
-    objeto.style.top = "50%";
+    objeto.style.top =
+        "50%";
 
     objeto.style.transform =
         "translate(-50%, -50%) scale(.5)";
 
-    objeto.style.opacity = "0";
+    objeto.style.opacity =
+        "0";
 
-    caja.classList.add("recibiendo");
+    caja.classList.add(
+        "recibiendo"
+    );
 
     objetosDentro++;
 
@@ -395,7 +443,9 @@ function meterObjeto() {
     setTimeout(() => {
 
         if (objeto.parentElement) {
+
             objeto.remove();
+
         }
 
     }, 400);
@@ -410,7 +460,9 @@ function meterObjeto() {
             mostrarOpciones,
             600
         );
+
     }
+
 }
 
 
@@ -438,7 +490,7 @@ function devolverObjeto() {
     moviendo = false;
 
     mostrarMensaje(
-        "¡Casi! Suelta el objeto dentro de la caja 📦",
+        translate("putObjects.feedback.hint"),
         "pista"
     );
 
@@ -453,6 +505,7 @@ function devolverObjeto() {
             "mensaje oculto";
 
     }, 1800);
+
 }
 
 
@@ -471,7 +524,9 @@ function mostrarOpciones() {
     panel.classList.remove("oculto");
 
     mensaje.innerText =
-        "¡Muy bien! Ahora dime cuántos objetos metiste ";
+        translate(
+            "putObjects.feedback.count"
+        );
 
     mensaje.className =
         "mensaje listo";
@@ -482,6 +537,7 @@ function mostrarOpciones() {
         behavior: "smooth",
         block: "center"
     });
+
 }
 
 
@@ -514,7 +570,9 @@ function generarOpciones(respuesta) {
         ) {
 
             opciones.add(numero);
+
         }
+
     }
 
     const mezcladas =
@@ -539,17 +597,23 @@ function generarOpciones(respuesta) {
                     numero,
                     boton
                 );
+
             }
         );
 
         contenedor.appendChild(boton);
+
     });
+
 }
+
 
 function comprobar(numero, boton) {
 
     if (boton.disabled) {
+
         return;
+
     }
 
     const mensaje =
@@ -570,11 +634,12 @@ function comprobar(numero, boton) {
         ).innerText = puntos;
 
         mensaje.innerText =
-            " ¡MUY BIEN!";
+            translate(
+                "putObjects.feedback.correct"
+            );
 
         mensaje.className =
             "mensaje correcto";
-
 
         const progreso =
             Math.round(
@@ -587,10 +652,11 @@ function comprobar(numero, boton) {
                 progreso,
                 "en proceso"
             );
+
         }
 
-
         ronda++;
+
         setTimeout(() => {
 
             if (ronda > 9) {
@@ -605,9 +671,11 @@ function comprobar(numero, boton) {
             } else {
 
                 generarPregunta();
+
             }
 
         }, 1400);
+
     }
 
 
@@ -616,7 +684,9 @@ function comprobar(numero, boton) {
         boton.classList.add("error");
 
         mensaje.innerText =
-            " Cuenta los objetos que metiste en la caja";
+            translate(
+                "putObjects.feedback.countHint"
+            );
 
         mensaje.className =
             "mensaje pista";
@@ -628,8 +698,11 @@ function comprobar(numero, boton) {
             );
 
         }, 500);
+
     }
+
 }
+
 
 function actualizarContador() {
 
@@ -640,7 +713,9 @@ function actualizarContador() {
 
     contador.innerText =
         objetosDentro;
+
 }
+
 
 function mostrarMensaje(
     texto,
@@ -657,6 +732,7 @@ function mostrarMensaje(
 
     mensaje.className =
         "mensaje " + clase;
+
 }
 
 
@@ -670,6 +746,7 @@ function obtenerPosicion(evento) {
             x: evento.clientX,
             y: evento.clientY
         };
+
     }
 
     if (
@@ -681,6 +758,7 @@ function obtenerPosicion(evento) {
             x: evento.touches[0].clientX,
             y: evento.touches[0].clientY
         };
+
     }
 
     if (
@@ -692,12 +770,14 @@ function obtenerPosicion(evento) {
             x: evento.changedTouches[0].clientX,
             y: evento.changedTouches[0].clientY
         };
+
     }
 
     return {
         x: 0,
         y: 0
     };
+
 }
 
 
@@ -710,12 +790,17 @@ function mostrarFinal() {
 
         finish.classList.add("show");
 
+        // Reapply translations to the final message
+        applyTranslations(finish);
+
     } else {
 
         console.error(
             "No se encontró el elemento #finish"
         );
+
     }
+
 }
 
 
@@ -742,9 +827,11 @@ function resetGame() {
         alertaFinal.classList.remove(
             "show"
         );
+
     }
 
     generarPregunta();
+
 }
 
 

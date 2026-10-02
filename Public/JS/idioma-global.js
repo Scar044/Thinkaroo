@@ -844,6 +844,34 @@
             "countAuditory.finishDescription": "Cuenta cuantos juguetes tienes<br>¡Aprendiste a contar!",
             "countAuditory.continue": "Continuar",
 
+            // Mete los objetos - Kinestésico
+            "putObjects.pageTitle": "¡Mete los objetos!",
+            "putObjects.title": "¡METE LOS OBJETOS!",
+            "putObjects.instruction": "✋ Arrastra cada objeto<br>📦 ¡Mételo dentro de la caja!",
+            "putObjects.objects": "objetos",
+            "putObjects.question": "¿CUÁNTOS OBJETOS METISTE?",
+            "putObjects.tryAgain": "🔄 Intentar de nuevo",
+            "putObjects.feedback.correct": "¡MUY BIEN!",
+            "putObjects.feedback.hint": "¡Casi! Suelta el objeto dentro de la caja 📦",
+            "putObjects.feedback.count": "¡Muy bien! Ahora dime cuántos objetos metiste",
+            "putObjects.feedback.countHint": "Cuenta los objetos que metiste en la caja",
+            "putObjects.finishTitle": "¡Excelente ahora tu misión!",
+            "putObjects.finishLine1": "Cuenta cuantos juguetes tienes",
+            "putObjects.finishLine2": "¡Aprendiste a contar!",
+            "putObjects.continue": "Continuar",
+
+
+            "countVisual.pageTitle": "How Many Are There?",
+            "countVisual.title": "HOW MANY ARE THERE?",
+            "countVisual.subtitle": "Count the items and select the correct number",
+            "countVisual.tryAgain": "🔄 Try Again",
+            "countVisual.feedback.correct": "VERY GOOD!",
+            "countVisual.feedback.hint": "Let's count together! 🔍",
+            "countVisual.finishTitle": "Excellent! Now your mission!",
+            "countVisual.finishLine1": "Count how many toys you have",
+            "countVisual.finishLine2": "You learned how to count!",
+            "countVisual.continue": "Continue",
+
     };
 
 
@@ -1692,6 +1720,35 @@
             "countAuditory.finishTitle": "Excellent! Now your mission!",
             "countAuditory.finishDescription": "Count how many toys you have<br>You learned how to count!",
             "countAuditory.continue": "Continue",
+
+
+            // Put the Objects In - Kinesthetic
+            "putObjects.pageTitle": "Put the Objects In!",
+            "putObjects.title": "PUT THE OBJECTS IN!",
+            "putObjects.instruction": "✋ Drag each object  📦 Put it inside the box!",
+            "putObjects.objects": "objects",
+            "putObjects.question": "HOW MANY OBJECTS DID YOU PUT IN?",
+            "putObjects.tryAgain": "🔄 Try Again",
+            "putObjects.feedback.correct": "VERY GOOD!",
+            "putObjects.feedback.hint": "Almost! Drop the object inside the box 📦",
+            "putObjects.feedback.count": "Very good! Now tell me how many objects you put in",
+            "putObjects.feedback.countHint": "Count the objects you put in the box",
+            "putObjects.finishTitle": "Excellent! Now your mission!",
+            "putObjects.finishLine1": "Count how many toys you have",
+            "putObjects.finishLine2": "You learned how to count!",
+            "putObjects.continue": "Continue",
+
+
+            "countVisual.pageTitle": "How Many Are There?",
+            "countVisual.title": "HOW MANY ARE THERE?",
+            "countVisual.subtitle": "Count the items and select the correct number",
+            "countVisual.tryAgain": "🔄 Try Again",
+            "countVisual.feedback.correct": "VERY GOOD!",
+            "countVisual.feedback.hint": "Let's count together! 🔍",
+            "countVisual.finishTitle": "Excellent! Now your mission!",
+            "countVisual.finishLine1": "Count how many toys you have",
+            "countVisual.finishLine2": "You learned how to count!",
+            "countVisual.continue": "Continue",
     };
 
 
