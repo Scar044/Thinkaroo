@@ -1,65 +1,79 @@
 const formulario =
-document.getElementById("form-registro");
+    document.getElementById("form-registro");
 
 formulario.addEventListener(
     "submit",
     registrarUsuario
 );
 
-function registrarUsuario(evento){
+
+function registrarUsuario(evento) {
 
     evento.preventDefault();
 
     let nombre =
-    document.getElementById("input-nombre").value;
+        document.getElementById("input-nombre").value;
 
     let correo =
-    document.getElementById("input-correo").value;
+        document.getElementById("input-correo").value;
 
     let password =
-    document.getElementById("input-clave").value;
+        document.getElementById("input-clave").value;
 
     let confirmarPassword =
-    document.getElementById(
-        "input-confirmar-clave"
-    ).value;
+        document.getElementById(
+            "input-confirmar-clave"
+        ).value;
 
-    if(password !== confirmarPassword){
+
+    if (password !== confirmarPassword) {
 
         alert(
-            "Las contraseñas no coinciden"
+            translate("register.passwordMismatch")
         );
 
         return;
     }
 
-    fetch("../ConfigPHP/registro.php",{
-        method: "POST",
-        headers: {
-        "Content-Type": "application/json"
-    },
 
-    body: JSON.stringify({
-        nombre: nombre,
-        correo: correo,
-        password: password
+    fetch("../ConfigPHP/registro.php", {
+
+        method: "POST",
+
+        headers: {
+            "Content-Type": "application/json"
+        },
+
+        body: JSON.stringify({
+            nombre: nombre,
+            correo: correo,
+            password: password
+        })
+
     })
 
-})
-    
-.then(respuesta => respuesta.json())
-.then(datos => {
+    .then(respuesta =>
+        respuesta.json()
+    )
 
-    if(datos.success){
+    .then(datos => {
 
-        window.location.href = "datosHijos.html";
+        if (datos.success) {
 
-    }else{
+            window.location.href =
+                "datosHijos.html";
 
-        alert(datos.mensaje);
+        } else {
 
-    }
+            alert(
+                datos.mensaje ||
+                translate(
+                    "register.registrationError"
+                )
+            );
 
-});
+        }
+
+    });
 
 }

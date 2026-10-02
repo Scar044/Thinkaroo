@@ -279,6 +279,24 @@
             "colorsVisual.gameComplete": "🏆 ¡Juego terminado!",
             "colorsVisual.finalScore": "Conseguiste {points} puntos ⭐",
 
+            // Registration
+            "register.subtitle": "¡Aprendamos juntos!",
+            "register.name": "Nombre",
+            "register.namePlaceholder": "Nombre del padre/tutor",
+            "register.email": "Correo",
+            "register.emailPlaceholder": "correo@ejemplo.com",
+            "register.password": "Contraseña",
+            "register.confirmPassword": "Confirmar contraseña",
+            "register.button": "Registrarse",
+            "register.alreadyAccount": "¿Ya tienes una cuenta?",
+            "register.login": "Inicia sesión",
+
+            "register.passwordMismatch":
+                "Las contraseñas no coinciden",
+
+            "register.registrationError":
+                "Ocurrió un error al registrar el usuario.",
+
 
     };
 
@@ -562,6 +580,24 @@
             "colorsVisual.excellent": "Excellent work! ⭐",
             "colorsVisual.gameComplete": "🏆 Game over!",
             "colorsVisual.finalScore": "You got {points} points ⭐",
+
+            // Registration
+            "register.subtitle": "Let's learn together!",
+            "register.name": "Name",
+            "register.namePlaceholder": "Parent/guardian name",
+            "register.email": "Email",
+            "register.emailPlaceholder": "email@example.com",
+            "register.password": "Password",
+            "register.confirmPassword": "Confirm password",
+            "register.button": "Register",
+            "register.alreadyAccount": "Already have an account?",
+            "register.login": "Log in",
+
+            "register.passwordMismatch":
+                "The passwords do not match",
+
+            "register.registrationError":
+                "An error occurred while registering the user.",
     };
 
 
