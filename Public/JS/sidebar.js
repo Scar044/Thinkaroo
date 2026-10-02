@@ -2,87 +2,48 @@ const sidebar = document.getElementById("sidebar");
 const boton = document.getElementById("toggleBtn");
 
 if (sidebar && boton) {
+  boton.addEventListener("click", () => {
+    sidebar.classList.toggle("cerrado");
 
-    boton.addEventListener("click", () => {
-
-        sidebar.classList.toggle("cerrado");
-
-        if (sidebar.classList.contains("cerrado")) {
-            boton.innerHTML = "❯";
-        } else {
-            boton.innerHTML = "❮";
-        }
-
-    });
-
+    if (sidebar.classList.contains("cerrado")) {
+      boton.innerHTML = "❯";
+    } else {
+      boton.innerHTML = "❮";
+    }
+  });
 }
 
 const btnNiveles = document.getElementById("btnNiveles");
 
 if (btnNiveles) {
+  btnNiveles.addEventListener("click", (e) => {
+    e.preventDefault();
 
-    btnNiveles.addEventListener("click", (e) => {
+    fetch("../ConfigPHP/obtener_perfil_hijo.php")
+      .then((respuesta) => respuesta.json())
 
-        e.preventDefault();
+      .then((datos) => {
+        if (!datos.success) {
+          console.error(datos.mensaje);
 
-        fetch("../ConfigPHP/obtener_perfil_hijo.php")
+          return;
+        }
 
-            .then(respuesta => respuesta.json())
+        const estilo = datos.hijo.estilo_aprendizaje;
 
-            .then(datos => {
+        if (estilo === "Visual") {
+          window.location.href = "niveles.html";
+        } else if (estilo === "Auditivo") {
+          window.location.href = "niveles_auditivo.html";
+        } else if (estilo === "Kinestesico") {
+          window.location.href = "niveles_kinestesico.html";
+        } else {
+          console.error("El hijo no tiene un estilo de aprendizaje definido.");
+        }
+      })
 
-                if (!datos.success) {
-
-                    console.error(datos.mensaje);
-
-                    return;
-                }
-
-
-                const estilo =
-                    datos.hijo.estilo_aprendizaje;
-
-
-                if (estilo === "Visual") {
-
-                    window.location.href =
-                        "niveles.html";
-
-                }
-
-                else if (estilo === "Auditivo") {
-
-                    window.location.href =
-                        "niveles_auditivo.html";
-
-                }
-
-                else if (estilo === "Kinestesico") {
-
-                    window.location.href =
-                        "niveles_kinestesico.html";
-
-                }
-
-                else {
-
-                    console.error(
-                        "El hijo no tiene un estilo de aprendizaje definido."
-                    );
-
-                }
-
-            })
-
-            .catch(error => {
-
-                console.error(
-                    "Error al obtener el estilo de aprendizaje:",
-                    error
-                );
-
-            });
-
-    });
-
+      .catch((error) => {
+        console.error("Error al obtener el estilo de aprendizaje:", error);
+      });
+  });
 }

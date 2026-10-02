@@ -1,50 +1,26 @@
 function guardarProgreso(progreso, estado) {
-
-    console.log("Progreso:", progreso + "%", "-", estado);
-
+  console.log("Progreso:", progreso + "%", "-", estado);
 }
 
-const alertaFinal =
-    document.getElementById("finish");
+const alertaFinal = document.getElementById("finish");
 
-const botonFinal =
-    document.getElementById("botonFinal");
-
+const botonFinal = document.getElementById("botonFinal");
 
 if (botonFinal) {
-
-    botonFinal.addEventListener("click", function () {
-
-        window.location.href =
-            "niveles_kinestesico.html";
-
-    });
-
+  botonFinal.addEventListener("click", function () {
+    window.location.href = "niveles_kinestesico.html";
+  });
 }
 
-
-const objetos = [
-    "🚗",
-    "🧸",
-    "🍌",
-    "🍎",
-    "🐶",
-    "🦖",
-    "🎈",
-    "⚽",
-    "🚀",
-    "🍓"
-];
-
+const objetos = ["🚗", "🧸", "🍌", "🍎", "🐶", "🦖", "🎈", "⚽", "🚀", "🍓"];
 
 const grupos = [
-    ["🚗", "🏎️", "🚙", "🚌"],
-    ["🦖", "🦕"],
-    ["🍎", "🍌", "🍓", "🍊"],
-    ["🐶", "🐱", "🦁", "🦊"],
-    ["🎈", "🚀", "⚽", "🧸"]
+  ["🚗", "🏎️", "🚙", "🚌"],
+  ["🦖", "🦕"],
+  ["🍎", "🍌", "🍓", "🍊"],
+  ["🐶", "🐱", "🦁", "🦊"],
+  ["🎈", "🚀", "⚽", "🧸"],
 ];
-
 
 let ronda = 1;
 let cantidad = 0;
@@ -55,787 +31,439 @@ let inicioX = 0;
 let inicioY = 0;
 let moviendo = false;
 
-
 guardarProgreso(0, "sin iniciar");
 
-
 function generarPregunta() {
+  objetosDentro = 0;
+  objetoArrastrado = null;
+  moviendo = false;
 
-    objetosDentro = 0;
-    objetoArrastrado = null;
-    moviendo = false;
+  const contenedor = document.getElementById("objetos-container");
 
-    const contenedor =
-        document.getElementById("objetos-container");
+  const caja = document.getElementById("caja");
 
-    const caja =
-        document.getElementById("caja");
+  const panel = document.getElementById("panel-opciones");
 
-    const panel =
-        document.getElementById("panel-opciones");
+  const mensaje = document.getElementById("feedback-badge");
 
-    const mensaje =
-        document.getElementById("feedback-badge");
+  if (!contenedor || !caja || !panel || !mensaje) {
+    console.error("Faltan elementos del HTML.");
 
-    if (!contenedor || !caja || !panel || !mensaje) {
+    return;
+  }
 
-        console.error(
-            "Faltan elementos del HTML."
-        );
+  contenedor.innerHTML = "";
 
-        return;
+  panel.classList.add("oculto");
 
+  mensaje.className = "mensaje oculto";
+
+  mensaje.innerText = "";
+
+  caja.classList.remove("recibiendo");
+
+  actualizarContador();
+
+  let elementos = [];
+
+  if (ronda <= 3) {
+    cantidad = Math.floor(Math.random() * 3) + 2;
+
+    const objeto = objetos[Math.floor(Math.random() * objetos.length)];
+
+    for (let i = 0; i < cantidad; i++) {
+      elementos.push(objeto);
     }
+  } else if (ronda <= 6) {
+    cantidad = Math.floor(Math.random() * 4) + 4;
 
-    contenedor.innerHTML = "";
+    const grupo = grupos[Math.floor(Math.random() * grupos.length)];
 
-    panel.classList.add("oculto");
-
-    mensaje.className =
-        "mensaje oculto";
-
-    mensaje.innerText = "";
-
-    caja.classList.remove("recibiendo");
-
-    actualizarContador();
-
-    let elementos = [];
-
-
-    if (ronda <= 3) {
-
-        cantidad =
-            Math.floor(Math.random() * 3) + 2;
-
-        const objeto =
-            objetos[
-                Math.floor(
-                    Math.random() * objetos.length
-                )
-            ];
-
-        for (let i = 0; i < cantidad; i++) {
-
-            elementos.push(objeto);
-
-        }
-
+    for (let i = 0; i < cantidad; i++) {
+      elementos.push(grupo[Math.floor(Math.random() * grupo.length)]);
     }
+  } else {
+    cantidad = Math.floor(Math.random() * 4) + 6;
 
+    const grupo = grupos[Math.floor(Math.random() * grupos.length)];
 
-    else if (ronda <= 6) {
-
-        cantidad =
-            Math.floor(Math.random() * 4) + 4;
-
-        const grupo =
-            grupos[
-                Math.floor(
-                    Math.random() * grupos.length
-                )
-            ];
-
-        for (let i = 0; i < cantidad; i++) {
-
-            elementos.push(
-                grupo[
-                    Math.floor(
-                        Math.random() * grupo.length
-                    )
-                ]
-            );
-
-        }
-
+    for (let i = 0; i < cantidad; i++) {
+      elementos.push(grupo[Math.floor(Math.random() * grupo.length)]);
     }
+  }
 
-
-    else {
-
-        cantidad =
-            Math.floor(Math.random() * 4) + 6;
-
-        const grupo =
-            grupos[
-                Math.floor(
-                    Math.random() * grupos.length
-                )
-            ];
-
-        for (let i = 0; i < cantidad; i++) {
-
-            elementos.push(
-                grupo[
-                    Math.floor(
-                        Math.random() * grupo.length
-                    )
-                ]
-            );
-
-        }
-
-    }
-
-    mostrarObjetos(elementos);
-
+  mostrarObjetos(elementos);
 }
-
 
 function mostrarObjetos(elementos) {
+  const contenedor = document.getElementById("objetos-container");
 
-    const contenedor =
-        document.getElementById(
-            "objetos-container"
-        );
+  elementos.forEach((elemento, indice) => {
+    const objeto = document.createElement("div");
 
-    elementos.forEach((elemento, indice) => {
+    objeto.className = "objeto";
 
-        const objeto =
-            document.createElement("div");
+    objeto.innerText = elemento;
 
-        objeto.className = "objeto";
+    objeto.dataset.index = indice;
 
-        objeto.innerText = elemento;
+    objeto.style.animationDelay = `${indice * 0.08}s`;
 
-        objeto.dataset.index = indice;
+    objeto.addEventListener("mousedown", iniciarArrastre);
 
-        objeto.style.animationDelay =
-            `${indice * 0.08}s`;
+    objeto.addEventListener("touchstart", iniciarArrastre, { passive: false });
 
-        objeto.addEventListener(
-            "mousedown",
-            iniciarArrastre
-        );
-
-        objeto.addEventListener(
-            "touchstart",
-            iniciarArrastre,
-            { passive: false }
-        );
-
-        contenedor.appendChild(objeto);
-
-    });
-
+    contenedor.appendChild(objeto);
+  });
 }
-
 
 function iniciarArrastre(evento) {
+  evento.preventDefault();
 
-    evento.preventDefault();
+  if (objetoArrastrado || this.classList.contains("dentro")) {
+    return;
+  }
 
-    if (
-        objetoArrastrado ||
-        this.classList.contains("dentro")
-    ) {
+  objetoArrastrado = this;
 
-        return;
+  moviendo = true;
 
-    }
+  const posicion = obtenerPosicion(evento);
 
-    objetoArrastrado = this;
+  inicioX = posicion.x - this.getBoundingClientRect().left;
 
-    moviendo = true;
+  inicioY = posicion.y - this.getBoundingClientRect().top;
 
-    const posicion =
-        obtenerPosicion(evento);
+  const rect = this.getBoundingClientRect();
 
-    inicioX =
-        posicion.x -
-        this.getBoundingClientRect().left;
+  this.style.width = `${rect.width}px`;
 
-    inicioY =
-        posicion.y -
-        this.getBoundingClientRect().top;
+  this.style.height = `${rect.height}px`;
 
-    const rect =
-        this.getBoundingClientRect();
+  this.style.left = `${rect.left}px`;
 
-    this.style.width =
-        `${rect.width}px`;
+  this.style.top = `${rect.top}px`;
 
-    this.style.height =
-        `${rect.height}px`;
+  this.classList.add("arrastrando");
 
-    this.style.left =
-        `${rect.left}px`;
+  document.addEventListener("mousemove", moverObjeto);
 
-    this.style.top =
-        `${rect.top}px`;
+  document.addEventListener("mouseup", terminarArrastre);
 
-    this.classList.add("arrastrando");
+  document.addEventListener("touchmove", moverObjeto, { passive: false });
 
-    document.addEventListener(
-        "mousemove",
-        moverObjeto
-    );
-
-    document.addEventListener(
-        "mouseup",
-        terminarArrastre
-    );
-
-    document.addEventListener(
-        "touchmove",
-        moverObjeto,
-        { passive: false }
-    );
-
-    document.addEventListener(
-        "touchend",
-        terminarArrastre
-    );
-
+  document.addEventListener("touchend", terminarArrastre);
 }
-
 
 function moverObjeto(evento) {
+  if (!objetoArrastrado || !moviendo) {
+    return;
+  }
 
-    if (
-        !objetoArrastrado ||
-        !moviendo
-    ) {
+  evento.preventDefault();
 
-        return;
+  const posicion = obtenerPosicion(evento);
 
-    }
+  objetoArrastrado.style.left = `${posicion.x - inicioX}px`;
 
-    evento.preventDefault();
+  objetoArrastrado.style.top = `${posicion.y - inicioY}px`;
 
-    const posicion =
-        obtenerPosicion(evento);
-
-    objetoArrastrado.style.left =
-        `${posicion.x - inicioX}px`;
-
-    objetoArrastrado.style.top =
-        `${posicion.y - inicioY}px`;
-
-    comprobarCaja(
-        posicion.x,
-        posicion.y
-    );
-
+  comprobarCaja(posicion.x, posicion.y);
 }
-
 
 function comprobarCaja(x, y) {
+  const caja = document.getElementById("caja");
 
-    const caja =
-        document.getElementById("caja");
+  const rect = caja.getBoundingClientRect();
 
-    const rect =
-        caja.getBoundingClientRect();
+  const dentro =
+    x >= rect.left && x <= rect.right && y >= rect.top && y <= rect.bottom;
 
-    const dentro =
-        x >= rect.left &&
-        x <= rect.right &&
-        y >= rect.top &&
-        y <= rect.bottom;
-
-    if (dentro) {
-
-        caja.classList.add("recibiendo");
-
-    } else {
-
-        caja.classList.remove("recibiendo");
-
-    }
-
+  if (dentro) {
+    caja.classList.add("recibiendo");
+  } else {
+    caja.classList.remove("recibiendo");
+  }
 }
-
 
 function terminarArrastre(evento) {
+  if (!objetoArrastrado) {
+    return;
+  }
 
-    if (!objetoArrastrado) {
+  const posicion = obtenerPosicion(evento);
 
-        return;
+  const caja = document.getElementById("caja");
 
-    }
+  const rect = caja.getBoundingClientRect();
 
-    const posicion =
-        obtenerPosicion(evento);
+  const dentro =
+    posicion.x >= rect.left &&
+    posicion.x <= rect.right &&
+    posicion.y >= rect.top &&
+    posicion.y <= rect.bottom;
 
-    const caja =
-        document.getElementById("caja");
+  if (dentro) {
+    meterObjeto();
+  } else {
+    devolverObjeto();
+  }
 
-    const rect =
-        caja.getBoundingClientRect();
+  document.removeEventListener("mousemove", moverObjeto);
 
-    const dentro =
-        posicion.x >= rect.left &&
-        posicion.x <= rect.right &&
-        posicion.y >= rect.top &&
-        posicion.y <= rect.bottom;
+  document.removeEventListener("mouseup", terminarArrastre);
 
-    if (dentro) {
+  document.removeEventListener("touchmove", moverObjeto);
 
-        meterObjeto();
-
-    } else {
-
-        devolverObjeto();
-
-    }
-
-    document.removeEventListener(
-        "mousemove",
-        moverObjeto
-    );
-
-    document.removeEventListener(
-        "mouseup",
-        terminarArrastre
-    );
-
-    document.removeEventListener(
-        "touchmove",
-        moverObjeto
-    );
-
-    document.removeEventListener(
-        "touchend",
-        terminarArrastre
-    );
-
+  document.removeEventListener("touchend", terminarArrastre);
 }
-
 
 function meterObjeto() {
+  const objeto = objetoArrastrado;
 
-    const objeto =
-        objetoArrastrado;
+  const caja = document.getElementById("caja");
 
-    const caja =
-        document.getElementById("caja");
+  objeto.classList.remove("arrastrando");
 
-    objeto.classList.remove(
-        "arrastrando"
-    );
+  objeto.classList.add("dentro");
 
-    objeto.classList.add("dentro");
+  objeto.style.position = "absolute";
 
-    objeto.style.position =
-        "absolute";
+  objeto.style.left = "50%";
 
-    objeto.style.left =
-        "50%";
+  objeto.style.top = "50%";
 
-    objeto.style.top =
-        "50%";
+  objeto.style.transform = "translate(-50%, -50%) scale(.5)";
 
-    objeto.style.transform =
-        "translate(-50%, -50%) scale(.5)";
+  objeto.style.opacity = "0";
 
-    objeto.style.opacity =
-        "0";
+  caja.classList.add("recibiendo");
 
-    caja.classList.add(
-        "recibiendo"
-    );
+  objetosDentro++;
 
-    objetosDentro++;
+  actualizarContador();
 
-    actualizarContador();
-
-    setTimeout(() => {
-
-        if (objeto.parentElement) {
-
-            objeto.remove();
-
-        }
-
-    }, 400);
-
-    objetoArrastrado = null;
-
-    moviendo = false;
-
-    if (objetosDentro === cantidad) {
-
-        setTimeout(
-            mostrarOpciones,
-            600
-        );
-
+  setTimeout(() => {
+    if (objeto.parentElement) {
+      objeto.remove();
     }
+  }, 400);
 
+  objetoArrastrado = null;
+
+  moviendo = false;
+
+  if (objetosDentro === cantidad) {
+    setTimeout(mostrarOpciones, 600);
+  }
 }
-
 
 function devolverObjeto() {
+  const objeto = objetoArrastrado;
 
-    const objeto =
-        objetoArrastrado;
+  objeto.classList.remove("arrastrando");
 
-    objeto.classList.remove(
-        "arrastrando"
-    );
+  objeto.style.position = "";
 
-    objeto.style.position = "";
+  objeto.style.left = "";
 
-    objeto.style.left = "";
+  objeto.style.top = "";
 
-    objeto.style.top = "";
+  objeto.style.width = "";
 
-    objeto.style.width = "";
+  objeto.style.height = "";
 
-    objeto.style.height = "";
+  objetoArrastrado = null;
 
-    objetoArrastrado = null;
+  moviendo = false;
 
-    moviendo = false;
+  mostrarMensaje(translate("putObjects.feedback.hint"), "pista");
 
-    mostrarMensaje(
-        translate("putObjects.feedback.hint"),
-        "pista"
-    );
+  setTimeout(() => {
+    const mensaje = document.getElementById("feedback-badge");
 
-    setTimeout(() => {
-
-        const mensaje =
-            document.getElementById(
-                "feedback-badge"
-            );
-
-        mensaje.className =
-            "mensaje oculto";
-
-    }, 1800);
-
+    mensaje.className = "mensaje oculto";
+  }, 1800);
 }
-
 
 function mostrarOpciones() {
+  const panel = document.getElementById("panel-opciones");
 
-    const panel =
-        document.getElementById(
-            "panel-opciones"
-        );
+  const mensaje = document.getElementById("feedback-badge");
 
-    const mensaje =
-        document.getElementById(
-            "feedback-badge"
-        );
+  panel.classList.remove("oculto");
 
-    panel.classList.remove("oculto");
+  mensaje.innerText = translate("putObjects.feedback.count");
 
-    mensaje.innerText =
-        translate(
-            "putObjects.feedback.count"
-        );
+  mensaje.className = "mensaje listo";
 
-    mensaje.className =
-        "mensaje listo";
+  generarOpciones(cantidad);
 
-    generarOpciones(cantidad);
-
-    panel.scrollIntoView({
-        behavior: "smooth",
-        block: "center"
-    });
-
+  panel.scrollIntoView({
+    behavior: "smooth",
+    block: "center",
+  });
 }
-
 
 function generarOpciones(respuesta) {
+  const contenedor = document.getElementById("options-container");
 
-    const contenedor =
-        document.getElementById(
-            "options-container"
-        );
+  contenedor.innerHTML = "";
 
-    contenedor.innerHTML = "";
+  const opciones = new Set();
 
-    const opciones =
-        new Set();
+  opciones.add(respuesta);
 
-    opciones.add(respuesta);
+  while (opciones.size < 4) {
+    const cambio = Math.floor(Math.random() * 5) - 2;
 
-    while (opciones.size < 4) {
+    const numero = respuesta + cambio;
 
-        const cambio =
-            Math.floor(Math.random() * 5) - 2;
-
-        const numero =
-            respuesta + cambio;
-
-        if (
-            numero >= 1 &&
-            numero <= 10 &&
-            numero !== respuesta
-        ) {
-
-            opciones.add(numero);
-
-        }
-
+    if (numero >= 1 && numero <= 10 && numero !== respuesta) {
+      opciones.add(numero);
     }
+  }
 
-    const mezcladas =
-        Array.from(opciones)
-            .sort(
-                () =>
-                    Math.random() - 0.5
-            );
+  const mezcladas = Array.from(opciones).sort(() => Math.random() - 0.5);
 
-    mezcladas.forEach(numero => {
+  mezcladas.forEach((numero) => {
+    const boton = document.createElement("button");
 
-        const boton =
-            document.createElement("button");
+    boton.innerText = numero;
 
-        boton.innerText = numero;
-
-        boton.addEventListener(
-            "click",
-            function () {
-
-                comprobar(
-                    numero,
-                    boton
-                );
-
-            }
-        );
-
-        contenedor.appendChild(boton);
-
+    boton.addEventListener("click", function () {
+      comprobar(numero, boton);
     });
 
+    contenedor.appendChild(boton);
+  });
 }
-
 
 function comprobar(numero, boton) {
+  if (boton.disabled) {
+    return;
+  }
 
-    if (boton.disabled) {
+  const mensaje = document.getElementById("feedback-badge");
 
-        return;
+  if (numero === cantidad) {
+    boton.classList.add("bien");
 
+    boton.disabled = true;
+
+    puntos++;
+
+    document.getElementById("score-text").innerText = puntos;
+
+    mensaje.innerText = translate("putObjects.feedback.correct");
+
+    mensaje.className = "mensaje correcto";
+
+    const progreso = Math.round((ronda / 9) * 100);
+
+    if (ronda < 9) {
+      guardarProgreso(progreso, "en proceso");
     }
 
-    const mensaje =
-        document.getElementById(
-            "feedback-badge"
-        );
+    ronda++;
 
-    if (numero === cantidad) {
+    setTimeout(() => {
+      if (ronda > 9) {
+        guardarProgreso(100, "completado");
 
-        boton.classList.add("bien");
+        mostrarFinal();
+      } else {
+        generarPregunta();
+      }
+    }, 1400);
+  } else {
+    boton.classList.add("error");
 
-        boton.disabled = true;
+    mensaje.innerText = translate("putObjects.feedback.countHint");
 
-        puntos++;
+    mensaje.className = "mensaje pista";
 
-        document.getElementById(
-            "score-text"
-        ).innerText = puntos;
-
-        mensaje.innerText =
-            translate(
-                "putObjects.feedback.correct"
-            );
-
-        mensaje.className =
-            "mensaje correcto";
-
-        const progreso =
-            Math.round(
-                (ronda / 9) * 100
-            );
-
-        if (ronda < 9) {
-
-            guardarProgreso(
-                progreso,
-                "en proceso"
-            );
-
-        }
-
-        ronda++;
-
-        setTimeout(() => {
-
-            if (ronda > 9) {
-
-                guardarProgreso(
-                    100,
-                    "completado"
-                );
-
-                mostrarFinal();
-
-            } else {
-
-                generarPregunta();
-
-            }
-
-        }, 1400);
-
-    }
-
-
-    else {
-
-        boton.classList.add("error");
-
-        mensaje.innerText =
-            translate(
-                "putObjects.feedback.countHint"
-            );
-
-        mensaje.className =
-            "mensaje pista";
-
-        setTimeout(() => {
-
-            boton.classList.remove(
-                "error"
-            );
-
-        }, 500);
-
-    }
-
+    setTimeout(() => {
+      boton.classList.remove("error");
+    }, 500);
+  }
 }
-
 
 function actualizarContador() {
+  const contador = document.getElementById("contador-caja");
 
-    const contador =
-        document.getElementById(
-            "contador-caja"
-        );
-
-    contador.innerText =
-        objetosDentro;
-
+  contador.innerText = objetosDentro;
 }
 
+function mostrarMensaje(texto, clase) {
+  const mensaje = document.getElementById("feedback-badge");
 
-function mostrarMensaje(
-    texto,
-    clase
-) {
+  mensaje.innerText = texto;
 
-    const mensaje =
-        document.getElementById(
-            "feedback-badge"
-        );
-
-    mensaje.innerText =
-        texto;
-
-    mensaje.className =
-        "mensaje " + clase;
-
+  mensaje.className = "mensaje " + clase;
 }
-
 
 function obtenerPosicion(evento) {
-
-    if (
-        evento.clientX !== undefined
-    ) {
-
-        return {
-            x: evento.clientX,
-            y: evento.clientY
-        };
-
-    }
-
-    if (
-        evento.touches &&
-        evento.touches.length > 0
-    ) {
-
-        return {
-            x: evento.touches[0].clientX,
-            y: evento.touches[0].clientY
-        };
-
-    }
-
-    if (
-        evento.changedTouches &&
-        evento.changedTouches.length > 0
-    ) {
-
-        return {
-            x: evento.changedTouches[0].clientX,
-            y: evento.changedTouches[0].clientY
-        };
-
-    }
-
+  if (evento.clientX !== undefined) {
     return {
-        x: 0,
-        y: 0
+      x: evento.clientX,
+      y: evento.clientY,
     };
+  }
 
+  if (evento.touches && evento.touches.length > 0) {
+    return {
+      x: evento.touches[0].clientX,
+      y: evento.touches[0].clientY,
+    };
+  }
+
+  if (evento.changedTouches && evento.changedTouches.length > 0) {
+    return {
+      x: evento.changedTouches[0].clientX,
+      y: evento.changedTouches[0].clientY,
+    };
+  }
+
+  return {
+    x: 0,
+    y: 0,
+  };
 }
-
 
 function mostrarFinal() {
+  const finish = document.getElementById("finish");
 
-    const finish =
-        document.getElementById("finish");
+  if (finish) {
+    finish.classList.add("show");
 
-    if (finish) {
-
-        finish.classList.add("show");
-
-        // Reapply translations to the final message
-        applyTranslations(finish);
-
-    } else {
-
-        console.error(
-            "No se encontró el elemento #finish"
-        );
-
-    }
-
+    // Reapply translations to the final message
+    applyTranslations(finish);
+  } else {
+    console.error("No se encontró el elemento #finish");
+  }
 }
-
 
 function resetGame() {
+  ronda = 1;
 
-    ronda = 1;
+  cantidad = 0;
 
-    cantidad = 0;
+  puntos = 0;
 
-    puntos = 0;
+  objetosDentro = 0;
 
-    objetosDentro = 0;
+  objetoArrastrado = null;
 
-    objetoArrastrado = null;
+  moviendo = false;
 
-    moviendo = false;
+  document.getElementById("score-text").innerText = "0";
 
-    document.getElementById(
-        "score-text"
-    ).innerText = "0";
+  if (alertaFinal) {
+    alertaFinal.classList.remove("show");
+  }
 
-    if (alertaFinal) {
-
-        alertaFinal.classList.remove(
-            "show"
-        );
-
-    }
-
-    generarPregunta();
-
+  generarPregunta();
 }
 
-
-window.addEventListener(
-    "load",
-    generarPregunta
-);
+window.addEventListener("load", generarPregunta);

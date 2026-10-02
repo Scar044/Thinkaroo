@@ -1,95 +1,60 @@
-const logros =
-    document.querySelectorAll(".logro");
+const logros = document.querySelectorAll(".logro");
 
-const logrosDesbloqueados =
-    document.getElementById("logros-desbloqueados");
+const logrosDesbloqueados = document.getElementById("logros-desbloqueados");
 
-const barraProgreso =
-    document.getElementById("barra-progreso");
-
+const barraProgreso = document.getElementById("barra-progreso");
 
 function actualizarProgreso() {
+  const totalLogros = logros.length;
 
-    const totalLogros = logros.length;
+  const completados = document.querySelectorAll(".logro.completado").length;
 
-    const completados =
-        document.querySelectorAll(
-            ".logro.completado"
-        ).length;
+  logrosDesbloqueados.textContent = completados;
 
-    logrosDesbloqueados.textContent =
-        completados;
+  const porcentaje = (completados / totalLogros) * 100;
 
-    const porcentaje =
-        (completados / totalLogros) * 100;
-
-    barraProgreso.style.width =
-        porcentaje + "%";
+  barraProgreso.style.width = porcentaje + "%";
 }
-
 
 actualizarProgreso();
 
-
 function cargarAvatarPerfil() {
+  fetch("../ConfigPHP/obtener_perfil_hijo.php")
+    .then((respuesta) => {
+      if (!respuesta.ok) {
+        throw new Error("Error al obtener los datos del hijo.");
+      }
 
-    fetch("../ConfigPHP/obtener_perfil_hijo.php")
+      return respuesta.json();
+    })
 
-        .then(respuesta => {
+    .then((datos) => {
+      if (!datos.success) {
+        console.error(datos.mensaje);
 
-            if (!respuesta.ok) {
-                throw new Error(
-                    "Error al obtener los datos del hijo."
-                );
-            }
+        return;
+      }
 
-            return respuesta.json();
-        })
+      const avatarPerfil = document.getElementById("avatarPerfil");
 
-        .then(datos => {
+      if (!avatarPerfil) {
+        return;
+      }
 
-            if (!datos.success) {
+      const imagenAvatar = datos.hijo.imagen_avatar;
 
-                console.error(
-                    datos.mensaje
-                );
+      if (!imagenAvatar) {
+        console.warn("El hijo no tiene un avatar asignado.");
 
-                return;
-            }
+        return;
+      }
 
-            const avatarPerfil =
-                document.getElementById(
-                    "avatarPerfil"
-                );
+      avatarPerfil.src = imagenAvatar;
+    })
 
-            if (!avatarPerfil) {
-                return;
-            }
-
-            const imagenAvatar =
-                datos.hijo.imagen_avatar;
-
-            if (!imagenAvatar) {
-
-                console.warn(
-                    "El hijo no tiene un avatar asignado."
-                );
-
-                return;
-            }
-
-            avatarPerfil.src =
-                imagenAvatar;
-        })
-
-        .catch(error => {
-
-            console.error(
-                "Error al cargar el avatar:",
-                error
-            );
-        });
+    .catch((error) => {
+      console.error("Error al cargar el avatar:", error);
+    });
 }
-
 
 cargarAvatarPerfil();

@@ -1,12 +1,12 @@
 const images = [
-    "IMG/avatar1cerdo.png",
-    "IMG/Elefante.png",
-    "IMG/avatar3gato.png",
-    "IMG/avatar4oveja.png",
-    "IMG/avatar5pollo.png",
-    "IMG/avatar6ratón.png",
-    "IMG/avatar7tigre.png",
-    "IMG/avatar8vaca.png"
+  "IMG/avatar1cerdo.png",
+  "IMG/Elefante.png",
+  "IMG/avatar3gato.png",
+  "IMG/avatar4oveja.png",
+  "IMG/avatar5pollo.png",
+  "IMG/avatar6ratón.png",
+  "IMG/avatar7tigre.png",
+  "IMG/avatar8vaca.png",
 ];
 
 let cards = [...images, ...images];
@@ -21,229 +21,163 @@ let lockBoard = false;
 let matchedPairs = 0;
 
 async function guardarProgreso(progreso, estado) {
+  try {
+    const respuesta = await fetch("../ConfigPHP/guardar_progreso.php", {
+      method: "POST",
 
-    try {
+      headers: {
+        "Content-Type": "application/json",
+      },
 
-        const respuesta = await fetch(
-            "../ConfigPHP/guardar_progreso.php",
-            {
-                method: "POST",
+      body: JSON.stringify({
+        id_actividad: 1,
 
-                headers: {
-                    "Content-Type": "application/json"
-                },
+        progreso: progreso,
 
-                body: JSON.stringify({
+        estado: estado,
+      }),
+    });
 
-                    id_actividad: 1,
+    const datos = await respuesta.json();
 
-                    progreso: progreso,
+    console.log("PROGRESO VISUAL:", datos);
 
-                    estado: estado
+    return datos;
+  } catch (error) {
+    console.error("Error al guardar progreso:", error);
 
-                })
-            }
-        );
-
-        const datos = await respuesta.json();
-
-        console.log(
-            "PROGRESO VISUAL:",
-            datos
-        );
-
-        return datos;
-
-    } catch (error) {
-
-        console.error(
-            "Error al guardar progreso:",
-            error
-        );
-
-        return {
-            success: false
-        };
-
-    }
+    return {
+      success: false,
+    };
+  }
 }
 
 guardarProgreso(0, "sin iniciar");
 
 cards.forEach(function (imgSrc) {
+  const card = document.createElement("div");
 
-    const card = document.createElement("div");
+  card.classList.add("memory-card");
 
-    card.classList.add("memory-card");
+  card.dataset.image = imgSrc;
 
-    card.dataset.image = imgSrc;
+  const cardInner = document.createElement("div");
 
-    const cardInner = document.createElement("div");
+  cardInner.classList.add("card-inner");
 
-    cardInner.classList.add("card-inner");
+  const cardBack = document.createElement("div");
 
-    const cardBack = document.createElement("div");
+  cardBack.classList.add("card-back");
 
-    cardBack.classList.add("card-back");
+  const cardFront = document.createElement("div");
 
-    const cardFront = document.createElement("div");
+  cardFront.classList.add("card-front");
 
-    cardFront.classList.add("card-front");
+  const img = document.createElement("img");
 
-    const img = document.createElement("img");
+  img.src = imgSrc;
+  img.alt = translate("visualMemory.animalAlt");
 
-    img.src = imgSrc;
-    img.alt = translate("visualMemory.animalAlt");
+  cardFront.appendChild(img);
 
-    cardFront.appendChild(img);
+  cardInner.appendChild(cardBack);
+  cardInner.appendChild(cardFront);
 
-    cardInner.appendChild(cardBack);
-    cardInner.appendChild(cardFront);
+  card.appendChild(cardInner);
 
-    card.appendChild(cardInner);
+  card.addEventListener("click", flipCard);
 
-    card.addEventListener("click", flipCard);
-
-    gameBoard.appendChild(card);
-
+  gameBoard.appendChild(card);
 });
 
 function flipCard() {
+  if (lockBoard) {
+    return;
+  }
 
-    if (lockBoard) {
-        return;
-    }
+  if (this.classList.contains("flipped")) {
+    return;
+  }
 
-    if (this.classList.contains("flipped")) {
-        return;
-    }
+  if (this.classList.contains("matched")) {
+    return;
+  }
 
-    if (this.classList.contains("matched")) {
-        return;
-    }
+  this.classList.add("flipped");
 
-    this.classList.add("flipped");
+  if (firstCard === null) {
+    firstCard = this;
 
-    if (firstCard === null) {
+    return;
+  }
 
-        firstCard = this;
+  secondCard = this;
 
-        return;
-    }
+  lockBoard = true;
 
-    secondCard = this;
-
-    lockBoard = true;
-
-    checkMatch();
-
+  checkMatch();
 }
 
 function checkMatch() {
+  const isMatch = firstCard.dataset.image === secondCard.dataset.image;
 
-    const isMatch =
-        firstCard.dataset.image ===
-        secondCard.dataset.image;
+  if (isMatch) {
+    firstCard.classList.add("matched");
 
-    if (isMatch) {
+    secondCard.classList.add("matched");
 
-        firstCard.classList.add("matched");
+    matchedPairs++;
 
-        secondCard.classList.add("matched");
+    const progreso = Math.round((matchedPairs / images.length) * 100);
 
-        matchedPairs++;
-
-        const progreso = Math.round(
-            (matchedPairs / images.length) * 100
-        );
-
-        if (matchedPairs < images.length) {
-
-            guardarProgreso(
-                progreso,
-                "en proceso"
-            );
-
-        }
-
-        resetTurn();
-
-        if (matchedPairs === images.length) {
-
-            setTimeout(async function () {
-
-                const resultado =
-                    await guardarProgreso(
-                        100,
-                        "completado"
-                    );
-
-                if (resultado.success) {
-
-                    console.log(
-                        "Memoria Visual completada."
-                    );
-
-                }
-
-                mostrarAlertaFinal();
-
-            }, 500);
-
-        }
-
-    } else {
-
-        setTimeout(function () {
-
-            firstCard.classList.remove("flipped");
-
-            secondCard.classList.remove("flipped");
-
-            resetTurn();
-
-        }, 800);
-
+    if (matchedPairs < images.length) {
+      guardarProgreso(progreso, "en proceso");
     }
 
+    resetTurn();
+
+    if (matchedPairs === images.length) {
+      setTimeout(async function () {
+        const resultado = await guardarProgreso(100, "completado");
+
+        if (resultado.success) {
+          console.log("Memoria Visual completada.");
+        }
+
+        mostrarAlertaFinal();
+      }, 500);
+    }
+  } else {
+    setTimeout(function () {
+      firstCard.classList.remove("flipped");
+
+      secondCard.classList.remove("flipped");
+
+      resetTurn();
+    }, 800);
+  }
 }
 
 function resetTurn() {
+  firstCard = null;
 
-    firstCard = null;
+  secondCard = null;
 
-    secondCard = null;
-
-    lockBoard = false;
-
+  lockBoard = false;
 }
 
-const alertaFinal =
-    document.getElementById("finish");
+const alertaFinal = document.getElementById("finish");
 
-const botonFinal =
-    document.getElementById("botonFinal");
+const botonFinal = document.getElementById("botonFinal");
 
 function mostrarAlertaFinal() {
-
-    if (alertaFinal) {
-
-        alertaFinal.classList.add("show");
-
-    }
-
+  if (alertaFinal) {
+    alertaFinal.classList.add("show");
+  }
 }
 
 if (botonFinal) {
-
-    botonFinal.addEventListener(
-        "click",
-        function () {
-
-            window.location.href =
-                "niveles.html";
-
-        }
-    );
-
+  botonFinal.addEventListener("click", function () {
+    window.location.href = "niveles.html";
+  });
 }

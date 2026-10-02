@@ -3,383 +3,185 @@ const listaHijos = document.getElementById("listaHijos");
 const hijoActual = document.getElementById("hijoActual");
 
 botonHijo.addEventListener("click", () => {
-    listaHijos.classList.toggle("mostrar");
+  listaHijos.classList.toggle("mostrar");
 });
 
-
 function traducirEstilo(estilo) {
+  if (estilo === "Visual") {
+    return getCurrentLanguage() === "en" ? "Visual" : "Visual";
+  }
 
-    if (estilo === "Visual") {
-        return getCurrentLanguage() === "en"
-            ? "Visual"
-            : "Visual";
-    }
+  if (estilo === "Auditivo") {
+    return getCurrentLanguage() === "en" ? "Auditory" : "Auditivo";
+  }
 
-    if (estilo === "Auditivo") {
-        return getCurrentLanguage() === "en"
-            ? "Auditory"
-            : "Auditivo";
-    }
+  if (estilo === "Kinestesico") {
+    return getCurrentLanguage() === "en" ? "Kinesthetic" : "Kinestésico";
+  }
 
-    if (estilo === "Kinestesico") {
-        return getCurrentLanguage() === "en"
-            ? "Kinesthetic"
-            : "Kinestésico";
-    }
-
-    return translate("profile.undefinedStyle");
+  return translate("profile.undefinedStyle");
 }
-
 
 function cargarPerfilHijo() {
+  fetch("../ConfigPHP/obtener_perfil_hijo.php")
+    .then((respuesta) => respuesta.json())
 
-    fetch("../ConfigPHP/obtener_perfil_hijo.php")
+    .then((datos) => {
+      console.log("RESPUESTA DEL PERFIL:", datos);
 
-        .then(respuesta => respuesta.json())
+      if (!datos.success) {
+        console.error(datos.mensaje);
 
-        .then(datos => {
+        return;
+      }
 
-            console.log(
-                "RESPUESTA DEL PERFIL:",
-                datos
-            );
+      const hijo = datos.hijo;
 
-            if (!datos.success) {
+      document.getElementById("nombreHijo").textContent = hijo.nombre;
 
-                console.error(
-                    datos.mensaje
-                );
+      hijoActual.textContent = hijo.nombre;
 
-                return;
-            }
+      document.getElementById("edadHijo").textContent =
+        hijo.edad + translate("profile.years");
 
-            const hijo = datos.hijo;
+      document.getElementById("tipoAprendizaje").textContent = traducirEstilo(
+        hijo.estilo_aprendizaje,
+      );
 
-            document.getElementById(
-                "nombreHijo"
-            ).textContent = hijo.nombre;
+      document.getElementById("nivel").textContent = hijo.nivel_actual;
 
+      document.getElementById("logros").textContent = hijo.total_logros;
 
-            hijoActual.textContent =
-                hijo.nombre;
+      const avatar = document.getElementById("avatarHijo");
 
+      if (hijo.imagen_avatar) {
+        avatar.src = hijo.imagen_avatar;
+      }
 
-            document.getElementById(
-                "edadHijo"
-            ).textContent =
-                hijo.edad + translate("profile.years");
+      console.log("ID del hijo:", hijo.id_hijo);
 
+      console.log("Nombre:", hijo.nombre);
 
-            document.getElementById(
-                "tipoAprendizaje"
-            ).textContent =
-                traducirEstilo(
-                    hijo.estilo_aprendizaje
-                );
+      console.log("Edad:", hijo.edad);
 
+      console.log("Avatar:", hijo.imagen_avatar);
 
-            document.getElementById(
-                "nivel"
-            ).textContent =
-                hijo.nivel_actual;
+      console.log("Estilo:", hijo.estilo_aprendizaje);
 
+      console.log("Nivel:", hijo.nivel_actual);
 
-            document.getElementById(
-                "logros"
-            ).textContent =
-                hijo.total_logros;
+      console.log("Logros:", hijo.total_logros);
+    })
 
-
-            const avatar =
-                document.getElementById(
-                    "avatarHijo"
-                );
-
-
-            if (hijo.imagen_avatar) {
-
-                avatar.src =
-                    hijo.imagen_avatar;
-
-            }
-
-
-            console.log(
-                "ID del hijo:",
-                hijo.id_hijo
-            );
-
-            console.log(
-                "Nombre:",
-                hijo.nombre
-            );
-
-            console.log(
-                "Edad:",
-                hijo.edad
-            );
-
-            console.log(
-                "Avatar:",
-                hijo.imagen_avatar
-            );
-
-            console.log(
-                "Estilo:",
-                hijo.estilo_aprendizaje
-            );
-
-            console.log(
-                "Nivel:",
-                hijo.nivel_actual
-            );
-
-            console.log(
-                "Logros:",
-                hijo.total_logros
-            );
-
-        })
-
-        .catch(error => {
-
-            console.error(
-                "Error al cargar perfil:",
-                error
-            );
-
-        });
-
+    .catch((error) => {
+      console.error("Error al cargar perfil:", error);
+    });
 }
-
 
 function cargarHijos() {
+  fetch("../ConfigPHP/obtener_hijos.php")
+    .then((respuesta) => respuesta.json())
 
-    fetch("../ConfigPHP/obtener_hijos.php")
+    .then((datos) => {
+      if (!datos.success) {
+        console.error(datos.mensaje);
 
-        .then(respuesta =>
-            respuesta.json()
-        )
+        return;
+      }
 
-        .then(datos => {
+      listaHijos.innerHTML = "";
 
-            if (!datos.success) {
+      datos.hijos.forEach((hijo) => {
+        const boton = document.createElement("button");
 
-                console.error(
-                    datos.mensaje
-                );
+        boton.classList.add("hijo");
+
+        boton.textContent = hijo.nombre;
+
+        boton.dataset.id = hijo.id_hijo;
+
+        boton.addEventListener("click", () => {
+          const idHijo = boton.dataset.id;
+
+          fetch("../ConfigPHP/cambiarHijo.php", {
+            method: "POST",
+
+            headers: {
+              "Content-Type": "application/json",
+            },
+
+            body: JSON.stringify({
+              id_hijo: idHijo,
+            }),
+          })
+            .then((respuesta) => respuesta.json())
+
+            .then((datos) => {
+              if (!datos.success) {
+                alert(translate("profile.changeChildError"));
 
                 return;
-            }
+              }
 
+              console.log("Nueva sesión:", datos.id_hijo);
 
-            listaHijos.innerHTML = "";
+              listaHijos.classList.remove("mostrar");
 
+              cargarPerfilHijo();
+            })
 
-            datos.hijos.forEach(hijo => {
-
-                const boton =
-                    document.createElement(
-                        "button"
-                    );
-
-
-                boton.classList.add(
-                    "hijo"
-                );
-
-
-                boton.textContent =
-                    hijo.nombre;
-
-
-                boton.dataset.id =
-                    hijo.id_hijo;
-
-
-                boton.addEventListener(
-                    "click",
-                    () => {
-
-                        const idHijo =
-                            boton.dataset.id;
-
-
-                        fetch(
-                            "../ConfigPHP/cambiarHijo.php",
-                            {
-                                method: "POST",
-
-                                headers: {
-                                    "Content-Type":
-                                        "application/json"
-                                },
-
-                                body: JSON.stringify({
-                                    id_hijo:
-                                        idHijo
-                                })
-                            }
-                        )
-
-                        .then(respuesta =>
-                            respuesta.json()
-                        )
-
-                        .then(datos => {
-
-                            if (!datos.success) {
-
-                                alert(
-                                    translate(
-                                        "profile.changeChildError"
-                                    )
-                                );
-
-                                return;
-                            }
-
-
-                            console.log(
-                                "Nueva sesión:",
-                                datos.id_hijo
-                            );
-
-
-                            listaHijos.classList.remove(
-                                "mostrar"
-                            );
-
-
-                            cargarPerfilHijo();
-
-                        })
-
-                        .catch(error => {
-
-                            console.error(
-                                "Error al cambiar hijo:",
-                                error
-                            );
-
-                        });
-
-                    }
-                );
-
-
-                listaHijos.appendChild(
-                    boton
-                );
-
+            .catch((error) => {
+              console.error("Error al cambiar hijo:", error);
             });
-
-        })
-
-        .catch(error => {
-
-            console.error(
-                "Error al obtener hijos:",
-                error
-            );
-
         });
 
-}
+        listaHijos.appendChild(boton);
+      });
+    })
 
+    .catch((error) => {
+      console.error("Error al obtener hijos:", error);
+    });
+}
 
 cargarPerfilHijo();
 cargarHijos();
 
-
 function irANiveles() {
+  fetch("../ConfigPHP/obtener_perfil_hijo.php")
+    .then((respuesta) => respuesta.json())
 
-    fetch("../ConfigPHP/obtener_perfil_hijo.php")
+    .then((datos) => {
+      if (!datos.success) {
+        console.error(datos.mensaje);
 
-        .then(respuesta =>
-            respuesta.json()
-        )
+        return;
+      }
 
-        .then(datos => {
+      const estilo = datos.hijo.estilo_aprendizaje;
 
-            if (!datos.success) {
+      console.log("Estilo de aprendizaje:", estilo);
 
-                console.error(
-                    datos.mensaje
-                );
+      if (estilo === "Visual") {
+        window.location.href = "niveles.html";
+      } else if (estilo === "Auditivo") {
+        window.location.href = "niveles_auditivo.html";
+      } else if (estilo === "Kinestesico") {
+        window.location.href = "niveles_kinestesico.html";
+      } else {
+        alert(translate("profile.undefinedLearningStyle"));
+      }
+    })
 
-                return;
-            }
-
-
-            const estilo =
-                datos.hijo.estilo_aprendizaje;
-
-
-            console.log(
-                "Estilo de aprendizaje:",
-                estilo
-            );
-
-
-            if (estilo === "Visual") {
-
-                window.location.href =
-                    "niveles.html";
-
-            }
-
-            else if (estilo === "Auditivo") {
-
-                window.location.href =
-                    "niveles_auditivo.html";
-
-            }
-
-            else if (estilo === "Kinestesico") {
-
-                window.location.href =
-                    "niveles_kinestesico.html";
-
-            }
-
-            else {
-
-                alert(
-                    translate(
-                        "profile.undefinedLearningStyle"
-                    )
-                );
-
-            }
-
-        })
-
-        .catch(error => {
-
-            console.error(
-                "Error al obtener el estilo de aprendizaje:",
-                error
-            );
-
-        });
-
+    .catch((error) => {
+      console.error("Error al obtener el estilo de aprendizaje:", error);
+    });
 }
 
+const volverNiveles = document.getElementById("volverNiveles");
 
-const volverNiveles =
-    document.getElementById(
-        "volverNiveles"
-    );
+volverNiveles.addEventListener("click", function (evento) {
+  evento.preventDefault();
 
-
-volverNiveles.addEventListener(
-    "click",
-    function(evento) {
-
-        evento.preventDefault();
-
-        irANiveles();
-
-    }
-);
+  irANiveles();
+});

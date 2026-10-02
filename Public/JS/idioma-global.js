@@ -1,2123 +1,1735 @@
 (function () {
-    "use strict";
+  "use strict";
 
-    const ES = {
+  const ES = {
+    // General
+    "page.title": "Página de inicio",
+    "common.logo": "Logo",
 
-        // General
-        "page.title": "Página de inicio",
-        "common.logo": "Logo",
+    // Navigation
+    "nav.home": "Inicio",
+    "nav.about": "¿Quiénes Somos?",
+    "nav.visual": "Visual",
+    "nav.auditory": "Auditivo",
+    "nav.kinesthetic": "Kinestésico",
 
-        // Navigation
-        "nav.home": "Inicio",
-        "nav.about": "¿Quiénes Somos?",
-        "nav.visual": "Visual",
-        "nav.auditory": "Auditivo",
-        "nav.kinesthetic": "Kinestésico",
+    // Authentication
+    "auth.createAccount": "Cuenta nueva",
+    "auth.login": "Iniciar sesión",
 
-        // Authentication
-        "auth.createAccount": "Cuenta nueva",
-        "auth.login": "Iniciar sesión",
+    // Carousel
+    "carousel.visual": "Visual",
+    "carousel.auditory": "Auditivo",
+    "carousel.kinesthetic": "Kinestésico",
+    "carousel.previous": "Anterior",
+    "carousel.next": "Siguiente",
 
-        // Carousel
-        "carousel.visual": "Visual",
-        "carousel.auditory": "Auditivo",
-        "carousel.kinesthetic": "Kinestésico",
-        "carousel.previous": "Anterior",
-        "carousel.next": "Siguiente",
+    // About
+    "about.title": "¿Quiénes Somos?",
 
-        // About
-        "about.title": "¿Quiénes Somos?",
+    "about.paragraph1":
+      "Somos un equipo comprometido con el desarrollo educativo infantil, dedicado a crear una plataforma interactiva que ayude a los niños de 3 a 7 años a fortalecer su pensamiento lógico mediante actividades, juegos y retos adaptados a su estilo de aprendizaje.",
 
-        "about.paragraph1":
-            "Somos un equipo comprometido con el desarrollo educativo infantil, dedicado a crear una plataforma interactiva que ayude a los niños de 3 a 7 años a fortalecer su pensamiento lógico mediante actividades, juegos y retos adaptados a su estilo de aprendizaje.",
+    "about.paragraph2":
+      "Nuestro objetivo es ofrecer una experiencia de aprendizaje divertida, segura y personalizada, permitiendo que cada niño aprenda a su propio ritmo mientras desarrolla habilidades como el razonamiento, la resolución de problemas, la concentración y la creatividad.",
 
-        "about.paragraph2":
-            "Nuestro objetivo es ofrecer una experiencia de aprendizaje divertida, segura y personalizada, permitiendo que cada niño aprenda a su propio ritmo mientras desarrolla habilidades como el razonamiento, la resolución de problemas, la concentración y la creatividad.",
+    "about.paragraph3":
+      "Creemos que aprender jugando es una de las mejores formas de potenciar el desarrollo infantil, por eso combinamos tecnología, educación y dinámicas interactivas para acompañar tanto a los niños como a sus padres en este proceso.",
 
-        "about.paragraph3":
-            "Creemos que aprender jugando es una de las mejores formas de potenciar el desarrollo infantil, por eso combinamos tecnología, educación y dinámicas interactivas para acompañar tanto a los niños como a sus padres en este proceso.",
+    "learning.visual.title": "Visual",
 
-        // Learning styles
-        "learning.visual.title": "Visual",
+    "learning.visual.description":
+      "Aprende mediante imágenes, colores, videos y rompecabezas.",
 
-        "learning.visual.description":
-            "Aprende mediante imágenes, colores, videos y rompecabezas.",
+    "learning.auditory.title": "Auditivo",
 
-        "learning.auditory.title": "Auditivo",
+    "learning.auditory.description":
+      "Aprende mediante podcasts, música, audiolibros y sonidos.",
 
-        "learning.auditory.description":
-            "Aprende mediante podcasts, música, audiolibros y sonidos.",
+    "learning.kinesthetic.title": "Kinestésico",
 
-        "learning.kinesthetic.title": "Kinestésico",
+    "learning.kinesthetic.description":
+      "Aprende jugando, moviéndote y realizando actividades prácticas.",
 
-        "learning.kinesthetic.description":
-            "Aprende jugando, moviéndote y realizando actividades prácticas.",
 
-        // Avatar
-        "avatar.title": "Elegir Avatar",
-        "avatar.choose": "Elige tu avatar",
-        "avatar.save": "Guardar",
-        "avatar.alt1": "Avatar 1",
-        "avatar.alt2": "Avatar 2",
-        "avatar.alt3": "Avatar 3",
-        "avatar.alt4": "Avatar 4",
-        "avatar.alt5": "Avatar 5",
-        "avatar.alt6": "Avatar 6",
-        "avatar.alt7": "Avatar 7",
-        "avatar.alt8": "Avatar 8",
-        "avatar.alt9": "Avatar 9",
+    "avatar.title": "Elegir Avatar",
+    "avatar.choose": "Elige tu avatar",
+    "avatar.save": "Guardar",
+    "avatar.alt1": "Avatar 1",
+    "avatar.alt2": "Avatar 2",
+    "avatar.alt3": "Avatar 3",
+    "avatar.alt4": "Avatar 4",
+    "avatar.alt5": "Avatar 5",
+    "avatar.alt6": "Avatar 6",
+    "avatar.alt7": "Avatar 7",
+    "avatar.alt8": "Avatar 8",
+    "avatar.alt9": "Avatar 9",
 
-        // Colors auditory game
-        "colorsGame.title": "🔊 Encuentra el Color",
-        "colorsGame.description":
-            "Escucha el nombre del color y selecciona el círculo correcto.",
+    // Colors auditory game
+    "colorsGame.title": "🔊 Encuentra el Color",
+    "colorsGame.description":
+      "Escucha el nombre del color y selecciona el círculo correcto.",
 
-        "colorsGame.points": "⭐ Puntos:",
-        "colorsGame.round": "🎯 Ronda:",
-        "colorsGame.listen": "🔊 Escuchar color",
-        "colorsGame.listenInstruction": "Escucha el color",
+    "colorsGame.points": "⭐ Puntos:",
+    "colorsGame.round": "🎯 Ronda:",
+    "colorsGame.listen": "🔊 Escuchar color",
+    "colorsGame.listenInstruction": "Escucha el color",
 
-        "colorsGame.correct": "🎉 ¡Correcto!",
-        "colorsGame.incorrect": "❌ Incorrecto. ¡Inténtalo de nuevo!",
-        "colorsGame.finished": "🏆 ¡Juego terminado! Obtuviste {points} puntos.",
+    "colorsGame.correct": "🎉 ¡Correcto!",
+    "colorsGame.incorrect": "❌ Incorrecto. ¡Inténtalo de nuevo!",
+    "colorsGame.finished": "🏆 ¡Juego terminado! Obtuviste {points} puntos.",
 
-        "colorsGame.next": "Siguiente ➜",
+    "colorsGame.next": "Siguiente ➜",
 
-        "colorsGame.levelCompleteTitle": "¡Excelente ahora tu misión!",
-        "colorsGame.levelCompleteDescription":
-            "Encuentra 2 objetos de cada color que aprendiste hoy",
-        "colorsGame.levelCompleteLearned":
-            "¡Aprendiste los colores!",
-        "colorsGame.nextLevel": "Siguiente nivel",
+    "colorsGame.levelCompleteTitle": "¡Excelente ahora tu misión!",
+    "colorsGame.levelCompleteDescription":
+      "Encuentra 2 objetos de cada color que aprendiste hoy",
+    "colorsGame.levelCompleteLearned": "¡Aprendiste los colores!",
+    "colorsGame.nextLevel": "Siguiente nivel",
 
-        // Colors sorting game
-        "colorsSort.title": "Clasifica los Colores",
-        "colorsSort.description":
-            "Arrastra cada objeto al color correcto.",
-        "colorsSort.points": "⭐ Puntos:",
-        "colorsSort.progress": "🎯 Progreso:",
-        "colorsSort.instruction": "🖐️ ¡Toca y arrastra los objetos!",
+    // Colors sorting game
+    "colorsSort.title": "Clasifica los Colores",
+    "colorsSort.description": "Arrastra cada objeto al color correcto.",
+    "colorsSort.points": "⭐ Puntos:",
+    "colorsSort.progress": "🎯 Progreso:",
+    "colorsSort.instruction": "🖐️ ¡Toca y arrastra los objetos!",
 
-        "colorsSort.red": "Rojo",
-        "colorsSort.blue": "Azul",
-        "colorsSort.yellow": "Amarillo",
-        "colorsSort.green": "Verde",
+    "colorsSort.red": "Rojo",
+    "colorsSort.blue": "Azul",
+    "colorsSort.yellow": "Amarillo",
+    "colorsSort.green": "Verde",
 
-        "colorsSort.apple": "Manzana",
-        "colorsSort.strawberry": "Fresa",
-        "colorsSort.cherries": "Cerezas",
-        "colorsSort.heart": "Corazón",
-        "colorsSort.balloon": "Globo",
+    "colorsSort.apple": "Manzana",
+    "colorsSort.strawberry": "Fresa",
+    "colorsSort.cherries": "Cerezas",
+    "colorsSort.heart": "Corazón",
+    "colorsSort.balloon": "Globo",
 
-        "colorsSort.blueFish": "Pez azul",
-        "colorsSort.blueBall": "Pelota azul",
-        "colorsSort.blueCar": "Carro azul",
-        "colorsSort.blueBucket": "Cubeta azul",
-        "colorsSort.blueCap": "Gorra azul",
+    "colorsSort.blueFish": "Pez azul",
+    "colorsSort.blueBall": "Pelota azul",
+    "colorsSort.blueCar": "Carro azul",
+    "colorsSort.blueBucket": "Cubeta azul",
+    "colorsSort.blueCap": "Gorra azul",
 
-        "colorsSort.banana": "Plátano",
-        "colorsSort.corn": "Maíz",
-        "colorsSort.star": "Estrella",
-        "colorsSort.chick": "Pollito",
-        "colorsSort.sun": "Sol",
+    "colorsSort.banana": "Plátano",
+    "colorsSort.corn": "Maíz",
+    "colorsSort.star": "Estrella",
+    "colorsSort.chick": "Pollito",
+    "colorsSort.sun": "Sol",
 
-        "colorsSort.greenApple": "Manzana verde",
-        "colorsSort.kiwi": "Kiwi",
-        "colorsSort.frog": "Rana",
-        "colorsSort.tree": "Árbol",
-        "colorsSort.clover": "Trébol",
+    "colorsSort.greenApple": "Manzana verde",
+    "colorsSort.kiwi": "Kiwi",
+    "colorsSort.frog": "Rana",
+    "colorsSort.tree": "Árbol",
+    "colorsSort.clover": "Trébol",
 
-        "colorsSort.correct1": "🌟 ¡Muy bien!",
-        "colorsSort.correct2": "👏 ¡Excelente!",
-        "colorsSort.correct3": "🎉 ¡Correcto!",
-        "colorsSort.correct4": "⭐ ¡Genial!",
-        "colorsSort.correct5": "😊 ¡Lo hiciste muy bien!",
+    "colorsSort.correct1": "🌟 ¡Muy bien!",
+    "colorsSort.correct2": "👏 ¡Excelente!",
+    "colorsSort.correct3": "🎉 ¡Correcto!",
+    "colorsSort.correct4": "⭐ ¡Genial!",
+    "colorsSort.correct5": "😊 ¡Lo hiciste muy bien!",
 
-        "colorsSort.tryAgain": "😊 ¡Inténtalo otra vez!",
-        "colorsSort.finishTitle": "🎉 ¡Juego terminado!",
-        "colorsSort.finishDescription":
-            "¡Excelente trabajo! Clasificaste todos los objetos.",
-        "colorsSort.restart": "Siguiente nivel",
-        "colorsSort.apple": "Manzana",
-        "colorsSort.strawberry": "Fresa",
-        "colorsSort.cherries": "Cerezas",
-        "colorsSort.heart": "Corazón",
-        "colorsSort.balloon": "Globo",
+    "colorsSort.tryAgain": "😊 ¡Inténtalo otra vez!",
+    "colorsSort.finishTitle": "🎉 ¡Juego terminado!",
+    "colorsSort.finishDescription":
+      "¡Excelente trabajo! Clasificaste todos los objetos.",
+    "colorsSort.restart": "Siguiente nivel",
+    "colorsSort.apple": "Manzana",
+    "colorsSort.strawberry": "Fresa",
+    "colorsSort.cherries": "Cerezas",
+    "colorsSort.heart": "Corazón",
+    "colorsSort.balloon": "Globo",
 
-        "colorsSort.blueFish": "Pez azul",
-        "colorsSort.blueBall": "Pelota azul",
-        "colorsSort.blueCar": "Carro azul",
-        "colorsSort.blueBucket": "Cubeta azul",
-        "colorsSort.blueCap": "Gorra azul",
+    "colorsSort.blueFish": "Pez azul",
+    "colorsSort.blueBall": "Pelota azul",
+    "colorsSort.blueCar": "Carro azul",
+    "colorsSort.blueBucket": "Cubeta azul",
+    "colorsSort.blueCap": "Gorra azul",
 
-        "colorsSort.banana": "Plátano",
-        "colorsSort.corn": "Maíz",
-        "colorsSort.star": "Estrella",
-        "colorsSort.chick": "Pollito",
-        "colorsSort.sun": "Sol",
+    "colorsSort.banana": "Plátano",
+    "colorsSort.corn": "Maíz",
+    "colorsSort.star": "Estrella",
+    "colorsSort.chick": "Pollito",
+    "colorsSort.sun": "Sol",
 
-        "colorsSort.greenApple": "Manzana verde",
-        "colorsSort.kiwi": "Kiwi",
-        "colorsSort.frog": "Rana",
-        "colorsSort.tree": "Árbol",
-        "colorsSort.clover": "Trébol",
+    "colorsSort.greenApple": "Manzana verde",
+    "colorsSort.kiwi": "Kiwi",
+    "colorsSort.frog": "Rana",
+    "colorsSort.tree": "Árbol",
+    "colorsSort.clover": "Trébol",
 
-        "colorsSort.correct1": "🌟 ¡Muy bien!",
-        "colorsSort.correct2": "👏 ¡Excelente!",
-        "colorsSort.correct3": "🎉 ¡Correcto!",
-        "colorsSort.correct4": "⭐ ¡Genial!",
-        "colorsSort.correct5": "😊 ¡Lo hiciste muy bien!",
+    "colorsSort.correct1": "🌟 ¡Muy bien!",
+    "colorsSort.correct2": "👏 ¡Excelente!",
+    "colorsSort.correct3": "🎉 ¡Correcto!",
+    "colorsSort.correct4": "⭐ ¡Genial!",
+    "colorsSort.correct5": "😊 ¡Lo hiciste muy bien!",
 
-        "colorsSort.tryAgain": "😊 ¡Inténtalo otra vez!",
-        "colorsSort.levelCompleteTitle":
-            "¡Excelente! ¡Ahora tu misión!",
-        "colorsSort.levelCompleteDescription":
-            "Encuentra 2 objetos de cada color que aprendiste hoy.",
-        "colorsSort.levelCompleteLearned":
-            "¡Aprendiste los colores!",
-        "colorsSort.nextLevel":
-            "➡️ Siguiente nivel",
+    "colorsSort.tryAgain": "😊 ¡Inténtalo otra vez!",
+    "colorsSort.levelCompleteTitle": "¡Excelente! ¡Ahora tu misión!",
+    "colorsSort.levelCompleteDescription":
+      "Encuentra 2 objetos de cada color que aprendiste hoy.",
+    "colorsSort.levelCompleteLearned": "¡Aprendiste los colores!",
+    "colorsSort.nextLevel": "➡️ Siguiente nivel",
 
-            /* =====================================================
+    /* =====================================================
             COLORES - JUEGO VISUAL
             ===================================================== */
 
-            "colorsVisual.pageTitle":
-                "Colores - Juego Visual",
+    "colorsVisual.pageTitle": "Colores - Juego Visual",
 
-            "colorsVisual.title":
-                "🌈 ¡Ordena los Colores!",
+    "colorsVisual.title": "🌈 ¡Ordena los Colores!",
 
-            "colorsVisual.description":
-                "Toca un objeto y después toca la caja de su mismo color.",
+    "colorsVisual.description":
+      "Toca un objeto y después toca la caja de su mismo color.",
 
-            "colorsVisual.points":
-                "⭐ Puntos:",
+    "colorsVisual.points": "⭐ Puntos:",
 
-            "colorsVisual.round":
-                "🎯 Ronda:",
+    "colorsVisual.round": "🎯 Ronda:",
 
-            "colorsVisual.of":
-                "/ 5",
+    "colorsVisual.of": "/ 5",
 
-            "colorsVisual.selectObject":
-                "¡Selecciona un objeto!",
+    "colorsVisual.selectObject": "¡Selecciona un objeto!",
 
-            "colorsVisual.chooseBox":
-                "Ahora toca la caja",
+    "colorsVisual.chooseBox": "Ahora toca la caja",
 
-            "colorsVisual.red":
-                "Rojo",
+    "colorsVisual.red": "Rojo",
 
-            "colorsVisual.blue":
-                "Azul",
+    "colorsVisual.blue": "Azul",
 
-            "colorsVisual.yellow":
-                "Amarillo",
+    "colorsVisual.yellow": "Amarillo",
 
-            "colorsVisual.green":
-                "Verde",
+    "colorsVisual.green": "Verde",
 
-            "colorsVisual.apple":
-                "Manzana",
+    "colorsVisual.apple": "Manzana",
 
-            "colorsVisual.blueBerry":
-                "Baya azul",
+    "colorsVisual.blueBerry": "Baya azul",
 
-            "colorsVisual.lemon":
-                "Limón",
+    "colorsVisual.lemon": "Limón",
 
-            "colorsVisual.greenApple":
-                "Manzana verde",
+    "colorsVisual.greenApple": "Manzana verde",
 
-            "colorsVisual.selectFirst":
-                "👆 Primero selecciona un objeto.",
+    "colorsVisual.selectFirst": "👆 Primero selecciona un objeto.",
 
-            "colorsVisual.correct":
-                "🎉 ¡Muy bien!",
+    "colorsVisual.correct": "🎉 ¡Muy bien!",
 
-            "colorsVisual.wrong":
-                "😊 Ese no es su color. ¡Inténtalo otra vez!",
+    "colorsVisual.wrong": "😊 Ese no es su color. ¡Inténtalo otra vez!",
 
-            "colorsVisual.findAnother":
-                "¡Busca otro objeto! 😊",
+    "colorsVisual.findAnother": "¡Busca otro objeto! 😊",
 
-            "colorsVisual.roundComplete":
-                "🎉 ¡Completaste la ronda!",
+    "colorsVisual.roundComplete": "🎉 ¡Completaste la ronda!",
 
-            "colorsVisual.excellent":
-                "¡Excelente trabajo! ⭐",
+    "colorsVisual.excellent": "¡Excelente trabajo! ⭐",
 
-            "colorsVisual.next":
-                "Siguiente ➜",
+    "colorsVisual.next": "Siguiente ➜",
 
-            "colorsVisual.gameComplete":
-                "🏆 ¡Juego terminado!",
+    "colorsVisual.gameComplete": "🏆 ¡Juego terminado!",
 
-            "colorsVisual.finalScore":
-                "Conseguiste {points} puntos ⭐",
+    "colorsVisual.finalScore": "Conseguiste {points} puntos ⭐",
 
-            "colorsVisual.levelCompleteTitle":
-                "¡Excelente! ¡Ahora tu misión!",
+    "colorsVisual.levelCompleteTitle": "¡Excelente! ¡Ahora tu misión!",
 
-            "colorsVisual.levelCompleteDescription":
-                "Encuentra 2 objetos de cada color que aprendiste hoy.",
+    "colorsVisual.levelCompleteDescription":
+      "Encuentra 2 objetos de cada color que aprendiste hoy.",
 
-            "colorsVisual.levelCompleteLearned":
-                "¡Aprendiste los colores!",
+    "colorsVisual.levelCompleteLearned": "¡Aprendiste los colores!",
 
-            "colorsVisual.nextLevel":
-                "➡️ Siguiente nivel",
+    "colorsVisual.nextLevel": "➡️ Siguiente nivel",
 
-            "colorsVisual.selectBox": "Ahora toca la caja {color} 👆",
-            "colorsVisual.findAnother": "¡Busca otro objeto! 😊",
-            "colorsVisual.selectFirst": "👆 Primero selecciona un objeto.",
-            "colorsVisual.correct": "🎉 ¡Muy bien!",
-            "colorsVisual.wrong": "😊 Ese no es su color. ¡Inténtalo otra vez!",
-            "colorsVisual.roundComplete": "🎉 ¡Completaste la ronda!",
-            "colorsVisual.excellent": "¡Excelente trabajo! ⭐",
-            "colorsVisual.gameComplete": "🏆 ¡Juego terminado!",
-            "colorsVisual.finalScore": "Conseguiste {points} puntos ⭐",
+    "colorsVisual.selectBox": "Ahora toca la caja {color} 👆",
+    "colorsVisual.findAnother": "¡Busca otro objeto! 😊",
+    "colorsVisual.selectFirst": "👆 Primero selecciona un objeto.",
+    "colorsVisual.correct": "🎉 ¡Muy bien!",
+    "colorsVisual.wrong": "😊 Ese no es su color. ¡Inténtalo otra vez!",
+    "colorsVisual.roundComplete": "🎉 ¡Completaste la ronda!",
+    "colorsVisual.excellent": "¡Excelente trabajo! ⭐",
+    "colorsVisual.gameComplete": "🏆 ¡Juego terminado!",
+    "colorsVisual.finalScore": "Conseguiste {points} puntos ⭐",
 
-            // Registration
-            "register.subtitle": "¡Aprendamos juntos!",
-            "register.name": "Nombre",
-            "register.namePlaceholder": "Nombre del padre/tutor",
-            "register.email": "Correo",
-            "register.emailPlaceholder": "correo@ejemplo.com",
-            "register.password": "Contraseña",
-            "register.confirmPassword": "Confirmar contraseña",
-            "register.button": "Registrarse",
-            "register.alreadyAccount": "¿Ya tienes una cuenta?",
-            "register.login": "Inicia sesión",
+    // Registration
+    "register.subtitle": "¡Aprendamos juntos!",
+    "register.name": "Nombre",
+    "register.namePlaceholder": "Nombre del padre/tutor",
+    "register.email": "Correo",
+    "register.emailPlaceholder": "correo@ejemplo.com",
+    "register.password": "Contraseña",
+    "register.confirmPassword": "Confirmar contraseña",
+    "register.button": "Registrarse",
+    "register.alreadyAccount": "¿Ya tienes una cuenta?",
+    "register.login": "Inicia sesión",
 
-            "register.passwordMismatch":
-                "Las contraseñas no coinciden",
+    "register.passwordMismatch": "Las contraseñas no coinciden",
 
-            "register.registrationError":
-                "Ocurrió un error al registrar el usuario.",
+    "register.registrationError": "Ocurrió un error al registrar el usuario.",
 
-                    // Child information
-            "childData.pageTitle": "Datos del niño",
-            "childData.childName": "Nombre del niño",
-            "childData.childNamePlaceholder": "👦🏻 Ingresa el nombre",
-            "childData.childAge": "Edad del niño",
-            "childData.agePlaceholder": "📆",
-            "childData.continue": "Continuar →",
-            "childData.saved": "Datos guardados correctamente",
-            "childData.error": "Ocurrió un error al guardar los datos.",
+    // Child information
+    "childData.pageTitle": "Datos del niño",
+    "childData.childName": "Nombre del niño",
+    "childData.childNamePlaceholder": "👦🏻 Ingresa el nombre",
+    "childData.childAge": "Edad del niño",
+    "childData.agePlaceholder": "📆",
+    "childData.continue": "Continuar →",
+    "childData.saved": "Datos guardados correctamente",
+    "childData.error": "Ocurrió un error al guardar los datos.",
 
-            // Figures auditory game
-            "figuresAuditory.pageTitle":
-                "Clasifica las figuras - Auditivo",
+    // Figures auditory game
+    "figuresAuditory.pageTitle": "Clasifica las figuras - Auditivo",
 
-            "figuresAuditory.title":
-                "🔊 ESCUCHA Y CLASIFICA",
+    "figuresAuditory.title": "🔊 ESCUCHA Y CLASIFICA",
 
-            "figuresAuditory.description":
-                "Escucha atentamente y selecciona la figura que escuchaste.",
+    "figuresAuditory.description":
+      "Escucha atentamente y selecciona la figura que escuchaste.",
 
-            "figuresAuditory.listen":
-                "🔊 ESCUCHAR",
+    "figuresAuditory.listen": "🔊 ESCUCHAR",
 
-            "figuresAuditory.initialInstruction":
-                "Presiona el botón para escuchar.",
+    "figuresAuditory.initialInstruction": "Presiona el botón para escuchar.",
 
-            "figuresAuditory.listenInstruction":
-                "Presiona ESCUCHAR para oír la figura.",
+    "figuresAuditory.listenInstruction":
+      "Presiona ESCUCHAR para oír la figura.",
 
-            "figuresAuditory.searchInstruction":
-                "Escucha y busca la figura correcta.",
+    "figuresAuditory.searchInstruction": "Escucha y busca la figura correcta.",
 
-            "figuresAuditory.circle":
-                "círculo",
+    "figuresAuditory.circle": "círculo",
 
-            "figuresAuditory.square":
-                "cuadrado",
+    "figuresAuditory.square": "cuadrado",
 
-            "figuresAuditory.triangle":
-                "triángulo",
+    "figuresAuditory.triangle": "triángulo",
 
-            "figuresAuditory.rectangle":
-                "rectángulo",
+    "figuresAuditory.rectangle": "rectángulo",
 
-            "figuresAuditory.correct":
-                "🎉 ¡Muy bien!",
+    "figuresAuditory.correct": "🎉 ¡Muy bien!",
 
-            "figuresAuditory.incorrect":
-                "😊 ¡Casi! Escucha otra vez.",
+    "figuresAuditory.incorrect": "😊 ¡Casi! Escucha otra vez.",
 
-            "figuresAuditory.correctVoice":
-                "¡Muy bien!",
+    "figuresAuditory.correctVoice": "¡Muy bien!",
 
-            "figuresAuditory.incorrectVoice":
-                "Casi. Escucha otra vez.",
+    "figuresAuditory.incorrectVoice": "Casi. Escucha otra vez.",
 
-            "figuresAuditory.hintAgain":
-                "Escucha nuevamente.",
+    "figuresAuditory.hintAgain": "Escucha nuevamente.",
 
-            "figuresAuditory.closeHint":
-                "¡INTÉNTALO DE NUEVO!",
+    "figuresAuditory.closeHint": "¡INTÉNTALO DE NUEVO!",
 
-            "figuresAuditory.hint.circle1":
-                "No tiene esquinas.",
+    "figuresAuditory.hint.circle1": "No tiene esquinas.",
 
-            "figuresAuditory.hint.circle2":
-                "Es completamente redondo.",
+    "figuresAuditory.hint.circle2": "Es completamente redondo.",
 
-            "figuresAuditory.hint.circle3":
-                "Piensa en una pelota.",
+    "figuresAuditory.hint.circle3": "Piensa en una pelota.",
 
-            "figuresAuditory.hint.square1":
-                "Tiene cuatro lados.",
+    "figuresAuditory.hint.square1": "Tiene cuatro lados.",
 
-            "figuresAuditory.hint.square2":
-                "Sus cuatro lados son iguales.",
+    "figuresAuditory.hint.square2": "Sus cuatro lados son iguales.",
 
-            "figuresAuditory.hint.square3":
-                "Piensa en una ventana.",
+    "figuresAuditory.hint.square3": "Piensa en una ventana.",
 
-            "figuresAuditory.hint.triangle1":
-                "Tiene tres lados.",
+    "figuresAuditory.hint.triangle1": "Tiene tres lados.",
 
-            "figuresAuditory.hint.triangle2":
-                "Tiene tres esquinas.",
+    "figuresAuditory.hint.triangle2": "Tiene tres esquinas.",
 
-            "figuresAuditory.hint.triangle3":
-                "Piensa en una montaña.",
+    "figuresAuditory.hint.triangle3": "Piensa en una montaña.",
 
-            "figuresAuditory.hint.rectangle1":
-                "Tiene cuatro lados.",
+    "figuresAuditory.hint.rectangle1": "Tiene cuatro lados.",
 
-            "figuresAuditory.hint.rectangle2":
-                "Tiene dos lados largos y dos cortos.",
+    "figuresAuditory.hint.rectangle2": "Tiene dos lados largos y dos cortos.",
 
-            "figuresAuditory.hint.rectangle3":
-                "Piensa en una puerta.",
+    "figuresAuditory.hint.rectangle3": "Piensa en una puerta.",
 
-            "figuresAuditory.finishTitle":
-                "¡Excelente! ¡Ahora tu misión!",
+    "figuresAuditory.finishTitle": "¡Excelente! ¡Ahora tu misión!",
 
-            "figuresAuditory.finishDescription":
-                "Encuentra 2 objetos de cada forma que aprendiste hoy",
+    "figuresAuditory.finishDescription":
+      "Encuentra 2 objetos de cada forma que aprendiste hoy",
 
-            "figuresAuditory.finishLearned":
-                "¡Aprendiste las formas!",
+    "figuresAuditory.finishLearned": "¡Aprendiste las formas!",
 
-            "figuresAuditory.continue":
-                "Continuar",
+    "figuresAuditory.continue": "Continuar",
 
+    "figuresVisual.pageTitle": "Clasifica las figuras",
 
-            // Figuras visual
-            "figuresVisual.pageTitle":
-                "Clasifica las figuras",
+    "figuresVisual.title": "CLASIFICA LAS FIGURAS",
 
-            "figuresVisual.title":
-                "CLASIFICA LAS FIGURAS",
+    "figuresVisual.description": "Arrastra cada figura a su lugar",
 
-            "figuresVisual.description":
-                "Arrastra cada figura a su lugar",
+    "figuresVisual.circle": "CÍRCULO",
 
-            "figuresVisual.circle":
-                "CÍRCULO",
+    "figuresVisual.square": "CUADRADO",
 
-            "figuresVisual.square":
-                "CUADRADO",
+    "figuresVisual.triangle": "TRIÁNGULO",
 
-            "figuresVisual.triangle":
-                "TRIÁNGULO",
+    "figuresVisual.rectangle": "RECTÁNGULO",
 
-            "figuresVisual.rectangle":
-                "RECTÁNGULO",
+    "figuresVisual.correct": "🎉 ¡Muy bien!",
 
-            "figuresVisual.correct":
-                "🎉 ¡Muy bien!",
+    "figuresVisual.complete": "🎉 ¡Excelente! Completaste el juego",
 
-            "figuresVisual.complete":
-                "🎉 ¡Excelente! Completaste el juego",
+    "figuresVisual.incorrect": "😊 ¡Casi!",
 
-            "figuresVisual.incorrect":
-                "😊 ¡Casi!",
+    "figuresVisual.hint.circle1":
+      "Mira con atención. El círculo no tiene esquinas.",
 
-            "figuresVisual.hint.circle1":
-                "Mira con atención. El círculo no tiene esquinas.",
+    "figuresVisual.hint.circle2": "Observa su borde. Es completamente redondo.",
 
-            "figuresVisual.hint.circle2":
-                "Observa su borde. Es completamente redondo.",
+    "figuresVisual.hint.circle3": "Busca la figura que parece una pelota.",
 
-            "figuresVisual.hint.circle3":
-                "Busca la figura que parece una pelota.",
+    "figuresVisual.hint.square1": "Mira sus lados. Tiene 4 lados.",
 
-            "figuresVisual.hint.square1":
-                "Mira sus lados. Tiene 4 lados.",
+    "figuresVisual.hint.square2": "Sus 4 lados tienen el mismo tamaño.",
 
-            "figuresVisual.hint.square2":
-                "Sus 4 lados tienen el mismo tamaño.",
+    "figuresVisual.hint.square3": "Busca la figura que tiene 4 lados iguales.",
 
-            "figuresVisual.hint.square3":
-                "Busca la figura que tiene 4 lados iguales.",
+    "figuresVisual.hint.triangle1": "Mira sus esquinas. Tiene 3.",
 
-            "figuresVisual.hint.triangle1":
-                "Mira sus esquinas. Tiene 3.",
+    "figuresVisual.hint.triangle2": "Cuenta sus lados. Tiene 3.",
 
-            "figuresVisual.hint.triangle2":
-                "Cuenta sus lados. Tiene 3.",
+    "figuresVisual.hint.triangle3":
+      "Busca la figura que tiene forma de montaña.",
 
-            "figuresVisual.hint.triangle3":
-                "Busca la figura que tiene forma de montaña.",
+    "figuresVisual.hint.rectangle1": "Mira sus lados. Tiene 4.",
 
-            "figuresVisual.hint.rectangle1":
-                "Mira sus lados. Tiene 4.",
+    "figuresVisual.hint.rectangle2": "Tiene 2 lados largos y 2 lados cortos.",
 
-            "figuresVisual.hint.rectangle2":
-                "Tiene 2 lados largos y 2 lados cortos.",
+    "figuresVisual.hint.rectangle3": "Busca la figura que parece una puerta.",
 
-            "figuresVisual.hint.rectangle3":
-                "Busca la figura que parece una puerta.",
+    "figuresVisual.tryAgain": "¡Inténtalo de nuevo!",
 
-            "figuresVisual.tryAgain":
-                "¡Inténtalo de nuevo!",
+    "figuresVisual.finishTitle": "¡Excelente! ¡Ahora tu misión!",
 
-            "figuresVisual.finishTitle":
-                "¡Excelente! ¡Ahora tu misión!",
+    "figuresVisual.finishDescription":
+      "Encuentra 2 objetos de cada forma que aprendiste hoy",
 
-            "figuresVisual.finishDescription":
-                "Encuentra 2 objetos de cada forma que aprendiste hoy",
+    "figuresVisual.finishLearned": "¡Aprendiste las formas!",
 
-            "figuresVisual.finishLearned":
-                "¡Aprendiste las formas!",
+    "figuresVisual.continue": "Continuar",
 
-            "figuresVisual.continue":
-                "Continuar",
+    "learningForm.pageTitle": "Formulario",
 
-            // Learning style questionnaire
-            "learningForm.pageTitle":
-                "Formulario",
+    "learningForm.title": "Cuestionario de Estilo de Aprendizaje",
 
-            "learningForm.title":
-                "Cuestionario de Estilo de Aprendizaje",
+    "learningForm.question1": "1. ¿Cómo aprende mejor el niño?",
 
-            "learningForm.question1":
-                "1. ¿Cómo aprende mejor el niño?",
+    "learningForm.q1.visual": "Viendo imágenes.",
 
-            "learningForm.q1.visual":
-                "Viendo imágenes.",
+    "learningForm.q1.auditory": "Escuchando explicaciones.",
 
-            "learningForm.q1.auditory":
-                "Escuchando explicaciones.",
+    "learningForm.q1.kinesthetic": "Haciendo actividades.",
 
-            "learningForm.q1.kinesthetic":
-                "Haciendo actividades.",
+    "learningForm.question2": "2. ¿Qué actividad disfruta más?",
 
-            "learningForm.question2":
-                "2. ¿Qué actividad disfruta más?",
+    "learningForm.q2.visual": "Dibujar o colorear.",
 
-            "learningForm.q2.visual":
-                "Dibujar o colorear.",
+    "learningForm.q2.auditory": "Escuchar cuentos.",
 
-            "learningForm.q2.auditory":
-                "Escuchar cuentos.",
+    "learningForm.q2.kinesthetic": "Construir o jugar.",
 
-            "learningForm.q2.kinesthetic":
-                "Construir o jugar.",
+    "learningForm.question3": "3. ¿Qué recuerda con mayor facilidad?",
 
-            "learningForm.question3":
-                "3. ¿Qué recuerda con mayor facilidad?",
+    "learningForm.q3.visual": "Imágenes.",
 
-            "learningForm.q3.visual":
-                "Imágenes.",
+    "learningForm.q3.auditory": "Sonidos o palabras.",
 
-            "learningForm.q3.auditory":
-                "Sonidos o palabras.",
+    "learningForm.q3.kinesthetic": "Lo que hizo.",
 
-            "learningForm.q3.kinesthetic":
-                "Lo que hizo.",
+    "learningForm.question4": "4. ¿Cómo prefiere recibir instrucciones?",
 
-            "learningForm.question4":
-                "4. ¿Cómo prefiere recibir instrucciones?",
+    "learningForm.q4.visual": "Viendo un ejemplo.",
 
-            "learningForm.q4.visual":
-                "Viendo un ejemplo.",
+    "learningForm.q4.auditory": "Escuchando la explicación.",
 
-            "learningForm.q4.auditory":
-                "Escuchando la explicación.",
+    "learningForm.q4.kinesthetic": "Intentándolo mientras aprende.",
 
-            "learningForm.q4.kinesthetic":
-                "Intentándolo mientras aprende.",
+    "learningForm.question5": "5. ¿Qué juguete le gusta más?",
 
-            "learningForm.question5":
-                "5. ¿Qué juguete le gusta más?",
+    "learningForm.q5.visual": "Rompecabezas.",
 
-            "learningForm.q5.visual":
-                "Rompecabezas.",
+    "learningForm.q5.auditory": "Instrumentos musicales.",
 
-            "learningForm.q5.auditory":
-                "Instrumentos musicales.",
+    "learningForm.q5.kinesthetic": "Bloques de construcción.",
 
-            "learningForm.q5.kinesthetic":
-                "Bloques de construcción.",
+    "learningForm.question6": "6. Cuando tiene un problema, normalmente...",
 
-            "learningForm.question6":
-                "6. Cuando tiene un problema, normalmente...",
+    "learningForm.q6.visual": "Observa antes de actuar.",
 
-            "learningForm.q6.visual":
-                "Observa antes de actuar.",
+    "learningForm.q6.auditory": "Pregunta qué hacer.",
 
-            "learningForm.q6.auditory":
-                "Pregunta qué hacer.",
+    "learningForm.q6.kinesthetic": "Prueba distintas soluciones.",
 
-            "learningForm.q6.kinesthetic":
-                "Prueba distintas soluciones.",
+    "learningForm.question7": "7. ¿Qué hace en su tiempo libre?",
 
-            "learningForm.question7":
-                "7. ¿Qué hace en su tiempo libre?",
+    "learningForm.q7.visual": "Mira libros con dibujos.",
 
-            "learningForm.q7.visual":
-                "Mira libros con dibujos.",
+    "learningForm.q7.auditory": "Escucha música.",
 
-            "learningForm.q7.auditory":
-                "Escucha música.",
+    "learningForm.q7.kinesthetic": "Juega y se mueve.",
 
-            "learningForm.q7.kinesthetic":
-                "Juega y se mueve.",
+    "learningForm.question8": "8. Cuando conoce un juguete nuevo...",
 
-            "learningForm.question8":
-                "8. Cuando conoce un juguete nuevo...",
+    "learningForm.q8.visual": "Lo observa primero.",
 
-            "learningForm.q8.visual":
-                "Lo observa primero.",
+    "learningForm.q8.auditory": "Escucha cómo funciona.",
 
-            "learningForm.q8.auditory":
-                "Escucha cómo funciona.",
+    "learningForm.q8.kinesthetic": "Lo prueba de inmediato.",
 
-            "learningForm.q8.kinesthetic":
-                "Lo prueba de inmediato.",
+    "learningForm.question9": "9. ¿Qué material le ayuda más a aprender?",
 
-            "learningForm.question9":
-                "9. ¿Qué material le ayuda más a aprender?",
+    "learningForm.q9.visual": "Dibujos e imágenes.",
 
-            "learningForm.q9.visual":
-                "Dibujos e imágenes.",
+    "learningForm.q9.auditory": "Explicaciones y canciones.",
 
-            "learningForm.q9.auditory":
-                "Explicaciones y canciones.",
+    "learningForm.q9.kinesthetic": "Juegos y actividades prácticas.",
 
-            "learningForm.q9.kinesthetic":
-                "Juegos y actividades prácticas.",
+    "learningForm.question10": "10. En clase presta más atención cuando...",
 
-            "learningForm.question10":
-                "10. En clase presta más atención cuando...",
+    "learningForm.q10.visual": "Ve demostraciones.",
 
-            "learningForm.q10.visual":
-                "Ve demostraciones.",
+    "learningForm.q10.auditory": "Escucha al profesor.",
 
-            "learningForm.q10.auditory":
-                "Escucha al profesor.",
+    "learningForm.q10.kinesthetic": "Participa activamente.",
 
-            "learningForm.q10.kinesthetic":
-                "Participa activamente.",
+    "learningForm.submit": "Enviar cuestionario",
 
-            "learningForm.submit":
-                "Enviar cuestionario",
+    "learningForm.detected": "Estilo detectado: ",
 
-            "learningForm.detected":
-                "Estilo detectado: ",
+    "learningForm.error": "Ocurrió un error al guardar el estilo.",
 
-            "learningForm.error":
-                "Ocurrió un error al guardar el estilo.",
+    // Login
+    "login.pageTitle": "Inicio de sesión",
+    "login.username": "Usuario",
+    "login.password": "Contraseña",
+    "login.passwordPlaceholder": "*********",
+    "login.button": "Iniciar sesión",
+    "login.noAccount": "¿Aún no tienes una cuenta?",
+    "login.register": "Regístrate",
+    "login.error": "Ocurrió un error al iniciar sesión.",
 
-            // Login
-            "login.pageTitle": "Inicio de sesión",
-            "login.username": "Usuario",
-            "login.password": "Contraseña",
-            "login.passwordPlaceholder": "*********",
-            "login.button": "Iniciar sesión",
-            "login.noAccount": "¿Aún no tienes una cuenta?",
-            "login.register": "Regístrate",
-            "login.error": "Ocurrió un error al iniciar sesión.",
+    // Achievements
+    "logros.pageTitle": "ThinkaRoo | Logros",
+    "logros.title": "🏆 Mis logros",
+    "logros.subtitle": "¡Completa actividades y consigue nuevas insignias!",
+    "logros.unlocked": "Logros desbloqueados:",
+    "logros.levels": "Niveles",
+    "logros.progress": "Progreso",
+    "logros.achievements": "Logros",
+    "logros.parents": "Padres",
 
-            // Achievements
-            "logros.pageTitle": "ThinkaRoo | Logros",
-            "logros.title": "🏆 Mis logros",
-            "logros.subtitle": "¡Completa actividades y consigue nuevas insignias!",
-            "logros.unlocked": "Logros desbloqueados:",
-            "logros.levels": "Niveles",
-            "logros.progress": "Progreso",
-            "logros.achievements": "Logros",
-            "logros.parents": "Padres",
+    "logros.completed": "✓ ¡Completado!",
+    "logros.locked": "🔒 No completado",
 
-            "logros.completed": "✓ ¡Completado!",
-            "logros.locked": "🔒 No completado",
+    "logros.firstStep": "Primer paso",
+    "logros.firstStepDescription": "Completaste tu primera lección.",
 
-            "logros.firstStep": "Primer paso",
-            "logros.firstStepDescription": "Completaste tu primera lección.",
+    "logros.curiousMind": "Mente curiosa",
+    "logros.curiousMindDescription": "Completaste 10 lecciones.",
 
-            "logros.curiousMind": "Mente curiosa",
-            "logros.curiousMindDescription": "Completaste 10 lecciones.",
+    "logros.greatExplorer": "Gran explorador",
+    "logros.greatExplorerDescription": "Completa 15 lecciones.",
 
-            "logros.greatExplorer": "Gran explorador",
-            "logros.greatExplorerDescription": "Completa 15 lecciones.",
+    "logros.visual": "Visual",
+    "logros.visualDescription": "Completa una lección del aprendizaje visual.",
 
-            "logros.visual": "Visual",
-            "logros.visualDescription": "Completa una lección del aprendizaje visual.",
+    "logros.perfect": "¡Perfecto!",
+    "logros.perfectDescription": "Completa una actividad sin errores.",
 
-            "logros.perfect": "¡Perfecto!",
-            "logros.perfectDescription": "Completa una actividad sin errores.",
+    "logros.auditory": "Auditivo",
+    "logros.auditoryDescription":
+      "Completa una lección del aprendizaje auditivo.",
 
-            "logros.auditory": "Auditivo",
-            "logros.auditoryDescription": "Completa una lección del aprendizaje auditivo.",
+    "logros.adventurer": "Aventurero",
+    "logros.adventurerDescription": "Completa 20 lecciones.",
 
-            "logros.adventurer": "Aventurero",
-            "logros.adventurerDescription": "Completa 20 lecciones.",
+    "logros.littleGenius": "Pequeño genio",
+    "logros.littleGeniusDescription": "Consigue 5 respuestas perfectas.",
 
-            "logros.littleGenius": "Pequeño genio",
-            "logros.littleGeniusDescription": "Consigue 5 respuestas perfectas.",
+    "logros.collector": "Coleccionista",
+    "logros.collectorDescription": "Consigue 10 insignias.",
 
-            "logros.collector": "Coleccionista",
-            "logros.collectorDescription": "Consigue 10 insignias.",
+    "logros.kinesthetic": "Kinestésico",
+    "logros.kinestheticDescription":
+      "Completa una lección del aprendizaje kinestésico.",
 
-            "logros.kinesthetic": "Kinestésico",
-            "logros.kinestheticDescription": "Completa una lección del aprendizaje kinestésico.",
+    "logros.superLearner": "Super aprendiz",
+    "logros.superLearnerDescription": "Completa 30 lecciones.",
 
-            "logros.superLearner": "Super aprendiz",
-            "logros.superLearnerDescription": "Completa 30 lecciones.",
+    "logros.master": "Maestro ThinkaRoo",
+    "logros.masterDescription": "Desbloquea todos los logros.",
 
-            "logros.master": "Maestro ThinkaRoo",
-            "logros.masterDescription": "Desbloquea todos los logros.",
+    "logros.alt.firstStep": "Primer paso",
+    "logros.alt.curiousMind": "Mente curiosa",
+    "logros.alt.greatExplorer": "Gran explorador",
+    "logros.alt.glasses": "Lentes",
+    "logros.alt.perfect": "Perfecto",
+    "logros.alt.headphones": "Audífonos",
+    "logros.alt.adventurer": "Aventurero",
+    "logros.alt.genius": "Genio",
+    "logros.alt.collector": "Coleccionista",
+    "logros.alt.blocks": "Bloques",
+    "logros.alt.superLearner": "Super aprendiz",
+    "logros.alt.master": "Maestro ThinkaRoo",
 
-            "logros.alt.firstStep": "Primer paso",
-            "logros.alt.curiousMind": "Mente curiosa",
-            "logros.alt.greatExplorer": "Gran explorador",
-            "logros.alt.glasses": "Lentes",
-            "logros.alt.perfect": "Perfecto",
-            "logros.alt.headphones": "Audífonos",
-            "logros.alt.adventurer": "Aventurero",
-            "logros.alt.genius": "Genio",
-            "logros.alt.collector": "Coleccionista",
-            "logros.alt.blocks": "Bloques",
-            "logros.alt.superLearner": "Super aprendiz",
-            "logros.alt.master": "Maestro ThinkaRoo",
+    // Auditory Memory
+    "auditoryMemory.pageTitle": "Auditivo",
+    "auditoryMemory.title": "Mundo Animal: Reto de Memoria",
+    "auditoryMemory.description":
+      "Selecciona una imagen y luego el sonido correcto.",
+    "auditoryMemory.animalAlt": "Animal",
+    "auditoryMemory.listenAlt": "Escuchar animal",
+    "auditoryMemory.finishTitle": "¡Excelente, ahora tu misión!",
+    "auditoryMemory.finishDescription":
+      "Busca 2 animales en tu hogar e imita sus sonidos",
+    "auditoryMemory.finishLearned": "¡Aprendiste los animales!",
+    "auditoryMemory.continue": "Continuar",
 
-            // Auditory Memory
-            "auditoryMemory.pageTitle": "Auditivo",
-            "auditoryMemory.title": "Mundo Animal: Reto de Memoria",
-            "auditoryMemory.description": "Selecciona una imagen y luego el sonido correcto.",
-            "auditoryMemory.animalAlt": "Animal",
-            "auditoryMemory.listenAlt": "Escuchar animal",
-            "auditoryMemory.finishTitle": "¡Excelente, ahora tu misión!",
-            "auditoryMemory.finishDescription": "Busca 2 animales en tu hogar e imita sus sonidos",
-            "auditoryMemory.finishLearned": "¡Aprendiste los animales!",
-            "auditoryMemory.continue": "Continuar",
+    // Kinesthetic Memory
+    "kinestheticMemory.pageTitle": "Reto Kinestésico",
+    "kinestheticMemory.title": "🐾 ¡Encuentra a su compañero!",
+    "kinestheticMemory.instructions":
+      "Toca y arrastra cada animal hasta su pareja.",
+    "kinestheticMemory.dragAnimals": "🐾 Arrastra los animales",
+    "kinestheticMemory.findPlace": "🎯 Encuentra su lugar",
+    "kinestheticMemory.backToLevels": "Volver a niveles",
+    "kinestheticMemory.correct": "🎉 ¡Muy bien!",
+    "kinestheticMemory.tryAgain": "💪 ¡Inténtalo otra vez!",
+    "kinestheticMemory.complete":
+      "🏆 ¡Excelente! ¡Encontraste todas las parejas!",
+    "kinestheticMemory.finishTitle": "¡Excelente, ahora tu misión!",
+    "kinestheticMemory.finishDescription":
+      "Busca 2 animales en tu hogar e imita sus sonidos",
+    "kinestheticMemory.finishLearned": "¡Aprendiste los animales!",
+    "kinestheticMemory.continue": "Continuar",
+    "kinestheticMemory.cangarooAlt": "Canguro",
 
+    "visualMemory.pageTitle": "Visual",
+    "visualMemory.title": "Mundo Animal: Reto de Memoria",
+    "visualMemory.description": "Selecciona las parejas de animales.",
+    "visualMemory.cangarooAlt": "Canguro",
+    "visualMemory.animalAlt": "Animal",
+    "visualMemory.finishTitle": "¡Excelente, ahora tu misión!",
+    "visualMemory.finishDescription":
+      "Busca 2 animales en tu hogar e imita sus sonidos",
+    "visualMemory.finishLearned": "¡Aprendiste los animales!",
+    "visualMemory.continue": "Continuar",
 
-            // Kinesthetic Memory
-            "kinestheticMemory.pageTitle": "Reto Kinestésico",
-            "kinestheticMemory.title": "🐾 ¡Encuentra a su compañero!",
-            "kinestheticMemory.instructions": "Toca y arrastra cada animal hasta su pareja.",
-            "kinestheticMemory.dragAnimals": "🐾 Arrastra los animales",
-            "kinestheticMemory.findPlace": "🎯 Encuentra su lugar",
-            "kinestheticMemory.backToLevels": "Volver a niveles",
-            "kinestheticMemory.correct": "🎉 ¡Muy bien!",
-            "kinestheticMemory.tryAgain": "💪 ¡Inténtalo otra vez!",
-            "kinestheticMemory.complete": "🏆 ¡Excelente! ¡Encontraste todas las parejas!",
-            "kinestheticMemory.finishTitle": "¡Excelente, ahora tu misión!",
-            "kinestheticMemory.finishDescription": "Busca 2 animales en tu hogar e imita sus sonidos",
-            "kinestheticMemory.finishLearned": "¡Aprendiste los animales!",
-            "kinestheticMemory.continue": "Continuar",
-            "kinestheticMemory.cangarooAlt": "Canguro",
+    "levels.pageTitle.visual": "Niveles Visual",
+    "levels.pageTitle.auditory": "Niveles Auditivo",
+    "levels.pageTitle.kinesthetic": "Niveles Kinestésico",
 
+    "levels.visual.header": "Observa y Aprende",
+    "levels.visual.title": "Mira y Descubre",
+    "levels.visual.description":
+      "Observa, descubre y aprende a través de imágenes, colores y formas.",
 
-            "visualMemory.pageTitle": "Visual",
-            "visualMemory.title": "Mundo Animal: Reto de Memoria",
-            "visualMemory.description": "Selecciona las parejas de animales.",
-            "visualMemory.cangarooAlt": "Canguro",
-            "visualMemory.animalAlt": "Animal",
-            "visualMemory.finishTitle": "¡Excelente, ahora tu misión!",
-            "visualMemory.finishDescription": "Busca 2 animales en tu hogar e imita sus sonidos",
-            "visualMemory.finishLearned": "¡Aprendiste los animales!",
-            "visualMemory.continue": "Continuar",
+    "levels.auditory.header": "¡Aprendamos escuchando!",
+    "levels.auditory.title": "Escucha y Aprende",
+    "levels.auditory.description":
+      "Escucha cada sonido y descubre quién lo hace.",
 
+    "levels.kinesthetic.header": "¡Aprendamos moviéndonos!",
+    "levels.kinesthetic.title": "Descubre Haciendo",
+    "levels.kinesthetic.description":
+      "Realiza actividades, explora y aprende mientras te diviertes.",
 
-            "levels.pageTitle.visual": "Niveles Visual",
-            "levels.pageTitle.auditory": "Niveles Auditivo",
-            "levels.pageTitle.kinesthetic": "Niveles Kinestésico",
+    "levels.sidebar.levels": "Niveles",
+    "levels.sidebar.progress": "Progreso",
+    "levels.sidebar.achievements": "Logros",
+    "levels.sidebar.parents": "Padres",
 
-            "levels.visual.header": "Observa y Aprende",
-            "levels.visual.title": "Mira y Descubre",
-            "levels.visual.description": "Observa, descubre y aprende a través de imágenes, colores y formas.",
+    "levels.profileAlt": "Foto de perfil",
+    "levels.kangarooAlt": "Canguro",
+    "levels.menuAlt": "Abrir menú",
+    "levels.chestOpened": "🎁 ¡Has abierto un cofre!",
 
-            "levels.auditory.header": "¡Aprendamos escuchando!",
-            "levels.auditory.title": "Escucha y Aprende",
-            "levels.auditory.description": "Escucha cada sonido y descubre quién lo hace.",
+    "learningTypes.pageTitle": "Tipos de aprendizaje",
 
-            "levels.kinesthetic.header": "¡Aprendamos moviéndonos!",
-            "levels.kinesthetic.title": "Descubre Haciendo",
-            "levels.kinesthetic.description": "Realiza actividades, explora y aprende mientras te diviertes.",
+    "learningTypes.visual.title": "VISUAL",
+    "learningTypes.visual.alt": "Visual",
+    "learningTypes.visual.description1":
+      "El aprendizaje visual es un estilo en el que los niños comprenden y retienen mejor la información mediante imágenes, colores, gráficos, dibujos y representaciones visuales. Los niños con este estilo suelen recordar con mayor facilidad aquello que observan, por lo que disfrutan de actividades que involucren elementos llamativos y organizados.",
+    "learningTypes.visual.description2":
+      "En nuestra plataforma, los niños con un estilo de aprendizaje visual encontrarán juegos y actividades diseñados para estimular su pensamiento lógico utilizando rompecabezas, secuencias de imágenes, asociaciones de figuras, patrones, colores y desafíos que requieren observar cuidadosamente para encontrar la respuesta correcta.",
 
-            "levels.sidebar.levels": "Niveles",
-            "levels.sidebar.progress": "Progreso",
-            "levels.sidebar.achievements": "Logros",
-            "levels.sidebar.parents": "Padres",
+    "learningTypes.auditory.title": "AUDITIVO",
+    "learningTypes.auditory.alt": "Auditivo",
+    "learningTypes.auditory.description1":
+      "El aprendizaje auditivo se caracteriza porque los niños comprenden y recuerdan mejor la información cuando la escuchan. Las explicaciones habladas, los sonidos, las canciones, los diálogos y las narraciones les ayudan a procesar los conocimientos de una forma más natural y efectiva.",
+    "learningTypes.auditory.description2":
+      "En nuestra plataforma, los niños con este estilo de aprendizaje encontrarán actividades que incluyen instrucciones narradas, reconocimiento de sonidos, secuencias auditivas, juegos de memoria sonora y ejercicios en los que deberán escuchar atentamente para resolver diferentes retos lógicos. Estas dinámicas favorecen la atención y la comprensión mientras convierten el aprendizaje en una experiencia entretenida.",
 
-            "levels.profileAlt": "Foto de perfil",
-            "levels.kangarooAlt": "Canguro",
-            "levels.menuAlt": "Abrir menú",
-            "levels.chestOpened": "🎁 ¡Has abierto un cofre!",
+    "learningTypes.kinesthetic.title": "KINESTÉSICO",
+    "learningTypes.kinesthetic.alt": "Kinestésico",
+    "learningTypes.kinesthetic.description1":
+      "El aprendizaje kinestésico se basa en la experiencia, el movimiento y la interacción con el entorno. Los niños que poseen este estilo de aprendizaje comprenden mejor los conceptos cuando pueden manipular objetos, realizar acciones y participar activamente en cada actividad, ya que aprenden haciendo y experimentando.",
+    "learningTypes.kinesthetic.description2":
+      "En nuestra plataforma, los niños encontrarán actividades dinámicas que requieren mover, arrastrar, ordenar y relacionar elementos para resolver distintos desafíos. También se propondrán misiones fuera de la pantalla que les permitirán aplicar lo aprendido en situaciones de la vida cotidiana, fortaleciendo el aprendizaje mediante la práctica.",
 
-            "learningTypes.pageTitle": "Tipos de aprendizaje",
+    "learningTypes.start": "Comenzar",
+    "learningTypes.previous": "Anterior",
+    "learningTypes.next": "Siguiente",
 
-            "learningTypes.visual.title": "VISUAL",
-            "learningTypes.visual.alt": "Visual",
-            "learningTypes.visual.description1": "El aprendizaje visual es un estilo en el que los niños comprenden y retienen mejor la información mediante imágenes, colores, gráficos, dibujos y representaciones visuales. Los niños con este estilo suelen recordar con mayor facilidad aquello que observan, por lo que disfrutan de actividades que involucren elementos llamativos y organizados.",
-            "learningTypes.visual.description2": "En nuestra plataforma, los niños con un estilo de aprendizaje visual encontrarán juegos y actividades diseñados para estimular su pensamiento lógico utilizando rompecabezas, secuencias de imágenes, asociaciones de figuras, patrones, colores y desafíos que requieren observar cuidadosamente para encontrar la respuesta correcta.",
+    "profile.pageTitle": "Perfil",
+    "profile.title": "Perfil",
+    "profile.loading": "Cargando...",
+    "profile.avatarAlt": "Avatar del niño",
+    "profile.statistics": "📊 Estadísticas",
+    "profile.achievements": "🏆 Logros obtenidos",
+    "profile.currentLevel": "⭐ Nivel actual",
+    "profile.years": " años",
+    "profile.undefinedStyle": "Sin definir",
+    "profile.undefinedLearningStyle":
+      "El estilo de aprendizaje todavía no está definido.",
+    "profile.changeChildError": "Error al cambiar de hijo.",
 
-            "learningTypes.auditory.title": "AUDITIVO",
-            "learningTypes.auditory.alt": "Auditivo",
-            "learningTypes.auditory.description1": "El aprendizaje auditivo se caracteriza porque los niños comprenden y recuerdan mejor la información cuando la escuchan. Las explicaciones habladas, los sonidos, las canciones, los diálogos y las narraciones les ayudan a procesar los conocimientos de una forma más natural y efectiva.",
-            "learningTypes.auditory.description2": "En nuestra plataforma, los niños con este estilo de aprendizaje encontrarán actividades que incluyen instrucciones narradas, reconocimiento de sonidos, secuencias auditivas, juegos de memoria sonora y ejercicios en los que deberán escuchar atentamente para resolver diferentes retos lógicos. Estas dinámicas favorecen la atención y la comprensión mientras convierten el aprendizaje en una experiencia entretenida.",
+    "profileParent.pageTitle": "Perfil de usuario - ThinkaRoo",
+    "profileParent.title": "Perfil de usuario",
+    "profileParent.loading": "Cargando...",
+    "profileParent.unavailable": "No disponible",
+    "profileParent.error": "Error",
+    "profileParent.statistics": "📊 Estadísticas",
+    "profileParent.children": "👶 Hijos registrados",
+    "profileParent.logout": "Cerrar sesión",
 
-            "learningTypes.kinesthetic.title": "KINESTÉSICO",
-            "learningTypes.kinesthetic.alt": "Kinestésico",
-            "learningTypes.kinesthetic.description1": "El aprendizaje kinestésico se basa en la experiencia, el movimiento y la interacción con el entorno. Los niños que poseen este estilo de aprendizaje comprenden mejor los conceptos cuando pueden manipular objetos, realizar acciones y participar activamente en cada actividad, ya que aprenden haciendo y experimentando.",
-            "learningTypes.kinesthetic.description2": "En nuestra plataforma, los niños encontrarán actividades dinámicas que requieren mover, arrastrar, ordenar y relacionar elementos para resolver distintos desafíos. También se propondrán misiones fuera de la pantalla que les permitirán aplicar lo aprendido en situaciones de la vida cotidiana, fortaleciendo el aprendizaje mediante la práctica.",
+    "progress.pageTitle": "ThinkaRoo - Progreso",
+    "progress.sidebar.levels": "Niveles",
+    "progress.sidebar.progress": "Progreso",
+    "progress.sidebar.achievements": "Logros",
+    "progress.sidebar.parents": "Padres",
+    "progress.title": "Niveles de juego",
+    "progress.level": "Nivel",
+    "progress.general": "Progreso general",
+    "progress.gamesCompleted": "juegos completados",
+    "progress.level1.title": "Animales escurridizos",
+    "progress.level1.description": "Encuentra las parejas de animales",
+    "progress.level2.title": "Las figuras geométricas",
+    "progress.level2.description": "Reconoce las figuras",
+    "progress.level3.title": "Aprende los colores",
+    "progress.level3.description": "Reconoce los colores",
+    "progress.level4.title": "El baile de los números",
+    "progress.level4.description": "Sigue a los animales",
+    "progress.status.notStarted": "Sin iniciar",
+    "progress.status.inProgress": "En progreso",
+    "progress.status.completed": "Completado",
+    "progress.error.server": "Error en la respuesta del servidor.",
 
-            "learningTypes.start": "Comenzar",
-            "learningTypes.previous": "Anterior",
-            "learningTypes.next": "Siguiente",
+    // Escucha y cuenta - Auditivo
+    "countAuditory.pageTitle": "Escucha y cuenta",
+    "countAuditory.title": "🎧 ¡ESCUCHA Y CUENTA!",
+    "countAuditory.subtitle":
+      "Escucha los sonidos y selecciona cuántos escuchaste",
+    "countAuditory.question": "¿Cuántos sonidos escuchaste?",
+    "countAuditory.listen": "🔊 ESCUCHAR",
+    "countAuditory.tryAgain": "🔄 Intentar de nuevo",
+    "countAuditory.feedback.correct": "🎉 ¡MUY BIEN!",
+    "countAuditory.feedback.tryAgain": "👂 Escuchemos otra vez",
+    "countAuditory.finishTitle": "¡Excelente ahora tu misión!",
+    "countAuditory.finishDescription":
+      "Cuenta cuantos juguetes tienes<br>¡Aprendiste a contar!",
+    "countAuditory.continue": "Continuar",
 
-            "profile.pageTitle": "Perfil",
-            "profile.title": "Perfil",
-            "profile.loading": "Cargando...",
-            "profile.avatarAlt": "Avatar del niño",
-            "profile.statistics": "📊 Estadísticas",
-            "profile.achievements": "🏆 Logros obtenidos",
-            "profile.currentLevel": "⭐ Nivel actual",
-            "profile.years": " años",
-            "profile.undefinedStyle": "Sin definir",
-            "profile.undefinedLearningStyle": "El estilo de aprendizaje todavía no está definido.",
-            "profile.changeChildError": "Error al cambiar de hijo.",
+    // Mete los objetos - Kinestésico
+    "putObjects.pageTitle": "¡Mete los objetos!",
+    "putObjects.title": "¡METE LOS OBJETOS!",
+    "putObjects.instruction":
+      "✋ Arrastra cada objeto<br>📦 ¡Mételo dentro de la caja!",
+    "putObjects.objects": "objetos",
+    "putObjects.question": "¿CUÁNTOS OBJETOS METISTE?",
+    "putObjects.tryAgain": "🔄 Intentar de nuevo",
+    "putObjects.feedback.correct": "¡MUY BIEN!",
+    "putObjects.feedback.hint": "¡Casi! Suelta el objeto dentro de la caja 📦",
+    "putObjects.feedback.count":
+      "¡Muy bien! Ahora dime cuántos objetos metiste",
+    "putObjects.feedback.countHint":
+      "Cuenta los objetos que metiste en la caja",
+    "putObjects.finishTitle": "¡Excelente ahora tu misión!",
+    "putObjects.finishLine1": "Cuenta cuantos juguetes tienes",
+    "putObjects.finishLine2": "¡Aprendiste a contar!",
+    "putObjects.continue": "Continuar",
 
+    "countVisual.pageTitle": "How Many Are There?",
+    "countVisual.title": "HOW MANY ARE THERE?",
+    "countVisual.subtitle": "Count the items and select the correct number",
+    "countVisual.tryAgain": "🔄 Try Again",
+    "countVisual.feedback.correct": "VERY GOOD!",
+    "countVisual.feedback.hint": "Let's count together! 🔍",
+    "countVisual.finishTitle": "Excellent! Now your mission!",
+    "countVisual.finishLine1": "Count how many toys you have",
+    "countVisual.finishLine2": "You learned how to count!",
+    "countVisual.continue": "Continue",
 
-            "profileParent.pageTitle": "Perfil de usuario - ThinkaRoo",
-            "profileParent.title": "Perfil de usuario",
-            "profileParent.loading": "Cargando...",
-            "profileParent.unavailable": "No disponible",
-            "profileParent.error": "Error",
-            "profileParent.statistics": "📊 Estadísticas",
-            "profileParent.children": "👶 Hijos registrados",
-            "profileParent.logout": "Cerrar sesión",
+    "traceShapes.pageTitle": "Traza las figuras",
+    "traceShapes.title": "TRAZA LAS FIGURAS",
+    "traceShapes.subtitle": "Sigue el trazo y descubre la figura",
+    "traceShapes.instruction": "Mantén presionado y sigue la línea",
+    "traceShapes.tryAgain": "Intentar de nuevo",
+    "traceShapes.startGreen": "¡Empieza en uno de los puntos verdes!",
+    "traceShapes.keepGoing": "¡Muy bien! Sigue toda la figura",
+    "traceShapes.almost": "¡Casi! Sigue la línea punteada",
+    "traceShapes.keepShape": "¡Sigue toda la figura!",
+    "traceShapes.keepCircle": "¡Sigue alrededor del círculo!",
+    "traceShapes.correct": "¡MUY BIEN!",
+    "traceShapes.completedShape": "¡MUY BIEN! ¡Completaste el {shape}!",
+    "traceShapes.allCompleted": "¡EXCELENTE! ¡Completaste todas las figuras!",
+    "traceShapes.nextShape": "Ahora sigue el {shape}",
+    "traceShapes.triangle": "Triángulo",
+    "traceShapes.circle": "Círculo",
+    "traceShapes.square": "Cuadrado",
+    "traceShapes.rectangle": "Rectángulo",
+    "traceShapes.startGreenInstruction": "{shape} - empieza en un punto verde",
+    "traceShapes.finishTitle": "¡Excelente ahora tu misión!",
+    "traceShapes.finishLine1":
+      "Encuentra 2 objetos de cada forma que aprendistes hoy",
+    "traceShapes.finishLine2": "¡Aprendiste las formas!",
+    "traceShapes.continue": "Continuar",
 
+    "colorsGame.red": "Rojo",
+    "colorsGame.blue": "Azul",
+    "colorsGame.yellow": "Amarillo",
+    "colorsGame.green": "Verde",
+    "colorsGame.purple": "Morado",
+  };
 
-            "progress.pageTitle": "ThinkaRoo - Progreso",
-            "progress.sidebar.levels": "Niveles",
-            "progress.sidebar.progress": "Progreso",
-            "progress.sidebar.achievements": "Logros",
-            "progress.sidebar.parents": "Padres",
-            "progress.title": "Niveles de juego",
-            "progress.level": "Nivel",
-            "progress.general": "Progreso general",
-            "progress.gamesCompleted": "juegos completados",
-            "progress.level1.title": "Animales escurridizos",
-            "progress.level1.description": "Encuentra las parejas de animales",
-            "progress.level2.title": "Las figuras geométricas",
-            "progress.level2.description": "Reconoce las figuras",
-            "progress.level3.title": "Aprende los colores",
-            "progress.level3.description": "Reconoce los colores",
-            "progress.level4.title": "El baile de los números",
-            "progress.level4.description": "Sigue a los animales",
-            "progress.status.notStarted": "Sin iniciar",
-            "progress.status.inProgress": "En progreso",
-            "progress.status.completed": "Completado",
-            "progress.error.server": "Error en la respuesta del servidor.",
+  const EN = {
+    // General
+    "page.title": "Home Page",
+    "common.logo": "Logo",
 
+    // Navigation
+    "nav.home": "Home",
+    "nav.about": "About Us",
+    "nav.visual": "Visual",
+    "nav.auditory": "Auditory",
+    "nav.kinesthetic": "Kinesthetic",
 
-            // Escucha y cuenta - Auditivo
-            "countAuditory.pageTitle": "Escucha y cuenta",
-            "countAuditory.title": "🎧 ¡ESCUCHA Y CUENTA!",
-            "countAuditory.subtitle": "Escucha los sonidos y selecciona cuántos escuchaste",
-            "countAuditory.question": "¿Cuántos sonidos escuchaste?",
-            "countAuditory.listen": "🔊 ESCUCHAR",
-            "countAuditory.tryAgain": "🔄 Intentar de nuevo",
-            "countAuditory.feedback.correct": "🎉 ¡MUY BIEN!",
-            "countAuditory.feedback.tryAgain": "👂 Escuchemos otra vez",
-            "countAuditory.finishTitle": "¡Excelente ahora tu misión!",
-            "countAuditory.finishDescription": "Cuenta cuantos juguetes tienes<br>¡Aprendiste a contar!",
-            "countAuditory.continue": "Continuar",
+    // Authentication
+    "auth.createAccount": "Create account",
+    "auth.login": "Sign in",
 
-            // Mete los objetos - Kinestésico
-            "putObjects.pageTitle": "¡Mete los objetos!",
-            "putObjects.title": "¡METE LOS OBJETOS!",
-            "putObjects.instruction": "✋ Arrastra cada objeto<br>📦 ¡Mételo dentro de la caja!",
-            "putObjects.objects": "objetos",
-            "putObjects.question": "¿CUÁNTOS OBJETOS METISTE?",
-            "putObjects.tryAgain": "🔄 Intentar de nuevo",
-            "putObjects.feedback.correct": "¡MUY BIEN!",
-            "putObjects.feedback.hint": "¡Casi! Suelta el objeto dentro de la caja 📦",
-            "putObjects.feedback.count": "¡Muy bien! Ahora dime cuántos objetos metiste",
-            "putObjects.feedback.countHint": "Cuenta los objetos que metiste en la caja",
-            "putObjects.finishTitle": "¡Excelente ahora tu misión!",
-            "putObjects.finishLine1": "Cuenta cuantos juguetes tienes",
-            "putObjects.finishLine2": "¡Aprendiste a contar!",
-            "putObjects.continue": "Continuar",
+    // Carousel
+    "carousel.visual": "Visual",
+    "carousel.auditory": "Auditory",
+    "carousel.kinesthetic": "Kinesthetic",
+    "carousel.previous": "Previous",
+    "carousel.next": "Next",
 
+    // About
+    "about.title": "About Us",
 
-            "countVisual.pageTitle": "How Many Are There?",
-            "countVisual.title": "HOW MANY ARE THERE?",
-            "countVisual.subtitle": "Count the items and select the correct number",
-            "countVisual.tryAgain": "🔄 Try Again",
-            "countVisual.feedback.correct": "VERY GOOD!",
-            "countVisual.feedback.hint": "Let's count together! 🔍",
-            "countVisual.finishTitle": "Excellent! Now your mission!",
-            "countVisual.finishLine1": "Count how many toys you have",
-            "countVisual.finishLine2": "You learned how to count!",
-            "countVisual.continue": "Continue",
+    "about.paragraph1":
+      "We are a team committed to children's educational development, dedicated to creating an interactive platform that helps children ages 3 to 7 strengthen their logical thinking through activities, games, and challenges adapted to their learning style.",
 
+    "about.paragraph2":
+      "Our goal is to provide a fun, safe, and personalized learning experience, allowing each child to learn at their own pace while developing skills such as reasoning, problem-solving, concentration, and creativity.",
 
-            "traceShapes.pageTitle": "Traza las figuras",
-            "traceShapes.title": "TRAZA LAS FIGURAS",
-            "traceShapes.subtitle": "Sigue el trazo y descubre la figura",
-            "traceShapes.instruction": "Mantén presionado y sigue la línea",
-            "traceShapes.tryAgain": "Intentar de nuevo",
-            "traceShapes.startGreen": "¡Empieza en uno de los puntos verdes!",
-            "traceShapes.keepGoing": "¡Muy bien! Sigue toda la figura",
-            "traceShapes.almost": "¡Casi! Sigue la línea punteada",
-            "traceShapes.keepShape": "¡Sigue toda la figura!",
-            "traceShapes.keepCircle": "¡Sigue alrededor del círculo!",
-            "traceShapes.correct": "¡MUY BIEN!",
-            "traceShapes.completedShape": "¡MUY BIEN! ¡Completaste el {shape}!",
-            "traceShapes.allCompleted": "¡EXCELENTE! ¡Completaste todas las figuras!",
-            "traceShapes.nextShape": "Ahora sigue el {shape}",
-            "traceShapes.triangle": "Triángulo",
-            "traceShapes.circle": "Círculo",
-            "traceShapes.square": "Cuadrado",
-            "traceShapes.rectangle": "Rectángulo",
-            "traceShapes.startGreenInstruction": "{shape} - empieza en un punto verde",
-            "traceShapes.finishTitle": "¡Excelente ahora tu misión!",
-            "traceShapes.finishLine1": "Encuentra 2 objetos de cada forma que aprendistes hoy",
-            "traceShapes.finishLine2": "¡Aprendiste las formas!",
-            "traceShapes.continue": "Continuar",
-
-            "colorsGame.red": "Rojo", "colorsGame.blue": "Azul", "colorsGame.yellow": "Amarillo", "colorsGame.green": "Verde", "colorsGame.purple": "Morado",
+    "about.paragraph3":
+      "We believe that learning through play is one of the best ways to promote children's development. That is why we combine technology, education, and interactive activities to support both children and their parents throughout this process.",
 
-    };
-
+    // Learning styles
+    "learning.visual.title": "Visual",
 
-    const EN = {
-
-        // General
-        "page.title": "Home Page",
-        "common.logo": "Logo",
-
-        // Navigation
-        "nav.home": "Home",
-        "nav.about": "About Us",
-        "nav.visual": "Visual",
-        "nav.auditory": "Auditory",
-        "nav.kinesthetic": "Kinesthetic",
-
-        // Authentication
-        "auth.createAccount": "Create account",
-        "auth.login": "Sign in",
-
-        // Carousel
-        "carousel.visual": "Visual",
-        "carousel.auditory": "Auditory",
-        "carousel.kinesthetic": "Kinesthetic",
-        "carousel.previous": "Previous",
-        "carousel.next": "Next",
-
-        // About
-        "about.title": "About Us",
-
-        "about.paragraph1":
-            "We are a team committed to children's educational development, dedicated to creating an interactive platform that helps children ages 3 to 7 strengthen their logical thinking through activities, games, and challenges adapted to their learning style.",
-
-        "about.paragraph2":
-            "Our goal is to provide a fun, safe, and personalized learning experience, allowing each child to learn at their own pace while developing skills such as reasoning, problem-solving, concentration, and creativity.",
-
-        "about.paragraph3":
-            "We believe that learning through play is one of the best ways to promote children's development. That is why we combine technology, education, and interactive activities to support both children and their parents throughout this process.",
-
-        // Learning styles
-        "learning.visual.title": "Visual",
-
-        "learning.visual.description":
-            "Learn through images, colors, videos, and puzzles.",
-
-        "learning.auditory.title": "Auditory",
-
-        "learning.auditory.description":
-            "Learn through podcasts, music, audiobooks, and sounds.",
-
-        "learning.kinesthetic.title": "Kinesthetic",
-
-        "learning.kinesthetic.description":
-            "Learn by playing, moving, and participating in practical activities.",
-        
-        // Avatar
-        "avatar.title": "Choose Avatar",
-        "avatar.choose": "Choose your avatar",
-        "avatar.save": "Save",
-
-        "avatar.alt1": "Avatar 1",
-        "avatar.alt2": "Avatar 2",
-        "avatar.alt3": "Avatar 3",
-        "avatar.alt4": "Avatar 4",
-        "avatar.alt5": "Avatar 5",
-        "avatar.alt6": "Avatar 6",
-        "avatar.alt7": "Avatar 7",
-        "avatar.alt8": "Avatar 8",
-        "avatar.alt9": "Avatar 9",
-        
-        // Colors auditory game
-        "colorsGame.title": "🔊 Find the Color",
-        "colorsGame.description":
-            "Listen to the name of the color and select the correct circle.",
-
-        "colorsGame.points": "⭐ Points:",
-        "colorsGame.round": "🎯 Round:",
-        "colorsGame.listen": "🔊 Listen to color",
-        "colorsGame.listenInstruction": "Listen to the color",
-
-        "colorsGame.correct": "🎉 Correct!",
-        "colorsGame.incorrect": "❌ Incorrect. Try again!",
-        "colorsGame.finished": "🏆 Game finished! You scored {points} points.",
-
-        "colorsGame.next": "Next ➜",
-
-        "colorsGame.levelCompleteTitle": "Excellent! Now your mission!",
-        "colorsGame.levelCompleteDescription":
-            "Find 2 objects of each color you learned today",
-        "colorsGame.levelCompleteLearned":
-            "You learned the colors!",
-        "colorsGame.nextLevel": "Next level",
-
-        // Colors sorting game
-        "colorsSort.title": "Sort the Colors",
-        "colorsSort.description":
-            "Drag each object to the correct color.",
-
-        "colorsSort.points": "⭐ Points:",
-        "colorsSort.progress": "🎯 Progress:",
-        "colorsSort.instruction": "🖐️ Touch and drag the objects!",
-
-        "colorsSort.red": "Red",
-        "colorsSort.blue": "Blue",
-        "colorsSort.yellow": "Yellow",
-        "colorsSort.green": "Green",
-
-        "colorsSort.apple": "Apple",
-        "colorsSort.strawberry": "Strawberry",
-        "colorsSort.cherries": "Cherries",
-        "colorsSort.heart": "Heart",
-        "colorsSort.balloon": "Balloon",
-
-        "colorsSort.blueFish": "Blue fish",
-        "colorsSort.blueBall": "Blue ball",
-        "colorsSort.blueCar": "Blue car",
-        "colorsSort.blueBucket": "Blue bucket",
-        "colorsSort.blueCap": "Blue cap",
-
-        "colorsSort.banana": "Banana",
-        "colorsSort.corn": "Corn",
-        "colorsSort.star": "Star",
-        "colorsSort.chick": "Chick",
-        "colorsSort.sun": "Sun",
-
-        "colorsSort.greenApple": "Green apple",
-        "colorsSort.kiwi": "Kiwi",
-        "colorsSort.frog": "Frog",
-        "colorsSort.tree": "Tree",
-        "colorsSort.clover": "Clover",
-
-        "colorsSort.correct1": "🌟 Great job!",
-        "colorsSort.correct2": "👏 Excellent!",
-        "colorsSort.correct3": "🎉 Correct!",
-        "colorsSort.correct4": "⭐ Awesome!",
-        "colorsSort.correct5": "😊 You did a great job!",
-
-        "colorsSort.tryAgain": "😊 Try again!",
-        "colorsSort.finishTitle": "🎉 Game finished!",
-        "colorsSort.finishDescription":
-            "Excellent work! You sorted all the objects.",
-        "colorsSort.restart": "Next level",
-        "colorsSort.apple": "Apple",
-        "colorsSort.strawberry": "Strawberry",
-        "colorsSort.cherries": "Cherries",
-        "colorsSort.heart": "Heart",
-        "colorsSort.balloon": "Balloon",
-
-        "colorsSort.blueFish": "Blue fish",
-        "colorsSort.blueBall": "Blue ball",
-        "colorsSort.blueCar": "Blue car",
-        "colorsSort.blueBucket": "Blue bucket",
-        "colorsSort.blueCap": "Blue cap",
-
-        "colorsSort.banana": "Banana",
-        "colorsSort.corn": "Corn",
-        "colorsSort.star": "Star",
-        "colorsSort.chick": "Chick",
-        "colorsSort.sun": "Sun",
-
-        "colorsSort.greenApple": "Green apple",
-        "colorsSort.kiwi": "Kiwi",
-        "colorsSort.frog": "Frog",
-        "colorsSort.tree": "Tree",
-        "colorsSort.clover": "Clover",
-
-        "colorsSort.correct1": "🌟 Great job!",
-        "colorsSort.correct2": "👏 Excellent!",
-        "colorsSort.correct3": "🎉 Correct!",
-        "colorsSort.correct4": "⭐ Awesome!",
-        "colorsSort.correct5": "😊 You did a great job!",
-
-        "colorsSort.tryAgain": "😊 Try again!",
-        "colorsSort.levelCompleteTitle":
-            "Excellent! Now your mission!",
-        "colorsSort.levelCompleteDescription":
-            "Find 2 objects of each color you learned today.",
-        "colorsSort.levelCompleteLearned":
-            "You learned the colors!",
-        "colorsSort.nextLevel":
-            "➡️ Next level",
-
-            /* =====================================================
-            COLORS - VISUAL GAME
-            ===================================================== */
-
-            "colorsVisual.pageTitle":
-                "Colors - Visual Game",
-
-            "colorsVisual.title":
-                "🌈 Sort the Colors!",
-
-            "colorsVisual.description":
-                "Touch an object and then touch the box with the same color.",
-
-            "colorsVisual.points":
-                "⭐ Points:",
-
-            "colorsVisual.round":
-                "🎯 Round:",
-
-            "colorsVisual.of":
-                "/ 5",
-
-            "colorsVisual.selectObject":
-                "Select an object!",
-
-            "colorsVisual.chooseBox":
-                "Now touch the",
-
-            "colorsVisual.red":
-                "Red",
-
-            "colorsVisual.blue":
-                "Blue",
-
-            "colorsVisual.yellow":
-                "Yellow",
-
-            "colorsVisual.green":
-                "Green",
-
-            "colorsVisual.apple":
-                "Apple",
-
-            "colorsVisual.blueBerry":
-                "Blueberry",
-
-            "colorsVisual.lemon":
-                "Lemon",
-
-            "colorsVisual.greenApple":
-                "Green apple",
-
-            "colorsVisual.selectFirst":
-                "👆 First select an object.",
-
-            "colorsVisual.correct":
-                "🎉 Great job!",
-
-            "colorsVisual.wrong":
-                "😊 That's not its color. Try again!",
-
-            "colorsVisual.findAnother":
-                "Find another object! 😊",
-
-            "colorsVisual.roundComplete":
-                "🎉 You completed the round!",
-
-            "colorsVisual.excellent":
-                "Excellent work! ⭐",
-
-            "colorsVisual.next":
-                "Next ➜",
-
-            "colorsVisual.gameComplete":
-                "🏆 Game complete!",
-
-            "colorsVisual.finalScore":
-                "You scored {points} points ⭐",
-
-            "colorsVisual.levelCompleteTitle":
-                "Excellent! Now your mission!",
-
-            "colorsVisual.levelCompleteDescription":
-                "Find 2 objects of each color you learned today.",
-
-            "colorsVisual.levelCompleteLearned":
-                "You learned the colors!",
-
-            "colorsVisual.nextLevel":
-                "➡️ Next level",
-
-            "colorsVisual.selectBox": "Now touch the {color} box 👆",
-            "colorsVisual.findAnother": "Find another object! 😊",
-            "colorsVisual.selectFirst": "👆 First select an object.",
-            "colorsVisual.correct": "🎉 Very good!",
-            "colorsVisual.wrong": "😊 That's not its color. Try again!",
-            "colorsVisual.roundComplete": "🎉 You completed the round!",
-            "colorsVisual.excellent": "Excellent work! ⭐",
-            "colorsVisual.gameComplete": "🏆 Game over!",
-            "colorsVisual.finalScore": "You got {points} points ⭐",
+    "learning.visual.description":
+      "Learn through images, colors, videos, and puzzles.",
 
-            // Registration
-            "register.subtitle": "Let's learn together!",
-            "register.name": "Name",
-            "register.namePlaceholder": "Parent/guardian name",
-            "register.email": "Email",
-            "register.emailPlaceholder": "email@example.com",
-            "register.password": "Password",
-            "register.confirmPassword": "Confirm password",
-            "register.button": "Register",
-            "register.alreadyAccount": "Already have an account?",
-            "register.login": "Log in",
+    "learning.auditory.title": "Auditory",
 
-            "register.passwordMismatch":
-                "The passwords do not match",
+    "learning.auditory.description":
+      "Learn through podcasts, music, audiobooks, and sounds.",
 
-            "register.registrationError":
-                "An error occurred while registering the user.",
+    "learning.kinesthetic.title": "Kinesthetic",
 
+    "learning.kinesthetic.description":
+      "Learn by playing, moving, and participating in practical activities.",
 
-                    // Child information
-            "childData.pageTitle": "Child's Information",
-            "childData.childName": "Child's name",
-            "childData.childNamePlaceholder": "👦🏻 Enter the name",
-            "childData.childAge": "Child's age",
-            "childData.agePlaceholder": "📆",
-            "childData.continue": "Continue →",
-            "childData.saved": "Data saved successfully",
-            "childData.error": "An error occurred while saving the data.",
+    // Avatar
+    "avatar.title": "Choose Avatar",
+    "avatar.choose": "Choose your avatar",
+    "avatar.save": "Save",
 
-            // Figures auditory game
-            "figuresAuditory.pageTitle":
-                "Sort the Shapes - Auditory",
+    "avatar.alt1": "Avatar 1",
+    "avatar.alt2": "Avatar 2",
+    "avatar.alt3": "Avatar 3",
+    "avatar.alt4": "Avatar 4",
+    "avatar.alt5": "Avatar 5",
+    "avatar.alt6": "Avatar 6",
+    "avatar.alt7": "Avatar 7",
+    "avatar.alt8": "Avatar 8",
+    "avatar.alt9": "Avatar 9",
 
-            "figuresAuditory.title":
-                "🔊 LISTEN AND SORT",
+    // Colors auditory game
+    "colorsGame.title": "🔊 Find the Color",
+    "colorsGame.description":
+      "Listen to the name of the color and select the correct circle.",
 
-            "figuresAuditory.description":
-                "Listen carefully and select the shape you heard.",
+    "colorsGame.points": "⭐ Points:",
+    "colorsGame.round": "🎯 Round:",
+    "colorsGame.listen": "🔊 Listen to color",
+    "colorsGame.listenInstruction": "Listen to the color",
 
-            "figuresAuditory.listen":
-                "🔊 LISTEN",
+    "colorsGame.correct": "🎉 Correct!",
+    "colorsGame.incorrect": "❌ Incorrect. Try again!",
+    "colorsGame.finished": "🏆 Game finished! You scored {points} points.",
 
-            "figuresAuditory.initialInstruction":
-                "Press the button to listen.",
+    "colorsGame.next": "Next ➜",
 
-            "figuresAuditory.listenInstruction":
-                "Press LISTEN to hear the shape.",
+    "colorsGame.levelCompleteTitle": "Excellent! Now your mission!",
+    "colorsGame.levelCompleteDescription":
+      "Find 2 objects of each color you learned today",
+    "colorsGame.levelCompleteLearned": "You learned the colors!",
+    "colorsGame.nextLevel": "Next level",
 
-            "figuresAuditory.searchInstruction":
-                "Listen and find the correct shape.",
+    // Colors sorting game
+    "colorsSort.title": "Sort the Colors",
+    "colorsSort.description": "Drag each object to the correct color.",
 
-            "figuresAuditory.circle":
-                "circle",
+    "colorsSort.points": "⭐ Points:",
+    "colorsSort.progress": "🎯 Progress:",
+    "colorsSort.instruction": "🖐️ Touch and drag the objects!",
 
-            "figuresAuditory.square":
-                "square",
+    "colorsSort.red": "Red",
+    "colorsSort.blue": "Blue",
+    "colorsSort.yellow": "Yellow",
+    "colorsSort.green": "Green",
 
-            "figuresAuditory.triangle":
-                "triangle",
+    "colorsSort.apple": "Apple",
+    "colorsSort.strawberry": "Strawberry",
+    "colorsSort.cherries": "Cherries",
+    "colorsSort.heart": "Heart",
+    "colorsSort.balloon": "Balloon",
 
-            "figuresAuditory.rectangle":
-                "rectangle",
+    "colorsSort.blueFish": "Blue fish",
+    "colorsSort.blueBall": "Blue ball",
+    "colorsSort.blueCar": "Blue car",
+    "colorsSort.blueBucket": "Blue bucket",
+    "colorsSort.blueCap": "Blue cap",
 
-            "figuresAuditory.correct":
-                "🎉 Great job!",
+    "colorsSort.banana": "Banana",
+    "colorsSort.corn": "Corn",
+    "colorsSort.star": "Star",
+    "colorsSort.chick": "Chick",
+    "colorsSort.sun": "Sun",
 
-            "figuresAuditory.incorrect":
-                "😊 Almost! Listen again.",
+    "colorsSort.greenApple": "Green apple",
+    "colorsSort.kiwi": "Kiwi",
+    "colorsSort.frog": "Frog",
+    "colorsSort.tree": "Tree",
+    "colorsSort.clover": "Clover",
 
-            "figuresAuditory.correctVoice":
-                "Great job!",
+    "colorsSort.correct1": "🌟 Great job!",
+    "colorsSort.correct2": "👏 Excellent!",
+    "colorsSort.correct3": "🎉 Correct!",
+    "colorsSort.correct4": "⭐ Awesome!",
+    "colorsSort.correct5": "😊 You did a great job!",
 
-            "figuresAuditory.incorrectVoice":
-                "Almost. Listen again.",
+    "colorsSort.tryAgain": "😊 Try again!",
+    "colorsSort.finishTitle": "🎉 Game finished!",
+    "colorsSort.finishDescription":
+      "Excellent work! You sorted all the objects.",
+    "colorsSort.restart": "Next level",
+    "colorsSort.apple": "Apple",
+    "colorsSort.strawberry": "Strawberry",
+    "colorsSort.cherries": "Cherries",
+    "colorsSort.heart": "Heart",
+    "colorsSort.balloon": "Balloon",
 
-            "figuresAuditory.hintAgain":
-                "Listen again.",
+    "colorsSort.blueFish": "Blue fish",
+    "colorsSort.blueBall": "Blue ball",
+    "colorsSort.blueCar": "Blue car",
+    "colorsSort.blueBucket": "Blue bucket",
+    "colorsSort.blueCap": "Blue cap",
 
-            "figuresAuditory.closeHint":
-                "TRY AGAIN!",
+    "colorsSort.banana": "Banana",
+    "colorsSort.corn": "Corn",
+    "colorsSort.star": "Star",
+    "colorsSort.chick": "Chick",
+    "colorsSort.sun": "Sun",
 
-            "figuresAuditory.hint.circle1":
-                "It has no corners.",
+    "colorsSort.greenApple": "Green apple",
+    "colorsSort.kiwi": "Kiwi",
+    "colorsSort.frog": "Frog",
+    "colorsSort.tree": "Tree",
+    "colorsSort.clover": "Clover",
 
-            "figuresAuditory.hint.circle2":
-                "It is completely round.",
+    "colorsSort.correct1": "🌟 Great job!",
+    "colorsSort.correct2": "👏 Excellent!",
+    "colorsSort.correct3": "🎉 Correct!",
+    "colorsSort.correct4": "⭐ Awesome!",
+    "colorsSort.correct5": "😊 You did a great job!",
 
-            "figuresAuditory.hint.circle3":
-                "Think of a ball.",
+    "colorsSort.tryAgain": "😊 Try again!",
+    "colorsSort.levelCompleteTitle": "Excellent! Now your mission!",
+    "colorsSort.levelCompleteDescription":
+      "Find 2 objects of each color you learned today.",
+    "colorsSort.levelCompleteLearned": "You learned the colors!",
+    "colorsSort.nextLevel": "➡️ Next level",
 
-            "figuresAuditory.hint.square1":
-                "It has four sides.",
 
-            "figuresAuditory.hint.square2":
-                "Its four sides are equal.",
+    "colorsVisual.pageTitle": "Colors - Visual Game",
 
-            "figuresAuditory.hint.square3":
-                "Think of a window.",
+    "colorsVisual.title": "🌈 Sort the Colors!",
 
-            "figuresAuditory.hint.triangle1":
-                "It has three sides.",
+    "colorsVisual.description":
+      "Touch an object and then touch the box with the same color.",
 
-            "figuresAuditory.hint.triangle2":
-                "It has three corners.",
+    "colorsVisual.points": "⭐ Points:",
 
-            "figuresAuditory.hint.triangle3":
-                "Think of a mountain.",
+    "colorsVisual.round": "🎯 Round:",
 
-            "figuresAuditory.hint.rectangle1":
-                "It has four sides.",
+    "colorsVisual.of": "/ 5",
 
-            "figuresAuditory.hint.rectangle2":
-                "It has two long sides and two short sides.",
+    "colorsVisual.selectObject": "Select an object!",
 
-            "figuresAuditory.hint.rectangle3":
-                "Think of a door.",
+    "colorsVisual.chooseBox": "Now touch the",
 
-            "figuresAuditory.finishTitle":
-                "Excellent! Now your mission!",
+    "colorsVisual.red": "Red",
 
-            "figuresAuditory.finishDescription":
-                "Find 2 objects of each shape you learned today",
+    "colorsVisual.blue": "Blue",
 
-            "figuresAuditory.finishLearned":
-                "You learned the shapes!",
+    "colorsVisual.yellow": "Yellow",
 
-            "figuresAuditory.continue":
-                "Continue",
+    "colorsVisual.green": "Green",
 
+    "colorsVisual.apple": "Apple",
 
-            // Visual shapes
-            "figuresVisual.pageTitle":
-                "Sort the Shapes",
+    "colorsVisual.blueBerry": "Blueberry",
 
-            "figuresVisual.title":
-                "SORT THE SHAPES",
+    "colorsVisual.lemon": "Lemon",
 
-            "figuresVisual.description":
-                "Drag each shape to its place",
+    "colorsVisual.greenApple": "Green apple",
 
-            "figuresVisual.circle":
-                "CIRCLE",
+    "colorsVisual.selectFirst": "👆 First select an object.",
 
-            "figuresVisual.square":
-                "SQUARE",
+    "colorsVisual.correct": "🎉 Great job!",
 
-            "figuresVisual.triangle":
-                "TRIANGLE",
+    "colorsVisual.wrong": "😊 That's not its color. Try again!",
 
-            "figuresVisual.rectangle":
-                "RECTANGLE",
+    "colorsVisual.findAnother": "Find another object! 😊",
 
-            "figuresVisual.correct":
-                "🎉 Great job!",
+    "colorsVisual.roundComplete": "🎉 You completed the round!",
 
-            "figuresVisual.complete":
-                "🎉 Excellent! You completed the game",
+    "colorsVisual.excellent": "Excellent work! ⭐",
 
-            "figuresVisual.incorrect":
-                "😊 Almost!",
+    "colorsVisual.next": "Next ➜",
 
-            "figuresVisual.hint.circle1":
-                "Look carefully. The circle has no corners.",
+    "colorsVisual.gameComplete": "🏆 Game complete!",
 
-            "figuresVisual.hint.circle2":
-                "Look at its edge. It is completely round.",
+    "colorsVisual.finalScore": "You scored {points} points ⭐",
 
-            "figuresVisual.hint.circle3":
-                "Look for the shape that looks like a ball.",
+    "colorsVisual.levelCompleteTitle": "Excellent! Now your mission!",
 
-            "figuresVisual.hint.square1":
-                "Look at its sides. It has 4 sides.",
+    "colorsVisual.levelCompleteDescription":
+      "Find 2 objects of each color you learned today.",
 
-            "figuresVisual.hint.square2":
-                "Its 4 sides are the same size.",
+    "colorsVisual.levelCompleteLearned": "You learned the colors!",
 
-            "figuresVisual.hint.square3":
-                "Look for the shape with 4 equal sides.",
+    "colorsVisual.nextLevel": "➡️ Next level",
 
-            "figuresVisual.hint.triangle1":
-                "Look at its corners. It has 3.",
+    "colorsVisual.selectBox": "Now touch the {color} box 👆",
+    "colorsVisual.findAnother": "Find another object! 😊",
+    "colorsVisual.selectFirst": "👆 First select an object.",
+    "colorsVisual.correct": "🎉 Very good!",
+    "colorsVisual.wrong": "😊 That's not its color. Try again!",
+    "colorsVisual.roundComplete": "🎉 You completed the round!",
+    "colorsVisual.excellent": "Excellent work! ⭐",
+    "colorsVisual.gameComplete": "🏆 Game over!",
+    "colorsVisual.finalScore": "You got {points} points ⭐",
 
-            "figuresVisual.hint.triangle2":
-                "Count its sides. It has 3.",
+    // Registration
+    "register.subtitle": "Let's learn together!",
+    "register.name": "Name",
+    "register.namePlaceholder": "Parent/guardian name",
+    "register.email": "Email",
+    "register.emailPlaceholder": "email@example.com",
+    "register.password": "Password",
+    "register.confirmPassword": "Confirm password",
+    "register.button": "Register",
+    "register.alreadyAccount": "Already have an account?",
+    "register.login": "Log in",
 
-            "figuresVisual.hint.triangle3":
-                "Look for the shape that looks like a mountain.",
+    "register.passwordMismatch": "The passwords do not match",
 
-            "figuresVisual.hint.rectangle1":
-                "Look at its sides. It has 4.",
+    "register.registrationError":
+      "An error occurred while registering the user.",
 
-            "figuresVisual.hint.rectangle2":
-                "It has 2 long sides and 2 short sides.",
+    // Child information
+    "childData.pageTitle": "Child's Information",
+    "childData.childName": "Child's name",
+    "childData.childNamePlaceholder": "👦🏻 Enter the name",
+    "childData.childAge": "Child's age",
+    "childData.agePlaceholder": "📆",
+    "childData.continue": "Continue →",
+    "childData.saved": "Data saved successfully",
+    "childData.error": "An error occurred while saving the data.",
 
-            "figuresVisual.hint.rectangle3":
-                "Look for the shape that looks like a door.",
+    // Figures auditory game
+    "figuresAuditory.pageTitle": "Sort the Shapes - Auditory",
 
-            "figuresVisual.tryAgain":
-                "Try again!",
+    "figuresAuditory.title": "🔊 LISTEN AND SORT",
 
-            "figuresVisual.finishTitle":
-                "Excellent! Now your mission!",
+    "figuresAuditory.description":
+      "Listen carefully and select the shape you heard.",
 
-            "figuresVisual.finishDescription":
-                "Find 2 objects of each shape you learned today",
+    "figuresAuditory.listen": "🔊 LISTEN",
 
-            "figuresVisual.finishLearned":
-                "You learned the shapes!",
+    "figuresAuditory.initialInstruction": "Press the button to listen.",
 
-            "figuresVisual.continue":
-                "Continue",
+    "figuresAuditory.listenInstruction": "Press LISTEN to hear the shape.",
 
-            // Learning style questionnaire
-            "learningForm.pageTitle":
-                "Assessment",
+    "figuresAuditory.searchInstruction": "Listen and find the correct shape.",
 
-            "learningForm.title":
-                "Learning Style Assessment",
+    "figuresAuditory.circle": "circle",
 
-            "learningForm.question1":
-                "1. How does the child learn best?",
+    "figuresAuditory.square": "square",
 
-            "learningForm.q1.visual":
-                "By looking at images.",
+    "figuresAuditory.triangle": "triangle",
 
-            "learningForm.q1.auditory":
-                "By listening to explanations.",
+    "figuresAuditory.rectangle": "rectangle",
 
-            "learningForm.q1.kinesthetic":
-                "By doing activities.",
+    "figuresAuditory.correct": "🎉 Great job!",
 
-            "learningForm.question2":
-                "2. Which activity does the child enjoy the most?",
+    "figuresAuditory.incorrect": "😊 Almost! Listen again.",
 
-            "learningForm.q2.visual":
-                "Drawing or coloring.",
+    "figuresAuditory.correctVoice": "Great job!",
 
-            "learningForm.q2.auditory":
-                "Listening to stories.",
+    "figuresAuditory.incorrectVoice": "Almost. Listen again.",
 
-            "learningForm.q2.kinesthetic":
-                "Building or playing.",
+    "figuresAuditory.hintAgain": "Listen again.",
 
-            "learningForm.question3":
-                "3. What does the child remember most easily?",
+    "figuresAuditory.closeHint": "TRY AGAIN!",
 
-            "learningForm.q3.visual":
-                "Images.",
+    "figuresAuditory.hint.circle1": "It has no corners.",
 
-            "learningForm.q3.auditory":
-                "Sounds or words.",
+    "figuresAuditory.hint.circle2": "It is completely round.",
 
-            "learningForm.q3.kinesthetic":
-                "What they did.",
+    "figuresAuditory.hint.circle3": "Think of a ball.",
 
-            "learningForm.question4":
-                "4. How does the child prefer to receive instructions?",
+    "figuresAuditory.hint.square1": "It has four sides.",
 
-            "learningForm.q4.visual":
-                "By seeing an example.",
+    "figuresAuditory.hint.square2": "Its four sides are equal.",
 
-            "learningForm.q4.auditory":
-                "By listening to the explanation.",
+    "figuresAuditory.hint.square3": "Think of a window.",
 
-            "learningForm.q4.kinesthetic":
-                "By trying while learning.",
+    "figuresAuditory.hint.triangle1": "It has three sides.",
 
-            "learningForm.question5":
-                "5. Which toy does the child like the most?",
+    "figuresAuditory.hint.triangle2": "It has three corners.",
 
-            "learningForm.q5.visual":
-                "Puzzles.",
+    "figuresAuditory.hint.triangle3": "Think of a mountain.",
 
-            "learningForm.q5.auditory":
-                "Musical instruments.",
+    "figuresAuditory.hint.rectangle1": "It has four sides.",
 
-            "learningForm.q5.kinesthetic":
-                "Building blocks.",
+    "figuresAuditory.hint.rectangle2":
+      "It has two long sides and two short sides.",
 
-            "learningForm.question6":
-                "6. When the child has a problem, they usually...",
+    "figuresAuditory.hint.rectangle3": "Think of a door.",
 
-            "learningForm.q6.visual":
-                "Observe before acting.",
+    "figuresAuditory.finishTitle": "Excellent! Now your mission!",
 
-            "learningForm.q6.auditory":
-                "Ask what to do.",
+    "figuresAuditory.finishDescription":
+      "Find 2 objects of each shape you learned today",
 
-            "learningForm.q6.kinesthetic":
-                "Try different solutions.",
+    "figuresAuditory.finishLearned": "You learned the shapes!",
 
-            "learningForm.question7":
-                "7. What does the child do in their free time?",
+    "figuresAuditory.continue": "Continue",
 
-            "learningForm.q7.visual":
-                "Looks at books with pictures.",
+    // Visual shapes
+    "figuresVisual.pageTitle": "Sort the Shapes",
 
-            "learningForm.q7.auditory":
-                "Listens to music.",
+    "figuresVisual.title": "SORT THE SHAPES",
 
-            "learningForm.q7.kinesthetic":
-                "Plays and moves around.",
+    "figuresVisual.description": "Drag each shape to its place",
 
-            "learningForm.question8":
-                "8. When the child gets a new toy...",
+    "figuresVisual.circle": "CIRCLE",
 
-            "learningForm.q8.visual":
-                "Looks at it first.",
+    "figuresVisual.square": "SQUARE",
 
-            "learningForm.q8.auditory":
-                "Listens to how it works.",
+    "figuresVisual.triangle": "TRIANGLE",
 
-            "learningForm.q8.kinesthetic":
-                "Tries it immediately.",
+    "figuresVisual.rectangle": "RECTANGLE",
 
-            "learningForm.question9":
-                "9. What material helps the child learn the most?",
+    "figuresVisual.correct": "🎉 Great job!",
 
-            "learningForm.q9.visual":
-                "Drawings and images.",
+    "figuresVisual.complete": "🎉 Excellent! You completed the game",
 
-            "learningForm.q9.auditory":
-                "Explanations and songs.",
+    "figuresVisual.incorrect": "😊 Almost!",
 
-            "learningForm.q9.kinesthetic":
-                "Games and practical activities.",
+    "figuresVisual.hint.circle1": "Look carefully. The circle has no corners.",
 
-            "learningForm.question10":
-                "10. In class, the child pays more attention when...",
+    "figuresVisual.hint.circle2": "Look at its edge. It is completely round.",
 
-            "learningForm.q10.visual":
-                "They see demonstrations.",
+    "figuresVisual.hint.circle3": "Look for the shape that looks like a ball.",
 
-            "learningForm.q10.auditory":
-                "They listen to the teacher.",
+    "figuresVisual.hint.square1": "Look at its sides. It has 4 sides.",
 
-            "learningForm.q10.kinesthetic":
-                "They participate actively.",
+    "figuresVisual.hint.square2": "Its 4 sides are the same size.",
 
-            "learningForm.submit":
-                "Submit questionnaire",
+    "figuresVisual.hint.square3": "Look for the shape with 4 equal sides.",
 
-            "learningForm.detected":
-                "Detected learning style: ",
+    "figuresVisual.hint.triangle1": "Look at its corners. It has 3.",
 
-            "learningForm.error":
-                "An error occurred while saving the learning style.",
+    "figuresVisual.hint.triangle2": "Count its sides. It has 3.",
 
-            // Login
-            "login.pageTitle": "Login",
-            "login.username": "Username",
-            "login.password": "Password",
-            "login.passwordPlaceholder": "*********",
-            "login.button": "Log in",
-            "login.noAccount": "Don't have an account yet?",
-            "login.register": "Sign up",
-            "login.error": "An error occurred while logging in.",
+    "figuresVisual.hint.triangle3":
+      "Look for the shape that looks like a mountain.",
 
+    "figuresVisual.hint.rectangle1": "Look at its sides. It has 4.",
 
-            // Achievements
-            "logros.pageTitle": "ThinkaRoo | Achievements",
-            "logros.title": "🏆 My Achievements",
-            "logros.subtitle": "Complete activities and earn new badges!",
-            "logros.unlocked": "Achievements unlocked:",
-            "logros.levels": "Levels",
-            "logros.progress": "Progress",
-            "logros.achievements": "Achievements",
-            "logros.parents": "Parents",
+    "figuresVisual.hint.rectangle2": "It has 2 long sides and 2 short sides.",
 
-            "logros.completed": "✓ Completed!",
-            "logros.locked": "🔒 Not completed",
+    "figuresVisual.hint.rectangle3":
+      "Look for the shape that looks like a door.",
 
-            "logros.firstStep": "First Step",
-            "logros.firstStepDescription": "You completed your first lesson.",
+    "figuresVisual.tryAgain": "Try again!",
 
-            "logros.curiousMind": "Curious Mind",
-            "logros.curiousMindDescription": "You completed 10 lessons.",
+    "figuresVisual.finishTitle": "Excellent! Now your mission!",
 
-            "logros.greatExplorer": "Great Explorer",
-            "logros.greatExplorerDescription": "Complete 15 lessons.",
+    "figuresVisual.finishDescription":
+      "Find 2 objects of each shape you learned today",
 
-            "logros.visual": "Visual",
-            "logros.visualDescription": "Complete a visual learning lesson.",
+    "figuresVisual.finishLearned": "You learned the shapes!",
 
-            "logros.perfect": "Perfect!",
-            "logros.perfectDescription": "Complete an activity without mistakes.",
+    "figuresVisual.continue": "Continue",
 
-            "logros.auditory": "Auditory",
-            "logros.auditoryDescription": "Complete an auditory learning lesson.",
+    // Learning style questionnaire
+    "learningForm.pageTitle": "Assessment",
 
-            "logros.adventurer": "Adventurer",
-            "logros.adventurerDescription": "Complete 20 lessons.",
+    "learningForm.title": "Learning Style Assessment",
 
-            "logros.littleGenius": "Little Genius",
-            "logros.littleGeniusDescription": "Get 5 perfect answers.",
+    "learningForm.question1": "1. How does the child learn best?",
 
-            "logros.collector": "Collector",
-            "logros.collectorDescription": "Earn 10 badges.",
+    "learningForm.q1.visual": "By looking at images.",
 
-            "logros.kinesthetic": "Kinesthetic",
-            "logros.kinestheticDescription": "Complete a kinesthetic learning lesson.",
+    "learningForm.q1.auditory": "By listening to explanations.",
 
-            "logros.superLearner": "Super Learner",
-            "logros.superLearnerDescription": "Complete 30 lessons.",
+    "learningForm.q1.kinesthetic": "By doing activities.",
 
-            "logros.master": "ThinkaRoo Master",
-            "logros.masterDescription": "Unlock all achievements.",
+    "learningForm.question2":
+      "2. Which activity does the child enjoy the most?",
 
-            "logros.alt.firstStep": "First Step",
-            "logros.alt.curiousMind": "Curious Mind",
-            "logros.alt.greatExplorer": "Great Explorer",
-            "logros.alt.glasses": "Glasses",
-            "logros.alt.perfect": "Perfect",
-            "logros.alt.headphones": "Headphones",
-            "logros.alt.adventurer": "Adventurer",
-            "logros.alt.genius": "Genius",
-            "logros.alt.collector": "Collector",
-            "logros.alt.blocks": "Blocks",
-            "logros.alt.superLearner": "Super Learner",
-            "logros.alt.master": "ThinkaRoo Master",
+    "learningForm.q2.visual": "Drawing or coloring.",
 
+    "learningForm.q2.auditory": "Listening to stories.",
 
-            // Auditory Memory
-            "auditoryMemory.pageTitle": "Auditory",
-            "auditoryMemory.title": "Animal World: Memory Challenge",
-            "auditoryMemory.description": "Select an image and then the correct sound.",
-            "auditoryMemory.animalAlt": "Animal",
-            "auditoryMemory.listenAlt": "Listen to animal",
-            "auditoryMemory.finishTitle": "Excellent, now your mission!",
-            "auditoryMemory.finishDescription": "Find 2 animals at home and imitate their sounds",
-            "auditoryMemory.finishLearned": "You learned the animals!",
-            "auditoryMemory.continue": "Continue",
+    "learningForm.q2.kinesthetic": "Building or playing.",
 
+    "learningForm.question3": "3. What does the child remember most easily?",
 
-            // Kinesthetic Memory
-            "kinestheticMemory.pageTitle": "Kinesthetic Challenge",
-            "kinestheticMemory.title": "🐾 Find their partner!",
-            "kinestheticMemory.instructions": "Touch and drag each animal to its partner.",
-            "kinestheticMemory.dragAnimals": "🐾 Drag the animals",
-            "kinestheticMemory.findPlace": "🎯 Find their place",
-            "kinestheticMemory.backToLevels": "Back to levels",
-            "kinestheticMemory.correct": "🎉 Great job!",
-            "kinestheticMemory.tryAgain": "💪 Try again!",
-            "kinestheticMemory.complete": "🏆 Excellent! You found all the pairs!",
-            "kinestheticMemory.finishTitle": "Excellent, now your mission!",
-            "kinestheticMemory.finishDescription": "Find 2 animals at home and imitate their sounds",
-            "kinestheticMemory.finishLearned": "You learned the animals!",
-            "kinestheticMemory.continue": "Continue",
-            "kinestheticMemory.cangarooAlt": "Kangaroo",
+    "learningForm.q3.visual": "Images.",
 
+    "learningForm.q3.auditory": "Sounds or words.",
 
-            "visualMemory.pageTitle": "Visual",
-            "visualMemory.title": "Animal World: Memory Challenge",
-            "visualMemory.description": "Match the animal pairs.",
-            "visualMemory.cangarooAlt": "Kangaroo",
-            "visualMemory.animalAlt": "Animal",
-            "visualMemory.finishTitle": "Excellent, now your mission!",
-            "visualMemory.finishDescription": "Find 2 animals at home and imitate their sounds",
-            "visualMemory.finishLearned": "You learned the animals!",
-            "visualMemory.continue": "Continue",
+    "learningForm.q3.kinesthetic": "What they did.",
 
+    "learningForm.question4":
+      "4. How does the child prefer to receive instructions?",
 
-            "levels.pageTitle.visual": "Visual Levels",
-            "levels.pageTitle.auditory": "Auditory Levels",
-            "levels.pageTitle.kinesthetic": "Kinesthetic Levels",
+    "learningForm.q4.visual": "By seeing an example.",
 
-            "levels.visual.header": "Observe and Learn",
-            "levels.visual.title": "Look and Discover",
-            "levels.visual.description": "Observe, discover, and learn through images, colors, and shapes.",
+    "learningForm.q4.auditory": "By listening to the explanation.",
 
-            "levels.auditory.header": "Let's Learn by Listening!",
-            "levels.auditory.title": "Listen and Learn",
-            "levels.auditory.description": "Listen to each sound and discover who makes it.",
+    "learningForm.q4.kinesthetic": "By trying while learning.",
 
-            "levels.kinesthetic.header": "Let's Learn by Moving!",
-            "levels.kinesthetic.title": "Discover by Doing",
-            "levels.kinesthetic.description": "Do activities, explore, and learn while having fun.",
+    "learningForm.question5": "5. Which toy does the child like the most?",
 
-            "levels.sidebar.levels": "Levels",
-            "levels.sidebar.progress": "Progress",
-            "levels.sidebar.achievements": "Achievements",
-            "levels.sidebar.parents": "Parents",
+    "learningForm.q5.visual": "Puzzles.",
 
-            "levels.profileAlt": "Profile picture",
-            "levels.kangarooAlt": "Kangaroo",
-            "levels.menuAlt": "Open menu",
-            "levels.chestOpened": "🎁 You opened a treasure chest!",
+    "learningForm.q5.auditory": "Musical instruments.",
 
-            "learningTypes.pageTitle": "Learning Styles",
-            "learningTypes.visual.title": "VISUAL",
-            "learningTypes.visual.alt": "Visual",
-            "learningTypes.visual.description1": "Visual learning is a style in which children understand and retain information better through images, colors, graphics, drawings, and visual representations. Children with this learning style tend to remember what they see more easily, so they enjoy activities that involve engaging and organized elements.",
-            "learningTypes.visual.description2": "On our platform, children with a visual learning style will find games and activities designed to stimulate logical thinking through puzzles, image sequences, shape associations, patterns, colors, and challenges that require careful observation to find the correct answer.",
+    "learningForm.q5.kinesthetic": "Building blocks.",
 
-            "learningTypes.auditory.title": "AUDITORY",
-            "learningTypes.auditory.alt": "Auditory",
-            "learningTypes.auditory.description1": "Auditory learning is characterized by children understanding and remembering information better when they hear it. Spoken explanations, sounds, songs, dialogues, and narrations help them process knowledge in a more natural and effective way.",
-            "learningTypes.auditory.description2": "On our platform, children with this learning style will find activities that include narrated instructions, sound recognition, auditory sequences, sound memory games, and exercises in which they must listen carefully to solve different logical challenges. These activities encourage attention and understanding while turning learning into an entertaining experience.",
+    "learningForm.question6":
+      "6. When the child has a problem, they usually...",
 
-            "learningTypes.kinesthetic.title": "KINESTHETIC",
-            "learningTypes.kinesthetic.alt": "Kinesthetic",
-            "learningTypes.kinesthetic.description1": "Kinesthetic learning is based on experience, movement, and interaction with the environment. Children with this learning style understand concepts better when they can manipulate objects, perform actions, and actively participate in each activity, as they learn by doing and experimenting.",
-            "learningTypes.kinesthetic.description2": "On our platform, children will find dynamic activities that require them to move, drag, sort, and match elements to solve different challenges. They will also be given missions outside the screen that allow them to apply what they have learned in everyday situations, strengthening learning through practice.",
+    "learningForm.q6.visual": "Observe before acting.",
 
-            "learningTypes.start": "Start",
-            "learningTypes.previous": "Previous",
-            "learningTypes.next": "Next",
+    "learningForm.q6.auditory": "Ask what to do.",
 
-            "profile.pageTitle": "Profile",
-            "profile.title": "Profile",
-            "profile.loading": "Loading...",
-            "profile.avatarAlt": "Child's avatar",
-            "profile.statistics": "📊 Statistics",
-            "profile.achievements": "🏆 Achievements obtained",
-            "profile.currentLevel": "⭐ Current level",
-            "profile.years": " years",
-            "profile.undefinedStyle": "Not defined",
-            "profile.undefinedLearningStyle": "The learning style has not been defined yet.",
-            "profile.changeChildError": "Error changing child.",
-
-
-            "profileParent.pageTitle": "User Profile - ThinkaRoo",
-            "profileParent.title": "User Profile",
-            "profileParent.loading": "Loading...",
-            "profileParent.unavailable": "Not available",
-            "profileParent.error": "Error",
-            "profileParent.statistics": "📊 Statistics",
-            "profileParent.children": "👶 Registered children",
-            "profileParent.logout": "Log out",
+    "learningForm.q6.kinesthetic": "Try different solutions.",
 
+    "learningForm.question7": "7. What does the child do in their free time?",
 
-            "progress.pageTitle": "ThinkaRoo - Progress",
-            "progress.sidebar.levels": "Levels",
-            "progress.sidebar.progress": "Progress",
-            "progress.sidebar.achievements": "Achievements",
-            "progress.sidebar.parents": "Parents",
-            "progress.title": "Game Levels",
-            "progress.level": "Level",
-            "progress.general": "Overall Progress",
-            "progress.gamesCompleted": "games completed",
-            "progress.level1.title": "Sly Animals",
-            "progress.level1.description": "Find the matching animal pairs",
-            "progress.level2.title": "Geometric Shapes",
-            "progress.level2.description": "Recognize the shapes",
-            "progress.level3.title": "Learn the Colors",
-            "progress.level3.description": "Recognize the colors",
-            "progress.level4.title": "The Number Dance",
-            "progress.level4.description": "Follow the animals",
-            "progress.status.notStarted": "Not started",
-            "progress.status.inProgress": "In progress",
-            "progress.status.completed": "Completed",
-            "progress.error.server": "Error in the server response.",
+    "learningForm.q7.visual": "Looks at books with pictures.",
 
-            // Listen and Count - Auditory
-            "countAuditory.pageTitle": "Listen and Count",
-            "countAuditory.title": "🎧 LISTEN AND COUNT!",
-            "countAuditory.subtitle": "Listen to the sounds and select how many you heard",
-            "countAuditory.question": "How many sounds did you hear?",
-            "countAuditory.listen": "🔊 LISTEN",
-            "countAuditory.tryAgain": "🔄 Try Again",
-            "countAuditory.feedback.correct": "🎉 VERY GOOD!",
-            "countAuditory.feedback.tryAgain": "👂 Let's listen again",
-            "countAuditory.finishTitle": "Excellent! Now your mission!",
-            "countAuditory.finishDescription": "Count how many toys you have<br>You learned how to count!",
-            "countAuditory.continue": "Continue",
+    "learningForm.q7.auditory": "Listens to music.",
 
+    "learningForm.q7.kinesthetic": "Plays and moves around.",
 
-            // Put the Objects In - Kinesthetic
-            "putObjects.pageTitle": "Put the Objects In!",
-            "putObjects.title": "PUT THE OBJECTS IN!",
-            "putObjects.instruction": "✋ Drag each object  📦 Put it inside the box!",
-            "putObjects.objects": "objects",
-            "putObjects.question": "HOW MANY OBJECTS DID YOU PUT IN?",
-            "putObjects.tryAgain": "🔄 Try Again",
-            "putObjects.feedback.correct": "VERY GOOD!",
-            "putObjects.feedback.hint": "Almost! Drop the object inside the box 📦",
-            "putObjects.feedback.count": "Very good! Now tell me how many objects you put in",
-            "putObjects.feedback.countHint": "Count the objects you put in the box",
-            "putObjects.finishTitle": "Excellent! Now your mission!",
-            "putObjects.finishLine1": "Count how many toys you have",
-            "putObjects.finishLine2": "You learned how to count!",
-            "putObjects.continue": "Continue",
+    "learningForm.question8": "8. When the child gets a new toy...",
 
+    "learningForm.q8.visual": "Looks at it first.",
 
-            "countVisual.pageTitle": "How Many Are There?",
-            "countVisual.title": "HOW MANY ARE THERE?",
-            "countVisual.subtitle": "Count the items and select the correct number",
-            "countVisual.tryAgain": "🔄 Try Again",
-            "countVisual.feedback.correct": "VERY GOOD!",
-            "countVisual.feedback.hint": "Let's count together! 🔍",
-            "countVisual.finishTitle": "Excellent! Now your mission!",
-            "countVisual.finishLine1": "Count how many toys you have",
-            "countVisual.finishLine2": "You learned how to count!",
-            "countVisual.continue": "Continue",
+    "learningForm.q8.auditory": "Listens to how it works.",
 
-            "traceShapes.pageTitle": "Trace the Shapes",
-            "traceShapes.title": "TRACE THE SHAPES",
-            "traceShapes.subtitle": "Follow the path and discover the shape",
-            "traceShapes.instruction": "Press and hold while following the line",
-            "traceShapes.tryAgain": "Try Again",
-            "traceShapes.startGreen": "Start at one of the green dots!",
-            "traceShapes.keepGoing": "Very good! Keep following the shape",
-            "traceShapes.almost": "Almost! Follow the dotted line",
-            "traceShapes.keepShape": "Keep following the shape!",
-            "traceShapes.keepCircle": "Keep going around the circle!",
-            "traceShapes.correct": "VERY GOOD!",
-            "traceShapes.completedShape": "VERY GOOD! You completed the {shape}!",
-            "traceShapes.allCompleted": "EXCELLENT! You completed all the shapes!",
-            "traceShapes.nextShape": "Now follow the {shape}",
-            "traceShapes.triangle": "Triangle",
-            "traceShapes.circle": "Circle",
-            "traceShapes.square": "Square",
-            "traceShapes.rectangle": "Rectangle",
-            "traceShapes.startGreenInstruction": "{shape} - start at a green dot",
-            "traceShapes.finishTitle": "Excellent! Now your mission!",
-            "traceShapes.finishLine1": "Find 2 objects of each shape you learned today",
-            "traceShapes.finishLine2": "You learned the shapes!",
-            "traceShapes.continue": "Continue",
+    "learningForm.q8.kinesthetic": "Tries it immediately.",
 
-            "colorsGame.red": "Red", "colorsGame.blue": "Blue", "colorsGame.yellow": "Yellow", "colorsGame.green": "Green", "colorsGame.purple": "Purple",
-    };
+    "learningForm.question9":
+      "9. What material helps the child learn the most?",
 
+    "learningForm.q9.visual": "Drawings and images.",
 
-    const translations = {
-        es: ES,
-        en: EN
-    };
+    "learningForm.q9.auditory": "Explanations and songs.",
 
+    "learningForm.q9.kinesthetic": "Games and practical activities.",
 
-    const STORAGE_KEY = "thinkarooIdioma";
+    "learningForm.question10":
+      "10. In class, the child pays more attention when...",
 
-    let currentLanguage = "en";
+    "learningForm.q10.visual": "They see demonstrations.",
 
+    "learningForm.q10.auditory": "They listen to the teacher.",
 
-    function getSavedLanguage() {
+    "learningForm.q10.kinesthetic": "They participate actively.",
 
-        const saved = localStorage.getItem(STORAGE_KEY);
+    "learningForm.submit": "Submit questionnaire",
 
-        if (saved === "es" || saved === "en") {
-            return saved;
-        }
+    "learningForm.detected": "Detected learning style: ",
 
-        return "en";
+    "learningForm.error": "An error occurred while saving the learning style.",
+
+    // Login
+    "login.pageTitle": "Login",
+    "login.username": "Username",
+    "login.password": "Password",
+    "login.passwordPlaceholder": "*********",
+    "login.button": "Log in",
+    "login.noAccount": "Don't have an account yet?",
+    "login.register": "Sign up",
+    "login.error": "An error occurred while logging in.",
+
+    // Achievements
+    "logros.pageTitle": "ThinkaRoo | Achievements",
+    "logros.title": "🏆 My Achievements",
+    "logros.subtitle": "Complete activities and earn new badges!",
+    "logros.unlocked": "Achievements unlocked:",
+    "logros.levels": "Levels",
+    "logros.progress": "Progress",
+    "logros.achievements": "Achievements",
+    "logros.parents": "Parents",
+
+    "logros.completed": "✓ Completed!",
+    "logros.locked": "🔒 Not completed",
+
+    "logros.firstStep": "First Step",
+    "logros.firstStepDescription": "You completed your first lesson.",
+
+    "logros.curiousMind": "Curious Mind",
+    "logros.curiousMindDescription": "You completed 10 lessons.",
+
+    "logros.greatExplorer": "Great Explorer",
+    "logros.greatExplorerDescription": "Complete 15 lessons.",
+
+    "logros.visual": "Visual",
+    "logros.visualDescription": "Complete a visual learning lesson.",
+
+    "logros.perfect": "Perfect!",
+    "logros.perfectDescription": "Complete an activity without mistakes.",
+
+    "logros.auditory": "Auditory",
+    "logros.auditoryDescription": "Complete an auditory learning lesson.",
+
+    "logros.adventurer": "Adventurer",
+    "logros.adventurerDescription": "Complete 20 lessons.",
+
+    "logros.littleGenius": "Little Genius",
+    "logros.littleGeniusDescription": "Get 5 perfect answers.",
+
+    "logros.collector": "Collector",
+    "logros.collectorDescription": "Earn 10 badges.",
+
+    "logros.kinesthetic": "Kinesthetic",
+    "logros.kinestheticDescription": "Complete a kinesthetic learning lesson.",
+
+    "logros.superLearner": "Super Learner",
+    "logros.superLearnerDescription": "Complete 30 lessons.",
+
+    "logros.master": "ThinkaRoo Master",
+    "logros.masterDescription": "Unlock all achievements.",
+
+    "logros.alt.firstStep": "First Step",
+    "logros.alt.curiousMind": "Curious Mind",
+    "logros.alt.greatExplorer": "Great Explorer",
+    "logros.alt.glasses": "Glasses",
+    "logros.alt.perfect": "Perfect",
+    "logros.alt.headphones": "Headphones",
+    "logros.alt.adventurer": "Adventurer",
+    "logros.alt.genius": "Genius",
+    "logros.alt.collector": "Collector",
+    "logros.alt.blocks": "Blocks",
+    "logros.alt.superLearner": "Super Learner",
+    "logros.alt.master": "ThinkaRoo Master",
+
+    "auditoryMemory.pageTitle": "Auditory",
+    "auditoryMemory.title": "Animal World: Memory Challenge",
+    "auditoryMemory.description": "Select an image and then the correct sound.",
+    "auditoryMemory.animalAlt": "Animal",
+    "auditoryMemory.listenAlt": "Listen to animal",
+    "auditoryMemory.finishTitle": "Excellent, now your mission!",
+    "auditoryMemory.finishDescription":
+    "Find 2 animals at home and imitate their sounds",
+    "auditoryMemory.finishLearned": "You learned the animals!",
+    "auditoryMemory.continue": "Continue",
+
+
+    "kinestheticMemory.pageTitle": "Kinesthetic Challenge",
+    "kinestheticMemory.title": "🐾 Find their partner!",
+    "kinestheticMemory.instructions":
+    "Touch and drag each animal to its partner.",
+    "kinestheticMemory.dragAnimals": "🐾 Drag the animals",
+    "kinestheticMemory.findPlace": "🎯 Find their place",
+    "kinestheticMemory.backToLevels": "Back to levels",
+    "kinestheticMemory.correct": "🎉 Great job!",
+    "kinestheticMemory.tryAgain": "💪 Try again!",
+    "kinestheticMemory.complete": "🏆 Excellent! You found all the pairs!",
+    "kinestheticMemory.finishTitle": "Excellent, now your mission!",
+    "kinestheticMemory.finishDescription":
+      "Find 2 animals at home and imitate their sounds",
+    "kinestheticMemory.finishLearned": "You learned the animals!",
+    "kinestheticMemory.continue": "Continue",
+    "kinestheticMemory.cangarooAlt": "Kangaroo",
+
+    "visualMemory.pageTitle": "Visual",
+    "visualMemory.title": "Animal World: Memory Challenge",
+    "visualMemory.description": "Match the animal pairs.",
+    "visualMemory.cangarooAlt": "Kangaroo",
+    "visualMemory.animalAlt": "Animal",
+    "visualMemory.finishTitle": "Excellent, now your mission!",
+    "visualMemory.finishDescription":
+      "Find 2 animals at home and imitate their sounds",
+    "visualMemory.finishLearned": "You learned the animals!",
+    "visualMemory.continue": "Continue",
+
+    "levels.pageTitle.visual": "Visual Levels",
+    "levels.pageTitle.auditory": "Auditory Levels",
+    "levels.pageTitle.kinesthetic": "Kinesthetic Levels",
+
+    "levels.visual.header": "Observe and Learn",
+    "levels.visual.title": "Look and Discover",
+    "levels.visual.description":
+      "Observe, discover, and learn through images, colors, and shapes.",
+
+    "levels.auditory.header": "Let's Learn by Listening!",
+    "levels.auditory.title": "Listen and Learn",
+    "levels.auditory.description":
+    "Listen to each sound and discover who makes it.",
+
+    "levels.kinesthetic.header": "Let's Learn by Moving!",
+    "levels.kinesthetic.title": "Discover by Doing",
+    "levels.kinesthetic.description":
+    "Do activities, explore, and learn while having fun.",
+
+    "levels.sidebar.levels": "Levels",
+    "levels.sidebar.progress": "Progress",
+    "levels.sidebar.achievements": "Achievements",
+    "levels.sidebar.parents": "Parents",
+
+    "levels.profileAlt": "Profile picture",
+    "levels.kangarooAlt": "Kangaroo",
+    "levels.menuAlt": "Open menu",
+    "levels.chestOpened": "🎁 You opened a treasure chest!",
+
+    "learningTypes.pageTitle": "Learning Styles",
+    "learningTypes.visual.title": "VISUAL",
+    "learningTypes.visual.alt": "Visual",
+    "learningTypes.visual.description1":
+    "Visual learning is a style in which children understand and retain information better through images, colors, graphics, drawings, and visual representations. Children with this learning style tend to remember what they see more easily, so they enjoy activities that involve engaging and organized elements.",
+    "learningTypes.visual.description2":
+    "On our platform, children with a visual learning style will find games and activities designed to stimulate logical thinking through puzzles, image sequences, shape associations, patterns, colors, and challenges that require careful observation to find the correct answer.",
+
+    "learningTypes.auditory.title": "AUDITORY",
+    "learningTypes.auditory.alt": "Auditory",
+    "learningTypes.auditory.description1":
+    "Auditory learning is characterized by children understanding and remembering information better when they hear it. Spoken explanations, sounds, songs, dialogues, and narrations help them process knowledge in a more natural and effective way.",
+    "learningTypes.auditory.description2":
+    "On our platform, children with this learning style will find activities that include narrated instructions, sound recognition, auditory sequences, sound memory games, and exercises in which they must listen carefully to solve different logical challenges. These activities encourage attention and understanding while turning learning into an entertaining experience.",
+
+    "learningTypes.kinesthetic.title": "KINESTHETIC",
+    "learningTypes.kinesthetic.alt": "Kinesthetic",
+    "learningTypes.kinesthetic.description1":
+    "Kinesthetic learning is based on experience, movement, and interaction with the environment. Children with this learning style understand concepts better when they can manipulate objects, perform actions, and actively participate in each activity, as they learn by doing and experimenting.",
+    "learningTypes.kinesthetic.description2":
+    "On our platform, children will find dynamic activities that require them to move, drag, sort, and match elements to solve different challenges. They will also be given missions outside the screen that allow them to apply what they have learned in everyday situations, strengthening learning through practice.",
+
+    "learningTypes.start": "Start",
+    "learningTypes.previous": "Previous",
+    "learningTypes.next": "Next",
+
+    "profile.pageTitle": "Profile",
+    "profile.title": "Profile",
+    "profile.loading": "Loading...",
+    "profile.avatarAlt": "Child's avatar",
+    "profile.statistics": "📊 Statistics",
+    "profile.achievements": "🏆 Achievements obtained",
+    "profile.currentLevel": "⭐ Current level",
+    "profile.years": " years",
+    "profile.undefinedStyle": "Not defined",
+    "profile.undefinedLearningStyle":
+    "The learning style has not been defined yet.",
+    "profile.changeChildError": "Error changing child.",
+
+    "profileParent.pageTitle": "User Profile - ThinkaRoo",
+    "profileParent.title": "User Profile",
+    "profileParent.loading": "Loading...",
+    "profileParent.unavailable": "Not available",
+    "profileParent.error": "Error",
+    "profileParent.statistics": "📊 Statistics",
+    "profileParent.children": "👶 Registered children",
+    "profileParent.logout": "Log out",
+
+    "progress.pageTitle": "ThinkaRoo - Progress",
+    "progress.sidebar.levels": "Levels",
+    "progress.sidebar.progress": "Progress",
+    "progress.sidebar.achievements": "Achievements",
+    "progress.sidebar.parents": "Parents",
+    "progress.title": "Game Levels",
+    "progress.level": "Level",
+    "progress.general": "Overall Progress",
+    "progress.gamesCompleted": "games completed",
+    "progress.level1.title": "Sly Animals",
+    "progress.level1.description": "Find the matching animal pairs",
+    "progress.level2.title": "Geometric Shapes",
+    "progress.level2.description": "Recognize the shapes",
+    "progress.level3.title": "Learn the Colors",
+    "progress.level3.description": "Recognize the colors",
+    "progress.level4.title": "The Number Dance",
+    "progress.level4.description": "Follow the animals",
+    "progress.status.notStarted": "Not started",
+    "progress.status.inProgress": "In progress",
+    "progress.status.completed": "Completed",
+    "progress.error.server": "Error in the server response.",
+
+    "countAuditory.pageTitle": "Listen and Count",
+    "countAuditory.title": "🎧 LISTEN AND COUNT!",
+    "countAuditory.subtitle":
+    "Listen to the sounds and select how many you heard",
+    "countAuditory.question": "How many sounds did you hear?",
+    "countAuditory.listen": "🔊 LISTEN",
+    "countAuditory.tryAgain": "🔄 Try Again",
+    "countAuditory.feedback.correct": "🎉 VERY GOOD!",
+    "countAuditory.feedback.tryAgain": "👂 Let's listen again",
+    "countAuditory.finishTitle": "Excellent! Now your mission!",
+    "countAuditory.finishDescription":
+    "Count how many toys you have<br>You learned how to count!",
+    "countAuditory.continue": "Continue",
+
+    "putObjects.pageTitle": "Put the Objects In!",
+    "putObjects.title": "PUT THE OBJECTS IN!",
+    "putObjects.instruction": "✋ Drag each object  📦 Put it inside the box!",
+    "putObjects.objects": "objects",
+    "putObjects.question": "HOW MANY OBJECTS DID YOU PUT IN?",
+    "putObjects.tryAgain": "🔄 Try Again",
+    "putObjects.feedback.correct": "VERY GOOD!",
+    "putObjects.feedback.hint": "Almost! Drop the object inside the box 📦",
+    "putObjects.feedback.count":
+    "Very good! Now tell me how many objects you put in",
+    "putObjects.feedback.countHint": "Count the objects you put in the box",
+    "putObjects.finishTitle": "Excellent! Now your mission!",
+    "putObjects.finishLine1": "Count how many toys you have",
+    "putObjects.finishLine2": "You learned how to count!",
+    "putObjects.continue": "Continue",
+
+    "countVisual.pageTitle": "How Many Are There?",
+    "countVisual.title": "HOW MANY ARE THERE?",
+    "countVisual.subtitle": "Count the items and select the correct number",
+    "countVisual.tryAgain": "🔄 Try Again",
+    "countVisual.feedback.correct": "VERY GOOD!",
+    "countVisual.feedback.hint": "Let's count together! 🔍",
+    "countVisual.finishTitle": "Excellent! Now your mission!",
+    "countVisual.finishLine1": "Count how many toys you have",
+    "countVisual.finishLine2": "You learned how to count!",
+    "countVisual.continue": "Continue",
+
+    "traceShapes.pageTitle": "Trace the Shapes",
+    "traceShapes.title": "TRACE THE SHAPES",
+    "traceShapes.subtitle": "Follow the path and discover the shape",
+    "traceShapes.instruction": "Press and hold while following the line",
+    "traceShapes.tryAgain": "Try Again",
+    "traceShapes.startGreen": "Start at one of the green dots!",
+    "traceShapes.keepGoing": "Very good! Keep following the shape",
+    "traceShapes.almost": "Almost! Follow the dotted line",
+    "traceShapes.keepShape": "Keep following the shape!",
+    "traceShapes.keepCircle": "Keep going around the circle!",
+    "traceShapes.correct": "VERY GOOD!",
+    "traceShapes.completedShape": "VERY GOOD! You completed the {shape}!",
+    "traceShapes.allCompleted": "EXCELLENT! You completed all the shapes!",
+    "traceShapes.nextShape": "Now follow the {shape}",
+    "traceShapes.triangle": "Triangle",
+    "traceShapes.circle": "Circle",
+    "traceShapes.square": "Square",
+    "traceShapes.rectangle": "Rectangle",
+    "traceShapes.startGreenInstruction": "{shape} - start at a green dot",
+    "traceShapes.finishTitle": "Excellent! Now your mission!",
+    "traceShapes.finishLine1": "Find 2 objects of each shape you learned today",
+    "traceShapes.finishLine2": "You learned the shapes!",
+    "traceShapes.continue": "Continue",
+
+    "colorsGame.red": "Red",
+    "colorsGame.blue": "Blue",
+    "colorsGame.yellow": "Yellow",
+    "colorsGame.green": "Green",
+    "colorsGame.purple": "Purple",
+  };
+
+  const translations = {
+    es: ES,
+    en: EN,
+  };
+
+  const STORAGE_KEY = "thinkarooIdioma";
+
+  let currentLanguage = "en";
+
+  function getSavedLanguage() {
+    const saved = localStorage.getItem(STORAGE_KEY);
+
+    if (saved === "es" || saved === "en") {
+      return saved;
     }
 
+    return "en";
+  }
 
-    function saveLanguage(language) {
+  function saveLanguage(language) {
+    const validLanguage = language === "es" ? "es" : "en";
 
-        const validLanguage =
-            language === "es" ? "es" : "en";
+    localStorage.setItem(STORAGE_KEY, validLanguage);
+  }
 
-        localStorage.setItem(
-            STORAGE_KEY,
-            validLanguage
-        );
+  function translate(key, fallback = "") {
+    if (!key) {
+      return fallback;
     }
 
+    const dictionary = translations[currentLanguage] || EN;
 
-    function translate(key, fallback = "") {
-
-        if (!key) {
-            return fallback;
-        }
-
-        const dictionary =
-            translations[currentLanguage] || EN;
-
-        if (
-            Object.prototype.hasOwnProperty.call(
-                dictionary,
-                key
-            )
-        ) {
-            return dictionary[key];
-        }
-
-        return fallback || key;
+    if (Object.prototype.hasOwnProperty.call(dictionary, key)) {
+      return dictionary[key];
     }
 
+    return fallback || key;
+  }
 
-    function applyTranslations(root = document) {
+  function applyTranslations(root = document) {
+    if (!root || !root.querySelectorAll) {
+      return;
+    }
 
-        if (!root || !root.querySelectorAll) {
-            return;
-        }
+    root.querySelectorAll("[data-i18n]").forEach((element) => {
+      const key = element.getAttribute("data-i18n");
 
+      const value = translate(key);
 
-        // Normal text
-        root.querySelectorAll("[data-i18n]").forEach(element => {
+      if (value) {
+        element.textContent = value;
+      }
+    });
 
-            const key =
-                element.getAttribute("data-i18n");
+    root.querySelectorAll("[data-i18n-placeholder]").forEach((element) => {
+      const key = element.getAttribute("data-i18n-placeholder");
 
-            const value = translate(key);
+      const value = translate(key);
 
-            if (value) {
-                element.textContent = value;
-            }
+      if (value) {
+        element.setAttribute("placeholder", value);
+      }
+    });
 
+    root.querySelectorAll("[data-i18n-alt]").forEach((element) => {
+      const key = element.getAttribute("data-i18n-alt");
+
+      const value = translate(key);
+
+      if (value) {
+        element.setAttribute("alt", value);
+      }
+    });
+
+    root.querySelectorAll("[data-i18n-aria-label]").forEach((element) => {
+      const key = element.getAttribute("data-i18n-aria-label");
+
+      const value = translate(key);
+
+      if (value) {
+        element.setAttribute("aria-label", value);
+      }
+    });
+
+    root.querySelectorAll("[data-i18n-title]").forEach((element) => {
+      const key = element.getAttribute("data-i18n-title");
+
+      const value = translate(key);
+
+      if (value) {
+        element.setAttribute("title", value);
+      }
+    });
+
+    document.documentElement.lang = currentLanguage;
+  }
+
+  function changeLanguage(language) {
+    currentLanguage = language === "es" ? "es" : "en";
+
+    saveLanguage(currentLanguage);
+
+    applyTranslations(document);
+
+    const selector = document.getElementById("idioma");
+
+    if (selector) {
+      selector.value = currentLanguage;
+    }
+
+    window.dispatchEvent(
+      new CustomEvent("thinkarooLanguageChanged", {
+        detail: {
+          language: currentLanguage,
+        },
+      }),
+    );
+  }
+
+  function setupLanguageSelector() {
+    const selector = document.getElementById("idioma");
+
+    if (!selector) {
+      return;
+    }
+
+    selector.value = currentLanguage;
+
+    selector.addEventListener("change", function () {
+      changeLanguage(this.value);
+    });
+  }
+
+  function init() {
+    currentLanguage = getSavedLanguage();
+
+    applyTranslations(document);
+
+    setupLanguageSelector();
+
+    const observer = new MutationObserver((mutations) => {
+      mutations.forEach((mutation) => {
+        mutation.addedNodes.forEach((node) => {
+          if (node.nodeType === Node.ELEMENT_NODE) {
+            applyTranslations(node);
+          }
         });
+      });
+    });
 
-
-        // Placeholder
-        root.querySelectorAll(
-            "[data-i18n-placeholder]"
-        ).forEach(element => {
-
-            const key =
-                element.getAttribute(
-                    "data-i18n-placeholder"
-                );
-
-            const value = translate(key);
-
-            if (value) {
-                element.setAttribute(
-                    "placeholder",
-                    value
-                );
-            }
-
-        });
-
-
-        // Alt text
-        root.querySelectorAll(
-            "[data-i18n-alt]"
-        ).forEach(element => {
-
-            const key =
-                element.getAttribute(
-                    "data-i18n-alt"
-                );
-
-            const value = translate(key);
-
-            if (value) {
-                element.setAttribute(
-                    "alt",
-                    value
-                );
-            }
-
-        });
-
-
-        // Aria label
-        root.querySelectorAll(
-            "[data-i18n-aria-label]"
-        ).forEach(element => {
-
-            const key =
-                element.getAttribute(
-                    "data-i18n-aria-label"
-                );
-
-            const value = translate(key);
-
-            if (value) {
-                element.setAttribute(
-                    "aria-label",
-                    value
-                );
-            }
-
-        });
-
-
-        // Title
-        root.querySelectorAll(
-            "[data-i18n-title]"
-        ).forEach(element => {
-
-            const key =
-                element.getAttribute(
-                    "data-i18n-title"
-                );
-
-            const value = translate(key);
-
-            if (value) {
-                element.setAttribute(
-                    "title",
-                    value
-                );
-            }
-
-        });
-
-
-        // Page language
-        document.documentElement.lang =
-            currentLanguage;
+    if (document.body) {
+      observer.observe(document.body, {
+        childList: true,
+        subtree: true,
+      });
     }
+  }
 
+  // Public functions
+  window.translate = translate;
 
-    function changeLanguage(language) {
+  window.changeLanguage = changeLanguage;
 
-        currentLanguage =
-            language === "es" ? "es" : "en";
+  window.getCurrentLanguage = () => currentLanguage;
 
-        saveLanguage(currentLanguage);
+  window.applyTranslations = applyTranslations;
 
-        applyTranslations(document);
-
-
-        const selector =
-            document.getElementById("idioma");
-
-        if (selector) {
-            selector.value = currentLanguage;
-        }
-
-
-        window.dispatchEvent(
-            new CustomEvent(
-                "thinkarooLanguageChanged",
-                {
-                    detail: {
-                        language: currentLanguage
-                    }
-                }
-            )
-        );
-    }
-
-
-    function setupLanguageSelector() {
-
-        const selector =
-            document.getElementById("idioma");
-
-        if (!selector) {
-            return;
-        }
-
-        selector.value = currentLanguage;
-
-
-        selector.addEventListener(
-            "change",
-            function () {
-
-                changeLanguage(
-                    this.value
-                );
-
-            }
-        );
-    }
-
-
-    function init() {
-
-        currentLanguage =
-            getSavedLanguage();
-
-        applyTranslations(document);
-
-        setupLanguageSelector();
-
-
-        // Translate elements added dynamically
-        const observer =
-            new MutationObserver(
-                mutations => {
-
-                    mutations.forEach(
-                        mutation => {
-
-                            mutation.addedNodes.forEach(
-                                node => {
-
-                                    if (
-                                        node.nodeType ===
-                                        Node.ELEMENT_NODE
-                                    ) {
-
-                                        applyTranslations(
-                                            node
-                                        );
-
-                                    }
-
-                                }
-                            );
-
-                        }
-                    );
-
-                }
-            );
-
-
-        if (document.body) {
-
-            observer.observe(
-                document.body,
-                {
-                    childList: true,
-                    subtree: true
-                }
-            );
-
-        }
-
-    }
-
-
-    // Public functions
-    window.translate = translate;
-
-    window.changeLanguage =
-        changeLanguage;
-
-    window.getCurrentLanguage =
-        () => currentLanguage;
-
-    window.applyTranslations =
-        applyTranslations;
-
-
-    if (
-        document.readyState ===
-        "loading"
-    ) {
-
-        document.addEventListener(
-            "DOMContentLoaded",
-            init
-        );
-
-    } else {
-
-        init();
-
-    }
-
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", init);
+  } else {
+    init();
+  }
 })();
