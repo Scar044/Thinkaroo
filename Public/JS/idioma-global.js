@@ -408,6 +408,296 @@
                 "Continuar",
 
 
+            // Figuras visual
+            "figuresVisual.pageTitle":
+                "Clasifica las figuras",
+
+            "figuresVisual.title":
+                "CLASIFICA LAS FIGURAS",
+
+            "figuresVisual.description":
+                "Arrastra cada figura a su lugar",
+
+            "figuresVisual.circle":
+                "CÍRCULO",
+
+            "figuresVisual.square":
+                "CUADRADO",
+
+            "figuresVisual.triangle":
+                "TRIÁNGULO",
+
+            "figuresVisual.rectangle":
+                "RECTÁNGULO",
+
+            "figuresVisual.correct":
+                "🎉 ¡Muy bien!",
+
+            "figuresVisual.complete":
+                "🎉 ¡Excelente! Completaste el juego",
+
+            "figuresVisual.incorrect":
+                "😊 ¡Casi!",
+
+            "figuresVisual.hint.circle1":
+                "Mira con atención. El círculo no tiene esquinas.",
+
+            "figuresVisual.hint.circle2":
+                "Observa su borde. Es completamente redondo.",
+
+            "figuresVisual.hint.circle3":
+                "Busca la figura que parece una pelota.",
+
+            "figuresVisual.hint.square1":
+                "Mira sus lados. Tiene 4 lados.",
+
+            "figuresVisual.hint.square2":
+                "Sus 4 lados tienen el mismo tamaño.",
+
+            "figuresVisual.hint.square3":
+                "Busca la figura que tiene 4 lados iguales.",
+
+            "figuresVisual.hint.triangle1":
+                "Mira sus esquinas. Tiene 3.",
+
+            "figuresVisual.hint.triangle2":
+                "Cuenta sus lados. Tiene 3.",
+
+            "figuresVisual.hint.triangle3":
+                "Busca la figura que tiene forma de montaña.",
+
+            "figuresVisual.hint.rectangle1":
+                "Mira sus lados. Tiene 4.",
+
+            "figuresVisual.hint.rectangle2":
+                "Tiene 2 lados largos y 2 lados cortos.",
+
+            "figuresVisual.hint.rectangle3":
+                "Busca la figura que parece una puerta.",
+
+            "figuresVisual.tryAgain":
+                "¡Inténtalo de nuevo!",
+
+            "figuresVisual.finishTitle":
+                "¡Excelente! ¡Ahora tu misión!",
+
+            "figuresVisual.finishDescription":
+                "Encuentra 2 objetos de cada forma que aprendiste hoy",
+
+            "figuresVisual.finishLearned":
+                "¡Aprendiste las formas!",
+
+            "figuresVisual.continue":
+                "Continuar",
+
+            // Learning style questionnaire
+            "learningForm.pageTitle":
+                "Formulario",
+
+            "learningForm.title":
+                "Cuestionario de Estilo de Aprendizaje",
+
+            "learningForm.question1":
+                "1. ¿Cómo aprende mejor el niño?",
+
+            "learningForm.q1.visual":
+                "Viendo imágenes.",
+
+            "learningForm.q1.auditory":
+                "Escuchando explicaciones.",
+
+            "learningForm.q1.kinesthetic":
+                "Haciendo actividades.",
+
+            "learningForm.question2":
+                "2. ¿Qué actividad disfruta más?",
+
+            "learningForm.q2.visual":
+                "Dibujar o colorear.",
+
+            "learningForm.q2.auditory":
+                "Escuchar cuentos.",
+
+            "learningForm.q2.kinesthetic":
+                "Construir o jugar.",
+
+            "learningForm.question3":
+                "3. ¿Qué recuerda con mayor facilidad?",
+
+            "learningForm.q3.visual":
+                "Imágenes.",
+
+            "learningForm.q3.auditory":
+                "Sonidos o palabras.",
+
+            "learningForm.q3.kinesthetic":
+                "Lo que hizo.",
+
+            "learningForm.question4":
+                "4. ¿Cómo prefiere recibir instrucciones?",
+
+            "learningForm.q4.visual":
+                "Viendo un ejemplo.",
+
+            "learningForm.q4.auditory":
+                "Escuchando la explicación.",
+
+            "learningForm.q4.kinesthetic":
+                "Intentándolo mientras aprende.",
+
+            "learningForm.question5":
+                "5. ¿Qué juguete le gusta más?",
+
+            "learningForm.q5.visual":
+                "Rompecabezas.",
+
+            "learningForm.q5.auditory":
+                "Instrumentos musicales.",
+
+            "learningForm.q5.kinesthetic":
+                "Bloques de construcción.",
+
+            "learningForm.question6":
+                "6. Cuando tiene un problema, normalmente...",
+
+            "learningForm.q6.visual":
+                "Observa antes de actuar.",
+
+            "learningForm.q6.auditory":
+                "Pregunta qué hacer.",
+
+            "learningForm.q6.kinesthetic":
+                "Prueba distintas soluciones.",
+
+            "learningForm.question7":
+                "7. ¿Qué hace en su tiempo libre?",
+
+            "learningForm.q7.visual":
+                "Mira libros con dibujos.",
+
+            "learningForm.q7.auditory":
+                "Escucha música.",
+
+            "learningForm.q7.kinesthetic":
+                "Juega y se mueve.",
+
+            "learningForm.question8":
+                "8. Cuando conoce un juguete nuevo...",
+
+            "learningForm.q8.visual":
+                "Lo observa primero.",
+
+            "learningForm.q8.auditory":
+                "Escucha cómo funciona.",
+
+            "learningForm.q8.kinesthetic":
+                "Lo prueba de inmediato.",
+
+            "learningForm.question9":
+                "9. ¿Qué material le ayuda más a aprender?",
+
+            "learningForm.q9.visual":
+                "Dibujos e imágenes.",
+
+            "learningForm.q9.auditory":
+                "Explicaciones y canciones.",
+
+            "learningForm.q9.kinesthetic":
+                "Juegos y actividades prácticas.",
+
+            "learningForm.question10":
+                "10. En clase presta más atención cuando...",
+
+            "learningForm.q10.visual":
+                "Ve demostraciones.",
+
+            "learningForm.q10.auditory":
+                "Escucha al profesor.",
+
+            "learningForm.q10.kinesthetic":
+                "Participa activamente.",
+
+            "learningForm.submit":
+                "Enviar cuestionario",
+
+            "learningForm.detected":
+                "Estilo detectado: ",
+
+            "learningForm.error":
+                "Ocurrió un error al guardar el estilo.",
+
+            // Login
+            "login.pageTitle": "Inicio de sesión",
+            "login.username": "Usuario",
+            "login.password": "Contraseña",
+            "login.passwordPlaceholder": "*********",
+            "login.button": "Iniciar sesión",
+            "login.noAccount": "¿Aún no tienes una cuenta?",
+            "login.register": "Regístrate",
+            "login.error": "Ocurrió un error al iniciar sesión.",
+
+            // Achievements
+            "logros.pageTitle": "ThinkaRoo | Logros",
+            "logros.title": "🏆 Mis logros",
+            "logros.subtitle": "¡Completa actividades y consigue nuevas insignias!",
+            "logros.unlocked": "Logros desbloqueados:",
+            "logros.levels": "Niveles",
+            "logros.progress": "Progreso",
+            "logros.achievements": "Logros",
+            "logros.parents": "Padres",
+
+            "logros.completed": "✓ ¡Completado!",
+            "logros.locked": "🔒 No completado",
+
+            "logros.firstStep": "Primer paso",
+            "logros.firstStepDescription": "Completaste tu primera lección.",
+
+            "logros.curiousMind": "Mente curiosa",
+            "logros.curiousMindDescription": "Completaste 10 lecciones.",
+
+            "logros.greatExplorer": "Gran explorador",
+            "logros.greatExplorerDescription": "Completa 15 lecciones.",
+
+            "logros.visual": "Visual",
+            "logros.visualDescription": "Completa una lección del aprendizaje visual.",
+
+            "logros.perfect": "¡Perfecto!",
+            "logros.perfectDescription": "Completa una actividad sin errores.",
+
+            "logros.auditory": "Auditivo",
+            "logros.auditoryDescription": "Completa una lección del aprendizaje auditivo.",
+
+            "logros.adventurer": "Aventurero",
+            "logros.adventurerDescription": "Completa 20 lecciones.",
+
+            "logros.littleGenius": "Pequeño genio",
+            "logros.littleGeniusDescription": "Consigue 5 respuestas perfectas.",
+
+            "logros.collector": "Coleccionista",
+            "logros.collectorDescription": "Consigue 10 insignias.",
+
+            "logros.kinesthetic": "Kinestésico",
+            "logros.kinestheticDescription": "Completa una lección del aprendizaje kinestésico.",
+
+            "logros.superLearner": "Super aprendiz",
+            "logros.superLearnerDescription": "Completa 30 lecciones.",
+
+            "logros.master": "Maestro ThinkaRoo",
+            "logros.masterDescription": "Desbloquea todos los logros.",
+
+            "logros.alt.firstStep": "Primer paso",
+            "logros.alt.curiousMind": "Mente curiosa",
+            "logros.alt.greatExplorer": "Gran explorador",
+            "logros.alt.glasses": "Lentes",
+            "logros.alt.perfect": "Perfecto",
+            "logros.alt.headphones": "Audífonos",
+            "logros.alt.adventurer": "Aventurero",
+            "logros.alt.genius": "Genio",
+            "logros.alt.collector": "Coleccionista",
+            "logros.alt.blocks": "Bloques",
+            "logros.alt.superLearner": "Super aprendiz",
+            "logros.alt.master": "Maestro ThinkaRoo",
+
     };
 
 
@@ -818,7 +1108,299 @@
                 "You learned the shapes!",
 
             "figuresAuditory.continue":
-                "Continue"
+                "Continue",
+
+
+            // Visual shapes
+            "figuresVisual.pageTitle":
+                "Sort the Shapes",
+
+            "figuresVisual.title":
+                "SORT THE SHAPES",
+
+            "figuresVisual.description":
+                "Drag each shape to its place",
+
+            "figuresVisual.circle":
+                "CIRCLE",
+
+            "figuresVisual.square":
+                "SQUARE",
+
+            "figuresVisual.triangle":
+                "TRIANGLE",
+
+            "figuresVisual.rectangle":
+                "RECTANGLE",
+
+            "figuresVisual.correct":
+                "🎉 Great job!",
+
+            "figuresVisual.complete":
+                "🎉 Excellent! You completed the game",
+
+            "figuresVisual.incorrect":
+                "😊 Almost!",
+
+            "figuresVisual.hint.circle1":
+                "Look carefully. The circle has no corners.",
+
+            "figuresVisual.hint.circle2":
+                "Look at its edge. It is completely round.",
+
+            "figuresVisual.hint.circle3":
+                "Look for the shape that looks like a ball.",
+
+            "figuresVisual.hint.square1":
+                "Look at its sides. It has 4 sides.",
+
+            "figuresVisual.hint.square2":
+                "Its 4 sides are the same size.",
+
+            "figuresVisual.hint.square3":
+                "Look for the shape with 4 equal sides.",
+
+            "figuresVisual.hint.triangle1":
+                "Look at its corners. It has 3.",
+
+            "figuresVisual.hint.triangle2":
+                "Count its sides. It has 3.",
+
+            "figuresVisual.hint.triangle3":
+                "Look for the shape that looks like a mountain.",
+
+            "figuresVisual.hint.rectangle1":
+                "Look at its sides. It has 4.",
+
+            "figuresVisual.hint.rectangle2":
+                "It has 2 long sides and 2 short sides.",
+
+            "figuresVisual.hint.rectangle3":
+                "Look for the shape that looks like a door.",
+
+            "figuresVisual.tryAgain":
+                "Try again!",
+
+            "figuresVisual.finishTitle":
+                "Excellent! Now your mission!",
+
+            "figuresVisual.finishDescription":
+                "Find 2 objects of each shape you learned today",
+
+            "figuresVisual.finishLearned":
+                "You learned the shapes!",
+
+            "figuresVisual.continue":
+                "Continue",
+
+            // Learning style questionnaire
+            "learningForm.pageTitle":
+                "Assessment",
+
+            "learningForm.title":
+                "Learning Style Assessment",
+
+            "learningForm.question1":
+                "1. How does the child learn best?",
+
+            "learningForm.q1.visual":
+                "By looking at images.",
+
+            "learningForm.q1.auditory":
+                "By listening to explanations.",
+
+            "learningForm.q1.kinesthetic":
+                "By doing activities.",
+
+            "learningForm.question2":
+                "2. Which activity does the child enjoy the most?",
+
+            "learningForm.q2.visual":
+                "Drawing or coloring.",
+
+            "learningForm.q2.auditory":
+                "Listening to stories.",
+
+            "learningForm.q2.kinesthetic":
+                "Building or playing.",
+
+            "learningForm.question3":
+                "3. What does the child remember most easily?",
+
+            "learningForm.q3.visual":
+                "Images.",
+
+            "learningForm.q3.auditory":
+                "Sounds or words.",
+
+            "learningForm.q3.kinesthetic":
+                "What they did.",
+
+            "learningForm.question4":
+                "4. How does the child prefer to receive instructions?",
+
+            "learningForm.q4.visual":
+                "By seeing an example.",
+
+            "learningForm.q4.auditory":
+                "By listening to the explanation.",
+
+            "learningForm.q4.kinesthetic":
+                "By trying while learning.",
+
+            "learningForm.question5":
+                "5. Which toy does the child like the most?",
+
+            "learningForm.q5.visual":
+                "Puzzles.",
+
+            "learningForm.q5.auditory":
+                "Musical instruments.",
+
+            "learningForm.q5.kinesthetic":
+                "Building blocks.",
+
+            "learningForm.question6":
+                "6. When the child has a problem, they usually...",
+
+            "learningForm.q6.visual":
+                "Observe before acting.",
+
+            "learningForm.q6.auditory":
+                "Ask what to do.",
+
+            "learningForm.q6.kinesthetic":
+                "Try different solutions.",
+
+            "learningForm.question7":
+                "7. What does the child do in their free time?",
+
+            "learningForm.q7.visual":
+                "Looks at books with pictures.",
+
+            "learningForm.q7.auditory":
+                "Listens to music.",
+
+            "learningForm.q7.kinesthetic":
+                "Plays and moves around.",
+
+            "learningForm.question8":
+                "8. When the child gets a new toy...",
+
+            "learningForm.q8.visual":
+                "Looks at it first.",
+
+            "learningForm.q8.auditory":
+                "Listens to how it works.",
+
+            "learningForm.q8.kinesthetic":
+                "Tries it immediately.",
+
+            "learningForm.question9":
+                "9. What material helps the child learn the most?",
+
+            "learningForm.q9.visual":
+                "Drawings and images.",
+
+            "learningForm.q9.auditory":
+                "Explanations and songs.",
+
+            "learningForm.q9.kinesthetic":
+                "Games and practical activities.",
+
+            "learningForm.question10":
+                "10. In class, the child pays more attention when...",
+
+            "learningForm.q10.visual":
+                "They see demonstrations.",
+
+            "learningForm.q10.auditory":
+                "They listen to the teacher.",
+
+            "learningForm.q10.kinesthetic":
+                "They participate actively.",
+
+            "learningForm.submit":
+                "Submit questionnaire",
+
+            "learningForm.detected":
+                "Detected learning style: ",
+
+            "learningForm.error":
+                "An error occurred while saving the learning style.",
+
+            // Login
+            "login.pageTitle": "Login",
+            "login.username": "Username",
+            "login.password": "Password",
+            "login.passwordPlaceholder": "*********",
+            "login.button": "Log in",
+            "login.noAccount": "Don't have an account yet?",
+            "login.register": "Sign up",
+            "login.error": "An error occurred while logging in.",
+
+
+            // Achievements
+            "logros.pageTitle": "ThinkaRoo | Achievements",
+            "logros.title": "🏆 My Achievements",
+            "logros.subtitle": "Complete activities and earn new badges!",
+            "logros.unlocked": "Achievements unlocked:",
+            "logros.levels": "Levels",
+            "logros.progress": "Progress",
+            "logros.achievements": "Achievements",
+            "logros.parents": "Parents",
+
+            "logros.completed": "✓ Completed!",
+            "logros.locked": "🔒 Not completed",
+
+            "logros.firstStep": "First Step",
+            "logros.firstStepDescription": "You completed your first lesson.",
+
+            "logros.curiousMind": "Curious Mind",
+            "logros.curiousMindDescription": "You completed 10 lessons.",
+
+            "logros.greatExplorer": "Great Explorer",
+            "logros.greatExplorerDescription": "Complete 15 lessons.",
+
+            "logros.visual": "Visual",
+            "logros.visualDescription": "Complete a visual learning lesson.",
+
+            "logros.perfect": "Perfect!",
+            "logros.perfectDescription": "Complete an activity without mistakes.",
+
+            "logros.auditory": "Auditory",
+            "logros.auditoryDescription": "Complete an auditory learning lesson.",
+
+            "logros.adventurer": "Adventurer",
+            "logros.adventurerDescription": "Complete 20 lessons.",
+
+            "logros.littleGenius": "Little Genius",
+            "logros.littleGeniusDescription": "Get 5 perfect answers.",
+
+            "logros.collector": "Collector",
+            "logros.collectorDescription": "Earn 10 badges.",
+
+            "logros.kinesthetic": "Kinesthetic",
+            "logros.kinestheticDescription": "Complete a kinesthetic learning lesson.",
+
+            "logros.superLearner": "Super Learner",
+            "logros.superLearnerDescription": "Complete 30 lessons.",
+
+            "logros.master": "ThinkaRoo Master",
+            "logros.masterDescription": "Unlock all achievements.",
+
+            "logros.alt.firstStep": "First Step",
+            "logros.alt.curiousMind": "Curious Mind",
+            "logros.alt.greatExplorer": "Great Explorer",
+            "logros.alt.glasses": "Glasses",
+            "logros.alt.perfect": "Perfect",
+            "logros.alt.headphones": "Headphones",
+            "logros.alt.adventurer": "Adventurer",
+            "logros.alt.genius": "Genius",
+            "logros.alt.collector": "Collector",
+            "logros.alt.blocks": "Blocks",
+            "logros.alt.superLearner": "Super Learner",
+            "logros.alt.master": "ThinkaRoo Master",
     };
 
 

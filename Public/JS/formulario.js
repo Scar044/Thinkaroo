@@ -1,61 +1,75 @@
 const formulario =
-document.getElementById("form-aprendizaje");
+    document.getElementById("form-aprendizaje");
+
 
 formulario.addEventListener(
     "submit",
     procesarFormulario
 );
 
-function procesarFormulario(evento){
+
+function procesarFormulario(evento) {
 
     evento.preventDefault();
+
 
     let visual = 0;
     let auditivo = 0;
     let kinestesico = 0;
 
-    for(let i = 1; i <= 10; i++){
+
+    for (let i = 1; i <= 10; i++) {
 
         let respuesta =
-        document.querySelector(
-            `input[name="p${i}"]:checked`
-        ).value;
+            document.querySelector(
+                `input[name="p${i}"]:checked`
+            ).value;
 
-        if(respuesta === "visual"){
+
+        if (respuesta === "visual") {
             visual++;
         }
 
-        if(respuesta === "auditivo"){
+
+        if (respuesta === "auditivo") {
             auditivo++;
         }
 
-        if(respuesta === "kinestesico"){
+
+        if (respuesta === "kinestesico") {
             kinestesico++;
         }
 
     }
 
+
     let resultado;
 
-    if(
+
+    if (
         visual >= auditivo &&
         visual >= kinestesico
-    ){
+    ) {
 
         resultado = "Visual";
 
-    }else if(
+    }
+
+    else if (
         auditivo >= visual &&
         auditivo >= kinestesico
-    ){
+    ) {
 
         resultado = "Auditivo";
 
-    }else{
+    }
+
+    else {
 
         resultado = "Kinestesico";
 
     }
+
 
     fetch(
         "../ConfigPHP/guardarEstilo.php",
@@ -65,7 +79,7 @@ function procesarFormulario(evento){
 
             headers: {
                 "Content-Type":
-                "application/json"
+                    "application/json"
             },
 
             body: JSON.stringify({
@@ -75,25 +89,66 @@ function procesarFormulario(evento){
         }
 
     )
-    .then(respuesta => respuesta.json())
-    .then(datos => {
 
-        if(datos.success){
+    .then(
+        respuesta => respuesta.json()
+    )
 
-            alert(
-                "Estilo detectado: " +
-                resultado
-            );
+    .then(
+        datos => {
 
-            window.location.href =
-            "selecion_de_tipos.html";
+            if (datos.success) {
 
-        }else{
+                let resultadoTraducido;
 
-            alert(datos.mensaje);
+
+                if (resultado === "Visual") {
+
+                    resultadoTraducido =
+                        translate("nav.visual");
+
+                }
+
+                else if (resultado === "Auditivo") {
+
+                    resultadoTraducido =
+                        translate("nav.auditory");
+
+                }
+
+                else {
+
+                    resultadoTraducido =
+                        translate("nav.kinesthetic");
+
+                }
+
+
+                alert(
+                    translate(
+                        "learningForm.detected"
+                    ) +
+                    resultadoTraducido
+                );
+
+
+                window.location.href =
+                    "selecion_de_tipos.html";
+
+            }
+
+            else {
+
+                alert(
+                    datos.mensaje ||
+                    translate(
+                        "learningForm.error"
+                    )
+                );
+
+            }
 
         }
-
-    });
+    );
 
 }

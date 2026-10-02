@@ -2,407 +2,733 @@
 <html lang="es">
 
 <head>
+
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>ThinkaRoo | Logros</title>
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="CSS/sidebar.css">
+    <title data-i18n="logros.pageTitle">
+        ThinkaRoo | Logros
+    </title>
 
-    <link rel="stylesheet" href="CSS/logros.css">
+    <link
+        rel="preconnect"
+        href="https://fonts.googleapis.com"
+    >
+
+    <link
+        rel="preconnect"
+        href="https://fonts.gstatic.com"
+        crossorigin
+    >
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&display=swap"
+        rel="stylesheet"
+    >
+
+    <link
+        rel="stylesheet"
+        href="CSS/sidebar.css"
+    >
+
+    <link
+        rel="stylesheet"
+        href="CSS/logros.css"
+    >
+
 </head>
+
 
 <body>
 
- <header class="encabezado">
+
+<header class="encabezado">
 
     <div class="logo-contenedor">
 
         <div class="titulo">
-            <img 
-                src="IMG/letter_thinkaroo.png" 
-                alt="Thinkaroo" 
+
+            <img
+                src="IMG/letter_thinkaroo.png"
+                alt="Thinkaroo"
                 id="Logo"
                 width="90"
                 height="90"
             >
 
-          
         </div>
 
     </div>
 
+
     <div class="perfil">
+
         <a href="perfil.html">
-            <img 
-                src="" 
+
+            <img
+                src=""
                 alt="Foto de perfil"
                 id="avatarPerfil"
             >
+
         </a>
+
     </div>
 
 </header>
 
-    <aside class="sidebar cerrado" id="sidebar">
 
-    <button id="toggleBtn" class="toggle-btn">
+
+<aside
+    class="sidebar cerrado"
+    id="sidebar"
+>
+
+    <button
+        id="toggleBtn"
+        class="toggle-btn"
+    >
         ❯
     </button>
 
+
     <nav class="menu-sidebar">
 
-        <a href="#" id="btnNiveles" class="activo">
+
+        <a
+            href="#"
+            id="btnNiveles"
+            class="activo"
+        >
+
             <span>🎮</span>
-            <span class="texto-sidebar">Niveles</span>
+
+            <span
+                class="texto-sidebar"
+                data-i18n="logros.levels"
+            >
+                Niveles
+            </span>
+
         </a>
+
 
 
         <a href="progreso.html">
+
             <span>📊</span>
-            <span class="texto-sidebar">Progreso</span>
+
+            <span
+                class="texto-sidebar"
+                data-i18n="logros.progress"
+            >
+                Progreso
+            </span>
+
         </a>
+
 
 
         <a href="logros.html">
+
             <span>🏆</span>
-            <span class="texto-sidebar">Logros</span>
+
+            <span
+                class="texto-sidebar"
+                data-i18n="logros.achievements"
+            >
+                Logros
+            </span>
+
         </a>
 
+
     </nav>
+
+
 
     <div class="padres-sidebar">
 
         <hr>
 
+
         <a href="Perfil_padres.html">
 
             <span>👨‍👩‍👧</span>
 
-            <span class="texto-sidebar">
+            <span
+                class="texto-sidebar"
+                data-i18n="logros.parents"
+            >
                 Padres
             </span>
 
-            <span class="texto-sidebar">➜</span>
+            <span class="texto-sidebar">
+                ➜
+            </span>
 
         </a>
 
     </div>
 
-    </aside>
+</aside>
 
-    <main class="logros-container">
 
-        <h1 class="h1">🏆 Mis logros</h1>
 
-        <p class="subtitulo">
-            ¡Completa actividades y consigue nuevas insignias!
-        </p>
+<main class="logros-container">
 
-        <div class="progreso-general">
-            <span>Logros desbloqueados: <strong id="logros-desbloqueados">0</strong> / 12</span>
 
-            <div class="barra">
-                <div class="barra-progreso" id="barra-progreso"></div>
-            </div>
+    <h1
+        class="h1"
+        data-i18n="logros.title"
+    >
+        🏆 Mis logros
+    </h1>
+
+
+    <p
+        class="subtitulo"
+        data-i18n="logros.subtitle"
+    >
+        ¡Completa actividades y consigue nuevas insignias!
+    </p>
+
+
+
+    <div class="progreso-general">
+
+        <span>
+
+            <span data-i18n="logros.unlocked">
+                Logros desbloqueados:
+            </span>
+
+            <strong id="logros-desbloqueados">
+                0
+            </strong>
+
+            / 12
+
+        </span>
+
+
+        <div class="barra">
+
+            <div
+                class="barra-progreso"
+                id="barra-progreso"
+            ></div>
+
         </div>
 
-        <section class="logros-grid">
+    </div>
 
-            <div class="logro completado">
 
-                <div class="tarjeta-logro">
-                    <img src="img/logros/primer-paso.png"
-                         alt="Primer paso">
-                </div>
 
-                <div class="info-logro">
-                    <h2>Primer paso</h2>
+    <section class="logros-grid">
 
-                    <p class="estado">
-                        ✓ ¡Completado!
-                    </p>
 
-                    <p>
-                        Completaste tu primera lección.
-                    </p>
-                </div>
 
-            </div>
+        <!-- 1. PRIMER PASO -->
 
-            <div class="logro completado">
+        <div class="logro completado">
 
-                <div class="tarjeta-logro">
-                    <img src="img/logros/mente-curiosa.png"
-                         alt="Mente curiosa">
-                </div>
+            <div class="tarjeta-logro">
 
-                <div class="info-logro">
-                    <h2>Mente curiosa</h2>
-
-                    <p class="estado">
-                        ✓ ¡Completado!
-                    </p>
-
-                    <p>
-                        Completaste 10 lecciones.
-                    </p>
-                </div>
+                <img
+                    src="img/logros/primer-paso.png"
+                    alt="Primer paso"
+                    data-i18n-alt="logros.alt.firstStep"
+                >
 
             </div>
 
-            <div class="logro bloqueado">
 
-                <div class="tarjeta-logro">
-                    <img src="img/logros/gran-explorador.png"
-                         alt="Gran explorador">
-                </div>
+            <div class="info-logro">
 
-                <div class="info-logro">
-                    <h2>Gran explorador</h2>
+                <h2 data-i18n="logros.firstStep">
+                    Primer paso
+                </h2>
 
-                    <p class="estado">
-                        🔒 No completado
-                    </p>
+                <p
+                    class="estado"
+                    data-i18n="logros.completed"
+                >
+                    ✓ ¡Completado!
+                </p>
 
-                    <p>
-                        Completa 15 lecciones.
-                    </p>
-
-                    <span class="contador">
-                        6 / 15
-                    </span>
-                </div>
+                <p data-i18n="logros.firstStepDescription">
+                    Completaste tu primera lección.
+                </p>
 
             </div>
 
-            <div class="logro bloqueado">
+        </div>
 
-                <div class="tarjeta-logro">
-                    <img src="img/logros/lentes.png"
-                         alt="Lentes">
-                </div>
 
-                <div class="info-logro">
-                    <h2>Visual</h2>
 
-                    <p class="estado">
-                        🔒 No completado
-                    </p>
+        <!-- 2. MENTE CURIOSA -->
 
-                    <p>
-                        Completa una leccion del aprendizaje visual.
-                    </p>
+        <div class="logro completado">
 
-                    <span class="contador">
-                        0 / 1
-                    </span>
-                </div>
+            <div class="tarjeta-logro">
+
+                <img
+                    src="img/logros/mente-curiosa.png"
+                    alt="Mente curiosa"
+                    data-i18n-alt="logros.alt.curiousMind"
+                >
 
             </div>
 
-            <div class="logro completado">
 
-                <div class="tarjeta-logro">
-                    <img src="img/logros/perfecto.png"
-                         alt="Perfecto">
-                </div>
+            <div class="info-logro">
 
-                <div class="info-logro">
-                    <h2>¡Perfecto!</h2>
+                <h2 data-i18n="logros.curiousMind">
+                    Mente curiosa
+                </h2>
 
-                    <p class="estado">
-                        ✓ ¡Completado!
-                    </p>
+                <p
+                    class="estado"
+                    data-i18n="logros.completed"
+                >
+                    ✓ ¡Completado!
+                </p>
 
-                    <p>
-                        Completa una actividad sin errores.
-                    </p>
-                </div>
-
-            </div>
-
-            <div class="logro bloqueado">
-
-                <div class="tarjeta-logro">
-                    <img src="img/logros/audifonos.png"
-                         alt="audifonos">
-                </div>
-
-                <div class="info-logro">
-                    <h2>auditivo</h2>
-
-                    <p class="estado">
-                        🔒 No completado
-                    </p>
-
-                    <p>
-                        Completa una leccion del aprendizaje auditivo.
-                    </p>
-
-                    <span class="contador">
-                        3 / 7
-                    </span>
-                </div>
+                <p data-i18n="logros.curiousMindDescription">
+                    Completaste 10 lecciones.
+                </p>
 
             </div>
 
-            <div class="logro bloqueado">
+        </div>
 
-                <div class="tarjeta-logro">
-                    <img src="img/logros/aventurero.png"
-                         alt="Aventurero">
-                </div>
 
-                <div class="info-logro">
-                    <h2>Aventurero</h2>
 
-                    <p class="estado">
-                        🔒 No completado
-                    </p>
+        <!-- 3. GRAN EXPLORADOR -->
 
-                    <p>
-                        Completa 20 lecciones.
-                    </p>
+        <div class="logro bloqueado">
 
-                    <span class="contador">
-                        6 / 20
-                    </span>
-                </div>
+            <div class="tarjeta-logro">
+
+                <img
+                    src="img/logros/gran-explorador.png"
+                    alt="Gran explorador"
+                    data-i18n-alt="logros.alt.greatExplorer"
+                >
 
             </div>
 
-            <div class="logro bloqueado">
 
-                <div class="tarjeta-logro">
-                    <img src="img/logros/genio.png"
-                         alt="Genio">
-                </div>
+            <div class="info-logro">
 
-                <div class="info-logro">
-                    <h2>Pequeño genio</h2>
+                <h2 data-i18n="logros.greatExplorer">
+                    Gran explorador
+                </h2>
 
-                    <p class="estado">
-                        🔒 No completado
-                    </p>
+                <p
+                    class="estado"
+                    data-i18n="logros.locked"
+                >
+                    🔒 No completado
+                </p>
 
-                    <p>
-                        Consigue 5 respuestas perfectas.
-                    </p>
+                <p data-i18n="logros.greatExplorerDescription">
+                    Completa 15 lecciones.
+                </p>
 
-                    <span class="contador">
-                        2 / 5
-                    </span>
-                </div>
-
-            </div>
-
-            <div class="logro bloqueado">
-
-                <div class="tarjeta-logro">
-                    <img src="img/logros/coleccionista.png"
-                         alt="Coleccionista">
-                </div>
-
-                <div class="info-logro">
-                    <h2>Coleccionista</h2>
-
-                    <p class="estado">
-                        🔒 No completado
-                    </p>
-
-                    <p>
-                        Consigue 10 insignias.
-                    </p>
-
-                    <span class="contador">
-                        4 / 10
-                    </span>
-                </div>
+                <span class="contador">
+                    6 / 15
+                </span>
 
             </div>
 
-            <div class="logro completado">
+        </div>
 
-                <div class="tarjeta-logro">
-                    <img src="img/logros/bloques.png"
-                         alt="bloques">
-                </div>
 
-                <div class="info-logro">
-                    <h2>Kinestesico</h2>
 
-                    <p class="estado">
-                        ✓ ¡Completado!
-                    </p>
+        <!-- 4. VISUAL -->
 
-                    <p>
-                        Completa una leccion del aprendizaje Kinestesico.
-                    </p>
-                </div>
+        <div class="logro bloqueado">
+
+            <div class="tarjeta-logro">
+
+                <img
+                    src="img/logros/lentes.png"
+                    alt="Lentes"
+                    data-i18n-alt="logros.alt.glasses"
+                >
 
             </div>
 
-            <div class="logro bloqueado">
 
-                <div class="tarjeta-logro">
-                    <img src="img/logros/super-aprendiz.png"
-                         alt="Super aprendiz">
-                </div>
+            <div class="info-logro">
 
-                <div class="info-logro">
-                    <h2>Super aprendiz</h2>
+                <h2 data-i18n="logros.visual">
+                    Visual
+                </h2>
 
-                    <p class="estado">
-                        🔒 No completado
-                    </p>
+                <p
+                    class="estado"
+                    data-i18n="logros.locked"
+                >
+                    🔒 No completado
+                </p>
 
-                    <p>
-                        Completa 30 lecciones.
-                    </p>
+                <p data-i18n="logros.visualDescription">
+                    Completa una lección del aprendizaje visual.
+                </p>
 
-                    <span class="contador">
-                        6 / 30
-                    </span>
-                </div>
-
-            </div>
-
-            <div class="logro bloqueado">
-
-                <div class="tarjeta-logro">
-                    <img src="img/logros/maestro.png"
-                         alt="Maestro ThinkaRoo">
-                </div>
-
-                <div class="info-logro">
-                    <h2>Maestro ThinkaRoo</h2>
-
-                    <p class="estado">
-                        🔒 No completado
-                    </p>
-
-                    <p>
-                        Desbloquea todos los logros.
-                    </p>
-
-                    <span class="contador">
-                        4 / 12
-                    </span>
-                </div>
+                <span class="contador">
+                    0 / 1
+                </span>
 
             </div>
 
-        </section>
-
-    </main>
+        </div>
 
 
-    <script src="JS/logros.js"></script>
-    <script src="JS/sidebar.js"></script>
+
+        <!-- 5. PERFECTO -->
+
+        <div class="logro completado">
+
+            <div class="tarjeta-logro">
+
+                <img
+                    src="img/logros/perfecto.png"
+                    alt="Perfecto"
+                    data-i18n-alt="logros.alt.perfect"
+                >
+
+            </div>
+
+
+            <div class="info-logro">
+
+                <h2 data-i18n="logros.perfect">
+                    ¡Perfecto!
+                </h2>
+
+                <p
+                    class="estado"
+                    data-i18n="logros.completed"
+                >
+                    ✓ ¡Completado!
+                </p>
+
+                <p data-i18n="logros.perfectDescription">
+                    Completa una actividad sin errores.
+                </p>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- 6. AUDITIVO -->
+
+        <div class="logro bloqueado">
+
+            <div class="tarjeta-logro">
+
+                <img
+                    src="img/logros/audifonos.png"
+                    alt="Audífonos"
+                    data-i18n-alt="logros.alt.headphones"
+                >
+
+            </div>
+
+
+            <div class="info-logro">
+
+                <h2 data-i18n="logros.auditory">
+                    Auditivo
+                </h2>
+
+                <p
+                    class="estado"
+                    data-i18n="logros.locked"
+                >
+                    🔒 No completado
+                </p>
+
+                <p data-i18n="logros.auditoryDescription">
+                    Completa una lección del aprendizaje auditivo.
+                </p>
+
+                <span class="contador">
+                    3 / 7
+                </span>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- 7. AVENTURERO -->
+
+        <div class="logro bloqueado">
+
+            <div class="tarjeta-logro">
+
+                <img
+                    src="img/logros/aventurero.png"
+                    alt="Aventurero"
+                    data-i18n-alt="logros.alt.adventurer"
+                >
+
+            </div>
+
+
+            <div class="info-logro">
+
+                <h2 data-i18n="logros.adventurer">
+                    Aventurero
+                </h2>
+
+                <p
+                    class="estado"
+                    data-i18n="logros.locked"
+                >
+                    🔒 No completado
+                </p>
+
+                <p data-i18n="logros.adventurerDescription">
+                    Completa 20 lecciones.
+                </p>
+
+                <span class="contador">
+                    6 / 20
+                </span>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- 8. PEQUEÑO GENIO -->
+
+        <div class="logro bloqueado">
+
+            <div class="tarjeta-logro">
+
+                <img
+                    src="img/logros/genio.png"
+                    alt="Genio"
+                    data-i18n-alt="logros.alt.genius"
+                >
+
+            </div>
+
+
+            <div class="info-logro">
+
+                <h2 data-i18n="logros.littleGenius">
+                    Pequeño genio
+                </h2>
+
+                <p
+                    class="estado"
+                    data-i18n="logros.locked"
+                >
+                    🔒 No completado
+                </p>
+
+                <p data-i18n="logros.littleGeniusDescription">
+                    Consigue 5 respuestas perfectas.
+                </p>
+
+                <span class="contador">
+                    2 / 5
+                </span>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- 9. COLECCIONISTA -->
+
+        <div class="logro bloqueado">
+
+            <div class="tarjeta-logro">
+
+                <img
+                    src="img/logros/coleccionista.png"
+                    alt="Coleccionista"
+                    data-i18n-alt="logros.alt.collector"
+                >
+
+            </div>
+
+
+            <div class="info-logro">
+
+                <h2 data-i18n="logros.collector">
+                    Coleccionista
+                </h2>
+
+                <p
+                    class="estado"
+                    data-i18n="logros.locked"
+                >
+                    🔒 No completado
+                </p>
+
+                <p data-i18n="logros.collectorDescription">
+                    Consigue 10 insignias.
+                </p>
+
+                <span class="contador">
+                    4 / 10
+                </span>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- 10. KINESTÉSICO -->
+
+        <div class="logro completado">
+
+            <div class="tarjeta-logro">
+
+                <img
+                    src="img/logros/bloques.png"
+                    alt="Bloques"
+                    data-i18n-alt="logros.alt.blocks"
+                >
+
+            </div>
+
+
+            <div class="info-logro">
+
+                <h2 data-i18n="logros.kinesthetic">
+                    Kinestésico
+                </h2>
+
+                <p
+                    class="estado"
+                    data-i18n="logros.completed"
+                >
+                    ✓ ¡Completado!
+                </p>
+
+                <p data-i18n="logros.kinestheticDescription">
+                    Completa una lección del aprendizaje kinestésico.
+                </p>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- 11. SUPER APRENDIZ -->
+
+        <div class="logro bloqueado">
+
+            <div class="tarjeta-logro">
+
+                <img
+                    src="img/logros/super-aprendiz.png"
+                    alt="Super aprendiz"
+                    data-i18n-alt="logros.alt.superLearner"
+                >
+
+            </div>
+
+
+            <div class="info-logro">
+
+                <h2 data-i18n="logros.superLearner">
+                    Super aprendiz
+                </h2>
+
+                <p
+                    class="estado"
+                    data-i18n="logros.locked"
+                >
+                    🔒 No completado
+                </p>
+
+                <p data-i18n="logros.superLearnerDescription">
+                    Completa 30 lecciones.
+                </p>
+
+                <span class="contador">
+                    6 / 30
+                </span>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- 12. MAESTRO THINKAROO -->
+
+        <div class="logro bloqueado">
+
+            <div class="tarjeta-logro">
+
+                <img
+                    src="img/logros/maestro.png"
+                    alt="Maestro ThinkaRoo"
+                    data-i18n-alt="logros.alt.master"
+                >
+
+            </div>
+
+
+            <div class="info-logro">
+
+                <h2 data-i18n="logros.master">
+                    Maestro ThinkaRoo
+                </h2>
+
+                <p
+                    class="estado"
+                    data-i18n="logros.locked"
+                >
+                    🔒 No completado
+                </p>
+
+                <p data-i18n="logros.masterDescription">
+                    Desbloquea todos los logros.
+                </p>
+
+                <span class="contador">
+                    4 / 12
+                </span>
+
+            </div>
+
+        </div>
+
+
+    </section>
+
+
+</main>
+
+<script src="JS/idioma-global.js"></script>
+<script src="JS/logros.js"></script>
+<script src="JS/sidebar.js"></script>
+
 
 </body>
 

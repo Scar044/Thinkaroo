@@ -42,6 +42,7 @@ if (botonFinal) {
 
 }
 
+
 async function guardarProgreso(progreso, estado) {
 
     try {
@@ -99,10 +100,12 @@ async function guardarProgreso(progreso, estado) {
 
 }
 
+
 guardarProgreso(
     0,
     "sin iniciar"
 );
+
 
 figuras.forEach(function (figura) {
 
@@ -145,11 +148,13 @@ figuras.forEach(function (figura) {
 
 });
 
+
 categorias.forEach(function (categoria) {
 
 
     const zona =
         categoria.querySelector(".zona");
+
 
     zona.addEventListener(
         "dragover",
@@ -164,6 +169,7 @@ categorias.forEach(function (categoria) {
         }
     );
 
+
     zona.addEventListener(
         "dragleave",
         function () {
@@ -174,6 +180,7 @@ categorias.forEach(function (categoria) {
 
         }
     );
+
 
     zona.addEventListener(
         "drop",
@@ -198,6 +205,7 @@ categorias.forEach(function (categoria) {
             const formaCategoria =
                 categoria.dataset.forma;
 
+
             if (
                 formaFigura ===
                 formaCategoria
@@ -220,6 +228,7 @@ categorias.forEach(function (categoria) {
                     "arrastrando"
                 );
 
+
                 puntos += 10;
 
                 figurasCorrectas++;
@@ -228,11 +237,16 @@ categorias.forEach(function (categoria) {
                 puntosTexto.textContent =
                     puntos;
 
+
                 mensaje.textContent =
-                    "🎉 ¡Muy bien!";
+                    translate(
+                        "figuresVisual.correct"
+                    );
+
 
                 mensaje.style.color =
                     "#35a853";
+
 
                 this.classList.add(
                     "correcto"
@@ -249,6 +263,7 @@ categorias.forEach(function (categoria) {
 
                 }, 600);
 
+
                 const progreso =
                     Math.round(
                         (
@@ -256,6 +271,7 @@ categorias.forEach(function (categoria) {
                             figuras.length
                         ) * 100
                     );
+
 
                 if (
                     figurasCorrectas <
@@ -269,6 +285,7 @@ categorias.forEach(function (categoria) {
 
                 }
 
+
                 if (
                     figurasCorrectas ===
                     figuras.length
@@ -276,7 +293,10 @@ categorias.forEach(function (categoria) {
 
 
                     mensaje.textContent =
-                        "🎉 ¡Excelente! Completaste el juego";
+                        translate(
+                            "figuresVisual.complete"
+                        );
+
 
                     guardarProgreso(
                         100,
@@ -292,6 +312,7 @@ categorias.forEach(function (categoria) {
                         }
 
                     });
+
 
                     setTimeout(function () {
 
@@ -319,49 +340,31 @@ categorias.forEach(function (categoria) {
 
                 intentos[forma]++;
 
+
                 const pistas = {
 
                     circulo: [
-
-                        "Mira con atención. El círculo no tiene esquinas.",
-
-                        "Observa su borde. Es completamente redondo.",
-
-                        "Busca la figura que parece una pelota."
-
+                        "figuresVisual.hint.circle1",
+                        "figuresVisual.hint.circle2",
+                        "figuresVisual.hint.circle3"
                     ],
-
 
                     cuadrado: [
-
-                        "Mira sus lados. Tiene 4 lados.",
-
-                        "Sus 4 lados tienen el mismo tamaño.",
-
-                        "Busca la figura que tiene 4 lados iguales."
-
+                        "figuresVisual.hint.square1",
+                        "figuresVisual.hint.square2",
+                        "figuresVisual.hint.square3"
                     ],
-
 
                     triangulo: [
-
-                        "Mira sus esquinas. Tiene 3.",
-
-                        "Cuenta sus lados. Tiene 3.",
-
-                        "Busca la figura que tiene forma de montaña."
-
+                        "figuresVisual.hint.triangle1",
+                        "figuresVisual.hint.triangle2",
+                        "figuresVisual.hint.triangle3"
                     ],
 
-
                     rectangulo: [
-
-                        "Mira sus lados. Tiene 4.",
-
-                        "Tiene 2 lados largos y 2 lados cortos.",
-
-                        "Busca la figura que parece una puerta."
-
+                        "figuresVisual.hint.rectangle1",
+                        "figuresVisual.hint.rectangle2",
+                        "figuresVisual.hint.rectangle3"
                     ]
 
                 };
@@ -385,7 +388,9 @@ categorias.forEach(function (categoria) {
                 if (textoPista) {
 
                     textoPista.textContent =
-                        pistas[forma][numeroPista];
+                        translate(
+                            pistas[forma][numeroPista]
+                        );
 
                 }
 
@@ -398,12 +403,16 @@ categorias.forEach(function (categoria) {
 
                 }
 
+
                 mensaje.textContent =
-                    "😊 ¡Casi!";
+                    translate(
+                        "figuresVisual.incorrect"
+                    );
 
 
                 mensaje.style.color =
                     "#f39c12";
+
 
                 zona.classList.remove(
                     "error"
@@ -436,6 +445,7 @@ categorias.forEach(function (categoria) {
 
 });
 
+
 if (cerrarPista) {
 
     cerrarPista.addEventListener(
@@ -448,7 +458,9 @@ if (cerrarPista) {
 
 
             mensaje.textContent =
-                "¡Inténtalo de nuevo!";
+                translate(
+                    "figuresVisual.tryAgain"
+                );
 
 
             mensaje.style.color =

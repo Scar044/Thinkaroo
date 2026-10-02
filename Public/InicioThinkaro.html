@@ -1,39 +1,124 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Inicio de sesion</title>
+<html lang="es">
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
-    
-    <link rel="stylesheet" href="CSS/Inicio.css">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title data-i18n="login.pageTitle">
+        Inicio de sesión
+    </title>
+
+    <link
+        rel="preconnect"
+        href="https://fonts.googleapis.com"
+    >
+
+    <link
+        rel="preconnect"
+        href="https://fonts.gstatic.com"
+        crossorigin
+    >
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&display=swap"
+        rel="stylesheet"
+    >
+
+    <link
+        rel="stylesheet"
+        href="CSS/Inicio.css"
+    >
+
+    <link
+        href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css"
+        rel="stylesheet"
+    >
+
 </head>
+
 <body>
-</head>
-<body>
+
     <header>
-        <img src="IMG/letter_thinkaroo.png" alt="Thinkaroo" id="Logo">
+
+        <img
+            src="IMG/letter_thinkaroo.png"
+            alt="Thinkaroo"
+            id="Logo"
+        >
+
     </header>
-    
-        
+
     <div class="login">
-        <img src="IMG/k_i_s.Thinkaroo-removebg-preview.png" id="kido" alt="" height="250">
-        <form class="formulario" id="form-login">
-            <label>Usuario</label>
-            <input type="text" id="input-correo" autocomplete="off">
-            <label>Contraseña</label>
-            <input type="password" id="input-clave" placeholder="*********">
-            <button type="submit">
-                Login
+
+        <img
+            src="IMG/k_i_s.Thinkaroo-removebg-preview.png"
+            id="kido"
+            alt="Thinkaroo"
+            height="250"
+        >
+
+        <form
+            class="formulario"
+            id="form-login"
+        >
+
+            <label data-i18n="login.username">
+                Usuario
+            </label>
+
+            <input
+                type="text"
+                id="input-correo"
+                autocomplete="off"
+            >
+
+            <label data-i18n="login.password">
+                Contraseña
+            </label>
+
+            <input
+                type="password"
+                id="input-clave"
+                data-i18n-placeholder="login.passwordPlaceholder"
+                placeholder="*********"
+            >
+
+            <button type="submit" data-i18n="login.button">
+                Iniciar sesión
             </button>
+
             <br>
-            <a href="correo.html"><small>¿A&uacute;n no tienes una cuenta? <br> Reg&iacute;strate</small></a>
+
+            <a href="correo.html">
+
+                <small>
+
+                    <span data-i18n="login.noAccount">
+                        ¿Aún no tienes una cuenta?
+                    </span>
+
+                    <br>
+
+                    <span data-i18n="login.register">
+                        Regístrate
+                    </span>
+
+                </small>
+
+            </a>
+
         </form>
+
     </div>
+    <script src="JS/idioma-global.js"></script>
     <script src="JS/login.js"></script>
+
 </body>
+
 </html>

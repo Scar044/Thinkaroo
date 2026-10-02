@@ -8,7 +8,9 @@
     <meta name="viewport"
           content="width=device-width, initial-scale=1.0">
 
-    <title>Clasifica las figuras</title>
+    <title data-i18n="figuresVisual.pageTitle">
+    Clasifica las figuras
+    </title>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -20,19 +22,15 @@
 
 
 <body>
-
     <main class="juego">
-
-
         <header>
+            <h1 data-i18n="figuresVisual.title">
+                CLASIFICA LAS FIGURAS
+            </h1>
 
-            <h1>CLASIFICA LAS FIGURAS </h1>
-
-            <p>
+            <p data-i18n="figuresVisual.description">
                 Arrastra cada figura a su lugar
             </p>
-
-
             <div class="puntuacion">
 
                 <span id="puntos">
@@ -40,59 +38,47 @@
                 </span>
 
             </div>
-
         </header>
-
-
         <section class="categorias">
-
 
             <div
                 class="categoria circulo"
                 data-forma="circulo">
-
-                <h2>CÍRCULO</h2>
-
+                <h2 data-i18n="figuresVisual.circle">
+                    CÍRCULO
+                </h2>
                 <div class="zona"></div>
-
             </div>
-
 
             <div
                 class="categoria cuadrado"
                 data-forma="cuadrado">
-
-                <h2>CUADRADO</h2>
-
+                <h2 data-i18n="figuresVisual.square">
+                    CUADRADO
+                </h2>
                 <div class="zona"></div>
-
             </div>
-
 
             <div
                 class="categoria triangulo"
                 data-forma="triangulo">
-
-                <h2>TRIÁNGULO</h2>
-
+                <h2 data-i18n="figuresVisual.triangle">
+                    TRIÁNGULO
+                </h2>
                 <div class="zona"></div>
-
             </div>
-
 
             <div
                 class="categoria rectangulo"
                 data-forma="rectangulo">
-
-                <h2>RECTÁNGULO</h2>
-
+                <h2 data-i18n="figuresVisual.rectangle">
+                    RECTÁNGULO
+                </h2>
                 <div class="zona"></div>
-
             </div>
 
-
         </section>
-<div id="mensaje" class="mensaje"></div>
+        <div id="mensaje" class="mensaje"></div>
 
         <section
             class="figuras"
@@ -166,22 +152,30 @@
 
         <div class="trophy">🏆</div>
 
-        <h2>¡Excelente ahora tu misión!</h2>
+        <h2 data-i18n="figuresVisual.finishTitle">
+            ¡Excelente! ¡Ahora tu misión!
+        </h2>
 
         <p>
-            Encuentra 2 objetos de cada forma que aprendistes hoy
+            <span data-i18n="figuresVisual.finishDescription">
+                Encuentra 2 objetos de cada forma que aprendiste hoy
+            </span>
+
             <br>
-            ¡Aprendiste las formas!
+
+            <span data-i18n="figuresVisual.finishLearned">
+                ¡Aprendiste las formas!
+            </span>
         </p>
 
-        <button id="botonFinal">
+        <button id="botonFinal" data-i18n="figuresVisual.continue">
             Continuar
         </button>
 
     </div>
 
 </div>
-
+<script src="JS/idioma-global.js"></script>
 <script src="JS/figuras.js"></script>
 
 </body>
