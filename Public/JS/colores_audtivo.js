@@ -96,29 +96,43 @@ function elegirColor() {
 function hablarColor() {
 
     if (!colorCorrecto) {
-
         elegirColor();
-
     }
 
+    const idioma = getCurrentLanguage();
 
-    const voz =
-        new SpeechSynthesisUtterance(
-            colorCorrecto
-        );
+    const coloresAudio = {
+        es: {
+            rojo: "rojo",
+            azul: "azul",
+            amarillo: "amarillo",
+            verde: "verde",
+            morado: "morado"
+        },
+        en: {
+            rojo: "red",
+            azul: "blue",
+            amarillo: "yellow",
+            verde: "green",
+            morado: "purple"
+        }
+    };
 
-    voz.lang = "es-ES";
+    const texto = coloresAudio[idioma][colorCorrecto];
+
+    const voz = new SpeechSynthesisUtterance(texto);
+
+    voz.lang = idioma === "es"
+        ? "es-ES"
+        : "en-US";
 
     voz.rate = 0.8;
-
     voz.pitch = 1.1;
 
-
     window.speechSynthesis.cancel();
-
     window.speechSynthesis.speak(voz);
-
 }
+
 
 function comprobarColor(event) {
 
