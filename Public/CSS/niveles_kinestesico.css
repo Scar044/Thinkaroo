@@ -41,6 +41,36 @@ body::after{
     z-index:-3;
 }
 
+.botones{
+    display:flex;
+    justify-content:flex-end;
+    gap:10px;
+}
+.boton{
+    width: 150px;
+    height: 45px;
+    background: orange;
+    border-radius: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color:white;
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: 500;
+    transition: 0.3s ease;
+}
+
+.boton:hover{
+    background: orange;
+    transform: scale(1.05);
+    box-shadow: 0 6px 12px rgba(0,0,0,.2);
+}
+
+.boton:active{
+    transform: scale(.97);
+}
+
 .nivel a {
     text-decoration: none;
     color: inherit;
@@ -90,6 +120,13 @@ body::after{
     top:330px;
     right:100px;
     animation:nube2 25s linear infinite;
+}
+
+.perfil{
+    display: flex;
+    flex-direction: row;
+    gap: 9px;
+    align-items: center;
 }
 
 .nube3{

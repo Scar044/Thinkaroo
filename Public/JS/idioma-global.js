@@ -897,6 +897,8 @@
             "traceShapes.finishLine2": "¡Aprendiste las formas!",
             "traceShapes.continue": "Continuar",
 
+            "colorsGame.red": "Rojo", "colorsGame.blue": "Azul", "colorsGame.yellow": "Amarillo", "colorsGame.green": "Verde", "colorsGame.purple": "Morado",
+
     };
 
 
@@ -1798,6 +1800,8 @@
             "traceShapes.finishLine1": "Find 2 objects of each shape you learned today",
             "traceShapes.finishLine2": "You learned the shapes!",
             "traceShapes.continue": "Continue",
+
+            "colorsGame.red": "Red", "colorsGame.blue": "Blue", "colorsGame.yellow": "Yellow", "colorsGame.green": "Green", "colorsGame.purple": "Purple",
     };
 
 
