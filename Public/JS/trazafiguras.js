@@ -5,93 +5,58 @@ const mensaje = document.getElementById("mensaje");
 const puntosTexto = document.getElementById("puntos");
 const reiniciar = document.getElementById("reiniciar");
 
-const alertaFinal =
-    document.getElementById("finish");
+const alertaFinal = document.getElementById("finish");
 
-const botonFinal =
-    document.getElementById("botonFinal");
-
+const botonFinal = document.getElementById("botonFinal");
 
 function mostrarAlertaFinal() {
-
     if (alertaFinal) {
-        alertaFinal.classList.add("show");
+    alertaFinal.classList.add("show");
 
-        applyTranslations(alertaFinal);
-    }
-
+    applyTranslations(alertaFinal);
+  }
 }
-
 
 if (botonFinal) {
-
-    botonFinal.addEventListener(
-        "click",
-        function () {
-
-            window.location.href =
-                "niveles_kinestesico.html";
-
-        }
-    );
-
+  botonFinal.addEventListener("click", function () {
+    window.location.href = "niveles_kinestesico.html";
+  });
 }
-
 
 async function guardarProgreso(progreso, estado) {
+  try {
+    const respuesta = await fetch("../ConfigPHP/guardar_progreso.php", {
+      method: "POST",
 
-    try {
+      headers: {
+        "Content-Type": "application/json",
+      },
 
-        const respuesta = await fetch(
-            "../ConfigPHP/guardar_progreso.php",
-            {
-                method: "POST",
+      body: JSON.stringify({
+        id_actividad: 6,
+        progreso: progreso,
+        estado: estado,
+      }),
+    });
 
-                headers: {
-                    "Content-Type": "application/json"
-                },
+    const datos = await respuesta.json();
 
-                body: JSON.stringify({
+    console.log("PROGRESO FIGURAS KINESTÉSICO:", datos);
 
-                    id_actividad: 6,
-                    progreso: progreso,
-                    estado: estado
+    return datos;
+  } catch (error) {
+    console.error("Error al guardar progreso:", error);
 
-                })
-            }
-        );
-
-        const datos = await respuesta.json();
-
-        console.log(
-            "PROGRESO FIGURAS KINESTÉSICO:",
-            datos
-        );
-
-        return datos;
-
-    } catch (error) {
-
-        console.error(
-            "Error al guardar progreso:",
-            error
-        );
-
-        return {
-            success: false
-        };
-
-    }
-
+    return {
+      success: false,
+    };
+  }
 }
-
 
 guardarProgreso(0, "sin iniciar");
 
-
 canvas.width = 700;
 canvas.height = 450;
-
 
 let dibujando = false;
 let puntos = 0;
@@ -103,1199 +68,652 @@ let anguloAnterior = null;
 let anguloRecorrido = 0;
 let direccionCirculo = 0;
 
-
-const nombresFiguras = [
-    "triangle",
-    "circle",
-    "square",
-    "rectangle"
-];
-
+const nombresFiguras = ["triangle", "circle", "square", "rectangle"];
 
 const triangulo = [
-
-    { x: 350, y: 70 },
-    { x: 170, y: 350 },
-    { x: 530, y: 350 }
-
+  { x: 350, y: 70 },
+  { x: 170, y: 350 },
+  { x: 530, y: 350 },
 ];
-
 
 const cuadrado = [
-
-    { x: 190, y: 110 },
-    { x: 510, y: 110 },
-    { x: 510, y: 350 },
-    { x: 190, y: 350 }
-
+  { x: 190, y: 110 },
+  { x: 510, y: 110 },
+  { x: 510, y: 350 },
+  { x: 190, y: 350 },
 ];
-
 
 const rectangulo = [
-
-    { x: 140, y: 120 },
-    { x: 560, y: 120 },
-    { x: 560, y: 340 },
-    { x: 140, y: 340 }
-
+  { x: 140, y: 120 },
+  { x: 560, y: 120 },
+  { x: 560, y: 340 },
+  { x: 140, y: 340 },
 ];
 
-
 const circulo = {
-
-    x: 350,
-    y: 225,
-    radio: 145
-
+  x: 350,
+  y: 225,
+  radio: 145,
 };
 
-
 function obtenerNombreFigura(indice) {
-
-    return translate(
-        `traceShapes.${nombresFiguras[indice]}`
-    );
-
+  return translate(`traceShapes.${nombresFiguras[indice]}`);
 }
-
 
 function obtenerPosicion(evento) {
+  const rect = canvas.getBoundingClientRect();
 
-    const rect =
-        canvas.getBoundingClientRect();
+  let x;
+  let y;
 
-    let x;
-    let y;
+  if (evento.touches && evento.touches.length > 0) {
+    x = evento.touches[0].clientX;
+    y = evento.touches[0].clientY;
+  } else if (evento.changedTouches && evento.changedTouches.length > 0) {
+    x = evento.changedTouches[0].clientX;
+    y = evento.changedTouches[0].clientY;
+  } else {
+    x = evento.clientX;
+    y = evento.clientY;
+  }
 
+  return {
+    x: (x - rect.left) * (canvas.width / rect.width),
 
-    if (
-        evento.touches &&
-        evento.touches.length > 0
-    ) {
-
-        x = evento.touches[0].clientX;
-        y = evento.touches[0].clientY;
-
-    } else if (
-        evento.changedTouches &&
-        evento.changedTouches.length > 0
-    ) {
-
-        x = evento.changedTouches[0].clientX;
-        y = evento.changedTouches[0].clientY;
-
-    } else {
-
-        x = evento.clientX;
-        y = evento.clientY;
-
-    }
-
-
-    return {
-
-        x:
-            (x - rect.left) *
-            (canvas.width / rect.width),
-
-        y:
-            (y - rect.top) *
-            (canvas.height / rect.height)
-
-    };
-
+    y: (y - rect.top) * (canvas.height / rect.height),
+  };
 }
 
-
-function distanciaEntrePuntos(
-    x1,
-    y1,
-    x2,
-    y2
-) {
-
-    return Math.sqrt(
-
-        Math.pow(x1 - x2, 2) +
-        Math.pow(y1 - y2, 2)
-
-    );
-
+function distanciaEntrePuntos(x1, y1, x2, y2) {
+  return Math.sqrt(Math.pow(x1 - x2, 2) + Math.pow(y1 - y2, 2));
 }
 
+function dibujarPunto(x, y, color, radio = 8) {
+  ctx.beginPath();
 
-function dibujarPunto(
-    x,
-    y,
-    color,
-    radio = 8
-) {
+  ctx.arc(x, y, radio, 0, Math.PI * 2);
 
-    ctx.beginPath();
+  ctx.fillStyle = color;
 
-    ctx.arc(
-        x,
-        y,
-        radio,
-        0,
-        Math.PI * 2
-    );
-
-    ctx.fillStyle = color;
-
-    ctx.fill();
-
+  ctx.fill();
 }
-
 
 function dibujarTexto(texto) {
+  ctx.font = "bold 20px Arial";
 
-    ctx.font = "bold 20px Arial";
+  ctx.fillStyle = "#555";
 
-    ctx.fillStyle = "#555";
+  ctx.textAlign = "center";
 
-    ctx.textAlign = "center";
-
-    ctx.fillText(
-        texto,
-        350,
-        40
-    );
-
+  ctx.fillText(texto, 350, 40);
 }
-
 
 function dibujarTriangulo() {
+  ctx.beginPath();
 
-    ctx.beginPath();
+  ctx.setLineDash([7, 8]);
 
-    ctx.setLineDash([7, 8]);
+  ctx.lineWidth = 5;
 
-    ctx.lineWidth = 5;
+  ctx.strokeStyle = "#333";
 
-    ctx.strokeStyle = "#333";
+  ctx.moveTo(triangulo[0].x, triangulo[0].y);
 
-    ctx.moveTo(
-        triangulo[0].x,
-        triangulo[0].y
-    );
+  ctx.lineTo(triangulo[1].x, triangulo[1].y);
 
-    ctx.lineTo(
-        triangulo[1].x,
-        triangulo[1].y
-    );
+  ctx.lineTo(triangulo[2].x, triangulo[2].y);
 
-    ctx.lineTo(
-        triangulo[2].x,
-        triangulo[2].y
-    );
+  ctx.lineTo(triangulo[0].x, triangulo[0].y);
 
-    ctx.lineTo(
-        triangulo[0].x,
-        triangulo[0].y
-    );
+  ctx.stroke();
 
-    ctx.stroke();
+  ctx.setLineDash([]);
 
-    ctx.setLineDash([]);
+  dibujarPunto(triangulo[0].x, triangulo[0].y, "#8BCF32");
 
+  dibujarPunto(triangulo[1].x, triangulo[1].y, "#8BCF32");
 
-    dibujarPunto(
-        triangulo[0].x,
-        triangulo[0].y,
-        "#8BCF32"
-    );
+  dibujarPunto(triangulo[2].x, triangulo[2].y, "#FFCF1B");
 
-    dibujarPunto(
-        triangulo[1].x,
-        triangulo[1].y,
-        "#8BCF32"
-    );
-
-    dibujarPunto(
-        triangulo[2].x,
-        triangulo[2].y,
-        "#FFCF1B"
-    );
-
-
-    dibujarTexto(
-        translate("traceShapes.startGreenInstruction")
-            .replace(
-                "{shape}",
-                obtenerNombreFigura(0)
-            )
-    );
-
+  dibujarTexto(
+    translate("traceShapes.startGreenInstruction").replace(
+      "{shape}",
+      obtenerNombreFigura(0),
+    ),
+  );
 }
-
 
 function dibujarCuadrado() {
+  ctx.beginPath();
 
-    ctx.beginPath();
+  ctx.setLineDash([7, 8]);
 
-    ctx.setLineDash([7, 8]);
+  ctx.lineWidth = 5;
 
-    ctx.lineWidth = 5;
+  ctx.strokeStyle = "#333";
 
-    ctx.strokeStyle = "#333";
+  ctx.moveTo(cuadrado[0].x, cuadrado[0].y);
 
-    ctx.moveTo(
-        cuadrado[0].x,
-        cuadrado[0].y
-    );
+  ctx.lineTo(cuadrado[1].x, cuadrado[1].y);
 
-    ctx.lineTo(
-        cuadrado[1].x,
-        cuadrado[1].y
-    );
+  ctx.lineTo(cuadrado[2].x, cuadrado[2].y);
 
-    ctx.lineTo(
-        cuadrado[2].x,
-        cuadrado[2].y
-    );
+  ctx.lineTo(cuadrado[3].x, cuadrado[3].y);
 
-    ctx.lineTo(
-        cuadrado[3].x,
-        cuadrado[3].y
-    );
+  ctx.lineTo(cuadrado[0].x, cuadrado[0].y);
 
-    ctx.lineTo(
-        cuadrado[0].x,
-        cuadrado[0].y
-    );
+  ctx.stroke();
 
-    ctx.stroke();
+  ctx.setLineDash([]);
 
-    ctx.setLineDash([]);
+  dibujarPunto(cuadrado[0].x, cuadrado[0].y, "#8BCF32");
 
+  dibujarPunto(cuadrado[3].x, cuadrado[3].y, "#8BCF32");
 
-    dibujarPunto(
-        cuadrado[0].x,
-        cuadrado[0].y,
-        "#8BCF32"
-    );
+  dibujarPunto(cuadrado[1].x, cuadrado[1].y, "#FFCF1B");
 
-    dibujarPunto(
-        cuadrado[3].x,
-        cuadrado[3].y,
-        "#8BCF32"
-    );
-
-    dibujarPunto(
-        cuadrado[1].x,
-        cuadrado[1].y,
-        "#FFCF1B"
-    );
-
-
-    dibujarTexto(
-        translate("traceShapes.startGreenInstruction")
-            .replace(
-                "{shape}",
-                obtenerNombreFigura(2)
-            )
-    );
-
+  dibujarTexto(
+    translate("traceShapes.startGreenInstruction").replace(
+      "{shape}",
+      obtenerNombreFigura(2),
+    ),
+  );
 }
-
 
 function dibujarRectangulo() {
+  ctx.beginPath();
 
-    ctx.beginPath();
+  ctx.setLineDash([7, 8]);
 
-    ctx.setLineDash([7, 8]);
+  ctx.lineWidth = 5;
 
-    ctx.lineWidth = 5;
+  ctx.strokeStyle = "#333";
 
-    ctx.strokeStyle = "#333";
+  ctx.moveTo(rectangulo[0].x, rectangulo[0].y);
 
-    ctx.moveTo(
-        rectangulo[0].x,
-        rectangulo[0].y
-    );
+  ctx.lineTo(rectangulo[1].x, rectangulo[1].y);
 
-    ctx.lineTo(
-        rectangulo[1].x,
-        rectangulo[1].y
-    );
+  ctx.lineTo(rectangulo[2].x, rectangulo[2].y);
 
-    ctx.lineTo(
-        rectangulo[2].x,
-        rectangulo[2].y
-    );
+  ctx.lineTo(rectangulo[3].x, rectangulo[3].y);
 
-    ctx.lineTo(
-        rectangulo[3].x,
-        rectangulo[3].y
-    );
+  ctx.lineTo(rectangulo[0].x, rectangulo[0].y);
 
-    ctx.lineTo(
-        rectangulo[0].x,
-        rectangulo[0].y
-    );
+  ctx.stroke();
 
-    ctx.stroke();
+  ctx.setLineDash([]);
 
-    ctx.setLineDash([]);
+  dibujarPunto(rectangulo[0].x, rectangulo[0].y, "#8BCF32");
 
+  dibujarPunto(rectangulo[3].x, rectangulo[3].y, "#8BCF32");
 
-    dibujarPunto(
-        rectangulo[0].x,
-        rectangulo[0].y,
-        "#8BCF32"
-    );
+  dibujarPunto(rectangulo[1].x, rectangulo[1].y, "#FFCF1B");
 
-    dibujarPunto(
-        rectangulo[3].x,
-        rectangulo[3].y,
-        "#8BCF32"
-    );
-
-    dibujarPunto(
-        rectangulo[1].x,
-        rectangulo[1].y,
-        "#FFCF1B"
-    );
-
-
-    dibujarTexto(
-        translate("traceShapes.startGreenInstruction")
-            .replace(
-                "{shape}",
-                obtenerNombreFigura(3)
-            )
-    );
-
+  dibujarTexto(
+    translate("traceShapes.startGreenInstruction").replace(
+      "{shape}",
+      obtenerNombreFigura(3),
+    ),
+  );
 }
-
 
 function dibujarCirculo() {
+  ctx.beginPath();
 
-    ctx.beginPath();
+  ctx.setLineDash([7, 8]);
 
-    ctx.setLineDash([7, 8]);
+  ctx.lineWidth = 5;
 
-    ctx.lineWidth = 5;
+  ctx.strokeStyle = "#333";
 
-    ctx.strokeStyle = "#333";
+  ctx.arc(circulo.x, circulo.y, circulo.radio, 0, Math.PI * 2);
 
-    ctx.arc(
-        circulo.x,
-        circulo.y,
-        circulo.radio,
-        0,
-        Math.PI * 2
-    );
+  ctx.stroke();
 
-    ctx.stroke();
+  ctx.setLineDash([]);
 
-    ctx.setLineDash([]);
+  dibujarPunto(circulo.x, circulo.y - circulo.radio, "#8BCF32");
 
+  dibujarPunto(circulo.x, circulo.y + circulo.radio, "#8BCF32");
 
-    dibujarPunto(
-        circulo.x,
-        circulo.y - circulo.radio,
-        "#8BCF32"
-    );
+  dibujarPunto(circulo.x + circulo.radio, circulo.y, "#FFCF1B");
 
-    dibujarPunto(
-        circulo.x,
-        circulo.y + circulo.radio,
-        "#8BCF32"
-    );
-
-    dibujarPunto(
-        circulo.x + circulo.radio,
-        circulo.y,
-        "#FFCF1B"
-    );
-
-
-    dibujarTexto(
-        translate("traceShapes.startGreenInstruction")
-            .replace(
-                "{shape}",
-                obtenerNombreFigura(1)
-            )
-    );
-
+  dibujarTexto(
+    translate("traceShapes.startGreenInstruction").replace(
+      "{shape}",
+      obtenerNombreFigura(1),
+    ),
+  );
 }
-
 
 function dibujarFigura() {
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-    ctx.clearRect(
-        0,
-        0,
-        canvas.width,
-        canvas.height
-    );
-
-
-    if (figuraActual === 0) {
-
-        dibujarTriangulo();
-
-    } else if (figuraActual === 1) {
-
-        dibujarCirculo();
-
-    } else if (figuraActual === 2) {
-
-        dibujarCuadrado();
-
-    } else if (figuraActual === 3) {
-
-        dibujarRectangulo();
-
-    }
-
+  if (figuraActual === 0) {
+    dibujarTriangulo();
+  } else if (figuraActual === 1) {
+    dibujarCirculo();
+  } else if (figuraActual === 2) {
+    dibujarCuadrado();
+  } else if (figuraActual === 3) {
+    dibujarRectangulo();
+  }
 }
-
 
 function obtenerVertices() {
+  if (figuraActual === 0) {
+    return triangulo;
+  }
 
-    if (figuraActual === 0) {
-        return triangulo;
-    }
+  if (figuraActual === 2) {
+    return cuadrado;
+  }
 
-    if (figuraActual === 2) {
-        return cuadrado;
-    }
+  if (figuraActual === 3) {
+    return rectangulo;
+  }
 
-    if (figuraActual === 3) {
-        return rectangulo;
-    }
-
-    return null;
-
+  return null;
 }
-
 
 function encontrarPuntoVerde(x, y) {
+  if (figuraActual === 1) {
+    const arriba = distanciaEntrePuntos(
+      x,
+      y,
+      circulo.x,
+      circulo.y - circulo.radio,
+    );
 
-    if (figuraActual === 1) {
+    const abajo = distanciaEntrePuntos(
+      x,
+      y,
+      circulo.x,
+      circulo.y + circulo.radio,
+    );
 
-        const arriba =
-            distanciaEntrePuntos(
-                x,
-                y,
-                circulo.x,
-                circulo.y - circulo.radio
-            );
-
-        const abajo =
-            distanciaEntrePuntos(
-                x,
-                y,
-                circulo.x,
-                circulo.y + circulo.radio
-            );
-
-
-        if (arriba <= 30) {
-            return 0;
-        }
-
-        if (abajo <= 30) {
-            return 1;
-        }
-
-        return null;
-
+    if (arriba <= 30) {
+      return 0;
     }
 
-
-    const vertices =
-        obtenerVertices();
-
-    let puntosVerdes;
-
-
-    if (figuraActual === 0) {
-
-        puntosVerdes = [0, 1];
-
-    } else {
-
-        puntosVerdes = [0, 3];
-
+    if (abajo <= 30) {
+      return 1;
     }
-
-
-    for (let i of puntosVerdes) {
-
-        const distancia =
-            distanciaEntrePuntos(
-                x,
-                y,
-                vertices[i].x,
-                vertices[i].y
-            );
-
-
-        if (distancia <= 30) {
-
-            return i;
-
-        }
-
-    }
-
 
     return null;
+  }
 
+  const vertices = obtenerVertices();
+
+  let puntosVerdes;
+
+  if (figuraActual === 0) {
+    puntosVerdes = [0, 1];
+  } else {
+    puntosVerdes = [0, 3];
+  }
+
+  for (let i of puntosVerdes) {
+    const distancia = distanciaEntrePuntos(x, y, vertices[i].x, vertices[i].y);
+
+    if (distancia <= 30) {
+      return i;
+    }
+  }
+
+  return null;
 }
-
 
 function comenzar(evento) {
+  evento.preventDefault();
 
-    evento.preventDefault();
+  const posicion = obtenerPosicion(evento);
 
+  const inicio = encontrarPuntoVerde(posicion.x, posicion.y);
 
-    const posicion =
-        obtenerPosicion(evento);
+  if (inicio === null) {
+    mensaje.textContent = translate("traceShapes.startGreen");
 
+    mensaje.style.color = "#F39C12";
 
-    const inicio =
-        encontrarPuntoVerde(
-            posicion.x,
-            posicion.y
-        );
+    return;
+  }
 
+  dibujando = true;
 
-    if (inicio === null) {
+  puntoInicio = inicio;
 
-        mensaje.textContent =
-            translate("traceShapes.startGreen");
+  ladoActual = inicio;
 
-        mensaje.style.color =
-            "#F39C12";
+  ladosCompletados = 0;
 
-        return;
+  if (figuraActual === 1) {
+    const dx = posicion.x - circulo.x;
 
-    }
+    const dy = posicion.y - circulo.y;
 
+    anguloAnterior = Math.atan2(dy, dx);
 
-    dibujando = true;
+    anguloRecorrido = 0;
 
-    puntoInicio = inicio;
+    direccionCirculo = 0;
+  }
 
-    ladoActual = inicio;
+  ctx.beginPath();
 
-    ladosCompletados = 0;
+  ctx.moveTo(posicion.x, posicion.y);
 
+  ctx.strokeStyle = "#1596E6";
 
-    if (figuraActual === 1) {
+  ctx.lineWidth = 10;
 
-        const dx =
-            posicion.x - circulo.x;
+  ctx.lineCap = "round";
 
-        const dy =
-            posicion.y - circulo.y;
+  ctx.lineJoin = "round";
 
+  mensaje.textContent = translate("traceShapes.keepGoing");
 
-        anguloAnterior =
-            Math.atan2(dy, dx);
-
-        anguloRecorrido = 0;
-
-        direccionCirculo = 0;
-
-    }
-
-
-    ctx.beginPath();
-
-    ctx.moveTo(
-        posicion.x,
-        posicion.y
-    );
-
-    ctx.strokeStyle = "#1596E6";
-
-    ctx.lineWidth = 10;
-
-    ctx.lineCap = "round";
-
-    ctx.lineJoin = "round";
-
-
-    mensaje.textContent =
-        translate("traceShapes.keepGoing");
-
-    mensaje.style.color =
-        "#1596E6";
-
+  mensaje.style.color = "#1596E6";
 }
-
 
 function dibujarPoligono(evento) {
+  const posicion = obtenerPosicion(evento);
 
-    const posicion =
-        obtenerPosicion(evento);
+  const vertices = obtenerVertices();
 
-    const vertices =
-        obtenerVertices();
+  const cantidad = vertices.length;
 
-    const cantidad =
-        vertices.length;
+  const inicio = vertices[ladoActual];
 
+  const siguiente = vertices[(ladoActual + 1) % cantidad];
 
-    const inicio =
-        vertices[ladoActual];
+  const distancia = distanciaPuntoLinea(
+    posicion.x,
+    posicion.y,
+    inicio.x,
+    inicio.y,
+    siguiente.x,
+    siguiente.y,
+  );
 
-    const siguiente =
-        vertices[
-            (ladoActual + 1) % cantidad
-        ];
-
-
-    const distancia =
-        distanciaPuntoLinea(
-            posicion.x,
-            posicion.y,
-            inicio.x,
-            inicio.y,
-            siguiente.x,
-            siguiente.y
-        );
-
-
-    if (distancia > 45) {
-
-        dibujando = false;
-
-        mensaje.textContent =
-            translate("traceShapes.almost");
-
-        mensaje.style.color =
-            "#F39C12";
-
-        return;
-
-    }
-
-
-    ctx.lineTo(
-        posicion.x,
-        posicion.y
-    );
-
-    ctx.stroke();
-
-
-    const distanciaFinal =
-        distanciaEntrePuntos(
-            posicion.x,
-            posicion.y,
-            siguiente.x,
-            siguiente.y
-        );
-
-
-    if (distanciaFinal <= 35) {
-
-        ladoActual =
-            (ladoActual + 1) % cantidad;
-
-        ladosCompletados++;
-
-
-        if (
-            ladosCompletados >=
-            cantidad
-        ) {
-
-            terminar();
-
-            return;
-
-        }
-
-    }
-
-
-    mensaje.textContent =
-        translate("traceShapes.keepShape");
-
-    mensaje.style.color =
-        "#1596E6";
-
-}
-
-
-function dibujarCirculoTrazo(evento) {
-
-    const posicion =
-        obtenerPosicion(evento);
-
-
-    const dx =
-        posicion.x - circulo.x;
-
-    const dy =
-        posicion.y - circulo.y;
-
-
-    const distanciaCentro =
-        Math.sqrt(
-            dx * dx +
-            dy * dy
-        );
-
-
-    if (
-        Math.abs(
-            distanciaCentro -
-            circulo.radio
-        ) > 45
-    ) {
-
-        dibujando = false;
-
-        mensaje.textContent =
-            translate("traceShapes.almost");
-
-        mensaje.style.color =
-            "#F39C12";
-
-        return;
-
-    }
-
-
-    const anguloActual =
-        Math.atan2(dy, dx);
-
-
-    if (anguloAnterior === null) {
-
-        anguloAnterior =
-            anguloActual;
-
-    }
-
-
-    let diferencia =
-        anguloActual -
-        anguloAnterior;
-
-
-    while (diferencia > Math.PI) {
-
-        diferencia -=
-            Math.PI * 2;
-
-    }
-
-
-    while (diferencia < -Math.PI) {
-
-        diferencia +=
-            Math.PI * 2;
-
-    }
-
-
-    if (
-        direccionCirculo === 0 &&
-        Math.abs(diferencia) > 0.02
-    ) {
-
-        direccionCirculo =
-            diferencia > 0 ? 1 : -1;
-
-    }
-
-
-    const avance =
-        diferencia *
-        direccionCirculo;
-
-
-    if (avance > 0) {
-
-        anguloRecorrido +=
-            avance;
-
-    }
-
-
-    anguloAnterior =
-        anguloActual;
-
-
-    ctx.lineTo(
-        posicion.x,
-        posicion.y
-    );
-
-    ctx.stroke();
-
-
-    let puntoFinal;
-
-
-    if (puntoInicio === 0) {
-
-        puntoFinal = {
-
-            x: circulo.x,
-
-            y:
-                circulo.y -
-                circulo.radio
-
-        };
-
-    } else {
-
-        puntoFinal = {
-
-            x: circulo.x,
-
-            y:
-                circulo.y +
-                circulo.radio
-
-        };
-
-    }
-
-
-    const distanciaFinal =
-        distanciaEntrePuntos(
-            posicion.x,
-            posicion.y,
-            puntoFinal.x,
-            puntoFinal.y
-        );
-
-
-    if (
-        anguloRecorrido >=
-        Math.PI * 2 * 0.90 &&
-        distanciaFinal <= 45
-    ) {
-
-        terminar();
-
-        return;
-
-    }
-
-
-    mensaje.textContent =
-        translate("traceShapes.keepCircle");
-
-    mensaje.style.color =
-        "#1596E6";
-
-}
-
-
-function dibujar(evento) {
-
-    if (!dibujando) {
-
-        return;
-
-    }
-
-    evento.preventDefault();
-
-
-    if (figuraActual === 1) {
-
-        dibujarCirculoTrazo(evento);
-
-    } else {
-
-        dibujarPoligono(evento);
-
-    }
-
-}
-
-
-function distanciaPuntoLinea(
-    px,
-    py,
-    x1,
-    y1,
-    x2,
-    y2
-) {
-
-    const A = px - x1;
-    const B = py - y1;
-    const C = x2 - x1;
-    const D = y2 - y1;
-
-
-    const dot =
-        A * C +
-        B * D;
-
-
-    const lenSq =
-        C * C +
-        D * D;
-
-
-    let param = -1;
-
-
-    if (lenSq !== 0) {
-
-        param =
-            dot / lenSq;
-
-    }
-
-
-    let xx;
-    let yy;
-
-
-    if (param < 0) {
-
-        xx = x1;
-        yy = y1;
-
-    } else if (param > 1) {
-
-        xx = x2;
-        yy = y2;
-
-    } else {
-
-        xx =
-            x1 + param * C;
-
-        yy =
-            y1 + param * D;
-
-    }
-
-
-    const dx =
-        px - xx;
-
-    const dy =
-        py - yy;
-
-
-    return Math.sqrt(
-        dx * dx +
-        dy * dy
-    );
-
-}
-
-
-function terminar() {
-
+  if (distancia > 45) {
     dibujando = false;
 
-    puntos += 10;
+    mensaje.textContent = translate("traceShapes.almost");
 
-    puntosTexto.textContent =
-        puntos;
+    mensaje.style.color = "#F39C12";
 
+    return;
+  }
 
-    const progreso =
-        Math.round(
-            ((figuraActual + 1) /
-            nombresFiguras.length) * 100
-        );
+  ctx.lineTo(posicion.x, posicion.y);
 
+  ctx.stroke();
 
-    if (
-        figuraActual + 1 <
-        nombresFiguras.length
-    ) {
+  const distanciaFinal = distanciaEntrePuntos(
+    posicion.x,
+    posicion.y,
+    siguiente.x,
+    siguiente.y,
+  );
 
-        guardarProgreso(
-            progreso,
-            "en proceso"
-        );
+  if (distanciaFinal <= 35) {
+    ladoActual = (ladoActual + 1) % cantidad;
 
+    ladosCompletados++;
+
+    if (ladosCompletados >= cantidad) {
+      terminar();
+
+      return;
     }
+  }
 
+  mensaje.textContent = translate("traceShapes.keepShape");
 
-    mensaje.textContent =
-        translate("traceShapes.completedShape")
-            .replace(
-                "{shape}",
-                obtenerNombreFigura(figuraActual)
-            );
-
-
-    mensaje.style.color =
-        "#35A853";
-
-
-    canvas.classList.add("exito");
-
-
-    setTimeout(function () {
-
-        canvas.classList.remove("exito");
-
-        figuraActual++;
-
-
-        if (
-            figuraActual >=
-            nombresFiguras.length
-        ) {
-
-            mensaje.textContent =
-                translate("traceShapes.allCompleted");
-
-
-            mensaje.style.color =
-                "#35A853";
-
-
-            setTimeout(async function () {
-
-                const resultado =
-                    await guardarProgreso(
-                        100,
-                        "completado"
-                    );
-
-
-                if (resultado.success) {
-
-                    console.log(
-                        "Figuras Kinestésico completado."
-                    );
-
-                }
-
-
-                mostrarAlertaFinal();
-
-            }, 700);
-
-
-            return;
-
-        }
-
-
-        ladoActual = 0;
-        puntoInicio = null;
-        ladosCompletados = 0;
-        anguloAnterior = null;
-        anguloRecorrido = 0;
-        direccionCirculo = 0;
-
-
-        dibujarFigura();
-
-
-        mensaje.textContent =
-            translate("traceShapes.nextShape")
-                .replace(
-                    "{shape}",
-                    obtenerNombreFigura(figuraActual)
-                );
-
-        mensaje.style.color =
-            "#1596E6";
-
-
-    }, 1200);
-
+  mensaje.style.color = "#1596E6";
 }
 
+function dibujarCirculoTrazo(evento) {
+  const posicion = obtenerPosicion(evento);
 
-canvas.addEventListener(
-    "mousedown",
-    comenzar
-);
+  const dx = posicion.x - circulo.x;
 
+  const dy = posicion.y - circulo.y;
 
-canvas.addEventListener(
-    "mousemove",
-    dibujar
-);
+  const distanciaCentro = Math.sqrt(dx * dx + dy * dy);
 
+  if (Math.abs(distanciaCentro - circulo.radio) > 45) {
+    dibujando = false;
 
-canvas.addEventListener(
-    "mouseup",
-    function () {
+    mensaje.textContent = translate("traceShapes.almost");
 
-        dibujando = false;
+    mensaje.style.color = "#F39C12";
 
+    return;
+  }
+
+  const anguloActual = Math.atan2(dy, dx);
+
+  if (anguloAnterior === null) {
+    anguloAnterior = anguloActual;
+  }
+
+  let diferencia = anguloActual - anguloAnterior;
+
+  while (diferencia > Math.PI) {
+    diferencia -= Math.PI * 2;
+  }
+
+  while (diferencia < -Math.PI) {
+    diferencia += Math.PI * 2;
+  }
+
+  if (direccionCirculo === 0 && Math.abs(diferencia) > 0.02) {
+    direccionCirculo = diferencia > 0 ? 1 : -1;
+  }
+
+  const avance = diferencia * direccionCirculo;
+
+  if (avance > 0) {
+    anguloRecorrido += avance;
+  }
+
+  anguloAnterior = anguloActual;
+
+  ctx.lineTo(posicion.x, posicion.y);
+
+  ctx.stroke();
+
+  let puntoFinal;
+
+  if (puntoInicio === 0) {
+    puntoFinal = {
+      x: circulo.x,
+
+      y: circulo.y - circulo.radio,
+    };
+  } else {
+    puntoFinal = {
+      x: circulo.x,
+
+      y: circulo.y + circulo.radio,
+    };
+  }
+
+  const distanciaFinal = distanciaEntrePuntos(
+    posicion.x,
+    posicion.y,
+    puntoFinal.x,
+    puntoFinal.y,
+  );
+
+  if (anguloRecorrido >= Math.PI * 2 * 0.9 && distanciaFinal <= 45) {
+    terminar();
+
+    return;
+  }
+
+  mensaje.textContent = translate("traceShapes.keepCircle");
+
+  mensaje.style.color = "#1596E6";
+}
+
+function dibujar(evento) {
+  if (!dibujando) {
+    return;
+  }
+
+  evento.preventDefault();
+
+  if (figuraActual === 1) {
+    dibujarCirculoTrazo(evento);
+  } else {
+    dibujarPoligono(evento);
+  }
+}
+
+function distanciaPuntoLinea(px, py, x1, y1, x2, y2) {
+  const A = px - x1;
+  const B = py - y1;
+  const C = x2 - x1;
+  const D = y2 - y1;
+
+  const dot = A * C + B * D;
+
+  const lenSq = C * C + D * D;
+
+  let param = -1;
+
+  if (lenSq !== 0) {
+    param = dot / lenSq;
+  }
+
+  let xx;
+  let yy;
+
+  if (param < 0) {
+    xx = x1;
+    yy = y1;
+  } else if (param > 1) {
+    xx = x2;
+    yy = y2;
+  } else {
+    xx = x1 + param * C;
+
+    yy = y1 + param * D;
+  }
+
+  const dx = px - xx;
+
+  const dy = py - yy;
+
+  return Math.sqrt(dx * dx + dy * dy);
+}
+
+function terminar() {
+  dibujando = false;
+
+  puntos += 10;
+
+  puntosTexto.textContent = puntos;
+
+  const progreso = Math.round(
+    ((figuraActual + 1) / nombresFiguras.length) * 100,
+  );
+
+  if (figuraActual + 1 < nombresFiguras.length) {
+    guardarProgreso(progreso, "en proceso");
+  }
+
+  mensaje.textContent = translate("traceShapes.completedShape").replace(
+    "{shape}",
+    obtenerNombreFigura(figuraActual),
+  );
+
+  mensaje.style.color = "#35A853";
+
+  canvas.classList.add("exito");
+
+  setTimeout(function () {
+    canvas.classList.remove("exito");
+
+    figuraActual++;
+
+    if (figuraActual >= nombresFiguras.length) {
+      mensaje.textContent = translate("traceShapes.allCompleted");
+
+      mensaje.style.color = "#35A853";
+
+      setTimeout(async function () {
+        const resultado = await guardarProgreso(100, "completado");
+
+        if (resultado.success) {
+          console.log("Figuras Kinestésico completado.");
+        }
+
+        mostrarAlertaFinal();
+      }, 700);
+
+      return;
     }
-);
 
+    ladoActual = 0;
+    puntoInicio = null;
+    ladosCompletados = 0;
+    anguloAnterior = null;
+    anguloRecorrido = 0;
+    direccionCirculo = 0;
 
-canvas.addEventListener(
-    "mouseleave",
-    function () {
+    dibujarFigura();
 
-        dibujando = false;
+    mensaje.textContent = translate("traceShapes.nextShape").replace(
+      "{shape}",
+      obtenerNombreFigura(figuraActual),
+    );
 
-    }
-);
+    mensaje.style.color = "#1596E6";
+  }, 1200);
+}
 
+canvas.addEventListener("mousedown", comenzar);
 
-canvas.addEventListener(
-    "touchstart",
-    comenzar,
-    { passive: false }
-);
+canvas.addEventListener("mousemove", dibujar);
 
+canvas.addEventListener("mouseup", function () {
+  dibujando = false;
+});
 
-canvas.addEventListener(
-    "touchmove",
-    dibujar,
-    { passive: false }
-);
+canvas.addEventListener("mouseleave", function () {
+  dibujando = false;
+});
 
+canvas.addEventListener("touchstart", comenzar, { passive: false });
 
-canvas.addEventListener(
-    "touchend",
-    function () {
+canvas.addEventListener("touchmove", dibujar, { passive: false });
 
-        dibujando = false;
+canvas.addEventListener("touchend", function () {
+  dibujando = false;
+});
 
-    }
-);
+reiniciar.addEventListener("click", function () {
+  dibujando = false;
 
+  ladoActual = 0;
 
-reiniciar.addEventListener(
-    "click",
-    function () {
+  puntoInicio = null;
 
-        dibujando = false;
+  ladosCompletados = 0;
 
-        ladoActual = 0;
+  anguloAnterior = null;
 
-        puntoInicio = null;
+  anguloRecorrido = 0;
 
-        ladosCompletados = 0;
+  direccionCirculo = 0;
 
-        anguloAnterior = null;
+  mensaje.textContent = "";
 
-        anguloRecorrido = 0;
-
-        direccionCirculo = 0;
-
-        mensaje.textContent = "";
-
-        dibujarFigura();
-
-    }
-);
-
+  dibujarFigura();
+});
 
 dibujarFigura();
