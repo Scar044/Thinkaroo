@@ -1,4 +1,5 @@
-const figuras = document.querySelectorAll(".figura");
+const figuras =
+    document.querySelectorAll(".figura");
 
 const botonEscuchar =
     document.getElementById("botonEscuchar");
@@ -51,37 +52,50 @@ if (botonFinal) {
 
 }
 
-async function guardarProgreso(progreso, estado) {
+
+async function guardarProgreso(
+    progreso,
+    estado
+) {
 
     try {
 
-        const respuesta = await fetch(
-            "../ConfigPHP/guardar_progreso.php",
-            {
-                method: "POST",
+        const respuesta =
+            await fetch(
+                "../ConfigPHP/guardar_progreso.php",
+                {
+                    method: "POST",
 
-                headers: {
-                    "Content-Type": "application/json"
-                },
+                    headers: {
+                        "Content-Type":
+                            "application/json"
+                    },
 
-                body: JSON.stringify({
+                    body: JSON.stringify({
 
-                    id_actividad: 5,
-                    progreso: progreso,
-                    estado: estado
+                        id_actividad: 5,
 
-                })
-            }
-        );
+                        progreso: progreso,
 
-        const datos = await respuesta.json();
+                        estado: estado
+
+                    })
+                }
+            );
+
+
+        const datos =
+            await respuesta.json();
+
 
         console.log(
             "PROGRESO FIGURAS AUDITIVO:",
             datos
         );
 
+
         return datos;
+
 
     } catch (error) {
 
@@ -89,6 +103,7 @@ async function guardarProgreso(progreso, estado) {
             "Error al guardar progreso:",
             error
         );
+
 
         return {
             success: false
@@ -98,7 +113,12 @@ async function guardarProgreso(progreso, estado) {
 
 }
 
-guardarProgreso(0, "sin iniciar");
+
+guardarProgreso(
+    0,
+    "sin iniciar"
+);
+
 
 let puntos = 0;
 
@@ -112,6 +132,7 @@ let figurasCorrectas = 0;
 
 const metaFiguras = 8;
 
+
 const formas = [
 
     "circulo",
@@ -121,103 +142,148 @@ const formas = [
 
 ];
 
+
 const nombres = {
 
-    circulo: "círculo",
+    circulo: "figuresAuditory.circle",
 
-    cuadrado: "cuadrado",
+    cuadrado: "figuresAuditory.square",
 
-    triangulo: "triángulo",
+    triangulo: "figuresAuditory.triangle",
 
-    rectangulo: "rectángulo"
+    rectangulo: "figuresAuditory.rectangle"
 
 };
+
 
 const pistas = {
 
     circulo: [
 
-        "No tiene esquinas.",
-        "Es completamente redondo.",
-        "Piensa en una pelota."
+        "figuresAuditory.hint.circle1",
+        "figuresAuditory.hint.circle2",
+        "figuresAuditory.hint.circle3"
 
     ],
 
     cuadrado: [
 
-        "Tiene cuatro lados.",
-        "Sus cuatro lados son iguales.",
-        "Piensa en una ventana."
+        "figuresAuditory.hint.square1",
+        "figuresAuditory.hint.square2",
+        "figuresAuditory.hint.square3"
 
     ],
 
     triangulo: [
 
-        "Tiene tres lados.",
-        "Tiene tres esquinas.",
-        "Piensa en una montaña."
+        "figuresAuditory.hint.triangle1",
+        "figuresAuditory.hint.triangle2",
+        "figuresAuditory.hint.triangle3"
 
     ],
 
     rectangulo: [
 
-        "Tiene cuatro lados.",
-        "Tiene dos lados largos y dos cortos.",
-        "Piensa en una puerta."
+        "figuresAuditory.hint.rectangle1",
+        "figuresAuditory.hint.rectangle2",
+        "figuresAuditory.hint.rectangle3"
 
     ]
 
 };
 
+
 function hablar(texto) {
 
     window.speechSynthesis.cancel();
 
+
     const voz =
         new SpeechSynthesisUtterance(texto);
 
-    voz.lang = "es-ES";
+
+    if (
+        getCurrentLanguage() === "en"
+    ) {
+
+        voz.lang = "en-US";
+
+    } else {
+
+        voz.lang = "es-ES";
+
+    }
+
 
     voz.rate = 0.8;
 
     voz.pitch = 1.1;
 
-    window.speechSynthesis.speak(voz);
+
+    window.speechSynthesis.speak(
+        voz
+    );
 
 }
+
 
 function nuevaRonda() {
 
     const numero =
         Math.floor(
-            Math.random() * formas.length
+            Math.random() *
+            formas.length
         );
+
 
     figuraCorrecta =
         formas[numero];
 
+
     juegoActivo = true;
 
-    figuras.forEach(function (figura) {
 
-        figura.classList.remove("seleccionada");
-        figura.classList.remove("correcta");
-        figura.classList.remove("incorrecta");
+    figuras.forEach(
+        function (figura) {
 
-    });
+            figura.classList.remove(
+                "seleccionada"
+            );
+
+            figura.classList.remove(
+                "correcta"
+            );
+
+            figura.classList.remove(
+                "incorrecta"
+            );
+
+        }
+    );
+
 
     mensaje.textContent = "";
-    mensaje.className = "mensaje";
 
-    if (!intentos[figuraCorrecta]) {
+    mensaje.className =
+        "mensaje";
+
+
+    if (
+        !intentos[figuraCorrecta]
+    ) {
 
         intentos[figuraCorrecta] = 0;
 
     }
 
+
     instruccion.textContent =
-        "Presiona ESCUCHAR para oír la figura.";
+        translate(
+            "figuresAuditory.listenInstruction"
+        );
+
 }
+
 
 botonEscuchar.addEventListener(
     "click",
@@ -229,180 +295,225 @@ botonEscuchar.addEventListener(
 
         }
 
+
         hablar(
-            "Busca el " +
-            nombres[figuraCorrecta]
+            translate(
+                "figuresAuditory.searchInstruction"
+            ) +
+            " " +
+            translate(
+                nombres[figuraCorrecta]
+            )
         );
 
 
         instruccion.textContent =
-            "Escucha y busca la figura correcta.";
+            translate(
+                "figuresAuditory.searchInstruction"
+            );
 
     }
 );
 
-figuras.forEach(function (figura) {
 
-    figura.addEventListener(
-        "click",
-        function () {
+figuras.forEach(
+    function (figura) {
 
-            if (!juegoActivo) {
+        figura.addEventListener(
+            "click",
+            function () {
 
-                return;
-
-            }
-
-
-            const formaSeleccionada =
-                this.dataset.forma;
-
-            if (
-                formaSeleccionada ===
-                figuraCorrecta
-            ) {
-
-                this.classList.add(
-                    "correcta"
-                );
-
-
-                puntos += 10;
-
-                puntosTexto.textContent =
-                    puntos;
-
-
-                figurasCorrectas++;
-
-                const progreso =
-                    Math.round(
-                        (figurasCorrectas / metaFiguras) * 100
-                    );
-
-
-                if (
-                    figurasCorrectas <
-                    metaFiguras
-                ) {
-
-                    guardarProgreso(
-                        progreso,
-                        "en proceso"
-                    );
-
-                }
-
-
-                mensaje.textContent =
-                    "🎉 ¡Muy bien!";
-
-
-                mensaje.className =
-                    "mensaje correcto";
-
-
-                hablar(
-                    "¡Muy bien!"
-                );
-
-
-                juegoActivo = false;
-
-                if (
-                    figurasCorrectas >=
-                    metaFiguras
-                ) {
-
-                    mensaje.textContent =
-                        "🎉 ¡Excelente! Completaste el juego";
-
-
-                    hablar(
-                        "¡Excelente! Completaste el juego"
-                    );
-
-                    setTimeout(async function () {
-
-                        const resultado =
-                            await guardarProgreso(
-                                100,
-                                "completado"
-                            );
-
-
-                        if (resultado.success) {
-
-                            console.log(
-                                "Figuras Auditivo completado."
-                            );
-
-                        }
-
-
-                        mostrarAlertaFinal();
-
-                    }, 700);
-
+                if (!juegoActivo) {
 
                     return;
 
                 }
 
-                setTimeout(function () {
 
-                    nuevaRonda();
-
-                }, 1800);
+                const formaSeleccionada =
+                    this.dataset.forma;
 
 
-            }
+                if (
+                    formaSeleccionada ===
+                    figuraCorrecta
+                ) {
 
-            else {
-
-                this.classList.add(
-                    "incorrecta"
-                );
-
-
-                intentos[figuraCorrecta]++;
+                    this.classList.add(
+                        "correcta"
+                    );
 
 
-                mensaje.textContent =
-                    "😊 ¡Casi! Escucha otra vez.";
+                    puntos += 10;
 
 
-                mensaje.className =
-                    "mensaje error";
+                    puntosTexto.textContent =
+                        puntos;
 
 
-                mostrarPista();
+                    figurasCorrectas++;
 
 
-                hablar(
-                    "Casi. Escucha otra vez."
-                );
+                    const progreso =
+                        Math.round(
+                            (
+                                figurasCorrectas /
+                                metaFiguras
+                            ) * 100
+                        );
 
 
-                setTimeout(function () {
+                    if (
+                        figurasCorrectas <
+                        metaFiguras
+                    ) {
 
-                    figura.classList.remove(
+                        guardarProgreso(
+                            progreso,
+                            "en proceso"
+                        );
+
+                    }
+
+
+                    mensaje.textContent =
+                        translate(
+                            "figuresAuditory.correct"
+                        );
+
+
+                    mensaje.className =
+                        "mensaje correcto";
+
+
+                    hablar(
+                        translate(
+                            "figuresAuditory.correctVoice"
+                        )
+                    );
+
+
+                    juegoActivo = false;
+
+
+                    if (
+                        figurasCorrectas >=
+                        metaFiguras
+                    ) {
+
+                        mensaje.textContent =
+                            translate(
+                                "figuresAuditory.finishTitle"
+                            );
+
+
+                        hablar(
+                            translate(
+                                "figuresAuditory.finishTitle"
+                            )
+                        );
+
+
+                        setTimeout(
+                            async function () {
+
+                                const resultado =
+                                    await guardarProgreso(
+                                        100,
+                                        "completado"
+                                    );
+
+
+                                if (
+                                    resultado.success
+                                ) {
+
+                                    console.log(
+                                        "Figuras Auditivo completado."
+                                    );
+
+                                }
+
+
+                                mostrarAlertaFinal();
+
+                            },
+                            700
+                        );
+
+
+                        return;
+
+                    }
+
+
+                    setTimeout(
+                        function () {
+
+                            nuevaRonda();
+
+                        },
+                        1800
+                    );
+
+
+                }
+
+                else {
+
+                    this.classList.add(
                         "incorrecta"
                     );
 
-                }, 700);
+
+                    intentos[figuraCorrecta]++;
+
+
+                    mensaje.textContent =
+                        translate(
+                            "figuresAuditory.incorrect"
+                        );
+
+
+                    mensaje.className =
+                        "mensaje error";
+
+
+                    mostrarPista();
+
+
+                    hablar(
+                        translate(
+                            "figuresAuditory.incorrectVoice"
+                        )
+                    );
+
+
+                    setTimeout(
+                        function () {
+
+                            figura.classList.remove(
+                                "incorrecta"
+                            );
+
+                        },
+                        700
+                    );
+
+                }
 
             }
+        );
 
-        }
-    );
+    }
+);
 
-});
 
 function mostrarPista() {
 
     const numero =
         intentos[figuraCorrecta] - 1;
+
 
     let indice = numero;
 
@@ -419,12 +530,17 @@ function mostrarPista() {
 
 
     textoPista.textContent =
-        pistas[figuraCorrecta][indice];
+        translate(
+            pistas[figuraCorrecta][indice]
+        );
 
 
-    pista.classList.add("visible");
+    pista.classList.add(
+        "visible"
+    );
 
 }
+
 
 cerrarPista.addEventListener(
     "click",
@@ -436,13 +552,13 @@ cerrarPista.addEventListener(
 
 
         hablar(
-            "Escucha nuevamente."
+            translate(
+                "figuresAuditory.hintAgain"
+            )
         );
 
     }
 );
-
-
 
 
 nuevaRonda();

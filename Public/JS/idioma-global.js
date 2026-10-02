@@ -307,6 +307,106 @@
             "childData.saved": "Datos guardados correctamente",
             "childData.error": "Ocurrió un error al guardar los datos.",
 
+            // Figures auditory game
+            "figuresAuditory.pageTitle":
+                "Clasifica las figuras - Auditivo",
+
+            "figuresAuditory.title":
+                "🔊 ESCUCHA Y CLASIFICA",
+
+            "figuresAuditory.description":
+                "Escucha atentamente y selecciona la figura que escuchaste.",
+
+            "figuresAuditory.listen":
+                "🔊 ESCUCHAR",
+
+            "figuresAuditory.initialInstruction":
+                "Presiona el botón para escuchar.",
+
+            "figuresAuditory.listenInstruction":
+                "Presiona ESCUCHAR para oír la figura.",
+
+            "figuresAuditory.searchInstruction":
+                "Escucha y busca la figura correcta.",
+
+            "figuresAuditory.circle":
+                "círculo",
+
+            "figuresAuditory.square":
+                "cuadrado",
+
+            "figuresAuditory.triangle":
+                "triángulo",
+
+            "figuresAuditory.rectangle":
+                "rectángulo",
+
+            "figuresAuditory.correct":
+                "🎉 ¡Muy bien!",
+
+            "figuresAuditory.incorrect":
+                "😊 ¡Casi! Escucha otra vez.",
+
+            "figuresAuditory.correctVoice":
+                "¡Muy bien!",
+
+            "figuresAuditory.incorrectVoice":
+                "Casi. Escucha otra vez.",
+
+            "figuresAuditory.hintAgain":
+                "Escucha nuevamente.",
+
+            "figuresAuditory.closeHint":
+                "¡INTÉNTALO DE NUEVO!",
+
+            "figuresAuditory.hint.circle1":
+                "No tiene esquinas.",
+
+            "figuresAuditory.hint.circle2":
+                "Es completamente redondo.",
+
+            "figuresAuditory.hint.circle3":
+                "Piensa en una pelota.",
+
+            "figuresAuditory.hint.square1":
+                "Tiene cuatro lados.",
+
+            "figuresAuditory.hint.square2":
+                "Sus cuatro lados son iguales.",
+
+            "figuresAuditory.hint.square3":
+                "Piensa en una ventana.",
+
+            "figuresAuditory.hint.triangle1":
+                "Tiene tres lados.",
+
+            "figuresAuditory.hint.triangle2":
+                "Tiene tres esquinas.",
+
+            "figuresAuditory.hint.triangle3":
+                "Piensa en una montaña.",
+
+            "figuresAuditory.hint.rectangle1":
+                "Tiene cuatro lados.",
+
+            "figuresAuditory.hint.rectangle2":
+                "Tiene dos lados largos y dos cortos.",
+
+            "figuresAuditory.hint.rectangle3":
+                "Piensa en una puerta.",
+
+            "figuresAuditory.finishTitle":
+                "¡Excelente! ¡Ahora tu misión!",
+
+            "figuresAuditory.finishDescription":
+                "Encuentra 2 objetos de cada forma que aprendiste hoy",
+
+            "figuresAuditory.finishLearned":
+                "¡Aprendiste las formas!",
+
+            "figuresAuditory.continue":
+                "Continuar",
+
 
     };
 
@@ -619,6 +719,106 @@
             "childData.continue": "Continue →",
             "childData.saved": "Data saved successfully",
             "childData.error": "An error occurred while saving the data.",
+
+            // Figures auditory game
+            "figuresAuditory.pageTitle":
+                "Sort the Shapes - Auditory",
+
+            "figuresAuditory.title":
+                "🔊 LISTEN AND SORT",
+
+            "figuresAuditory.description":
+                "Listen carefully and select the shape you heard.",
+
+            "figuresAuditory.listen":
+                "🔊 LISTEN",
+
+            "figuresAuditory.initialInstruction":
+                "Press the button to listen.",
+
+            "figuresAuditory.listenInstruction":
+                "Press LISTEN to hear the shape.",
+
+            "figuresAuditory.searchInstruction":
+                "Listen and find the correct shape.",
+
+            "figuresAuditory.circle":
+                "circle",
+
+            "figuresAuditory.square":
+                "square",
+
+            "figuresAuditory.triangle":
+                "triangle",
+
+            "figuresAuditory.rectangle":
+                "rectangle",
+
+            "figuresAuditory.correct":
+                "🎉 Great job!",
+
+            "figuresAuditory.incorrect":
+                "😊 Almost! Listen again.",
+
+            "figuresAuditory.correctVoice":
+                "Great job!",
+
+            "figuresAuditory.incorrectVoice":
+                "Almost. Listen again.",
+
+            "figuresAuditory.hintAgain":
+                "Listen again.",
+
+            "figuresAuditory.closeHint":
+                "TRY AGAIN!",
+
+            "figuresAuditory.hint.circle1":
+                "It has no corners.",
+
+            "figuresAuditory.hint.circle2":
+                "It is completely round.",
+
+            "figuresAuditory.hint.circle3":
+                "Think of a ball.",
+
+            "figuresAuditory.hint.square1":
+                "It has four sides.",
+
+            "figuresAuditory.hint.square2":
+                "Its four sides are equal.",
+
+            "figuresAuditory.hint.square3":
+                "Think of a window.",
+
+            "figuresAuditory.hint.triangle1":
+                "It has three sides.",
+
+            "figuresAuditory.hint.triangle2":
+                "It has three corners.",
+
+            "figuresAuditory.hint.triangle3":
+                "Think of a mountain.",
+
+            "figuresAuditory.hint.rectangle1":
+                "It has four sides.",
+
+            "figuresAuditory.hint.rectangle2":
+                "It has two long sides and two short sides.",
+
+            "figuresAuditory.hint.rectangle3":
+                "Think of a door.",
+
+            "figuresAuditory.finishTitle":
+                "Excellent! Now your mission!",
+
+            "figuresAuditory.finishDescription":
+                "Find 2 objects of each shape you learned today",
+
+            "figuresAuditory.finishLearned":
+                "You learned the shapes!",
+
+            "figuresAuditory.continue":
+                "Continue"
     };
 
 

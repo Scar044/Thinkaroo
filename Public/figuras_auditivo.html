@@ -2,17 +2,29 @@
 <html lang="es">
 
 <head>
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Clasifica las figuras - Auditivo</title>
+    <title data-i18n="figuresAuditory.pageTitle">
+        Clasifica las figuras - Auditivo
+    </title>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 
-    <link rel="stylesheet" href="CSS/Figuras_auditivo.css">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&display=swap"
+        rel="stylesheet"
+    >
+
+    <link
+        rel="stylesheet"
+        href="CSS/Figuras_auditivo.css"
+    >
+
 </head>
+
 
 <body>
 
@@ -20,61 +32,98 @@
 
         <header>
 
-            <h1>🔊 ESCUCHA Y CLASIFICA</h1>
+            <h1 data-i18n="figuresAuditory.title">
+                🔊 ESCUCHA Y CLASIFICA
+            </h1>
 
-            <p>
+            <p data-i18n="figuresAuditory.description">
                 Escucha atentamente y selecciona la figura que escuchaste.
             </p>
 
             <div class="puntuacion">
-                <span id="puntos">0</span>
+
+                <span id="puntos">
+                    0
+                </span>
+
             </div>
 
         </header>
 
+
         <section class="escuchar">
 
-            <button id="botonEscuchar">
+            <button
+                id="botonEscuchar"
+                data-i18n="figuresAuditory.listen"
+            >
                 🔊 ESCUCHAR
             </button>
 
-            <p id="instruccion">
+            <p
+                id="instruccion"
+                data-i18n="figuresAuditory.initialInstruction"
+            >
                 Presiona el botón para escuchar.
             </p>
 
         </section>
 
-        <section class="figuras" id="figuras">
+
+        <section
+            class="figuras"
+            id="figuras"
+        >
 
             <button
                 class="figura circulo"
                 data-forma="circulo"
-                aria-label="Círculo">
+                data-i18n-aria-label="figuresAuditory.circle"
+                aria-label="Círculo"
+            >
             </button>
+
 
             <button
                 class="figura cuadrado"
                 data-forma="cuadrado"
-                aria-label="Cuadrado">
+                data-i18n-aria-label="figuresAuditory.square"
+                aria-label="Cuadrado"
+            >
             </button>
+
 
             <button
                 class="figura triangulo"
                 data-forma="triangulo"
-                aria-label="Triángulo">
+                data-i18n-aria-label="figuresAuditory.triangle"
+                aria-label="Triángulo"
+            >
             </button>
+
 
             <button
                 class="figura rectangulo"
                 data-forma="rectangulo"
-                aria-label="Rectángulo">
+                data-i18n-aria-label="figuresAuditory.rectangle"
+                aria-label="Rectángulo"
+            >
             </button>
 
         </section>
 
-        <div id="mensaje" class="mensaje"></div>
 
-        <div id="pista" class="pista">
+        <div
+            id="mensaje"
+            class="mensaje"
+        >
+        </div>
+
+
+        <div
+            id="pista"
+            class="pista"
+        >
 
             <div id="iconoPista">
                 💡
@@ -82,36 +131,60 @@
 
             <p id="textoPista"></p>
 
-            <button id="cerrarPista">
+            <button
+                id="cerrarPista"
+                data-i18n="figuresAuditory.closeHint"
+            >
                 ¡INTÉNTALO DE NUEVO!
             </button>
 
         </div>
 
-
     </main>
 
-<div class="finish" id="finish">
 
-    <div class="finish-card">
+    <div
+        class="finish"
+        id="finish"
+    >
 
-        <div class="trophy">🏆</div>
+        <div class="finish-card">
 
-        <h2>¡Excelente ahora tu misión!</h2>
+            <div class="trophy">
+                🏆
+            </div>
 
-        <p>
-            Encuentra 2 objetos de cada forma que aprendistes hoy
-            <br>
-            ¡Aprendiste las formas!
-        </p>
+            <h2 data-i18n="figuresAuditory.finishTitle">
+                ¡Excelente! ¡Ahora tu misión!
+            </h2>
 
-        <button id="botonFinal">
-            Continuar
-        </button>
+            <p>
+
+                <span data-i18n="figuresAuditory.finishDescription">
+                    Encuentra 2 objetos de cada forma que aprendiste hoy
+                </span>
+
+                <br>
+
+                <span data-i18n="figuresAuditory.finishLearned">
+                    ¡Aprendiste las formas!
+                </span>
+
+            </p>
+
+            <button
+                id="botonFinal"
+                data-i18n="figuresAuditory.continue"
+            >
+                Continuar
+            </button>
+
+        </div>
 
     </div>
 
-</div>
+
+    <script src="JS/idioma-global.js"></script>
     <script src="JS/figuras_auditivo.js"></script>
 
 </body>
