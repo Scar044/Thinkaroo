@@ -62,7 +62,6 @@ h2 {
     margin-bottom: 30px;
 }
 
-
 .objeto {
     width: 90px;
     height: 90px;
@@ -80,7 +79,6 @@ h2 {
 .objeto:hover {
     transform: scale(1.08);
 }
-
 
 .objeto.seleccionado {
     transform: scale(1.12);
@@ -103,7 +101,6 @@ h2 {
 .objeto.verde {
     background: #6bd66b;
 }
-
 
 .cajas {
     display: flex;
@@ -231,13 +228,10 @@ h2 {
         font-size: 26px;
     }
 
-
     .caja span {
         font-size: 14px;
     }
-
 }
-
 
 .message {
     position: fixed;
@@ -269,7 +263,6 @@ h2 {
     border: 5px solid #54e346;
 }
 
-
 .message.error {
     color: #e53935;
     border: 5px solid #ff8a80;
@@ -288,12 +281,10 @@ h2 {
     transition: opacity 0.4s ease;
 }
 
-
 .finish.show {
     opacity: 1;
     visibility: visible;
 }
-
 
 .finish-card {
     text-align: center;
@@ -310,7 +301,6 @@ h2 {
         0 15px 40px rgba(0, 0, 0, 0.2);
     border: 6px solid #ffd740;
 }
-
 
 .trophy {
     font-size: 90px;
@@ -379,7 +369,6 @@ h2 {
         transform 0.2s ease,
         background 0.2s ease;
 }
-
 
 #botonFinal:hover {
     transform: scale(1.05);
