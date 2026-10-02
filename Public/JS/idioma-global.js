@@ -764,6 +764,27 @@
             "levels.menuAlt": "Abrir menú",
             "levels.chestOpened": "🎁 ¡Has abierto un cofre!",
 
+            "learningTypes.pageTitle": "Tipos de aprendizaje",
+
+            "learningTypes.visual.title": "VISUAL",
+            "learningTypes.visual.alt": "Visual",
+            "learningTypes.visual.description1": "El aprendizaje visual es un estilo en el que los niños comprenden y retienen mejor la información mediante imágenes, colores, gráficos, dibujos y representaciones visuales. Los niños con este estilo suelen recordar con mayor facilidad aquello que observan, por lo que disfrutan de actividades que involucren elementos llamativos y organizados.",
+            "learningTypes.visual.description2": "En nuestra plataforma, los niños con un estilo de aprendizaje visual encontrarán juegos y actividades diseñados para estimular su pensamiento lógico utilizando rompecabezas, secuencias de imágenes, asociaciones de figuras, patrones, colores y desafíos que requieren observar cuidadosamente para encontrar la respuesta correcta.",
+
+            "learningTypes.auditory.title": "AUDITIVO",
+            "learningTypes.auditory.alt": "Auditivo",
+            "learningTypes.auditory.description1": "El aprendizaje auditivo se caracteriza porque los niños comprenden y recuerdan mejor la información cuando la escuchan. Las explicaciones habladas, los sonidos, las canciones, los diálogos y las narraciones les ayudan a procesar los conocimientos de una forma más natural y efectiva.",
+            "learningTypes.auditory.description2": "En nuestra plataforma, los niños con este estilo de aprendizaje encontrarán actividades que incluyen instrucciones narradas, reconocimiento de sonidos, secuencias auditivas, juegos de memoria sonora y ejercicios en los que deberán escuchar atentamente para resolver diferentes retos lógicos. Estas dinámicas favorecen la atención y la comprensión mientras convierten el aprendizaje en una experiencia entretenida.",
+
+            "learningTypes.kinesthetic.title": "KINESTÉSICO",
+            "learningTypes.kinesthetic.alt": "Kinestésico",
+            "learningTypes.kinesthetic.description1": "El aprendizaje kinestésico se basa en la experiencia, el movimiento y la interacción con el entorno. Los niños que poseen este estilo de aprendizaje comprenden mejor los conceptos cuando pueden manipular objetos, realizar acciones y participar activamente en cada actividad, ya que aprenden haciendo y experimentando.",
+            "learningTypes.kinesthetic.description2": "En nuestra plataforma, los niños encontrarán actividades dinámicas que requieren mover, arrastrar, ordenar y relacionar elementos para resolver distintos desafíos. También se propondrán misiones fuera de la pantalla que les permitirán aplicar lo aprendido en situaciones de la vida cotidiana, fortaleciendo el aprendizaje mediante la práctica.",
+
+            "learningTypes.start": "Comenzar",
+            "learningTypes.previous": "Anterior",
+            "learningTypes.next": "Siguiente",
+
     };
 
 
@@ -1534,6 +1555,26 @@
             "levels.kangarooAlt": "Kangaroo",
             "levels.menuAlt": "Open menu",
             "levels.chestOpened": "🎁 You opened a treasure chest!",
+
+            "learningTypes.pageTitle": "Learning Styles",
+            "learningTypes.visual.title": "VISUAL",
+            "learningTypes.visual.alt": "Visual",
+            "learningTypes.visual.description1": "Visual learning is a style in which children understand and retain information better through images, colors, graphics, drawings, and visual representations. Children with this learning style tend to remember what they see more easily, so they enjoy activities that involve engaging and organized elements.",
+            "learningTypes.visual.description2": "On our platform, children with a visual learning style will find games and activities designed to stimulate logical thinking through puzzles, image sequences, shape associations, patterns, colors, and challenges that require careful observation to find the correct answer.",
+
+            "learningTypes.auditory.title": "AUDITORY",
+            "learningTypes.auditory.alt": "Auditory",
+            "learningTypes.auditory.description1": "Auditory learning is characterized by children understanding and remembering information better when they hear it. Spoken explanations, sounds, songs, dialogues, and narrations help them process knowledge in a more natural and effective way.",
+            "learningTypes.auditory.description2": "On our platform, children with this learning style will find activities that include narrated instructions, sound recognition, auditory sequences, sound memory games, and exercises in which they must listen carefully to solve different logical challenges. These activities encourage attention and understanding while turning learning into an entertaining experience.",
+
+            "learningTypes.kinesthetic.title": "KINESTHETIC",
+            "learningTypes.kinesthetic.alt": "Kinesthetic",
+            "learningTypes.kinesthetic.description1": "Kinesthetic learning is based on experience, movement, and interaction with the environment. Children with this learning style understand concepts better when they can manipulate objects, perform actions, and actively participate in each activity, as they learn by doing and experimenting.",
+            "learningTypes.kinesthetic.description2": "On our platform, children will find dynamic activities that require them to move, drag, sort, and match elements to solve different challenges. They will also be given missions outside the screen that allow them to apply what they have learned in everyday situations, strengthening learning through practice.",
+
+            "learningTypes.start": "Start",
+            "learningTypes.previous": "Previous",
+            "learningTypes.next": "Next",
     };
 
 

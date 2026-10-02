@@ -1,77 +1,165 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
+
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
-    <title>Tipos de aprendizaje</title>
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <link
+        href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css"
+        rel="stylesheet"
+    >
+
+    <title data-i18n="learningTypes.pageTitle">
+        Tipos de aprendizaje
+    </title>
+
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 
-    <link rel="stylesheet" href="CSS/selecciondetipos.css">
+    <link
+        rel="preconnect"
+        href="https://fonts.gstatic.com"
+        crossorigin
+    >
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&display=swap"
+        rel="stylesheet"
+    >
+
+    <link
+        rel="stylesheet"
+        href="CSS/selecciondetipos.css"
+    >
+
 </head>
+
+
 <body>
+
 
     <div class="carrusel container">
 
         <div class="slides">
 
+
+            <!-- =========================
+                 VISUAL
+            ========================== -->
+
             <div class="slide active">
 
-                <img src="img/visual.png" alt="Visual">
+                <img
+                    src="img/visual.png"
+                    alt="Visual"
+                    data-i18n-alt="learningTypes.visual.alt"
+                >
 
-                <h2>VISUAL</h2>
 
-                <p>
-        El aprendizaje visual es un estilo en el que los niños comprenden y retienen mejor 
-        la información mediante imágenes, colores, gráficos, dibujos y representaciones visuales. 
-        Los niños con este estilo suelen recordar con mayor facilidad aquello que observan, 
-        por lo que disfrutan de actividades que involucren elementos llamativos y organizados.
-    </p>
-    <p>
-        En nuestra plataforma, los niños con un estilo de aprendizaje visual encontrarán juegos 
-        y actividades diseñados para estimular su pensamiento lógico utilizando rompecabezas, 
-        secuencias de imágenes, asociaciones de figuras, patrones, colores y desafíos que requieren 
-        observar cuidadosamente para encontrar la respuesta correcta.
-    </p>     
-    <a href="niveles.html" class="btn">
-                    Comenzar
-                </a>           
+                <h2 data-i18n="learningTypes.visual.title">
+                    VISUAL
+                </h2>
 
-            </div>
 
-            <div class="slide">
+                <p data-i18n="learningTypes.visual.description1">
+                    El aprendizaje visual es un estilo en el que los niños comprenden y retienen mejor la información mediante imágenes, colores, gráficos, dibujos y representaciones visuales. Los niños con este estilo suelen recordar con mayor facilidad aquello que observan, por lo que disfrutan de actividades que involucren elementos llamativos y organizados.
+                </p>
 
-                <img src="img/auditivo.png" alt="Auditivo">
 
-                <h2>AUDITIVO</h2>
-                <p>
-            El aprendizaje auditivo se caracteriza porque los niños comprenden y recuerdan mejor la información cuando la escuchan. Las explicaciones habladas, los sonidos, las canciones, los diálogos y las narraciones les ayudan a procesar los conocimientos de una forma más natural y efectiva.
-            </p>
+                <p data-i18n="learningTypes.visual.description2">
+                    En nuestra plataforma, los niños con un estilo de aprendizaje visual encontrarán juegos y actividades diseñados para estimular su pensamiento lógico utilizando rompecabezas, secuencias de imágenes, asociaciones de figuras, patrones, colores y desafíos que requieren observar cuidadosamente para encontrar la respuesta correcta.
+                </p>
 
-            <p>
-                En nuestra plataforma, los niños con este estilo de aprendizaje encontrarán actividades que incluyen instrucciones narradas, reconocimiento de sonidos, secuencias auditivas, juegos de memoria sonora y ejercicios en los que deberán escuchar atentamente para resolver diferentes retos lógicos. Estas dinámicas favorecen la atención y la comprensión mientras convierten el aprendizaje en una experiencia entretenida.
-            </p>               
 
-                <a href="niveles_auditivo.html" class="btn">
+                <a
+                    href="niveles.html"
+                    class="btn"
+                    data-i18n="learningTypes.start"
+                >
                     Comenzar
                 </a>
 
             </div>
 
+
+            <!-- =========================
+                 AUDITIVO
+            ========================== -->
+
             <div class="slide">
 
-                <img src="img/kinestesico.png" alt="Kinestésico">
+                <img
+                    src="img/auditivo.png"
+                    alt="Auditivo"
+                    data-i18n-alt="learningTypes.auditory.alt"
+                >
 
-                <h2>KINESTÉSICO</h2>
-                <p>El aprendizaje kinestésico se basa en la experiencia, el movimiento y la interacción con el entorno. Los niños que poseen este estilo de aprendizaje comprenden mejor los conceptos cuando pueden manipular objetos, realizar acciones y participar activamente en cada actividad, ya que aprenden haciendo y experimentando.
+
+                <h2 data-i18n="learningTypes.auditory.title">
+                    AUDITIVO
+                </h2>
+
+
+                <p data-i18n="learningTypes.auditory.description1">
+                    El aprendizaje auditivo se caracteriza porque los niños comprenden y recuerdan mejor la información cuando la escuchan. Las explicaciones habladas, los sonidos, las canciones, los diálogos y las narraciones les ayudan a procesar los conocimientos de una forma más natural y efectiva.
                 </p>
-                <p>
+
+
+                <p data-i18n="learningTypes.auditory.description2">
+                    En nuestra plataforma, los niños con este estilo de aprendizaje encontrarán actividades que incluyen instrucciones narradas, reconocimiento de sonidos, secuencias auditivas, juegos de memoria sonora y ejercicios en los que deberán escuchar atentamente para resolver diferentes retos lógicos. Estas dinámicas favorecen la atención y la comprensión mientras convierten el aprendizaje en una experiencia entretenida.
+                </p>
+
+
+                <a
+                    href="niveles_auditivo.html"
+                    class="btn"
+                    data-i18n="learningTypes.start"
+                >
+                    Comenzar
+                </a>
+
+            </div>
+
+
+            <!-- =========================
+                 KINESTÉSICO
+            ========================== -->
+
+            <div class="slide">
+
+                <img
+                    src="img/kinestesico.png"
+                    alt="Kinestésico"
+                    data-i18n-alt="learningTypes.kinesthetic.alt"
+                >
+
+
+                <h2 data-i18n="learningTypes.kinesthetic.title">
+                    KINESTÉSICO
+                </h2>
+
+
+                <p data-i18n="learningTypes.kinesthetic.description1">
+                    El aprendizaje kinestésico se basa en la experiencia, el movimiento y la interacción con el entorno. Los niños que poseen este estilo de aprendizaje comprenden mejor los conceptos cuando pueden manipular objetos, realizar acciones y participar activamente en cada actividad, ya que aprenden haciendo y experimentando.
+                </p>
+
+
+                <p data-i18n="learningTypes.kinesthetic.description2">
                     En nuestra plataforma, los niños encontrarán actividades dinámicas que requieren mover, arrastrar, ordenar y relacionar elementos para resolver distintos desafíos. También se propondrán misiones fuera de la pantalla que les permitirán aplicar lo aprendido en situaciones de la vida cotidiana, fortaleciendo el aprendizaje mediante la práctica.
                 </p>
-                <a href="niveles_kinestesico.html" class="btn">
+
+
+                <a
+                    href="niveles_kinestesico.html"
+                    class="btn"
+                    data-i18n="learningTypes.start"
+                >
                     Comenzar
                 </a>
 
@@ -79,12 +167,32 @@
 
         </div>
 
-        <button class="anterior">&#10094;</button>
-        <button class="siguiente">&#10095;</button>
+
+        <button
+            class="anterior"
+            aria-label="Anterior"
+            data-i18n-aria-label="learningTypes.previous"
+        >
+            &#10094;
+        </button>
+
+
+        <button
+            class="siguiente"
+            aria-label="Siguiente"
+            data-i18n-aria-label="learningTypes.next"
+        >
+            &#10095;
+        </button>
+
 
     </div>
+
+
+    <script src="JS/idioma-global.js"></script>
 
     <script src="JS/selecciondetipos.js"></script>
 
 </body>
+
 </html>
