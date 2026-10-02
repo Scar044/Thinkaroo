@@ -267,7 +267,17 @@
                 "¡Aprendiste los colores!",
 
             "colorsVisual.nextLevel":
-                "➡️ Siguiente nivel"
+                "➡️ Siguiente nivel",
+
+            "colorsVisual.selectBox": "Ahora toca la caja {color} 👆",
+            "colorsVisual.findAnother": "¡Busca otro objeto! 😊",
+            "colorsVisual.selectFirst": "👆 Primero selecciona un objeto.",
+            "colorsVisual.correct": "🎉 ¡Muy bien!",
+            "colorsVisual.wrong": "😊 Ese no es su color. ¡Inténtalo otra vez!",
+            "colorsVisual.roundComplete": "🎉 ¡Completaste la ronda!",
+            "colorsVisual.excellent": "¡Excelente trabajo! ⭐",
+            "colorsVisual.gameComplete": "🏆 ¡Juego terminado!",
+            "colorsVisual.finalScore": "Conseguiste {points} puntos ⭐",
 
 
     };
@@ -541,7 +551,17 @@
                 "You learned the colors!",
 
             "colorsVisual.nextLevel":
-                "➡️ Next level"
+                "➡️ Next level",
+
+            "colorsVisual.selectBox": "Now touch the {color} box 👆",
+            "colorsVisual.findAnother": "Find another object! 😊",
+            "colorsVisual.selectFirst": "👆 First select an object.",
+            "colorsVisual.correct": "🎉 Very good!",
+            "colorsVisual.wrong": "😊 That's not its color. Try again!",
+            "colorsVisual.roundComplete": "🎉 You completed the round!",
+            "colorsVisual.excellent": "Excellent work! ⭐",
+            "colorsVisual.gameComplete": "🏆 Game over!",
+            "colorsVisual.finalScore": "You got {points} points ⭐",
     };
 
 

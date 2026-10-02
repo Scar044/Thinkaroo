@@ -1,3 +1,7 @@
+// =====================================
+// GUARDAR PROGRESO
+// =====================================
+
 function guardarProgreso(progreso, estado) {
 
     fetch("../ConfigPHP/guardar_progreso.php", {
@@ -11,14 +15,23 @@ function guardarProgreso(progreso, estado) {
             estado: estado
         })
     })
+
     .then(response => response.json())
+
     .then(data => {
         console.log("Progreso guardado:", data);
     })
+
     .catch(error => {
         console.error("Error al guardar progreso:", error);
     });
+
 }
+
+
+// =====================================
+// VARIABLES DEL JUEGO
+// =====================================
 
 let puntos = 0;
 let ronda = 1;
@@ -26,6 +39,11 @@ let objetoSeleccionado = null;
 let objetosCorrectos = 0;
 
 const TOTAL_RONDAS = 5;
+
+
+// =====================================
+// OBJETOS DEL JUEGO
+// =====================================
 
 const objetos = [
 
@@ -55,6 +73,11 @@ const objetos = [
 
 ];
 
+
+// =====================================
+// CREAR RONDA
+// =====================================
+
 function crearRonda() {
 
     objetoSeleccionado = null;
@@ -74,6 +97,7 @@ function crearRonda() {
     objetosMezclados.sort(
         () => Math.random() - 0.5
     );
+
 
     objetosMezclados.forEach(function(item, indice) {
 
@@ -113,6 +137,11 @@ function crearRonda() {
 
 }
 
+
+// =====================================
+// SELECCIONAR OBJETO
+// =====================================
+
 function seleccionarObjeto(boton) {
 
     document
@@ -125,6 +154,7 @@ function seleccionarObjeto(boton) {
 
         });
 
+
     boton.classList.add("seleccionado");
 
     objetoSeleccionado = boton;
@@ -135,14 +165,26 @@ function seleccionarObjeto(boton) {
 
 
     document.getElementById("pregunta").textContent =
-        "Ahora toca la caja " +
-        color.toUpperCase() +
-        " 👆";
+
+        translate(
+            "colorsVisual.selectBox",
+            "Ahora toca la caja {color} 👆"
+        )
+
+        .replace(
+            "{color}",
+            color.toUpperCase()
+        );
 
 
     document.getElementById("mensaje").textContent = "";
 
 }
+
+
+// =====================================
+// ACTIVAR CAJAS
+// =====================================
 
 function activarCajas() {
 
@@ -162,13 +204,24 @@ function activarCajas() {
 
 }
 
+
+// =====================================
+// COMPROBAR CAJA
+// =====================================
+
 function comprobarCaja(caja) {
 
     if (objetoSeleccionado === null) {
 
         mostrarMensaje(
-            "👆 Primero selecciona un objeto.",
+
+            translate(
+                "colorsVisual.selectFirst",
+                "👆 Primero selecciona un objeto."
+            ),
+
             "orange"
+
         );
 
         return;
@@ -182,6 +235,7 @@ function comprobarCaja(caja) {
     const colorCaja =
         caja.dataset.color;
 
+
     if (colorObjeto === colorCaja) {
 
         puntos += 10;
@@ -194,9 +248,16 @@ function comprobarCaja(caja) {
 
 
         mostrarMensaje(
-            "🎉 ¡Muy bien!",
+
+            translate(
+                "colorsVisual.correct",
+                "🎉 ¡Muy bien!"
+            ),
+
             "green"
+
         );
+
 
         objetoSeleccionado.style.visibility =
             "hidden";
@@ -211,7 +272,12 @@ function comprobarCaja(caja) {
 
 
         document.getElementById("pregunta").textContent =
-            "¡Busca otro objeto! 😊";
+
+            translate(
+                "colorsVisual.findAnother",
+                "¡Busca otro objeto! 😊"
+            );
+
 
         if (objetosCorrectos === objetos.length) {
 
@@ -224,13 +290,24 @@ function comprobarCaja(caja) {
     else {
 
         mostrarMensaje(
-            "😊 Ese no es su color. ¡Inténtalo otra vez!",
+
+            translate(
+                "colorsVisual.wrong",
+                "😊 Ese no es su color. ¡Inténtalo otra vez!"
+            ),
+
             "orange"
+
         );
 
     }
 
 }
+
+
+// =====================================
+// MOSTRAR MENSAJE
+// =====================================
 
 function mostrarMensaje(texto, color) {
 
@@ -244,19 +321,37 @@ function mostrarMensaje(texto, color) {
 
 }
 
+
+// =====================================
+// TERMINAR RONDA
+// =====================================
+
 function terminarRonda() {
 
     document.getElementById("pregunta").textContent =
-        "🎉 ¡Completaste la ronda!";
+
+        translate(
+            "colorsVisual.roundComplete",
+            "🎉 ¡Completaste la ronda!"
+        );
 
 
     mostrarMensaje(
-        "¡Excelente trabajo! ⭐",
+
+        translate(
+            "colorsVisual.excellent",
+            "¡Excelente trabajo! ⭐"
+        ),
+
         "green"
+
     );
 
+
     const progreso =
-        Math.round((ronda / TOTAL_RONDAS) * 100);
+        Math.round(
+            (ronda / TOTAL_RONDAS) * 100
+        );
 
 
     if (ronda < TOTAL_RONDAS) {
@@ -280,6 +375,11 @@ function terminarRonda() {
 
 }
 
+
+// =====================================
+// SIGUIENTE RONDA
+// =====================================
+
 function siguienteRonda() {
 
     if (ronda < TOTAL_RONDAS) {
@@ -297,20 +397,51 @@ function siguienteRonda() {
 
 }
 
+
+// =====================================
+// BOTÓN SIGUIENTE
+// =====================================
+
+document.getElementById("siguiente").addEventListener(
+    "click",
+    siguienteRonda
+);
+
+
+// =====================================
+// TERMINAR JUEGO
+// =====================================
+
 function terminarJuego() {
 
     document.getElementById("pregunta").textContent =
-        "🏆 ¡Juego terminado!";
+
+        translate(
+            "colorsVisual.gameComplete",
+            "🏆 ¡Juego terminado!"
+        );
 
 
     mostrarMensaje(
-        "Conseguiste " + puntos + " puntos ⭐",
+
+        translate(
+            "colorsVisual.finalScore",
+            "Conseguiste {points} puntos ⭐"
+        )
+
+        .replace(
+            "{points}",
+            puntos
+        ),
+
         "green"
+
     );
 
 
     document.getElementById("siguiente").style.display =
         "none";
+
 
     const reiniciar =
         document.getElementById("reiniciar");
@@ -327,10 +458,12 @@ function terminarJuego() {
     document.getElementById("objetos").innerHTML =
         "";
 
+
     guardarProgreso(
         100,
         "completado"
     );
+
 
     setTimeout(function() {
 
@@ -339,6 +472,11 @@ function terminarJuego() {
     }, 700);
 
 }
+
+
+// =====================================
+// REINICIAR JUEGO
+// =====================================
 
 function reiniciarJuego() {
 
@@ -375,6 +513,8 @@ function reiniciarJuego() {
 
 }
 
+
+
 guardarProgreso(
     0,
     "sin iniciar"
@@ -383,6 +523,7 @@ guardarProgreso(
 
 crearRonda();
 
+
 const alertaFinal =
     document.getElementById("finish");
 
@@ -390,17 +531,20 @@ const alertaFinal =
 const botonFinal =
     document.getElementById("botonFinal");
 
+
 function mostrarAlertaFinal() {
 
     alertaFinal.classList.add("show");
 
 }
 
+
 function ocultarAlertaFinal() {
 
     alertaFinal.classList.remove("show");
 
 }
+
 
 botonFinal.addEventListener(
     "click",
