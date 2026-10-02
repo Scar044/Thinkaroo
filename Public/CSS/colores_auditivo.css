@@ -57,7 +57,6 @@ h1 {
 }
 
 @keyframes sonido {
-
     0% {
         transform: scale(1);
     }
@@ -148,7 +147,6 @@ h1 {
 }
 
 @keyframes error {
-
     0% {
         transform: translateX(0);
     }
@@ -197,13 +195,11 @@ h1 {
     cursor: pointer;
 }
 
-
 #siguiente:hover {
     transform: scale(1.05);
 }
 
 @media (max-width: 600px) {
-
     .juego {
         padding: 20px;
     }
@@ -240,7 +236,6 @@ h1 {
     visibility: visible;
 }
 
-
 .level-complete-card {
     width: min(550px, 90%);
     padding: 35px 25px;
@@ -258,7 +253,6 @@ h1 {
     animation: trophyBounce 1s infinite;
 }
 
-
 .level-complete-card h2 {
     font-size: clamp(32px, 7vw, 55px);
     color: #ff8f00;
@@ -271,7 +265,6 @@ h1 {
     line-height: 1.5;
     margin-bottom: 25px;
 }
-
 
 #nextLevel {
     border: none;
@@ -294,9 +287,7 @@ h1 {
     transform: scale(1.08);
 }
 
-
 @keyframes levelAppear {
-
     from {
         transform: scale(0.7);
         opacity: 0;
@@ -306,11 +297,9 @@ h1 {
         transform: scale(1);
         opacity: 1;
     }
-
 }
 
 @keyframes trophyBounce {
-
     0%,
     100% {
         transform: translateY(0);
@@ -322,11 +311,7 @@ h1 {
 
 }
 
-
-/* CELULAR */
-
 @media (max-width: 500px) {
-
     .level-complete-card {
         padding: 30px 20px;
     }
@@ -339,5 +324,4 @@ h1 {
         width: 100%;
         font-size: 19px;
     }
-
 }
