@@ -297,6 +297,16 @@
             "register.registrationError":
                 "Ocurrió un error al registrar el usuario.",
 
+                    // Child information
+            "childData.pageTitle": "Datos del niño",
+            "childData.childName": "Nombre del niño",
+            "childData.childNamePlaceholder": "👦🏻 Ingresa el nombre",
+            "childData.childAge": "Edad del niño",
+            "childData.agePlaceholder": "📆",
+            "childData.continue": "Continuar →",
+            "childData.saved": "Datos guardados correctamente",
+            "childData.error": "Ocurrió un error al guardar los datos.",
+
 
     };
 
@@ -598,6 +608,17 @@
 
             "register.registrationError":
                 "An error occurred while registering the user.",
+
+
+                    // Child information
+            "childData.pageTitle": "Child's Information",
+            "childData.childName": "Child's name",
+            "childData.childNamePlaceholder": "👦🏻 Enter the name",
+            "childData.childAge": "Child's age",
+            "childData.agePlaceholder": "📆",
+            "childData.continue": "Continue →",
+            "childData.saved": "Data saved successfully",
+            "childData.error": "An error occurred while saving the data.",
     };
 
 
