@@ -698,6 +698,72 @@
             "logros.alt.superLearner": "Super aprendiz",
             "logros.alt.master": "Maestro ThinkaRoo",
 
+            // Auditory Memory
+            "auditoryMemory.pageTitle": "Auditivo",
+            "auditoryMemory.title": "Mundo Animal: Reto de Memoria",
+            "auditoryMemory.description": "Selecciona una imagen y luego el sonido correcto.",
+            "auditoryMemory.animalAlt": "Animal",
+            "auditoryMemory.listenAlt": "Escuchar animal",
+            "auditoryMemory.finishTitle": "¡Excelente, ahora tu misión!",
+            "auditoryMemory.finishDescription": "Busca 2 animales en tu hogar e imita sus sonidos",
+            "auditoryMemory.finishLearned": "¡Aprendiste los animales!",
+            "auditoryMemory.continue": "Continuar",
+
+
+            // Kinesthetic Memory
+            "kinestheticMemory.pageTitle": "Reto Kinestésico",
+            "kinestheticMemory.title": "🐾 ¡Encuentra a su compañero!",
+            "kinestheticMemory.instructions": "Toca y arrastra cada animal hasta su pareja.",
+            "kinestheticMemory.dragAnimals": "🐾 Arrastra los animales",
+            "kinestheticMemory.findPlace": "🎯 Encuentra su lugar",
+            "kinestheticMemory.backToLevels": "Volver a niveles",
+            "kinestheticMemory.correct": "🎉 ¡Muy bien!",
+            "kinestheticMemory.tryAgain": "💪 ¡Inténtalo otra vez!",
+            "kinestheticMemory.complete": "🏆 ¡Excelente! ¡Encontraste todas las parejas!",
+            "kinestheticMemory.finishTitle": "¡Excelente, ahora tu misión!",
+            "kinestheticMemory.finishDescription": "Busca 2 animales en tu hogar e imita sus sonidos",
+            "kinestheticMemory.finishLearned": "¡Aprendiste los animales!",
+            "kinestheticMemory.continue": "Continuar",
+            "kinestheticMemory.cangarooAlt": "Canguro",
+
+
+            "visualMemory.pageTitle": "Visual",
+            "visualMemory.title": "Mundo Animal: Reto de Memoria",
+            "visualMemory.description": "Selecciona las parejas de animales.",
+            "visualMemory.cangarooAlt": "Canguro",
+            "visualMemory.animalAlt": "Animal",
+            "visualMemory.finishTitle": "¡Excelente, ahora tu misión!",
+            "visualMemory.finishDescription": "Busca 2 animales en tu hogar e imita sus sonidos",
+            "visualMemory.finishLearned": "¡Aprendiste los animales!",
+            "visualMemory.continue": "Continuar",
+
+
+            "levels.pageTitle.visual": "Niveles Visual",
+            "levels.pageTitle.auditory": "Niveles Auditivo",
+            "levels.pageTitle.kinesthetic": "Niveles Kinestésico",
+
+            "levels.visual.header": "Observa y Aprende",
+            "levels.visual.title": "Mira y Descubre",
+            "levels.visual.description": "Observa, descubre y aprende a través de imágenes, colores y formas.",
+
+            "levels.auditory.header": "¡Aprendamos escuchando!",
+            "levels.auditory.title": "Escucha y Aprende",
+            "levels.auditory.description": "Escucha cada sonido y descubre quién lo hace.",
+
+            "levels.kinesthetic.header": "¡Aprendamos moviéndonos!",
+            "levels.kinesthetic.title": "Descubre Haciendo",
+            "levels.kinesthetic.description": "Realiza actividades, explora y aprende mientras te diviertes.",
+
+            "levels.sidebar.levels": "Niveles",
+            "levels.sidebar.progress": "Progreso",
+            "levels.sidebar.achievements": "Logros",
+            "levels.sidebar.parents": "Padres",
+
+            "levels.profileAlt": "Foto de perfil",
+            "levels.kangarooAlt": "Canguro",
+            "levels.menuAlt": "Abrir menú",
+            "levels.chestOpened": "🎁 ¡Has abierto un cofre!",
+
     };
 
 
@@ -1401,6 +1467,73 @@
             "logros.alt.blocks": "Blocks",
             "logros.alt.superLearner": "Super Learner",
             "logros.alt.master": "ThinkaRoo Master",
+
+
+            // Auditory Memory
+            "auditoryMemory.pageTitle": "Auditory",
+            "auditoryMemory.title": "Animal World: Memory Challenge",
+            "auditoryMemory.description": "Select an image and then the correct sound.",
+            "auditoryMemory.animalAlt": "Animal",
+            "auditoryMemory.listenAlt": "Listen to animal",
+            "auditoryMemory.finishTitle": "Excellent, now your mission!",
+            "auditoryMemory.finishDescription": "Find 2 animals at home and imitate their sounds",
+            "auditoryMemory.finishLearned": "You learned the animals!",
+            "auditoryMemory.continue": "Continue",
+
+
+            // Kinesthetic Memory
+            "kinestheticMemory.pageTitle": "Kinesthetic Challenge",
+            "kinestheticMemory.title": "🐾 Find their partner!",
+            "kinestheticMemory.instructions": "Touch and drag each animal to its partner.",
+            "kinestheticMemory.dragAnimals": "🐾 Drag the animals",
+            "kinestheticMemory.findPlace": "🎯 Find their place",
+            "kinestheticMemory.backToLevels": "Back to levels",
+            "kinestheticMemory.correct": "🎉 Great job!",
+            "kinestheticMemory.tryAgain": "💪 Try again!",
+            "kinestheticMemory.complete": "🏆 Excellent! You found all the pairs!",
+            "kinestheticMemory.finishTitle": "Excellent, now your mission!",
+            "kinestheticMemory.finishDescription": "Find 2 animals at home and imitate their sounds",
+            "kinestheticMemory.finishLearned": "You learned the animals!",
+            "kinestheticMemory.continue": "Continue",
+            "kinestheticMemory.cangarooAlt": "Kangaroo",
+
+
+            "visualMemory.pageTitle": "Visual",
+            "visualMemory.title": "Animal World: Memory Challenge",
+            "visualMemory.description": "Match the animal pairs.",
+            "visualMemory.cangarooAlt": "Kangaroo",
+            "visualMemory.animalAlt": "Animal",
+            "visualMemory.finishTitle": "Excellent, now your mission!",
+            "visualMemory.finishDescription": "Find 2 animals at home and imitate their sounds",
+            "visualMemory.finishLearned": "You learned the animals!",
+            "visualMemory.continue": "Continue",
+
+
+            "levels.pageTitle.visual": "Visual Levels",
+            "levels.pageTitle.auditory": "Auditory Levels",
+            "levels.pageTitle.kinesthetic": "Kinesthetic Levels",
+
+            "levels.visual.header": "Observe and Learn",
+            "levels.visual.title": "Look and Discover",
+            "levels.visual.description": "Observe, discover, and learn through images, colors, and shapes.",
+
+            "levels.auditory.header": "Let's Learn by Listening!",
+            "levels.auditory.title": "Listen and Learn",
+            "levels.auditory.description": "Listen to each sound and discover who makes it.",
+
+            "levels.kinesthetic.header": "Let's Learn by Moving!",
+            "levels.kinesthetic.title": "Discover by Doing",
+            "levels.kinesthetic.description": "Do activities, explore, and learn while having fun.",
+
+            "levels.sidebar.levels": "Levels",
+            "levels.sidebar.progress": "Progress",
+            "levels.sidebar.achievements": "Achievements",
+            "levels.sidebar.parents": "Parents",
+
+            "levels.profileAlt": "Profile picture",
+            "levels.kangarooAlt": "Kangaroo",
+            "levels.menuAlt": "Open menu",
+            "levels.chestOpened": "🎁 You opened a treasure chest!",
     };
 
 

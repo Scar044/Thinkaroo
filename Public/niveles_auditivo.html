@@ -1,158 +1,321 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Niveles auditivo</title>
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title data-i18n="levels.pageTitle.auditory">
+        Niveles Auditivo
+    </title>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link
+        rel="preconnect"
+        href="https://fonts.gstatic.com"
+        crossorigin
+    >
 
-    <link rel="stylesheet" href="CSS/niveles_visual.css">
-    <link rel="stylesheet" href="CSS/sidebar.css">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&display=swap"
+        rel="stylesheet"
+    >
+
+    <link
+        rel="stylesheet"
+        href="CSS/niveles_visual.css"
+    >
+
+    <link
+        rel="stylesheet"
+        href="CSS/sidebar.css"
+    >
 
 </head>
+
 <body>
-    <aside class="sidebar cerrado" id="sidebar">
 
-    <button id="toggleBtn" class="toggle-btn">
-       ❯
-    </button>
+    <aside
+        class="sidebar cerrado"
+        id="sidebar"
+    >
 
-    <nav class="menu-sidebar">
-
-        <a href="#" id="btnNiveles" class="activo">
-            <span>🎮</span>
-            <span class="texto-sidebar">Niveles</span>
-        </a>
-
-
-        <a href="progreso.html">
-            <span>📊</span>
-            <span class="texto-sidebar">Progreso</span>
-        </a>
+        <button
+            id="toggleBtn"
+            class="toggle-btn"
+            aria-label="Abrir menú"
+        >
+            ❯
+        </button>
 
 
-        <a href="logros.html">
-            <span>🏆</span>
-            <span class="texto-sidebar">Logros</span>
-        </a>
+        <nav class="menu-sidebar">
 
-    </nav>
+            <a
+                href="#"
+                id="btnNiveles"
+                class="activo"
+            >
 
-    <div class="padres-sidebar">
+                <span>🎮</span>
 
-        <hr>
+                <span
+                    class="texto-sidebar"
+                    data-i18n="levels.sidebar.levels"
+                >
+                    Niveles
+                </span>
 
-        <a href="Perfil_padres.html">
+            </a>
 
-            <span>👨‍👩‍👧</span>
 
-            <span class="texto-sidebar">
-                Padres
-            </span>
+            <a href="progreso.html">
 
-            <span class="texto-sidebar">➜</span>
+                <span>📊</span>
 
-        </a>
+                <span
+                    class="texto-sidebar"
+                    data-i18n="levels.sidebar.progress"
+                >
+                    Progreso
+                </span>
 
-    </div>
+            </a>
 
-</aside>
+
+            <a href="logros.html">
+
+                <span>🏆</span>
+
+                <span
+                    class="texto-sidebar"
+                    data-i18n="levels.sidebar.achievements"
+                >
+                    Logros
+                </span>
+
+            </a>
+
+        </nav>
+
+
+        <div class="padres-sidebar">
+
+            <hr>
+
+            <a href="Perfil_padres.html">
+
+                <span>👨‍👩‍👧</span>
+
+                <span
+                    class="texto-sidebar"
+                    data-i18n="levels.sidebar.parents"
+                >
+                    Padres
+                </span>
+
+                <span class="texto-sidebar">
+                    ➜
+                </span>
+
+            </a>
+
+        </div>
+
+    </aside>
+
 
     <div class="nube nube1"></div>
     <div class="nube nube2"></div>
     <div class="nube nube3"></div>
 
-    <div class="sol">☀️</div>
+    <div class="sol">
+        ☀️
+    </div>
+
 
     <header class="encabezado">
+
         <div class="logo-contenedor">
-          
+
             <div class="titulo">
-               <img src="IMG/letter_thinkaroo.png" alt="Thinkaroo" id="Logo" whidth="40" height="40">
-                <p>¡Aprendamos escuchando!</p>
+
+                <img
+                    src="IMG/letter_thinkaroo.png"
+                    alt="Thinkaroo"
+                    id="Logo"
+                    width="200"
+                    height="40"
+                >
+
+                <p data-i18n="levels.auditory.header">
+                    ¡Aprendamos escuchando!
+                </p>
+
             </div>
+
         </div>
+
+
         <div class="perfil">
-            <a href="perfil.html"><img 
-                src="" 
-                alt="Foto de perfil"
-                id="avatarPerfil">
+
+            <a href="perfil.html">
+
+                <img
+                    src=""
+                    alt="Foto de perfil"
+                    data-i18n-alt="levels.profileAlt"
+                    id="avatarPerfil"
+                >
+
             </a>
+
         </div>
+
     </header>
+
 
     <div id="cohete">
 
-    <div class="humo humo1"></div>
-    <div class="humo humo2"></div>
-    <div class="humo humo3"></div>
-</div>
+        <div class="humo humo1"></div>
+        <div class="humo humo2"></div>
+        <div class="humo humo3"></div>
+
+    </div>
+
+
     <main class="camino">
+
         <div class="cofre">
+
             <i class="fa-solid fa-gift"></i>
+
         </div>
+
 
         <div class="nivel izquierda">
-            <a href="sumarobjetos_auditivo.html">🐶</a>
+
+            <a href="sumarobjetos_auditivo.html">
+                🐶
+            </a>
+
         </div>
+
 
         <div class="nivel derecha continuar">
-            <a href="colores_auditivo.html">🐱</a>
+
+            <a href="colores_auditivo.html">
+                🐱
+            </a>
+
         </div>
 
-        <div class="nivel izquierda"><a href="figuras_auditivo.html">🐮</a></div>
 
-        <div class="nivel derecha"><a href="j_memoria_auditivo.html">🦁</a></div>
+        <div class="nivel izquierda">
+
+            <a href="figuras_auditivo.html">
+                🐮
+            </a>
+
+        </div>
+
+
+        <div class="nivel derecha">
+
+            <a href="j_memoria_auditivo.html">
+                🦁
+            </a>
+
+        </div>
+
     </main>
-<div class="paisaje">
-    <div class="arbustos"></div>
-<div id="canguroFijo">
-        <img src="IMG/canguro5.png" alt="Canguro">
-    </div>
-    <div class="arbol arbol1">
-        <div class="copa"></div>
-        <div class="tronco"></div>
-    </div>
 
-    <div class="arbol arbol2">
-        <div class="copa"></div>
-        <div class="tronco"></div>
-    </div>
 
-    <div class="arbol arbol3">
-        <div class="copa"></div>
-        <div class="tronco"></div>
-    </div>
+    <div class="paisaje">
 
-    <div class="arbol arbol4">
-        <div class="copa"></div>
-        <div class="tronco"></div>
-    </div>
+        <div class="arbustos"></div>
 
-    <div class="arbol arbol5">
-        <div class="copa"></div>
-        <div class="tronco"></div>
-    </div>
-</div>
-<section class="unidad">
-        <div class="texto">
-     
-            <h1>Escucha y Aprende</h1>
-            <p>Escucha cada sonido y descubre quién lo hace.</p>
+
+        <div id="canguroFijo">
+
+            <img
+                src="IMG/canguro5.png"
+                alt="Canguro"
+                data-i18n-alt="levels.kangarooAlt"
+            >
+
         </div>
 
-        <button class="menu" type="button" aria-label="Abrir menú">
+
+        <div class="arbol arbol1">
+            <div class="copa"></div>
+            <div class="tronco"></div>
+        </div>
+
+        <div class="arbol arbol2">
+            <div class="copa"></div>
+            <div class="tronco"></div>
+        </div>
+
+        <div class="arbol arbol3">
+            <div class="copa"></div>
+            <div class="tronco"></div>
+        </div>
+
+        <div class="arbol arbol4">
+            <div class="copa"></div>
+            <div class="tronco"></div>
+        </div>
+
+        <div class="arbol arbol5">
+            <div class="copa"></div>
+            <div class="tronco"></div>
+        </div>
+
+    </div>
+
+
+    <section class="unidad">
+
+        <div class="texto">
+
+            <h1 data-i18n="levels.auditory.title">
+                Escucha y Aprende
+            </h1>
+
+            <p data-i18n="levels.auditory.description">
+                Escucha cada sonido y descubre quién lo hace.
+            </p>
+
+        </div>
+
+
+        <button
+            class="menu"
+            type="button"
+            aria-label="Abrir menú"
+            data-i18n-aria-label="levels.menuAlt"
+        >
+
             <i class="fa-solid fa-bars"></i>
+
         </button>
+
     </section>
 
 
+    <script src="JS/idioma-global.js"></script>
+
     <script src="js/niveles.js"></script>
+
     <script src="JS/sidebar.js"></script>
 
 </body>
+
 </html>

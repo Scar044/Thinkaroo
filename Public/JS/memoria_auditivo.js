@@ -42,6 +42,7 @@ const pairs = [
 
 ];
 
+
 let cards = [];
 
 
@@ -59,6 +60,7 @@ pairs.forEach((pair, index) => {
 
     });
 
+
     cards.push({
 
         id: index,
@@ -73,12 +75,15 @@ pairs.forEach((pair, index) => {
 
 });
 
+
 cards.sort(
     () => Math.random() - 0.5
 );
 
+
 const gameBoard =
     document.getElementById("gameBoard");
+
 
 let firstCard = null;
 
@@ -88,8 +93,10 @@ let lockBoard = false;
 
 let matchedPairs = 0;
 
+
 const alertaFinal =
     document.getElementById("finish");
+
 
 const botonFinal =
     document.getElementById("botonFinal");
@@ -119,6 +126,7 @@ if (botonFinal) {
     );
 
 }
+
 
 async function guardarProgreso(
     progreso,
@@ -182,10 +190,12 @@ async function guardarProgreso(
 
 }
 
+
 guardarProgreso(
     0,
     "sin iniciar"
 );
+
 
 cards.forEach(cardData => {
 
@@ -219,7 +229,7 @@ cards.forEach(cardData => {
 
 
         img.alt =
-            "Animal";
+            translate("auditoryMemory.animalAlt");
 
 
         card.appendChild(img);
@@ -237,12 +247,13 @@ cards.forEach(cardData => {
 
 
         img.alt =
-            "Escuchar animal";
+            translate("auditoryMemory.listenAlt");
 
 
         card.appendChild(img);
 
     }
+
 
     card.addEventListener(
         "click",
@@ -253,6 +264,7 @@ cards.forEach(cardData => {
     gameBoard.appendChild(card);
 
 });
+
 
 function flipCard() {
 
@@ -271,6 +283,7 @@ function flipCard() {
         "flipped"
     );
 
+
     if (
         this.dataset.type === "audio"
     ) {
@@ -285,6 +298,7 @@ function flipCard() {
 
     }
 
+
     if (firstCard === null) {
 
         firstCard = this;
@@ -292,6 +306,7 @@ function flipCard() {
         return;
 
     }
+
 
     secondCard = this;
 
@@ -303,6 +318,7 @@ function flipCard() {
 
 }
 
+
 function checkMatch() {
 
     const match =
@@ -312,6 +328,7 @@ function checkMatch() {
 
         firstCard.dataset.type !==
         secondCard.dataset.type;
+
 
     if (match) {
 
@@ -327,6 +344,7 @@ function checkMatch() {
 
         matchedPairs++;
 
+
         const progreso =
             Math.round(
                 (
@@ -334,6 +352,7 @@ function checkMatch() {
                     pairs.length
                 ) * 100
             );
+
 
         if (
             matchedPairs <
@@ -349,6 +368,7 @@ function checkMatch() {
 
 
         resetTurn();
+
 
         if (
             matchedPairs ===
@@ -374,6 +394,7 @@ function checkMatch() {
                         );
 
                     }
+
 
                     mostrarAlertaFinal();
 
@@ -409,6 +430,8 @@ function checkMatch() {
     }
 
 }
+
+
 function resetTurn() {
 
     firstCard = null;

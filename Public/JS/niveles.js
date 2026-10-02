@@ -45,11 +45,11 @@ function moverCohete(nivel) {
         nivelRect.top +
         (nivelRect.height / 2);
 
-const nuevaX =
-    centroX -
-    (anchoCohete / 2) +
-    window.scrollX +
-    30;
+    const nuevaX =
+        centroX -
+        (anchoCohete / 2) +
+        window.scrollX +
+        30;
 
     const nuevaY =
         centroY -
@@ -67,12 +67,12 @@ const nuevaX =
         nuevaY + "px";
 }
 
+
 function colocarCanguroInicial() {
 
     if (!cohete || niveles.length === 0) {
         return;
     }
-
 
     let nivelInicial;
 
@@ -84,18 +84,21 @@ function colocarCanguroInicial() {
         nivelInicial =
             niveles[ultimoIndice];
 
-    }
-
-    if (!nivelInicial) {
+    } else {
 
         nivelInicial =
             niveles[niveles.length - 1];
 
     }
 
-    moverCohete(nivelInicial, false);
+    if (!nivelInicial) {
+        return;
+    }
+
+    moverCohete(nivelInicial);
 
 }
+
 
 niveles.forEach((nivel, index) => {
 
@@ -114,29 +117,30 @@ niveles.forEach((nivel, index) => {
 
         if (!nivel.classList.contains("completado")) {
 
-    nivel.classList.add("completado");
+            nivel.classList.add("completado");
 
-    progreso.push(index);
+            progreso.push(index);
 
-    localStorage.setItem(
-        "progreso",
-        JSON.stringify(progreso)
-    );
+            localStorage.setItem(
+                "progreso",
+                JSON.stringify(progreso)
+            );
 
-    moverCohete(nivel);
+            moverCohete(nivel);
 
-    cohete.classList.remove("saltando");
+            cohete.classList.remove("saltando");
 
-    void cohete.offsetWidth;
+            void cohete.offsetWidth;
 
-    cohete.classList.add("saltando");
-}
+            cohete.classList.add("saltando");
+        }
 
         moverCohete(nivel);
 
     });
 
 });
+
 
 if (cofre) {
 
@@ -154,11 +158,14 @@ if (cofre) {
             }
         );
 
-        alert("🎁 ¡Has abierto un cofre!");
+        alert(
+            translate("levels.chestOpened")
+        );
 
     });
 
 }
+
 
 niveles.forEach(nivel => {
 
@@ -179,6 +186,7 @@ niveles.forEach(nivel => {
 
 });
 
+
 function actualizarContador() {
 
     const total =
@@ -192,6 +200,7 @@ function actualizarContador() {
 }
 
 setInterval(actualizarContador, 1000);
+
 
 if (continuar) {
 
@@ -212,6 +221,7 @@ if (continuar) {
 
 }
 
+
 function cargarAvatarPerfil() {
 
     fetch("../ConfigPHP/obtener_perfil_hijo.php")
@@ -225,7 +235,6 @@ function cargarAvatarPerfil() {
                 datos
             );
 
-
             if (!datos.success) {
 
                 console.error(
@@ -236,12 +245,10 @@ function cargarAvatarPerfil() {
 
             }
 
-
             const avatar =
                 document.getElementById(
                     "avatarPerfil"
                 );
-
 
             if (
                 avatar &&
@@ -266,37 +273,22 @@ function cargarAvatarPerfil() {
         });
 
 }
-function colocarCanguroInicial() {
-    if (!cohete || niveles.length === 0) return;
-    
-    let nivelInicial;
-    if (progreso.length > 0) {
-       
-        const ultimoIndice =
-            progreso[progreso.length - 1];
-        nivelInicial = niveles[ultimoIndice];
-    } else {
-       
-        nivelInicial =
-            niveles[niveles.length - 1];
-    }
-    if (!nivelInicial) return;
-   
-    moverCohete(nivelInicial);
-}
+
 
 window.addEventListener("load", () => {
-   
+
     window.scrollTo({
         top: document.documentElement.scrollHeight,
         behavior: "instant"
     });
-   
+
     setTimeout(() => {
+
         colocarCanguroInicial();
+
     }, 500);
+
 });
 
-cargarAvatarPerfil();
 
 cargarAvatarPerfil();

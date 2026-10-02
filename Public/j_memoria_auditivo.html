@@ -1,45 +1,115 @@
 <!DOCTYPE html>
 <html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
-    <title>Auditivo</title>
-    
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="css/memoria_auditivo.css" rel="stylesheet">
 
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="CSS/memoria_auditivo.css">
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title data-i18n="auditoryMemory.pageTitle">
+        Auditivo
+    </title>
+
+
+    <link
+        rel="preconnect"
+        href="https://fonts.googleapis.com"
+    >
+
+    <link
+        rel="preconnect"
+        href="https://fonts.gstatic.com"
+        crossorigin
+    >
+
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&display=swap"
+        rel="stylesheet"
+    >
+
+
+    <link
+        rel="stylesheet"
+        href="CSS/memoria_auditivo.css"
+    >
+
 </head>
+
+
 <body>
 
-    <h1>Mundo Animal: Reto de Memoria</h1>
-    <p>Selecciona una imagen y luego el sonido correcto.</p>
 
-    <div class="game-board" id="gameBoard"></div>
-<div class="finish" id="finish">
+    <h1 data-i18n="auditoryMemory.title">
+        Mundo Animal: Reto de Memoria
+    </h1>
 
-    <div class="finish-card">
 
-        <div class="trophy">🏆</div>
+    <p data-i18n="auditoryMemory.description">
+        Selecciona una imagen y luego el sonido correcto.
+    </p>
 
-        <h2>¡Excelente ahora tu misión!</h2>
 
-        <p>
-            Busca 2 animales en tu hogar e imita sus sonidos
-            <br>
-            ¡Aprendiste los animales!
-        </p>
+    <div
+        class="game-board"
+        id="gameBoard"
+    ></div>
 
-        <button id="botonFinal">
-            Continuar
-        </button>
+
+
+    <div
+        class="finish"
+        id="finish"
+    >
+
+        <div class="finish-card">
+
+
+            <div class="trophy">
+                🏆
+            </div>
+
+
+            <h2 data-i18n="auditoryMemory.finishTitle">
+                ¡Excelente, ahora tu misión!
+            </h2>
+
+
+            <p>
+
+                <span data-i18n="auditoryMemory.finishDescription">
+                    Busca 2 animales en tu hogar e imita sus sonidos
+                </span>
+
+                <br>
+
+                <span data-i18n="auditoryMemory.finishLearned">
+                    ¡Aprendiste los animales!
+                </span>
+
+            </p>
+
+
+            <button
+                id="botonFinal"
+                data-i18n="auditoryMemory.continue"
+            >
+                Continuar
+            </button>
+
+
+        </div>
 
     </div>
-    </div>
-    <script src="js/memoria_auditivo.js"></script>
+
+    <script src="JS/idioma-global.js"></script>
+    <script src="JS/memoria_auditivo.js"></script>
+
 
 </body>
+
 </html>

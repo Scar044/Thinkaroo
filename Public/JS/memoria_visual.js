@@ -1,5 +1,4 @@
 const images = [
-
     "IMG/avatar1cerdo.png",
     "IMG/Elefante.png",
     "IMG/avatar3gato.png",
@@ -8,7 +7,6 @@ const images = [
     "IMG/avatar6ratón.png",
     "IMG/avatar7tigre.png",
     "IMG/avatar8vaca.png"
-
 ];
 
 let cards = [...images, ...images];
@@ -16,7 +14,6 @@ let cards = [...images, ...images];
 cards.sort(() => Math.random() - 0.5);
 
 const gameBoard = document.getElementById("gameBoard");
-
 
 let firstCard = null;
 let secondCard = null;
@@ -96,7 +93,7 @@ cards.forEach(function (imgSrc) {
     const img = document.createElement("img");
 
     img.src = imgSrc;
-    img.alt = "Animal";
+    img.alt = translate("visualMemory.animalAlt");
 
     cardFront.appendChild(img);
 
@@ -148,7 +145,6 @@ function checkMatch() {
         firstCard.dataset.image ===
         secondCard.dataset.image;
 
-
     if (isMatch) {
 
         firstCard.classList.add("matched");
@@ -170,7 +166,6 @@ function checkMatch() {
 
         }
 
-
         resetTurn();
 
         if (matchedPairs === images.length) {
@@ -182,7 +177,6 @@ function checkMatch() {
                         100,
                         "completado"
                     );
-
 
                 if (resultado.success) {
 
@@ -197,7 +191,6 @@ function checkMatch() {
             }, 500);
 
         }
-
 
     } else {
 
@@ -231,7 +224,6 @@ const alertaFinal =
 const botonFinal =
     document.getElementById("botonFinal");
 
-
 function mostrarAlertaFinal() {
 
     if (alertaFinal) {
@@ -241,7 +233,6 @@ function mostrarAlertaFinal() {
     }
 
 }
-
 
 if (botonFinal) {
 
