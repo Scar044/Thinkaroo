@@ -1,3 +1,5 @@
+
+
 * {
     margin: 0;
     padding: 0;
@@ -6,14 +8,15 @@
 
 body {
     font-family: 'Poppins', sans-serif;
-    min-height:100vh;
-    background-image: url("../IMG/fondo-logros.png");
+      min-height:100vh;
+   background-image: url("../IMG/fondo-logros.png");
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
     background-attachment: fixed;
     padding:20px 0;
 }
+
 
 .logros-container {
     width: 90%;
@@ -22,15 +25,11 @@ body {
     text-align: center;
 }
 
+
 h1 {
-    background: #FFD519;
-    padding: 20px;
-    border-radius: 28px;
-    font-size: 32px;
-    font-weight: 900;
-    color: #ffffff;
-    box-shadow: 0 10px 25px rgba(0, 0, 0, .20);
-    margin-bottom: 15px;
+    color: #3db5e6;
+    font-size: 42px;
+    margin-bottom: 10px;
 }
 
 .subtitulo {
@@ -43,8 +42,10 @@ h1 {
     background: white;
     border: 3px solid #3db5e6;
     border-radius: 25px;
+
     padding: 20px;
     margin: 0 auto 45px;
+
     max-width: 600px;
 }
 
@@ -55,49 +56,79 @@ h1 {
 .barra {
     width: 100%;
     height: 15px;
+
     background-color: #e5e5e5;
+
     border-radius: 20px;
+
     margin-top: 12px;
+
     overflow: hidden;
 }
 
 .barra-progreso {
     width: 0%;
     height: 100%;
+
     background-color: #ffd126;
+
     border-radius: 20px;
+
     transition: width 0.7s ease;
 }
 
 
 .logros-grid {
     display: grid;
+
     grid-template-columns: repeat(4, 1fr);
+
     gap: 45px;
+
     justify-items: center;
 }
 
+
+/* 
+INSIGNIAS circulitos
+*/
+
 .logro {
     position: relative;
+
     width: 150px;
     height: 150px;
+
     cursor: pointer;
+
     transition: transform 0.25s ease;
 }
 
 .logro img {
     width: 100%;
     height: 100%;
+
     object-fit: contain;
+
     transition:
         transform 0.25s ease,
         filter 0.25s ease;
 }
 
+
+/* 
+LOGRO BLOQUEADO
+*/
+
 .logro.bloqueado img {
     filter: grayscale(100%);
     opacity: 0.45;
 }
+
+
+/* 
+HOVER
+*/
 
 .logro:hover {
     transform: scale(1.08);
@@ -107,40 +138,67 @@ h1 {
     transform: scale(1.08);
 }
 
+
+/* 
+INFORMACIÓN
+*/
+
 .info-logro {
     position: absolute;
+
     width: 230px;
+
     left: 50%;
     bottom: 170px;
+
     transform: translateX(-50%) scale(0.9);
+
     background-color: white;
+
     border: 3px solid #3db5e6;
+
     border-radius: 25px;
+
     padding: 18px;
+
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+
     opacity: 0;
     visibility: hidden;
+
     transition:
         opacity 0.2s ease,
         transform 0.2s ease;
+
     z-index: 10;
 }
+
+
+/* 
+INFORMACIÓN desplegada
+*/
 
 .logro:hover .info-logro {
     opacity: 1;
     visibility: visible;
+
     transform: translateX(-50%) scale(1);
 }
 
+
 .info-logro h2 {
     color: #3db5e6;
+
     font-size: 20px;
+
     margin-bottom: 8px;
 }
 
 .info-logro p {
     font-size: 14px;
+
     line-height: 1.4;
+
     margin-bottom: 8px;
 }
 
@@ -158,23 +216,34 @@ h1 {
 
 .contador {
     display: inline-block;
+
     background-color: #ffd126;
+
     padding: 6px 12px;
+
     border-radius: 15px;
+
     font-weight: bold;
 }
+
+
+/* 
+RESPONSIVE
+*/
 
 @media (max-width: 900px) {
 
     .logros-grid {
         grid-template-columns: repeat(3, 1fr);
     }
+
 }
 
 @media (max-width: 650px) {
 
     .logros-grid {
         grid-template-columns: repeat(2, 1fr);
+
         gap: 35px;
     }
 
@@ -182,33 +251,42 @@ h1 {
         width: 125px;
         height: 125px;
     }
+
 }
 
 @media (max-width: 400px) {
+
     .logros-grid {
         grid-template-columns: 1fr;
     }
+
 }
+/* TARJETA PARA LAS IMÁGENES DE LOS LOGROS */
 
 .tarjeta-logro {
     width: 150px;
     height: 150px;
+
     background-color: white;
+
     border: 3px solid #3db5e6;
     border-radius: 25px;
+
     display: flex;
     align-items: center;
     justify-content: center;
+
     padding: 15px;
+
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
 }
 
 .tarjeta-logro img {
     width: 100%;
     height: 100%;
+
     object-fit: contain;
 }
-
 .h1 {
     color: #000406;
     font-size: 42px;
@@ -221,20 +299,27 @@ h1 {
     box-sizing: border-box;
 }
 
+/* HEADER */
 .encabezado {
     position: fixed;
     top: 0;
     left: 0;
+
     width: 100%;
     height: 85px;
+
     background-color: #F7941D;
+
     display: flex;
     align-items: center;
     justify-content: space-between;
+
     padding: 0 30px;
+
     z-index: 1000;
 }
 
+/* LOGO */
 .logo-contenedor {
     display: flex;
     align-items: center;
@@ -246,20 +331,24 @@ h1 {
     gap: 12px;
 }
 
+/* Imagen del logo */
 #Logo {
     width: 150px;
-    height: 150px;
+    height: 150spx;
     object-fit: contain;
 }
 
+/* Texto */
 .titulo p {
     margin: 0;
+
     color: white;
     font-family: Arial, sans-serif;
     font-size: 20px;
     font-weight: bold;
 }
 
+/* PERFIL */
 .perfil {
     display: flex;
     align-items: center;
@@ -268,18 +357,26 @@ h1 {
 .perfil a {
     width: 48px;
     height: 48px;
+
     display: flex;
     align-items: center;
     justify-content: center;
+
     border-radius: 50%;
+
     background-color: white;
+
     overflow: hidden;
+
     border: 3px solid white;
 }
 
+/* Foto de perfil */
 #avatarPerfil {
     width: 100%;
     height: 100%;
+
     object-fit: cover;
     border-radius: 50%;
 }
+

@@ -41,43 +41,6 @@ body::after{
     z-index:-3;
 }
 
-.botones{
-    display:flex;
-    justify-content:flex-end;
-    gap:10px;
-}
-.boton{
-    width: 150px;
-    height: 45px;
-    background: orange;
-    border-radius: 30px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    color:white;
-    text-decoration: none;
-    font-size: 13px;
-    font-weight: 500;
-    transition: 0.3s ease;
-}
-
-.boton:hover{
-    background: orange;
-    transform: scale(1.05);
-    box-shadow: 0 6px 12px rgba(0,0,0,.2);
-}
-
-.boton:active{
-    transform: scale(.97);
-}
-
-.perfil{
-    display: flex;
-    flex-direction: row;
-    gap: 9px;
-    align-items: center;
-}
-
 .nivel a {
     text-decoration: none;
     color: inherit;
@@ -505,101 +468,7 @@ header{
 .arbol4{left:68%; transform:scale(.9);}
 .arbol5{left:88%; transform:scale(1.1);}
 
-#cohete{
-    position:absolute;
-    left:50%;
-    top:1000px; 
-    transform:translateX(-50%);
-    width: 80px;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    z-index:50;
-    transition:top .8s ease, left 0.8 ease;
-}
 
-#cohete.saltando {
-    animation: saltoCanguro 0.8s ease;
-}
-
-@keyframes saltoCanguro {
-    0% {
-        transform: translateY(0) scale(1);
-    }
-
-    30% {
-        transform: translateY(-80px) scale(1.1);
-    }
-
-    60% {
-        transform: translateY(-30px) scale(1.05);
-    }
-
-    100% {
-        transform: translateY(0) scale(1);
-    }
-}
-
-#cohete img{
-    width:130px;
-    z-index:2;
-}
-
-.fuego{
-    position:absolute;
-    bottom:-18px;
-    width:28px;
-    height:60px;
-    background:linear-gradient(red,orange,yellow);
-    border-radius:50%;
-    animation:fuego .15s infinite alternate;
-}
-
-@keyframes fuego{
-    from{
-        height:45px;
-    }
-    to{
-        height:65px;
-    }
-}
-
-.humo{
-    position:absolute;
-    bottom:-10px;
-    width:18px;
-    height:18px;
-    border-radius:50%;
-    background:rgba(220,220,220,.8);
-    opacity:0;
-}
-
-.despegando .humo{
-    animation:humo 1s infinite;
-}
-
-.humo2{
-    animation-delay:.3s;
-}
-
-.humo3{
-    animation-delay:.6s;
-}
-
-@keyframes humo{
-    0%{
-        transform:translateY(0) scale(.5);
-        opacity:1;
-    }
-    100%{
-        transform:translateY(70px) scale(2);
-        opacity:0;
-    }
-}
-
-.despegando{
-    transition:top 2s ease;
-}
 @media (max-width:768px){
     header{
         padding:10px 15px;
@@ -674,4 +543,20 @@ header{
     max-width: 80px;
     border-radius: 100%;
 }
-#canguroFijo { position: absolute; bottom: 0; left: 0; width: 150px; z-index: 1000; } #canguroFijo img { display: block; width: 100%; height: auto; }
+#canguroFijo {
+position: fixed;
+bottom: 20px;
+left: 100px !important;
+width: 300px;
+height: 350px;
+z-index: 999999;
+transform: none !important;
+animation: none !important;
+margin: 0;
+padding: 0;
+}
+#canguroFijo img {
+display: block;
+width: 100%;
+height: auto;
+}
