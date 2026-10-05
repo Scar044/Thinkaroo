@@ -374,3 +374,9 @@ h2 {
     transform: scale(1.05);
     background: #388e3c;
 }
+.canguro {
+    max-width: 220px;
+    width: 100%;
+    height: auto;
+    pointer-events: none;
+}

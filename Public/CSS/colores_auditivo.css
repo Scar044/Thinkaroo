@@ -325,3 +325,9 @@ h1 {
         font-size: 19px;
     }
 }
+.canguro {
+    max-width: 220px;
+    width: 100%;
+    height: auto;
+    pointer-events: none;
+}

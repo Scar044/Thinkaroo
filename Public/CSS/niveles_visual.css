@@ -544,19 +544,12 @@ header{
     border-radius: 100%;
 }
 #canguroFijo {
-position: fixed;
-bottom: 20px;
-left: 100px !important;
-width: 300px;
-height: 350px;
-z-index: 999999;
-transform: none !important;
-animation: none !important;
-margin: 0;
-padding: 0;
+    width: 220px;
+    pointer-events: none;
 }
+
 #canguroFijo img {
-display: block;
-width: 100%;
-height: auto;
+    width: 100%;
+    height: auto;
+    display: block;
 }

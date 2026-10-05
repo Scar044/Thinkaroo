@@ -556,3 +556,8 @@ p {
         transform: translateY(0);
     }
 }
+.canguro {
+    max-width: 220px;
+    height: auto;
+    pointer-events: none;
+}

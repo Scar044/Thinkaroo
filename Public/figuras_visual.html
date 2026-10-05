@@ -1,162 +1,240 @@
 <!DOCTYPE html>
+
 <html lang="es">
 
 <head>
 
-    <meta charset="UTF-8">
+<meta charset="UTF-8">
 
-    <meta name="viewport"
-          content="width=device-width, initial-scale=1.0">
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0">
 
-    <title data-i18n="figuresVisual.pageTitle">
+<title data-i18n="figuresVisual.pageTitle">
     Clasifica las figuras
-    </title>
+</title>
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-     <link rel="stylesheet" href="CSS/figuras_visual.css">
+<link
+    href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&display=swap"
+    rel="stylesheet"
+>
+
+<link
+    href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css"
+    rel="stylesheet"
+>
+
+<link
+    rel="stylesheet"
+    href="CSS/figuras_visual.css"
+>
 
 </head>
 
-
 <body>
-    <main class="juego">
-        <header>
-            <h1 data-i18n="figuresVisual.title">
-                CLASIFICA LAS FIGURAS
-            </h1>
 
-            <p data-i18n="figuresVisual.description">
-                Arrastra cada figura a su lugar
-            </p>
-            <div class="puntuacion">
+<div class="container">
 
-                <span id="puntos">
-                    0
-                </span>
+    <div class="row align-items-center">
 
-            </div>
-        </header>
-        <section class="categorias">
+        <div class="col-12 col-md-3 text-center mb-3 mb-md-0">
 
-            <div
-                class="categoria circulo"
-                data-forma="circulo">
-                <h2 data-i18n="figuresVisual.circle">
-                    CÍRCULO
-                </h2>
-                <div class="zona"></div>
-            </div>
+            <img
+                src="IMG/canguro6.png"
+                data-i18n-alt="visualMemory.cangarooAlt"
+                alt="Canguro"
+                class="img-fluid canguro"
+            >
 
-            <div
-                class="categoria cuadrado"
-                data-forma="cuadrado">
-                <h2 data-i18n="figuresVisual.square">
-                    CUADRADO
-                </h2>
-                <div class="zona"></div>
-            </div>
+        </div>
+        <div class="col-12 col-md-9">
 
-            <div
-                class="categoria triangulo"
-                data-forma="triangulo">
-                <h2 data-i18n="figuresVisual.triangle">
-                    TRIÁNGULO
-                </h2>
-                <div class="zona"></div>
-            </div>
+            <main class="juego">
 
-            <div
-                class="categoria rectangulo"
-                data-forma="rectangulo">
-                <h2 data-i18n="figuresVisual.rectangle">
-                    RECTÁNGULO
-                </h2>
-                <div class="zona"></div>
-            </div>
+                <header>
 
-        </section>
-        <div id="mensaje" class="mensaje"></div>
+                    <h1 data-i18n="figuresVisual.title">
+                        CLASIFICA LAS FIGURAS
+                    </h1>
 
-        <section
-            class="figuras"
-            id="figuras">
+                    <p data-i18n="figuresVisual.description">
+                        Arrastra cada figura a su lugar
+                    </p>
+
+                    <div class="puntuacion">
+
+                        <span id="puntos">
+                            0
+                        </span>
+
+                    </div>
+
+                </header>
 
 
-            <div
-                class="figura circulo"
-                data-forma="circulo"
-                draggable="true">
-            </div>
+                <section class="categorias">
+
+                    <div
+                        class="categoria circulo"
+                        data-forma="circulo"
+                    >
+
+                        <h2 data-i18n="figuresVisual.circle">
+                            CÍRCULO
+                        </h2>
+
+                        <div class="zona"></div>
+
+                    </div>
 
 
-            <div
-                class="figura cuadrado"
-                data-forma="cuadrado"
-                draggable="true">
-            </div>
+                    <div
+                        class="categoria cuadrado"
+                        data-forma="cuadrado"
+                    >
+
+                        <h2 data-i18n="figuresVisual.square">
+                            CUADRADO
+                        </h2>
+
+                        <div class="zona"></div>
+
+                    </div>
 
 
-            <div
-                class="figura triangulo"
-                data-forma="triangulo"
-                draggable="true">
-            </div>
+                    <div
+                        class="categoria triangulo"
+                        data-forma="triangulo"
+                    >
+
+                        <h2 data-i18n="figuresVisual.triangle">
+                            TRIÁNGULO
+                        </h2>
+
+                        <div class="zona"></div>
+
+                    </div>
 
 
-            <div
-                class="figura rectangulo"
-                data-forma="rectangulo"
-                draggable="true">
-            </div>
+                    <div
+                        class="categoria rectangulo"
+                        data-forma="rectangulo"
+                    >
+
+                        <h2 data-i18n="figuresVisual.rectangle">
+                            RECTÁNGULO
+                        </h2>
+
+                        <div class="zona"></div>
+
+                    </div>
+
+                </section>
 
 
-            <div
-                class="figura triangulo"
-                data-forma="triangulo"
-                draggable="true">
-            </div>
+                <div
+                    id="mensaje"
+                    class="mensaje"
+                >
+                </div>
 
 
-            <div
-                class="figura circulo"
-                data-forma="circulo"
-                draggable="true">
-            </div>
+                <section
+                    class="figuras"
+                    id="figuras"
+                >
+
+                    <div
+                        class="figura circulo"
+                        data-forma="circulo"
+                        draggable="true"
+                    >
+                    </div>
 
 
-            <div
-                class="figura cuadrado"
-                data-forma="cuadrado"
-                draggable="true">
-            </div>
+                    <div
+                        class="figura cuadrado"
+                        data-forma="cuadrado"
+                        draggable="true"
+                    >
+                    </div>
 
 
-            <div
-                class="figura rectangulo"
-                data-forma="rectangulo"
-                draggable="true">
-            </div>
+                    <div
+                        class="figura triangulo"
+                        data-forma="triangulo"
+                        draggable="true"
+                    >
+                    </div>
 
 
-        </section>
+                    <div
+                        class="figura rectangulo"
+                        data-forma="rectangulo"
+                        draggable="true"
+                    >
+                    </div>
 
 
-    </main>
+                    <div
+                        class="figura triangulo"
+                        data-forma="triangulo"
+                        draggable="true"
+                    >
+                    </div>
 
-   <div class="finish" id="finish">
+
+                    <div
+                        class="figura circulo"
+                        data-forma="circulo"
+                        draggable="true"
+                    >
+                    </div>
+
+
+                    <div
+                        class="figura cuadrado"
+                        data-forma="cuadrado"
+                        draggable="true"
+                    >
+                    </div>
+
+
+                    <div
+                        class="figura rectangulo"
+                        data-forma="rectangulo"
+                        draggable="true"
+                    >
+                    </div>
+
+                </section>
+
+            </main>
+
+        </div>
+
+    </div>
+
+</div>
+<div
+    class="finish"
+    id="finish"
+>
 
     <div class="finish-card">
 
-        <div class="trophy">🏆</div>
+        <div class="trophy">
+            🏆
+        </div>
 
         <h2 data-i18n="figuresVisual.finishTitle">
             ¡Excelente! ¡Ahora tu misión!
         </h2>
 
         <p>
+
             <span data-i18n="figuresVisual.finishDescription">
                 Encuentra 2 objetos de cada forma que aprendiste hoy
             </span>
@@ -166,18 +244,24 @@
             <span data-i18n="figuresVisual.finishLearned">
                 ¡Aprendiste las formas!
             </span>
+
         </p>
 
-        <button id="botonFinal" data-i18n="figuresVisual.continue">
+        <button
+            id="botonFinal"
+            data-i18n="figuresVisual.continue"
+            type="button"
+        >
             Continuar
         </button>
 
     </div>
 
 </div>
+
+
 <script src="JS/idioma-global.js"></script>
 <script src="JS/figuras.js"></script>
-
 </body>
 
 </html>

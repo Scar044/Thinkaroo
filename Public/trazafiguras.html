@@ -1,118 +1,170 @@
 <!DOCTYPE html>
+
 <html lang="es">
+
 <head>
+<meta charset="UTF-8">
 
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title data-i18n="traceShapes.pageTitle">
-        Traza las figuras
-    </title>
+<meta name="viewport"
+    content="width=device-width, initial-scale=1.0">
 
-    <link rel="preconnect"
-            href="https://fonts.googleapis.com">
+<title data-i18n="traceShapes.pageTitle">
+    Traza las figuras
+</title>
 
-    <link rel="preconnect"
-            href="https://fonts.gstatic.com"
-            crossorigin>
+<link rel="preconnect"
+    href="https://fonts.googleapis.com">
 
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&display=swap"
-            rel="stylesheet">
+<link rel="preconnect"
+    href="https://fonts.gstatic.com"
+    crossorigin>
 
-    <link rel="stylesheet"
-            href="CSS/trazafiguras.css">
+<link
+    href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&display=swap"
+    rel="stylesheet">
+
+<link
+    href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css"
+    rel="stylesheet">
+
+<link
+    rel="stylesheet"
+    href="CSS/trazafiguras.css">
+
 </head>
 
 <body>
-    <main class="juego">
 
-        <header>
-            <h1 data-i18n="traceShapes.title">
-                TRAZA LAS FIGURAS
-            </h1>
+<div class="container">
 
-            <p data-i18n="traceShapes.subtitle">
-                Sigue el trazo y descubre la figura
-            </p>
+    <div class="row align-items-center">
+        <div class="col-12 col-md-3 text-center mb-3 mb-md-0">
 
-            <div class="puntuacion">
-                <span id="puntos">0</span>
-            </div>
-        </header>
-
-        <section class="zona-juego">
-
-            <div class="instruccion">
-                <span id="icono"></span>
-
-                <span
-                    id="instruccionTexto"
-                    data-i18n="traceShapes.instruction"
-                >
-                    Mantén presionado y sigue la línea
-                </span>
-            </div>
-
-            <div class="canvas-container">
-                <canvas id="canvas"></canvas>
-            </div>
-
-            <div
-                id="mensaje"
-                class="mensaje"
+            <img
+                src="IMG/canguro8.png"
+                data-i18n-alt="visualMemory.cangarooAlt"
+                alt="Canguro"
+                class="img-fluid canguro"
             >
-            </div>
-
-            <button
-                id="reiniciar"
-                data-i18n="traceShapes.tryAgain"
-            >
-                Intentar de nuevo
-            </button>
-
-        </section>
-    </main>
-
-    <div
-        class="finish"
-        id="finish"
-    >
-
-        <div class="finish-card">
-
-            <div class="trophy">
-                🏆
-            </div>
-
-            <h2 data-i18n="traceShapes.finishTitle">
-                ¡Excelente ahora tu misión!
-            </h2>
-
-            <p>
-
-                <span data-i18n="traceShapes.finishLine1">
-                    Encuentra 2 objetos de cada forma que aprendistes hoy
-                </span>
-
-                <br>
-
-                <span data-i18n="traceShapes.finishLine2">
-                    ¡Aprendiste las formas!
-                </span>
-
-            </p>
-
-            <button
-                id="botonFinal"
-                data-i18n="traceShapes.continue"
-            >
-                Continuar
-            </button>
 
         </div>
+        <div class="col-12 col-md-9">
+
+            <main class="juego">
+
+                <header>
+
+                    <h1 data-i18n="traceShapes.title">
+                        TRAZA LAS FIGURAS
+                    </h1>
+
+                    <p data-i18n="traceShapes.subtitle">
+                        Sigue el trazo y descubre la figura
+                    </p>
+
+                    <div class="puntuacion">
+
+                        <span id="puntos">
+                            0
+                        </span>
+
+                    </div>
+
+                </header>
+
+
+                <section class="zona-juego">
+
+                    <div class="instruccion">
+
+                        <span id="icono"></span>
+
+                        <span
+                            id="instruccionTexto"
+                            data-i18n="traceShapes.instruction"
+                        >
+                            Mantén presionado y sigue la línea
+                        </span>
+
+                    </div>
+
+
+                    <div class="canvas-container">
+
+                        <canvas id="canvas"></canvas>
+
+                    </div>
+
+
+                    <div
+                        id="mensaje"
+                        class="mensaje"
+                    >
+                    </div>
+
+
+                    <button
+                        id="reiniciar"
+                        data-i18n="traceShapes.tryAgain"
+                        type="button"
+                    >
+                        Intentar de nuevo
+                    </button>
+
+                </section>
+
+            </main>
+
+        </div>
+
     </div>
 
-    <script src="JS/idioma-global.js"></script>
-    <script src="JS/trazafiguras.js"></script>
+</div>
+<div
+    class="finish"
+    id="finish"
+>
 
+    <div class="finish-card">
+
+        <div class="trophy">
+            🏆
+        </div>
+
+        <h2 data-i18n="traceShapes.finishTitle">
+            ¡Excelente ahora tu misión!
+        </h2>
+
+        <p>
+
+            <span data-i18n="traceShapes.finishLine1">
+                Encuentra 2 objetos de cada forma que aprendistes hoy
+            </span>
+
+            <br>
+
+            <span data-i18n="traceShapes.finishLine2">
+                ¡Aprendiste las formas!
+            </span>
+
+        </p>
+
+
+        <button
+            id="botonFinal"
+            data-i18n="traceShapes.continue"
+            type="button"
+        >
+            Continuar
+        </button>
+
+    </div>
+
+</div>
+
+
+<script src="JS/idioma-global.js"></script>
+<script src="JS/trazafiguras.js"></script>
 </body>
+
 </html>
