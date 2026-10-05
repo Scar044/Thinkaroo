@@ -408,3 +408,9 @@ button.reinicio:hover {
         transform: translateY(0);
     }
 }
+.canguro {
+    max-width: 220px;
+    width: 100%;
+    height: auto;
+    pointer-events: none;
+}
