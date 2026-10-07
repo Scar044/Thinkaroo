@@ -235,10 +235,6 @@ function createObjects() {
                 <div class="object-emoji">
                     ${item.emoji}
                 </div>
-
-                <div class="object-name">
-                    ${item.name}
-                </div>
             `;
 
 

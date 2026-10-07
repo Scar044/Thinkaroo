@@ -1664,6 +1664,8 @@
 
     applyTranslations(document);
 
+    actualizarImagenesIdioma();
+
     const selector = document.getElementById("idioma");
 
     if (selector) {
@@ -1698,6 +1700,8 @@
 
     applyTranslations(document);
 
+    actualizarImagenesIdioma();
+
     setupLanguageSelector();
 
     const observer = new MutationObserver((mutations) => {
@@ -1718,7 +1722,6 @@
     }
   }
 
-  // Public functions
   window.translate = translate;
 
   window.changeLanguage = changeLanguage;
@@ -1733,3 +1736,26 @@
     init();
   }
 })();
+
+function actualizarImagenesIdioma() {
+
+    const idioma = window.getCurrentLanguage();
+
+    const imagenes = document.querySelectorAll(
+        "[data-img-es][data-img-en]"
+    );
+
+    imagenes.forEach(imagen => {
+
+        if (idioma === "en") {
+
+            imagen.src = imagen.dataset.imgEn;
+
+        } else {
+
+            imagen.src = imagen.dataset.imgEs;
+
+        }
+
+    });
+}
